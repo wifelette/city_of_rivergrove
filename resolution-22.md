@@ -26,13 +26,13 @@ NOW THEREFORE, BE IT RESOLVED:
 
 **ADOPTED** this 11th day of March, 1976.
 
-John C. Miller, Mayor
 [Signature]
+John C. Miller, Mayor
 
 Attest:
 
-Rosalie Morrison, City Recorder
 [Signature]
+Rosalie Morrison, City Recorder
 
 ---
 
@@ -82,7 +82,7 @@ A DETAILED LIST & MAP HAS BEEN PREVIOUSLY SENT TO AND APPROVED BY LCDC
 - \* City Council, County Board of Commissioners
 - \*\* The Citizen Advisory Committee in Goal 1
 
-## Handwritten notations and stamps
+## Handwritten notations, floating form fields and stamps
 
 I certify this to be a true copy.
 Rosalie Morrison  
