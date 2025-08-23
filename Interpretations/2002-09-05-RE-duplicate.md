@@ -1,7 +1,8 @@
 # An Interpretation of the Planning Commission
+
 ## (September 5, 2002)
 
-**Section 5.010 of the Rivergrove Land Development Ordinance (RLDO), as amended by Ordinance No. 59-97A, establishes zoning (residential) and minimum lot sizes for all land within the City of Rivergrove.** Section 5.010 reads as follows:
+Section 5.010 of the Rivergrove Land Development Ordinance (RLDO), as amended by Ordinance No. 59-97A, establishes zoning (residential) and minimum lot sizes for all land within the City of Rivergrove. Section 5.010 reads as follows:
 
 **Section 5.010. Land Use.** All land within the city of Rivergrove is zoned residential. The minimum lot size within the Flood Hazard District is ½ acre. The minimum lot size outside the Flood Hazard District is 10,000 square feet.
 
@@ -17,4 +18,4 @@ OR
 
 b. includes at least 10,000 square feet of land that is wholly outside the FHD and all existing and future development on the lot is limited to the portion of the lot that is wholly outside the FHD.
 
-**To be Filed in Article 5 of the Rivergrove Land Development Ordinance**
+To be Filed in Article 5 of the Rivergrove Land Development Ordinance
