@@ -1,0 +1,50 @@
+# ORDINANCE NO. 88-2017
+
+## AN ORDINANCE THAT AMENDS ORDINANCE NO. 70-2001 TO ALLOW DOCKS AS A CONDITIONAL USE AND AMENDS RLDO TO CLARIFY DOCKS ARE A PERMITTED USE IN THE R ZONE
+
+**Planning Commission Public Hearing:** November 6, 2017
+**City Council Public Hearing:** November 13, 2017
+**Adopted by Rivergrove City Council:** November 13, 2017
+
+**Mayor:** Heather Kibbey
+**Date:** November 20, 2017
+
+**Attest:** Leanne Moll, City Manager/Recorder
+**Date:** November 20, 2017
+
+---
+
+## BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
+
+**WHEREAS**, the City of Rivergrove has adopted a Comprehensive Plan and Land Development Ordinance to guide and control its future development; and
+
+**WHEREAS**, ORS 197.175(2)(d) requires cities and counties to make land use decisions and limited land use decisions in compliance with their acknowledged comprehensive plans; and
+
+**WHEREAS**, the City of Rivergrove is bounded on the south by the Tualatin River, and many residents enjoy using the river for recreation; and
+
+**WHEREAS**, Ordinance No. 70-2001 as written is silent on docks; and
+
+**WHEREAS**, these amendments will resolve the omission of docks from Ordinance No. 70-2001; and
+
+**WHEREAS**, the establishment of local procedures for taking legislative action(s) under the City's Land Development Ordinance is within the City Council's broad legislative authority and discretion;
+
+**NOW THEREFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS:** The Rivergrove Land Development Ordinance No. 70-2001 is hereby amended as follows:
+
+## ORDINANCE NO. 88-2017
+
+**Section 1.** Rivergrove Ordinance No. 70-2001 is amended by adding a new subsection to Section IV (Water Quality Resource Area), subsection D (Conditional Uses) to provide for a new conditional use in the WQRA as follows:
+
+8. Docks (Subsection G-9).
+
+**Section 2.** Rivergrove Ordinance No. 70-2001 is amended by adding a new subsection to Section IV (Water Quality Resource Area), subsection G (Development Standards) to provide for standards for the construction of a dock in the WQRA as follows:
+
+9. **Docks.**
+   a. All docks must be floating docks; docks are not allowed to be placed on piers.
+   b. The ramp to the dock shall be hinged to allow for rise in floodwater.
+   c. The dock shall not exceed 12 feet in width and 20 feet in length. Width is the distance perpendicular to the river bank (generally south). Length is the distance parallel to the river (generally east-west).
+   d. The dock, including the ramp, stairs, or access shall not extend more than 20 feet into the river.
+   e. The dock must be colored white or a neutral earth tone as allowed by the City.
+   f. Stairs or access to the dock should be sized and placed to have minimal effect on the WQRA.
+   g. Dock materials shall be environmentally benign and composed of no toxic chemicals.
+
+**Section 3.** Rivergrove Land Development Ordinance is amended by adding a dock as a permitted use in the R Zone Section 5.050 (h) and the Flood Hazard District Section 5.060 (c) subject to compliance with the proposed dock development standards of Ord. #70-2001 (G.9). Further, a dock is exempt from the requirement to be elevated above the regulation flood protection elevation in Section 5.060 (b) and the Ordinary High Water Mark 25-foot setback requirement in Sections 5.070.

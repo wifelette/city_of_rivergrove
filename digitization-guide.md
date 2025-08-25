@@ -107,16 +107,24 @@ When processing a document:
 
 #### File Organization
 
-- **Interpretations**: Go in `/Interpretations/` folder
-- **Ordinances**: Go in `/Ordinances/` folder
-- **Resolutions**: Go in `/Resolutions/` folder
-- **Other Documents**: Root level or appropriate subfolder
+- **Interpretations**: Go in `/Interpretations/` folder (both .md and .pdf files)
+- **Ordinances**: Go in `/Ordinances/` folder (both .md and .pdf files)
+- **Resolutions**: Go in `/Resolutions/` folder (both .md and .pdf files)
+- **Other Documents**: Root level or appropriate subfolder (both .md and .pdf files)
+
+**PDF Storage**: Source PDFs are stored alongside their markdown counterparts using identical naming:
+- Example: `1978-Ord-#28-Parks.md` and `1978-Ord-#28-Parks.pdf` in the same folder
+- PDFs are only added to GitHub after the markdown file has been created
+- Original PDFs remain in Dropbox (renamed to match convention) with copies in GitHub
 
 ### 2. When Digitizing Documents
 
-1. **Commit and Push**: When new .md files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
-2. **Provide GitHub Links**: After pushing, always provide the GitHub web URL for Airtable (format: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]`)
-3. **Update Issue #3**:
+1. **Add PDF**: Copy the source PDF from Dropbox to the same folder as the .md file, using identical naming
+2. **Commit and Push**: When new .md and .pdf files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
+3. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
+   - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
+   - PDF: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.pdf`
+4. **Update Issue #3**:
    - Remove item from the "Documents Needing Processing" list
    - Add to "Completed Documents" section at bottom with format: `- [x] Document Name`
    - Include commit link if significant: `([commit-hash](link))`
