@@ -48,6 +48,14 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 When processing a document:
 
 - **Always search existing entries first** using multiple search terms
+- **Search with multiple ID format variations**: When searching for existing entries, try multiple formats of the same ID:
+  - `Ordinance #28`, `Ordinance 28`, `#28`, `28`
+  - `Resolution #72`, `Resolution 72`, `#72`, `72`
+  - Also try key topic words from the title/subject
+- **Discover field names before creating/updating**: Use list functions with small limits (3-5 records) to see actual field names and avoid validation errors from incorrect field naming.
+  - `daily-tasks:council_documents_list (limit: 3)`
+  - `daily-tasks:council_ordinances_list (limit: 3)`
+  - etc.
 - **Field validation failures**: If any specific field fails validation, inform Leah immediately so she can decide whether to resolve or ignore
 - Create/update Documents entry with:
   - `documentType`: "Governing Doc"
@@ -91,7 +99,39 @@ When processing a document:
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
 
-## Key Workflow Reminders
+## Claude Code Workflow (Repository Management)
+
+### When Digitizing Documents
+
+1. **Commit and Push**: When new .md files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
+2. **Provide GitHub Links**: After pushing, always provide the GitHub web URL for Airtable (format: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]`)
+3. **Update Issue #3**:
+   - Remove item from the "Documents Needing Processing" list
+   - Add to "Completed Documents" section at bottom with format: `- [x] Document Name`
+   - Include commit link if significant: `([commit-hash](link))`
+   - No need to write "Complete" - the checked box is sufficient
+
+### File Organization
+
+- **Interpretations**: Go in `/Interpretations/` folder
+- **Ordinances**: Go in `/Ordinances/` folder
+- **Resolutions**: Go in `/Resolutions/` folder
+- **Other Documents**: Root level or appropriate subfolder
+
+### Issue Management
+
+- Keep issue #3 as the single source of truth for digitization progress
+- When consolidating repetitive tasks, use "Add to Airtable via Claude Desktop process"
+- Bold document names in checklists for visibility: `**Ordinance #XX**`
+
+### Airtable Integration
+
+- Claude Code can potentially update Airtable directly if provided with:
+  - Record ID from the Ordinances and Resolutions table
+  - The GitHub URL to add to the Public URL field
+- Otherwise, provide raw GitHub URLs for manual entry
+
+## Key Workflow Reminders (Claude Desktop)
 
 - Search existing Airtable entries thoroughly before creating new ones
 - **Alert Leah immediately to any field validation failures**
