@@ -11,15 +11,8 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 - **Airtable MCP base** with:
   - Ordinances and Resolutions inventory table (40+ records with varying completeness)
   - Documents table (linked to ordinances)
-- **Document storage**: Dropbox links in Airtable
+- **Document storage**: GitHub URLs in Airtable (fileURL for PDFs, mdURL for Markdown)
 - **Final output**: Markdown files in GitHub repo
-
-## Progress as of August 23, 2025
-
-- **Planning Commission Interpretations**: ✅ **COMPLETE** - All 13 interpretations from 1997-2008 digitized
-- **Other completed documents**: City Charter, Resolution 22, Resolution 72, Ordinance #16 (1974)
-- **Current focus**: Ordinances from various time periods
-- **Tracking**: [GitHub issue #3](https://github.com/wifelette/city_of_rivergrove/issues/3) with comprehensive checklists
 
 ---
 
@@ -58,9 +51,11 @@ When processing a document:
   - `tags`: ["Ordinance/Resolution/Interpretation"] (may have validation issues)
   - documentDate
   - documentTitle
-  - Dropbox URL (from Leah)
-  - Public URL (from Leah once uploaded to Github)
-  - Brief description
+  - fileURL (PDF files on GitHub)
+  - mdURL (Markdown files on GitHub)
+  - rawURL (auto-populates from mdURL - don't touch)
+  - ytURL (YouTube video URLs, when applicable)
+  - description
 - Update `Ordinances and Resolutions` entry with:
   - Link to document
   - Summary (dry, objective, searchable)
@@ -74,7 +69,20 @@ When processing a document:
 - **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
 - **Markdown formatting**: Use headers, lists, and clear structure
 
-### 4. MCP Tool Notes
+### 4. Document Title Standards (Established August 2025)
+
+All documentTitle fields in Airtable follow standardized formats:
+
+- **Interpretations**: "PC Interpretation - [Topic]"
+  - Example: "PC Interpretation - Section 5.080 Setbacks"
+- **Ordinances**: "Ordinance #XX - [Topic]" (convert roman numerals to standard numbers)
+  - Example: "Ordinance #16 - Establishing a Park Advisory Council"  
+- **Resolutions**: "Resolution #XX - [Topic]"
+  - Example: "Resolution #22 - Planning Commission CCI"
+
+When processing documents, always check existing titles and update them to match these standards if needed.
+
+### 5. MCP Tool Notes
 
 - **Always search existing entries** before creating new ones
 - Use multiple search terms (ID, year, topic keywords)
@@ -83,7 +91,7 @@ When processing a document:
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
 
-### 5. Key Reminders
+### 6. Key Reminders
 
 - Search existing Airtable entries thoroughly before creating new ones
 - **Alert Leah immediately to any field validation failures**
@@ -92,6 +100,7 @@ When processing a document:
 - Preserve all original formatting, dates, and signatures
 - Claude should ask for GitHub URLs with correct filenames ready for immediate save
 - **Digitization Guide updates**: When Leah asks for text to add to the Digitization Guide, always provide it as inline copyable markdown in code blocks rather than artifacts - this allows single-button copying without downloads.
+- **Batch URL Updates**: When updating multiple documents with GitHub URLs, use the systematic approach: list all records first to see field structure, then update fileURL and mdURL fields (rawURL will auto-populate)
 
 ---
 
@@ -113,6 +122,7 @@ When processing a document:
 - **Other Documents**: Root level or appropriate subfolder (both .md and .pdf files)
 
 **PDF Storage**: Source PDFs are stored alongside their markdown counterparts using identical naming:
+
 - Example: `1978-Ord-#28-Parks.md` and `1978-Ord-#28-Parks.pdf` in the same folder
 - PDFs are only added to GitHub after the markdown file has been created
 - Original PDFs remain in Dropbox (renamed to match convention) with copies in GitHub
@@ -141,18 +151,4 @@ When processing a document:
 - Claude Code can potentially update Airtable directly if provided with:
   - Record ID from the Ordinances and Resolutions table
   - The GitHub URL to add to the Public URL field
-- Otherwise, provide GitHub web URLs for manual entry
-
----
-
-## Completed Collections
-
-### ✅ Planning Commission Interpretations
-
-**ALL 13 interpretations from 1997-2008 are complete and digitized.**
-
-## Current Phase: Ordinances and Resolutions
-
-- Working chronologically and by availability
-- Using new naming convention for ordinances
-- Standard workflow applies
+- Otherwise, provide both GitHub web URLs (fileURL for PDF, mdURL for Markdown) for manual entry
