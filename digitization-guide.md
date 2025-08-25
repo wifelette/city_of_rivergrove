@@ -9,114 +9,93 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 ## Infrastructure
 
 - **Airtable MCP base** with:
-  - Ordinances and Resolutions inventory table (34+ records with varying completeness)
+  - Ordinances and Resolutions inventory table (40+ records with varying completeness)
   - Documents table (linked to ordinances)
 - **Document storage**: Dropbox links in Airtable
 - **Final output**: Markdown files in GitHub repo
 
-## Progress as of August 22, 2025
+## Progress as of August 23, 2025
 
-- **Completed documents**:
-  - City Charter
-  - Resolution 22
-  - Resolution 72
-  - Interpretation 1997-07-07-RE-2.040h-permitting-adus
-  - Interpretation 1997-09-08-RE-9.030-permit-fees-and-completeness
-  - Interpretation 1997-11-03-RE-9.030-permit-fees-and-completeness
-  - Interpretation 1998-03-02-RE-5.080-setbacks
-  - Interpretation 2004-03-15-RE-5.080-setbacks
-- **Created**: GitHub issue with comprehensive checklists organized by document
-- **Discovered**: Multi-interpretation document needing careful parsing
+- **Planning Commission Interpretations**: ✅ **COMPLETE** - All 13 interpretations from 1997-2008 digitized
+- **Other completed documents**: City Charter, Resolution 22, Resolution 72, Ordinance #16 (1974)
+- **Current focus**: Ordinances from various time periods
+- **Tracking**: GitHub issue #3 with comprehensive checklists: https://github.com/wifelette/city_of_rivergrove/issues/3
 
 ## Established Workflow
 
 ### 1. Document Processing
 
 - Leah uses Adobe Acrobat for OCR (export as **plain text**, not .docx) and shares with Claude OR has Claude do it directly
-- If it was done via Adobe, Leah then uploads source PDF and OCR text output to Claude for final comparison
-- Claude creates clean markdown version (fixing OCR errors) as artifact
-- Claude reviews for legal terms, dates, and signatures—basically anything that should be captured in the .md file—but doesn't't make any changes without explicit approval by Leah, not even fixing typos. We're strictly digitizing as is.
-- Claude creates or finds (if they already exist, in which case they'll need updating) two entries in the Airtable MCP Data base, filling in as much data as it can:
-  - 1 is a Document record for the file
-  - 2 is an Ordinances and Resolutions record for the file
-- Leah downloads the artifact from Claude as an .md file and saves with naming convention:
-- For Resolutions:
-  - resolution-##
-- For Interpretations:
-  - YYYY-MM-DD-RE-[section]-[brief topic]
-- For Ordinances
-  - TBD
-- Leah uploads the .md file to Github
-- Leah logs the Github URL by adding it to Airtable or providing it to Claude to add
-- Once the Github URL is in, Leah or Claude can mark the Document entry as Digitized
+- If done via Adobe, Leah uploads source PDF and OCR text output to Claude for final comparison
+- Claude creates clean markdown version fixing OCR errors
+- Claude reviews for legal terms, dates, and signatures, but doesn't make any changes without explicit approval by Leah, not even fixing typos. We're strictly digitizing as is.
+- **Claude searches existing Airtable entries first** before creating new ones
+- Claude creates or updates two entries in the Airtable MCP base:
+  - 1 Document record for the file
+  - 2 Ordinances and Resolutions record for the file
+- Leah saves artifact with established naming conventions
+- Leah uploads to GitHub and provides URLs to Claude for Airtable updates
+- Mark as Digitized once GitHub URL is added
 
-### 2. Airtable Updates
+### 2. Naming Conventions
+
+- **Resolutions**: `YYYY-Res-#XX-Topic` (e.g., `1984-Res-#72-Municipal-Services`)
+- **Interpretations**: `YYYY-MM-DD-RE-[section]-[brief topic]`
+- **Ordinances**: `YYYY-Ord-#XX-Topic` (e.g., `1974-Ord-#16-Parks`)
+
+### 3. Airtable Updates
 
 When processing a document:
 
+- **Always search existing entries first** using multiple search terms
+- **Field validation failures**: If any specific field fails validation, inform Leah immediately so she can decide whether to resolve or ignore
 - Create/update Documents entry with:
   - `documentType`: "Governing Doc"
-  - `tags`: ["Ordinance/Resolution/Interpretation"]
+  - `tags`: ["Ordinance/Resolution/Interpretation"] (may have validation issues)
   - documentDate
-  - documentTitle (intuit what this ought be)
-  - Dropbox URL (get each time from Leah)
-  - Public URL (get each time from Leah once uploaded to Github)
+  - documentTitle
+  - Dropbox URL (from Leah)
+  - Public URL (from Leah once uploaded to Github)
   - Brief description
-- Update `Ordinances and Resolutions` base entry with:
+- Update `Ordinances and Resolutions` entry with:
   - Link to document
   - Summary (dry, objective, searchable)
-  - Topics
-  - Mark as Digitized when Leah confirms upload to Github is complete
+  - Topics (use existing valid options)
+  - Mark as Digitized when GitHub upload complete
 
-### 3. Content Standards
+### 4. Content Standards
 
 - **No editorializing**: Keep summaries factual and objective
 - **Preserve all metadata**: Stamps, signatures, dates, handwritten notes
-- **Administrative stamps**: Place at end as notations (e.g., LCDC received stamps)
-- **Markdown formatting**: Use headers, lists, and clear structure for future programmatic conversion
+- **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
+- **Markdown formatting**: Use headers, lists, and clear structure
 
-### 4. GitHub Integration
+## Completed Collections
 
-- Each document gets two tasks: "Digitize" and "Add to GitHub"
-- This separation allows for batch processing and version control tracking
+### ✅ Planning Commission Interpretations
 
-## Strategic Considerations
+**ALL 13 interpretations from 1997-2008 are complete and digitized.**
 
-- Many documents are old photocopies with handwritten portions
-- OCR struggles with typewriter fonts and handwriting
-- Prioritize documents relevant to current issues over chronological processing
-- Consider batch OCR for efficiency, then selective Claude review
+## Current Phase: Ordinances and Resolutions
+
+- Working chronologically and by availability
+- Using new naming convention for ordinances
+- Standard workflow applies
 
 ## MCP Tool Notes
 
-- Use document search/list functions to check existing entries before creating duplicates
-- Always link documents to their ordinance/resolution records
-- Include topics for searchability
+- **Always search existing entries** before creating new ones
+- Use multiple search terms (ID, year, topic keywords)
+- **Inform Leah immediately of any field validation failures** for her decision on resolution
+- Link documents to ordinance/resolution records
+- Handle field validation errors gracefully (especially for Topics and tags)
+- Include topics for searchability using valid options only
 
-## Multi-Interpretation Document Challenge
+## Key Workflow Reminders
 
-Leah discovered a single PDF containing multiple Planning Commission interpretations that she separated and matched to inventory. The document's first page contained this inventory list, which is the first list of what we need to focus on:
-
-### RIVERGROVE LAND USE ORDINANCES - Interpretations Inventory
-
-1. **Interpretation 1997-7-7** (ACCESSORY STRUCTURE RE: PERMIT)
-2. **Interpretation 1997-9-8** (FEES, SYSTEM DEVELOPMENT CHARGES)
-3. **Interpretation 1997-11-3** (SYSTEM DEVELOPMENT CHARGES)
-4. **Interpretation 1998-3-2** (MEASURE SETBACK TO STRUCTURE)
-5. **Interpretation 1998-6-1** (SETBACKS—ORIENTATION)
-6. **Interpretation 1998-7-6** (SETBACKS—AMENDS PREVIOUS—ADDS FACTOR)
-7. **Interpretation 2001-5-7** (BALANCED CUT AND FILL)
-8. **Interpretation 2002-8-5** (LOTS PARTIALLY IN FLOODPLAIN)
-9. **Interpretation 2002-9-5** (APPEARS SIMILAR TO PREVIOUS)
-10. **Interpretation 2004-10-11** (SETBACKS WHERE THERE IS A WQRA TRACT)
-11. **Interpretation 2005-4-4** (AREA ACCESSORY DEV PERMIT FOR SEWER)
-12. **Interpretation 2008-2-4** (DEFINITION OF MULTI-FAMILY)
-
-**Note**: Also found an unlisted interpretation of Ordinance 68-2000 dated October 16, 2000 about multi-family developments.
-
-We've been working through this list together. Thus far we have completed:
-
-- [x] 1997-07-07-RE-2.040h-permitting-adus
-- [x] 1997-09-08-RE-9.030-permit-fees-and-completeness
-- [x] 1997-11-03-RE-9.030-permit-fees-and-completeness
-- [x] 2004-03-15-RE-5.080-setbacks
+- Search existing Airtable entries thoroughly before creating new ones
+- **Alert Leah immediately to any field validation failures**
+- Use established naming conventions consistently
+- Focus on accurate transcription over content analysis
+- Preserve all original formatting, dates, and signatures
+- Claude should ask for GitHub URLs with correct filenames ready for immediate save
