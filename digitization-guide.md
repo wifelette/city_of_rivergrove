@@ -4,7 +4,7 @@
 
 Creating a searchable, centralized repository of all City of Rivergrove ordinances, resolutions, and interpretations. This addresses the current problem where no central listing exists, allowing people to "selectively ignore things or make things up." We have copies of old, hard-to-read photocopied versions, and are working to extract the text as markdown files for saving in Github.
 
-- **Repository**: GitHub at https://github.com/wifelette/city_of_rivergrove
+- **Repository**: [GitHub](https://github.com/wifelette/city_of_rivergrove)
 
 ## Infrastructure
 
@@ -19,7 +19,7 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 - **Planning Commission Interpretations**: ✅ **COMPLETE** - All 13 interpretations from 1997-2008 digitized
 - **Other completed documents**: City Charter, Resolution 22, Resolution 72, Ordinance #16 (1974)
 - **Current focus**: Ordinances from various time periods
-- **Tracking**: GitHub issue #3 with comprehensive checklists: https://github.com/wifelette/city_of_rivergrove/issues/3
+- **Tracking**: [GitHub issue #3](https://github.com/wifelette/city_of_rivergrove/issues/3) with comprehensive checklists
 
 ## Established Workflow
 
