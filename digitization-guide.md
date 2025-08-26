@@ -275,12 +275,19 @@ This starts a local server (usually at `http://localhost:3000`) with live-reload
 
 ### Adding New Documents
 
-When new documents are digitized:
+When new documents are digitized, simply run:
+```bash
+./update-mdbook.sh
+```
 
-1. The markdown file is automatically copied to the appropriate `src/` subdirectory
-2. Run `python3 fix-signatures.py` to update SUMMARY.md with new entries
-3. Run `./build.sh` to rebuild the site with cross-references
-4. The new document will appear in the navigation and be searchable
+This automated script will:
+1. Copy all markdown files to the appropriate `src/` subdirectories (removing `#` and spaces from filenames)
+2. Fix signature formatting in all documents
+3. Automatically generate a new SUMMARY.md table of contents
+4. Build the site with cross-reference links
+5. Output the complete static site to the `book/` directory
+
+The new document will immediately appear in navigation and be searchable.
 
 ### Features
 

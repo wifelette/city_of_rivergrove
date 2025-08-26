@@ -10,13 +10,11 @@ Submitted to the Rivergrove City Council on **5/12/03**
 
 Adopted by the Rivergrove City Council on **5/12/03**
 
----
-
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03  
+**Date**: 5/12/03    
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03  
+**Date**: 5/12/03    
 
 ---
 
@@ -50,7 +48,7 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > **6.300. Conditional Use.** The Planning Commission may allow a conditional use, after a hearing conducted pursuant to the Type III land use procedure in the Rivergrove Land Development Ordinance provided the applicant complies with the relevant Application Requirements of this section and demonstrates that the proposed use satisfies the applicable conditions set forth in this ordinance and the Rivergrove Land Development Ordinance. For the purposes of Section 6.300 through 6.340, the Planning Commission has the responsibility and authority to determine the relevance of requirements and criteria and the applicability of conditions.
 >
-> > **6.310. Application Requirements.** An application for Conditional Use will be on forms provided by the City Recorder and will include the following where applicable:
+> **6.310. Application Requirements.** An application for Conditional Use will be on forms provided by the City Recorder and will include the following where applicable:
 >
 > (a) A description of the land (address, lot, block, tract, or similar description) on which the proposed development is to take place;
 >
@@ -107,8 +105,8 @@ Adopted by the Rivergrove City Council on **5/12/03**
 > (h) Effects on off-street parking;
 > (i) Effects on air and water quality.
 >
-> > **6.330. Additional Criteria.** The Planning Commission may allow a conditional use, provided that the applicant provides evidence substantiating that all the requirements of the ordinance relative to the proposed use are satisfied, and demonstrates that the proposed use also satisfies the following criteria:
-> >
+> **6.330. Additional Criteria.** The Planning Commission may allow a conditional use, provided that the applicant provides evidence substantiating that all the requirements of the ordinance relative to the proposed use are satisfied, and demonstrates that the proposed use also satisfies the following criteria:
+>
 > > (a) The characteristics of the site are suitable for the proposed use considering size, shape, location, topography, existence of improvements and natural features;
 > >
 > > (b) The site and proposed development are timely, considering the adequacy of transportation systems, public facilities and services existing or planned for the area affected by the use;
