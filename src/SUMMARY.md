@@ -13,7 +13,7 @@
 - [1998 - Ordinance #62-98-Flood-and-Land-Development-Amendment - 62-98](./ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.md)
 - [2000 - Ordinance #68-2000-Metro-Compliance - 68-2000](./ordinances/2000-Ord-68-2000-Metro-Compliance.md)
 - [2000 - Ordinance #69-2000-Title-3-Compliance-STUB - 69-2000 - TITLE 3 COMPLIANCE](./ordinances/2000-Ord-69-2000-Title-3-Compliance-STUB.md)
-- [2001 - Ordinance #70-2001-Metro-UGMFP-Compliance - 70-2001](./ordinances/2001-Ord-70-2001-Metro-UGMFP-Compliance.md)
+- [2001 - Ordinance #70-2001-WQRA - 70-2001](./ordinances/2001-Ord-70-2001-WQRA.md)
 - [2002 - Ordinance #71-2002-Gates - 71-2002](./ordinances/2002-Ord-71-2002-Gates.md)
 - [2002 - Ordinance #72-2002-Penalties-and-Abatement-Amendment - 72-2002](./ordinances/2002-Ord-72-2002-Penalties-and-Abatement-Amendment.md)
 - [2003 - Ordinance #73-2003A-Conditional-Use-Provisions - 73-2003A](./ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.md)

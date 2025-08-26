@@ -1,32 +1,27 @@
 /* Custom CSS for City of Rivergrove Documents */
 
-/* Fix signature block formatting */
-/* Target paragraphs that contain [Signature] */
-p:has-text("[Signature]") {
-    margin-bottom: 0.5em;
-}
-
-/* Ensure Date lines have proper spacing */
-p strong:first-child:has-text("Date") {
-    display: block;
-    margin-top: 0.2em;
-}
-
-/* Alternative approach: Force line breaks after signature lines */
-/* This targets any paragraph starting with [Signature] and adds spacing */
+/* General paragraph styling */
 p {
     line-height: 1.6;
 }
 
-/* Specific formatting for signature blocks */
-/* Look for patterns like [Signature], Name, Title */
-p:contains("[Signature]") + p:contains("Date:") {
-    margin-top: 0;
+/* Table footnotes styling */
+.table-footnotes {
+    margin-top: 0.5em;
+    padding: 0.75em;
+    background-color: #f8f9fa;
+    border-left: 3px solid #dee2e6;
+    font-size: 0.9em;
+    color: #495057;
 }
 
-/* Better approach using a more reliable selector */
-/* Force proper line breaks in signature areas */
-h2:contains("ORDINANCE") ~ p:contains("[Signature]"),
-h3:contains("ORDINANCE") ~ p:contains("[Signature]") {
-    white-space: pre-line;
+/* Ensure footnotes are visually separated from tables */
+table + .table-footnotes {
+    margin-top: 1em;
+}
+
+/* Style for the footnote numbers and text */
+.table-footnotes p {
+    margin: 0.25em 0;
+    line-height: 1.5;
 }
