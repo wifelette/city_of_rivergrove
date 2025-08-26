@@ -11,10 +11,10 @@ Submitted to the Rivergrove City Council on **5/12/03**
 Adopted by the Rivergrove City Council on **5/12/03**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03    
+**Date**: 5/12/03      
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03    
+**Date**: 5/12/03      
 
 ---
 
@@ -50,13 +50,13 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > **6.310. Application Requirements.** An application for Conditional Use will be on forms provided by the City Recorder and will include the following where applicable:
 >
-> (a) A description of the land (address, lot, block, tract, or similar description) on which the proposed development is to take place;
+> - (a) A description of the land (address, lot, block, tract, or similar description) on which the proposed development is to take place;
 >
-> (b) A list of the addresses of property within 200 feet of the affected property and mailing labels;
+> - (b) A list of the addresses of property within 200 feet of the affected property and mailing labels;
 >
-> (c) Narrative addressing how the application meets the relevant review criteria in 6.320 and 6.330 below;
+> - (c) Narrative addressing how the application meets the relevant review criteria in 6.320 and 6.330 below;
 >
-> (d) Site plan drawn to scale and where relevant, illustrating existing and proposed:
+> - (d) Site plan drawn to scale and where relevant, illustrating existing and proposed:
 >
 > - (1) Relationship of the site to adjoining properties, streets, alleys, structures, public utilities, and drainageways;
 > - (2) Lot line dimensions;
@@ -70,9 +70,9 @@ Adopted by the Rivergrove City Council on **5/12/03**
 > - (10) Drainage controls;
 > - (11) Proposed modifications to existing grades.
 >
-> (e) If relevant, exterior lighting plan (which may be shown on the site plan) indicating location, size, height, typical design, material, color, method and strength of illumination.
+> - (e) If relevant, exterior lighting plan (which may be shown on the site plan) indicating location, size, height, typical design, material, color, method and strength of illumination.
 >
-> (f) If relevant, plans and elevations of structure(s) to scale indicating:
+> - (f) If relevant, plans and elevations of structure(s) to scale indicating:
 >
 > - (1) Heights of structure;
 > - (2) Entrances and exits of proposed structures;
@@ -80,30 +80,30 @@ Adopted by the Rivergrove City Council on **5/12/03**
 > - (4) Building materials to be used;
 > - (5) Specifications as to type, color, and texture of exterior surfaces of proposed structures.
 >
-> (g) If relevant landscape plan drawn to scale showing:
+> - (g) If relevant landscape plan drawn to scale showing:
 >
 > - (1) Location of existing trees and vegetation proposed to be removed or retained on the site;
 > - (2) Location and design of landscaped areas;
 > - (3) Proposed varieties and sizes of trees and plant materials;
 > - (4) Other pertinent landscape features, and irrigation systems required to maintain plant materials.
 >
-> (h) Vicinity map showing the site in relation to local and collector streets; plus any other features in the nearby area;
+> - (h) Vicinity map showing the site in relation to local and collector streets; plus any other features in the nearby area;
 >
-> (i) Any additional information that may be required by the Planning Commission to properly evaluate the proposed conditional use, if the need for such information is justified on the basis of special and/or unforeseen circumstances.
+> - (i) Any additional information that may be required by the Planning Commission to properly evaluate the proposed conditional use, if the need for such information is justified on the basis of special and/or unforeseen circumstances.
 >
-> (j) The Planning Commission may waive any of the requirements above where determined that the information required is unnecessary to properly evaluate the proposal. The applicant will provide a number of plans as required by the City Recorder.
+> - (j) The Planning Commission may waive any of the requirements above where determined that the information required is unnecessary to properly evaluate the proposal. The applicant will provide a number of plans as required by the City Recorder.
 >
 > **6.320. Review Criteria.** Applications for a conditional use will be reviewed to assure consistency with the purposes of this ordinance, the Rivergrove Land Development Ordinance, policies of the Comprehensive Plan, and any other applicable policies and standards adopted by the City Council. In addition, the Planning Commission will consider and weigh with equal priority the following compatibility factors that are relevant to the proposal:
 >
-> (a) Basic site design (organization of uses on the site);
-> (b) Noise attenuation;
-> (c) Noxious odors;
-> (d) Lighting;
-> (e) Signage;
-> (f) Landscaping for buffering and screening;
-> (g) Traffic;
-> (h) Effects on off-street parking;
-> (i) Effects on air and water quality.
+> - (a) Basic site design (organization of uses on the site);
+> - (b) Noise attenuation;
+> - (c) Noxious odors;
+> - (d) Lighting;
+> - (e) Signage;
+> - (f) Landscaping for buffering and screening;
+> - (g) Traffic;
+> - (h) Effects on off-street parking;
+> - (i) Effects on air and water quality.
 >
 > **6.330. Additional Criteria.** The Planning Commission may allow a conditional use, provided that the applicant provides evidence substantiating that all the requirements of the ordinance relative to the proposed use are satisfied, and demonstrates that the proposed use also satisfies the following criteria:
 >
@@ -115,17 +115,17 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > **6.340. Conditions**
 >
-> (a) Permits for conditional uses stipulate restrictions or conditions which may include, but are not limited to, a definite time limit to meet such conditions, provisions for a front, side or rear yard greater than the minimum set back standards, suitable landscaping, off-street parking and any other reasonable restriction, condition or safeguard that would uphold the spirit and intent of the Rivergrove Land Development Ordinance, and mitigate any adverse effect upon the neighborhood properties as set forth in the findings of the Planning Commission.
+> - (a) Permits for conditional uses stipulate restrictions or conditions which may include, but are not limited to, a definite time limit to meet such conditions, provisions for a front, side or rear yard greater than the minimum set back standards, suitable landscaping, off-street parking and any other reasonable restriction, condition or safeguard that would uphold the spirit and intent of the Rivergrove Land Development Ordinance, and mitigate any adverse effect upon the neighborhood properties as set forth in the findings of the Planning Commission.
 >
-> (b) In the case of a use existing prior to the effective date of the ordinance codified in this title and classified in this title as a conditional use, any change of use, expansion of lot area or expansion of structure conform with the requirements for conditional use.
+> - (b) In the case of a use existing prior to the effective date of the ordinance codified in this title and classified in this title as a conditional use, any change of use, expansion of lot area or expansion of structure conform with the requirements for conditional use.
 >
-> (c) A conditional use approval expire if it is not implemented within 2 years from the date of the final written decision unless a lesser time period is specified as a condition of approval or a time extension is approved pursuant to RLDO 6.340(d). If the City's final written decision is appealed, the approval period commences on the date of the final appellate decision. A conditional use approval is implemented when all necessary permits for development have been secured and are maintained. Approval of public roads, public schools and public parks do not expire unless an expiration date is specified as a condition of approval.
+> - (c) A conditional use approval expire if it is not implemented within 2 years from the date of the final written decision unless a lesser time period is specified as a condition of approval or a time extension is approved pursuant to RLDO 6.340(d). If the City's final written decision is appealed, the approval period commences on the date of the final appellate decision. A conditional use approval is implemented when all necessary permits for development have been secured and are maintained. Approval of public roads, public schools and public parks do not expire unless an expiration date is specified as a condition of approval.
 >
-> (d) A 1-year time extension may be granted once as a Type I decision by the Planning Commission pursuant to RLDO 4.090 and subject to the following provisions:
+> - (d) A 1-year time extension may be granted once as a Type I decision by the Planning Commission pursuant to RLDO 4.090 and subject to the following provisions:
 >
 > - (1) A time extension be requested in writing, on forms provided by the City Recorder, prior to the expiration of the approval; and
 > - (2) The applicant demonstrates that:
 >   - (A) The conditional use is consistent with the provisions of this ordinance in effect on the date a complete application for a time extension is submitted; and
 >   - (B) There is a reasonable expectancy that the necessary development permits will be secured within the 1-year extension period.
 >
-> (e) Any violation of the terms, conditions or restrictions of a conditional use permit can result in revocation of the conditional use permit.
+> - (e) Any violation of the terms, conditions or restrictions of a conditional use permit can result in revocation of the conditional use permit.
