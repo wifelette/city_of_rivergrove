@@ -211,13 +211,14 @@
         }
         
         .relationship-item {
-            padding: 8px;
-            margin-bottom: 4px;
+            padding: 6px 8px;
+            margin-bottom: 2px;
             background: #f8f9fa;
-            border-radius: 4px;
-            font-size: 12px;
+            border-radius: 3px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s;
+            line-height: 1.3;
         }
         
         .relationship-item:hover {
@@ -233,8 +234,8 @@
         .relationship-item .doc-title {
             color: #333;
             display: block;
-            font-size: 11px;
-            margin-top: 2px;
+            font-size: 10px;
+            margin-top: 1px;
         }
         
         /* Empty state */
@@ -318,9 +319,155 @@
             background: #0550ae;
         }
         
+        /* Icon-only actions at top */
+        .icon-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        
+        .icon-btn:hover {
+            background: #f8f9fa;
+            border-color: #0969da;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .icon-btn.primary {
+            background: #0969da;
+            color: white;
+            border-color: #0969da;
+        }
+        
+        .icon-btn.primary:hover {
+            background: #0550ae;
+        }
+        
+        /* Tooltips for icon buttons */
+        .icon-btn {
+            position: relative;
+        }
+        
+        .icon-btn::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+        
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-bottom-color: #333;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+        
+        .icon-btn:hover::after,
+        .icon-btn:hover::before {
+            opacity: 1;
+        }
+        
+        /* Adjust tooltip positioning for edge buttons */
+        .icon-btn:first-child::after {
+            left: 0;
+            transform: none;
+        }
+        
+        .icon-btn:first-child::before {
+            left: 12px;
+            transform: none;
+        }
+        
+        .icon-btn:last-child::after {
+            right: 0;
+            left: auto;
+            transform: none;
+        }
+        
+        .icon-btn:last-child::before {
+            right: 12px;
+            left: auto;
+            transform: none;
+        }
+        
+        /* Bottom actions - full buttons */
+        .bottom-actions {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .bottom-actions .action-btn {
+            margin: 4px 0;
+        }
+        
+        /* Collapsible sections */
+        .collapsible h5 {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .collapse-toggle {
+            font-size: 10px;
+            transition: transform 0.2s;
+            color: #666;
+        }
+        
+        .collapsible.collapsed .collapse-toggle {
+            transform: rotate(-90deg);
+        }
+        
+        .collapsible.collapsed .relationship-list {
+            display: none;
+        }
+        
+        .collapsible h5:hover {
+            background: rgba(0,0,0,0.05);
+            margin: -4px;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        
         /* Enhanced relationship type indicators */
         .relationship-section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border-radius: 6px;
             overflow: hidden;
         }
@@ -482,25 +629,17 @@
                 <div class="panel-title">Document Relationships</div>
             </div>
             <div class="panel-content">
-                <!-- Document Actions -->
-                <div class="document-actions">
-                    <button class="action-btn primary">
-                        <span>📄</span> View Full Document
-                    </button>
-                    <button class="action-btn">
-                        <span>📥</span> Download PDF
-                    </button>
-                    <button class="action-btn">
-                        <span>🔗</span> Copy Link
-                    </button>
-                    <button class="action-btn">
-                        <span>🔍</span> Search in Document
-                    </button>
+                <!-- Icon Actions Top -->
+                <div class="icon-actions">
+                    <button class="icon-btn" title="View Full Document">📄</button>
+                    <button class="icon-btn" title="Download PDF">📥</button>
+                    <button class="icon-btn" title="Copy Link">🔗</button>
+                    <button class="icon-btn" title="Search in Document">🔍</button>
                 </div>
                 
                 <!-- Amendments -->
-                <div class="relationship-section amendments">
-                    <h5><span class="rel-icon">⚡</span> Amended By</h5>
+                <div class="relationship-section amendments collapsible">
+                    <h5><span class="collapse-toggle">▼</span><span class="rel-icon">⚡</span> Amended By</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
                             <a href="#" class="rel-link">
@@ -512,30 +651,9 @@
                     </ul>
                 </div>
                 
-                <!-- References This Document -->
-                <div class="relationship-section references">
-                    <h5><span class="rel-icon">📋</span> Referenced By</h5>
-                    <ul class="relationship-list">
-                        <li class="relationship-item">
-                            <a href="#" class="rel-link">
-                                <span class="rel-number">#71-2002</span>
-                                <span class="rel-title">Gates Ordinance</span>
-                                <span class="rel-year">(2002)</span>
-                            </a>
-                        </li>
-                        <li class="relationship-item">
-                            <a href="#" class="rel-link">
-                                <span class="rel-number">#72-2002</span>
-                                <span class="rel-title">Penalties & Abatement</span>
-                                <span class="rel-year">(2002)</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
                 <!-- Interpretations -->
-                <div class="relationship-section interpretations">
-                    <h5><span class="rel-icon">⚖️</span> Interpretations</h5>
+                <div class="relationship-section interpretations collapsible">
+                    <h5><span class="collapse-toggle">▼</span><span class="rel-icon">⚖️</span> Interpretations</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
                             <a href="#" class="rel-link">
@@ -554,9 +672,30 @@
                     </ul>
                 </div>
                 
+                <!-- References This Document -->
+                <div class="relationship-section references collapsible">
+                    <h5><span class="collapse-toggle">▼</span><span class="rel-icon">📋</span> Referenced By</h5>
+                    <ul class="relationship-list">
+                        <li class="relationship-item">
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#71-2002</span>
+                                <span class="rel-title">Gates Ordinance</span>
+                                <span class="rel-year">(2002)</span>
+                            </a>
+                        </li>
+                        <li class="relationship-item">
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#72-2002</span>
+                                <span class="rel-title">Penalties & Abatement</span>
+                                <span class="rel-year">(2002)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
                 <!-- Related Documents -->
-                <div class="relationship-section related">
-                    <h5><span class="rel-icon">🔗</span> Related Documents</h5>
+                <div class="relationship-section related collapsible">
+                    <h5><span class="collapse-toggle">▼</span><span class="rel-icon">🔗</span> Related Documents</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
                             <a href="#" class="rel-link">
@@ -580,6 +719,22 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+                
+                <!-- Bottom Actions -->
+                <div class="bottom-actions">
+                    <button class="action-btn primary">
+                        <span>📄</span> View Full Document
+                    </button>
+                    <button class="action-btn">
+                        <span>📥</span> Download PDF
+                    </button>
+                    <button class="action-btn">
+                        <span>🔗</span> Copy Link
+                    </button>
+                    <button class="action-btn">
+                        <span>🔍</span> Search in Document
+                    </button>
                 </div>
             </div>
         </div>
@@ -820,6 +975,14 @@
         
         // Initial render
         renderList();
+        
+        // Collapse functionality for relationship sections
+        document.querySelectorAll('.collapsible h5').forEach(header => {
+            header.addEventListener('click', function() {
+                const section = this.parentElement;
+                section.classList.toggle('collapsed');
+            });
+        });
     </script>
 </body>
 </html>

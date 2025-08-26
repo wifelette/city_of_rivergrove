@@ -11,10 +11,10 @@ Re-Submitted to the Rivergrove City Council on **May 10, 2004**.
 Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 [Unsigned], Larry Barrett, Mayor  
-**Date**: 10-14-02  
+**Date**: 10-14-02    
 
 [Unsigned], Mike Collmeyer, City Recorder  
-**Date**: 10/14/02  
+**Date**: 10/14/02    
 
 ---
 
@@ -22,7 +22,7 @@ Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 ## AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE
 
-## BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
+### BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
 
 **WHEREAS**, the City of Rivergrove has adopted a Comprehensive Plan and Land Development Ordinances to guide and control the future development within the City of Rivergrove; and
 
