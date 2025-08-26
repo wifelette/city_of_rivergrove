@@ -144,11 +144,11 @@ The degree of flood protection required by this ordinance is considered reasonab
 
 #### 4.1 ESTABLISHMENT OF DEVELOPMENT PERMIT
 
-##### 4.1-1 Development Permit Required
+#### 4.1-1 Development Permit Required
 
 A development permit shall be obtained before construction or development begins within any area of special flood hazard established in Section 3.2. The permit shall be for all structures including manufactured homes, as set forth in the "DEFINITIONS," and for all development including fill and other activities, also as set forth in the "DEFINITIONS."
 
-##### 4.1-2 Application for Development Permit
+#### 4.1-2 Application for Development Permit
 
 Application for a development permit shall be made on forms furnished by the **City Recorder** and may include, but not be limited to, plans in duplicate drawn to scale showing the nature, location, dimensions, and elevations of the area in question; existing or proposed structures, fill, storage of materials, drainage facilities, and the location of the foregoing. Specifically, the following information is required:
 
@@ -165,17 +165,17 @@ The **Planning Commission** is hereby appointed to administer and implement this
 
 Duties of the **Planning Commission** shall include, but not be limited to:
 
-##### 4.3-1 Permit Review
+#### 4.3-1 Permit Review
 
 (1) Review all development permits to determine that the permit requirements of this ordinance have been satisfied.
 (2) Review all development permits to determine that all necessary permits have been obtained from those Federal, State, or local governmental agencies from which prior approval is required.
 (3) Review all development permits to determine if the proposed development is located in the floodway. If located in the floodway, assure that the encroachment provisions of Section 5.3(1) are met.
 
-##### 4.3-2 Use of Other Base Flood Data
+#### 4.3-2 Use of Other Base Flood Data
 
 When base flood elevation data has not been provided in accordance with Section 3.2, BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD, the **Planning Commission** shall obtain, review, and reasonably utilize any base flood elevation and floodway data available from a federal, State or other source, in order to administer Sections 5.2, SPECIFIC STANDARDS, and 5.3 FLOODWAYS.
 
-##### 4.3-3 Information to be Obtained and Maintained
+#### 4.3-3 Information to be Obtained and Maintained
 
 (1) Where base flood elevation data is provided through the Flood Insurance Study or required as in Section 4.3-2, obtain and record the actual elevation (in relation to mean sea level) of the lowest floor (including basement) of all new or substantially improved structures, and whether or not the structure contains a basement.
 (2) For all new or substantially improved floodproofed structures:
@@ -183,18 +183,18 @@ When base flood elevation data has not been provided in accordance with Section 
 (ii) maintain the floodproofing certifications required in Section 4.1(3).
 (3) Maintain for public inspection all records pertaining to the provisions of this ordinance.
 
-##### 4.3-4 Alteration of Watercourses
+#### 4.3-4 Alteration of Watercourses
 
 (1) Notify adjacent communities and the **Dept. of Land Conservation and Development** prior to any alteration or relocation of a watercourse, and submit evidence of such notification to the Federal Insurance Administration.
 (2) Require that maintenance is provided within the altered or relocated portion of said watercourse so that the flood carrying capacity is not diminished.
 
-##### 4.3-5 Interpretation of FIRM Boundaries
+#### 4.3-5 Interpretation of FIRM Boundaries
 
 Make interpretations where needed, as to exact location of the boundaries of the areas of special flood hazards (for example, where there appears to be a conflict between a mapped boundary and actual field conditions). The person contesting the location of the boundary shall be given a reasonable opportunity to appeal the interpretation as provided in Section 4.4.
 
 #### 4.4 VARIANCE PROCEDURE
 
-##### 4.4-1 Appeal Board
+#### 4.4-1 Appeal Board
 
 (1) The **City Council**, as established by Rivergrove shall hear and decide appeals and requests for variances from the requirements of this ordinance.
 (2) The **City Council** shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
@@ -216,7 +216,7 @@ Make interpretations where needed, as to exact location of the boundaries of the
 (5) Upon consideration of the factors of Section 4.4-1(4) and the purposes of this ordinance, the **City Council** may attach such conditions to the granting of variances as it deems necessary to further the purposes of this ordinance.
 (6) The **City Recorder** shall maintain the records of all appeal actions and report any variances to the Federal Insurance Administration upon request.
 
-##### 4.4-2 Conditions for Variances
+#### 4.4-2 Conditions for Variances
 
 (1) Generally, the only condition under which a variance from the elevation standard may be issued is for new construction and substantial improvements to be erected on a lot of one-half acre or less in size contiguous to and surrounded by lots with existing structures constructed below the base flood level, providing items (i-xi) in Section 4.4-1(4) have been fully considered. As the lot size increases the technical justification required for issuing the variance increases.
 
@@ -247,31 +247,31 @@ Make interpretations where needed, as to exact location of the boundaries of the
 
 In all areas of special flood hazards, the following standards are required:
 
-##### 5.1-1 Anchoring
+#### 5.1-1 Anchoring
 
 (1) All new construction and substantial improvements shall be anchored to prevent flotation, collapse, or lateral movement of the structure.
 (2) All manufactured homes must likewise be anchored to prevent flotation, collapse or lateral movement, and shall be installed using methods and practices that minimize flood damage. Anchoring methods may include, but are not limited to, use of over-the-top or frame ties to ground anchors (Reference FEMA's "Manufactured Home Installation in Flood Hazard Areas" guidebook for additional techniques).
 
-##### 5.1-2 Construction Materials and Methods
+#### 5.1-2 Construction Materials and Methods
 
 (1) All new construction and substantial improvements shall be constructed with materials and utility equipment resistant to flood damage.
 (2) All new construction and substantial improvements shall be constructed using methods and practices that minimize flood damage.
 (3) Electrical, heating, ventilation, plumbing, and air-conditioning equipment and other service facilities shall be designed and/or otherwise elevated or located so as to prevent water from entering or accumulating within the components during conditions of flooding.
 
-##### 5.1-3 Utilities
+#### 5.1-3 Utilities
 
 (1) All new and replacement water supply systems shall be designed to minimize or eliminate infiltration of flood waters into the system;
 (2) New and replacement sanitary sewage systems shall be designed to minimize or eliminate infiltration of flood waters into the systems and discharge from the systems into flood waters; and,
 (3) On-site waste disposal systems shall be located to avoid impairment to them or contamination from them during flooding.
 
-##### 5.1-4 Subdivision Proposals
+#### 5.1-4 Subdivision Proposals
 
 (1) All subdivision proposals shall be consistent with the need to minimize flood damage;
 (2) All subdivision proposals shall have public utilities and facilities such as sewer, gas, electrical, and water systems located and constructed to minimize flood damage;
 (3) All subdivision proposals shall have adequate drainage provided to reduce exposure to flood damage; and,
 (4) Where base flood elevation data has not been provided or is not available from another authoritative source, it shall be generated for subdivision proposals and other proposed developments which contain at least 50 lots or 5 acres (whichever is less).
 
-##### 5.1-5 Review of Building Permits
+#### 5.1-5 Review of Building Permits
 
 Where elevation data is not available either through the Flood Insurance Study or from another authoritative source (Section 4.3-2), Applications for building permits shall be reviewed to assure that proposed construction will be reasonably safe from flooding. The test of reasonableness is a local judgment and includes use of historical data, high water marks, photographs of past flooding, etc., where available. Failure to elevate at least two feet above grade in these zones may result in higher insurance rates.
 
@@ -279,7 +279,7 @@ Where elevation data is not available either through the Flood Insurance Study o
 
 In all areas of special flood hazards where base flood elevation data has been provided as set forth in Section 3.2, BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD or Section 4.3-2, Use of Other Base Flood Data, the following provisions are required:
 
-##### 5.2-1 Residential Construction
+#### 5.2-1 Residential Construction
 
 (1) New construction and substantial improvement of any residential structure shall have the lowest floor, including basement, elevated to or above base flood elevation.
 (2) Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of floodwaters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
@@ -288,7 +288,7 @@ In all areas of special flood hazards where base flood elevation data has been p
     (ii) The bottom of all openings shall be no higher than one foot above grade.
     (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
 
-##### 5.2-2 Nonresidential Construction
+#### 5.2-2 Nonresidential Construction
 
 New construction and substantial improvement of any commercial, industrial or other nonresidential structure shall either have the lowest floor, including basement, elevated to the level of the base flood elevation; or, together with attendant utility and sanitary facilities, shall:
 
@@ -298,7 +298,7 @@ New construction and substantial improvement of any commercial, industrial or ot
 (4) The specific plans and specifications and an operational plan based on their development and/or review of the structural design, specifications and plans. A registered professional engineer or architect shall develop and/or review the structural design, specifications and plans for the construction, and shall certify that the design and methods of construction are in accordance with accepted standards of practice for meeting criteria in Section 4.3-2(2)
 (5) Nonresidential structures that are elevated, not floodproofed, must meet the same standards for space below the lowest elevated floor as described for residential structures.
 
-##### 5.2-3 Manufactured Homes
+#### 5.2-3 Manufactured Homes
 
 All manufactured homes to be placed or substantially improved within Zones A1-30, AH, and AE on the community's FIRM shall be elevated on a permanent foundation such that the lowest floor of the manufactured home is elevated to or above the base flood elevation and be securely anchored to an adequately anchored foundation system in accordance with the provisions of Section 5.1-1(2).
 
