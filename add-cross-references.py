@@ -27,21 +27,19 @@ def build_document_map():
                 # Remove leading zeros
                 ord_num = ord_num.lstrip('0')
                 
-                # Add various reference patterns
-                doc_map[f"ordinance #{ord_num}"] = f"../ordinances/{filename}.md"
-                doc_map[f"ordinance {ord_num}"] = f"../ordinances/{filename}.md"
-                doc_map[f"ord. #{ord_num}"] = f"../ordinances/{filename}.md"
-                doc_map[f"ord #{ord_num}"] = f"../ordinances/{filename}.md"
-                doc_map[f"ordinance no. {ord_num}"] = f"../ordinances/{filename}.md"
-                
-                # Add abbreviated "Ord. #" pattern (common in legal references)
-                if "-" in ord_num:
-                    # For ordinances like 70-2001, 88-2017, etc.
-                    doc_map[f"ord. #{ord_num}"] = f"../ordinances/{filename}.md"
+                # Add various reference patterns (all lowercase for matching)
+                # The regex search is case-insensitive, so we only need lowercase keys
+                # Convert ord_num to lowercase for the keys
+                ord_num_lower = ord_num.lower()
+                doc_map[f"ordinance #{ord_num_lower}"] = f"../ordinances/{filename}.md"
+                doc_map[f"ordinance {ord_num_lower}"] = f"../ordinances/{filename}.md"
+                doc_map[f"ord. #{ord_num_lower}"] = f"../ordinances/{filename}.md"
+                doc_map[f"ord #{ord_num_lower}"] = f"../ordinances/{filename}.md"
+                doc_map[f"ordinance no. {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 
                 # Add year-specific variations if applicable
-                if "-" in ord_num:
-                    base_num = ord_num.split("-")[0]
+                if "-" in ord_num_lower:
+                    base_num = ord_num_lower.split("-")[0]
                     doc_map[f"ordinance #{base_num}"] = f"../ordinances/{filename}.md"
                     doc_map[f"ordinance {base_num}"] = f"../ordinances/{filename}.md"
     
