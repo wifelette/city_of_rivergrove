@@ -18,6 +18,45 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 
 ## Claude Desktop Workflow (Document Processing & Airtable)
 
+### Session Startup Prompt
+
+When starting a new Claude Desktop session for this project, use this prompt:
+
+```
+Hi! We're continuing the Rivergrove ordinance digitization project. Here's what you need to know to jump right in:
+
+Key Resources:
+1. Review the Digitization Guide in Project Knowledge - contains complete workflow
+2. Airtable MCP tools are connected (daily-tasks:council_*)
+3. GitHub repo: https://github.com/wifelette/city_of_rivergrove
+
+Your Mission:
+1. When I upload PDFs, follow the established workflow:
+   • Search existing entries FIRST (try multiple ID formats: #XX, Ordinance #XX, etc.)
+   • Verify PDF page order before transcribing
+   • Transcribe as-is (no edits without permission)
+   • Create/update Airtable records with proper summaries
+   • Use established naming conventions
+
+Critical Reminders:
+• Always search existing entries first using multiple ID format variations
+• Verify PDF page order - some documents have scrambled pages
+• List a few records first to see actual field names before updating
+• If you get "Record IDs must start with 'rec'" validation error, inform Leah
+• Use correct URL structure: fileURL (PDF), mdURL (Markdown), rawURL (auto-populates)
+
+Established Workflow:
+1. Search for existing Ordinances and Documents entries
+2. Create markdown transcription artifact
+3. Create/update Documents entry
+4. Update Ordinances entry (mark as digitized, add summary, passed date)
+5. Link entries bidirectionally
+6. Await GitHub URLs from Leah
+7. Update Documents entry with fileURL and mdURL
+```
+
+This ensures Claude Desktop has proper context and follows the established workflow.
+
 ### 1. Document Processing
 
 - Leah uses Adobe Acrobat for OCR (export as **plain text**, not .docx) and shares with Claude OR has Claude do it directly
@@ -59,9 +98,13 @@ When processing a document:
   - `daily-tasks:council_ordinances_list (limit: 3)`
   - etc.
 - **Field validation failures**: If any specific field fails validation, inform Leah immediately so she can decide whether to resolve or ignore
+- **IMPORTANT - Array Fields**: For tags and linked record fields, pass values as simple strings, NOT arrays:
+  - ✅ CORRECT: `tags: "Ordinance/Resolution/Interpretation"`
+  - ❌ WRONG: `tags: ["Ordinance/Resolution/Interpretation"]` (will be double-wrapped!)
+  - The MCP server auto-wraps string values in arrays for these fields
 - Create/update Documents entry with:
   - `documentType`: "Governing Doc"
-  - `tags`: ["Ordinance/Resolution/Interpretation"] (may have validation issues)
+  - `tags`: "Ordinance/Resolution/Interpretation" (pass as string, not array!)
   - documentDate
   - documentTitle
   - fileURL (PDF files on GitHub)
@@ -146,6 +189,8 @@ After completing GitHub upload and URL updates:
 
 - **Always search existing entries** before creating new ones
 - Use multiple search terms (ID, year, topic keywords)
+- **Array fields (tags, linked records)**: Always pass as strings, not arrays - MCP auto-wraps them
+  - See `/Users/leahsilber/Github/daily-claude/mcp-server/MCP_USAGE_GUIDE.md` for full details
 - **Inform Leah immediately of any field validation failures** for her decision on resolution
 - Link documents to ordinance/resolution records
 - Handle field validation errors gracefully (especially for Topics and tags)
