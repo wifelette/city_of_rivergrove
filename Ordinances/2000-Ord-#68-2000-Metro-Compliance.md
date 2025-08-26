@@ -2,15 +2,15 @@
 
 **AN ORDINANCE ADOPTING AMENDMENTS TO THE RIVERGROVE LAND DEVELOPMENT ORDINANCE AND THE RIVERGROVE COMPREHENSIVE PLAN IN ORDER TO COMPLY WITH THE REQUIREMENTS OF METRO'S URBAN GROWTH MANAGEMENT FUNCTIONAL PLAN.**
 
-**Planning Commission Public Hearings:** 8/10/2000, 9/7/2000, 9/11/2000, 9/28/2000
+**Planning Commission Public Hearings:** 8/10/2000, 9/7/2000, 9/11/2000, 9/28/2000  
 **City Council Public Hearings:** 10/16/2000  
 **Adopted by Rivergrove City Council:** 10/16/2000
 
-[Signature], Larry Barrett, Mayor
-**Date**: 10-16-00
+[Signature], Larry Barrett, Mayor  
+**Date**: 10-16-00    
 
-[Signature], Mike Collmeyer, City Recorder
-**Date**: 10/16/2000
+[Signature], Mike Collmeyer, City Recorder  
+**Date**: 10/16/2000    
 
 Adopted
 
@@ -38,7 +38,7 @@ The legislature of the State of Oregon has delegated the responsibility of local
 
 #### 1.3 Statement of Purpose
 
-The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, ORD #69-2000, will be enacted to comply with Title 3.
+The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, [ORD #69-2000](../ordinances/2000-Ord-69-2000-Title-3-Compliance-STUB.md), will be enacted to comply with Title 3.
 
 ### Section 2.0
 
@@ -56,41 +56,41 @@ Rivergrove hereby amends its Land Development Ordinance (LDO) to meet the densit
 
 **(1)** The following is added to Article 5 of the LDO:
 
-**Section 5.075. Minimum Density Standard.** To ensure that property develops at or near the density envisioned for the areas outside the Flood Hazard District, Rivergrove hereby establishes a minimum density standard of 80% of maximum density.
-
+> **Section 5.075. Minimum Density Standard.** To ensure that property develops at or near the density envisioned for the areas outside the Flood Hazard District, Rivergrove hereby establishes a minimum density standard of 80% of maximum density.
+>
 > **(a)** The calculation of minimum and maximum densities shall be made as follows:
 >
-> > **(1)** The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
-> >
-> > > a) Land within the 100-year flood plain;  
-> > > b) Land with slopes exceeding 25%;  
-> > > c) Water Quality Resource Areas;  
-> > > d) All land dedicated for public rights-of-way;  
-> > > e) All land used or proposed as a private road for access benefiting more than one lot.
-> >
-> > **(2)** To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
-> >
-> > **(3)** To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
+>   **(1)** The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
+>
+>     a) Land within the 100-year flood plain;  
+>     b) Land with slopes exceeding 25%;  
+>     c) Water Quality Resource Areas;  
+>     d) All land dedicated for public rights-of-way;  
+>     e) All land used or proposed as a private road for access benefiting more than one lot.
+>
+>   **(2)** To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
+>
+>   **(3)** To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
 >
 > **(b)** The minimum density standard states the number of units to be placed on the property to be developed or divided.
 >
-> > **(1)** Units shall be counted as follows:
-> >
-> > > a) a single-family detached dwelling -one unit;  
-> > > b) a secondary dwelling unit -one unit;  
-> > > c) a duplex -two units;  
-> > > d) a triplex -three units.
-> >
-> > **(2)** Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
-> >
-> > > a) a single-family with a secondary dwelling unit; or  
-> > > b) a duplex; or  
-> > > c) a triplex.
-> >
-> > **(3)** Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
-> >
-> > > a) the configuration of the property to be developed or divided;  
-> > > b) the availability of sewer service to the property to be developed or divided.
+>   **(1)** Units shall be counted as follows:
+>
+>     a) a single-family detached dwelling -one unit;  
+>     b) a secondary dwelling unit -one unit;  
+>     c) a duplex -two units;  
+>     d) a triplex -three units.
+>
+>   **(2)** Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
+>
+>     a) a single-family with a secondary dwelling unit; or  
+>     b) a duplex; or  
+>     c) a triplex.
+>
+>   **(3)** Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
+>
+>     a) the configuration of the property to be developed or divided;  
+>     b) the availability of sewer service to the property to be developed or divided.
 >
 > **(c)** The provisions of this section do not apply to land within 100-year flood plain or to multi-family developments.
 
@@ -112,20 +112,20 @@ Title 2 of the Functional Plan establishes minimum parking standards and establi
 
 Rivergrove hereby amends Article 5 of its LDO to comply with Title 2 by adding the following:
 
-**Section 5.095. Parking Standards.**
-
-**(a)** Rivergrove establishes parking minimums and maximums not to exceed those ratios established by the following table:
-
-| Land Use                                                                                                                           | Minimum Parking Requirements                                                  | Maximum Parking Permitted |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------- |
-| Places of Worship                                                                                                                  | 0.5 per 1,000 sq. ft.                                                         | 0.8 per 1,000 sq. ft.     |
-| Recreation Facilities                                                                                                              | 1.1 per 1,000 sq. ft.                                                         | 6.5 per 1,000 sq. ft.     |
-| Single Family Detached                                                                                                             | 2 covered, enclosed spaces per unit, 2 off-street parking spaces per unit.    | no maximum                |
-| Residential units, less than 500 sq. ft., 1 bedroom, except "over-the-garage" 1 bedroom units, which require no additional parking | 1 covered, enclosed space per unit, 1 off-street parking space per unit.      | no maximum                |
-| Multi-family, townhouse one bedroom                                                                                                | 1 covered, enclosed space per unit, 1.25 off-street parking spaces per unit.  | no maximum                |
-| Multi-family, townhouse two bedroom                                                                                                | 2 covered, enclosed spaces per unit, 1.5 off-street parking spaces per unit.  | no maximum                |
-| Multi-family, townhouse three bedroom or more                                                                                      | 2 covered, enclosed spaces per unit, 1.75 off-street parking spaces per unit. | no maximum                |
-
-**Note:** Calculations resulting in fractional numbers shall be rounded up to the next whole number. Parking calculations shall be based on, and apply to individual lots, regardless of the number of lots in the development application.
-
-**(b)** Variances for parking when a development application is received which may result in approval of construction of parking spaces either in excess of the maximum parking ratios or less than the city's minimum parking ratios established by the above table may be made under the provisions of Section 6.060
+> **Section 5.095. Parking Standards.**
+>
+> **(a)** Rivergrove establishes parking minimums and maximums not to exceed those ratios established by the following table:
+>
+> | Land Use                                                                                                                           | Minimum Parking Requirements                                                  | Maximum Parking Permitted |
+> | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------- |
+> | Places of Worship                                                                                                                  | 0.5 per 1,000 sq. ft.                                                         | 0.8 per 1,000 sq. ft.     |
+> | Recreation Facilities                                                                                                              | 1.1 per 1,000 sq. ft.                                                         | 6.5 per 1,000 sq. ft.     |
+> | Single Family Detached                                                                                                             | 2 covered, enclosed spaces per unit, 2 off-street parking spaces per unit.    | no maximum                |
+> | Residential units, less than 500 sq. ft., 1 bedroom, except "over-the-garage" 1 bedroom units, which require no additional parking | 1 covered, enclosed space per unit, 1 off-street parking space per unit.      | no maximum                |
+> | Multi-family, townhouse one bedroom                                                                                                | 1 covered, enclosed space per unit, 1.25 off-street parking spaces per unit.  | no maximum                |
+> | Multi-family, townhouse two bedroom                                                                                                | 2 covered, enclosed spaces per unit, 1.5 off-street parking spaces per unit.  | no maximum                |
+> | Multi-family, townhouse three bedroom or more                                                                                      | 2 covered, enclosed spaces per unit, 1.75 off-street parking spaces per unit. | no maximum                |
+>
+> **Note:** Calculations resulting in fractional numbers shall be rounded up to the next whole number. Parking calculations shall be based on, and apply to individual lots, regardless of the number of lots in the development application.
+>
+> **(b)** Variances for parking when a development application is received which may result in approval of construction of parking spaces either in excess of the maximum parking ratios or less than the city's minimum parking ratios established by the above table may be made under the provisions of Section 6.060

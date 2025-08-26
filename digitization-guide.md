@@ -218,3 +218,82 @@ After completing GitHub upload and URL updates:
   - Record ID from the Ordinances and Resolutions table
   - The GitHub URL to add to the Public URL field
 - Otherwise, provide both GitHub web URLs (fileURL for PDF, mdURL for Markdown) for manual entry
+
+---
+
+## mdBook Documentation Site
+
+### Overview
+
+The repository now includes an mdBook static site generator that creates a searchable, browsable website from all the digitized documents. This provides an easy-to-use interface for accessing ordinances, resolutions, interpretations, and transcripts.
+
+### Configuration
+
+**book.toml** - Main configuration file containing:
+
+- Basic metadata (title, authors, description)
+- Build settings (output directory: `book/`)
+- HTML output configuration with search enabled
+- GitHub repository integration
+- Custom CSS styling support
+
+### Directory Structure
+
+```text
+city_of_rivergrove/
+├── src/                  # Source content for mdBook
+│   ├── SUMMARY.md       # Table of contents
+│   ├── introduction.md  # Welcome page
+│   ├── ordinances/      # Ordinance markdown files
+│   ├── resolutions/     # Resolution markdown files
+│   ├── interpretations/ # Interpretation markdown files
+│   └── transcripts/     # Transcript markdown files
+├── book/                # Built static website (generated)
+├── book.toml           # mdBook configuration
+├── build.sh            # Build script
+├── custom.css          # Custom styling
+└── add-cross-references.py  # Preprocessor script
+```
+
+### Build Process
+
+1. **Simple Build**: Run `mdbook build` to generate the static site
+2. **Enhanced Build**: Run `./build.sh` which:
+   - Adds cross-reference links between documents
+   - Builds the mdBook site
+   - Outputs to the `book/` directory
+
+### Local Development
+
+To serve the site locally for testing:
+
+```bash
+mdbook serve
+```
+
+This starts a local server (usually at `http://localhost:3000`) with live-reload for development.
+
+### Adding New Documents
+
+When new documents are digitized:
+
+1. The markdown file is automatically copied to the appropriate `src/` subdirectory
+2. Run `python3 fix-signatures.py` to update SUMMARY.md with new entries
+3. Run `./build.sh` to rebuild the site with cross-references
+4. The new document will appear in the navigation and be searchable
+
+### Features
+
+- **Full-text search**: All documents are searchable through the built-in search functionality
+- **Cross-references**: Automatic linking between documents that reference each other
+- **Responsive design**: Works on desktop and mobile devices
+- **Dark mode support**: Toggle between light and dark themes
+- **Print-friendly**: Can generate printer-friendly versions of documents
+- **GitHub integration**: Direct links to view source files on GitHub
+
+### Maintenance
+
+- The `src/` directory mirrors the main repository structure but only includes markdown files
+- PDF files remain in the root directories but are not included in mdBook
+- The `book/` directory is generated and can be safely deleted/regenerated
+- Cross-references are added at build time and don't modify source files

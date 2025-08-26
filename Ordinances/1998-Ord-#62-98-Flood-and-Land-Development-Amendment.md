@@ -1,6 +1,6 @@
 # ORDINANCE NO. 62-98
 
-**AN ORDINANCE AMENDING ORDINANCE NO. 52, THE CITY OF RIVERGROVE'S FLOOD DAMAGE PREVENTION ORDINANCE, AND ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
+**AN ORDINANCE AMENDING [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md), THE CITY OF RIVERGROVE'S FLOOD DAMAGE PREVENTION ORDINANCE, AND ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
 Approved by the Planning Commission of the City of Rivergrove on **July 6, 1998**
 
@@ -8,11 +8,11 @@ Submitted to the Rivergrove City Council on **July 13, 1998**
 
 Adopted by the Rivergrove City Council on **July 13, 1998**
 
-[Signature], Larry Barrett, Mayor
-**Date**: 7-13-98
+[Signature], Larry Barrett, Mayor  
+**Date**: 7-13-98    
 
-[Signature], Mike Collmeyer, City Recorder
-**Date**: 7/13/98
+[Signature], Mike Collmeyer, City Recorder  
+**Date**: 7/13/98    
 
 ---
 
@@ -36,14 +36,14 @@ Adopted by the Rivergrove City Council on **July 13, 1998**
 
 **NOW THEREFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Flood Damage Prevention Ordinance and the Rivergrove Land Development Ordinance are hereby amended as follows:
 
-### 1. Section 5.24, Balanced Cut and Fill Standards
-
-Section 5.24, Balanced Cut and Fill Standards, is hereby **added** to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) and will read as follows:
-
-#### 5.2-4 Balanced Cut and Fill Standards
-
-**(1)** All development, excavation and fill in the areas of special flood hazard (i.e., the flood plain) shall conform to the following balanced cut and fill standards:
-
+> ### 1. Section 5.24, Balanced Cut and Fill Standards
+>
+> Section 5.24, Balanced Cut and Fill Standards, is hereby **added** to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) and will read as follows:
+>
+> #### 5.2-4 Balanced Cut and Fill Standards
+>
+> **(1)** All development, excavation and fill in the areas of special flood hazard (i.e., the flood plain) shall conform to the following balanced cut and fill standards:
+>
 > **(i)** No net fill in any floodplain is allowed. All fill placed in a floodplain shall be balanced with an equal amount of soil material removal;
 >
 > **(ii)** Excavation areas shall not exceed fill areas by more than 50 percent of the square footage;
@@ -51,9 +51,9 @@ Section 5.24, Balanced Cut and Fill Standards, is hereby **added** to the Riverg
 > **(iii)** Any excavation below bankful stage shall not count toward compensation for fill since these areas would be full of water in the winter and not available to hold storm water;
 >
 > **(iv)** Excavation to balance a fill shall be located on the same parcel as the fill unless it is not reasonable or practicable to do so. In such cases, the excavation shall be located in the same drainage basin and as close as possible to the fill site, so long as the proposed excavation and fill will not increase flood impacts for surrounding properties as determined through hydrologic and hydraulic analysis. In such cases, the excavation shall be located within the City of Rivergrove.
-
-**(2)** The following uses and activities are not subject to the balanced cut and fill standards of Subsection (1):
-
+>
+> **(2)** The following uses and activities are not subject to the balanced cut and fill standards of Subsection (1):
+>
 > **(i)** Excavation and fill required to plant any new trees or vegetation;
 >
 > **(ii)** Excavation and fill required for the construction of structures and other facilities specifically designed to reduce or mitigate flood impacts and improve water quality;
@@ -64,21 +64,23 @@ Section 5.24, Balanced Cut and Fill Standards, is hereby **added** to the Riverg
 
 Section 5.055, Secondary Dwelling Units, is hereby added to the Rivergrove Land Development Ordinance (Attachment C to Ordinance # 54-89) and reads as follows:
 
-#### Section 5.055. Secondary Dwelling Units.
-
-**(a)** Notwithstanding the provisions of Section 5.050(b) and 5.060(c), secondary dwelling units (defined as residential units either within the primary residence or above a garage up to a maximum of 750 sq. ft. of floor area) are permitted only in conjunction with single family dwellings and will be permitted both within and outside the Flood Hazard District.
-
-**(b)** Within the Flood Hazard District, the minimum lot size is ½ acre and the maximum density allowed is one (1) house (single-family dwelling) per ½ acre plus one secondary dwelling unit as permitted by Section 5.050(b).
-
-**(c)** Outside the Flood Hazard District, the minimum lot size is 10,000 sq. ft. and the maximum density allowed is:
-
+> #### Section 5.055. Secondary Dwelling Units.
+>
+> **(a)** Notwithstanding the provisions of Section 5.050(b) and 5.060(c), secondary dwelling units (defined as residential units either within the primary residence or above a garage up to a maximum of 750 sq. ft. of floor area) are permitted only in conjunction with single family dwellings and will be permitted both within and outside the Flood Hazard District.
+>
+> **(b)** Within the Flood Hazard District, the minimum lot size is ½ acre and the maximum density allowed is one (1) house (single-family dwelling) per ½ acre plus one secondary dwelling unit as permitted by Section 5.050(b).
+>
+> **(c)** Outside the Flood Hazard District, the minimum lot size is 10,000 sq. ft. and the maximum density allowed is:
+>
 > **(1)** one (1) house (single-family dwelling) per lot plus one secondary dwelling unit as permitted by Section 5.050(b), or
 >
 > **(2)** one duplex per lot (secondary dwelling units not permitted in conjunction with duplexes), or
 >
 > **(3)** one triplex per lot (secondary dwelling units not permitted in conjunction with triplexes).
+>
+> **(d)** This section clarifies secondary dwelling unit policy but is not limited in its scope and/or application to development proposals including secondary dwelling units. It shall apply to all proposals for residential development within the City of Rivergrove.
 
-**(d)** This section clarifies secondary dwelling unit policy but is not limited in its scope and/or application to development proposals including secondary dwelling units. It shall apply to all proposals for residential development within the City of Rivergrove.
+---
 
 ## EMERGENCY CLAUSE
 

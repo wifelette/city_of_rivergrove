@@ -464,9 +464,9 @@ yeah, that's correct.
 
 And the Park Commission as it was defined at that time, would be one, one of the processes by which it would be citizens involvement. There's, there's like, I think it was like one of three or one of four. Thank you. 
 
-**Chris Barhyte:** Yeah. So, okay, so ordinance 16, uh, was an ordinance passed in August 12th of 74. And it had that ordinance put five people on a park committee.
+**Chris Barhyte:** Yeah. So, okay, so [ordinance 16](../ordinances/1974-Ord-16-Parks.md), uh, was an ordinance passed in August 12th of 74. And it had that ordinance put five people on a park committee.
 
-There was another ordinance 28 that passed four years later on June 12th of 78. That, but that everything was the same. It moved that committee to five members. The, uh, ordinance, it's a, [00:43:00] uh, I mean I've, it just basically says there's a park committee with a certain number of people on it. It's, it's silent on, it talks about a chairman and a secretary, but it's silent on basically everything else on what that committee would do.
+There was another [ordinance 28](../ordinances/1978-Ord-28-Parks.md) that passed four years later on June 12th of 78. That, but that everything was the same. It moved that committee to five members. The, uh, ordinance, it's a, [00:43:00] uh, I mean I've, it just basically says there's a park committee with a certain number of people on it. It's, it's silent on, it talks about a chairman and a secretary, but it's silent on basically everything else on what that committee would do.
 
 Uh, obviously amount of times they would meet, things like that. 
 

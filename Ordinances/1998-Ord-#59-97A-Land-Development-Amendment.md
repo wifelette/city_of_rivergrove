@@ -6,10 +6,10 @@ Submitted to the Rivergrove City Council on **October 12, 1998**
 
 Adopted by the Rivergrove City Council on **October 12, 1998**
 
-[Signature], Larry Barrett, Mayor
+[Signature], Larry Barrett, Mayor  
 **Date:** 10-12-98
 
-[Signature], Mike Collmeyer, City Recorder
+[Signature], Mike Collmeyer, City Recorder  
 **Date:** 10/12/98
 
 ---
@@ -36,39 +36,39 @@ Adopted by the Rivergrove City Council on **October 12, 1998**
 
 ### 1. Section 5.010 is amended to read as follows:
 
-**Section 5.010. Land Use.** All land within the city of Rivergrove is zoned residential. The minimum lot size within the Flood Hazard District is ½ acre. The minimum lot size outside the Flood Hazard District is 10,000 square feet.
+> **Section 5.010. Land Use.** All land within the city of Rivergrove is zoned residential. The minimum lot size within the Flood Hazard District is ½ acre. The minimum lot size outside the Flood Hazard District is 10,000 square feet.
 
 ### 2. Section 5.050 is amended to read as follows:
 
-**Section 5.050. Permitted Uses.** The following developments are permitted. Uses not listed here are prohibited.
-
-**(a)** One single-family detached dwelling, including manufactured home, or one duplex, or one triplex residential unit per lot. All residential structures must have at least two of the following elements:
-
-(1) the dwelling shall be placed on an excavated and backfilled foundation;
-
-(2) the dwelling shall have a pitched roof with a slope no less than three feet in height for each 12 feet in width;
-
-(3) the dwelling shall have an exterior thermal envelope meeting performance standards at or equivalent to those required of dwellings built under the state building code as defined in ORS 455.010;
-
-(4) the dwelling shall have a garage or carport built of the same materials as the main dwelling.
-
-**(b)** Secondary Dwelling Unit (defined as a residential unit either within the primary residence or above a garage up to 750 sq. ft. of floor area).
-
-**(c)** Area Accessory Development, subject to Sections 6.010 to 6.050 and accessory structures such as garages, carports, studios, pergolas, private workshops, play-houses, private greenhouses or other similar structures related to the dwelling in design, whether attached or not.
-
-**(d)** Cultivation of land and growing crops, subject to Section 2.040(5).
-
-**(e)** Residential homes and residential facilities as defined in ORS 443.400 and sited according to ORS 197.660 through 197.670.
-
-**(f)** Signs for the sale or rental of housing or land or for use by roadside vendors of fruit or produce, and signs stating the name of the owner or occupant of the property. No sign shall be artificially illuminated, permanent, or exceed 4 square feet in area or 4 feet on one side.
-
-**(g)** Special uses, such as government uses, parks, playgrounds or community centers, churches, schools, golf courses and use of similar nature as approved by the Commission.
-
-**(h)** Temporary structures provided they relate directly to the building or sale of land or houses, and provided that a temporary permit from the commission shall first be obtained for such structure. The permit shall expire automatically one year from the date of approval and may be extended no more than once.
+> **Section 5.050. Permitted Uses.** The following developments are permitted. Uses not listed here are prohibited.
+>
+> **(a)** One single-family detached dwelling, including manufactured home, or one duplex, or one triplex residential unit per lot. All residential structures must have at least two of the following elements:
+>
+> 1. the dwelling shall be placed on an excavated and backfilled foundation;
+>
+> 2. the dwelling shall have a pitched roof with a slope no less than three feet in height for each 12 feet in width;
+>
+> 3. the dwelling shall have an exterior thermal envelope meeting performance standards at or equivalent to those required of dwellings built under the state building code as defined in ORS 455.010;
+>
+> 4. the dwelling shall have a garage or carport built of the same materials as the main dwelling.
+>
+> **(b)** Secondary Dwelling Unit (defined as a residential unit either within the primary residence or above a garage up to 750 sq. ft. of floor area).
+>
+> **(c)** Area Accessory Development, subject to Sections 6.010 to 6.050 and accessory structures such as garages, carports, studios, pergolas, private workshops, play-houses, private greenhouses or other similar structures related to the dwelling in design, whether attached or not.
+>
+> **(d)** Cultivation of land and growing crops, subject to Section 2.040(5).
+>
+> **(e)** Residential homes and residential facilities as defined in ORS 443.400 and sited according to ORS 197.660 through 197.670.
+>
+> **(f)** Signs for the sale or rental of housing or land or for use by roadside vendors of fruit or produce, and signs stating the name of the owner or occupant of the property. No sign shall be artificially illuminated, permanent, or exceed 4 square feet in area or 4 feet on one side.
+>
+> **(g)** Special uses, such as government uses, parks, playgrounds or community centers, churches, schools, golf courses and use of similar nature as approved by the Commission.
+>
+> **(h)** Temporary structures provided they relate directly to the building or sale of land or houses, and provided that a temporary permit from the commission shall first be obtained for such structure. The permit shall expire automatically one year from the date of approval and may be extended no more than once.
 
 ### 3. Section 3.020 is amended to read as follows:
 
-**Section 3.020. Membership.** The Commission shall consist of five members who are not officials or employees of the City. The Mayor and President of the Council shall be entitled to sit with the Commission and take part in its deliberations, but shall not have any voting privileges.
+> **Section 3.020. Membership.** The Commission shall consist of five members who are not officials or employees of the City. The Mayor and President of the Council shall be entitled to sit with the Commission and take part in its deliberations, but shall not have any voting privileges.
 
 ---
 

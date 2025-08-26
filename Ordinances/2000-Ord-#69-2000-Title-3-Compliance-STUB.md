@@ -4,13 +4,13 @@
 
 ### Referenced But Not Enacted
 
-This ordinance is referenced in **Ordinance #68-2000** (passed October 16, 2000), which states in Section 1.3:
+This ordinance is referenced in **[Ordinance #68-2000](../ordinances/2000-Ord-68-2000-Metro-Compliance.md)** (passed October 16, 2000), which states in Section 1.3:
 
 > "The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. **A separate ordinance, ORD #69-2000, will be enacted to comply with Title 3.**"
 
 ### What This Ordinance Was Intended to Address
 
-Based on the reference in Ordinance #68-2000, this ordinance was planned to address **Title 3** of Metro's Urban Growth Management Functional Plan, which typically covers water quality and flood management provisions.
+Based on the reference in [Ordinance #68-2000](../ordinances/2000-Ord-68-2000-Metro-Compliance.md), this ordinance was planned to address **Title 3** of Metro's Urban Growth Management Functional Plan, which typically covers water quality and flood management provisions.
 
 ### Status: Never Enacted
 
@@ -21,4 +21,4 @@ Based on the reference in Ordinance #68-2000, this ordinance was planned to addr
 
 ### Research Notes
 
-This stub file is created to document the institutional knowledge that Ordinance #69-2000 was referenced but never actually passed, preventing confusion for future researchers who may encounter the reference in Ordinance #68-2000.
+This stub file is created to document the institutional knowledge that Ordinance #69-2000 was referenced but never actually passed, preventing confusion for future researchers who may encounter the reference in [Ordinance #68-2000](../ordinances/2000-Ord-68-2000-Metro-Compliance.md).

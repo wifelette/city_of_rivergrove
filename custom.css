@@ -1,0 +1,32 @@
+/* Custom CSS for City of Rivergrove Documents */
+
+/* Fix signature block formatting */
+/* Target paragraphs that contain [Signature] */
+p:has-text("[Signature]") {
+    margin-bottom: 0.5em;
+}
+
+/* Ensure Date lines have proper spacing */
+p strong:first-child:has-text("Date") {
+    display: block;
+    margin-top: 0.2em;
+}
+
+/* Alternative approach: Force line breaks after signature lines */
+/* This targets any paragraph starting with [Signature] and adds spacing */
+p {
+    line-height: 1.6;
+}
+
+/* Specific formatting for signature blocks */
+/* Look for patterns like [Signature], Name, Title */
+p:contains("[Signature]") + p:contains("Date:") {
+    margin-top: 0;
+}
+
+/* Better approach using a more reliable selector */
+/* Force proper line breaks in signature areas */
+h2:contains("ORDINANCE") ~ p:contains("[Signature]"),
+h3:contains("ORDINANCE") ~ p:contains("[Signature]") {
+    white-space: pre-line;
+}

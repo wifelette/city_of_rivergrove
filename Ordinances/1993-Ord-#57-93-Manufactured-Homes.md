@@ -1,67 +1,75 @@
 # ORDINANCE # 57-93
 
-**SITING OF MANUFACTURED HOMES IN THE CITY OF RIVERGROVE**
+**Siting of Manufactured Homes in the City of Rivergrove**
 
-1. MANUFACTURED HOMES ARE PERMITTED ON ANY LOTS IN THE CITY OF RIVERGROVE ON WHICH A SINGLE FAMILY HOME WOULD BE ALLOWED, AS MANDATED IN ORS 197.307. ALL LAND IN RIVERGROVE IS ZONED, "RESIDENTIAL". A MANUFACTURED HOME MUST COMPLY WITH ALL SET-BACKS, HEIGHT RESTRICTIONS, AND FEMA ELEVATION REQUIREMENTS WHICH APPLY TO CONVENTIONALLY BUILT HOMES.
+**1.** Manufactured homes are permitted on any lots in the City of Rivergrove on which a single family home would be allowed, as mandated in ORS 197.307. All land in Rivergrove is zoned, "Residential". A manufactured home must comply with all set-backs, height restrictions, and FEMA elevation requirements which apply to conventionally built homes.
 
-2. **DEED COVENANTS OR RESTRICTIONS:** NOTHING IN THESE PROVISIONS SHALL BE INTERPRETED AS SUPERSEDING DEED COVENANTS OR RESTRICTIONS.
+**2. Deed Covenants or Restrictions:** Nothing in these provisions shall be interpreted as superseding deed covenants or restrictions.
 
-3. **CONSTRUCTION AND SAFETY STANDARDS CODE:** ALL CURRENT FEDERAL (HUD), AND STATE STANDARDS FOR MANUFACTURED HOMES SHALL APPLY TO MANUFACTURED HOMES PLACED IN RIVERGROVE.
+**3. Construction and Safety Standards Code:** All current federal (HUD), and state standards for manufactured homes shall apply to manufactured homes placed in Rivergrove.
 
-4. **SPECIFIC REQUIREMENTS:**
+**4. Specific Requirements:**
 
-A) THE MANUFACTURED HOME SHALL BE MULTI-SECTIONAL, DOUBLE WIDE OR LARGER, AND ENCLOSE A SPACE OF NOT LESS THAN 1,000 SQUARE FEET.
+**A)** The manufactured home shall be multi-sectional, double wide or larger, and enclose a space of not less than 1,000 square feet.
 
-B) BEAR AN INSIGNIA OF COMPLIANCE WITH THE MANUFACTURED HOUSING CONSTRUCTION AND SAFETY STANDARDS CODE AND BE:
-i) A NEW OR NOT PREVIOUSLY OCCUPIED UNIT, OR;
-ii) BE FOUND UPON INSPECTION TO BE IN EXCELLENT CONDITION AND FREE OF STRUCTURAL, ELECTRICAL, MECHANICAL, AND PLUMBING DEFECTS, AND IN COMPLIANCE WITH FEDERAL, STATE, AND COUNTY CODES IN EFFECT AT THE TIME; ANY OF WHICH MUST BE CORRECTED PRIOR TO PLACEMENT.
+**B)** Bear an insignia of compliance with the Manufactured Housing Construction and Safety Standards Code and be:
 
-C) TRANSPORTATION MECHANISMS INCLUDING WHEELS, AXELS AND HITCHES MUST BE REMOVED AND STORED WHERE THEY CANNOT BE SEEN.
+> **i)** A new or not previously occupied unit, or;
+> 
+> **ii)** Be found upon inspection to be in excellent condition and free of structural, electrical, mechanical, and plumbing defects, and in compliance with federal, state, and county codes in effect at the time; any of which must be corrected prior to placement.
 
-D) THE MANUFACTURED HOME SHALL BE PLACED ON AN EXCAVATED AND BACK-FILLED FOUNDATION AND ENCLOSED AT THE PERIMETER SO THAT NOT MORE THAN 12 INCHES OF THE ENCLOSING MATERIAL IS EXPOSED ABOVE GRADE, EXCEPT IN THE FLOOD PLAIN WHERE BASE FLOOD ELEVATION MAY REQUIRE IT TO BE HIGHER. THE PERIMETER ENCLOSURE SHALL BE CONCRETE OR MASONRY MATERIAL. IN ADDITION, THE FOUNDATION SHALL INCLUDE CONCRETE STRIP FOOTINGS PLACED TO ACCOMMODATE INTERIOR SUPPORTS.
+**C)** Transportation mechanisms including wheels, axels and hitches must be removed and stored where they cannot be seen.
 
-E) THE MANUFACTURED HOME SHALL HAVE A ROOF WITH A NOMINAL PITCH OF AT LEAST THREE FEET IN HEIGHT FOR EACH 12 FEET IN WIDTH. EAVES MUST EXTEND AT LEAST SIX INCHES FROM THE INTERSECTION OF THE ROOF AND THE EXTERIOR WALLS, AND HAVE A FOUR INCH CONTINUOUS GUTTER.
+**D)** The manufactured home shall be placed on an excavated and back-filled foundation and enclosed at the perimeter so that not more than 12 inches of the enclosing material is exposed above grade, except in the flood plain where base flood elevation may require it to be higher. The perimeter enclosure shall be concrete or masonry material. In addition, the foundation shall include concrete strip footings placed to accommodate interior supports.
 
-F) THE MANUFACTURED HOME SHALL HAVE EXTERIOR SIDING AND ROOFING WHICH IS SIMILAR TO THE EXTERIOR SIDING AND ROOFING MATERIAL COMMONLY USED IN THE COMMUNITY.
+**E)** The manufactured home shall have a roof with a nominal pitch of at least three feet in height for each 12 feet in width. Eaves must extend at least six inches from the intersection of the roof and the exterior walls, and have a four inch continuous gutter.
 
-G) THE MANUFACTURED HOME SHALL HAVE EITHER AN ATTACHED OR DETACHED GARAGE CONSTRUCTED AT THE SAME TIME THE MANUFACTURED HOME IS PLACED ON THE SITE OR PRIOR TO OCCUPANCY. THE GARAGE SHALL BE CONSTRUCTED OF LIKE MATERIALS AS THE MANUFACTURED HOME. AN ATTACHED CARPORT SHALL BE ALLOWED IF MORE THAN 50 PERCENT OF HOMES WITHIN 300 FEET DO NOT HAVE GARAGES.
+**F)** The manufactured home shall have exterior siding and roofing which is similar to the exterior siding and roofing material commonly used in the community.
 
-H) THE MANUFACTURED HOME EITHER SHALL BE CERTIFIED BY THE MANUFACTURER OR UNDER THE "SUPER GOOD CENTS" OR "MANUFACTURED HOUSING ACQUISITION" PROGRAMS, TO HAVE AN EXTERIOR THERMAL ENVELOPE MEETING THE HEAT LOSS REDUCTION LEVEL REQUIRED FOR SINGLE FAMILY DWELLINGS UNDER THE STATE BUILDING CODE.
+**G)** The manufactured home shall have either an attached or detached garage constructed at the same time the manufactured home is placed on the site or prior to occupancy. The garage shall be constructed of like materials as the manufactured home. An attached carport shall be allowed if more than 50 percent of homes within 300 feet do not have garages.
 
-**5. PLACEMENT PERMIT**
+**H)** The manufactured home either shall be certified by the manufacturer or under the "Super Good Cents" or "Manufactured Housing Acquisition" programs, to have an exterior thermal envelope meeting the heat loss reduction level required for single family dwellings under the State Building Code.
 
-A) REQUIREMENTS: PRIOR TO THE PLACEMENT OF ANY MANUFACTURED HOME, THE HOMEOWNER, OR AUTHORIZED REPRESENTATIVE SHALL SECURE FROM THE CITY OF RIVERGROVE A PLACEMENT PERMIT WHICH STATES THAT THE BUILDING AND ITS LOCATION CONFORM WITH THESE AND OTHER RELEVANT STANDARDS OF THE RIVERGROVE DEVELOPMENT CODE.
+**5. Placement Permit**
 
-EACH APPLICATION FOR A PLACEMENT PERMIT SHALL BE ACCOMPANIED BY:
+**A)** Requirements: Prior to the placement of any manufactured home, the homeowner, or authorized representative shall secure from the City of Rivergrove a placement permit which states that the building and its location conform with these and other relevant standards of the Rivergrove Development Code.
 
-1. A PLOT PLAN AS REQUIRED FOR ALL DWELLING UNITS AND ELEVATIONS OR PHOTOGRAPHS OF ALL SIDES OF THE HOME; DRAWINGS SHOWING EXTERIOR DIMENSIONS; INFORMATION ILLUSTRATING THE TYPE OF ROOFING AND SIDING MATERIALS, FOUNDATION SUPPORT SYSTEM, AND FOUNDATION ENCLOSURE METHOD AND MATERIALS.
+Each application for a placement permit shall be accompanied by:
 
-2. A COPY OF THE MANUFACTURER'S APPROVED INSTRUCTIONS TO BE USED FOR INSTALLATION PURPOSES.
+> 1. A plot plan as required for all dwelling units and elevations or photographs of all sides of the home; drawings showing exterior dimensions; information illustrating the type of roofing and siding materials, foundation support system, and foundation enclosure method and materials.
+> 
+> 2. A copy of the manufacturer's approved instructions to be used for installation purposes.
+> 
+> 3. An agreement signed by the homeowner or authorized representative pledging compliance with the terms of the placement permit.
+> 
+> 4. A completed pre-placement elevation certificate if the property is in the flood plain. A second post-placement elevation certificate must be submitted prior to occupancy.
 
-3. AN AGREEMENT SIGNED BY THE HOMEOWNER OR AUTHORIZED REPRESENTATIVE PLEDGING COMPLIANCE WITH THE TERMS OF THE PLACEMENT PERMIT.
+**B)** Consideration by the Rivergrove Planning Commission and City Council of the permit application will proceed in the same manner as for a single family dwelling.
 
-4. A COMPLETED PRE-PLACEMENT ELEVATION CERTIFICATE IF THE PROPERTY IS IN THE FLOOD PLAIN. A SECOND POST-PLACEMENT ELEVATION CERTIFICATE MUST BE SUBMITTED PRIOR TO OCCUPANCY.
+**C)** Signing-off on Permit - Following receipt of the required information, the Planning Commission and the City Council shall sign and forward the placement permit to Clackamas County within ten days if all requirements have been met.
 
-B) CONSIDERATION BY THE RIVERGROVE PLANNING COMMISSION AND CITY COUNCIL OF THE PERMIT APPLICATION WILL PROCEED IN THE SAME MANNER AS FOR A SINGLE FAMILY DWELLING.
+**D)** Denial and Revocation of Permit - The City of Rivergrove shall deny a placement permit which does not provide the proper information or which proposes to site a manufactured home not in conformance with the requirements of this code.
 
-C) SIGNING-OFF ON PERMIT - FOLLOWING RECEIPT OF THE REQUIRED INFORMATION, THE PLANNING COMMISSION AND THE CITY COUNCIL SHALL SIGN AND FORWARD THE PLACEMENT PERMIT TO CLACKAMAS COUNTY WITHIN TEN DAYS IF ALL REQUIREMENTS HAVE BEEN MET.
-
-D) DENIAL AND REVOCATION OF PERMIT - THE CITY OF RIVERGROVE SHALL DENY A PLACEMENT PERMIT WHICH DOES NOT PROVIDE THE PROPER INFORMATION OR WHICH PROPOSES TO SITE A MANUFACTURED HOME NOT IN CONFORMANCE WITH THE REQUIREMENTS OF THIS CODE.
-
-THE CITY OF RIVERGROVE SHALL REQUEST CLACKAMAS COUNTY REVOKE A PLACEMENT PERMIT WHICH WAS ISSUED ON THE BASIS OF INCORRECT OR MISLEADING INFORMATION. THE APPLICANT SHALL CEASE WORK ON THE PLACEMENT AND/OR OCCUPANCY OF THE UNIT AND REAPPLY FOR A PLACEMENT PERMIT AND PAY ANY REQUIRED FEES WITHIN FIVE WORKING DAYS OF WRITTEN NOTIFICATION OF REVOCATION. IF EITHER THE CITY OF RIVERGROVE OR CLACKAMAS COUNTY DETERMINES THAT IT IS NOT POSSIBLE FOR THE PLACEMENT OF THE MANUFACTURED HOME ITSELF TO MEET THE REQUIREMENTS OF THIS CODE, THEN IT SHALL BE REMOVED FROM THE SITE WITHIN FIFTEEN WORKING DAYS OF WRITTEN NOTICE.
+The City of Rivergrove shall request Clackamas County revoke a placement permit which was issued on the basis of incorrect or misleading information. The applicant shall cease work on the placement and/or occupancy of the unit and reapply for a placement permit and pay any required fees within five working days of written notification of revocation. If either the City of Rivergrove or Clackamas County determines that it is not possible for the placement of the manufactured home itself to meet the requirements of this code, then it shall be removed from the site within fifteen working days of written notice.
 
 ---
 
-**WHEREAS** THE SITING OF MANUFACTURED HOMES ON ALL LOTS ZONED FOR SINGLE FAMILY RESIDENTIAL IS NOW MANDATED BY ORS 197.307,
+**WHEREAS** the siting of manufactured homes on all lots zoned for single family residential is now mandated by ORS 197.307,
 
-**WHEREAS** THE CITY OF RIVERGROVE WISHES TO BE IN COMPLIANCE WITH THIS LAW,
+**WHEREAS** the City of Rivergrove wishes to be in compliance with this law,
 
-**WHEREAS** PUBLIC NOTICE WAS GIVEN BY POSTING INFORMATION ABOUT THIS ORDINANCE AND THESE HEARINGS AT THREE PLACES IN THE CITY OF RIVERGROVE,
+**WHEREAS** public notice was given by posting information about this ordinance and these hearings at three places in the City of Rivergrove,
 
-**WHEREAS** TWO PUBLIC HEARINGS WERE HELD ON DECEMBER 6, 1993 AND DECEMBER 13, 1993,
+**WHEREAS** two public hearings were held on December 6, 1993 and December 13, 1993,
 
-**THEREFORE** LET IT NOW BE ORDAINED THAT ORDINANCE #57-93 IS PASSED AT A REGULARLY SCHEDULED MEETING OF THE RIVERGROVE CITY COUNCIL, THE 13TH DAY OF DECEMBER 1993.
+**THEREFORE** let it now be ordained that Ordinance #57-93 is passed at a regularly scheduled meeting of the Rivergrove City Council, the 13th day of December 1993.
 
-[Signature], STEVEN MILLER, MAYOR
+[Signature], Steven Miller, Mayor  
 
-[Signature], SUSAN GRAYSTON-MILLER, CITY RECORDER
+[Signature], Susan Grayston-Miller, City Recorder  
+
+---
+
+## Document Notes
+
+The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.

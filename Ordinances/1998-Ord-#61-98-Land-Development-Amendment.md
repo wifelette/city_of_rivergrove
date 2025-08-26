@@ -8,10 +8,10 @@ Submitted to the Rivergrove City Council on **April 13, 1998**
 
 Adopted by the Rivergrove City Council on **April 13, 1998**
 
-[Signature], Larry Barrett, Mayor
+[Signature], Larry Barrett, Mayor  
 **Date:** 4-13-98
 
-[Signature], Mike Collmeyer, City Recorder
+[Signature], Mike Collmeyer, City Recorder  
 **Date:** 4/13/98
 
 ---
@@ -36,17 +36,17 @@ Adopted by the Rivergrove City Council on **April 13, 1998**
 
 ### 1. Section 5.060 is amended to read as follows:
 
-**Section 5.060. Permitted Uses in the Flood Hazard District.**
-
-**(a)** Open spaces.
-
-**(b)** Any use permitted otherwise, provided it is elevated above the regulation flood protection elevation and complies with the requirements of the City of Rivergrove Flood Damage Prevention Ordinance.
-
-**(c)** The maximum density allowed within the Flood Hazard District is one (1) house (single-family dwelling) per ½ acre.
+> **Section 5.060. Permitted Uses in the Flood Hazard District.**
+>
+> **(a)** Open spaces.
+>
+> **(b)** Any use permitted otherwise, provided it is elevated above the regulation flood protection elevation and complies with the requirements of the City of Rivergrove Flood Damage Prevention Ordinance.
+>
+> **(c)** The maximum density allowed within the Flood Hazard District is one (1) house (single-family dwelling) per ½ acre.
 
 ### 2. Section 6.226 is amended to read as follows:
 
-**Section 6.226. Procedure.** Legislative action under this ordinance shall follow Type IV Procedure subject to the requirements of Sections 6.227 to 6.230.
+> **Section 6.226. Procedure.** Legislative action under this ordinance shall follow Type IV Procedure subject to the requirements of Sections 6.227 to 6.230.
 
 ---
 
