@@ -9,10 +9,10 @@ City Council Public Hearings: **10/16/2000**
 Adopted by Rivergrove City Council: **12/10/2001**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 12-10-01    
+**Date**: 12-10-01      
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 12/10/01    
+**Date**: 12/10/01      
 
 ---
 
@@ -116,17 +116,14 @@ The purpose of this ordinance is:
 | **Primary Protected Water Features¹** | < 25%                                         | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 50 feet                                                                                             |
 | **Primary Protected Water Features¹** | >25% for 150 feet or more⁵                    | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 200 feet                                                                                            |
 | **Primary Protected Water Features¹** | >25% for less than 150 feet⁵                  | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | Distance from starting point of measurement to top of ravine (break in >25% slope)³, plus 50 feet.⁴ |
+| **Secondary Protected Water Features²** | < 25% | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 15 feet |
+| **Secondary Protected Water Features²** | > 25% | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 50 feet |
 
 ¹ **Primary Protected Water Features.** See definition of Protected Water Feature.  
 ² **Secondary Protected Water Features.** See definition of Protected Water Feature.  
-³ Where the _Protected Water Feature_ is confined by a ravine or gully, the top of ravine is the break in the > 25% slope  
-(see slope measurement in Appendix).  
+³ Where the _Protected Water Feature_ is confined by a ravine or gully, the top of ravine is the break in the > 25% slope (see slope measurement in Appendix).  
 ⁴ A maximum reduction of 25 feet may be permitted in the width of _vegetated corridor_ beyond the slope break if a geotechnical report demonstrates that slope is stable. To establish the width of the _vegetated corridor_, slope should be measured in 25-foot increments away from the water feature until slope is less than 25% (top of ravine).  
-⁵ _Vegetated corridors_ in excess of 50-feet for primary protected features, or in excess of 15-feet for secondary protected
-
-| **Secondary Protected Water Features²** | < 25% | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 15 feet |
-| --------------------------------------- | ----- | ------------------------------------------------------------------------------ | ------- |
-| **Secondary Protected Water Features²** | > 25% | • Edge of bankful stage or 2-year storm level;<br>• Delineated edge of wetland | 50 feet |
+⁵ _Vegetated corridors_ in excess of 50-feet for primary protected features, or in excess of 15-feet for secondary protected features.
 
 **C.** Uses Permitted Outright
 
