@@ -82,6 +82,32 @@ When processing a document:
 - **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
 - **Markdown formatting**: Use headers, lists, and clear structure
 
+#### 3.1 Signature Section Formatting
+
+Standardized format for ordinance signatures:
+
+```markdown
+**Signatures:**
+
+[Signature], [Name], [Title]
+**Date**: [Date as written]
+
+[Signature], [Name], [Title]
+**Date**: [Date as written]
+```
+
+**Important notes:**
+- Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
+- Different signers may use different date formats - preserve these differences
+- Use "[Signature]" placeholder for actual signatures
+
+#### 3.2 Page Break Handling
+
+- **Ignore page breaks**: Transcribe documents continuously without page markers
+- **No page numbers needed**: Don't add "Page 1", "---", or similar markers
+- **Single flowing document**: Present the entire ordinance as one continuous markdown file
+- **Exception**: Only note page breaks if content is clearly out of order and needs explanation
+
 ### 4. Document Title Standards
 
 All documentTitle fields in Airtable follow standardized formats:
