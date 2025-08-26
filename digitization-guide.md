@@ -32,6 +32,19 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 - Leah uploads to GitHub and provides URLs to Claude for Airtable updates
 - Mark as Digitized once GitHub URL is added
 
+#### 1.1 PDF Page Order Verification
+
+**Critical Step:** Always verify PDF pages are in logical order before transcribing.
+
+**Issue:** Some PDFs have scrambled page order (e.g., signature page in middle, sections out of sequence).
+
+**Process:**
+
+1. Scan through all pages first
+2. Identify the proper document flow (title → sections 1,2,3... → signatures)
+3. If pages are out of order, mentally reorganize before transcribing
+4. Create artifact with correct logical structure, not PDF page order
+
 ### 2. Airtable Updates
 
 When processing a document:
@@ -69,20 +82,34 @@ When processing a document:
 - **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
 - **Markdown formatting**: Use headers, lists, and clear structure
 
-### 4. Document Title Standards (Established August 2025)
+### 4. Document Title Standards
 
 All documentTitle fields in Airtable follow standardized formats:
 
 - **Interpretations**: "PC Interpretation - [Topic]"
   - Example: "PC Interpretation - Section 5.080 Setbacks"
 - **Ordinances**: "Ordinance #XX - [Topic]" (convert roman numerals to standard numbers)
-  - Example: "Ordinance #16 - Establishing a Park Advisory Council"  
+  - Example: "Ordinance #16 - Establishing a Park Advisory Council"
 - **Resolutions**: "Resolution #XX - [Topic]"
   - Example: "Resolution #22 - Planning Commission CCI"
 
 When processing documents, always check existing titles and update them to match these standards if needed.
 
-### 5. MCP Tool Notes
+### 5. Quality Control & Best Practices
+
+#### 5.1 Post-Digitization Verification
+
+After completing GitHub upload and URL updates:
+
+- [ ] Documents entry has both fileURL and mdURL
+- [ ] rawURL auto-populated correctly
+- [ ] Ordinances entry marked as Digitized
+- [ ] Bidirectional linking verified
+- [ ] Amendment relationships preserved
+- [ ] Document title follows naming convention
+- [ ] Passed date matches signatures/adoption date
+
+#### 5.2 MCP Tool Notes
 
 - **Always search existing entries** before creating new ones
 - Use multiple search terms (ID, year, topic keywords)
@@ -91,7 +118,7 @@ When processing documents, always check existing titles and update them to match
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
 
-### 6. Key Reminders
+#### 5.3 Key Reminders
 
 - Search existing Airtable entries thoroughly before creating new ones
 - **Alert Leah immediately to any field validation failures**
