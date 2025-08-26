@@ -56,6 +56,8 @@ def parse_document_name(filename):
     title = rest
     title = re.sub(r'^(Ord|Res)-#?\d+[-\w]*-?', '', title)
     title = title.replace('-', ' ').strip()
+    # Remove duplicate numbers at the end of titles
+    title = re.sub(r'\s+\d+[-\w]*$', '', title)
     
     return {
         'year': int(year),
@@ -93,11 +95,11 @@ def generate_summary():
                 num = f"#{doc['number']}" if doc['number'] else ""
                 title = doc['title'] or doc['full_title']
                 
-                # Format the display title
+                # Style E format: #70 - WQRA with year as HTML tag
                 if num:
-                    display = f"{year} - Ordinance {num} - {title}"
+                    display = f"{num} - {title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
                 else:
-                    display = f"{year} - {title}"
+                    display = f"{title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
                 
                 summary.append(f"- [{display}](./ordinances/{doc['filename']})\n")
     
@@ -119,10 +121,11 @@ def generate_summary():
                 num = f"#{doc['number']}" if doc['number'] else ""
                 title = doc['title'] or doc['full_title']
                 
+                # Style E format
                 if num:
-                    display = f"{year} - Resolution {num} - {title}"
+                    display = f"{num} - {title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
                 else:
-                    display = f"{year} - {title}"
+                    display = f"{title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
                 
                 summary.append(f"- [{display}](./resolutions/{doc['filename']})\n")
     
@@ -156,10 +159,10 @@ def generate_summary():
         if interpretations:
             summary.append("\n---\n\n# Planning Commission Interpretations\n")
             for doc in interpretations:
-                if doc['date']:
-                    display = f"{doc['date']} - {doc['title'].title()}"
-                else:
-                    display = doc['title'].title()
+                # Extract just the year from date
+                year = doc['date'][:4] if doc['date'] else "Unknown"
+                # Style E format for interpretations
+                display = f"{doc['title'].title()} <span style='color: #999; font-size: 0.9em'>({doc['date']})</span>"
                 
                 summary.append(f"- [{display}](./interpretations/{doc['filename']})\n")
     
