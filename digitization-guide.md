@@ -108,6 +108,13 @@ Standardized format for ordinance signatures:
 - **Single flowing document**: Present the entire ordinance as one continuous markdown file
 - **Exception**: Only note page breaks if content is clearly out of order and needs explanation
 
+#### 3.3 Handwritten Content and Emphasis
+
+- **Handwritten fill-ins**: Bold any content that was clearly filled in by hand on a form or blank (e.g., "Adopted on **March 15, 1998**")
+- **Underlined text**: Convert underlines to bold since markdown doesn't use underlines
+- **Purpose**: Makes it immediately clear what was pre-printed vs. manually added
+- **Example**: "This ordinance shall take effect **30 days** after adoption" (where "30 days" was handwritten)
+
 ### 4. Document Title Standards
 
 All documentTitle fields in Airtable follow standardized formats:
