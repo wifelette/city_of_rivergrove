@@ -22,3 +22,4 @@ Please read these two files for context on this project and how to work with Lea
 - Update issue #3 when documents are completed
 - Follow the established naming conventions strictly
 - Work is part of digitizing City of Rivergrove's ordinances, resolutions, and interpretations
+- After providing GitHub URLs, run `./update-mdbook.sh` to update the mdBook site with the new document
