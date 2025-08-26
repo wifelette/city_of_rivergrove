@@ -11,8 +11,8 @@ def fix_signature_formatting(content):
     """Fix signature blocks and hearing info to have proper line breaks."""
     
     # Pattern to find signature lines
-    # Matches: [Signature], Name, Title
-    signature_pattern = r'(\[Signature\][^\n]*(?:Mayor|Recorder|Manager|Clerk|Attorney|MAYOR|RECORDER))\n'
+    # Matches: [Signature] or [Unsigned], Name, Title
+    signature_pattern = r'(\[(?:Signature|Unsigned)\][^\n]*(?:Mayor|Recorder|Manager|Clerk|Attorney|MAYOR|RECORDER))\n'
     
     # Add double spaces at the end of signature lines for Markdown line breaks
     content = re.sub(signature_pattern, r'\1  \n', content)

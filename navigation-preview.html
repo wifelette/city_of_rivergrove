@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Style Preview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sidebar-mockup {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0969da;
+            color: #333;
+        }
+        
+        /* Style A: Clean with emphasis */
+        .style-a ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .style-a li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .style-a .ord-number {
+            font-weight: bold;
+            color: #0969da;
+        }
+        .style-a .ord-year {
+            color: #999;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+        
+        /* Style B: Grouped by decade */
+        .style-b h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+        }
+        .style-b ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 10px;
+        }
+        .style-b li {
+            padding: 5px 0;
+            font-size: 14px;
+        }
+        .style-b .number {
+            font-weight: 600;
+            color: #0969da;
+        }
+        
+        /* Style C: Ultra minimal */
+        .style-c ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .style-c li {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+        .style-c .divider {
+            color: #ccc;
+            margin: 0 8px;
+        }
+        
+        /* Style D: Two-line format */
+        .style-d ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .style-d li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .style-d .line1 {
+            font-weight: 600;
+            color: #0969da;
+            display: block;
+            font-size: 14px;
+        }
+        .style-d .line2 {
+            color: #666;
+            font-size: 12px;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        /* Style E: Compact with tags */
+        .style-e ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .style-e li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
+        .style-e .tag {
+            background: #e1f0ff;
+            color: #0969da;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #333;">Navigation Style Options for mdBook Sidebar</h1>
+    
+    <div class="container">
+        <!-- Style A -->
+        <div class="sidebar-mockup style-a">
+            <div class="sidebar-title">Style A: Clean with Emphasis</div>
+            <ul>
+                <li><span class="ord-number">#70</span> WQRA <span class="ord-year">(2001)</span></li>
+                <li><span class="ord-number">#71</span> Gates <span class="ord-year">(2002)</span></li>
+                <li><span class="ord-number">#72</span> Penalties & Abatement <span class="ord-year">(2002)</span></li>
+                <li><span class="ord-number">#73</span> Conditional Use <span class="ord-year">(2003)</span></li>
+                <li><span class="ord-number">#88</span> Docks <span class="ord-year">(2017)</span></li>
+            </ul>
+        </div>
+        
+        <!-- Style B -->
+        <div class="sidebar-mockup style-b">
+            <div class="sidebar-title">Style B: Grouped by Decade</div>
+            <h4>▼ 2000s</h4>
+            <ul>
+                <li><span class="number">#68</span> - Metro Compliance</li>
+                <li><span class="number">#69</span> - Title 3</li>
+                <li><span class="number">#70</span> - WQRA</li>
+                <li><span class="number">#71</span> - Gates</li>
+                <li><span class="number">#72</span> - Penalties</li>
+            </ul>
+            <h4>▼ 1990s</h4>
+            <ul>
+                <li><span class="number">#57-93</span> - Manufactured Homes</li>
+                <li><span class="number">#59-97A</span> - Land Development</li>
+            </ul>
+        </div>
+        
+        <!-- Style C -->
+        <div class="sidebar-mockup style-c">
+            <div class="sidebar-title">Style C: Ultra Minimal</div>
+            <ul>
+                <li>#70<span class="divider">·</span>WQRA</li>
+                <li>#71<span class="divider">·</span>Gates</li>
+                <li>#72<span class="divider">·</span>Penalties</li>
+                <li>#73<span class="divider">·</span>Conditional Use</li>
+                <li>#88<span class="divider">·</span>Docks</li>
+            </ul>
+        </div>
+        
+        <!-- Style D -->
+        <div class="sidebar-mockup style-d">
+            <div class="sidebar-title">Style D: Two-line Format</div>
+            <ul>
+                <li>
+                    <span class="line1">#70 - WQRA</span>
+                    <span class="line2">Water Quality Resource Areas • 2001</span>
+                </li>
+                <li>
+                    <span class="line1">#71 - Gates</span>
+                    <span class="line2">Gate Restrictions • 2002</span>
+                </li>
+                <li>
+                    <span class="line1">#72 - Penalties</span>
+                    <span class="line2">Penalties & Abatement • 2002</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Style E -->
+        <div class="sidebar-mockup style-e">
+            <div class="sidebar-title">Style E: Compact with Year Tags</div>
+            <ul>
+                <li>#70 - WQRA <span class="tag">2001</span></li>
+                <li>#71 - Gates <span class="tag">2002</span></li>
+                <li>#72 - Penalties <span class="tag">2002</span></li>
+                <li>#73 - Conditional Use <span class="tag">2003</span></li>
+                <li>#88 - Docks <span class="tag">2017</span></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3>Current Format (for comparison):</h3>
+        <code>2001 - Ordinance #70-2001-WQRA - 70-2001</code>
+        
+        <h3 style="margin-top: 20px;">Recommendations:</h3>
+        <ul>
+            <li><strong>Style A</strong> - Best balance of information and readability</li>
+            <li><strong>Style B</strong> - Good for chronological browsing, natural grouping</li>
+            <li><strong>Style E</strong> - Clean and modern with visual year indicators</li>
+        </ul>
+    </div>
+</body>
+</html>

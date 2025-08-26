@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Navigation Mockup</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-container {
+            max-width: 350px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .sidebar-header {
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 8px 8px 0 0;
+        }
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        /* Sort controls */
+        .sort-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .sort-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .sort-btn:hover {
+            background: #e9ecef;
+        }
+        .sort-btn.active {
+            background: #0969da;
+            color: white;
+            border-color: #0969da;
+        }
+        
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            gap: 4px;
+            background: #e9ecef;
+            padding: 2px;
+            border-radius: 4px;
+        }
+        .view-btn {
+            padding: 4px 8px;
+            font-size: 11px;
+            border: none;
+            background: transparent;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .view-btn.active {
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* Navigation content */
+        .sidebar-content {
+            padding: 15px;
+            max-height: 500ールphp;
+            overflow-y: auto;
+        }
+        
+        /* Default (Style E) */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin: 2px -8px;
+        }
+        .nav-list li:hover {
+            background: #f8f9fa;
+        }
+        .nav-list .number {
+            font-weight: 600;
+            color: #0969da;
+            margin-right: 6px;
+        }
+        .nav-list .tag {
+            background: #e1f0ff;
+            color: #0969da;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+        
+        /* Grouped view */
+        .group-header {
+            font-size: 12px;
+            color: #666;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .group-header:first-child {
+            margin-top: 0;
+        }
+        .group-header .arrow {
+            margin-right: 5px;
+            transition: transform 0.2s;
+            font-size: 10px;
+        }
+        .group-header.collapsed .arrow {
+            transform: rotate(-90deg);
+        }
+        .group-content {
+            margin-left: 15px;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        .group-content.collapsed {
+            max-height: 0;
+        }
+        .group-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .group-content li {
+            padding: 6px 8px;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .group-content li:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Number range groups */
+        .number-group {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+        .number-group-title {
+            font-weight: 600;
+            color: #495057;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        
+        /* Filter/Search */
+        .search-box {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #0969da;
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+        }
+        
+        /* Stats */
+        .stats {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Ordinances</div>
+            
+            <!-- Search/Filter -->
+            <input type="text" class="search-box" placeholder="Search ordinances..." id="searchBox">
+            
+            <!-- Sort Controls -->
+            <div class="sort-controls">
+                <button class="sort-btn active" data-sort="chronological">Chronological</button>
+                <button class="sort-btn" data-sort="year">By Year</button>
+                <button class="sort-btn" data-sort="number">By Number</button>
+                <button class="sort-btn" data-sort="topic">By Topic</button>
+            </div>
+            
+            <!-- View Toggle -->
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="list">List</button>
+                <button class="view-btn" data-view="grouped">Grouped</button>
+            </div>
+            
+            <div class="stats">Showing <span id="count">14</span> ordinances</div>
+        </div>
+        
+        <div class="sidebar-content" id="content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+    
+    <script>
+        // Sample data
+        const ordinances = [
+            {num: '16', year: '1974', title: 'Parks', topic: 'Parks & Recreation'},
+            {num: '28', year: '1978', title: 'Parks', topic: 'Parks & Recreation'},
+            {num: '52', year: '1987', title: 'Flood', topic: 'Environmental'},
+            {num: '57-93', year: '1993', title: 'Manufactured Homes', topic: 'Housing'},
+            {num: '59-97A', year: '1998', title: 'Land Development', topic: 'Development'},
+            {num: '61-98', year: '1998', title: 'Land Development', topic: 'Development'},
+            {num: '62-98', year: '1998', title: 'Flood & Land Development', topic: 'Environmental'},
+            {num: '68-2000', year: '2000', title: 'Metro Compliance', topic: 'Compliance'},
+            {num: '69-2000', year: '2000', title: 'Title 3', topic: 'Compliance'},
+            {num: '70-2001', year: '2001', title: 'WQRA', topic: 'Environmental'},
+            {num: '71-2002', year: '2002', title: 'Gates', topic: 'Development'},
+            {num: '72-2002', year: '2002', title: 'Penalties', topic: 'Enforcement'},
+            {num: '73-2003A', year: '2003', title: 'Conditional Use', topic: 'Development'},
+            {num: '88-2017', year: '2017', title: 'Docks', topic: 'Environmental'}
+        ];
+        
+        let currentSort = 'chronological';
+        let currentView = 'list';
+        let searchTerm = '';
+        
+        // Render functions
+        function renderList(items) {
+            const html = `
+                <ul class="nav-list">
+                    ${items.map(ord => `
+                        <li>
+                            <span class="number">#${ord.num}</span>
+                            <span>${ord.title}</span>
+                            <span class="tag">${ord.year}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        function renderGroupedByYear(items) {
+            const grouped = {};
+            items.forEach(ord => {
+                const decade = Math.floor(ord.year / 10) * 10;
+                const key = `${decade}s`;
+                if (!grouped[key]) grouped[key] = [];
+                grouped[key].push(ord);
+            });
+            
+            const html = Object.keys(grouped).sort().reverse().map(decade => `
+                <div>
+                    <div class="group-header" onclick="toggleGroup(this)">
+                        <span class="arrow">▼</span> ${decade}
+                    </div>
+                    <div class="group-content">
+                        <ul>
+                            ${grouped[decade].map(ord => `
+                                <li>
+                                    <span class="number" style="font-weight: 600; color: #0969da;">#${ord.num}</span>
+                                    <span style="margin-left: 8px;">${ord.title}</span>
+                                    <span class="tag" style="margin-left: auto;">${ord.year}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        function renderGroupedByNumber(items) {
+            const groups = [
+                {title: '#1-50', min: 1, max: 50},
+                {title: '#51-100', min: 51, max: 100}
+            ];
+            
+            const html = groups.map(group => {
+                const groupItems = items.filter(ord => {
+                    const num = parseInt(ord.num);
+                    return num >= group.min && num <= group.max;
+                });
+                
+                if (groupItems.length === 0) return '';
+                
+                return `
+                    <div>
+                        <div class="group-header" onclick="toggleGroup(this)">
+                            <span class="arrow">▼</span> ${group.title}
+                        </div>
+                        <div class="group-content">
+                            <ul>
+                                ${groupItems.map(ord => `
+                                    <li>
+                                        <span class="number" style="font-weight: 600; color: #0969da;">#${ord.num}</span>
+                                        <span style="margin-left: 8px;">${ord.title}</span>
+                                        <span class="tag" style="margin-left: auto;">${ord.year}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        function renderGroupedByTopic(items) {
+            const grouped = {};
+            items.forEach(ord => {
+                if (!grouped[ord.topic]) grouped[ord.topic] = [];
+                grouped[ord.topic].push(ord);
+            });
+            
+            const html = Object.keys(grouped).sort().map(topic => `
+                <div>
+                    <div class="group-header" onclick="toggleGroup(this)">
+                        <span class="arrow">▼</span> ${topic}
+                    </div>
+                    <div class="group-content">
+                        <ul>
+                            ${grouped[topic].map(ord => `
+                                <li>
+                                    <span class="number" style="font-weight: 600; color: #0969da;">#${ord.num}</span>
+                                    <span style="margin-left: 8px;">${ord.title}</span>
+                                    <span class="tag" style="margin-left: auto;">${ord.year}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        function toggleGroup(header) {
+            header.classList.toggle('collapsed');
+            header.nextElementSibling.classList.toggle('collapsed');
+        }
+        
+        // Filter and sort
+        function getFilteredItems() {
+            let items = [...ordinances];
+            
+            // Apply search filter
+            if (searchTerm) {
+                items = items.filter(ord => 
+                    ord.num.toLowerCase().includes(searchTerm) ||
+                    ord.title.toLowerCase().includes(searchTerm) ||
+                    ord.year.includes(searchTerm) ||
+                    ord.topic.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Apply sort
+            switch(currentSort) {
+                case 'chronological':
+                    // Sort by year first, then by number within same year
+                    items.sort((a, b) => {
+                        if (a.year !== b.year) {
+                            return a.year.localeCompare(b.year);
+                        }
+                        return parseInt(a.num) - parseInt(b.num);
+                    });
+                    break;
+                case 'year':
+                    items.sort((a, b) => b.year.localeCompare(a.year));
+                    break;
+                case 'number':
+                    items.sort((a, b) => {
+                        const numA = parseInt(a.num);
+                        const numB = parseInt(b.num);
+                        return numA - numB;
+                    });
+                    break;
+                case 'topic':
+                    items.sort((a, b) => a.topic.localeCompare(b.topic));
+                    break;
+            }
+            
+            return items;
+        }
+        
+        function render() {
+            const items = getFilteredItems();
+            document.getElementById('count').textContent = items.length;
+            
+            if (currentView === 'grouped') {
+                switch(currentSort) {
+                    case 'year':
+                        renderGroupedByYear(items);
+                        break;
+                    case 'number':
+                        renderGroupedByNumber(items);
+                        break;
+                    case 'topic':
+                        renderGroupedByTopic(items);
+                        break;
+                    default:
+                        renderGroupedByYear(items);
+                }
+            } else {
+                renderList(items);
+            }
+        }
+        
+        // Event handlers
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentSort = e.target.dataset.sort;
+                render();
+            });
+        });
+        
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentView = e.target.dataset.view;
+                render();
+            });
+        });
+        
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            searchTerm = e.target.value.toLowerCase();
+            render();
+        });
+        
+        // Initial render
+        render();
+    </script>
+    
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px;">
+        <h3>Interactive Features:</h3>
+        <ul>
+            <li><strong>Search:</strong> Filter ordinances by number, title, year, or topic</li>
+            <li><strong>Sort Options:</strong>
+                <ul>
+                    <li><strong>Chronological:</strong> Oldest to newest (historical order)</li>
+                    <li><strong>By Year:</strong> Most recent first</li>
+                    <li><strong>By Number:</strong> Numerical order</li>
+                    <li><strong>By Topic:</strong> Grouped by subject matter</li>
+                </ul>
+            </li>
+            <li><strong>View Modes:</strong>
+                <ul>
+                    <li><strong>List:</strong> Style E format (compact with year tags)</li>
+                    <li><strong>Grouped:</strong> Organized by the selected sort criteria with collapsible sections</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>Try These Combinations:</h3>
+        <ul>
+            <li>Click "By Year" + "Grouped" to see decades with collapsible sections</li>
+            <li>Click "By Topic" + "Grouped" to browse by subject area</li>
+            <li>Search for "2002" to filter to just that year</li>
+            <li>Search for "land" to find all land development ordinances</li>
+        </ul>
+        
+        <p><strong>Note:</strong> In the actual mdBook implementation, this would require custom JavaScript, but the concept shows how we could provide flexible navigation while keeping Style E as the clean baseline.</p>
+    </div>
+</body>
+</html>

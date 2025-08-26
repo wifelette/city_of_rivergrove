@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Navigation Controls</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-container {
+            max-width: 350px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .sidebar-header {
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 8px 8px 0 0;
+        }
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        /* Control sections */
+        .control-group {
+            margin-bottom: 10px;
+        }
+        .control-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* View selector */
+        .view-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+        .view-btn {
+            padding: 6px 8px;
+            font-size: 12px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .view-btn:hover {
+            background: #f8f9fa;
+        }
+        .view-btn.active {
+            background: #0969da;
+            color: white;
+            border-color: #0969da;
+        }
+        
+        /* Order toggle */
+        .order-toggle {
+            display: flex;
+            gap: 0;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .order-btn {
+            flex: 1;
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .order-btn:not(:last-child) {
+            border-right: 1px solid #dee2e6;
+        }
+        .order-btn:hover {
+            background: #f8f9fa;
+        }
+        .order-btn.active {
+            background: #0969da;
+            color: white;
+        }
+        
+        /* Search */
+        .search-box {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #0969da;
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+        }
+        
+        /* Navigation content */
+        .sidebar-content {
+            padding: 15px;
+            max-height: 450px;
+            overflow-y: auto;
+        }
+        
+        /* List items */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-list li {
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 4px;
+            margin: 2px 0;
+        }
+        .nav-list li:hover {
+            background: #f8f9fa;
+        }
+        .nav-list .number {
+            font-weight: 600;
+            color: #0969da;
+            margin-right: 8px;
+        }
+        .nav-list .tag {
+            background: #e1f0ff;
+            color: #0969da;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+        
+        /* Group headers */
+        .group-header {
+            font-size: 12px;
+            color: #666;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .group-header:first-child {
+            margin-top: 0;
+        }
+        .group-header .arrow {
+            margin-right: 5px;
+            transition: transform 0.2s;
+            font-size: 10px;
+        }
+        .group-header.collapsed .arrow {
+            transform: rotate(-90deg);
+        }
+        .group-content {
+            margin-left: 15px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .group-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+        
+        /* Stats */
+        .stats {
+            font-size: 11px;
+            color: #999;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Ordinances</div>
+            
+            <!-- Search -->
+            <div class="control-group">
+                <input type="text" class="search-box" placeholder="Search ordinances..." id="searchBox">
+            </div>
+            
+            <!-- View selector -->
+            <div class="control-group">
+                <div class="control-label">View</div>
+                <div class="view-selector">
+                    <button class="view-btn active" data-view="list">List</button>
+                    <button class="view-btn" data-view="decade">By Decade</button>
+                    <button class="view-btn" data-view="topic">By Topic</button>
+                    <button class="view-btn" data-view="range">By Number</button>
+                </div>
+            </div>
+            
+            <!-- Order toggle -->
+            <div class="control-group">
+                <div class="control-label">Order</div>
+                <div class="order-toggle">
+                    <button class="order-btn active" data-order="asc">↑ Oldest First</button>
+                    <button class="order-btn" data-order="desc">↓ Newest First</button>
+                </div>
+            </div>
+            
+            <div class="stats">
+                Showing <span id="count">14</span> of 14 ordinances
+            </div>
+        </div>
+        
+        <div class="sidebar-content" id="content">
+            <!-- Content will be dynamically inserted -->
+        </div>
+    </div>
+    
+    <script>
+        // Sample data
+        const ordinances = [
+            {num: '16', year: '1974', title: 'Parks', topic: 'Parks & Recreation'},
+            {num: '28', year: '1978', title: 'Parks', topic: 'Parks & Recreation'},
+            {num: '52', year: '1987', title: 'Flood', topic: 'Environmental'},
+            {num: '57-93', year: '1993', title: 'Manufactured Homes', topic: 'Housing'},
+            {num: '59-97A', year: '1998', title: 'Land Development', topic: 'Development'},
+            {num: '61-98', year: '1998', title: 'Land Development', topic: 'Development'},
+            {num: '62-98', year: '1998', title: 'Flood & Land Development', topic: 'Environmental'},
+            {num: '68-2000', year: '2000', title: 'Metro Compliance', topic: 'Compliance'},
+            {num: '69-2000', year: '2000', title: 'Title 3', topic: 'Compliance'},
+            {num: '70-2001', year: '2001', title: 'WQRA', topic: 'Environmental'},
+            {num: '71-2002', year: '2002', title: 'Gates', topic: 'Development'},
+            {num: '72-2002', year: '2002', title: 'Penalties', topic: 'Enforcement'},
+            {num: '73-2003A', year: '2003', title: 'Conditional Use', topic: 'Development'},
+            {num: '88-2017', year: '2017', title: 'Docks', topic: 'Environmental'}
+        ];
+        
+        let currentView = 'list';
+        let currentOrder = 'asc';
+        let searchTerm = '';
+        
+        // Render functions
+        function renderList(items) {
+            return `
+                <ul class="nav-list">
+                    ${items.map(ord => `
+                        <li>
+                            <span class="number">#${ord.num}</span>
+                            <span>${ord.title}</span>
+                            <span class="tag">${ord.year}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+        
+        function renderByDecade(items) {
+            const grouped = {};
+            items.forEach(ord => {
+                const decade = Math.floor(ord.year / 10) * 10;
+                const key = `${decade}s`;
+                if (!grouped[key]) grouped[key] = [];
+                grouped[key].push(ord);
+            });
+            
+            const decades = Object.keys(grouped).sort();
+            if (currentOrder === 'desc') decades.reverse();
+            
+            return decades.map(decade => `
+                <div>
+                    <div class="group-header" onclick="toggleGroup(this)">
+                        <span class="arrow">▼</span> ${decade}
+                    </div>
+                    <div class="group-content">
+                        <ul class="nav-list">
+                            ${grouped[decade].map(ord => `
+                                <li>
+                                    <span class="number">#${ord.num}</span>
+                                    <span>${ord.title}</span>
+                                    <span class="tag">${ord.year}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderByTopic(items) {
+            const grouped = {};
+            items.forEach(ord => {
+                if (!grouped[ord.topic]) grouped[ord.topic] = [];
+                grouped[ord.topic].push(ord);
+            });
+            
+            return Object.keys(grouped).sort().map(topic => `
+                <div>
+                    <div class="group-header" onclick="toggleGroup(this)">
+                        <span class="arrow">▼</span> ${topic}
+                    </div>
+                    <div class="group-content">
+                        <ul class="nav-list">
+                            ${grouped[topic].sort((a, b) => {
+                                if (currentOrder === 'asc') {
+                                    return a.year.localeCompare(b.year);
+                                } else {
+                                    return b.year.localeCompare(a.year);
+                                }
+                            }).map(ord => `
+                                <li>
+                                    <span class="number">#${ord.num}</span>
+                                    <span>${ord.title}</span>
+                                    <span class="tag">${ord.year}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderByRange(items) {
+            const groups = [
+                {title: '#1-50', min: 1, max: 50},
+                {title: '#51-100', min: 51, max: 100}
+            ];
+            
+            return groups.map(group => {
+                const groupItems = items.filter(ord => {
+                    const num = parseInt(ord.num);
+                    return num >= group.min && num <= group.max;
+                });
+                
+                if (groupItems.length === 0) return '';
+                
+                // Sort by number within each group
+                groupItems.sort((a, b) => {
+                    const numA = parseInt(a.num);
+                    const numB = parseInt(b.num);
+                    return currentOrder === 'asc' ? numA - numB : numB - numA;
+                });
+                
+                return `
+                    <div>
+                        <div class="group-header" onclick="toggleGroup(this)">
+                            <span class="arrow">▼</span> ${group.title}
+                        </div>
+                        <div class="group-content">
+                            <ul class="nav-list">
+                                ${groupItems.map(ord => `
+                                    <li>
+                                        <span class="number">#${ord.num}</span>
+                                        <span>${ord.title}</span>
+                                        <span class="tag">${ord.year}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function toggleGroup(header) {
+            header.classList.toggle('collapsed');
+            header.nextElementSibling.classList.toggle('collapsed');
+        }
+        
+        function getFilteredItems() {
+            let items = [...ordinances];
+            
+            if (searchTerm) {
+                items = items.filter(ord => 
+                    ord.num.toLowerCase().includes(searchTerm) ||
+                    ord.title.toLowerCase().includes(searchTerm) ||
+                    ord.year.includes(searchTerm) ||
+                    ord.topic.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Sort for list view
+            if (currentView === 'list') {
+                items.sort((a, b) => {
+                    if (currentOrder === 'asc') {
+                        return a.year.localeCompare(b.year) || parseInt(a.num) - parseInt(b.num);
+                    } else {
+                        return b.year.localeCompare(a.year) || parseInt(b.num) - parseInt(a.num);
+                    }
+                });
+            }
+            
+            return items;
+        }
+        
+        function render() {
+            const items = getFilteredItems();
+            const total = ordinances.length;
+            document.getElementById('count').textContent = items.length;
+            
+            let html = '';
+            switch(currentView) {
+                case 'decade':
+                    html = renderByDecade(items);
+                    break;
+                case 'topic':
+                    html = renderByTopic(items);
+                    break;
+                case 'range':
+                    html = renderByRange(items);
+                    break;
+                default:
+                    html = renderList(items);
+            }
+            
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        // Event handlers
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentView = e.target.dataset.view;
+                
+                // Update order button labels based on view
+                const ascBtn = document.querySelector('[data-order="asc"]');
+                const descBtn = document.querySelector('[data-order="desc"]');
+                if (currentView === 'range') {
+                    ascBtn.innerHTML = '↑ Low to High';
+                    descBtn.innerHTML = '↓ High to Low';
+                } else {
+                    ascBtn.innerHTML = '↑ Oldest First';
+                    descBtn.innerHTML = '↓ Newest First';
+                }
+                
+                render();
+            });
+        });
+        
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.order-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentOrder = e.target.dataset.order;
+                render();
+            });
+        });
+        
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            searchTerm = e.target.value.toLowerCase();
+            render();
+        });
+        
+        // Initial render
+        render();
+    </script>
+    
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px;">
+        <h2>Cleaner Control Structure</h2>
+        
+        <p>This version separates <strong>View</strong> (how things are organized) from <strong>Order</strong> (sort direction):</p>
+        
+        <h3>View Options:</h3>
+        <ul>
+            <li><strong>List:</strong> Simple flat list (Style E format)</li>
+            <li><strong>By Decade:</strong> Groups like 1970s, 1980s, 1990s, 2000s</li>
+            <li><strong>By Topic:</strong> Groups by subject (Environmental, Development, etc.)</li>
+            <li><strong>By Number:</strong> Groups by number ranges (#1-50, #51-100)</li>
+        </ul>
+        
+        <h3>Order Options:</h3>
+        <ul>
+            <li><strong>Oldest First:</strong> Historical order (1974 → 2017)</li>
+            <li><strong>Newest First:</strong> Recent first (2017 → 1974)</li>
+        </ul>
+        
+        <p><strong>Note:</strong> The order applies within each group when using grouped views. For example, "By Topic + Newest First" shows topics alphabetically, but ordinances within each topic are sorted newest first.</p>
+        
+        <h3>Benefits of this approach:</h3>
+        <ul>
+            <li>Clear mental model: View = organization, Order = direction</li>
+            <li>Fewer buttons, less confusion</li>
+            <li>Order toggle dynamically updates labels (e.g., "Low to High" for number ranges)</li>
+            <li>Works consistently across all view types</li>
+        </ul>
+    </div>
+</body>
+</html>
