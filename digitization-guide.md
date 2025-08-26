@@ -87,8 +87,6 @@ When processing a document:
 Standardized format for ordinance signatures:
 
 ```markdown
-**Signatures:**
-
 [Signature], [Name], [Title]
 **Date**: [Date as written]
 
@@ -97,6 +95,7 @@ Standardized format for ordinance signatures:
 ```
 
 **Important notes:**
+
 - Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
 - Different signers may use different date formats - preserve these differences
 - Use "[Signature]" placeholder for actual signatures
@@ -106,12 +105,12 @@ Standardized format for ordinance signatures:
 - **Ignore page breaks**: Transcribe documents continuously without page markers
 - **No page numbers needed**: Don't add "Page 1", "---", or similar markers
 - **Single flowing document**: Present the entire ordinance as one continuous markdown file
-- **Exception**: Only note page breaks if content is clearly out of order and needs explanation
+- **Exception**: Only note page breaks if they are for some reason meaningful (like when legal documents say "Continue on next page" or "this section intentionally left blank")
 
 #### 3.3 Handwritten Content and Emphasis
 
 - **Handwritten fill-ins**: Bold any content that was clearly filled in by hand on a form or blank (e.g., "Adopted on **March 15, 1998**")
-- **Underlined text**: Convert underlines to bold since markdown doesn't use underlines
+- **Underlined text**: Convert underlines to bold since we aren't using underlines
 - **Purpose**: Makes it immediately clear what was pre-printed vs. manually added
 - **Example**: "This ordinance shall take effect **30 days** after adoption" (where "30 days" was handwritten)
 
@@ -123,6 +122,7 @@ All documentTitle fields in Airtable follow standardized formats:
   - Example: "PC Interpretation - Section 5.080 Setbacks"
 - **Ordinances**: "Ordinance #XX - [Topic]" (convert roman numerals to standard numbers)
   - Example: "Ordinance #16 - Establishing a Park Advisory Council"
+  - Use full Ordinance number if there is a second part, like "Ordinance 20-1997"
 - **Resolutions**: "Resolution #XX - [Topic]"
   - Example: "Resolution #22 - Planning Commission CCI"
 

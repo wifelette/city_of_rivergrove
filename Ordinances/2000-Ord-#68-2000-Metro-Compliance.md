@@ -6,8 +6,6 @@
 **City Council Public Hearings:** 10/16/2000  
 **Adopted by Rivergrove City Council:** 10/16/2000
 
----
-
 [Signature], Larry Barrett, Mayor
 **Date**: 10-16-00
 
