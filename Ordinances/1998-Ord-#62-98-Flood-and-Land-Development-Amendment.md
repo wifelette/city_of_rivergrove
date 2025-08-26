@@ -16,7 +16,7 @@ Adopted by the Rivergrove City Council on **July 13, 1998**
 
 ---
 
-## ORDINANCE NO. 62-98
+# ORDINANCE NO. 62-98
 
 ### BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
 

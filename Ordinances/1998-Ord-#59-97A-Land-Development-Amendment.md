@@ -14,7 +14,7 @@ Adopted by the Rivergrove City Council on **October 12, 1998**
 
 ---
 
-## ORDINANCE NO. 59-97A
+# ORDINANCE NO. 59-97A
 
 **BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON**
 

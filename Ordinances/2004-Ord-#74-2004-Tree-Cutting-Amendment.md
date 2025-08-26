@@ -38,9 +38,9 @@ Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 ---
 
-# AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
+## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 
-## Section 5.100. Tree Cutting
+### Section 5.100. Tree Cutting
 
 Section 5.100. Tree Cutting is amended to read as follows:
 
