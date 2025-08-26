@@ -6,11 +6,11 @@ Submitted to the Rivergrove City Council on **June 9, 2008**
 
 Adopted by the Rivergrove City Council on **June 9, 2008**
 
-[Signature], **Hafez Darae**, Mayor  
-**Date**: **June 9, 2008**
+[Signature], Hafez Darae, Mayor  
+**Date**: June 9, 2008
 
-[Signature], **Sheri Richards**, City Recorder  
-**Date**: **June 9, 2008**
+[Signature], Sheri Richards, City Recorder  
+**Date**: June 9, 2008
 
 ---
 
@@ -50,11 +50,11 @@ All land development within the 100 year flood boundary as identified in the Flo
 
 ### Section XIV Definitions
 
-* * * * *
+---
 
 **Flood Management Areas.** All lands contained within the 100 year floodplain and floodway as shown on the Federal Emergency Management Agency Flood Insurance Rate Map Panel 0013D effective date June 17, 2008
 
-* * * * *
+---
 
 ## Section 4: Emergency Declared.
 
