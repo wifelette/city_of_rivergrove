@@ -11,10 +11,10 @@ Submitted to the Rivergrove City Council on **5/12/03**
 Adopted by the Rivergrove City Council on **5/12/03**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03      
+**Date**: 5/12/03        
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03      
+**Date**: 5/12/03        
 
 ---
 
@@ -58,34 +58,34 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > - (d) Site plan drawn to scale and where relevant, illustrating existing and proposed:
 >
-> - (1) Relationship of the site to adjoining properties, streets, alleys, structures, public utilities, and drainageways;
-> - (2) Lot line dimensions;
-> - (3) Location of structures;
-> - (4) Vehicle and pedestrian access points and accessways;
-> - (5) General location of vegetated areas;
-> - (6) Utility service areas;
-> - (7) Fences and walls;
-> - (8) Parking spaces, maneuvering, loading, and refuse areas;
-> - (9) Direction of traffic flow on the property;
-> - (10) Drainage controls;
-> - (11) Proposed modifications to existing grades.
+>   - (1) Relationship of the site to adjoining properties, streets, alleys, structures, public utilities, and drainageways;
+>   - (2) Lot line dimensions;
+>   - (3) Location of structures;
+>   - (4) Vehicle and pedestrian access points and accessways;
+>   - (5) General location of vegetated areas;
+>   - (6) Utility service areas;
+>   - (7) Fences and walls;
+>   - (8) Parking spaces, maneuvering, loading, and refuse areas;
+>   - (9) Direction of traffic flow on the property;
+>   - (10) Drainage controls;
+>   - (11) Proposed modifications to existing grades.
 >
 > - (e) If relevant, exterior lighting plan (which may be shown on the site plan) indicating location, size, height, typical design, material, color, method and strength of illumination.
 >
 > - (f) If relevant, plans and elevations of structure(s) to scale indicating:
 >
-> - (1) Heights of structure;
-> - (2) Entrances and exits of proposed structures;
-> - (3) Architectural drawings or sketches, including floor plans, in sufficient detail to permit computation of set back requirements;
-> - (4) Building materials to be used;
-> - (5) Specifications as to type, color, and texture of exterior surfaces of proposed structures.
+>   - (1) Heights of structure;
+>   - (2) Entrances and exits of proposed structures;
+>   - (3) Architectural drawings or sketches, including floor plans, in sufficient detail to permit computation of set back requirements;
+>   - (4) Building materials to be used;
+>   - (5) Specifications as to type, color, and texture of exterior surfaces of proposed structures.
 >
 > - (g) If relevant landscape plan drawn to scale showing:
 >
-> - (1) Location of existing trees and vegetation proposed to be removed or retained on the site;
-> - (2) Location and design of landscaped areas;
-> - (3) Proposed varieties and sizes of trees and plant materials;
-> - (4) Other pertinent landscape features, and irrigation systems required to maintain plant materials.
+>   - (1) Location of existing trees and vegetation proposed to be removed or retained on the site;
+>   - (2) Location and design of landscaped areas;
+>   - (3) Proposed varieties and sizes of trees and plant materials;
+>   - (4) Other pertinent landscape features, and irrigation systems required to maintain plant materials.
 >
 > - (h) Vicinity map showing the site in relation to local and collector streets; plus any other features in the nearby area;
 >
@@ -123,9 +123,9 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > - (d) A 1-year time extension may be granted once as a Type I decision by the Planning Commission pursuant to RLDO 4.090 and subject to the following provisions:
 >
-> - (1) A time extension be requested in writing, on forms provided by the City Recorder, prior to the expiration of the approval; and
-> - (2) The applicant demonstrates that:
->   - (A) The conditional use is consistent with the provisions of this ordinance in effect on the date a complete application for a time extension is submitted; and
->   - (B) There is a reasonable expectancy that the necessary development permits will be secured within the 1-year extension period.
+>   - (1) A time extension be requested in writing, on forms provided by the City Recorder, prior to the expiration of the approval; and
+>   - (2) The applicant demonstrates that:
+>     - (A) The conditional use is consistent with the provisions of this ordinance in effect on the date a complete application for a time extension is submitted; and
+>     - (B) There is a reasonable expectancy that the necessary development permits will be secured within the 1-year extension period.
 >
 > - (e) Any violation of the terms, conditions or restrictions of a conditional use permit can result in revocation of the conditional use permit.
