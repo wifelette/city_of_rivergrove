@@ -48,6 +48,10 @@ echo "📝 Generating SUMMARY.md..."
 python3 generate-summary.py
 
 echo ""
+echo "🔗 Generating document relationships..."
+python3 generate-relationships.py
+
+echo ""
 echo "🏗️ Building mdBook..."
 
 # Build the book with cross-references

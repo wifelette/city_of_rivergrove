@@ -11,14 +11,14 @@ Submitted to the Rivergrove City Council on **5/12/03**
 Adopted by the Rivergrove City Council on **5/12/03**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03                
+**Date**: 5/12/03                  
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03                
+**Date**: 5/12/03                  
 
 ---
 
-## ORDINANCE NO. 73-2003A
+# ORDINANCE NO. 73-2003A
 
 **AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY [ORDINANCE NO. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)**
 

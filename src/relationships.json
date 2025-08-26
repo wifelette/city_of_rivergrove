@@ -1,0 +1,998 @@
+{
+  "documents": {
+    "ordinance-71-2002-Gates": {
+      "type": "ordinance",
+      "id": "71-2002-Gates",
+      "date": null,
+      "year": "2002",
+      "section": null,
+      "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
+      "file": "2002-Ord-#71-2002-Gates.md"
+    },
+    "ordinance-74-2004-Tree-Cutting-Amendment": {
+      "type": "ordinance",
+      "id": "74-2004-Tree-Cutting-Amendment",
+      "date": null,
+      "year": "2004",
+      "section": null,
+      "title": "AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE",
+      "file": "2004-Ord-#74-2004-Tree-Cutting-Amendment.md"
+    },
+    "ordinance-88-2017-Docks": {
+      "type": "ordinance",
+      "id": "88-2017-Docks",
+      "date": null,
+      "year": "2017",
+      "section": null,
+      "title": "AN ORDINANCE THAT AMENDS [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) TO ALLOW DOCKS AS A CONDITIONAL USE AND AMENDS RLDO TO CLARIFY DOCKS ARE A PERMITTED USE IN THE R ZONE",
+      "file": "2017-Ord-#88-2017-Docks.md"
+    },
+    "ordinance-28-Parks": {
+      "type": "ordinance",
+      "id": "28-Parks",
+      "date": null,
+      "year": "1978",
+      "section": null,
+      "title": "AN ORDINANCE AMENDING THE CITY OF RIVERGROVE PARK ADVISORY COUNCIL [ORDINANCE NO. 16](../ordinances/1974-Ord-16-Parks.md) BY SUBSTITUTING THE NEW PART 2 THEREOF, as follows:",
+      "file": "1978-Ord-#28-Parks.md"
+    },
+    "ordinance-62-98-Flood-and-Land-Development-Amendment": {
+      "type": "ordinance",
+      "id": "62-98-Flood-and-Land-Development-Amendment",
+      "date": null,
+      "year": "1998",
+      "section": null,
+      "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
+      "file": "1998-Ord-#62-98-Flood-and-Land-Development-Amendment.md"
+    },
+    "ordinance-59-97A-Land-Development-Amendment": {
+      "type": "ordinance",
+      "id": "59-97A-Land-Development-Amendment",
+      "date": null,
+      "year": "1998",
+      "section": null,
+      "title": "AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE",
+      "file": "1998-Ord-#59-97A-Land-Development-Amendment.md"
+    },
+    "ordinance-57-93-Manufactured-Homes": {
+      "type": "ordinance",
+      "id": "57-93-Manufactured-Homes",
+      "date": null,
+      "year": "1993",
+      "section": null,
+      "title": "Document Notes",
+      "file": "1993-Ord-#57-93-Manufactured-Homes.md"
+    },
+    "ordinance-61-98-Land-Development-Amendment": {
+      "type": "ordinance",
+      "id": "61-98-Land-Development-Amendment",
+      "date": null,
+      "year": "1998",
+      "section": null,
+      "title": "1. Section 5.060 is amended to read as follows:",
+      "file": "1998-Ord-#61-98-Land-Development-Amendment.md"
+    },
+    "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
+      "type": "ordinance",
+      "id": "72-2002-Penalties-and-Abatement-Amendment",
+      "date": null,
+      "year": "2002",
+      "section": null,
+      "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
+      "file": "2002-Ord-#72-2002-Penalties-and-Abatement-Amendment.md"
+    },
+    "ordinance-73-2003A-Conditional-Use-Provisions": {
+      "type": "ordinance",
+      "id": "73-2003A-Conditional-Use-Provisions",
+      "date": null,
+      "year": "2003",
+      "section": null,
+      "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
+      "file": "2003-Ord-#73-2003A-Conditional-Use-Provisions.md"
+    },
+    "ordinance-52-Flood": {
+      "type": "ordinance",
+      "id": "52-Flood",
+      "date": null,
+      "year": "1987",
+      "section": null,
+      "title": "FLOOD DAMAGE PREVENTION ORDINANCE",
+      "file": "1987-Ord-#52-Flood.md"
+    },
+    "ordinance-69-2000-Title-3-Compliance-STUB": {
+      "type": "ordinance",
+      "id": "69-2000-Title-3-Compliance-STUB",
+      "date": null,
+      "year": "2000",
+      "section": null,
+      "title": "⚠️ **STUB - THIS ORDINANCE WAS NEVER PASSED**",
+      "file": "2000-Ord-#69-2000-Title-3-Compliance-STUB.md"
+    },
+    "ordinance-68-2000-Metro-Compliance": {
+      "type": "ordinance",
+      "id": "68-2000-Metro-Compliance",
+      "date": null,
+      "year": "2000",
+      "section": null,
+      "title": "FUNCTIONAL PLAN COMPLIANCE ORDINANCE",
+      "file": "2000-Ord-#68-2000-Metro-Compliance.md"
+    },
+    "ordinance-70-2001-WQRA": {
+      "type": "ordinance",
+      "id": "70-2001-WQRA",
+      "date": null,
+      "year": "2001",
+      "section": null,
+      "title": "Index",
+      "file": "2001-Ord-#70-2001-WQRA.md"
+    },
+    "ordinance-16-Parks": {
+      "type": "ordinance",
+      "id": "16-Parks",
+      "date": null,
+      "year": "1974",
+      "section": null,
+      "title": "AN ORDINANCE ESTABLISHING A PARK ADVISORY COUNCIL",
+      "file": "1974-Ord-#16-Parks.md"
+    },
+    "resolution-22-PC": {
+      "type": "resolution",
+      "id": "22-PC",
+      "date": null,
+      "year": "1976",
+      "section": null,
+      "title": "CITIZEN INVOLVEMENT PROGRAM OF THE CITY OF RIVERGROVE",
+      "file": "1976-Res-#22-PC.md"
+    },
+    "resolution-72-Municipal-Services": {
+      "type": "resolution",
+      "id": "72-Municipal-Services",
+      "date": null,
+      "year": "1984",
+      "section": null,
+      "title": "Handwritten notations, floating form fields and stamps",
+      "file": "1984-Res-#72-Municipal-Services.md"
+    },
+    "interpretation-2001-05-07": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2001-05-07",
+      "year": null,
+      "section": "balanced-cut-and-fill",
+      "title": "(May 7, 2001)",
+      "file": "2001-05-07-RE-balanced-cut-and-fill.md"
+    },
+    "interpretation-1997-07-07": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1997-07-07",
+      "year": null,
+      "section": "2.040h-permitting-adus",
+      "title": "July 7, 1997",
+      "file": "1997-07-07-RE-2.040h-permitting-adus.md"
+    },
+    "interpretation-1997-09-08": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1997-09-08",
+      "year": null,
+      "section": "9.030-permit-fees-and-completeness",
+      "title": "September 8, 1997",
+      "file": "1997-09-08-RE-9.030-permit-fees-and-completeness.md"
+    },
+    "interpretation-2005-04-04": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2005-04-04",
+      "year": null,
+      "section": "adu-sewer",
+      "title": "(April 4, 2005)",
+      "file": "2005-04-04-RE-adu-sewer.md"
+    },
+    "interpretation-2004-10-11": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2004-10-11",
+      "year": null,
+      "section": "5.080-setbacks",
+      "title": "Section 5.080 General Building Setbacks in All Zones and Districts",
+      "file": "2004-10-11-RE-5.080-setbacks.md"
+    },
+    "interpretation-1998-07-06": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1998-07-06",
+      "year": null,
+      "section": "5.080-setback-orientation",
+      "title": "(July 6, 1998)",
+      "file": "1998-07-06-RE-5.080-setback-orientation.md"
+    },
+    "interpretation-1997-11-03": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1997-11-03",
+      "year": null,
+      "section": "9.030-permit-fees-and-completeness",
+      "title": "November 3, 1997",
+      "file": "1997-11-03-RE-9.030-permit-fees-and-completeness.md"
+    },
+    "interpretation-2002-09-05": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2002-09-05",
+      "year": null,
+      "section": "duplicate",
+      "title": "(September 5, 2002)",
+      "file": "2002-09-05-RE-duplicate.md"
+    },
+    "interpretation-1998-06-01": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1998-06-01",
+      "year": null,
+      "section": "5.080-setback-orientation",
+      "title": "(June 1, 1998)",
+      "file": "1998-06-01-RE-5.080-setback-orientation.md"
+    },
+    "interpretation-2002-08-05": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2002-08-05",
+      "year": null,
+      "section": "lots-partially-in-floodplain",
+      "title": "(August 5, 2002)",
+      "file": "2002-08-05-RE-lots-partially-in-floodplain.md"
+    },
+    "interpretation-2008-02-04": {
+      "type": "interpretation",
+      "id": null,
+      "date": "2008-02-04",
+      "year": null,
+      "section": "multi-family",
+      "title": "INTERPRETATION",
+      "file": "2008-02-04-RE-multi-family.md"
+    },
+    "interpretation-1998-03-02": {
+      "type": "interpretation",
+      "id": null,
+      "date": "1998-03-02",
+      "year": null,
+      "section": "5.080-setbacks",
+      "title": "March 2, 1998",
+      "file": "1998-03-02-RE-5.080-setbacks.md"
+    }
+  },
+  "relationships": {
+    "ordinance-71-2002-Gates": {
+      "references": [
+        "54-89",
+        "71-2002"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "6.135",
+        "5.130"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-62-98-Flood-and-Land-Development-Amendment",
+        "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+        "ordinance-73-2003A-Conditional-Use-Provisions",
+        "resolution-22-PC"
+      ]
+    },
+    "ordinance-74-2004-Tree-Cutting-Amendment": {
+      "references": [
+        "54-89",
+        "70-2001",
+        "74-2004"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.100"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-59-97A-Land-Development-Amendment",
+        "interpretation-2004-10-11"
+      ]
+    },
+    "ordinance-88-2017-Docks": {
+      "references": [
+        "70-2001",
+        "88-2017"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.060",
+        "5.050"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-52-Flood"
+      ]
+    },
+    "ordinance-28-Parks": {
+      "references": [
+        "16",
+        "28"
+      ],
+      "resolutions": [],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-16-Parks"
+      ]
+    },
+    "ordinance-62-98-Flood-and-Land-Development-Amendment": {
+      "references": [
+        "62-98",
+        "52",
+        "54-89"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.050",
+        "5.055",
+        "5.24"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-71-2002-Gates",
+        "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+        "ordinance-73-2003A-Conditional-Use-Provisions",
+        "resolution-22-PC"
+      ]
+    },
+    "ordinance-59-97A-Land-Development-Amendment": {
+      "references": [
+        "54-89",
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "2.040",
+        "5.010",
+        "3.020",
+        "5.050"
+      ],
+      "amends": [
+        "54-89"
+      ],
+      "related": [
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "interpretation-2004-10-11"
+      ]
+    },
+    "ordinance-57-93-Manufactured-Homes": {
+      "references": [
+        "57-93"
+      ],
+      "resolutions": [],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "ordinance-61-98-Land-Development-Amendment": {
+      "references": [
+        "54-89",
+        "61-98"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "6.226",
+        "5.060"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
+      "references": [
+        "54-89",
+        "72-2002",
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "9.020"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-71-2002-Gates",
+        "ordinance-62-98-Flood-and-Land-Development-Amendment",
+        "ordinance-73-2003A-Conditional-Use-Provisions",
+        "resolution-22-PC"
+      ]
+    },
+    "ordinance-73-2003A-Conditional-Use-Provisions": {
+      "references": [
+        "73-2003A",
+        "54-89",
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "6.236",
+        "6.300",
+        "5.050"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-71-2002-Gates",
+        "ordinance-62-98-Flood-and-Land-Development-Amendment",
+        "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+        "resolution-22-PC"
+      ]
+    },
+    "ordinance-52-Flood": {
+      "references": [
+        "52"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "3.2",
+        "5.0",
+        "5.2",
+        "4.3",
+        "4.1",
+        "4.4",
+        "5.3",
+        "5.1"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-88-2017-Docks"
+      ]
+    },
+    "ordinance-69-2000-Title-3-Compliance-STUB": {
+      "references": [
+        "69-2000",
+        "68-2000"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "1.3"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "ordinance-68-2000-Metro-Compliance": {
+      "references": [
+        "54-89",
+        "68-2000"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "6.080",
+        "5.095",
+        "5.075",
+        "2.0",
+        "6.060",
+        "1.0"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "ordinance-70-2001-WQRA": {
+      "references": [
+        "70-2001"
+      ],
+      "resolutions": [],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "resolution-22-PC": {
+      "references": [],
+      "resolutions": [
+        "22"
+      ],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-71-2002-Gates",
+        "ordinance-62-98-Flood-and-Land-Development-Amendment",
+        "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+        "ordinance-73-2003A-Conditional-Use-Provisions"
+      ]
+    },
+    "resolution-72-Municipal-Services": {
+      "references": [],
+      "resolutions": [
+        "72"
+      ],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2001-05-07": {
+      "references": [
+        "52",
+        "69-2000"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "3.090",
+        "5.2"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-1997-07-07": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "3.090",
+        "2.040"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-1997-09-08": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "4.050",
+        "9.030",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2005-04-04": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "6.050",
+        "3.0920",
+        "4.020",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2004-10-11": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "5.080",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "ordinance-59-97A-Land-Development-Amendment"
+      ]
+    },
+    "interpretation-1998-07-06": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "41.060",
+        "5.080",
+        "3.090",
+        "1.040"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-1997-11-03": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "9.030",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2002-09-05": {
+      "references": [
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.010",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-1998-06-01": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "41.060",
+        "5.080",
+        "3.090",
+        "1.040"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2002-08-05": {
+      "references": [
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.010",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-2008-02-04": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "5.075",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "interpretation-1998-03-02": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "9.030",
+        "5.080",
+        "3.090"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04"
+      ]
+    },
+    "ordinance-54-89": {
+      "amended_by": [
+        "ordinance-59-97A-Land-Development-Amendment"
+      ],
+      "referenced_by": [
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+        "ordinance-73-2003A-Conditional-Use-Provisions",
+        "ordinance-68-2000-Metro-Compliance"
+      ]
+    },
+    "ordinance-16-Parks": {
+      "related": [
+        "ordinance-28-Parks"
+      ]
+    }
+  },
+  "topics": {
+    "waterfront": [
+      "ordinance-71-2002-Gates",
+      "ordinance-62-98-Flood-and-Land-Development-Amendment",
+      "ordinance-72-2002-Penalties-and-Abatement-Amendment",
+      "ordinance-73-2003A-Conditional-Use-Provisions",
+      "resolution-22-PC"
+    ],
+    "land_development": [
+      "ordinance-74-2004-Tree-Cutting-Amendment",
+      "ordinance-59-97A-Land-Development-Amendment",
+      "interpretation-2004-10-11"
+    ],
+    "water_environmental": [
+      "ordinance-88-2017-Docks",
+      "ordinance-52-Flood"
+    ],
+    "parks_recreation": [
+      "ordinance-28-Parks",
+      "ordinance-16-Parks"
+    ],
+    "general": [
+      "ordinance-57-93-Manufactured-Homes",
+      "ordinance-61-98-Land-Development-Amendment",
+      "ordinance-69-2000-Title-3-Compliance-STUB",
+      "ordinance-68-2000-Metro-Compliance",
+      "ordinance-70-2001-WQRA",
+      "resolution-72-Municipal-Services",
+      "interpretation-2001-05-07",
+      "interpretation-1997-07-07",
+      "interpretation-1997-09-08",
+      "interpretation-2005-04-04",
+      "interpretation-1998-07-06",
+      "interpretation-1997-11-03",
+      "interpretation-2002-09-05",
+      "interpretation-1998-06-01",
+      "interpretation-2002-08-05",
+      "interpretation-2008-02-04",
+      "interpretation-1998-03-02"
+    ]
+  },
+  "metadata": {
+    "generated": "1756245104.954725",
+    "total_documents": 29,
+    "total_relationships": 30
+  }
+}

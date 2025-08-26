@@ -9,14 +9,14 @@ Submitted to the Rivergrove City Council on **10/14/02**
 Adopted by the Rivergrove City Council on **10/14/02**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 10-14-02                      
+**Date**: 10-14-02                        
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 10/14/02                      
+**Date**: 10/14/02                        
 
 ---
 
-## ORDINANCE NO. 72-2002
+# ORDINANCE NO. 72-2002
 
 **AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY [ORDINANCE NO. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md) ~~AND DECLARING AN EMERGENCY (strikethrough initialed by LB)~~**
 

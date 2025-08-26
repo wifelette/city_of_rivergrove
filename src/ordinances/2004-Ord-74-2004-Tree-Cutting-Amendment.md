@@ -22,7 +22,7 @@ Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 ## AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE
 
-### BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
+## BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
 
 **WHEREAS**, the City of Rivergrove has adopted a Comprehensive Plan and Land Development Ordinances to guide and control the future development within the City of Rivergrove; and
 
@@ -38,9 +38,9 @@ Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 ---
 
-# AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
+## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 
-## Section 5.100. Tree Cutting
+### Section 5.100. Tree Cutting
 
 Section 5.100. Tree Cutting is amended to read as follows:
 

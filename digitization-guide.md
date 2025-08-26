@@ -195,7 +195,7 @@ After completing GitHub upload and URL updates:
 
 ### 2. When Digitizing Documents
 
-1. **Add PDF**: Copy the source PDF from Dropbox to the same folder as the .md file, using identical naming
+1. **Add PDF**: Copy the source PDF from Dropbox to the same folder as the .md file, using identical naming (make sure you update the Dropbox file name, not just the Github version)
 2. **Commit and Push**: When new .md and .pdf files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
 3. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
    - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
@@ -276,11 +276,13 @@ This starts a local server (usually at `http://localhost:3000`) with live-reload
 ### Adding New Documents
 
 When new documents are digitized, simply run:
+
 ```bash
 ./update-mdbook.sh
 ```
 
 This automated script will:
+
 1. Copy all markdown files to the appropriate `src/` subdirectories (removing `#` and spaces from filenames)
 2. Fix signature formatting in all documents
 3. Automatically generate a new SUMMARY.md table of contents
@@ -304,3 +306,47 @@ The new document will immediately appear in navigation and be searchable.
 - PDF files remain in the root directories but are not included in mdBook
 - The `book/` directory is generated and can be safely deleted/regenerated
 - Cross-references are added at build time and don't modify source files
+
+---
+
+## Claude Code Session Startup Prompts
+
+### For Document Digitization Work
+
+```markdown
+I'm working on the City of Rivergrove ordinance digitization project. Please read the digitization-guide.md to understand the project context and workflow. Today I'll be processing documents from Dropbox and adding them to the repository.
+```
+
+### For Navigation Implementation Work
+
+```markdown
+I'm working on implementing the navigation redesign for the City of Rivergrove mdBook site. 
+
+Please start by reading:
+1. CLAUDE.md - Project-specific instructions and preferences
+2. /Users/leahsilber/Github/daily_tasks/CLAUDE.md - General working preferences
+3. digitization-guide.md - Full project context and workflow
+4. NAVIGATION-REDESIGN.md - Navigation redesign decisions and plan
+
+Current implementation status:
+
+- Style E format has been implemented in generate-summary.py
+- The sidebar now shows clean "#XX - Title (Year)" format
+- Next phase: Implement the right panel for document relationships
+
+Key files to review:
+
+1. generate-summary.py - Current Style E implementation
+2. navigation-integrated.html - Reference mockup for the relationship panel
+3. src/custom.css - Existing styles that may need updating
+4. update-mdbook.sh - Build automation script
+
+Priority tasks:
+
+1. Create right panel template structure
+2. Build relationship tracking JSON system
+3. Implement JavaScript view controls (List/By Decade/By Topic)
+4. Add document relationship display (interpretations, references, amendments)
+
+Remember: No Claude attribution in commits, always provide GitHub URLs after pushing.
+```

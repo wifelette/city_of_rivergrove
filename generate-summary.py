@@ -12,23 +12,42 @@ def extract_title_from_file(filepath):
     """Extract a clean title from the markdown file."""
     try:
         content = filepath.read_text(encoding='utf-8')
-        # Look for the first # heading
-        match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
-        if match:
-            title = match.group(1).strip()
-            # Clean up common prefixes
-            title = re.sub(r'^(ORDINANCE|RESOLUTION|Ordinance|Resolution)\s+(NO\.|No\.|#)?\s*', '', title)
-            return title
+        
+        # Look for a heading that starts with "AN ORDINANCE" or "A RESOLUTION"
+        subject_match = re.search(r'^###?\s+AN?\s+(ORDINANCE|RESOLUTION)\s+(.+)$', content, re.MULTILINE | re.IGNORECASE)
+        if subject_match:
+            title = subject_match.group(2).strip()
+            # Clean up common patterns
+            title = re.sub(r'^(ESTABLISHING|CREATING|AMENDING|ADOPTING|PROVIDING|DEFINING|RELATING TO)\s+', '', title, flags=re.IGNORECASE)
+            # Remove "THE CITY OF..." prefix if present
+            title = re.sub(r'^THE CITY OF.+?\s+(ORDINANCE|CODE)', '', title, flags=re.IGNORECASE)
+            # Remove any markdown links
+            title = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', title)
+            # Remove extra text after "as follows:" or similar
+            title = re.sub(r'\s+(as follows|by substituting).+$', '', title, flags=re.IGNORECASE)
+            return title.title()
+        
+        # Otherwise look for any heading that's not just a number or "EXHIBIT"
+        headings = re.findall(r'^###?\s+(.+)$', content, re.MULTILINE)
+        for heading in headings:
+            heading = heading.strip()
+            # Skip exhibit labels, numbers, and ordinance/resolution numbers
+            if re.match(r'^(EXHIBIT|ORDINANCE|RESOLUTION|#)', heading, re.IGNORECASE):
+                continue
+            if re.match(r'^\d+', heading):
+                continue
+            # This looks like a real title
+            return heading.title()
     except:
         pass
     
     # Fall back to filename-based title
     name = filepath.stem
-    # Remove date prefix and clean up
-    name = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', name)
-    name = re.sub(r'^\d{4}-', '', name)
+    # Remove date prefix and doc type prefix
+    name = re.sub(r'^\d{4}-\d{2}-\d{2}-RE-', '', name)
+    name = re.sub(r'^\d{4}-(Ord|Res)-#?\d+[-\w]*-', '', name)
     name = name.replace('-', ' ').replace('_', ' ')
-    return name
+    return name.title()
 
 def parse_document_name(filename):
     """Parse a document filename to extract year, number, and title."""
@@ -95,11 +114,13 @@ def generate_summary():
                 num = f"#{doc['number']}" if doc['number'] else ""
                 title = doc['title'] or doc['full_title']
                 
-                # Style E format: #70 - WQRA with year as HTML tag
+                # Style E format: #70 - WQRA (Year)
+                # Use the extracted title from the file content if available
+                clean_title = doc['full_title'] if doc['full_title'] else title
                 if num:
-                    display = f"{num} - {title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
+                    display = f"{num} - {clean_title} ({year})"
                 else:
-                    display = f"{title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
+                    display = f"{clean_title} ({year})"
                 
                 summary.append(f"- [{display}](./ordinances/{doc['filename']})\n")
     
@@ -122,10 +143,11 @@ def generate_summary():
                 title = doc['title'] or doc['full_title']
                 
                 # Style E format
+                clean_title = doc['full_title'] if doc['full_title'] else title
                 if num:
-                    display = f"{num} - {title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
+                    display = f"{num} - {clean_title} ({year})"
                 else:
-                    display = f"{title} <span style='color: #999; font-size: 0.9em'>({year})</span>"
+                    display = f"{clean_title} ({year})"
                 
                 summary.append(f"- [{display}](./resolutions/{doc['filename']})\n")
     
@@ -162,7 +184,7 @@ def generate_summary():
                 # Extract just the year from date
                 year = doc['date'][:4] if doc['date'] else "Unknown"
                 # Style E format for interpretations
-                display = f"{doc['title'].title()} <span style='color: #999; font-size: 0.9em'>({doc['date']})</span>"
+                display = f"{doc['title'].title()} ({doc['date']})"
                 
                 summary.append(f"- [{display}](./interpretations/{doc['filename']})\n")
     
