@@ -279,29 +279,155 @@
             display: none;
         }
         
-        /* Tags/badges */
-        .doc-badge {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
+        /* Document action buttons */
+        .document-actions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .action-btn {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 6px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: #f8f9fa;
+            border-color: #0969da;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+            border-color: #0969da;
+        }
+        
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        
+        /* Enhanced relationship type indicators */
+        .relationship-section {
+            margin-bottom: 20px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .relationship-section.amendments {
+            border-left: 4px solid #d97706;
+        }
+        
+        .relationship-section.references {
+            border-left: 4px solid #0969da;
+        }
+        
+        .relationship-section.interpretations {
+            border-left: 4px solid #7c3aed;
+        }
+        
+        .relationship-section.related {
+            border-left: 4px solid #059669;
+        }
+        
+        .relationship-section h5 {
+            margin: 0 0 8px 0;
+            font-size: 12px;
             font-weight: 600;
-            margin-left: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .badge-amendment {
-            background: #ffeaa7;
-            color: #6c5ce7;
+        .relationship-section.amendments h5 {
+            background: #fef3c7;
+            color: #92400e;
         }
         
-        .badge-interpretation {
-            background: #e1f0ff;
-            color: #0969da;
+        .relationship-section.references h5 {
+            background: #dbeafe;
+            color: #1e40af;
         }
         
-        .badge-related {
-            background: #f0f3ff;
-            color: #5f3dc4;
+        .relationship-section.interpretations h5 {
+            background: #ede9fe;
+            color: #6b21a8;
+        }
+        
+        .relationship-section.related h5 {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        /* Relationship type icons */
+        .rel-icon {
+            font-size: 14px;
+        }
+        
+        /* Enhanced relationship items */
+        .relationship-item {
+            margin-bottom: 6px;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        
+        .relationship-item:hover {
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .rel-link {
+            display: block;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            font-size: 12px;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+        
+        .rel-link:hover {
+            background: white;
+            border-color: #dee2e6;
+            text-decoration: none;
+        }
+        
+        .amendments .rel-link:hover {
+            border-color: #d97706;
+            box-shadow: 0 0 0 1px #d97706;
+        }
+        
+        .references .rel-link:hover {
+            border-color: #0969da;
+            box-shadow: 0 0 0 1px #0969da;
+        }
+        
+        .interpretations .rel-link:hover {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 1px #7c3aed;
+        }
+        
+        .related .rel-link:hover {
+            border-color: #059669;
+            box-shadow: 0 0 0 1px #059669;
         }
     </style>
 </head>
@@ -356,54 +482,102 @@
                 <div class="panel-title">Document Relationships</div>
             </div>
             <div class="panel-content">
+                <!-- Document Actions -->
+                <div class="document-actions">
+                    <button class="action-btn primary">
+                        <span>📄</span> View Full Document
+                    </button>
+                    <button class="action-btn">
+                        <span>📥</span> Download PDF
+                    </button>
+                    <button class="action-btn">
+                        <span>🔗</span> Copy Link
+                    </button>
+                    <button class="action-btn">
+                        <span>🔍</span> Search in Document
+                    </button>
+                </div>
+                
                 <!-- Amendments -->
-                <div class="relationship-section">
-                    <div class="relationship-header">Amendments</div>
+                <div class="relationship-section amendments">
+                    <h5><span class="rel-icon">⚡</span> Amended By</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
-                            <span class="doc-number">#88-2017</span>
-                            <span class="doc-title">Docks Amendment</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#88-2017</span>
+                                <span class="rel-title">Docks Amendment</span>
+                                <span class="rel-year">(2017)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- References This Document -->
-                <div class="relationship-section">
-                    <div class="relationship-header">Referenced By</div>
+                <div class="relationship-section references">
+                    <h5><span class="rel-icon">📋</span> Referenced By</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
-                            <span class="doc-number">#71-2002</span>
-                            <span class="doc-title">Gates Ordinance</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#71-2002</span>
+                                <span class="rel-title">Gates Ordinance</span>
+                                <span class="rel-year">(2002)</span>
+                            </a>
                         </li>
                         <li class="relationship-item">
-                            <span class="doc-number">#72-2002</span>
-                            <span class="doc-title">Penalties & Abatement</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#72-2002</span>
+                                <span class="rel-title">Penalties & Abatement</span>
+                                <span class="rel-year">(2002)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Interpretations -->
-                <div class="relationship-section">
-                    <div class="relationship-header">Interpretations</div>
+                <div class="relationship-section interpretations">
+                    <h5><span class="rel-icon">⚖️</span> Interpretations</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
-                            <span class="doc-number">2002-08-05</span>
-                            <span class="doc-title">Lots Partially in Floodplain</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">2002-08-05</span>
+                                <span class="rel-title">Lots Partially in Floodplain</span>
+                                <span class="rel-year">(Aug 2002)</span>
+                            </a>
+                        </li>
+                        <li class="relationship-item">
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">1998-03-02</span>
+                                <span class="rel-title">Section 5.080 Setbacks</span>
+                                <span class="rel-year">(Mar 1998)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Related Documents -->
-                <div class="relationship-section">
-                    <div class="relationship-header">Related Documents</div>
+                <div class="relationship-section related">
+                    <h5><span class="rel-icon">🔗</span> Related Documents</h5>
                     <ul class="relationship-list">
                         <li class="relationship-item">
-                            <span class="doc-number">#52-1987</span>
-                            <span class="doc-title">Flood Damage Prevention</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#52-1987</span>
+                                <span class="rel-title">Flood Damage Prevention</span>
+                                <span class="rel-year">(1987)</span>
+                            </a>
                         </li>
                         <li class="relationship-item">
-                            <span class="doc-number">#62-1998</span>
-                            <span class="doc-title">Flood & Land Development</span>
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#62-1998</span>
+                                <span class="rel-title">Flood & Land Development</span>
+                                <span class="rel-year">(1998)</span>
+                            </a>
+                        </li>
+                        <li class="relationship-item">
+                            <a href="#" class="rel-link">
+                                <span class="rel-number">#68-2000</span>
+                                <span class="rel-title">Metro Compliance</span>
+                                <span class="rel-year">(2000)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -571,6 +745,78 @@
                     break;
             }
         });
+        
+        // Action button functionality
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.textContent.trim();
+                
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Show feedback based on button type
+                if (text.includes('View Full Document')) {
+                    showNotification('📄 Opening full document...', 'info');
+                } else if (text.includes('Download PDF')) {
+                    showNotification('📥 Downloading PDF...', 'success');
+                } else if (text.includes('Copy Link')) {
+                    showNotification('🔗 Link copied to clipboard!', 'success');
+                    // Simulate copying to clipboard
+                    navigator.clipboard?.writeText(window.location.href);
+                } else if (text.includes('Search in Document')) {
+                    showNotification('🔍 Opening document search...', 'info');
+                }
+            });
+        });
+        
+        // Notification system
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                ${type === 'success' ? 'background: #10b981; color: white;' : 'background: #3b82f6; color: white;'}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        
+        // Add keyframes for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
         
         // Initial render
         renderList();
