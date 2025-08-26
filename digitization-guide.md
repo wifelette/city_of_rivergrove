@@ -16,22 +16,6 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 
 ---
 
-## Claude Code Session Startup Prompt
-
-When starting a new Claude Code session for this project, use this prompt:
-
-```
-Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and digitization-guide.md to understand the workflow and conventions. 
-
-Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
-
-Today I'll be working on: [specify which ordinances/resolutions/interpretations]
-```
-
-This ensures Claude Code has the proper context and picks up where the last session left off.
-
----
-
 ## Claude Desktop Workflow (Document Processing & Airtable)
 
 ### 1. Document Processing
@@ -181,6 +165,20 @@ After completing GitHub upload and URL updates:
 ---
 
 ## Claude Code Workflow (Repository Management)
+
+### Session Startup Prompt
+
+When starting a new Claude Code session for this project, use this prompt:
+
+```
+Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and digitization-guide.md to understand the workflow and conventions. 
+
+Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
+
+Today I'll be working on: [specify which ordinances/resolutions/interpretations]
+```
+
+This ensures Claude Code has the proper context and picks up where the last session left off.
 
 ### 1. File Organization & Naming Conventions
 
