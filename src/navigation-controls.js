@@ -49,6 +49,8 @@ class NavigationController {
             this.bindEvents();
             // Remove number prefixes again after enhancement
             this.removeNumberPrefixes();
+            // Apply initial view if there's an active button
+            this.updateSidebar();
             // Detect current document after a small delay to ensure DOM is ready
             setTimeout(() => {
                 this.detectCurrentDocument();
@@ -367,7 +369,7 @@ class NavigationController {
                 // Update sort order
                 this.sortOrder = newSortOrder;
                 
-                // Update the sidebar
+                // Re-apply current view with new sort order
                 this.updateSidebar();
             });
         });
@@ -419,35 +421,24 @@ class NavigationController {
     }
     
     updateSidebar() {
-        // Don't replace the sidebar - just reorder existing items
         const sidebar = document.querySelector('.chapter');
         if (!sidebar) return;
         
-        // Get all visible document items (already filtered to current section)
-        const items = Array.from(sidebar.querySelectorAll('li.chapter-item')).filter(li => {
+        // Get existing items and reorder them instead of replacing
+        const items = Array.from(sidebar.querySelectorAll('li.chapter-item:not(.grouped-item):not(.group-header)')).filter(li => {
             // Only get visible items with links
             if (li.style.display === 'none') return false;
             const link = li.querySelector('a[href*=".html"]');
             return link !== null;
         });
         
-        if (items.length === 0) {
-            // If no items found, try custom rendering (fallback)
-            const filtered = this.filterDocuments();
-            switch (this.currentView) {
-                case 'numerical':
-                    this.renderNumericalView(sidebar, filtered);
-                    break;
-                case 'chronological':
-                    this.renderChronologicalView(sidebar, filtered);
-                    break;
-                case 'topical':
-                    this.renderTopicalView(sidebar, filtered);
-                    break;
-            }
+        if (items.length > 0) {
+            // Apply the current view (grouping or reordering)
+            this.applyCurrentView(sidebar, items);
         } else {
-            // Reorder existing items based on sort order
-            this.reorderExistingItems(sidebar, items);
+            // Fallback to custom rendering only if no items found
+            const filtered = this.filterDocuments();
+            this.renderChronologicalView(sidebar, filtered);
         }
         
         // Update stats
@@ -456,6 +447,164 @@ class NavigationController {
         if (docCount) {
             docCount.textContent = visibleItems;
         }
+    }
+    
+    reorderExistingItemsByView(container, items) {
+        // For proper grouping, we need to use custom rendering
+        // Clear existing items and render with groups
+        const sidebar = document.querySelector('.chapter');
+        if (!sidebar) return;
+        
+        // Get the data from existing items to recreate with grouping
+        const itemData = items.map(item => {
+            const link = item.querySelector('a[href*=".html"]');
+            if (!link) return null;
+            
+            const text = link.textContent?.trim() || '';
+            const href = link.getAttribute('href') || '';
+            const numberMatch = text.match(/#?(\d+)/);
+            const number = numberMatch ? parseInt(numberMatch[1]) : 0;
+            const year = this.extractYear(href) || this.extractYear(text) || '0000';
+            
+            return {
+                text,
+                href,
+                number,
+                year,
+                element: item
+            };
+        }).filter(item => item !== null);
+        
+        // Clear the sidebar items
+        items.forEach(item => {
+            if (item.parentElement) {
+                item.remove();
+            }
+        });
+        
+        // Render groups based on view
+        this.renderGroupedView(sidebar, itemData);
+    }
+    
+    renderGroupedView(container, itemData) {
+        let html = '';
+        
+        if (this.currentView === 'numerical') {
+            // Group by number ranges (e.g., 1-20, 21-40, etc.)
+            const groups = {};
+            itemData.forEach(item => {
+                const rangeStart = Math.floor((item.number - 1) / 20) * 20 + 1;
+                const rangeEnd = rangeStart + 19;
+                const key = `${rangeStart}-${rangeEnd}`;
+                if (!groups[key]) groups[key] = [];
+                groups[key].push(item);
+            });
+            
+            Object.keys(groups).sort((a, b) => {
+                const aStart = parseInt(a.split('-')[0]);
+                const bStart = parseInt(b.split('-')[0]);
+                return aStart - bStart;
+            }).forEach(range => {
+                const items = groups[range].sort((a, b) => a.number - b.number);
+                html += `
+                    <li class="group-header">
+                        <div class="group-title">Numbers ${range}</div>
+                    </li>
+                `;
+                items.forEach(item => {
+                    html += `
+                        <li class="chapter-item grouped-item">
+                            <a href="${item.href}">${item.text}</a>
+                        </li>
+                    `;
+                });
+            });
+            
+        } else if (this.currentView === 'chronological') {
+            // Group by decades
+            const groups = {};
+            itemData.forEach(item => {
+                const year = parseInt(item.year);
+                const decade = Math.floor(year / 10) * 10;
+                const key = `${decade}s`;
+                if (!groups[key]) groups[key] = [];
+                groups[key].push(item);
+            });
+            
+            Object.keys(groups).sort().forEach(decade => {
+                const items = groups[decade].sort((a, b) => {
+                    if (this.sortOrder === 'asc') {
+                        return a.year.localeCompare(b.year);
+                    } else {
+                        return b.year.localeCompare(a.year);
+                    }
+                });
+                html += `
+                    <li class="group-header">
+                        <div class="group-title">${decade}</div>
+                    </li>
+                `;
+                items.forEach(item => {
+                    html += `
+                        <li class="chapter-item grouped-item">
+                            <a href="${item.href}">${item.text}</a>
+                        </li>
+                    `;
+                });
+            });
+            
+        } else if (this.currentView === 'topical') {
+            // Group by topics based on keywords
+            const groups = {};
+            itemData.forEach(item => {
+                let topic = 'General';
+                const text = item.text.toLowerCase();
+                
+                if (text.includes('park') || text.includes('recreation')) {
+                    topic = 'Parks & Recreation';
+                } else if (text.includes('water') || text.includes('sewer') || text.includes('utility')) {
+                    topic = 'Utilities';
+                } else if (text.includes('development') || text.includes('planning') || text.includes('zoning')) {
+                    topic = 'Development & Planning';
+                } else if (text.includes('flood') || text.includes('drainage')) {
+                    topic = 'Flood Management';
+                } else if (text.includes('fee') || text.includes('tax') || text.includes('budget')) {
+                    topic = 'Finance';
+                } else if (text.includes('building') || text.includes('construction')) {
+                    topic = 'Building & Construction';
+                }
+                
+                if (!groups[topic]) groups[topic] = [];
+                groups[topic].push(item);
+            });
+            
+            Object.keys(groups).sort().forEach(topic => {
+                const items = groups[topic].sort((a, b) => a.text.localeCompare(b.text));
+                html += `
+                    <li class="group-header">
+                        <div class="group-title">${topic} (${items.length})</div>
+                    </li>
+                `;
+                items.forEach(item => {
+                    html += `
+                        <li class="chapter-item grouped-item">
+                            <a href="${item.href}">${item.text}</a>
+                        </li>
+                    `;
+                });
+            });
+        }
+        
+        container.innerHTML = html;
+        
+        // Run number prefix removal on the new content
+        setTimeout(() => this.removeNumberPrefixes(), 50);
+    }
+    
+    refreshSidebar() {
+        // Force a page reload to restore the original sidebar state
+        console.log('Refreshing sidebar due to DOM corruption');
+        window.location.reload();
     }
     
     reorderExistingItems(container, items) {
@@ -526,6 +675,30 @@ class NavigationController {
         console.log(`Reordered ${itemsToSort.length} items in ${this.currentView} view, sort: ${this.sortOrder}`);
     }
     
+    applyCurrentView(sidebar, items) {
+        // Clear any existing grouping first
+        const existingGroups = sidebar.querySelectorAll('.group-header, .decade-header');
+        existingGroups.forEach(group => group.remove());
+        const groupedItems = sidebar.querySelectorAll('.grouped-item');
+        groupedItems.forEach(item => item.classList.remove('grouped-item'));
+        
+        // Apply view-specific logic
+        if (this.currentView === 'numerical' || this.currentView === 'topical') {
+            // For grouping views, extract data and render groups
+            this.reorderExistingItemsByView(sidebar, items);
+        } else if (this.currentView === 'chronological') {
+            // For chronological view, check if we need to group by decades
+            const activeBtn = document.querySelector('.nav-btn.active');
+            if (activeBtn && activeBtn.dataset.view === 'chronological' && this.currentSection === 'ordinances') {
+                // Apply decade grouping for ordinances chronological view
+                this.reorderExistingItemsByView(sidebar, items);
+            } else {
+                // Just reorder existing items
+                this.reorderExistingItems(sidebar, items);
+            }
+        }
+    }
+    
     extractYear(text) {
         if (!text) return null;
         // Try to find a 4-digit year
@@ -534,9 +707,21 @@ class NavigationController {
     }
     
     filterDocuments() {
-        if (!this.searchTerm) return this.documents;
+        // Start with documents from the current section
+        let sectionDocuments = this.documents.filter(doc => {
+            switch(this.currentSection) {
+                case 'ordinances': return doc.type === 'ordinance';
+                case 'resolutions': return doc.type === 'resolution';
+                case 'interpretations': return doc.type === 'interpretation';
+                case 'transcripts': return doc.type === 'transcript';
+                default: return true;
+            }
+        });
         
-        return this.documents.filter(doc => {
+        // Apply search filter if there's a search term
+        if (!this.searchTerm) return sectionDocuments;
+        
+        return sectionDocuments.filter(doc => {
             return (
                 (doc.id && doc.id.toLowerCase().includes(this.searchTerm)) ||
                 (doc.title && doc.title.toLowerCase().includes(this.searchTerm)) ||
@@ -548,19 +733,8 @@ class NavigationController {
     }
     
     renderNumericalView(container, documents) {
-        // Filter documents by current section
-        const sectionDocuments = documents.filter(doc => {
-            switch(this.currentSection) {
-                case 'ordinances': return doc.type === 'ordinance';
-                case 'resolutions': return doc.type === 'resolution';
-                case 'interpretations': return doc.type === 'interpretation';
-                case 'transcripts': return doc.type === 'transcript';
-                default: return true;
-            }
-        });
-        
         // Sort by document number
-        const sorted = sectionDocuments.sort((a, b) => {
+        const sorted = documents.sort((a, b) => {
             const numA = parseInt(a.id?.replace(/\D/g, '') || '0');
             const numB = parseInt(b.id?.replace(/\D/g, '') || '0');
             return numA - numB;
@@ -613,19 +787,8 @@ class NavigationController {
     }
     
     renderChronologicalView(container, documents) {
-        // Filter documents by current section
-        const sectionDocuments = documents.filter(doc => {
-            switch(this.currentSection) {
-                case 'ordinances': return doc.type === 'ordinance';
-                case 'resolutions': return doc.type === 'resolution';
-                case 'interpretations': return doc.type === 'interpretation';
-                case 'transcripts': return doc.type === 'transcript';
-                default: return true;
-            }
-        });
-        
         // Sort chronologically based on sortOrder
-        const sorted = sectionDocuments.sort((a, b) => {
+        const sorted = documents.sort((a, b) => {
             const aDate = a.year || a.date || '0000';
             const bDate = b.year || b.date || '0000';
             
@@ -652,10 +815,27 @@ class NavigationController {
             }
         });
         
-        // Group by topic
+        // Group by topic - use simple keyword-based classification
         const topics = {};
         sectionDocuments.forEach(doc => {
-            const topic = doc.topic || 'Other';
+            let topic = 'General';
+            const title = (doc.title || '').toLowerCase();
+            
+            // Simple topic classification
+            if (title.includes('park') || title.includes('recreation')) {
+                topic = 'Parks & Recreation';
+            } else if (title.includes('water') || title.includes('sewer') || title.includes('utility')) {
+                topic = 'Utilities';
+            } else if (title.includes('development') || title.includes('planning') || title.includes('zoning')) {
+                topic = 'Development & Planning';
+            } else if (title.includes('flood') || title.includes('drainage')) {
+                topic = 'Flood Management';
+            } else if (title.includes('fee') || title.includes('tax') || title.includes('budget')) {
+                topic = 'Finance';
+            } else if (title.includes('building') || title.includes('construction')) {
+                topic = 'Building & Construction';
+            }
+            
             if (!topics[topic]) topics[topic] = [];
             topics[topic].push(doc);
         });

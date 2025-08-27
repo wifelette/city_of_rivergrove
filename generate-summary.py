@@ -9,7 +9,61 @@ from pathlib import Path
 from datetime import datetime
 
 def extract_title_from_file(filepath):
-    """Extract a clean title from the markdown file."""
+    """Extract a clean, concise title from the markdown file or filename."""
+    # First try to get a short title from the filename
+    stem = Path(filepath).stem
+    
+    # Extract the topic from filename (e.g., "1974-Ord-#16-Parks" -> "Parks")
+    filename_match = re.search(r'-([^-]+)$', stem)
+    if filename_match:
+        topic = filename_match.group(1)
+        # Clean up the topic
+        topic = topic.replace('-', ' ').replace('_', ' ')
+        
+        # Handle special cases - be more descriptive
+        if 'WQRA' in topic:
+            return 'Water Quality Resource Area'
+        elif 'FEMA' in topic:
+            return 'FEMA Flood Map'
+        elif 'Land Development' in topic and 'Amendment' in topic:
+            return 'Land Development Amendment'
+        elif 'Land Development' in topic:
+            return 'Land Development'
+        elif 'Sewer' in topic:
+            return 'Sewer Services'
+        elif 'Metro Compliance' in topic:
+            return 'Metro Compliance'
+        elif 'Title 3' in topic:
+            return 'Title 3 Compliance'
+        elif 'Gates' in topic:
+            return 'Gates Ordinance'
+        elif 'Penalties' in topic:
+            return 'Penalties & Abatement'
+        elif 'Conditional Use' in topic:
+            return 'Conditional Use'
+        elif 'Tree Cutting' in topic:
+            return 'Tree Cutting'
+        elif 'Sign' in topic:
+            return 'Sign Ordinance'
+        elif 'Docks' in topic:
+            return 'Docks Amendment'
+        elif 'Parks' in topic:
+            return 'Parks Advisory'
+        elif 'Flood' in topic and 'Amendment' in stem:
+            return 'Flood & Land Development'
+        elif 'Flood' in topic:
+            return 'Flood Prevention'
+        elif 'Manufactured' in topic:
+            return 'Manufactured Homes'
+        elif 'Municipal Services' in topic:
+            return 'Municipal Services'
+        elif 'PC' in topic or 'Planning' in topic:
+            return 'Planning Commission'
+        else:
+            # Return cleaned topic title
+            return topic.title()
+    
+    # Fall back to extracting from file content
     try:
         content = filepath.read_text(encoding='utf-8')
         
@@ -17,37 +71,23 @@ def extract_title_from_file(filepath):
         subject_match = re.search(r'^###?\s+AN?\s+(ORDINANCE|RESOLUTION)\s+(.+)$', content, re.MULTILINE | re.IGNORECASE)
         if subject_match:
             title = subject_match.group(2).strip()
-            # Clean up common patterns
+            # Keep titles very short
             title = re.sub(r'^(ESTABLISHING|CREATING|AMENDING|ADOPTING|PROVIDING|DEFINING|RELATING TO)\s+', '', title, flags=re.IGNORECASE)
-            # Remove "THE CITY OF..." prefix if present
-            title = re.sub(r'^THE CITY OF.+?\s+(ORDINANCE|CODE)', '', title, flags=re.IGNORECASE)
-            # Remove any markdown links
-            title = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', title)
-            # Remove extra text after "as follows:" or similar
-            title = re.sub(r'\s+(as follows|by substituting).+$', '', title, flags=re.IGNORECASE)
-            return title.title()
-        
-        # Otherwise look for any heading that's not just a number or "EXHIBIT"
-        headings = re.findall(r'^###?\s+(.+)$', content, re.MULTILINE)
-        for heading in headings:
-            heading = heading.strip()
-            # Skip exhibit labels, numbers, and ordinance/resolution numbers
-            if re.match(r'^(EXHIBIT|ORDINANCE|RESOLUTION|#)', heading, re.IGNORECASE):
-                continue
-            if re.match(r'^\d+', heading):
-                continue
-            # This looks like a real title
-            return heading.title()
+            # Truncate at first comma or "AND"
+            title = re.sub(r'\s+(,|AND|TO).+$', '', title, flags=re.IGNORECASE)
+            # Remove articles
+            title = re.sub(r'^(THE|A|AN)\s+', '', title, flags=re.IGNORECASE)
+            # Keep it short
+            words = title.split()[:3]  # Max 3 words
+            return ' '.join(words).title()
     except:
         pass
     
-    # Fall back to filename-based title
+    # Ultimate fallback
     name = filepath.stem
-    # Remove date prefix and doc type prefix
-    name = re.sub(r'^\d{4}-\d{2}-\d{2}-RE-', '', name)
     name = re.sub(r'^\d{4}-(Ord|Res)-#?\d+[-\w]*-', '', name)
     name = name.replace('-', ' ').replace('_', ' ')
-    return name.title()
+    return name.title()[:20]  # Limit to 20 characters
 
 def parse_document_name(filename):
     """Parse a document filename to extract year, number, and title."""
@@ -115,10 +155,13 @@ def generate_summary():
                 title = doc['title'] or doc['full_title']
                 
                 # Style E format: #70 - WQRA (Year)
-                # Use the extracted title from the file content if available
+                # Clean up the display number - remove duplicates
+                clean_num = re.sub(r'^#(\d+)-.+', r'#\1', num) if num else ""
+                
+                # Use the extracted title
                 clean_title = doc['full_title'] if doc['full_title'] else title
-                if num:
-                    display = f"{num} - {clean_title} ({year})"
+                if clean_num:
+                    display = f"{clean_num} - {clean_title} ({year})"
                 else:
                     display = f"{clean_title} ({year})"
                 
@@ -143,9 +186,12 @@ def generate_summary():
                 title = doc['title'] or doc['full_title']
                 
                 # Style E format
+                # Clean up the display number - remove duplicates
+                clean_num = re.sub(r'^#(\d+)-.+', r'#\1', num) if num else ""
+                
                 clean_title = doc['full_title'] if doc['full_title'] else title
-                if num:
-                    display = f"{num} - {clean_title} ({year})"
+                if clean_num:
+                    display = f"{clean_num} - {clean_title} ({year})"
                 else:
                     display = f"{clean_title} ({year})"
                 

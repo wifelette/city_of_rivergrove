@@ -9,13 +9,13 @@
 
 Section 1. The officer responsible for disbursing funds to cities under ORS 323.455, 366.785 to 366.820 and 471.805 shall, in the case of a city located within a county having more than 100,000 inhabitants according to the most recent federal decennial census, disburse such funds only if the city provides four or more of the following services:
 
-(1) Police protection
-(2) Fire protection
-(3) Street construction, maintenance and lighting
-(4) Sanitary sewer
-(5) Storm sewers
-(6) Planning, zoning and subdivision control
-(7) One or more utility services
+1. Police protection
+2. Fire protection
+3. Street construction, maintenance and lighting
+4. Sanitary sewer
+5. Storm sewers
+6. Planning, zoning and subdivision control
+7. One or more utility services
 
 and
 
@@ -38,13 +38,13 @@ Attest:
 [Signature]
 Virginia [Illegible], Recorder
 
-IRD:05/15/84  
-DS:nl:0026f
-
-## Handwritten notations, floating form fields and stamps
+## Handwritten notations, floating form fields, document footer artifacts and stamps
 
 **Return to:** Executive Department  
 Intergovernmental Relations Division  
 ATTN: Dolores Streeter  
 155 Cottage St. NE  
 Salem, OR 97310
+
+IRD:05/15/84  
+DS:nl:0026f

@@ -5,11 +5,28 @@ Quick reference for starting new Claude sessions on the Rivergrove digitization 
 ## Claude Code Startup
 
 ```
-Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and digitization-guide.md to understand the workflow and conventions. 
+Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and digitization-guide.md to understand the workflow and conventions.
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
 Today I'll be working on: [specify which ordinances/resolutions/interpretations]
+
+Current State:
+  - Navigation enhancement script (navigation-working.js) has clean title
+  abbreviation code
+  - Script is running but titles need correct format detection
+  - Check browser console for "Processing:" logs to see actual title format
+
+  Next Steps:
+  1. Debug why titles aren't being parsed (check console logs)
+  2. Continue navigation enhancement from Issue #10
+  3. Implement right panel for document relationships
+  4. Complete view controls (Numerical/Chronological/Topical)
+
+  Key Files:
+  - /navigation-working.js - Main navigation enhancement
+  - /book/navigation-controls.js - Live version in mdBook
+  - Issue #10 tracks remaining navigation work
 ```
 
 ## Claude Desktop Startup

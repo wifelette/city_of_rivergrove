@@ -60,7 +60,7 @@
       "date": null,
       "year": "1989",
       "section": null,
-      "title": "TABLE OF CONTENTS",
+      "title": "1989-Ord-#54-89-C-Land-Development",
       "file": "1989-Ord-#54-89-C-Land-Development.md"
     },
     "ordinance-59-97A-Land-Development-Amendment": {
@@ -78,7 +78,7 @@
       "date": null,
       "year": "1993",
       "section": null,
-      "title": "Document Notes",
+      "title": "1993-Ord-#57-93-Manufactured-Homes",
       "file": "1993-Ord-#57-93-Manufactured-Homes.md"
     },
     "ordinance-61-98-Land-Development-Amendment": {
@@ -132,7 +132,7 @@
       "date": null,
       "year": "1987",
       "section": null,
-      "title": "FLOOD DAMAGE PREVENTION ORDINANCE",
+      "title": "1987-Ord-#52-Flood",
       "file": "1987-Ord-#52-Flood.md"
     },
     "ordinance-69-2000-Title-3-Compliance-STUB": {
@@ -170,6 +170,15 @@
       "section": null,
       "title": "AN ORDINANCE ESTABLISHING A PARK ADVISORY COUNCIL",
       "file": "1974-Ord-#16-Parks.md"
+    },
+    "resolution-259-Planning-Development-Fees": {
+      "type": "resolution",
+      "id": "259-Planning-Development-Fees",
+      "date": null,
+      "year": "2018",
+      "section": null,
+      "title": "A RESOLUTION MODIFYING THE POLICY FOR ASSESSING THE MANAGEMENT AND ADMINISTRATIVE COSTS INCURRED BY THE CITY IN PROCESSING DEVELOPMENT AND TREE REMOVAL PERMITS",
+      "file": "2018-Res-#259-Planning-Development-Fees.md"
     },
     "resolution-22-PC": {
       "type": "resolution",
@@ -301,21 +310,23 @@
   "relationships": {
     "ordinance-76-2008-FEMA-Flood-Map": {
       "references": [
-        "76-2008",
-        "70-2001",
         "54-89",
+        "70-2001",
         "62-98",
+        "76-2008",
         "52"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.020",
-        "3.2"
+        "3.2",
+        "5.020"
       ],
       "amends": [],
       "related": [
         "ordinance-74-2004-Tree-Cutting-Amendment",
+        "ordinance-54-89-C-Land-Development",
         "ordinance-59-97A-Land-Development-Amendment",
+        "resolution-259-Planning-Development-Fees",
         "interpretation-2004-10-11"
       ]
     },
@@ -326,8 +337,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.130",
-        "6.135"
+        "6.135",
+        "5.130"
       ],
       "amends": [],
       "related": [
@@ -339,9 +350,9 @@
     },
     "ordinance-74-2004-Tree-Cutting-Amendment": {
       "references": [
-        "74-2004",
+        "54-89",
         "70-2001",
-        "54-89"
+        "74-2004"
       ],
       "resolutions": [],
       "interpretations": [
@@ -350,19 +361,21 @@
       "amends": [],
       "related": [
         "ordinance-76-2008-FEMA-Flood-Map",
+        "ordinance-54-89-C-Land-Development",
         "ordinance-59-97A-Land-Development-Amendment",
+        "resolution-259-Planning-Development-Fees",
         "interpretation-2004-10-11"
       ]
     },
     "ordinance-88-2017-Docks": {
       "references": [
-        "70-2001",
-        "88-2017"
+        "88-2017",
+        "70-2001"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.060",
-        "5.050"
+        "5.050",
+        "5.060"
       ],
       "amends": [],
       "related": [
@@ -384,14 +397,14 @@
     "ordinance-62-98-Flood-and-Land-Development-Amendment": {
       "references": [
         "62-98",
-        "54-89",
-        "52"
+        "52",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
         "5.24",
-        "5.050",
-        "5.055"
+        "5.055",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -401,155 +414,17 @@
         "resolution-22-PC"
       ]
     },
-    "ordinance-54-89-C-Land-Development": {
-      "references": [
-        "54-89",
-        "52"
-      ],
-      "resolutions": [],
-      "interpretations": [
-        "4.080",
-        "5.030",
-        "8.130",
-        "4.120",
-        "4.030",
-        "6.160",
-        "6.227",
-        "2.030",
-        "1.010",
-        "8.170",
-        "5.120",
-        "2.070",
-        "4.040",
-        "6.030",
-        "3.020",
-        "9.020",
-        "6.020",
-        "6.010",
-        "6.229",
-        "4.060",
-        "5.060",
-        "6.120",
-        "6.150",
-        "6.226",
-        "9.010",
-        "3.070",
-        "6.060",
-        "5.010",
-        "4.050",
-        "2.020",
-        "4.100",
-        "6.050",
-        "6.224",
-        "8.090",
-        "2.040",
-        "4.020",
-        "6.090",
-        "6.190",
-        "8.190",
-        "1.040",
-        "5.070",
-        "8.020",
-        "6.235",
-        "5.050",
-        "6.140",
-        "8.080",
-        "6.080",
-        "5.080",
-        "3.030",
-        "4.110",
-        "5.020",
-        "8.10",
-        "4.010",
-        "6.222",
-        "6.231",
-        "8.150",
-        "8.070",
-        "5.110",
-        "6.070",
-        "8.210",
-        "8.200",
-        "5.090",
-        "2.060",
-        "2.010",
-        "6.234",
-        "8.120",
-        "6.228",
-        "8.050",
-        "5.100",
-        "6.210",
-        "3.060",
-        "8.110",
-        "8.180",
-        "8.160",
-        "6.220",
-        "3.080",
-        "9.030",
-        "6.230",
-        "6.225",
-        "8.100",
-        "1.030",
-        "8.030",
-        "2.080",
-        "4.070",
-        "6.130",
-        "6.100",
-        "3.040",
-        "6.170",
-        "4.090",
-        "3.010",
-        "6.221",
-        "2.090",
-        "6.236",
-        "8.040",
-        "6.200",
-        "6.232",
-        "6.040",
-        "8.140",
-        "6.233",
-        "3.090",
-        "3.050",
-        "2.050",
-        "8.060",
-        "1.020",
-        "1.050",
-        "6.110",
-        "6.223",
-        "6.180"
-      ],
-      "amends": [],
-      "related": [
-        "ordinance-57-93-Manufactured-Homes",
-        "ordinance-61-98-Land-Development-Amendment",
-        "ordinance-81-2011-Sign",
-        "ordinance-69-2000-Title-3-Compliance-STUB",
-        "ordinance-68-2000-Metro-Compliance",
-        "ordinance-70-2001-WQRA",
-        "resolution-72-Municipal-Services",
-        "interpretation-2001-05-07",
-        "interpretation-1997-07-07",
-        "interpretation-1997-09-08",
-        "interpretation-2005-04-04",
-        "interpretation-1998-07-06",
-        "interpretation-1997-11-03",
-        "interpretation-2002-09-05",
-        "interpretation-1998-06-01",
-        "interpretation-2002-08-05",
-        "interpretation-2008-02-04",
-        "interpretation-1998-03-02"
-      ]
-    },
     "ordinance-59-97A-Land-Development-Amendment": {
       "references": [
-        "54-89",
-        "59-97A"
+        "59-97A",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
         "3.020",
-        "5.010",
+        "5.050",
         "2.040",
-        "5.050"
+        "5.010"
       ],
       "amends": [
         "54-89"
@@ -557,41 +432,15 @@
       "related": [
         "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-74-2004-Tree-Cutting-Amendment",
-        "interpretation-2004-10-11"
-      ]
-    },
-    "ordinance-57-93-Manufactured-Homes": {
-      "references": [
-        "57-93"
-      ],
-      "resolutions": [],
-      "interpretations": [],
-      "amends": [],
-      "related": [
         "ordinance-54-89-C-Land-Development",
-        "ordinance-61-98-Land-Development-Amendment",
-        "ordinance-81-2011-Sign",
-        "ordinance-69-2000-Title-3-Compliance-STUB",
-        "ordinance-68-2000-Metro-Compliance",
-        "ordinance-70-2001-WQRA",
-        "resolution-72-Municipal-Services",
-        "interpretation-2001-05-07",
-        "interpretation-1997-07-07",
-        "interpretation-1997-09-08",
-        "interpretation-2005-04-04",
-        "interpretation-1998-07-06",
-        "interpretation-1997-11-03",
-        "interpretation-2002-09-05",
-        "interpretation-1998-06-01",
-        "interpretation-2002-08-05",
-        "interpretation-2008-02-04",
-        "interpretation-1998-03-02"
+        "resolution-259-Planning-Development-Fees",
+        "interpretation-2004-10-11"
       ]
     },
     "ordinance-61-98-Land-Development-Amendment": {
       "references": [
-        "54-89",
-        "61-98"
+        "61-98",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
@@ -600,7 +449,6 @@
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
@@ -622,9 +470,9 @@
     },
     "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
       "references": [
-        "72-2002",
         "54-89",
-        "59-97A"
+        "59-97A",
+        "72-2002"
       ],
       "resolutions": [],
       "interpretations": [
@@ -648,15 +496,15 @@
     },
     "ordinance-73-2003A-Conditional-Use-Provisions": {
       "references": [
-        "73-2003A",
         "54-89",
-        "59-97A"
+        "59-97A",
+        "73-2003A"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.300",
         "6.236",
-        "5.050"
+        "5.050",
+        "6.300"
       ],
       "amends": [],
       "related": [
@@ -664,26 +512,6 @@
         "ordinance-62-98-Flood-and-Land-Development-Amendment",
         "ordinance-72-2002-Penalties-and-Abatement-Amendment",
         "resolution-22-PC"
-      ]
-    },
-    "ordinance-52-Flood": {
-      "references": [
-        "52"
-      ],
-      "resolutions": [],
-      "interpretations": [
-        "5.1",
-        "4.3",
-        "4.4",
-        "4.1",
-        "5.3",
-        "5.2",
-        "5.0",
-        "3.2"
-      ],
-      "amends": [],
-      "related": [
-        "ordinance-88-2017-Docks"
       ]
     },
     "ordinance-69-2000-Title-3-Compliance-STUB": {
@@ -697,7 +525,6 @@
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -719,21 +546,20 @@
     },
     "ordinance-68-2000-Metro-Compliance": {
       "references": [
-        "54-89",
-        "68-2000"
+        "68-2000",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.080",
-        "5.095",
-        "1.0",
         "2.0",
         "5.075",
-        "6.060"
+        "6.060",
+        "6.080",
+        "1.0",
+        "5.095"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -761,7 +587,6 @@
       "interpretations": [],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -779,6 +604,25 @@
         "interpretation-2002-08-05",
         "interpretation-2008-02-04",
         "interpretation-1998-03-02"
+      ]
+    },
+    "resolution-259-Planning-Development-Fees": {
+      "references": [
+        "54-89"
+      ],
+      "resolutions": [
+        "259-2018"
+      ],
+      "interpretations": [
+        "9.030"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-76-2008-FEMA-Flood-Map",
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "ordinance-54-89-C-Land-Development",
+        "ordinance-59-97A-Land-Development-Amendment",
+        "interpretation-2004-10-11"
       ]
     },
     "resolution-22-PC": {
@@ -803,7 +647,6 @@
       "interpretations": [],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -830,12 +673,11 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.2",
-        "3.090"
+        "3.090",
+        "5.2"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -859,12 +701,11 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "2.040"
+        "2.040",
+        "3.090"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -888,13 +729,12 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "9.030",
+        "4.050",
         "3.090",
-        "4.050"
+        "9.030"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -918,14 +758,13 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
+        "3.0920",
         "4.020",
         "3.090",
-        "3.0920",
         "6.050"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -956,7 +795,9 @@
       "related": [
         "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-74-2004-Tree-Cutting-Amendment",
-        "ordinance-59-97A-Land-Development-Amendment"
+        "ordinance-54-89-C-Land-Development",
+        "ordinance-59-97A-Land-Development-Amendment",
+        "resolution-259-Planning-Development-Fees"
       ]
     },
     "interpretation-1998-07-06": {
@@ -964,13 +805,12 @@
       "resolutions": [],
       "interpretations": [
         "5.080",
+        "1.040",
         "41.060",
-        "3.090",
-        "1.040"
+        "3.090"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -994,12 +834,11 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "9.030",
-        "3.090"
+        "3.090",
+        "9.030"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1025,12 +864,11 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.010",
-        "3.090"
+        "3.090",
+        "5.010"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1055,13 +893,12 @@
       "resolutions": [],
       "interpretations": [
         "5.080",
+        "1.040",
         "41.060",
-        "3.090",
-        "1.040"
+        "3.090"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1087,12 +924,11 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.010",
-        "3.090"
+        "3.090",
+        "5.010"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1116,12 +952,11 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.075"
+        "5.075",
+        "3.090"
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1151,7 +986,6 @@
       ],
       "amends": [],
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-81-2011-Sign",
@@ -1179,7 +1013,22 @@
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-72-2002-Penalties-and-Abatement-Amendment",
         "ordinance-73-2003A-Conditional-Use-Provisions",
-        "ordinance-68-2000-Metro-Compliance"
+        "ordinance-68-2000-Metro-Compliance",
+        "resolution-259-Planning-Development-Fees"
+      ]
+    },
+    "ordinance-54-89-C-Land-Development": {
+      "related": [
+        "ordinance-76-2008-FEMA-Flood-Map",
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "ordinance-59-97A-Land-Development-Amendment",
+        "resolution-259-Planning-Development-Fees",
+        "interpretation-2004-10-11"
+      ]
+    },
+    "ordinance-52-Flood": {
+      "related": [
+        "ordinance-88-2017-Docks"
       ]
     },
     "ordinance-16-Parks": {
@@ -1187,9 +1036,29 @@
         "ordinance-28-Parks"
       ]
     },
+    "ordinance-57-93-Manufactured-Homes": {
+      "related": [
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
     "ordinance-81-2011-Sign": {
       "related": [
-        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
         "ordinance-69-2000-Title-3-Compliance-STUB",
@@ -1214,7 +1083,9 @@
     "land_development": [
       "ordinance-76-2008-FEMA-Flood-Map",
       "ordinance-74-2004-Tree-Cutting-Amendment",
+      "ordinance-54-89-C-Land-Development",
       "ordinance-59-97A-Land-Development-Amendment",
+      "resolution-259-Planning-Development-Fees",
       "interpretation-2004-10-11"
     ],
     "waterfront": [
@@ -1233,7 +1104,6 @@
       "ordinance-16-Parks"
     ],
     "general": [
-      "ordinance-54-89-C-Land-Development",
       "ordinance-57-93-Manufactured-Homes",
       "ordinance-61-98-Land-Development-Amendment",
       "ordinance-81-2011-Sign",
@@ -1259,7 +1129,7 @@
   },
   "metadata": {
     "generated": "1756245104.954725",
-    "total_documents": 33,
-    "total_relationships": 34
+    "total_documents": 34,
+    "total_relationships": 35
   }
 }
