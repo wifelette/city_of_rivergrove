@@ -566,10 +566,12 @@ blockquote {
     transition: all 0.2s ease;
     border: 1px solid transparent !important;
     position: relative;
-    background: white !important;
+    background: transparent !important;
     line-height: 1.5 !important;
     text-decoration: none !important;
     color: inherit !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 /* Fix mdBook section headers (Ordinances, Resolutions, etc) */
@@ -625,7 +627,7 @@ blockquote {
     color: #333 !important;
 }
 
-.chapter li.chapter-item a.doc-link:hover {
+.chapter li:not(.selected):not(.active) a.doc-link:hover {
     background: #f8f9fa !important;
     border-color: #e9ecef !important;
     transform: translateY(-1px);
@@ -638,27 +640,46 @@ blockquote {
     box-shadow: none !important;
 }
 
-.chapter li.active,
+/* Selected/active state for sidebar items */
 .chapter li.selected,
-.chapter li a.active,
-.chapter li a.selected {
+.chapter li.active {
+    position: relative;
+    background: transparent !important;
+}
+
+.chapter li.selected > a,
+.chapter li.active > a,
+.chapter li a.selected,
+.chapter li a.active {
     background: #e7f1ff !important;
     border-left: 3px solid #0969da !important;
-    padding-left: 7px !important;
+    margin-left: -10px !important;
+    padding-left: 17px !important;
+    margin-right: -10px !important;
+    padding-right: 10px !important;
     box-shadow: 0 1px 3px rgba(9, 105, 218, 0.1);
     font-weight: 500;
 }
 
-.chapter li.active:hover,
-.chapter li.selected:hover {
-    transform: none;
+/* Hover state for selected items */
+.chapter li.selected > a:hover,
+.chapter li.active > a:hover {
+    background: #dae9ff !important;
+    transform: none !important;
+}
+
+/* Hover for non-selected items */
+.chapter li:not(.selected):not(.active) a:hover {
+    background: #f8f9fa !important;
+    border-color: #e9ecef !important;
 }
 
 /* Selected state for grouped items */
-.chapter li.grouped-item.selected a,
-.chapter li.grouped-item.active a {
-    background: #e7f1ff !important;
+.chapter li.grouped-item.selected > a,
+.chapter li.grouped-item.active > a {
+    margin-left: 0 !important;
     padding-left: 7px !important;
+    margin-right: 0 !important;
 }
 
 .doc-link {
