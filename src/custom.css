@@ -566,7 +566,7 @@ blockquote {
     transition: all 0.2s ease;
     border: 1px solid transparent !important;
     position: relative;
-    background: transparent !important;
+    background: transparent;
     line-height: 1.5 !important;
     text-decoration: none !important;
     color: inherit !important;
@@ -644,13 +644,14 @@ blockquote {
 .chapter li.selected,
 .chapter li.active {
     position: relative;
-    background: transparent !important;
 }
 
 .chapter li.selected > a,
 .chapter li.active > a,
 .chapter li a.selected,
-.chapter li a.active {
+.chapter li a.active,
+.chapter li.selected a.doc-link,
+.chapter li.active a.doc-link {
     background: #e7f1ff !important;
     border-left: 3px solid #0969da !important;
     margin-left: -10px !important;
@@ -663,7 +664,9 @@ blockquote {
 
 /* Hover state for selected items */
 .chapter li.selected > a:hover,
-.chapter li.active > a:hover {
+.chapter li.active > a:hover,
+.chapter li.selected a.doc-link:hover,
+.chapter li.active a.doc-link:hover {
     background: #dae9ff !important;
     transform: none !important;
 }
