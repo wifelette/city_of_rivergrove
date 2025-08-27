@@ -11,7 +11,7 @@ class NavigationController {
         this.currentView = 'chronological';  // Default to chronological like mockup
         this.searchTerm = '';
         this.currentDocument = null;
-        this.sortOrder = 'desc';  // 'desc' for newest first, 'asc' for oldest first
+        this.sortOrder = 'asc';  // 'asc' for oldest first (default), 'desc' for newest first
         
         // Wait for DOM to be fully ready
         if (document.readyState === 'loading') {
@@ -465,6 +465,10 @@ class NavigationController {
         const sidebar = document.querySelector('.chapter');
         if (!sidebar) return;
         
+        // Store current scroll position
+        const scrollbox = document.querySelector('.sidebar-scrollbox');
+        const scrollPos = scrollbox?.scrollTop || 0;
+        
         // Get the data from existing items to recreate with grouping
         const itemData = items.map(item => {
             const link = item.querySelector('a[href*=".html"]');
@@ -494,6 +498,11 @@ class NavigationController {
         
         // Render groups based on view
         this.renderGroupedView(sidebar, itemData);
+        
+        // Restore scroll position
+        if (scrollbox) {
+            scrollbox.scrollTop = scrollPos;
+        }
     }
     
     renderGroupedView(container, itemData) {
