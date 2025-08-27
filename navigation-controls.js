@@ -1,632 +1,624 @@
 /**
- * Enhanced Navigation Controls for City of Rivergrove mdBook
- * Adds search, filtering, and view controls to the sidebar
- * Also implements the right panel for document relationships
+ * Working Navigation Enhancement for mdBook
+ * Reorganizes existing elements without breaking mdBook
  */
 
-class NavigationController {
+class NavigationEnhancer {
     constructor() {
-        this.documents = [];
-        this.relationships = {};
         this.currentView = 'chronological';
         this.currentOrder = 'asc';
-        this.searchTerm = '';
-        this.currentDocument = null;
-        this.leftPanelWidth = localStorage.getItem('leftPanelWidth') || '350';
-        this.rightPanelWidth = localStorage.getItem('rightPanelWidth') || '300';
-        
+        this.allOrdinanceItems = [];
+        this.originalOrder = [];
         this.init();
     }
     
-    async init() {
-        // Load relationships data
-        try {
-            // Try different paths for relationships.json
-            let response = await fetch('/relationships.json');
-            if (!response.ok) {
-                response = await fetch('./relationships.json');
-            }
-            if (!response.ok) {
-                response = await fetch('../relationships.json');
-            }
-            
-            const data = await response.json();
-            this.documents = Object.values(data.documents);
-            this.relationships = data.relationships;
-            this.topics = data.topics;
-            console.log('NavigationController: Loaded', this.documents.length, 'documents');
-        } catch (error) {
-            console.warn('NavigationController: Could not load relationships.json:', error);
-            // Fallback - try to parse from existing sidebar
-            this.parseExistingSidebar();
-        }
+    init() {
+        console.log('NavigationEnhancer: Initializing...');
         
-        // Initialize navigation enhancement
-        this.enhanceSidebar();
-        this.addRightPanel();
-        this.bindEvents();
-        this.detectCurrentDocument();
+        // Store all ordinance items
+        this.collectOrdinanceItems();
+        
+        // Add controls
+        this.addControls();
+        
+        // Hide other sections initially
+        this.hideOtherSections();
     }
     
-    parseExistingSidebar() {
-        // Parse documents from existing sidebar if relationships.json fails
-        this.documents = [];
+    createCleanTitle(id, title, year) {
+        // Truncate long titles while preserving key information
+        let cleanTitle = title;
         
-        // Wait a moment for mdBook to populate
-        setTimeout(() => {
-            const links = document.querySelectorAll('ol.chapter a[href*="ordinances/"]');
-            links.forEach(link => {
+        // Common abbreviations for space saving
+        cleanTitle = cleanTitle.replace(/Amendment/g, 'Amend')
+                              .replace(/Development/g, 'Dev')
+                              .replace(/Management/g, 'Mgmt')
+                              .replace(/Standards?/g, 'Std')
+                              .replace(/Requirements?/g, 'Req')
+                              .replace(/Provisions?/g, 'Prov')
+                              .replace(/Ordinance/g, 'Ord')
+                              .replace(/Water Quality Resource Area/g, 'WQRA')
+                              .replace(/Municipal/g, 'Muni')
+                              .replace(/Services?/g, 'Svc');
+        
+        // If still too long, truncate intelligently
+        if (cleanTitle.length > 35) {
+            // Try to cut at word boundaries
+            if (cleanTitle.length > 45) {
+                cleanTitle = cleanTitle.substring(0, 32) + '...';
+            } else {
+                // Find last space before 35 chars and cut there
+                const cutPoint = cleanTitle.substring(0, 35).lastIndexOf(' ');
+                if (cutPoint > 20) {
+                    cleanTitle = cleanTitle.substring(0, cutPoint) + '...';
+                }
+            }
+        }
+        
+        return `#${id} - ${cleanTitle} (${year})`;
+    }
+    
+    collectOrdinanceItems() {
+        // Find all ordinance list items
+        const items = document.querySelectorAll('ol.chapter > li.chapter-item');
+        
+        items.forEach(item => {
+            const link = item.querySelector('a');
+            if (link && link.href.includes('ordinances/')) {
+                // Parse the ordinance info
                 const text = link.textContent;
                 const match = text.match(/#(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
+                
                 if (match) {
-                    this.documents.push({
+                    const cleanTitle = this.createCleanTitle(match[1], match[2], match[3]);
+                    
+                    this.allOrdinanceItems.push({
+                        element: item,
                         id: match[1],
                         title: match[2],
                         year: match[3],
-                        file: link.getAttribute('href'),
-                        type: 'ordinance'
+                        number: parseInt(match[1]) || 0,
+                        link: link,
+                        cleanTitle: cleanTitle
                     });
+                    
+                    // Update the display immediately
+                    link.textContent = cleanTitle;
                 }
-            });
-            console.log('NavigationController: Parsed', this.documents.length, 'documents from sidebar');
-            
-            // Update sidebar with parsed documents
-            if (this.documents.length > 0) {
-                this.updateSidebar();
             }
-        }, 1000);
+        });
+        
+        // Store original order
+        this.originalOrder = [...this.allOrdinanceItems];
+        
+        console.log(`NavigationEnhancer: Found ${this.allOrdinanceItems.length} ordinances`);
     }
     
-    enhanceSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        const sidebarScrollbox = document.querySelector('mdbook-sidebar-scrollbox');
-        if (!sidebar || !sidebarScrollbox) {
-            console.warn('NavigationController: Sidebar elements not found');
+    addControls() {
+        const scrollbox = document.querySelector('mdbook-sidebar-scrollbox');
+        if (!scrollbox) {
+            console.error('NavigationEnhancer: Could not find scrollbox');
             return;
         }
         
-        // Create enhanced header
-        const header = document.createElement('div');
-        header.className = 'nav-header-enhanced';
-        header.innerHTML = `
-            <div class="header-top">
-                <div class="sidebar-title">Ordinances</div>
-                <div class="order-icons">
-                    <button class="order-icon active" data-order="asc" title="Oldest First">▲</button>
-                    <button class="order-icon" data-order="desc" title="Newest First">▼</button>
+        // Create control panel
+        const controls = document.createElement('div');
+        controls.className = 'nav-controls-panel';
+        controls.innerHTML = `
+            <div class="nav-header">
+                <div class="header-row">
+                    <div class="nav-title">Ordinances</div>
+                    <div class="order-icons">
+                        <button class="order-icon active" data-order="asc" title="Oldest First">▲</button>
+                        <button class="order-icon" data-order="desc" title="Newest First">▼</button>
+                    </div>
                 </div>
             </div>
-            <div class="nav-search-container">
-                <input type="text" 
-                       class="nav-search" 
-                       placeholder="Search ordinances..." 
-                       id="navSearch">
+            <div class="nav-search-box">
+                <input type="text" id="ordSearch" placeholder="Search ordinances..." />
             </div>
-            <div class="nav-controls">
+            <div class="nav-controls-section">
                 <div class="control-label">View</div>
-                <div class="view-buttons">
-                    <button class="nav-btn" data-view="numerical" title="Organized by ordinance number ranges">Numerical</button>
-                    <button class="nav-btn active" data-view="chronological" title="Grouped by decade with historical ordering">Chronological</button>
-                    <button class="nav-btn" data-view="topical" title="Grouped by subject matter">Topical</button>
+                <div class="nav-view-buttons">
+                    <button class="view-btn" data-view="numerical" title="Organized by ordinance number ranges">Numerical</button>
+                    <button class="view-btn active" data-view="chronological" title="Grouped by decade with historical ordering">Chronological</button>
+                    <button class="view-btn" data-view="topical" title="Grouped by subject matter">Topical</button>
                 </div>
             </div>
-            <div class="nav-stats" id="navStats">
-                Showing <span id="docCount">${this.documents.length}</span> of <span id="totalCount">${this.documents.length}</span> ordinances
+            <div class="nav-stats">
+                Showing <span id="visibleCount">${this.allOrdinanceItems.length}</span> of <span id="totalCount">${this.allOrdinanceItems.length}</span> ordinances
             </div>
         `;
         
-        // Insert header before the sidebar scrollbox
-        sidebarScrollbox.parentNode.insertBefore(header, sidebarScrollbox);
-    }
-    
-    addRightPanel() {
-        const contentWrapper = document.querySelector('#content');
-        if (!contentWrapper) return;
-        
-        // Create right panel
-        const rightPanel = document.createElement('div');
-        rightPanel.className = 'right-panel';
-        rightPanel.id = 'rightPanel';
-        rightPanel.innerHTML = `
-            <div class="right-panel-header">
-                <h3>Document Relationships</h3>
-                <button class="panel-toggle" id="panelToggle">×</button>
-            </div>
-            <div class="right-panel-content" id="rightPanelContent">
-                <div class="panel-placeholder">
-                    Select a document to view its relationships
-                </div>
-            </div>
-        `;
-        
-        // Add panel to page
-        document.body.appendChild(rightPanel);
-        
-        // Adjust main content width
-        const mainContent = document.querySelector('.content');
-        if (mainContent) {
-            mainContent.style.marginRight = '300px';
+        // Insert before scrollbox content
+        const firstChild = scrollbox.querySelector('ol.chapter');
+        if (firstChild) {
+            scrollbox.insertBefore(controls, firstChild);
+        } else {
+            scrollbox.appendChild(controls);
         }
+        
+        // Add event listeners
+        this.bindEvents();
+        
+        // Add styles
+        this.addStyles();
     }
     
     bindEvents() {
-        // Search functionality
-        const searchInput = document.getElementById('navSearch');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                this.searchTerm = e.target.value.toLowerCase();
-                this.updateSidebar();
-            });
-        }
-        
-        // View controls
-        document.querySelectorAll('.nav-btn').forEach(btn => {
+        // View buttons
+        document.querySelectorAll('.view-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
-                this.currentView = e.target.dataset.view;
-                this.updateSidebar();
+                this.switchView(e.target.dataset.view);
             });
         });
         
-        // Order controls
+        // Order buttons
         document.querySelectorAll('.order-icon').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.order-icon').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 this.currentOrder = e.target.dataset.order;
-                
-                // Update tooltips based on view
-                if (this.currentView === 'numerical') {
-                    document.querySelector('[data-order="asc"]').title = 'Low to High';
-                    document.querySelector('[data-order="desc"]').title = 'High to Low';
-                } else {
-                    document.querySelector('[data-order="asc"]').title = 'Oldest First';
-                    document.querySelector('[data-order="desc"]').title = 'Newest First';
-                }
-                
-                this.updateSidebar();
+                this.switchView(this.currentView); // Re-render with new order
             });
         });
         
-        // Panel toggle
-        const panelToggle = document.getElementById('panelToggle');
-        if (panelToggle) {
-            panelToggle.addEventListener('click', () => {
-                this.toggleRightPanel();
+        // Search
+        const searchInput = document.getElementById('ordSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.filterOrdinances(e.target.value);
             });
         }
-        
-        // Document link clicks
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('a[href*=".html"]');
-            if (link) {
-                setTimeout(() => {
-                    this.detectCurrentDocument();
-                }, 100);
-            }
-        });
     }
     
-    detectCurrentDocument() {
-        const currentPath = window.location.pathname;
-        const filename = currentPath.split('/').pop();
+    switchView(view) {
+        console.log(`NavigationEnhancer: Switching to ${view} view`);
+        this.currentView = view;
         
-        // Find matching document
-        const doc = this.documents.find(d => d.file.replace('.md', '.html') === filename);
-        if (doc) {
-            this.currentDocument = doc;
-            this.updateRightPanel();
-        }
-    }
-    
-    updateSidebar() {
-        // Store original sidebar content if not already stored
-        if (!this.originalSidebar) {
-            const sidebar = document.querySelector('ol.chapter');
-            if (sidebar) {
-                this.originalSidebar = sidebar.cloneNode(true);
-            }
-        }
+        const chapterList = document.querySelector('ol.chapter');
+        if (!chapterList) return;
         
-        // Find the container for the chapter list
-        let sidebar = document.querySelector('ol.chapter');
-        if (!sidebar) {
-            // Try to find it within the scrollbox
-            const scrollbox = document.querySelector('mdbook-sidebar-scrollbox');
-            if (scrollbox) {
-                sidebar = scrollbox.querySelector('ol.chapter');
-            }
-        }
+        // Remove any existing groups
+        document.querySelectorAll('.view-group').forEach(g => g.remove());
         
-        if (!sidebar) {
-            console.warn('NavigationController: Cannot find sidebar content container');
-            // Try again in a moment
-            setTimeout(() => this.updateSidebar(), 500);
-            return;
-        }
-        
-        const filtered = this.filterDocuments();
-        console.log('NavigationController: Updating sidebar with', filtered.length, 'documents');
-        
-        // Clear current content but preserve the structure
-        const ordinanceItems = Array.from(sidebar.querySelectorAll('li.chapter-item')).filter(li => {
-            const link = li.querySelector('a');
-            return link && link.href.includes('ordinances/');
-        });
-        
-        // Store references to preserve mdBook functionality
-        this.mdBookItems = ordinanceItems;
-        
-        switch (this.currentView) {
+        switch (view) {
             case 'numerical':
-                this.renderNumericalView(sidebar, filtered);
+                this.showNumberView();
                 break;
             case 'chronological':
-                this.renderChronologicalView(sidebar, filtered);
+                this.showChronologicalView();
                 break;
             case 'topical':
-                this.renderTopicalView(sidebar, filtered);
+                this.showTopicalView();
+                break;
+            default:
+                this.showChronologicalView();
                 break;
         }
-        
-        // Update stats
-        const docCount = document.getElementById('docCount');
-        const totalCount = document.getElementById('totalCount');
-        if (docCount) {
-            docCount.textContent = filtered.length;
-        }
-        if (totalCount) {
-            totalCount.textContent = this.documents.length;
-        }
     }
     
-    filterDocuments() {
-        if (!this.searchTerm) return this.documents;
+    showChronologicalView() {
+        // Group by decade
+        const decades = {};
         
-        return this.documents.filter(doc => {
-            return (
-                (doc.id && doc.id.toLowerCase().includes(this.searchTerm)) ||
-                (doc.title && doc.title.toLowerCase().includes(this.searchTerm)) ||
-                (doc.year && doc.year.toString().includes(this.searchTerm)) ||
-                (doc.date && doc.date.includes(this.searchTerm)) ||
-                (doc.section && doc.section.toLowerCase().includes(this.searchTerm))
-            );
-        });
-    }
-    
-    renderNumericalView(container, documents) {
-        // Group by number ranges
-        const ranges = [
-            {title: '#1-50', min: 1, max: 50},
-            {title: '#51-100', min: 51, max: 100},
-            {title: '#101+', min: 101, max: 999999}
-        ];
-        
-        const html = ranges.map(range => {
-            const rangeDocs = documents.filter(doc => {
-                const num = parseInt(doc.id) || 0;
-                return num >= range.min && num <= range.max;
-            });
+        this.allOrdinanceItems.forEach(item => {
+            const decade = Math.floor(parseInt(item.year) / 10) * 10;
+            const key = decade + 's';
             
-            if (rangeDocs.length === 0) return '';
+            if (!decades[key]) {
+                decades[key] = [];
+            }
+            decades[key].push(item);
             
-            // Sort by number within each range
-            rangeDocs.sort((a, b) => {
-                const numA = parseInt(a.id) || 0;
-                const numB = parseInt(b.id) || 0;
-                return this.currentOrder === 'asc' ? numA - numB : numB - numA;
-            });
-            
-            return `
-                <li class="chapter-item expanded">
-                    <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
-                        <span class="arrow">▼</span>
-                        <span>${range.title}</span>
-                        <span class="count">${rangeDocs.length}</span>
-                    </div>
-                    <ul class="group-content">
-                        ${rangeDocs.map(doc => {
-                            const href = doc.file.replace('.md', '.html');
-                            const displayId = doc.id || 'N/A';
-                            const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
-                            const topics = doc.topics || [];
-                            
-                            return `
-                                <li class="chapter-item">
-                                    <a href="${href}" class="doc-link">
-                                        <div class="doc-main">
-                                            <span class="doc-number">#${displayId}</span>
-                                            <span class="doc-title">${doc.title || doc.file}</span>
-                                            <span class="doc-year">(${year})</span>
-                                        </div>
-                                        ${topics.length > 0 ? `<div class="doc-topics">${topics.map(t => `<span class="topic-tag">${t}</span>`).join(' ')}</div>` : ''}
-                                    </a>
-                                </li>
-                            `;
-                        }).join('')}
-                    </ul>
-                </li>
-            `;
-        }).join('');
-        
-        container.innerHTML = html;
-    }
-    
-    renderChronologicalView(container, documents) {
-        const grouped = {};
-        
-        documents.forEach(doc => {
-            const year = parseInt(doc.year || (doc.date ? doc.date.substring(0, 4) : '0000'));
-            const decade = Math.floor(year / 10) * 10;
-            const key = decade === 0 ? 'Unknown' : `${decade}s`;
-            
-            if (!grouped[key]) grouped[key] = [];
-            grouped[key].push(doc);
+            // Hide original item
+            item.element.style.display = 'none';
         });
         
-        // Sort decades based on order
-        const decadeKeys = Object.keys(grouped).sort((a, b) => {
-            if (a === 'Unknown') return 1;
-            if (b === 'Unknown') return -1;
+        // Create decade groups
+        const chapterList = document.querySelector('ol.chapter');
+        
+        // Sort decades based on current order
+        const sortedKeys = Object.keys(decades).sort((a, b) => {
             return this.currentOrder === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
         });
         
-        const html = decadeKeys.map(decade => {
-            const docs = grouped[decade].sort((a, b) => {
-                const aDate = a.year || a.date || '0000';
-                const bDate = b.year || b.date || '0000';
-                return this.currentOrder === 'asc' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
-            });
+        sortedKeys.forEach(decade => {
+            const group = document.createElement('li');
+            group.className = 'chapter-item expanded view-group';
+            group.classList.add('no-list-style');
+            group.style.cssText = '';
             
-            return `
-                <li class="chapter-item expanded">
-                    <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
-                        <span class="arrow">▼</span>
-                        <span>${decade}</span>
-                        <span class="count">${docs.length}</span>
-                    </div>
-                    <ul class="group-content">
-                        ${docs.map(doc => {
-                            const href = doc.file.replace('.md', '.html');
-                            const displayId = doc.id || doc.date;
-                            const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
-                            const topics = doc.topics || [];
-                            
-                            return `
-                                <li class="chapter-item">
-                                    <a href="${href}" class="doc-link">
-                                        <div class="doc-main">
-                                            <span class="doc-number">#${displayId}</span>
-                                            <span class="doc-title">${doc.title}</span>
-                                            <span class="doc-year">(${year})</span>
-                                        </div>
-                                        ${topics.length > 0 ? `<div class="doc-topics">${topics.map(t => `<span class="topic-tag">${t}</span>`).join(' ')}</div>` : ''}
-                                    </a>
-                                </li>
-                            `;
-                        }).join('')}
-                    </ul>
-                </li>
+            const header = document.createElement('div');
+            header.className = 'group-header';
+            header.innerHTML = `
+                <span class="group-arrow">▼</span>
+                <span class="group-name">${decade}</span>
+                <span class="group-count">${decades[decade].length}</span>
             `;
-        }).join('');
-        
-        container.innerHTML = html;
-    }
-    
-    renderTopicalView(container, documents) {
-        if (!this.topics) {
-            this.renderChronologicalView(container, documents);
-            return;
-        }
-        
-        const html = Object.keys(this.topics)
-            .map(topic => {
-                const topicDocs = this.topics[topic]
-                    .map(docKey => this.documents.find(d => this.getDocumentKey(d) === docKey))
-                    .filter(d => d && documents.includes(d));
-                
-                if (topicDocs.length === 0) return '';
-                
-                // Sort docs within topic based on current order
-                topicDocs.sort((a, b) => {
-                    const aDate = a.year || a.date || '0000';
-                    const bDate = b.year || b.date || '0000';
-                    return this.currentOrder === 'asc' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
-                });
-                
-                return `
-                    <li class="chapter-item expanded">
-                        <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
-                            <span class="arrow">▼</span>
-                            <span>${topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
-                            <span class="count">${topicDocs.length}</span>
-                        </div>
-                        <ul class="group-content">
-                            ${topicDocs.map(doc => {
-                                const href = doc.file.replace('.md', '.html');
-                                const displayId = doc.id || doc.date;
-                                const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
-                                return `
-                                    <li class="chapter-item">
-                                        <a href="${href}" class="doc-link">
-                                            <div class="doc-main">
-                                                <span class="doc-number">#${displayId}</span>
-                                                <span class="doc-title">${doc.title}</span>
-                                                <span class="doc-year">(${year})</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                `;
-                            }).join('')}
-                        </ul>
-                    </li>
-                `;
-            }).join('');
-        
-        container.innerHTML = html;
-    }
-    
-    updateRightPanel() {
-        const content = document.getElementById('rightPanelContent');
-        if (!content || !this.currentDocument) return;
-        
-        const docKey = this.getDocumentKey(this.currentDocument);
-        const rels = this.relationships[docKey];
-        
-        if (!rels) {
-            content.innerHTML = '<div class="panel-placeholder">No relationships found</div>';
-            return;
-        }
-        
-        let html = `
-            <div class="current-document">
-                <h4>${this.currentDocument.title}</h4>
-                <p class="doc-meta">
-                    ${this.currentDocument.type.charAt(0).toUpperCase() + this.currentDocument.type.slice(1)} 
-                    ${this.currentDocument.id || this.currentDocument.date || ''}
-                </p>
-            </div>
-        `;
-        
-        // Amendments
-        if (rels.amended_by && rels.amended_by.length > 0) {
-            html += this.renderRelationshipSection('Amended By', rels.amended_by, 'amendment');
-        }
-        
-        if (rels.amends && rels.amends.length > 0) {
-            html += this.renderRelationshipSection('Amends', rels.amends, 'amendment');
-        }
-        
-        // References
-        if (rels.referenced_by && rels.referenced_by.length > 0) {
-            html += this.renderRelationshipSection('Referenced By', rels.referenced_by, 'reference');
-        }
-        
-        if (rels.references && rels.references.length > 0) {
-            html += this.renderRelationshipSection('References', rels.references, 'reference');
-        }
-        
-        // Interpretations
-        if (rels.interpretations && rels.interpretations.length > 0) {
-            html += this.renderRelationshipSection('Section References', rels.interpretations, 'interpretation');
-        }
-        
-        // Related documents
-        if (rels.related && rels.related.length > 0) {
-            html += this.renderRelationshipSection('Related Documents', rels.related.slice(0, 5), 'related');
-        }
-        
-        content.innerHTML = html;
-    }
-    
-    renderRelationshipSection(title, items, type) {
-        const docs = items.map(item => {
-            if (typeof item === 'string' && item.includes('-')) {
-                // It's a document key
-                return this.documents.find(d => this.getDocumentKey(d) === item);
-            } else {
-                // It's a reference ID, try to find matching document
-                return this.documents.find(d => d.id === item);
-            }
-        }).filter(d => d);
-        
-        if (docs.length === 0 && type !== 'interpretation') return '';
-        
-        let html = `
-            <div class="relationship-section">
-                <h5>${title}</h5>
-                <ul class="relationship-list">
-        `;
-        
-        if (type === 'interpretation') {
-            // Show section references
-            items.forEach(section => {
-                html += `<li class="relationship-item section-ref">Section ${section}</li>`;
-            });
-        } else {
-            // Show document links
-            docs.forEach(doc => {
-                const href = doc.file.replace('.md', '.html');
-                const displayId = doc.id || doc.date;
-                const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
-                
-                html += `
-                    <li class="relationship-item">
-                        <a href="${href}" class="rel-link">
-                            <span class="rel-number">#${displayId}</span>
-                            <span class="rel-title">${doc.title}</span>
-                            <span class="rel-year">(${year})</span>
-                        </a>
-                    </li>
-                `;
-            });
-        }
-        
-        html += '</ul></div>';
-        return html;
-    }
-    
-    getDocumentKey(doc) {
-        const id = doc.id || doc.date || doc.section || 'unknown';
-        return `${doc.type}-${id}`;
-    }
-    
-    toggleRightPanel() {
-        const panel = document.getElementById('rightPanel');
-        const mainContent = document.querySelector('.content');
-        
-        if (panel.classList.contains('collapsed')) {
-            panel.classList.remove('collapsed');
-            if (mainContent) mainContent.style.marginRight = '300px';
-        } else {
-            panel.classList.add('collapsed');
-            if (mainContent) mainContent.style.marginRight = '0';
-        }
-    }
-}
-
-// Initialize when DOM is loaded and mdBook is ready
-function initWhenReady() {
-    console.log('NavigationController: Starting initialization...');
-    
-    // For mdBook, we need a different approach - wait for the actual content
-    let attempts = 0;
-    const maxAttempts = 100; // 10 seconds
-    
-    const checkSidebar = setInterval(() => {
-        attempts++;
-        
-        // Look for signs that mdBook has loaded
-        const sidebarScrollbox = document.querySelector('mdbook-sidebar-scrollbox');
-        const sidebar = document.querySelector('#sidebar');
-        
-        // Debug logging
-        if (attempts === 1 || attempts % 10 === 0) {
-            console.log('NavigationController: Checking for sidebar...', {
-                sidebarScrollbox: !!sidebarScrollbox,
-                sidebar: !!sidebar,
-                attempts: attempts
-            });
-        }
-        
-        // Check if we have the basic structure
-        if (sidebarScrollbox && sidebar) {
-            clearInterval(checkSidebar);
-            console.log('NavigationController: Found sidebar elements, initializing...');
             
-            // Initialize immediately - we'll handle dynamic content separately
-            new NavigationController();
-        } else if (attempts >= maxAttempts) {
-            clearInterval(checkSidebar);
-            console.warn('NavigationController: Timeout - forcing initialization');
-            new NavigationController();
-        }
-    }, 100);
+            const list = document.createElement('ul');
+            list.className = 'group-list';
+            list.style.cssText = 'margin: 0; padding-left: 15px;';
+            
+            decades[decade].forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'chapter-item';
+                li.style.cssText = 'margin: 2px 0;';
+                const clonedLink = item.link.cloneNode(true);
+                clonedLink.style.cssText = 'display: block; padding: 3px 5px; text-decoration: none; color: inherit;';
+                li.appendChild(clonedLink);
+                list.appendChild(li);
+            });
+            
+            group.appendChild(header);
+            group.appendChild(list);
+            
+            // Add toggle functionality
+            header.addEventListener('click', () => {
+                const arrow = header.querySelector('.group-arrow');
+                const isHidden = list.style.display === 'none';
+                list.style.display = isHidden ? '' : 'none';
+                arrow.textContent = isHidden ? '▼' : '▶';
+                header.classList.toggle('collapsed');
+            });
+            
+            // Insert at the end of ordinances section
+            const firstNonOrd = Array.from(chapterList.children).find(child => {
+                const link = child.querySelector('a');
+                return link && !link.href.includes('ordinances/');
+            });
+            
+            if (firstNonOrd) {
+                chapterList.insertBefore(group, firstNonOrd);
+            } else {
+                chapterList.appendChild(group);
+            }
+        });
+    }
+    
+    showNumberView() {
+        // Group by number ranges
+        const ranges = [
+            {label: '#1-50', min: 1, max: 50},
+            {label: '#51-100', min: 51, max: 100},
+            {label: '#101+', min: 101, max: 9999}
+        ];
+        
+        const chapterList = document.querySelector('ol.chapter');
+        
+        ranges.forEach(range => {
+            const items = this.allOrdinanceItems.filter(item => 
+                item.number >= range.min && item.number <= range.max
+            );
+            
+            if (items.length === 0) return;
+            
+            // Hide original items
+            items.forEach(item => {
+                item.element.style.display = 'none';
+            });
+            
+            // Create range group
+            const group = document.createElement('li');
+            group.className = 'chapter-item view-group';
+            group.classList.add('no-list-style');
+            group.style.cssText = '';
+            
+            const header = document.createElement('div');
+            header.className = 'group-header';
+            header.innerHTML = `
+                <span class="group-arrow">▼</span>
+                <span class="group-name">${range.label}</span>
+                <span class="group-count">${items.length}</span>
+            `;
+            
+            const list = document.createElement('ul');
+            list.className = 'group-list';
+            list.style.cssText = 'margin: 0; padding-left: 15px;';
+            
+            items.sort((a, b) => a.number - b.number).forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'chapter-item';
+                li.style.cssText = 'margin: 2px 0;';
+                const clonedLink = item.link.cloneNode(true);
+                clonedLink.style.cssText = 'display: block; padding: 3px 5px; text-decoration: none; color: inherit;';
+                li.appendChild(clonedLink);
+                list.appendChild(li);
+            });
+            
+            group.appendChild(header);
+            group.appendChild(list);
+            
+            // Add toggle functionality
+            header.addEventListener('click', () => {
+                const arrow = header.querySelector('.group-arrow');
+                const isHidden = list.style.display === 'none';
+                list.style.display = isHidden ? '' : 'none';
+                arrow.textContent = isHidden ? '▼' : '▶';
+                header.classList.toggle('collapsed');
+            });
+            
+            // Insert at the end of ordinances section
+            const firstNonOrd = Array.from(chapterList.children).find(child => {
+                const link = child.querySelector('a');
+                return link && !link.href.includes('ordinances/');
+            });
+            
+            if (firstNonOrd) {
+                chapterList.insertBefore(group, firstNonOrd);
+            } else {
+                chapterList.appendChild(group);
+            }
+        });
+    }
+    
+    showTopicalView() {
+        // For now, just show chronological view
+        // TODO: Implement topic grouping when we have topic data
+        this.showChronologicalView();
+    }
+    
+    filterOrdinances(searchTerm) {
+        const term = searchTerm.toLowerCase();
+        
+        this.allOrdinanceItems.forEach(item => {
+            const matches = !term || 
+                item.title.toLowerCase().includes(term) ||
+                item.id.toLowerCase().includes(term) ||
+                item.year.includes(term);
+            
+            item.element.style.display = matches ? '' : 'none';
+            
+            // Also handle cloned items in groups
+            if (this.currentView !== 'default') {
+                document.querySelectorAll('.view-group a').forEach(link => {
+                    if (link.href === item.link.href) {
+                        link.parentElement.style.display = matches ? '' : 'none';
+                    }
+                });
+            }
+        });
+        
+        // Update stats
+        const visible = this.allOrdinanceItems.filter(item => 
+            item.element.style.display !== 'none'
+        ).length;
+        
+        const visibleCount = document.getElementById('visibleCount');
+        const totalCount = document.getElementById('totalCount');
+        
+        if (visibleCount) visibleCount.textContent = visible;
+        if (totalCount) totalCount.textContent = this.allOrdinanceItems.length;
+    }
+    
+    hideOtherSections() {
+        // Add a style to hide non-ordinance sections - only in sidebar
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Hide section headers and non-ordinance items - ONLY in sidebar navigation */
+            mdbook-sidebar-scrollbox ol.chapter > .spacer,
+            mdbook-sidebar-scrollbox ol.chapter > .part-title:not(:first-of-type),
+            mdbook-sidebar-scrollbox ol.chapter > li.chapter-item:has(a[href*="resolutions/"]),
+            mdbook-sidebar-scrollbox ol.chapter > li.chapter-item:has(a[href*="interpretations/"]),
+            mdbook-sidebar-scrollbox ol.chapter > li.chapter-item:has(a[href*="transcripts/"]) {
+                display: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    addStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-controls-panel {
+                padding: 15px;
+                background: #f8f9fa;
+                border-bottom: 2px solid #dee2e6;
+                margin-bottom: 10px;
+            }
+            
+            .nav-header {
+                margin-bottom: 12px;
+            }
+            
+            .header-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .nav-title {
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .order-icons {
+                display: flex;
+                gap: 4px;
+            }
+            
+            .order-icon {
+                background: transparent;
+                border: 1px solid #dee2e6;
+                border-radius: 3px;
+                padding: 2px 6px;
+                font-size: 10px;
+                cursor: pointer;
+                color: #666;
+                transition: all 0.2s;
+            }
+            
+            .order-icon:hover {
+                background: #e9ecef;
+            }
+            
+            .order-icon.active {
+                background: #0969da;
+                color: white;
+                border-color: #0969da;
+            }
+            
+            .nav-controls-section {
+                margin-bottom: 10px;
+            }
+            
+            .control-label {
+                font-size: 11px;
+                color: #666;
+                margin-bottom: 4px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            
+            .nav-stats {
+                font-size: 11px;
+                color: #666;
+                padding: 8px 15px;
+                background: #f0f0f0;
+                border-top: 1px solid #dee2e6;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0;
+            }
+            
+            .nav-controls-panel {
+                position: relative;
+                padding-bottom: 40px; /* Make room for stats bar */
+            }
+            
+            .nav-search-box {
+                margin-bottom: 10px;
+            }
+            
+            #ordSearch {
+                width: 100%;
+                padding: 6px 10px;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+                font-size: 13px;
+            }
+            
+            .nav-view-buttons {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 4px;
+            }
+            
+            .view-btn {
+                padding: 6px 8px;
+                border: 1px solid #dee2e6;
+                background: white;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 12px;
+                transition: all 0.2s;
+                text-align: center;
+            }
+            
+            .view-btn:hover {
+                background: #f0f0f0;
+            }
+            
+            .view-btn.active {
+                background: #0969da;
+                color: white;
+                border-color: #0969da;
+            }
+            
+            /* Group header styles */
+            .group-header {
+                display: flex;
+                align-items: center;
+                padding: 8px 10px;
+                background: #f8f9fa;
+                border-radius: 4px;
+                cursor: pointer;
+                user-select: none;
+                margin: 5px 0;
+                font-size: 13px;
+                font-weight: 600;
+                color: #333;
+            }
+            
+            .group-header:hover {
+                background: #e9ecef;
+            }
+            
+            .group-header.collapsed {
+                background: #fff;
+                border: 1px solid #dee2e6;
+            }
+            
+            .group-arrow {
+                margin-right: 8px;
+                font-size: 10px;
+                transition: transform 0.2s;
+            }
+            
+            .group-name {
+                flex: 1;
+            }
+            
+            .group-count {
+                background: #dee2e6;
+                color: #495057;
+                padding: 2px 8px;
+                border-radius: 10px;
+                font-size: 11px;
+                font-weight: normal;
+            }
+            
+            /* Hide mdBook's automatic numbering for our custom groups */
+            mdbook-sidebar-scrollbox .view-group {
+                counter-reset: none !important;
+                list-style: none !important;
+            }
+            
+            mdbook-sidebar-scrollbox .view-group::before {
+                display: none !important;
+            }
+            
+            mdbook-sidebar-scrollbox .view-group .chapter-item::before {
+                display: none !important;
+            }
+            
+            mdbook-sidebar-scrollbox .group-list {
+                list-style: none !important;
+            }
+            
+            mdbook-sidebar-scrollbox .group-list li {
+                list-style: none !important;
+            }
+            
+            /* Ensure our grouped items don't show numbers - be specific to navigation only */
+            mdbook-sidebar-scrollbox ol.chapter .view-group {
+                list-style: none !important;
+            }
+            
+            mdbook-sidebar-scrollbox ol.chapter .view-group li.chapter-item {
+                list-style: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWhenReady);
-} else {
-    initWhenReady();
-}
+// Initialize when ready
+window.addEventListener('load', () => {
+    console.log('Window loaded, initializing navigation enhancer...');
+    
+    setTimeout(() => {
+        const chapterList = document.querySelector('ol.chapter');
+        if (chapterList && chapterList.children.length > 0) {
+            new NavigationEnhancer();
+        } else {
+            console.error('Chapter list not ready');
+        }
+    }, 1000);
+});

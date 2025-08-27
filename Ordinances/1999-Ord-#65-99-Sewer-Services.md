@@ -34,9 +34,9 @@ The City of Rivergrove hereby adopts by reference those portions of Chapters 38,
 
 **B.** Any person applying to the City of Lake Oswego to form a LID or ZOB shall submit a resolution application to the City of Rivergrove requesting the City Council adopt a resolution with a recommendation in support of the proposed LID or ZOB. The resolution application shall be submitted on a form provided by the City of Rivergrove and shall include the following:
 
-   1. A copy of the LID or ZOB application that will be submitted to the City of Lake Oswego; and
+1.  A copy of the LID or ZOB application that will be submitted to the City of Lake Oswego; and
 
-   2. An application fee equal to the amount of money the City of Rivergrove anticipates it will cost to review the proposed LID or ZOB and adopt a resolution.
+2.  An application fee equal to the amount of money the City of Rivergrove anticipates it will cost to review the proposed LID or ZOB and adopt a resolution.
 
 **C.** Upon receipt of a complete resolution application, the Rivergrove Planning Commission may review it at its next regularly scheduled meeting as a discussion item on its agenda. The Planning Commission may submit to the City Council its recommendation concerning the resolution application. However, with or without the Planning Commission review and/or recommendation, the City of Rivergrove shall schedule a public hearing before the City Council at which the City Council will accept public testimony (either written or oral) from any interested party and decide whether or not to adopt a recommendation in support of the proposed LID or ZOB. Notice of such a public hearing shall be published in the monthly edition of the Rivergrove Report published immediately preceding the public hearing and posted in at least three conspicuous places within the City and at City Hall, and mailed to each resident of Rivergrove that is an owner of property to be included in the proposed LID or ZOB at least 30 days prior to the public hearing before the City Council. If the City Council finds the proposed LID or ZOB is in the collective best interests of the citizens of the City of Rivergrove, the City Council may adopt a resolution in support of the proposed LID or ZOB. In making its public interest decision, the City Council may consider, among other matters, the potential hardship / undue financial burden that could befall one or more citizens as a result of the proposed LID or ZOB. If a resolution in support of the proposed LID or ZOB is adopted, the City Council may include as specific conditions of its expressed support any detailed parameters of the proposed LID or ZOB that the Council deems appropriate.
 
@@ -44,19 +44,19 @@ The City of Rivergrove hereby adopts by reference those portions of Chapters 38,
 
 **E.** After forwarding a resolution supporting the LID or ZOB, the City of Lake Oswego shall have exclusive jurisdiction to deal with these matters in a manner strictly consistent with the terms of the resolution of support to include any conditions contained therein, insofar as they relate to the delivery of sanitary sewer services.
 
-**YEAS** **5**  
-**NAYS** **0**  
-**ABSTAINED** **0**
+YEAS **5**  
+NAYS **0**  
+ABSTAINED **0**
 
 **Adopted** **12-13-99**
 
 **Dated**
 
-[Signature], **Mayor Larry Barrett**  
-**Date**: **12-13-99**    
+[Signature], Mayor, Larry Barrett
+**Date:** 12-13-99
 
-[Signature], **City Recorder, Mike Collmeyer**  
-**Date**: **12/13/99**    
+[Signature], City Recorder, Mike Collmeyer
+**Date:** 12/13/99
 
 **Adopted**
 
@@ -114,7 +114,8 @@ WHEREAS, this Agreement would implement these plans;
 
 NOW, THEREFORE, it is agreed as follows:
 
-### Section 1. Definition of Terms. 
+### Section 1. Definition of Terms.
+
 Unless the context indicates otherwise:
 
 **A.** "Council" means either the City Council of Rivergrove and/or Lake Oswego.
@@ -181,7 +182,8 @@ Unless the context indicates otherwise:
 
 2. All applicable Lake Oswego fees related to the design, construction, operation, and maintenance of the sanitary sewer system within Rivergrove shall be billed and collected by Lake Oswego. One hundred percent of the fees collected will be retained by Lake Oswego. Rivergrove agrees that such fees may include a differential rate over and above the rate charged to Lake Oswego residents if necessary to recover any additional expenses incurred as result of providing service under this agreement.
 
-### Section 3. Other Provisions. 
+### Section 3. Other Provisions.
+
 Rivergrove and Lake Oswego agree that:
 
 A. Rivergrove and Lake Oswego will each obtain such insurance contracts as necessary to cover the liabilities of Rivergrove and Lake Oswego respectively for the risks and liabilities arising from activities and operations under this agreement. Each party hereto shall cause the other to be named as an additional insured on its policy or policies as to the obligations under the terms of this agreement. In the event that either party chooses to be self insured, that party shall furnish proof of separately identified and unencumbered reserves of at least $1,000,000.
@@ -190,10 +192,12 @@ B. Rivergrove and Lake Oswego shall each be responsible for the negligent or wro
 
 C. Nothing in this agreement shall be construed as a limitation upon or delegation of the statutory and home rule powers of Rivergrove, nor as a delegation or limitation of the statutory powers of Lake Oswego. This Agreement shall not limit any right or remedy available to Rivergrove or Lake Oswego against third parties arising from illegal acts of such third parties.
 
-### Section 4. Effect of this Agreement. 
+### Section 4. Effect of this Agreement.
+
 This Agreement shall supersede all prior agreements and amendments between the parties with respect to sanitary sewerage, provided that, except as expressly modified herein, all rights, liabilities, and obligations of such prior agreements shall continue. This agreement shall be effective upon its execution by both parties hereto, and shall continue in effect for a term of thirty (30) years from and after the date hereof, unless or until the City of Rivergrove disincorporates and/or becomes part of the City of Lake Oswego. This agreement may be amended at any time upon the mutual written consent of both parties.
 
-### Section 5. Severability. 
+### Section 5. Severability.
+
 In the event a court of competent jurisdiction shall deem any portion or part of this Agreement to be unlawful or invalid, only that portion or part of the Agreement shall be considered unenforceable. The remainder of this Agreement shall continue to be valid.
 
 ---
@@ -222,13 +226,4 @@ As per City Council vote at its meeting of: **11/25/96**
 **APPROVED AS TO FORM:**
 
 [Signature] **Jeffrey G. Condit, City Attorney**
-
 **City of Rivergrove Legal Counsel**
-
-**WP51\Rivrgrve.Agmt**
-
----
-
-*Intergovernmental Agreement*  
-*City of Lake Oswego/City of Rivergrove*  
-*Page 6*

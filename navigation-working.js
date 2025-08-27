@@ -65,25 +65,43 @@ class NavigationEnhancer {
         items.forEach(item => {
             const link = item.querySelector('a');
             if (link && link.href.includes('ordinances/')) {
-                // Parse the ordinance info
-                const text = link.textContent;
-                const match = text.match(/#(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
+                // Parse the ordinance info from the link text
+                const text = link.textContent.trim();
+                console.log('Processing:', text); // Debug log
+                
+                // Try different patterns - the text might not have # prefix
+                let match = text.match(/#(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
+                if (!match) {
+                    // Try without # prefix
+                    match = text.match(/(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
+                }
+                if (!match) {
+                    // Try to extract from href if text doesn't match
+                    const hrefMatch = link.href.match(/(\d{4})-Ord-(\d+[\w-]*)-(.+)\.html/);
+                    if (hrefMatch) {
+                        const [, year, id, titleSlug] = hrefMatch;
+                        const title = titleSlug.replace(/-/g, ' ');
+                        match = ['', id, title, year];
+                    }
+                }
                 
                 if (match) {
-                    const cleanTitle = this.createCleanTitle(match[1], match[2], match[3]);
+                    const [, id, title, year] = match;
+                    const cleanTitle = this.createCleanTitle(id, title, year);
                     
                     this.allOrdinanceItems.push({
                         element: item,
-                        id: match[1],
-                        title: match[2],
-                        year: match[3],
-                        number: parseInt(match[1]) || 0,
+                        id: id,
+                        title: title,
+                        year: year,
+                        number: parseInt(id) || 0,
                         link: link,
                         cleanTitle: cleanTitle
                     });
                     
                     // Update the display immediately
                     link.textContent = cleanTitle;
+                    console.log('Updated to:', cleanTitle); // Debug log
                 }
             }
         });
