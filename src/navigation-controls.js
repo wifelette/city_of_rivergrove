@@ -49,10 +49,9 @@ class NavigationController {
             this.bindEvents();
             // Remove number prefixes again after enhancement
             this.removeNumberPrefixes();
-            // Apply initial view if there's an active button
-            this.updateSidebar();
-            // Detect current document after a small delay to ensure DOM is ready
+            // Apply initial view - CRITICAL: Force the default active view to actually apply
             setTimeout(() => {
+                this.applyInitialView();
                 this.detectCurrentDocument();
                 // One more time after delay to catch any late-rendered items
                 this.removeNumberPrefixes();
@@ -420,6 +419,17 @@ class NavigationController {
         }
     }
     
+    applyInitialView() {
+        // Find the active button and ensure the view is properly applied on page load
+        const activeBtn = document.querySelector('.nav-btn.active');
+        if (activeBtn) {
+            const activeView = activeBtn.dataset.view;
+            console.log('Applying initial view:', activeView);
+            this.currentView = activeView;
+            this.updateSidebar();
+        }
+    }
+    
     updateSidebar() {
         const sidebar = document.querySelector('.chapter');
         if (!sidebar) return;
@@ -531,7 +541,16 @@ class NavigationController {
                 groups[key].push(item);
             });
             
-            Object.keys(groups).sort().forEach(decade => {
+            // Sort decades by the sort order as well
+            const sortedDecades = Object.keys(groups).sort((a, b) => {
+                if (this.sortOrder === 'asc') {
+                    return a.localeCompare(b); // 1970s, 1980s, 1990s...
+                } else {
+                    return b.localeCompare(a); // 2020s, 2010s, 2000s...
+                }
+            });
+            
+            sortedDecades.forEach(decade => {
                 const items = groups[decade].sort((a, b) => {
                     if (this.sortOrder === 'asc') {
                         return a.year.localeCompare(b.year);

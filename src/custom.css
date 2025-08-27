@@ -688,7 +688,8 @@ blockquote {
 
 /* Grouped views */
 .decade-header,
-.topic-header {
+.topic-header,
+.group-header {
     font-size: 12px;
     font-weight: 600;
     color: #666;
@@ -698,6 +699,14 @@ blockquote {
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.group-header .group-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+    padding: 0;
 }
 
 .decade-list,
