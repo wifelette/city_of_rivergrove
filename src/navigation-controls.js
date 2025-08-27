@@ -8,68 +8,275 @@ class NavigationController {
     constructor() {
         this.documents = [];
         this.relationships = {};
-        this.currentView = 'list';
+        this.currentView = 'chronological';  // Default to chronological like mockup
         this.searchTerm = '';
         this.currentDocument = null;
+        this.sortOrder = 'desc';  // 'desc' for newest first, 'asc' for oldest first
         
-        this.init();
+        // Wait for DOM to be fully ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.init());
+        } else {
+            this.init();
+        }
     }
     
     async init() {
+        // Detect which section we're in
+        this.detectSection();
+        
         // Load relationships data
         try {
-            const response = await fetch('relationships.json');
-            const data = await response.json();
-            this.documents = Object.values(data.documents);
-            this.relationships = data.relationships;
-            this.topics = data.topics;
+            const response = await fetch('/relationships.json');
+            if (response.ok) {
+                const data = await response.json();
+                this.documents = Object.values(data.documents);
+                this.relationships = data.relationships || {};
+                this.topics = data.topics || {};
+                console.log('Loaded', this.documents.length, 'documents');
+            } else {
+                console.warn('Failed to load relationships.json:', response.status);
+            }
         } catch (error) {
             console.warn('Could not load relationships.json:', error);
         }
         
-        // Initialize navigation enhancement
-        this.enhanceSidebar();
-        this.addRightPanel();
-        this.bindEvents();
-        this.detectCurrentDocument();
+        // Only enhance navigation if we're in a document section
+        if (this.currentSection && this.currentSection !== 'home') {
+            this.enhanceSidebar();
+            this.filterSidebarToCurrentSection();
+            this.addRightPanel();
+            this.bindEvents();
+            // Remove number prefixes again after enhancement
+            this.removeNumberPrefixes();
+            // Detect current document after a small delay to ensure DOM is ready
+            setTimeout(() => {
+                this.detectCurrentDocument();
+                // One more time after delay to catch any late-rendered items
+                this.removeNumberPrefixes();
+            }, 100);
+        }
+    }
+    
+    filterSidebarToCurrentSection() {
+        // Hide all items that aren't in the current section
+        const sidebar = document.querySelector('.chapter');
+        if (!sidebar) return;
+        
+        // Get all sidebar items
+        const allItems = sidebar.querySelectorAll('li');
+        let inCurrentSection = false;
+        let currentSectionHeader = null;
+        
+        allItems.forEach(item => {
+            // Check if this is a section header (part-title)
+            if (item.classList.contains('part-title')) {
+                const headerText = item.textContent.toLowerCase().trim();
+                
+                // Check if this header matches our current section
+                if (
+                    (this.currentSection === 'ordinances' && headerText.includes('ordinance')) ||
+                    (this.currentSection === 'resolutions' && headerText.includes('resolution')) ||
+                    (this.currentSection === 'interpretations' && headerText.includes('interpretation')) ||
+                    (this.currentSection === 'transcripts' && (headerText.includes('transcript') || headerText.includes('meeting')))
+                ) {
+                    inCurrentSection = true;
+                    currentSectionHeader = item;
+                    item.style.display = 'none'; // Hide the section header itself
+                } else {
+                    inCurrentSection = false;
+                    item.style.display = 'none'; // Hide other section headers
+                }
+            } 
+            // Check if this is a spacer or separator
+            else if (item.classList.contains('spacer') || item.classList.contains('affix')) {
+                item.style.display = 'none'; // Always hide spacers
+            }
+            // Handle regular items
+            else {
+                const link = item.querySelector('a[href]');
+                if (link) {
+                    const href = link.getAttribute('href');
+                    // Check if this item belongs to the current section
+                    if (href && href.includes('/' + this.currentSection + '/')) {
+                        item.style.display = ''; // Show items in current section
+                    } else {
+                        item.style.display = 'none'; // Hide items from other sections
+                    }
+                } else if (!inCurrentSection) {
+                    // Hide items without links that aren't in our section
+                    item.style.display = 'none';
+                }
+            }
+        });
+        
+        console.log(`Filtered sidebar to show only ${this.currentSection}`);
+        
+        // Remove numbered list prefixes from sidebar items
+        this.removeNumberPrefixes();
+        
+        // Update the document count
+        const visibleDocs = sidebar.querySelectorAll('li.chapter-item:not([style*="display: none"])').length;
+        const docCount = document.getElementById('docCount');
+        if (docCount) {
+            docCount.textContent = visibleDocs;
+        }
+    }
+    
+    removeNumberPrefixes() {
+        // Find all links in the sidebar
+        const sidebarLinks = document.querySelectorAll('.sidebar .chapter a');
+        
+        sidebarLinks.forEach(link => {
+            let text = link.textContent;
+            // Remove patterns like "1. ", "10. ", "1.1. " etc from the beginning
+            const cleanedText = text.replace(/^\d+(\.\d+)*\.\s*/, '');
+            
+            if (cleanedText !== text) {
+                // Only update if we actually removed something
+                link.textContent = cleanedText;
+                console.log(`Removed number prefix from: "${text}" -> "${cleanedText}"`);
+            }
+        });
+    }
+    
+    detectSection() {
+        const path = window.location.pathname;
+        if (path.includes('/ordinances/')) {
+            this.currentSection = 'ordinances';
+        } else if (path.includes('/resolutions/')) {
+            this.currentSection = 'resolutions';
+        } else if (path.includes('/interpretations/')) {
+            this.currentSection = 'interpretations';
+        } else if (path.includes('/transcripts/')) {
+            this.currentSection = 'transcripts';
+        } else if (path === '/' || path.endsWith('/index.html') || path.endsWith('/')) {
+            this.currentSection = 'home';
+        } else {
+            this.currentSection = null;
+        }
     }
     
     enhanceSidebar() {
         const sidebar = document.querySelector('.sidebar');
         if (!sidebar) return;
         
-        // Create enhanced header
+        // Find the scrollbox where the chapter content is
+        const scrollbox = sidebar.querySelector('.sidebar-scrollbox');
+        if (!scrollbox) return;
+        
+        // Create enhanced header with section-specific controls
         const header = document.createElement('div');
         header.className = 'nav-header-enhanced';
+        
+        let controls = '';
+        let placeholder = 'Search documents...';
+        let docType = 'documents';
+        
+        switch(this.currentSection) {
+            case 'ordinances':
+                controls = `
+                    <button class="nav-btn" data-view="numerical">Numerical</button>
+                    <button class="nav-btn active" data-view="chronological">Chronological</button>
+                    <button class="nav-btn" data-view="topical">Topical</button>
+                `;
+                placeholder = 'Search ordinances...';
+                docType = 'ordinances';
+                break;
+            case 'resolutions':
+                controls = `
+                    <button class="nav-btn active" data-view="chronological">Chronological</button>
+                    <button class="nav-btn" data-view="numerical">By Number</button>
+                `;
+                placeholder = 'Search resolutions...';
+                docType = 'resolutions';
+                break;
+            case 'interpretations':
+                controls = `
+                    <button class="nav-btn active" data-view="chronological">By Date</button>
+                    <button class="nav-btn" data-view="section">By Code Section</button>
+                `;
+                placeholder = 'Search interpretations...';
+                docType = 'interpretations';
+                break;
+            case 'transcripts':
+                controls = `
+                    <button class="nav-btn active" data-view="chronological">By Date</button>
+                `;
+                placeholder = 'Search transcripts...';
+                docType = 'transcripts';
+                break;
+        }
+        
+        // Get a cleaner section name for display
+        const sectionNames = {
+            'ordinances': 'Ordinances',
+            'resolutions': 'Resolutions', 
+            'interpretations': 'Interpretations',
+            'transcripts': 'Meeting Records'
+        };
+        const currentSectionName = sectionNames[this.currentSection] || 'Documents';
+        
         header.innerHTML = `
+            <div class="nav-header-top">
+                <div class="nav-section-selector">
+                    <button class="section-dropdown-btn" id="sectionDropdown">
+                        <span class="section-name">${currentSectionName}</span>
+                        <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="section-dropdown-menu" id="sectionMenu" style="display: none;">
+                        <a href="/" class="dropdown-item">
+                            <span class="dropdown-icon">🏠</span> Home
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/ordinances/1974-Ord-16-Parks.html" class="dropdown-item ${this.currentSection === 'ordinances' ? 'active' : ''}">
+                            Ordinances
+                        </a>
+                        <a href="/resolutions/1976-Res-22-PC.html" class="dropdown-item ${this.currentSection === 'resolutions' ? 'active' : ''}">
+                            Resolutions
+                        </a>
+                        <a href="/interpretations/1997-07-07-RE-2.040h-permitting-adus.html" class="dropdown-item ${this.currentSection === 'interpretations' ? 'active' : ''}">
+                            Interpretations
+                        </a>
+                        <a href="/transcripts/02-2024-Transcript.html" class="dropdown-item ${this.currentSection === 'transcripts' ? 'active' : ''}">
+                            Meeting Records
+                        </a>
+                    </div>
+                </div>
+                <div class="sort-toggle" title="Sort order">
+                    <button class="sort-toggle-btn ${this.sortOrder === 'asc' ? 'active' : ''}" 
+                            data-sort="asc" 
+                            title="Sort oldest first">
+                        <span>⬆</span>
+                    </button>
+                    <button class="sort-toggle-btn ${this.sortOrder === 'desc' ? 'active' : ''}" 
+                            data-sort="desc" 
+                            title="Sort newest first">
+                        <span>⬇</span>
+                    </button>
+                </div>
+            </div>
             <div class="nav-search-container">
                 <input type="text" 
                        class="nav-search" 
-                       placeholder="Search documents..." 
+                       placeholder="${placeholder}" 
                        id="navSearch">
             </div>
             <div class="nav-controls">
-                <button class="nav-btn active" data-view="list">List</button>
-                <button class="nav-btn" data-view="decade">By Decade</button>
-                <button class="nav-btn" data-view="topic">By Topic</button>
+                ${controls}
             </div>
             <div class="nav-stats" id="navStats">
-                <span id="docCount">${this.documents.length}</span> documents
+                <span id="docCount">0</span> ${docType}
             </div>
         `;
         
-        // Insert header at the top of sidebar
-        const sidebarHeader = sidebar.querySelector('.sidebar-header') || sidebar.firstChild;
-        if (sidebarHeader) {
-            sidebarHeader.after(header);
-        } else {
-            sidebar.prepend(header);
-        }
+        // Insert header before scrollbox content
+        scrollbox.prepend(header);
     }
     
     addRightPanel() {
-        const contentWrapper = document.querySelector('#content');
-        if (!contentWrapper) return;
+        // Check if panel already exists
+        if (document.getElementById('rightPanel')) return;
         
         // Create right panel
         const rightPanel = document.createElement('div');
@@ -78,11 +285,11 @@ class NavigationController {
         rightPanel.innerHTML = `
             <div class="right-panel-header">
                 <h3>Document Relationships</h3>
-                <button class="panel-toggle" id="panelToggle">×</button>
+                <button class="panel-toggle" id="panelToggle" title="Close panel">×</button>
             </div>
             <div class="right-panel-content" id="rightPanelContent">
                 <div class="panel-placeholder">
-                    Select a document to view its relationships
+                    Loading document relationships...
                 </div>
             </div>
         `;
@@ -90,7 +297,7 @@ class NavigationController {
         // Add panel to page
         document.body.appendChild(rightPanel);
         
-        // Adjust main content width
+        // Adjust main content width to make room for the panel
         const mainContent = document.querySelector('.content');
         if (mainContent) {
             mainContent.style.marginRight = '300px';
@@ -105,6 +312,16 @@ class NavigationController {
                 this.searchTerm = e.target.value.toLowerCase();
                 this.updateSidebar();
             });
+            
+            // Clear search on Escape key
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    this.searchTerm = '';
+                    this.updateSidebar();
+                    searchInput.blur(); // Remove focus from search box
+                }
+            });
         }
         
         // View controls
@@ -113,6 +330,44 @@ class NavigationController {
                 document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 this.currentView = e.target.dataset.view;
+                // For now, just reorder based on the view - don't replace content
+                this.updateSidebar();
+            });
+        });
+        
+        // Section dropdown
+        const dropdownBtn = document.getElementById('sectionDropdown');
+        const dropdownMenu = document.getElementById('sectionMenu');
+        if (dropdownBtn && dropdownMenu) {
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isVisible = dropdownMenu.style.display !== 'none';
+                dropdownMenu.style.display = isVisible ? 'none' : 'block';
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                dropdownMenu.style.display = 'none';
+            });
+        }
+        
+        // Sort toggle controls (pill-style buttons)
+        document.querySelectorAll('.sort-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const sortButton = e.target.closest('.sort-toggle-btn');
+                if (!sortButton) return;
+                
+                const newSortOrder = sortButton.dataset.sort;
+                console.log('Sort button clicked:', newSortOrder, 'Current:', this.sortOrder);
+                
+                // Update active state
+                document.querySelectorAll('.sort-toggle-btn').forEach(b => b.classList.remove('active'));
+                sortButton.classList.add('active');
+                
+                // Update sort order
+                this.sortOrder = newSortOrder;
+                
+                // Update the sidebar
                 this.updateSidebar();
             });
         });
@@ -138,39 +393,144 @@ class NavigationController {
     
     detectCurrentDocument() {
         const currentPath = window.location.pathname;
-        const filename = currentPath.split('/').pop();
+        const filename = currentPath.split('/').pop().replace('.html', '.md');
+        
+        console.log('Detecting document for:', filename);
         
         // Find matching document
-        const doc = this.documents.find(d => d.file.replace('.md', '.html') === filename);
+        const doc = this.documents.find(d => {
+            // Match by file name
+            if (d.file === filename) return true;
+            
+            // Also try matching with variations in the filename format
+            const simplifiedFile = d.file.replace('#', '');
+            const simplifiedCurrent = filename.replace('#', '');
+            
+            return simplifiedFile === simplifiedCurrent;
+        });
+        
         if (doc) {
+            console.log('Found document:', doc);
             this.currentDocument = doc;
             this.updateRightPanel();
+        } else {
+            console.log('Document not found for:', filename);
         }
     }
     
     updateSidebar() {
-        const sidebar = document.querySelector('.sidebar-content ul') || document.querySelector('.chapter');
+        // Don't replace the sidebar - just reorder existing items
+        const sidebar = document.querySelector('.chapter');
         if (!sidebar) return;
         
-        const filtered = this.filterDocuments();
+        // Get all visible document items (already filtered to current section)
+        const items = Array.from(sidebar.querySelectorAll('li.chapter-item')).filter(li => {
+            // Only get visible items with links
+            if (li.style.display === 'none') return false;
+            const link = li.querySelector('a[href*=".html"]');
+            return link !== null;
+        });
         
-        switch (this.currentView) {
-            case 'list':
-                this.renderListView(sidebar, filtered);
-                break;
-            case 'decade':
-                this.renderDecadeView(sidebar, filtered);
-                break;
-            case 'topic':
-                this.renderTopicView(sidebar, filtered);
-                break;
+        if (items.length === 0) {
+            // If no items found, try custom rendering (fallback)
+            const filtered = this.filterDocuments();
+            switch (this.currentView) {
+                case 'numerical':
+                    this.renderNumericalView(sidebar, filtered);
+                    break;
+                case 'chronological':
+                    this.renderChronologicalView(sidebar, filtered);
+                    break;
+                case 'topical':
+                    this.renderTopicalView(sidebar, filtered);
+                    break;
+            }
+        } else {
+            // Reorder existing items based on sort order
+            this.reorderExistingItems(sidebar, items);
         }
         
         // Update stats
+        const visibleItems = sidebar.querySelectorAll('li.chapter-item:not([style*="display: none"])').length;
         const docCount = document.getElementById('docCount');
         if (docCount) {
-            docCount.textContent = filtered.length;
+            docCount.textContent = visibleItems;
         }
+    }
+    
+    reorderExistingItems(container, items) {
+        // Clone the items array to avoid modifying the original
+        const itemsToSort = [...items];
+        
+        // Sort items based on current view and sort order
+        itemsToSort.sort((a, b) => {
+            const linkA = a.querySelector('a[href*=".html"]');
+            const linkB = b.querySelector('a[href*=".html"]');
+            
+            if (!linkA || !linkB) return 0;
+            
+            // Extract info from the link text and href
+            const textA = linkA.textContent.trim();
+            const textB = linkB.textContent.trim();
+            const hrefA = linkA.getAttribute('href') || '';
+            const hrefB = linkB.getAttribute('href') || '';
+            
+            if (this.currentView === 'numerical') {
+                // Extract numbers from text (e.g., "#16" or "Ord #16")
+                const numA = parseInt(textA.match(/#?(\d+)/)?.[1] || '0');
+                const numB = parseInt(textB.match(/#?(\d+)/)?.[1] || '0');
+                
+                // Always sort numerically ascending
+                return numA - numB;
+            } else if (this.currentView === 'chronological') {
+                // Extract years from href first (more reliable), then text
+                const yearA = this.extractYear(hrefA) || this.extractYear(textA) || '0000';
+                const yearB = this.extractYear(hrefB) || this.extractYear(textB) || '0000';
+                
+                // Apply sort order
+                if (this.sortOrder === 'asc') {
+                    return yearA.localeCompare(yearB); // Oldest first
+                } else {
+                    return yearB.localeCompare(yearA); // Newest first
+                }
+            }
+            
+            return 0;
+        });
+        
+        // Find the parent that contains these items
+        const parent = items[0]?.parentElement;
+        if (!parent) return;
+        
+        // Store current scroll position
+        const scrollbox = document.querySelector('.sidebar-scrollbox');
+        const scrollPos = scrollbox?.scrollTop || 0;
+        
+        // Remove all items first
+        items.forEach(item => {
+            if (item.parentElement === parent) {
+                parent.removeChild(item);
+            }
+        });
+        
+        // Re-append in sorted order
+        itemsToSort.forEach(item => {
+            parent.appendChild(item);
+        });
+        
+        // Restore scroll position
+        if (scrollbox) {
+            scrollbox.scrollTop = scrollPos;
+        }
+        
+        console.log(`Reordered ${itemsToSort.length} items in ${this.currentView} view, sort: ${this.sortOrder}`);
+    }
+    
+    extractYear(text) {
+        if (!text) return null;
+        // Try to find a 4-digit year
+        const yearMatch = text.match(/\b(19\d{2}|20\d{2})\b/);
+        return yearMatch ? yearMatch[1] : null;
     }
     
     filterDocuments() {
@@ -187,32 +547,63 @@ class NavigationController {
         });
     }
     
-    renderListView(container, documents) {
-        // Sort documents by type and then chronologically
-        const sorted = documents.sort((a, b) => {
-            // First by type (ordinances, resolutions, interpretations)
-            const typeOrder = { 'ordinance': 0, 'resolution': 1, 'interpretation': 2, 'transcript': 3 };
-            if (typeOrder[a.type] !== typeOrder[b.type]) {
-                return typeOrder[a.type] - typeOrder[b.type];
+    renderNumericalView(container, documents) {
+        // Filter documents by current section
+        const sectionDocuments = documents.filter(doc => {
+            switch(this.currentSection) {
+                case 'ordinances': return doc.type === 'ordinance';
+                case 'resolutions': return doc.type === 'resolution';
+                case 'interpretations': return doc.type === 'interpretation';
+                case 'transcripts': return doc.type === 'transcript';
+                default: return true;
             }
-            
-            // Then by year/date
-            const aDate = a.year || a.date || '0000';
-            const bDate = b.year || b.date || '0000';
-            return aDate.localeCompare(bDate);
         });
         
-        const html = sorted.map(doc => {
-            const href = doc.file.replace('.md', '.html');
+        // Sort by document number
+        const sorted = sectionDocuments.sort((a, b) => {
+            const numA = parseInt(a.id?.replace(/\D/g, '') || '0');
+            const numB = parseInt(b.id?.replace(/\D/g, '') || '0');
+            return numA - numB;
+        });
+        
+        this.renderDocumentList(container, sorted);
+    }
+    
+    renderDocumentList(container, documents) {
+        // Generate HTML for document list
+        const html = documents.map(doc => {
+            // Build the correct path based on section
+            let href = '/' + this.currentSection + '/' + doc.file.replace('.md', '.html').replace('#', '');
+            
             const displayId = doc.id || (doc.date ? doc.date : 'N/A');
             const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
+            
+            // Clean up the ID display
+            let cleanId = displayId;
+            if (displayId.includes('-')) {
+                // Extract just the number from IDs like "71-2002-Gates"
+                cleanId = displayId.split('-')[0];
+            }
+            
+            // Clean up title - remove redundant info
+            let displayTitle = doc.title || doc.file;
+            if (displayTitle.startsWith('AN ORDINANCE')) {
+                displayTitle = displayTitle.replace(/^AN ORDINANCE\s*/i, '').trim();
+            }
+            if (displayTitle.startsWith('BEFORE THE CITY')) {
+                displayTitle = displayTitle.replace(/^BEFORE THE CITY.*?OREGON\s*/i, '').trim();
+            }
+            // Truncate very long titles
+            if (displayTitle.length > 60) {
+                displayTitle = displayTitle.substring(0, 57) + '...';
+            }
             
             return `
                 <li class="chapter-item">
                     <a href="${href}" class="doc-link">
-                        <span class="doc-number">#${displayId}</span>
-                        <span class="doc-title">${doc.title || doc.file}</span>
-                        <span class="doc-year">(${year})</span>
+                        <span class="doc-number">#${cleanId}</span>
+                        <span class="doc-title">${displayTitle}</span>
+                        ${year ? `<span class="doc-year">(${year})</span>` : ''}
                     </a>
                 </li>
             `;
@@ -221,7 +612,86 @@ class NavigationController {
         container.innerHTML = html;
     }
     
-    renderDecadeView(container, documents) {
+    renderChronologicalView(container, documents) {
+        // Filter documents by current section
+        const sectionDocuments = documents.filter(doc => {
+            switch(this.currentSection) {
+                case 'ordinances': return doc.type === 'ordinance';
+                case 'resolutions': return doc.type === 'resolution';
+                case 'interpretations': return doc.type === 'interpretation';
+                case 'transcripts': return doc.type === 'transcript';
+                default: return true;
+            }
+        });
+        
+        // Sort chronologically based on sortOrder
+        const sorted = sectionDocuments.sort((a, b) => {
+            const aDate = a.year || a.date || '0000';
+            const bDate = b.year || b.date || '0000';
+            
+            // Apply sort order
+            if (this.sortOrder === 'asc') {
+                return aDate.localeCompare(bDate); // Oldest first
+            } else {
+                return bDate.localeCompare(aDate); // Newest first
+            }
+        });
+        
+        this.renderDocumentList(container, sorted);
+    }
+    
+    renderTopicalView(container, documents) {
+        // Filter documents by current section
+        const sectionDocuments = documents.filter(doc => {
+            switch(this.currentSection) {
+                case 'ordinances': return doc.type === 'ordinance';
+                case 'resolutions': return doc.type === 'resolution';
+                case 'interpretations': return doc.type === 'interpretation';
+                case 'transcripts': return doc.type === 'transcript';
+                default: return true;
+            }
+        });
+        
+        // Group by topic
+        const topics = {};
+        sectionDocuments.forEach(doc => {
+            const topic = doc.topic || 'Other';
+            if (!topics[topic]) topics[topic] = [];
+            topics[topic].push(doc);
+        });
+        
+        // Sort topics alphabetically
+        const sortedTopics = Object.keys(topics).sort();
+        
+        let html = '';
+        sortedTopics.forEach(topic => {
+            html += `
+                <li class="topic-group">
+                    <div class="topic-header">${topic}</div>
+                    <ul class="topic-list">
+                        ${topics[topic].map(doc => {
+                            const href = '/' + this.currentSection + '/' + doc.file.replace('.md', '.html');
+                            const cleanId = doc.id?.includes('-') ? doc.id.split('-')[0] : doc.id;
+                            const year = doc.year || doc.date?.split('-')[0] || '';
+                            return `
+                                <li>
+                                    <a href="${href}" class="doc-link">
+                                        <span class="doc-number">#${cleanId}</span>
+                                        <span class="doc-title">${doc.title}</span>
+                                        ${year ? `<span class="doc-year">(${year})</span>` : ''}
+                                    </a>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </li>
+            `;
+        });
+        
+        container.innerHTML = html;
+    }
+    
+    renderDecadeViewOld(container, documents) {
         const grouped = {};
         
         documents.forEach(doc => {
@@ -266,7 +736,7 @@ class NavigationController {
         container.innerHTML = html;
     }
     
-    renderTopicView(container, documents) {
+    renderTopicViewOld(container, documents) {
         if (!this.topics) {
             this.renderListView(container, documents);
             return;
@@ -308,14 +778,40 @@ class NavigationController {
     
     updateRightPanel() {
         const content = document.getElementById('rightPanelContent');
-        if (!content || !this.currentDocument) return;
+        if (!content) {
+            console.log('Right panel content element not found');
+            return;
+        }
+        
+        if (!this.currentDocument) {
+            content.innerHTML = '<div class="panel-placeholder">Select a document to view its relationships</div>';
+            return;
+        }
         
         const docKey = this.getDocumentKey(this.currentDocument);
+        console.log('Looking for relationships for:', docKey);
         const rels = this.relationships[docKey];
         
         if (!rels) {
-            content.innerHTML = '<div class="panel-placeholder">No relationships found</div>';
-            return;
+            // Try a simplified version of the key
+            const simplifiedKey = `${this.currentDocument.type}-${this.currentDocument.id?.split('-')[0] || this.currentDocument.date}`;
+            const alternateRels = this.relationships[simplifiedKey];
+            
+            if (!alternateRels) {
+                content.innerHTML = `
+                    <div class="current-document">
+                        <h4>${this.currentDocument.title}</h4>
+                        <p class="doc-meta">
+                            ${this.currentDocument.type.charAt(0).toUpperCase() + this.currentDocument.type.slice(1)} 
+                            #${this.currentDocument.id?.split('-')[0] || this.currentDocument.date || ''}
+                        </p>
+                    </div>
+                    <div class="panel-placeholder">No relationships found for this document</div>
+                `;
+                return;
+            }
+            // Use the alternate relationships if found
+            rels = alternateRels;
         }
         
         let html = `
@@ -323,37 +819,55 @@ class NavigationController {
                 <h4>${this.currentDocument.title}</h4>
                 <p class="doc-meta">
                     ${this.currentDocument.type.charAt(0).toUpperCase() + this.currentDocument.type.slice(1)} 
-                    ${this.currentDocument.id || this.currentDocument.date || ''}
+                    #${this.currentDocument.id?.split('-')[0] || this.currentDocument.date || ''}
                 </p>
             </div>
         `;
         
+        let hasRelationships = false;
+        
         // Amendments
         if (rels.amended_by && rels.amended_by.length > 0) {
             html += this.renderRelationshipSection('Amended By', rels.amended_by, 'amendment');
+            hasRelationships = true;
         }
         
         if (rels.amends && rels.amends.length > 0) {
             html += this.renderRelationshipSection('Amends', rels.amends, 'amendment');
+            hasRelationships = true;
         }
         
         // References
         if (rels.referenced_by && rels.referenced_by.length > 0) {
             html += this.renderRelationshipSection('Referenced By', rels.referenced_by, 'reference');
+            hasRelationships = true;
         }
         
         if (rels.references && rels.references.length > 0) {
             html += this.renderRelationshipSection('References', rels.references, 'reference');
+            hasRelationships = true;
         }
         
         // Interpretations
         if (rels.interpretations && rels.interpretations.length > 0) {
-            html += this.renderRelationshipSection('Section References', rels.interpretations, 'interpretation');
+            html += this.renderRelationshipSection('Code Sections', rels.interpretations, 'interpretation');
+            hasRelationships = true;
+        }
+        
+        // Resolutions
+        if (rels.resolutions && rels.resolutions.length > 0) {
+            html += this.renderRelationshipSection('Related Resolutions', rels.resolutions, 'resolution');
+            hasRelationships = true;
         }
         
         // Related documents
         if (rels.related && rels.related.length > 0) {
             html += this.renderRelationshipSection('Related Documents', rels.related.slice(0, 5), 'related');
+            hasRelationships = true;
+        }
+        
+        if (!hasRelationships) {
+            html += '<div class="panel-placeholder">No relationships found for this document</div>';
         }
         
         content.innerHTML = html;

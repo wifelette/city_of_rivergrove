@@ -1,20 +1,46 @@
 # City of Rivergrove Documents
 
-Welcome to the searchable repository of City of Rivergrove ordinances, resolutions, and planning commission interpretations.
+Welcome to the official digital repository of City of Rivergrove municipal documents.
 
-## About This Repository
+## Browse Documents by Type
 
-This digital collection provides public access to:
+<div class="simple-cards">
 
-- **Ordinances**: Local laws enacted by the City Council
-- **Resolutions**: Formal expressions of opinion or decisions by the City Council
-- **Planning Commission Interpretations**: Official interpretations of land use codes and regulations
-- **Council Meeting Transcripts**: Records of city council proceedings
-- **Council Meeting Minutes**: Summaries of city council proceedings
+<div class="simple-card">
+<h3><a href="ordinances/1974-Ord-16-Parks.html">Ordinances</a></h3>
+<p>Local laws enacted by the City Council</p>
+<p class="doc-count">19 documents</p>
+</div>
 
-## Navigation
+<div class="simple-card">
+<h3><a href="resolutions/1976-Res-22-PC.html">Resolutions</a></h3>
+<p>Formal decisions and opinions by the City Council</p>
+<p class="doc-count">2 documents</p>
+</div>
 
-Use the sidebar on the left to browse documents by type and year. You can also use the search function (magnifying glass icon) to find specific topics or keywords across all documents.
+<div class="simple-card">
+<h3><a href="interpretations/1997-07-07-RE-2.040h-permitting-adus.html">Planning Interpretations</a></h3>
+<p>Official interpretations of land use codes</p>
+<p class="doc-count">12 documents</p>
+</div>
+
+<div class="simple-card">
+<h3><a href="transcripts/02-2024-Transcript.html">Meeting Records</a></h3>
+<p>Council meeting transcripts and minutes</p>
+<p class="doc-count">2 transcripts</p>
+</div>
+
+<div class="simple-card">
+<h3><a href="#">Other Documents</a></h3>
+<p>City Charter, Comprehensive Plan, and other foundational documents</p>
+<p class="doc-count">Coming soon</p>
+</div>
+
+</div>
+
+## Quick Search
+
+Use the search box in the sidebar or press `/` to search across all documents.
 
 ## Document Status
 
