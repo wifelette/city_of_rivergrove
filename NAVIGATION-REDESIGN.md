@@ -1,8 +1,8 @@
 # Navigation Redesign - Implementation Plan
 
-## Current Status (August 26, 2025)
+## Current Status (August 27, 2025)
 
-We've designed a new navigation system after extensive mockups and testing. This document captures the decisions and implementation plan.
+We've designed a new navigation system after extensive mockups and testing. After implementing Phase 1 and 2, we discovered fundamental architectural conflicts with mdBook that require a different approach (see Issue #15).
 
 ## Final Design Decision
 
@@ -40,18 +40,29 @@ Shows all connections for the currently viewed document:
    - Track: interpretations, references, amendments
    - Auto-generate from document content analysis
 
-### Phase 2: mdBook Integration
-3. **Custom JavaScript for controls**
-   - View switcher (List/Decade/Topic)
+### Phase 2: mdBook Integration ⚠️ ISSUES FOUND
+3. **Custom JavaScript for controls** ✅ Implemented
+   - View switcher (List/Decade/Topic) 
    - Order toggle (Oldest/Newest)
    - Search within section
 
-4. **Right panel template**
+4. **Right panel template** ✅ Implemented
    - Inject via JavaScript
-   - Pull from relationships.json
-   - Style with custom CSS
 
-### Phase 3: Polish
+**Problems Discovered:**
+- Fighting mdBook's sidebar control causes flickering
+- Race conditions with mdBook's JavaScript
+- Content loss due to DOM manipulation conflicts
+- See Issue #15 for complete analysis
+
+### Phase 3: Complete Sidebar Replacement (NEW APPROACH)
+Instead of fighting mdBook's sidebar, we'll replace it entirely:
+1. Hide mdBook's sidebar via CSS
+2. Build our own sidebar from relationships.json
+3. Handle navigation with History API
+4. Clean state management without DOM fights
+
+### Phase 4: Polish (Future)
 5. **Fix note formatting** (too bold/large currently)
 6. **Add view persistence** (remember user's preferred view)
 7. **Implement deep linking** (link directly to specific views)

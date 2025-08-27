@@ -22,6 +22,15 @@ class NavigationController {
     }
     
     async init() {
+        // Store original sidebar state early
+        const sidebar = document.querySelector('.chapter');
+        if (sidebar) {
+            this.originalSidebarHTML = sidebar.innerHTML;
+        }
+        
+        // Set up mutation observer to intercept mdBook's active class changes
+        this.setupActiveClassInterceptor();
+        
         // Detect which section we're in
         this.detectSection();
         
@@ -56,6 +65,58 @@ class NavigationController {
                 // One more time after delay to catch any late-rendered items
                 this.removeNumberPrefixes();
             }, 100);
+        }
+    }
+    
+    setupActiveClassInterceptor() {
+        // Track if we're updating to prevent loops
+        this.isUpdating = false;
+        
+        // Create observer to watch for mdBook adding 'active' class
+        const observer = new MutationObserver((mutations) => {
+            // Skip if we're the ones making changes or sidebar is transitioning
+            if (this.isUpdating) return;
+            
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar && sidebar.classList.contains('sidebar-transitioning')) return;
+            
+            // Batch process mutations to prevent flashing
+            const toRemove = [];
+            
+            mutations.forEach((mutation) => {
+                // Only check for unwanted class changes
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    // If mdBook adds active to a non-doc-link element, queue for removal
+                    if (target.classList.contains('active') && 
+                        !target.classList.contains('doc-link') && 
+                        !target.classList.contains('nav-btn') &&
+                        !target.classList.contains('selected')) {
+                        // Check if it's a sidebar link that mdBook is trying to activate
+                        if (target.closest('.sidebar') && target.tagName === 'A') {
+                            toRemove.push(target);
+                        }
+                    }
+                }
+            });
+            
+            // Remove all unwanted active classes at once
+            if (toRemove.length > 0) {
+                requestAnimationFrame(() => {
+                    toRemove.forEach(el => el.classList.remove('active'));
+                });
+            }
+        });
+        
+        // Start observing the sidebar for class changes only
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) {
+            observer.observe(sidebar, {
+                attributes: true,
+                attributeFilter: ['class'],
+                subtree: true
+                // No childList - that causes infinite loops
+            });
         }
     }
     
@@ -136,7 +197,7 @@ class NavigationController {
             if (cleanedText !== text) {
                 // Only update if we actually removed something
                 link.textContent = cleanedText;
-                console.log(`Removed number prefix from: "${text}" -> "${cleanedText}"`);
+                // Removed verbose logging
             }
         });
     }
@@ -381,29 +442,40 @@ class NavigationController {
             });
         }
         
-        // Override mdBook's active class immediately on page changes
+        // Listen for actual navigation events
         window.addEventListener('popstate', () => {
-            this.highlightCurrentDocument();
+            setTimeout(() => {
+                this.detectCurrentDocument();
+                this.highlightCurrentDocument();
+            }, 50);
         });
         
-        // Document link clicks - update immediately
+        // Store reference to this controller for history API override
+        const controller = this;
+        
+        // Also listen for when the page actually loads new content
+        const originalPushState = history.pushState;
+        history.pushState = function() {
+            originalPushState.apply(history, arguments);
+            setTimeout(() => {
+                controller.detectCurrentDocument();
+                controller.highlightCurrentDocument();
+            }, 50);
+        };
+        
+        // Document link clicks - let them navigate normally
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a[href*=".html"]');
             if (link && link.closest('.sidebar')) {
-                // Clear any mdBook active classes immediately
-                document.querySelectorAll('.sidebar .active').forEach(el => {
-                    if (!el.classList.contains('nav-btn')) {
-                        el.classList.remove('active');
-                    }
-                });
-                
-                // Update highlight after navigation
+                console.log('Sidebar link clicked:', link.href);
+                // Don't prevent default - let the navigation happen
+                // Just update our highlighting after a delay
                 setTimeout(() => {
                     this.highlightCurrentDocument();
                     this.detectCurrentDocument();
-                }, 0);
+                }, 100);
             }
-        });
+        }, false);  // Use capture phase to ensure we get the event
     }
     
     detectCurrentDocument() {
@@ -470,13 +542,35 @@ class NavigationController {
             const activeView = activeBtn.dataset.view;
             console.log('Applying initial view:', activeView);
             this.currentView = activeView;
+            // Add transitioning class to prevent flash
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.add('sidebar-transitioning');
+            }
             this.updateSidebar();
+            setTimeout(() => {
+                if (sidebar) {
+                    sidebar.classList.remove('sidebar-transitioning');
+                }
+            }, 100);
         }
     }
     
     updateSidebar() {
         const sidebar = document.querySelector('.chapter');
         if (!sidebar) return;
+        
+        // Prevent infinite loops
+        if (this.isUpdating) return;
+        this.isUpdating = true;
+        
+        // Store original sidebar HTML if not already stored
+        if (!this.originalSidebarHTML) {
+            this.originalSidebarHTML = sidebar.innerHTML;
+        }
+        
+        // Prevent mdBook from interfering
+        sidebar.classList.add('custom-controlled');
         
         // Get existing items and reorder them instead of replacing
         const items = Array.from(sidebar.querySelectorAll('li.chapter-item:not(.grouped-item):not(.group-header)')).filter(li => {
@@ -490,9 +584,17 @@ class NavigationController {
             // Apply the current view (grouping or reordering)
             this.applyCurrentView(sidebar, items);
         } else {
-            // Fallback to custom rendering only if no items found
-            const filtered = this.filterDocuments();
-            this.renderChronologicalView(sidebar, filtered);
+            // If no items, restore from original and try again
+            sidebar.innerHTML = this.originalSidebarHTML;
+            this.filterSidebarToCurrentSection();
+            const restoredItems = Array.from(sidebar.querySelectorAll('li.chapter-item')).filter(li => {
+                if (li.style.display === 'none') return false;
+                const link = li.querySelector('a[href*=".html"]');
+                return link !== null;
+            });
+            if (restoredItems.length > 0) {
+                this.applyCurrentView(sidebar, restoredItems);
+            }
         }
         
         // Update stats
@@ -504,6 +606,11 @@ class NavigationController {
         
         // Highlight the current document after sidebar update
         this.highlightCurrentDocument();
+        
+        // Re-enable updates after a delay
+        setTimeout(() => {
+            this.isUpdating = false;
+        }, 100);
     }
     
     reorderExistingItemsByView(container, items) {
@@ -578,9 +685,11 @@ class NavigationController {
                     </li>
                 `;
                 items.forEach(item => {
+                    // Preserve the original href structure since mdBook handles it
+                    let href = item.href;
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}" class="doc-link">${item.text}</a>
+                            <a href="${href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -620,9 +729,11 @@ class NavigationController {
                     </li>
                 `;
                 items.forEach(item => {
+                    // Preserve the original href structure since mdBook handles it
+                    let href = item.href;
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}" class="doc-link">${item.text}</a>
+                            <a href="${href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -661,9 +772,11 @@ class NavigationController {
                     </li>
                 `;
                 items.forEach(item => {
+                    // Preserve the original href structure since mdBook handles it
+                    let href = item.href;
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}" class="doc-link">${item.text}</a>
+                            <a href="${href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -831,8 +944,8 @@ class NavigationController {
     renderDocumentList(container, documents) {
         // Generate HTML for document list
         const html = documents.map(doc => {
-            // Build the correct path based on section
-            let href = '/' + this.currentSection + '/' + doc.file.replace('.md', '.html').replace('#', '');
+            // Fix: Use relative path, not absolute
+            let href = doc.file.replace('.md', '.html').replace('#', '');
             
             const displayId = doc.id || (doc.date ? doc.date : 'N/A');
             const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
@@ -933,24 +1046,31 @@ class NavigationController {
             html += `
                 <li class="topic-group">
                     <div class="topic-header">${topic}</div>
-                    <ul class="topic-list">
-                        ${topics[topic].map(doc => {
-                            const href = '/' + this.currentSection + '/' + doc.file.replace('.md', '.html');
-                            const cleanId = doc.id?.includes('-') ? doc.id.split('-')[0] : doc.id;
-                            const year = doc.year || doc.date?.split('-')[0] || '';
-                            return `
-                                <li>
-                                    <a href="${href}" class="doc-link">
-                                        <span class="doc-number">#${cleanId}</span>
-                                        <span class="doc-title">${doc.title}</span>
-                                        ${year ? `<span class="doc-year">(${year})</span>` : ''}
-                                    </a>
-                                </li>
-                            `;
-                        }).join('')}
-                    </ul>
                 </li>
             `;
+            topics[topic].forEach(doc => {
+                // Fix: Use relative path, not absolute
+                const href = doc.file.replace('.md', '.html').replace('#', '');
+                const cleanId = doc.id?.includes('-') ? doc.id.split('-')[0] : doc.id;
+                const year = doc.year || doc.date?.split('-')[0] || '';
+                // Clean up title
+                let displayTitle = doc.title || doc.file;
+                if (displayTitle.startsWith('AN ORDINANCE')) {
+                    displayTitle = displayTitle.replace(/^AN ORDINANCE\s*/i, '').trim();
+                }
+                if (displayTitle.length > 60) {
+                    displayTitle = displayTitle.substring(0, 57) + '...';
+                }
+                html += `
+                    <li class="chapter-item grouped-item">
+                        <a href="${href}" class="doc-link">
+                            <span class="doc-number">#${cleanId}</span>
+                            <span class="doc-title">${displayTitle}</span>
+                            ${year ? `<span class="doc-year">(${year})</span>` : ''}
+                        </a>
+                    </li>
+                `;
+            });
         });
         
         container.innerHTML = html;

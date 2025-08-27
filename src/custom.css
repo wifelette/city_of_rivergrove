@@ -447,14 +447,14 @@ blockquote {
     color: #6b7280;
     text-align: center;
     padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
+    background: white;
     border-top: 1px solid #e5e7eb;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
-    width: var(--sidebar-width, 300px);
+    width: 100%;
     z-index: 101;
+    margin-top: auto;
 }
 
 .nav-stats #docCount {
@@ -469,7 +469,9 @@ blockquote {
 }
 
 .sidebar-scrollbox {
-    padding-bottom: 60px !important; /* Space for floating stats */
+    padding-bottom: 80px !important; /* More space for floating stats to prevent bounce */
+    overflow-y: auto !important;
+    /* Don't restrict max-height - let mdBook handle it */
 }
 
 /* Override mdBook sidebar styling */
@@ -640,31 +642,66 @@ blockquote {
     box-shadow: none !important;
 }
 
-/* Override mdBook's default active styling first */
-.sidebar .chapter li > a.active {
+/* Aggressively override mdBook's default active styling */
+.sidebar .chapter li > a.active:not(.doc-link),
+.sidebar .chapter li.chapter-item > a.active:not(.doc-link) {
     background: transparent !important;
     color: inherit !important;
+    border: none !important;
+    border-left: none !important;
 }
 
-/* Selected/active state for sidebar items */
+/* Hide mdBook's default active state completely during transitions */
+.sidebar-transitioning .chapter li > a.active:not(.selected):not(.doc-link) {
+    background: transparent !important;
+    border: none !important;
+    transition: none !important;
+}
+
+/* Prevent any visual changes during transition */
+.sidebar-transitioning * {
+    transition: none !important;
+}
+
+/* When sidebar is under custom control, prevent any mdBook styling */
+.chapter.custom-controlled li > a.active:not(.doc-link):not(.selected) {
+    background: transparent !important;
+    color: inherit !important;
+    border: none !important;
+    border-left: none !important;
+    transition: none !important;
+}
+
+/* Selected/active state for sidebar items - our custom classes */
 .sidebar .chapter li.selected,
 .sidebar .chapter li.active {
     position: relative;
 }
 
-.sidebar .chapter li.selected > a,
-.sidebar .chapter li.active > a,
-.sidebar .chapter li a.selected,
-.sidebar .chapter li a.active,
-.sidebar .chapter li.selected a.doc-link,
-.sidebar .chapter li.active a.doc-link {
+/* Use higher specificity to override any mdBook styles */
+.sidebar .chapter.custom-controlled li.selected,
+.sidebar .chapter.custom-controlled li.active,
+.sidebar .chapter li.selected,
+.sidebar .chapter li.active {
     background: #e7f1ff !important;
-    border-left: 3px solid #0969da !important;
     margin-left: -10px !important;
-    padding-left: 17px !important;
     margin-right: -10px !important;
+    padding-left: 10px !important;
     padding-right: 10px !important;
-    box-shadow: 0 1px 3px rgba(9, 105, 218, 0.1) !important;
+    border-left: 3px solid #0969da !important;
+}
+
+.sidebar .chapter.custom-controlled li.selected > a.doc-link,
+.sidebar .chapter.custom-controlled li.active > a.doc-link,
+.sidebar .chapter.custom-controlled li a.doc-link.selected,
+.sidebar .chapter.custom-controlled li a.doc-link.active,
+.sidebar .chapter li.selected > a.doc-link,
+.sidebar .chapter li.active > a.doc-link,
+.sidebar .chapter li a.doc-link.selected,
+.sidebar .chapter li a.doc-link.active {
+    background: transparent !important;
+    padding-left: 7px !important;
+    box-shadow: none !important;
     font-weight: 500 !important;
 }
 
@@ -733,11 +770,12 @@ blockquote {
     font-size: 12px;
     font-weight: 600;
     color: #666;
-    padding: 8px;
+    padding: 8px 10px;
     background: #f1f3f4;
-    margin: 4px 0;
+    margin: 8px 0 4px 0;
     border-radius: 4px;
     letter-spacing: 0.5px;
+    border-left: 3px solid #d1d5db;
 }
 
 .group-header .group-title {
@@ -748,16 +786,22 @@ blockquote {
     padding: 0;
 }
 
-.decade-list,
-.topic-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 15px 15px;
+/* Topic groups */
+.topic-group {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.decade-list .chapter-item,
-.topic-list .chapter-item {
-    margin: 2px 0;
+/* Grouped items under headers */
+.chapter-item.grouped-item {
+    margin-left: 10px !important;
+    margin-bottom: 2px !important;
+}
+
+.chapter-item.grouped-item a.doc-link {
+    padding-left: 10px !important;
+    font-size: 12px !important;
 }
 
 /* Right Panel */
