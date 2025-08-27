@@ -11,10 +11,10 @@ Submitted to the Rivergrove City Council on **5/12/03**
 Adopted by the Rivergrove City Council on **5/12/03**
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03                    
+**Date**: 5/12/03                              
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03                    
+**Date**: 5/12/03                              
 
 ---
 
@@ -107,11 +107,11 @@ Adopted by the Rivergrove City Council on **5/12/03**
 >
 > **6.330. Additional Criteria.** The Planning Commission may allow a conditional use, provided that the applicant provides evidence substantiating that all the requirements of the ordinance relative to the proposed use are satisfied, and demonstrates that the proposed use also satisfies the following criteria:
 >
-> > (a) The characteristics of the site are suitable for the proposed use considering size, shape, location, topography, existence of improvements and natural features;
-> >
-> > (b) The site and proposed development are timely, considering the adequacy of transportation systems, public facilities and services existing or planned for the area affected by the use;
-> >
-> > (c) The proposed use will not affect the surrounding area in a manner which adversely limits, impairs or precludes the use of surrounding properties;
+> - (a) The characteristics of the site are suitable for the proposed use considering size, shape, location, topography, existence of improvements and natural features;
+>
+> - (b) The site and proposed development are timely, considering the adequacy of transportation systems, public facilities and services existing or planned for the area affected by the use;
+>
+> - (c) The proposed use will not affect the surrounding area in a manner which adversely limits, impairs or precludes the use of surrounding properties;
 >
 > **6.340. Conditions**
 >

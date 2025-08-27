@@ -225,87 +225,117 @@ After completing GitHub upload and URL updates:
 
 ### Overview
 
-The repository now includes an mdBook static site generator that creates a searchable, browsable website from all the digitized documents. This provides an easy-to-use interface for accessing ordinances, resolutions, interpretations, and transcripts.
+The repository includes an mdBook static site generator that creates a searchable, browsable website from all digitized documents. The site includes enhanced navigation with list formatting fixes and improved document display.
 
-### Configuration
+### File Structure & Sync Workflow
 
-**book.toml** - Main configuration file containing:
+**IMPORTANT**: There are two separate directories for ordinances:
 
-- Basic metadata (title, authors, description)
-- Build settings (output directory: `book/`)
-- HTML output configuration with search enabled
-- GitHub repository integration
-- Custom CSS styling support
+- **`Ordinances/`** (capital O) - Main directory for editing files (includes `#` in filenames)
+- **`src/ordinances/`** (lowercase o) - mdBook source directory (filenames without `#`)
+
+**Current Workflow** (due to sync issues discovered):
+
+1. **Edit files** in the main `Ordinances/` directory
+2. **Manual sync**: Run `./update-mdbook.sh` to sync changes to `src/` and rebuild
+3. **View changes** at `http://localhost:3000`
+
+**Automated sync** is available but currently **not recommended** due to content override issues:
+- `./watch-and-sync.py` - File watcher for auto-sync (use with caution)
+- Issue: Unknown process sometimes generates auto-headers that override file content
+- **Symptom**: File content temporarily disappears and gets replaced with auto-generated headers
+- **Workaround**: Use manual sync with `./update-mdbook.sh` and restore content if needed
 
 ### Directory Structure
 
 ```text
 city_of_rivergrove/
+├── Ordinances/           # Main editing directory (with # in filenames)
 ├── src/                  # Source content for mdBook
 │   ├── SUMMARY.md       # Table of contents
 │   ├── introduction.md  # Welcome page
-│   ├── ordinances/      # Ordinance markdown files
+│   ├── ordinances/      # Synced ordinance files (no # in filenames)
 │   ├── resolutions/     # Resolution markdown files
 │   ├── interpretations/ # Interpretation markdown files
 │   └── transcripts/     # Transcript markdown files
 ├── book/                # Built static website (generated)
+├── sync-ordinances.py   # Manual sync script
+├── watch-and-sync.py    # Auto file watcher (use with caution)
+├── update-mdbook.sh     # Combined sync + build script
 ├── book.toml           # mdBook configuration
-├── build.sh            # Build script
 ├── custom.css          # Custom styling
 └── add-cross-references.py  # Preprocessor script
 ```
 
-### Build Process
-
-1. **Simple Build**: Run `mdbook build` to generate the static site
-2. **Enhanced Build**: Run `./build.sh` which:
-   - Adds cross-reference links between documents
-   - Builds the mdBook site
-   - Outputs to the `book/` directory
-
 ### Local Development
 
-To serve the site locally for testing:
+1. **Start mdBook server**:
+   ```bash
+   mdbook serve
+   ```
+   
+2. **Edit files** in `Ordinances/` directory
 
-```bash
-mdbook serve
+3. **Sync changes**:
+   ```bash
+   ./update-mdbook.sh
+   ```
+
+4. **View at** `http://localhost:3000`
+
+### List Formatting Standards
+
+All ordinances have been updated with proper markdown list formatting:
+
+- **Manual numbering** `(1)`, `(2)` → **Markdown lists** `1.`, `2.`
+- **Roman numerals** `(i)`, `(ii)` preserved as `- (i)`, `- (ii)` for legal accuracy
+- **Nested lists** properly indented with bold formatting for visibility
+- **Letter lists** `a.`, `b.` use bold formatting: `**a.**`, `**b.**`
+
+**Examples of proper formatting:**
+
+```markdown
+1. First main item
+2. Second main item
+   - (i) Roman numeral sub-item
+   - (ii) Another roman numeral
+   **a.** Bold letter item
+   **b.** Another bold letter item
+3. Third main item
 ```
 
-This starts a local server (usually at `http://localhost:3000`) with live-reload for development.
+**Common issues fixed:**
+- Manual numbering like `(1) Item` was breaking list rendering
+- Blockquote syntax `> (i) Item` was displaying as quoted text instead of lists
+- Inconsistent indentation was preventing proper nesting
+- Missing bold formatting on letter lists reduced visibility
 
-### Adding New Documents
+### Current Navigation Issues
 
-When new documents are digitized, simply run:
+**Tracking**: [GitHub Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) - Navigation Enhancement Implementation
 
-```bash
-./update-mdbook.sh
-```
+**Status**: Navigation redesign in progress with the following components:
 
-This automated script will:
-
-1. Copy all markdown files to the appropriate `src/` subdirectories (removing `#` and spaces from filenames)
-2. Fix signature formatting in all documents
-3. Automatically generate a new SUMMARY.md table of contents
-4. Build the site with cross-reference links
-5. Output the complete static site to the `book/` directory
-
-The new document will immediately appear in navigation and be searchable.
+- ✅ Style E format implemented (#XX - Title (Year))
+- ✅ List formatting fixes applied to all ordinances
+- ⚠️ File sync workflow established but needs stability improvements
+- 🔄 Enhanced navigation controls in development
+- 🔄 Right panel for document relationships planned
 
 ### Features
 
-- **Full-text search**: All documents are searchable through the built-in search functionality
-- **Cross-references**: Automatic linking between documents that reference each other
-- **Responsive design**: Works on desktop and mobile devices
-- **Dark mode support**: Toggle between light and dark themes
-- **Print-friendly**: Can generate printer-friendly versions of documents
-- **GitHub integration**: Direct links to view source files on GitHub
+- **Full-text search**: All documents searchable
+- **Cross-references**: Automatic linking between documents
+- **Proper list rendering**: All nested lists display correctly
+- **Responsive design**: Works on desktop and mobile
+- **GitHub integration**: Direct links to source files
 
 ### Maintenance
 
-- The `src/` directory mirrors the main repository structure but only includes markdown files
-- PDF files remain in the root directories but are not included in mdBook
-- The `book/` directory is generated and can be safely deleted/regenerated
-- Cross-references are added at build time and don't modify source files
+- Edit in `Ordinances/` directory (main source of truth)
+- Use `./update-mdbook.sh` for safe syncing
+- The `book/` directory is generated and can be safely regenerated
+- Monitor [Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) for navigation updates
 
 ---
 

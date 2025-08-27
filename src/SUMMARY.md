@@ -7,10 +7,12 @@
 - [#16-Parks - A Park Advisory Council (1974)](./ordinances/1974-Ord-16-Parks.md)
 - [#28-Parks - The City Of Rivergrove Park Advisory Council Ordinance No. 16 (1978)](./ordinances/1978-Ord-28-Parks.md)
 - [#52-Flood - Flood Damage Prevention Ordinance (1987)](./ordinances/1987-Ord-52-Flood.md)
+- [#54-89-C-Land-Development - Table Of Contents (1989)](./ordinances/1989-Ord-54-89-C-Land-Development.md)
 - [#57-93-Manufactured-Homes - Document Notes (1993)](./ordinances/1993-Ord-57-93-Manufactured-Homes.md)
 - [#59-97A-Land-Development-Amendment - Amendments To The Land Development Ordinance (1998)](./ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)
 - [#61-98-Land-Development-Amendment - Emergency Clause (1998)](./ordinances/1998-Ord-61-98-Land-Development-Amendment.md)
 - [#62-98-Flood-and-Land-Development-Amendment - Before The City Council Of The City Of Rivergrove, Oregon (1998)](./ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.md)
+- [#65-99-Sewer-Services - Consenting To The Application And Enforcement Of Lake Oswego City Code Provisions, Related To Sanitary Sewer Services, In The City Of Rivergrove. (1999)](./ordinances/1999-Ord-65-99-Sewer-Services.md)
 - [#68-2000-Metro-Compliance - Functional Plan Compliance Ordinance (2000)](./ordinances/2000-Ord-68-2000-Metro-Compliance.md)
 - [#69-2000-Title-3-Compliance-STUB - ⚠️ **Stub - This Ordinance Was Never Passed** (2000)](./ordinances/2000-Ord-69-2000-Title-3-Compliance-STUB.md)
 - [#70-2001-WQRA - Index (2001)](./ordinances/2001-Ord-70-2001-WQRA.md)
@@ -19,6 +21,7 @@
 - [#73-2003A-Conditional-Use-Provisions - Before The City Council Of The City Of Rivergrove, Oregon (2003)](./ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.md)
 - [#74-2004-Tree-Cutting-Amendment - Attachment C To Ordinance No. 54-89, The City Of Rivergrove'S Land Development Ordinance (2004)](./ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.md)
 - [#76-2008-FEMA-Flood-Map - The Rivergrove Land Development Ordinance, And Ordinance No. 52 And Ordinance No. 70-2001 And Declaring An Emergency (2008)](./ordinances/2008-Ord-76-2008-FEMA-Flood-Map.md)
+- [#81-2011-Sign - Table Of Contents (2011)](./ordinances/2011-Ord-81-2011-Sign.md)
 - [#88-2017-Docks - That Amends Ordinance No. 70-2001 To Allow Docks As A Conditional Use And Amends Rldo To Clarify Docks Are A Permitted Use In The R Zone (2017)](./ordinances/2017-Ord-88-2017-Docks.md)
 
 ---

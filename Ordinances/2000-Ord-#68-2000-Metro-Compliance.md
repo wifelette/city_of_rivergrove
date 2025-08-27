@@ -7,10 +7,10 @@
 **Adopted by Rivergrove City Council:** 10/16/2000
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 10-16-00                          
+**Date**: 10-16-00                                    
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 10/16/2000                          
+**Date**: 10/16/2000                                    
 
 Adopted
 
@@ -58,39 +58,39 @@ Rivergrove hereby amends its Land Development Ordinance (LDO) to meet the densit
 
 > **Section 5.075. Minimum Density Standard.** To ensure that property develops at or near the density envisioned for the areas outside the Flood Hazard District, Rivergrove hereby establishes a minimum density standard of 80% of maximum density.
 >
-> **(a)** The calculation of minimum and maximum densities shall be made as follows:
+> **a.** The calculation of minimum and maximum densities shall be made as follows:
 >
->   **(1)** The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
+>    1. The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
+>       
+>       - Land within the 100-year flood plain;  
+>       - Land with slopes exceeding 25%;  
+>       - Water Quality Resource Areas;  
+>       - All land dedicated for public rights-of-way;  
+>       - All land used or proposed as a private road for access benefiting more than one lot.
 >
->     a) Land within the 100-year flood plain;  
->     b) Land with slopes exceeding 25%;  
->     c) Water Quality Resource Areas;  
->     d) All land dedicated for public rights-of-way;  
->     e) All land used or proposed as a private road for access benefiting more than one lot.
+>    2. To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
 >
->   **(2)** To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
+>    3. To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
 >
->   **(3)** To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
+> **b.** The minimum density standard states the number of units to be placed on the property to be developed or divided.
 >
-> **(b)** The minimum density standard states the number of units to be placed on the property to be developed or divided.
+>    1. Units shall be counted as follows:
+>       
+>       - a single-family detached dwelling -one unit;  
+>       - a secondary dwelling unit -one unit;  
+>       - a duplex -two units;  
+>       - a triplex -three units.
 >
->   **(1)** Units shall be counted as follows:
+>    2. Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
+>       
+>       - a single-family with a secondary dwelling unit; or  
+>       - a duplex; or  
+>       - a triplex.
 >
->     a) a single-family detached dwelling -one unit;  
->     b) a secondary dwelling unit -one unit;  
->     c) a duplex -two units;  
->     d) a triplex -three units.
->
->   **(2)** Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
->
->     a) a single-family with a secondary dwelling unit; or  
->     b) a duplex; or  
->     c) a triplex.
->
->   **(3)** Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
->
->     a) the configuration of the property to be developed or divided;  
->     b) the availability of sewer service to the property to be developed or divided.
+>    3. Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
+>       
+>       - the configuration of the property to be developed or divided;  
+>       - the availability of sewer service to the property to be developed or divided.
 >
 > **(c)** The provisions of this section do not apply to land within 100-year flood plain or to multi-family developments.
 

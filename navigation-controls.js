@@ -8,9 +8,12 @@ class NavigationController {
     constructor() {
         this.documents = [];
         this.relationships = {};
-        this.currentView = 'list';
+        this.currentView = 'chronological';
+        this.currentOrder = 'asc';
         this.searchTerm = '';
         this.currentDocument = null;
+        this.leftPanelWidth = localStorage.getItem('leftPanelWidth') || '350';
+        this.rightPanelWidth = localStorage.getItem('rightPanelWidth') || '300';
         
         this.init();
     }
@@ -18,13 +21,24 @@ class NavigationController {
     async init() {
         // Load relationships data
         try {
-            const response = await fetch('relationships.json');
+            // Try different paths for relationships.json
+            let response = await fetch('/relationships.json');
+            if (!response.ok) {
+                response = await fetch('./relationships.json');
+            }
+            if (!response.ok) {
+                response = await fetch('../relationships.json');
+            }
+            
             const data = await response.json();
             this.documents = Object.values(data.documents);
             this.relationships = data.relationships;
             this.topics = data.topics;
+            console.log('NavigationController: Loaded', this.documents.length, 'documents');
         } catch (error) {
-            console.warn('Could not load relationships.json:', error);
+            console.warn('NavigationController: Could not load relationships.json:', error);
+            // Fallback - try to parse from existing sidebar
+            this.parseExistingSidebar();
         }
         
         // Initialize navigation enhancement
@@ -34,37 +48,75 @@ class NavigationController {
         this.detectCurrentDocument();
     }
     
+    parseExistingSidebar() {
+        // Parse documents from existing sidebar if relationships.json fails
+        this.documents = [];
+        
+        // Wait a moment for mdBook to populate
+        setTimeout(() => {
+            const links = document.querySelectorAll('ol.chapter a[href*="ordinances/"]');
+            links.forEach(link => {
+                const text = link.textContent;
+                const match = text.match(/#(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
+                if (match) {
+                    this.documents.push({
+                        id: match[1],
+                        title: match[2],
+                        year: match[3],
+                        file: link.getAttribute('href'),
+                        type: 'ordinance'
+                    });
+                }
+            });
+            console.log('NavigationController: Parsed', this.documents.length, 'documents from sidebar');
+            
+            // Update sidebar with parsed documents
+            if (this.documents.length > 0) {
+                this.updateSidebar();
+            }
+        }, 1000);
+    }
+    
     enhanceSidebar() {
         const sidebar = document.querySelector('.sidebar');
-        if (!sidebar) return;
+        const sidebarScrollbox = document.querySelector('mdbook-sidebar-scrollbox');
+        if (!sidebar || !sidebarScrollbox) {
+            console.warn('NavigationController: Sidebar elements not found');
+            return;
+        }
         
         // Create enhanced header
         const header = document.createElement('div');
         header.className = 'nav-header-enhanced';
         header.innerHTML = `
+            <div class="header-top">
+                <div class="sidebar-title">Ordinances</div>
+                <div class="order-icons">
+                    <button class="order-icon active" data-order="asc" title="Oldest First">▲</button>
+                    <button class="order-icon" data-order="desc" title="Newest First">▼</button>
+                </div>
+            </div>
             <div class="nav-search-container">
                 <input type="text" 
                        class="nav-search" 
-                       placeholder="Search documents..." 
+                       placeholder="Search ordinances..." 
                        id="navSearch">
             </div>
             <div class="nav-controls">
-                <button class="nav-btn active" data-view="list">List</button>
-                <button class="nav-btn" data-view="decade">By Decade</button>
-                <button class="nav-btn" data-view="topic">By Topic</button>
+                <div class="control-label">View</div>
+                <div class="view-buttons">
+                    <button class="nav-btn" data-view="numerical" title="Organized by ordinance number ranges">Numerical</button>
+                    <button class="nav-btn active" data-view="chronological" title="Grouped by decade with historical ordering">Chronological</button>
+                    <button class="nav-btn" data-view="topical" title="Grouped by subject matter">Topical</button>
+                </div>
             </div>
             <div class="nav-stats" id="navStats">
-                <span id="docCount">${this.documents.length}</span> documents
+                Showing <span id="docCount">${this.documents.length}</span> of <span id="totalCount">${this.documents.length}</span> ordinances
             </div>
         `;
         
-        // Insert header at the top of sidebar
-        const sidebarHeader = sidebar.querySelector('.sidebar-header') || sidebar.firstChild;
-        if (sidebarHeader) {
-            sidebarHeader.after(header);
-        } else {
-            sidebar.prepend(header);
-        }
+        // Insert header before the sidebar scrollbox
+        sidebarScrollbox.parentNode.insertBefore(header, sidebarScrollbox);
     }
     
     addRightPanel() {
@@ -117,6 +169,26 @@ class NavigationController {
             });
         });
         
+        // Order controls
+        document.querySelectorAll('.order-icon').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.order-icon').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                this.currentOrder = e.target.dataset.order;
+                
+                // Update tooltips based on view
+                if (this.currentView === 'numerical') {
+                    document.querySelector('[data-order="asc"]').title = 'Low to High';
+                    document.querySelector('[data-order="desc"]').title = 'High to Low';
+                } else {
+                    document.querySelector('[data-order="asc"]').title = 'Oldest First';
+                    document.querySelector('[data-order="desc"]').title = 'Newest First';
+                }
+                
+                this.updateSidebar();
+            });
+        });
+        
         // Panel toggle
         const panelToggle = document.getElementById('panelToggle');
         if (panelToggle) {
@@ -149,27 +221,63 @@ class NavigationController {
     }
     
     updateSidebar() {
-        const sidebar = document.querySelector('.sidebar-content ul') || document.querySelector('.chapter');
-        if (!sidebar) return;
+        // Store original sidebar content if not already stored
+        if (!this.originalSidebar) {
+            const sidebar = document.querySelector('ol.chapter');
+            if (sidebar) {
+                this.originalSidebar = sidebar.cloneNode(true);
+            }
+        }
+        
+        // Find the container for the chapter list
+        let sidebar = document.querySelector('ol.chapter');
+        if (!sidebar) {
+            // Try to find it within the scrollbox
+            const scrollbox = document.querySelector('mdbook-sidebar-scrollbox');
+            if (scrollbox) {
+                sidebar = scrollbox.querySelector('ol.chapter');
+            }
+        }
+        
+        if (!sidebar) {
+            console.warn('NavigationController: Cannot find sidebar content container');
+            // Try again in a moment
+            setTimeout(() => this.updateSidebar(), 500);
+            return;
+        }
         
         const filtered = this.filterDocuments();
+        console.log('NavigationController: Updating sidebar with', filtered.length, 'documents');
+        
+        // Clear current content but preserve the structure
+        const ordinanceItems = Array.from(sidebar.querySelectorAll('li.chapter-item')).filter(li => {
+            const link = li.querySelector('a');
+            return link && link.href.includes('ordinances/');
+        });
+        
+        // Store references to preserve mdBook functionality
+        this.mdBookItems = ordinanceItems;
         
         switch (this.currentView) {
-            case 'list':
-                this.renderListView(sidebar, filtered);
+            case 'numerical':
+                this.renderNumericalView(sidebar, filtered);
                 break;
-            case 'decade':
-                this.renderDecadeView(sidebar, filtered);
+            case 'chronological':
+                this.renderChronologicalView(sidebar, filtered);
                 break;
-            case 'topic':
-                this.renderTopicView(sidebar, filtered);
+            case 'topical':
+                this.renderTopicalView(sidebar, filtered);
                 break;
         }
         
         // Update stats
         const docCount = document.getElementById('docCount');
+        const totalCount = document.getElementById('totalCount');
         if (docCount) {
             docCount.textContent = filtered.length;
+        }
+        if (totalCount) {
+            totalCount.textContent = this.documents.length;
         }
     }
     
@@ -187,33 +295,57 @@ class NavigationController {
         });
     }
     
-    renderListView(container, documents) {
-        // Sort documents by type and then chronologically
-        const sorted = documents.sort((a, b) => {
-            // First by type (ordinances, resolutions, interpretations)
-            const typeOrder = { 'ordinance': 0, 'resolution': 1, 'interpretation': 2, 'transcript': 3 };
-            if (typeOrder[a.type] !== typeOrder[b.type]) {
-                return typeOrder[a.type] - typeOrder[b.type];
-            }
-            
-            // Then by year/date
-            const aDate = a.year || a.date || '0000';
-            const bDate = b.year || b.date || '0000';
-            return aDate.localeCompare(bDate);
-        });
+    renderNumericalView(container, documents) {
+        // Group by number ranges
+        const ranges = [
+            {title: '#1-50', min: 1, max: 50},
+            {title: '#51-100', min: 51, max: 100},
+            {title: '#101+', min: 101, max: 999999}
+        ];
         
-        const html = sorted.map(doc => {
-            const href = doc.file.replace('.md', '.html');
-            const displayId = doc.id || (doc.date ? doc.date : 'N/A');
-            const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
+        const html = ranges.map(range => {
+            const rangeDocs = documents.filter(doc => {
+                const num = parseInt(doc.id) || 0;
+                return num >= range.min && num <= range.max;
+            });
+            
+            if (rangeDocs.length === 0) return '';
+            
+            // Sort by number within each range
+            rangeDocs.sort((a, b) => {
+                const numA = parseInt(a.id) || 0;
+                const numB = parseInt(b.id) || 0;
+                return this.currentOrder === 'asc' ? numA - numB : numB - numA;
+            });
             
             return `
-                <li class="chapter-item">
-                    <a href="${href}" class="doc-link">
-                        <span class="doc-number">#${displayId}</span>
-                        <span class="doc-title">${doc.title || doc.file}</span>
-                        <span class="doc-year">(${year})</span>
-                    </a>
+                <li class="chapter-item expanded">
+                    <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
+                        <span class="arrow">▼</span>
+                        <span>${range.title}</span>
+                        <span class="count">${rangeDocs.length}</span>
+                    </div>
+                    <ul class="group-content">
+                        ${rangeDocs.map(doc => {
+                            const href = doc.file.replace('.md', '.html');
+                            const displayId = doc.id || 'N/A';
+                            const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
+                            const topics = doc.topics || [];
+                            
+                            return `
+                                <li class="chapter-item">
+                                    <a href="${href}" class="doc-link">
+                                        <div class="doc-main">
+                                            <span class="doc-number">#${displayId}</span>
+                                            <span class="doc-title">${doc.title || doc.file}</span>
+                                            <span class="doc-year">(${year})</span>
+                                        </div>
+                                        ${topics.length > 0 ? `<div class="doc-topics">${topics.map(t => `<span class="topic-tag">${t}</span>`).join(' ')}</div>` : ''}
+                                    </a>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
                 </li>
             `;
         }).join('');
@@ -221,7 +353,7 @@ class NavigationController {
         container.innerHTML = html;
     }
     
-    renderDecadeView(container, documents) {
+    renderChronologicalView(container, documents) {
         const grouped = {};
         
         documents.forEach(doc => {
@@ -233,42 +365,58 @@ class NavigationController {
             grouped[key].push(doc);
         });
         
-        const html = Object.keys(grouped)
-            .sort((a, b) => a === 'Unknown' ? 1 : b === 'Unknown' ? -1 : a.localeCompare(b))
-            .map(decade => {
-                const docs = grouped[decade].sort((a, b) => {
-                    const aDate = a.year || a.date || '0000';
-                    const bDate = b.year || b.date || '0000';
-                    return aDate.localeCompare(bDate);
-                });
-                
-                return `
-                    <li class="chapter-item expanded">
-                        <div class="decade-header">${decade}</div>
-                        <ul class="decade-list">
-                            ${docs.map(doc => {
-                                const href = doc.file.replace('.md', '.html');
-                                const displayId = doc.id || doc.date;
-                                return `
-                                    <li class="chapter-item">
-                                        <a href="${href}" class="doc-link">
+        // Sort decades based on order
+        const decadeKeys = Object.keys(grouped).sort((a, b) => {
+            if (a === 'Unknown') return 1;
+            if (b === 'Unknown') return -1;
+            return this.currentOrder === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
+        });
+        
+        const html = decadeKeys.map(decade => {
+            const docs = grouped[decade].sort((a, b) => {
+                const aDate = a.year || a.date || '0000';
+                const bDate = b.year || b.date || '0000';
+                return this.currentOrder === 'asc' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
+            });
+            
+            return `
+                <li class="chapter-item expanded">
+                    <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
+                        <span class="arrow">▼</span>
+                        <span>${decade}</span>
+                        <span class="count">${docs.length}</span>
+                    </div>
+                    <ul class="group-content">
+                        ${docs.map(doc => {
+                            const href = doc.file.replace('.md', '.html');
+                            const displayId = doc.id || doc.date;
+                            const year = doc.year || (doc.date ? doc.date.substring(0, 4) : '');
+                            const topics = doc.topics || [];
+                            
+                            return `
+                                <li class="chapter-item">
+                                    <a href="${href}" class="doc-link">
+                                        <div class="doc-main">
                                             <span class="doc-number">#${displayId}</span>
                                             <span class="doc-title">${doc.title}</span>
-                                        </a>
-                                    </li>
-                                `;
-                            }).join('')}
-                        </ul>
-                    </li>
-                `;
-            }).join('');
+                                            <span class="doc-year">(${year})</span>
+                                        </div>
+                                        ${topics.length > 0 ? `<div class="doc-topics">${topics.map(t => `<span class="topic-tag">${t}</span>`).join(' ')}</div>` : ''}
+                                    </a>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </li>
+            `;
+        }).join('');
         
         container.innerHTML = html;
     }
     
-    renderTopicView(container, documents) {
+    renderTopicalView(container, documents) {
         if (!this.topics) {
-            this.renderListView(container, documents);
+            this.renderChronologicalView(container, documents);
             return;
         }
         
@@ -280,10 +428,21 @@ class NavigationController {
                 
                 if (topicDocs.length === 0) return '';
                 
+                // Sort docs within topic based on current order
+                topicDocs.sort((a, b) => {
+                    const aDate = a.year || a.date || '0000';
+                    const bDate = b.year || b.date || '0000';
+                    return this.currentOrder === 'asc' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
+                });
+                
                 return `
                     <li class="chapter-item expanded">
-                        <div class="topic-header">${topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</div>
-                        <ul class="topic-list">
+                        <div class="group-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed')">
+                            <span class="arrow">▼</span>
+                            <span>${topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+                            <span class="count">${topicDocs.length}</span>
+                        </div>
+                        <ul class="group-content">
                             ${topicDocs.map(doc => {
                                 const href = doc.file.replace('.md', '.html');
                                 const displayId = doc.id || doc.date;
@@ -291,9 +450,11 @@ class NavigationController {
                                 return `
                                     <li class="chapter-item">
                                         <a href="${href}" class="doc-link">
-                                            <span class="doc-number">#${displayId}</span>
-                                            <span class="doc-title">${doc.title}</span>
-                                            <span class="doc-year">(${year})</span>
+                                            <div class="doc-main">
+                                                <span class="doc-number">#${displayId}</span>
+                                                <span class="doc-title">${doc.title}</span>
+                                                <span class="doc-year">(${year})</span>
+                                            </div>
                                         </a>
                                     </li>
                                 `;
@@ -425,9 +586,47 @@ class NavigationController {
     }
 }
 
-// Initialize when DOM is loaded
+// Initialize when DOM is loaded and mdBook is ready
+function initWhenReady() {
+    console.log('NavigationController: Starting initialization...');
+    
+    // For mdBook, we need a different approach - wait for the actual content
+    let attempts = 0;
+    const maxAttempts = 100; // 10 seconds
+    
+    const checkSidebar = setInterval(() => {
+        attempts++;
+        
+        // Look for signs that mdBook has loaded
+        const sidebarScrollbox = document.querySelector('mdbook-sidebar-scrollbox');
+        const sidebar = document.querySelector('#sidebar');
+        
+        // Debug logging
+        if (attempts === 1 || attempts % 10 === 0) {
+            console.log('NavigationController: Checking for sidebar...', {
+                sidebarScrollbox: !!sidebarScrollbox,
+                sidebar: !!sidebar,
+                attempts: attempts
+            });
+        }
+        
+        // Check if we have the basic structure
+        if (sidebarScrollbox && sidebar) {
+            clearInterval(checkSidebar);
+            console.log('NavigationController: Found sidebar elements, initializing...');
+            
+            // Initialize immediately - we'll handle dynamic content separately
+            new NavigationController();
+        } else if (attempts >= maxAttempts) {
+            clearInterval(checkSidebar);
+            console.warn('NavigationController: Timeout - forcing initialization');
+            new NavigationController();
+        }
+    }, 100);
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new NavigationController());
+    document.addEventListener('DOMContentLoaded', initWhenReady);
 } else {
-    new NavigationController();
+    initWhenReady();
 }

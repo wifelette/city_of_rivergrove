@@ -54,6 +54,15 @@
       "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
       "file": "1998-Ord-#62-98-Flood-and-Land-Development-Amendment.md"
     },
+    "ordinance-54-89-C-Land-Development": {
+      "type": "ordinance",
+      "id": "54-89-C-Land-Development",
+      "date": null,
+      "year": "1989",
+      "section": null,
+      "title": "TABLE OF CONTENTS",
+      "file": "1989-Ord-#54-89-C-Land-Development.md"
+    },
     "ordinance-59-97A-Land-Development-Amendment": {
       "type": "ordinance",
       "id": "59-97A-Land-Development-Amendment",
@@ -81,6 +90,15 @@
       "title": "1. Section 5.060 is amended to read as follows:",
       "file": "1998-Ord-#61-98-Land-Development-Amendment.md"
     },
+    "ordinance-81-2011-Sign": {
+      "type": "ordinance",
+      "id": "81-2011-Sign",
+      "date": null,
+      "year": "2011",
+      "section": null,
+      "title": "TABLE OF CONTENTS",
+      "file": "2011-Ord-#81-2011-Sign.md"
+    },
     "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
       "type": "ordinance",
       "id": "72-2002-Penalties-and-Abatement-Amendment",
@@ -89,6 +107,15 @@
       "section": null,
       "title": "BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON",
       "file": "2002-Ord-#72-2002-Penalties-and-Abatement-Amendment.md"
+    },
+    "ordinance-65-99-Sewer-Services": {
+      "type": "ordinance",
+      "id": "65-99-Sewer-Services",
+      "date": null,
+      "year": "1999",
+      "section": null,
+      "title": "AN ORDINANCE CONSENTING TO THE APPLICATION AND ENFORCEMENT OF LAKE OSWEGO CITY CODE PROVISIONS, RELATED TO SANITARY SEWER SERVICES, IN THE CITY OF RIVERGROVE.",
+      "file": "1999-Ord-#65-99-Sewer-Services.md"
     },
     "ordinance-73-2003A-Conditional-Use-Provisions": {
       "type": "ordinance",
@@ -274,11 +301,11 @@
   "relationships": {
     "ordinance-76-2008-FEMA-Flood-Map": {
       "references": [
+        "76-2008",
         "70-2001",
-        "52",
-        "62-98",
         "54-89",
-        "76-2008"
+        "62-98",
+        "52"
       ],
       "resolutions": [],
       "interpretations": [
@@ -294,13 +321,13 @@
     },
     "ordinance-71-2002-Gates": {
       "references": [
-        "54-89",
-        "71-2002"
+        "71-2002",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.135",
-        "5.130"
+        "5.130",
+        "6.135"
       ],
       "amends": [],
       "related": [
@@ -329,13 +356,13 @@
     },
     "ordinance-88-2017-Docks": {
       "references": [
-        "88-2017",
-        "70-2001"
+        "70-2001",
+        "88-2017"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.050",
-        "5.060"
+        "5.060",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -344,8 +371,8 @@
     },
     "ordinance-28-Parks": {
       "references": [
-        "16",
-        "28"
+        "28",
+        "16"
       ],
       "resolutions": [],
       "interpretations": [],
@@ -356,15 +383,15 @@
     },
     "ordinance-62-98-Flood-and-Land-Development-Amendment": {
       "references": [
-        "52",
         "62-98",
-        "54-89"
+        "54-89",
+        "52"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.055",
+        "5.24",
         "5.050",
-        "5.24"
+        "5.055"
       ],
       "amends": [],
       "related": [
@@ -374,17 +401,155 @@
         "resolution-22-PC"
       ]
     },
-    "ordinance-59-97A-Land-Development-Amendment": {
+    "ordinance-54-89-C-Land-Development": {
       "references": [
-        "59-97A",
-        "54-89"
+        "54-89",
+        "52"
       ],
       "resolutions": [],
       "interpretations": [
-        "2.040",
-        "5.050",
+        "4.080",
+        "5.030",
+        "8.130",
+        "4.120",
+        "4.030",
+        "6.160",
+        "6.227",
+        "2.030",
+        "1.010",
+        "8.170",
+        "5.120",
+        "2.070",
+        "4.040",
+        "6.030",
         "3.020",
-        "5.010"
+        "9.020",
+        "6.020",
+        "6.010",
+        "6.229",
+        "4.060",
+        "5.060",
+        "6.120",
+        "6.150",
+        "6.226",
+        "9.010",
+        "3.070",
+        "6.060",
+        "5.010",
+        "4.050",
+        "2.020",
+        "4.100",
+        "6.050",
+        "6.224",
+        "8.090",
+        "2.040",
+        "4.020",
+        "6.090",
+        "6.190",
+        "8.190",
+        "1.040",
+        "5.070",
+        "8.020",
+        "6.235",
+        "5.050",
+        "6.140",
+        "8.080",
+        "6.080",
+        "5.080",
+        "3.030",
+        "4.110",
+        "5.020",
+        "8.10",
+        "4.010",
+        "6.222",
+        "6.231",
+        "8.150",
+        "8.070",
+        "5.110",
+        "6.070",
+        "8.210",
+        "8.200",
+        "5.090",
+        "2.060",
+        "2.010",
+        "6.234",
+        "8.120",
+        "6.228",
+        "8.050",
+        "5.100",
+        "6.210",
+        "3.060",
+        "8.110",
+        "8.180",
+        "8.160",
+        "6.220",
+        "3.080",
+        "9.030",
+        "6.230",
+        "6.225",
+        "8.100",
+        "1.030",
+        "8.030",
+        "2.080",
+        "4.070",
+        "6.130",
+        "6.100",
+        "3.040",
+        "6.170",
+        "4.090",
+        "3.010",
+        "6.221",
+        "2.090",
+        "6.236",
+        "8.040",
+        "6.200",
+        "6.232",
+        "6.040",
+        "8.140",
+        "6.233",
+        "3.090",
+        "3.050",
+        "2.050",
+        "8.060",
+        "1.020",
+        "1.050",
+        "6.110",
+        "6.223",
+        "6.180"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
+    },
+    "ordinance-59-97A-Land-Development-Amendment": {
+      "references": [
+        "54-89",
+        "59-97A"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "3.020",
+        "5.010",
+        "2.040",
+        "5.050"
       ],
       "amends": [
         "54-89"
@@ -403,7 +568,9 @@
       "interpretations": [],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -423,17 +590,19 @@
     },
     "ordinance-61-98-Land-Development-Amendment": {
       "references": [
-        "61-98",
-        "54-89"
+        "54-89",
+        "61-98"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.226",
-        "5.060"
+        "5.060",
+        "6.226"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -454,8 +623,8 @@
     "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
       "references": [
         "72-2002",
-        "59-97A",
-        "54-89"
+        "54-89",
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
@@ -469,17 +638,25 @@
         "resolution-22-PC"
       ]
     },
+    "ordinance-65-99-Sewer-Services": {
+      "references": [
+        "65-99"
+      ],
+      "resolutions": [],
+      "interpretations": [],
+      "amends": []
+    },
     "ordinance-73-2003A-Conditional-Use-Provisions": {
       "references": [
         "73-2003A",
-        "59-97A",
-        "54-89"
+        "54-89",
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
         "6.300",
-        "5.050",
-        "6.236"
+        "6.236",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -495,14 +672,14 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.0",
         "5.1",
+        "4.3",
         "4.4",
         "4.1",
-        "5.2",
         "5.3",
-        "3.2",
-        "4.3"
+        "5.2",
+        "5.0",
+        "3.2"
       ],
       "amends": [],
       "related": [
@@ -511,8 +688,8 @@
     },
     "ordinance-69-2000-Title-3-Compliance-STUB": {
       "references": [
-        "68-2000",
-        "69-2000"
+        "69-2000",
+        "68-2000"
       ],
       "resolutions": [],
       "interpretations": [
@@ -520,8 +697,10 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
         "resolution-72-Municipal-Services",
@@ -540,22 +719,24 @@
     },
     "ordinance-68-2000-Metro-Compliance": {
       "references": [
-        "68-2000",
-        "54-89"
+        "54-89",
+        "68-2000"
       ],
       "resolutions": [],
       "interpretations": [
-        "2.0",
-        "6.060",
         "6.080",
-        "1.0",
         "5.095",
-        "5.075"
+        "1.0",
+        "2.0",
+        "5.075",
+        "6.060"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-70-2001-WQRA",
         "resolution-72-Municipal-Services",
@@ -580,8 +761,10 @@
       "interpretations": [],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "resolution-72-Municipal-Services",
@@ -620,8 +803,10 @@
       "interpretations": [],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -645,13 +830,15 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.2"
+        "5.2",
+        "3.090"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -677,8 +864,10 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -699,14 +888,16 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
         "9.030",
+        "3.090",
         "4.050"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -727,15 +918,17 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "6.050",
+        "4.020",
         "3.090",
         "3.0920",
-        "4.020"
+        "6.050"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -777,8 +970,10 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -799,13 +994,15 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "9.030"
+        "9.030",
+        "3.090"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -828,13 +1025,15 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.010"
+        "5.010",
+        "3.090"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -862,8 +1061,10 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -886,13 +1087,15 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.010"
+        "5.010",
+        "3.090"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -918,8 +1121,10 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -941,13 +1146,15 @@
       "resolutions": [],
       "interpretations": [
         "5.080",
-        "3.090",
-        "9.030"
+        "9.030",
+        "3.090"
       ],
       "amends": [],
       "related": [
+        "ordinance-54-89-C-Land-Development",
         "ordinance-57-93-Manufactured-Homes",
         "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-81-2011-Sign",
         "ordinance-69-2000-Title-3-Compliance-STUB",
         "ordinance-68-2000-Metro-Compliance",
         "ordinance-70-2001-WQRA",
@@ -979,6 +1186,28 @@
       "related": [
         "ordinance-28-Parks"
       ]
+    },
+    "ordinance-81-2011-Sign": {
+      "related": [
+        "ordinance-54-89-C-Land-Development",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance-STUB",
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-70-2001-WQRA",
+        "resolution-72-Municipal-Services",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02"
+      ]
     }
   },
   "topics": {
@@ -1004,8 +1233,10 @@
       "ordinance-16-Parks"
     ],
     "general": [
+      "ordinance-54-89-C-Land-Development",
       "ordinance-57-93-Manufactured-Homes",
       "ordinance-61-98-Land-Development-Amendment",
+      "ordinance-81-2011-Sign",
       "ordinance-69-2000-Title-3-Compliance-STUB",
       "ordinance-68-2000-Metro-Compliance",
       "ordinance-70-2001-WQRA",
@@ -1021,11 +1252,14 @@
       "interpretation-2002-08-05",
       "interpretation-2008-02-04",
       "interpretation-1998-03-02"
+    ],
+    "enforcement": [
+      "ordinance-65-99-Sewer-Services"
     ]
   },
   "metadata": {
     "generated": "1756245104.954725",
-    "total_documents": 30,
-    "total_relationships": 31
+    "total_documents": 33,
+    "total_relationships": 34
   }
 }

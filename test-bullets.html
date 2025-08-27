@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Bullets</title>
+</head>
+<body>
+    <h2>Testing Bullet Rendering</h2>
+    
+    <h3>Unordered List (ul)</h3>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2
+            <ul>
+                <li>Nested item 2.1</li>
+                <li>Nested item 2.2</li>
+            </ul>
+        </li>
+        <li>Item 3</li>
+    </ul>
+    
+    <h3>Ordered List (ol)</h3>
+    <ol>
+        <li>First item</li>
+        <li>Second item
+            <ol>
+                <li>Nested 2.1</li>
+                <li>Nested 2.2</li>
+            </ol>
+        </li>
+        <li>Third item</li>
+    </ol>
+    
+    <script>
+        // Check computed styles
+        const ul = document.querySelector('ul');
+        const ol = document.querySelector('ol');
+        const li = document.querySelector('li');
+        
+        console.log('UL list-style:', window.getComputedStyle(ul).listStyle);
+        console.log('OL list-style:', window.getComputedStyle(ol).listStyle);
+        console.log('LI list-style:', window.getComputedStyle(li).listStyle);
+    </script>
+</body>
+</html>

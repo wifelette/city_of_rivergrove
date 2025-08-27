@@ -67,6 +67,12 @@ def build_document_map():
     doc_map["ordinance no. 70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
     doc_map["ord. #70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
     
+    # Add specific mapping for 54-89 with -C suffix
+    doc_map["ordinance #54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
+    doc_map["ordinance 54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
+    doc_map["ordinance no. 54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
+    doc_map["ord. #54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
+    
     return doc_map
 
 def add_cross_references(content, doc_map, current_file):
