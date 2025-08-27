@@ -524,7 +524,7 @@ class NavigationController {
                 items.forEach(item => {
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}">${item.text}</a>
+                            <a href="${item.href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -566,7 +566,7 @@ class NavigationController {
                 items.forEach(item => {
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}">${item.text}</a>
+                            <a href="${item.href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -607,7 +607,7 @@ class NavigationController {
                 items.forEach(item => {
                     html += `
                         <li class="chapter-item grouped-item">
-                            <a href="${item.href}">${item.text}</a>
+                            <a href="${item.href}" class="doc-link">${item.text}</a>
                         </li>
                     `;
                 });
@@ -616,8 +616,16 @@ class NavigationController {
         
         container.innerHTML = html;
         
-        // Run number prefix removal on the new content
-        setTimeout(() => this.removeNumberPrefixes(), 50);
+        // Run number prefix removal and update document count
+        setTimeout(() => {
+            this.removeNumberPrefixes();
+            // Update document count
+            const visibleItems = container.querySelectorAll('li.chapter-item:not([style*="display: none"])').length;
+            const docCount = document.getElementById('docCount');
+            if (docCount) {
+                docCount.textContent = visibleItems;
+            }
+        }, 50);
     }
     
     refreshSidebar() {
