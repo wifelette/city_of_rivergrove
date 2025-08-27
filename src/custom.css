@@ -563,7 +563,7 @@ blockquote {
     font-size: 12px !important;
     cursor: pointer;
     border-radius: 4px !important;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, transform 0.15s ease;
     border: 1px solid transparent !important;
     position: relative;
     background: transparent;

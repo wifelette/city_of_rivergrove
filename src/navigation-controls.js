@@ -381,13 +381,16 @@ class NavigationController {
             });
         }
         
-        // Document link clicks
+        // Document link clicks - only update highlight, don't rebuild
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a[href*=".html"]');
-            if (link) {
+            if (link && link.closest('.sidebar')) {
+                // If clicking within sidebar, just update highlight
                 setTimeout(() => {
+                    this.highlightCurrentDocument();
+                    // Update right panel without triggering full rebuild
                     this.detectCurrentDocument();
-                }, 100);
+                }, 50);
             }
         });
     }
@@ -422,29 +425,32 @@ class NavigationController {
     }
     
     highlightCurrentDocument() {
-        // Remove any existing active states
-        document.querySelectorAll('.sidebar .chapter-item').forEach(item => {
-            item.classList.remove('active', 'selected');
-        });
-        document.querySelectorAll('.sidebar a').forEach(link => {
-            link.classList.remove('active', 'selected');
-        });
-        
-        // Get current path
-        const currentPath = window.location.pathname;
-        
-        // Find and highlight the matching link
-        const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
-        sidebarLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            // Check if this link matches the current path
-            if (href && (currentPath.endsWith(href) || href.endsWith(currentPath.split('/').pop()))) {
-                link.classList.add('active', 'selected');
-                const parentLi = link.closest('li');
-                if (parentLi) {
-                    parentLi.classList.add('active', 'selected');
+        // Use requestAnimationFrame for smoother updates
+        requestAnimationFrame(() => {
+            // Remove any existing active states
+            document.querySelectorAll('.sidebar .chapter-item.active, .sidebar .chapter-item.selected').forEach(item => {
+                item.classList.remove('active', 'selected');
+            });
+            document.querySelectorAll('.sidebar a.active, .sidebar a.selected').forEach(link => {
+                link.classList.remove('active', 'selected');
+            });
+            
+            // Get current path
+            const currentPath = window.location.pathname;
+            
+            // Find and highlight the matching link
+            const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
+            sidebarLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Check if this link matches the current path
+                if (href && (currentPath.endsWith(href) || href.endsWith(currentPath.split('/').pop()))) {
+                    link.classList.add('active', 'selected');
+                    const parentLi = link.closest('li');
+                    if (parentLi) {
+                        parentLi.classList.add('active', 'selected');
+                    }
                 }
-            }
+            });
         });
     }
     
