@@ -639,7 +639,9 @@ blockquote {
 }
 
 .chapter li.active,
-.chapter li a.active {
+.chapter li.selected,
+.chapter li a.active,
+.chapter li a.selected {
     background: #e7f1ff !important;
     border-left: 3px solid #0969da !important;
     padding-left: 7px !important;
@@ -647,8 +649,16 @@ blockquote {
     font-weight: 500;
 }
 
-.chapter li.active:hover {
+.chapter li.active:hover,
+.chapter li.selected:hover {
     transform: none;
+}
+
+/* Selected state for grouped items */
+.chapter li.grouped-item.selected a,
+.chapter li.grouped-item.active a {
+    background: #e7f1ff !important;
+    padding-left: 7px !important;
 }
 
 .doc-link {

@@ -120,23 +120,18 @@ async function createPublicMetadataRecord(documentId, airtableId, dryRun = false
     return { id: 'mock-id', created: true };
   }
   
-  try {
-    // Call the real MCP tool to create the Public Metadata record
-    const result = await mcpClient.call('council_public_metadata_create', {
-      fields: {
-        'Document': airtableId, // Link to the Ordinances record using its ID
-        'Publication Status': 'Draft',
-        'Digitization Notes': '',
-        'Public Tags': ''
-      }
-    });
-    
-    console.log(`✅ Created Public Metadata record: ${result.id}`);
-    return { id: result.id, created: true };
-  } catch (error) {
-    // This is expected when running standalone - the mock client will handle it
-    return { id: 'mock-created', created: true };
-  }
+  // Call the MCP tool (or mock) to create the Public Metadata record
+  const result = await mcpClient.call('council_public_metadata_create', {
+    fields: {
+      'Document': airtableId, // Link to the Ordinances record using its ID
+      'Publication Status': 'Draft',
+      'Digitization Notes': '',
+      'Public Tags': ''
+    }
+  });
+  
+  console.log(`✅ Created Public Metadata record: ${result.id}`);
+  return { id: result.id, created: true };
 }
 
 /**
@@ -145,19 +140,14 @@ async function createPublicMetadataRecord(documentId, airtableId, dryRun = false
 async function getOrdinancesAndResolutions(testMode = null, testLimit = null) {
   console.log('📋 Fetching Ordinances and Resolutions from Airtable...');
   
-  try {
-    // Call the real MCP tool to list ordinances and resolutions
-    const maxRecords = testLimit || (testMode === 'single' ? 1 : 100);
-    const result = await mcpClient.call('council_ordinances_list', {
-      maxRecords: maxRecords
-    });
-    
-    console.log(`Found ${result.records.length} ordinance/resolution records in Airtable`);
-    return result.records;
-  } catch (error) {
-    // This is expected when running standalone - the mock client will handle it
-    return result.records;
-  }
+  // Call the MCP tool (or mock) to list ordinances and resolutions
+  const maxRecords = testLimit || (testMode === 'single' ? 1 : 100);
+  const result = await mcpClient.call('council_ordinances_list', {
+    maxRecords: maxRecords
+  });
+  
+  console.log(`Found ${result.records.length} ordinance/resolution records`);
+  return result.records;
 }
 
 /**
@@ -166,23 +156,18 @@ async function getOrdinancesAndResolutions(testMode = null, testLimit = null) {
 async function getExistingPublicMetadata() {
   console.log('🔍 Checking existing Public Metadata records...');
   
-  try {
-    // Call the real MCP tool to list existing public metadata
-    const result = await mcpClient.call('council_public_metadata_list', {
-      maxRecords: 200 // Get all existing records to check for duplicates
-    });
-    
-    console.log(`Found ${result.records.length} existing Public Metadata records`);
-    
-    // Convert to the format expected by the rest of the code
-    return result.records.map(record => ({
-      id: record.id,
-      documentId: record.fields['Document Display Name'] || record.fields['Document']?.[0] || 'Unknown'
-    }));
-  } catch (error) {
-    // This is expected when running standalone - the mock client will handle it
-    return [];
-  }
+  // Call the MCP tool (or mock) to list existing public metadata
+  const result = await mcpClient.call('council_public_metadata_list', {
+    maxRecords: 200 // Get all existing records to check for duplicates
+  });
+  
+  console.log(`Found ${result.records.length} existing Public Metadata records`);
+  
+  // Convert to the format expected by the rest of the code
+  return result.records.map(record => ({
+    id: record.id,
+    documentId: record.fields['Document Display Name'] || record.fields['Document']?.[0] || 'Unknown'
+  }));
 }
 
 /**

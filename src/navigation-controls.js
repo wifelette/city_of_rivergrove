@@ -414,9 +414,38 @@ class NavigationController {
             console.log('Found document:', doc);
             this.currentDocument = doc;
             this.updateRightPanel();
+            this.highlightCurrentDocument();
         } else {
             console.log('Document not found for:', filename);
+            this.highlightCurrentDocument();
         }
+    }
+    
+    highlightCurrentDocument() {
+        // Remove any existing active states
+        document.querySelectorAll('.sidebar .chapter-item').forEach(item => {
+            item.classList.remove('active', 'selected');
+        });
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.classList.remove('active', 'selected');
+        });
+        
+        // Get current path
+        const currentPath = window.location.pathname;
+        
+        // Find and highlight the matching link
+        const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
+        sidebarLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // Check if this link matches the current path
+            if (href && (currentPath.endsWith(href) || href.endsWith(currentPath.split('/').pop()))) {
+                link.classList.add('active', 'selected');
+                const parentLi = link.closest('li');
+                if (parentLi) {
+                    parentLi.classList.add('active', 'selected');
+                }
+            }
+        });
     }
     
     applyInitialView() {
@@ -457,6 +486,9 @@ class NavigationController {
         if (docCount) {
             docCount.textContent = visibleItems;
         }
+        
+        // Highlight the current document after sidebar update
+        this.highlightCurrentDocument();
     }
     
     reorderExistingItemsByView(container, items) {
@@ -634,6 +666,8 @@ class NavigationController {
             if (docCount) {
                 docCount.textContent = visibleItems;
             }
+            // Highlight current document
+            this.highlightCurrentDocument();
         }, 50);
     }
     
