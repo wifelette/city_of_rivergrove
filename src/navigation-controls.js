@@ -381,16 +381,27 @@ class NavigationController {
             });
         }
         
-        // Document link clicks - only update highlight, don't rebuild
+        // Override mdBook's active class immediately on page changes
+        window.addEventListener('popstate', () => {
+            this.highlightCurrentDocument();
+        });
+        
+        // Document link clicks - update immediately
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a[href*=".html"]');
             if (link && link.closest('.sidebar')) {
-                // If clicking within sidebar, just update highlight
+                // Clear any mdBook active classes immediately
+                document.querySelectorAll('.sidebar .active').forEach(el => {
+                    if (!el.classList.contains('nav-btn')) {
+                        el.classList.remove('active');
+                    }
+                });
+                
+                // Update highlight after navigation
                 setTimeout(() => {
                     this.highlightCurrentDocument();
-                    // Update right panel without triggering full rebuild
                     this.detectCurrentDocument();
-                }, 50);
+                }, 0);
             }
         });
     }
@@ -425,32 +436,30 @@ class NavigationController {
     }
     
     highlightCurrentDocument() {
-        // Use requestAnimationFrame for smoother updates
-        requestAnimationFrame(() => {
-            // Remove any existing active states
-            document.querySelectorAll('.sidebar .chapter-item.active, .sidebar .chapter-item.selected').forEach(item => {
-                item.classList.remove('active', 'selected');
-            });
-            document.querySelectorAll('.sidebar a.active, .sidebar a.selected').forEach(link => {
-                link.classList.remove('active', 'selected');
-            });
-            
-            // Get current path
-            const currentPath = window.location.pathname;
-            
-            // Find and highlight the matching link
-            const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
-            sidebarLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                // Check if this link matches the current path
-                if (href && (currentPath.endsWith(href) || href.endsWith(currentPath.split('/').pop()))) {
-                    link.classList.add('active', 'selected');
-                    const parentLi = link.closest('li');
-                    if (parentLi) {
-                        parentLi.classList.add('active', 'selected');
-                    }
+        // Don't use requestAnimationFrame - apply immediately to prevent flash
+        // Remove any existing active states
+        document.querySelectorAll('.sidebar .chapter-item.active, .sidebar .chapter-item.selected').forEach(item => {
+            item.classList.remove('active', 'selected');
+        });
+        document.querySelectorAll('.sidebar a.active, .sidebar a.selected').forEach(link => {
+            link.classList.remove('active', 'selected');
+        });
+        
+        // Get current path
+        const currentPath = window.location.pathname;
+        
+        // Find and highlight the matching link
+        const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
+        sidebarLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // Check if this link matches the current path
+            if (href && (currentPath.endsWith(href) || href.endsWith(currentPath.split('/').pop()))) {
+                link.classList.add('active', 'selected');
+                const parentLi = link.closest('li');
+                if (parentLi) {
+                    parentLi.classList.add('active', 'selected');
                 }
-            });
+            }
         });
     }
     

@@ -640,26 +640,32 @@ blockquote {
     box-shadow: none !important;
 }
 
+/* Override mdBook's default active styling first */
+.sidebar .chapter li > a.active {
+    background: transparent !important;
+    color: inherit !important;
+}
+
 /* Selected/active state for sidebar items */
-.chapter li.selected,
-.chapter li.active {
+.sidebar .chapter li.selected,
+.sidebar .chapter li.active {
     position: relative;
 }
 
-.chapter li.selected > a,
-.chapter li.active > a,
-.chapter li a.selected,
-.chapter li a.active,
-.chapter li.selected a.doc-link,
-.chapter li.active a.doc-link {
+.sidebar .chapter li.selected > a,
+.sidebar .chapter li.active > a,
+.sidebar .chapter li a.selected,
+.sidebar .chapter li a.active,
+.sidebar .chapter li.selected a.doc-link,
+.sidebar .chapter li.active a.doc-link {
     background: #e7f1ff !important;
     border-left: 3px solid #0969da !important;
     margin-left: -10px !important;
     padding-left: 17px !important;
     margin-right: -10px !important;
     padding-right: 10px !important;
-    box-shadow: 0 1px 3px rgba(9, 105, 218, 0.1);
-    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(9, 105, 218, 0.1) !important;
+    font-weight: 500 !important;
 }
 
 /* Hover state for selected items */
