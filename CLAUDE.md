@@ -20,7 +20,15 @@ Please read these two files for context on this project and how to work with Lea
 - No Claude attribution in commit messages
 - Always provide GitHub web URLs after pushing new documents (for Airtable) - format: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]`
 - Update issue #3 when documents are completed
-- Follow the established naming conventions strictly
+- **CRITICAL**: Follow naming conventions and rename files in BOTH locations:
+  - Rename the original PDF in Dropbox
+  - Use the same name for both .md and .pdf files in GitHub
+  - This applies to ALL document types (Ordinances, Resolutions, Interpretations)
 - Work is part of digitizing City of Rivergrove's ordinances, resolutions, and interpretations
-- **After reading a new ordinance .md file, run `python3 standardize-headers.py` to ensure consistent formatting before proceeding with PDF and commit steps**
-- After providing GitHub URLs, run `./update-mdbook.sh` to update the mdBook site with the new document
+- **After reading a new document .md file, run BOTH standardization scripts**:
+  - `python3 standardize-headers.py` to ensure consistent header formatting
+  - `python3 fix-signatures.py` to standardize signature blocks
+- After providing GitHub URLs:
+  - Run `./update-mdbook.sh` to sync files to src/ folders
+  - Add the new document to `src/SUMMARY.md` in the appropriate section
+  - Run `mdbook build` to rebuild the site

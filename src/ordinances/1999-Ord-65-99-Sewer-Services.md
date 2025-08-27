@@ -52,10 +52,10 @@ ABSTAINED **0**
 
 **Dated**
 
-[Signature], Mayor, Larry Barrett
+[Signature], Mayor, Larry Barrett  
 **Date:** 12-13-99
 
-[Signature], City Recorder, Mike Collmeyer
+[Signature], City Recorder, Mike Collmeyer  
 **Date:** 12/13/99
 
 **Adopted**

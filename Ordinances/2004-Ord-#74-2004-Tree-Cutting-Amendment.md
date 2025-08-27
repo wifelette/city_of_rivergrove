@@ -11,10 +11,10 @@ Re-Submitted to the Rivergrove City Council on **May 10, 2004**.
 Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 [Unsigned], Larry Barrett, Mayor  
-**Date**: 10-14-02
+**Date**: 10-14-02    
 
 [Unsigned], Mike Collmeyer, City Recorder  
-**Date**: 10/14/02
+**Date**: 10/14/02    
 
 ---
 

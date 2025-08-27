@@ -88,21 +88,25 @@ When processing a document:
 
 #### 3.1 Signature Section Formatting
 
-Standardized format for ordinance signatures:
+Standardized format for signatures (applies to ordinances, resolutions, and interpretations):
 
 ```markdown
-[Signature], [Name], [Title]
-**Date**: [Date as written]
+[Signature], Name, Title  
+**Date**: [Date as written]  
 
-[Signature], [Name], [Title]
-**Date**: [Date as written]
+[Signature], Name, Title  
+**Date**: [Date as written]  
 ```
 
-**Important notes:**
+**Important formatting rules:**
 
+- Format: `[Signature], Name, Title` (all on one line)
+- Names and titles are NOT bolded
+- Add double spaces at the end of signature lines for proper Markdown line breaks
 - Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
 - Different signers may use different date formats - preserve these differences
 - Use "[Signature]" placeholder for actual signatures
+- Run `fix-signatures.py` to standardize formatting automatically
 
 #### 3.2 Page Break Handling
 
@@ -195,12 +199,27 @@ After completing GitHub upload and URL updates:
 
 ### 2. When Digitizing Documents
 
-1. **Add PDF**: Copy the source PDF from Dropbox to the same folder as the .md file, using identical naming (make sure you update the Dropbox file name, not just the Github version)
-2. **Commit and Push**: When new .md and .pdf files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
-3. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
+1. **Check and fix naming EVERYWHERE**: 
+   - **CRITICAL**: Rename files in BOTH locations to follow the naming convention:
+     - In the GitHub repository (the .md file you're working with)
+     - In the Dropbox source folder (the original PDF)
+   - **Naming conventions**:
+     - **Resolutions**: `YYYY-Res-#XX-Topic` (e.g., `2018-Res-#259-Planning-Development-Fees`)
+     - **Ordinances**: `YYYY-Ord-#XX-Topic` (e.g., `1974-Ord-#16-Parks`)
+     - **Interpretations**: `YYYY-MM-DD-RE-[section]-[brief topic]`
+2. **Run standardization scripts**:
+   - Run `python3 standardize-headers.py` to ensure consistent header formatting
+   - Run `python3 fix-signatures.py` to standardize signature blocks
+3. **Add PDF**: After renaming in Dropbox, copy the PDF to GitHub repository with the same naming
+4. **Commit and Push**: When new .md and .pdf files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
+5. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
    - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
    - PDF: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.pdf`
-4. **Update Issue #3**:
+6. **Update mdBook**: 
+   - Run `./update-mdbook.sh` to sync the new document to the mdBook site
+   - Add the new document to `src/SUMMARY.md` in the appropriate section
+   - Run `mdbook build` to rebuild with the new entry
+7. **Update Issue #3**:
    - Remove item from the "Documents Needing Processing" list
    - Add to "Completed Documents" section at bottom with format: `- [x] Document Name`
    - Include commit link if significant: `([commit-hash](link))`
