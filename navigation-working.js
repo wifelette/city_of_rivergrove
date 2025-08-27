@@ -25,6 +25,39 @@ class NavigationEnhancer {
         this.hideOtherSections();
     }
     
+    createCleanTitle(id, title, year) {
+        // Truncate long titles while preserving key information
+        let cleanTitle = title;
+        
+        // Common abbreviations for space saving
+        cleanTitle = cleanTitle.replace(/Amendment/g, 'Amend')
+                              .replace(/Development/g, 'Dev')
+                              .replace(/Management/g, 'Mgmt')
+                              .replace(/Standards?/g, 'Std')
+                              .replace(/Requirements?/g, 'Req')
+                              .replace(/Provisions?/g, 'Prov')
+                              .replace(/Ordinance/g, 'Ord')
+                              .replace(/Water Quality Resource Area/g, 'WQRA')
+                              .replace(/Municipal/g, 'Muni')
+                              .replace(/Services?/g, 'Svc');
+        
+        // If still too long, truncate intelligently
+        if (cleanTitle.length > 35) {
+            // Try to cut at word boundaries
+            if (cleanTitle.length > 45) {
+                cleanTitle = cleanTitle.substring(0, 32) + '...';
+            } else {
+                // Find last space before 35 chars and cut there
+                const cutPoint = cleanTitle.substring(0, 35).lastIndexOf(' ');
+                if (cutPoint > 20) {
+                    cleanTitle = cleanTitle.substring(0, cutPoint) + '...';
+                }
+            }
+        }
+        
+        return `#${id} - ${cleanTitle} (${year})`;
+    }
+    
     collectOrdinanceItems() {
         // Find all ordinance list items
         const items = document.querySelectorAll('ol.chapter > li.chapter-item');
@@ -37,14 +70,20 @@ class NavigationEnhancer {
                 const match = text.match(/#(\d+[\w-]*)\s*-\s*(.+?)\s*\((\d{4})\)/);
                 
                 if (match) {
+                    const cleanTitle = this.createCleanTitle(match[1], match[2], match[3]);
+                    
                     this.allOrdinanceItems.push({
                         element: item,
                         id: match[1],
                         title: match[2],
                         year: match[3],
                         number: parseInt(match[1]) || 0,
-                        link: link
+                        link: link,
+                        cleanTitle: cleanTitle
                     });
+                    
+                    // Update the display immediately
+                    link.textContent = cleanTitle;
                 }
             }
         });
