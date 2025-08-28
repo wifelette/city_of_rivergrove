@@ -18,7 +18,7 @@
 
 ---
 
-## ORDINANCE NO. 89-2018
+# ORDINANCE NO. 89-2018
 
 **BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON**
 
@@ -40,7 +40,7 @@
 
 **Section 1.** Section 5.100 of the Rivergrove Land Development Ordinance (Attachment D to Ordinance #74-2004), entitled "Tree Cutting") is hereby repealed and replaced with a new Section 5.100 entitled "Tree Cutting" that provides as follows:
 
-## Section 5.100. Tree Cutting
+### Section 5.100. Tree Cutting
 
 ### (A) AUTHORITY
 The regulations of this Ordinance are adopted under the City's power to regulate to protect the public health, safety and welfare. Pursuant to Section 10 of the City Charter, the City Council confers its non-legislative functions as described herein to the Planning Commission and City Manager to administer and enforce this Ordinance. This includes the right to review permits, issue permits, issue notices of violation, levy fines, issue notices to perform work, and notices to stop work. They shall receive advice and guidance from the City Arborist, while enforcing this Ordinance as well as making findings and decisions.
