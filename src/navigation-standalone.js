@@ -57,8 +57,7 @@ class StandaloneNavigation {
             }
             
             /* AGGRESSIVELY override page wrapper positioning */
-            .page-wrapper,
-            .page-wrapper * {
+            .page-wrapper {
                 margin-left: 300px !important;
                 margin-right: 280px !important;
                 transform: none !important;
@@ -68,12 +67,10 @@ class StandaloneNavigation {
                 transition-duration: 0s !important;
             }
             
-            /* Override all possible animation sources */
-            *,
-            *::before,
-            *::after,
-            html,
-            body {
+            /* Override all possible animation sources - but preserve content visibility */
+            .page-wrapper,
+            #sidebar,
+            .sidebar {
                 animation: none !important;
                 animation-duration: 0s !important;
                 animation-delay: 0s !important;
@@ -89,7 +86,7 @@ class StandaloneNavigation {
                 overflow-x: hidden !important;
             }
             
-            /* Target specific mdBook classes */
+            /* Target specific mdBook classes - ensure they're visible */
             #content,
             .content,
             .chapter,
@@ -99,6 +96,16 @@ class StandaloneNavigation {
                 transform: translateX(0) !important;
                 transition: none !important;
                 animation: none !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Make sure page content is visible */
+            .page {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             /* Override any slide effects */
