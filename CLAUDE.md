@@ -63,8 +63,12 @@ Please read these two files for context on this project and how to work with Lea
 
 ### Step 7: Update mdBook
 
-- Run `./update-mdbook.sh` to sync files to src/ folders
-- Run `mdbook build` to rebuild the site
+**Option A - Single file (faster):**
+- Run `./update-single.sh [path/to/file.md]` to sync just this file and rebuild
+- Example: `./update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+
+**Option B - Full sync (if multiple files changed):**
+- Run `./update-mdbook.sh` to sync ALL files to src/ folders and rebuild
 
 ### Step 8: Update Issue #3
 
