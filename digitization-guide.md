@@ -304,30 +304,41 @@ city_of_rivergrove/
 
 ### List Formatting Standards
 
-All ordinances have been updated with proper markdown list formatting:
+Legal documents require exact preservation of enumeration styles for reference integrity. Our system uses post-processing to handle special list formats while keeping source markdown pure.
 
-- **Manual numbering** `(1)`, `(2)` → **Markdown lists** `1.`, `2.`
-- **Roman numerals** `(i)`, `(ii)` preserved as `- (i)`, `- (ii)` for legal accuracy
-- **Nested lists** properly indented with bold formatting for visibility
-- **Letter lists** `a.`, `b.` use bold formatting: `**a.**`, `**b.**`
+**Source Format Preservation:**
+- Keep original legal formatting in source files: `(1)`, `(a)`, `(i)`
+- Do NOT convert to standard markdown lists in source files
+- The custom-list-processor.py handles conversion during build
 
-**Examples of proper formatting:**
+**Supported List Formats:**
+- **Numbered lists**: `(1)`, `(2)`, `(3)` → Rendered with preserved markers
+- **Letter lists**: `(a)`, `(b)`, `(c)` → Rendered with preserved markers  
+- **Roman numerals**: `(i)`, `(ii)`, `(iii)` → Rendered with preserved markers
+- **Standard markdown**: `1.`, `2.`, `3.` → Standard rendering
 
+**Processing Workflow:**
+1. Source files maintain exact legal formatting
+2. mdBook builds HTML from markdown
+3. `custom-list-processor.py` post-processes HTML to create proper lists
+4. CSS styling preserves original markers while improving visual structure
+
+**Examples in source markdown:**
 ```markdown
-1. First main item
-2. Second main item
-   - (i) Roman numeral sub-item
-   - (ii) Another roman numeral
-   **a.** Bold letter item
-   **b.** Another bold letter item
-3. Third main item
+(1) First numbered item with legal formatting
+(2) Second numbered item 
+    (a) Letter subitem preserved exactly
+    (b) Another letter subitem
+        (i) Roman numeral nested item
+        (ii) Another roman numeral
+(3) Third numbered item
 ```
 
-**Common issues fixed:**
-- Manual numbering like `(1) Item` was breaking list rendering
-- Blockquote syntax `> (i) Item` was displaying as quoted text instead of lists
-- Inconsistent indentation was preventing proper nesting
-- Missing bold formatting on letter lists reduced visibility
+**Common issues resolved:**
+- Lists not rendering as lists (appearing as paragraphs)
+- Wrong enumeration conversion (letters to numbers, etc.)
+- Sync scripts overwriting manual fixes
+- Need to preserve exact legal enumeration for reference
 
 ### Navigation System Status
 
