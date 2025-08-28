@@ -20,9 +20,9 @@
 
 **NOW, THEREFORE, THE CITY OF RIVERGROVE RESOLVES AS FOLLOWS:**
 
-**Section 1., Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.  
+**Section 1.** Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.
 
-**Section 2., The City hereby adopts a public records request policy as follows:  
+**Section 2.** The City hereby adopts a public records request policy as follows:  
 
 a. **Applicability**: This policy applies to all public record requests in the City of Rivergrove and governs the actions of staff and consultants working for the City.
 
