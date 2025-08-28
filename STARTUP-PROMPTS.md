@@ -5,7 +5,7 @@ Quick reference for starting new Claude sessions on the Rivergrove digitization 
 ## Claude Code Startup
 
 ```
-Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and digitization-guide.md to understand the workflow and conventions.
+Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and docs/digitization-guide.md to understand the workflow and conventions.
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 

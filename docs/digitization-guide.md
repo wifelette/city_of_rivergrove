@@ -106,7 +106,7 @@ Standardized format for signatures (applies to ordinances, resolutions, and inte
 - Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
 - Different signers may use different date formats - preserve these differences
 - Use "[Signature]" placeholder for actual signatures
-- Run `fix-signatures.py` to standardize formatting automatically
+- Run `scripts/preprocessing/fix-signatures.py` to standardize formatting automatically
 
 #### 3.2 Page Break Handling
 
@@ -208,15 +208,15 @@ After completing GitHub upload and URL updates:
      - **Ordinances**: `YYYY-Ord-#XX-Topic` (e.g., `1974-Ord-#16-Parks`)
      - **Interpretations**: `YYYY-MM-DD-RE-[section]-[brief topic]`
 2. **Run standardization scripts**:
-   - Run `python3 standardize-headers.py` to ensure consistent header formatting
-   - Run `python3 fix-signatures.py` to standardize signature blocks
+   - Run `python3 scripts/preprocessing/standardize-headers.py` to ensure consistent header formatting
+   - Run `python3 scripts/preprocessing/fix-signatures.py` to standardize signature blocks
 3. **Add PDF**: After renaming in Dropbox, copy the PDF to GitHub repository with the same naming
 4. **Commit and Push**: When new .md and .pdf files are added to the repo, commit with descriptive message and push to GitHub (no Claude attribution needed)
 5. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
    - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
    - PDF: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.pdf`
 6. **Update mdBook**: 
-   - Run `./update-mdbook.sh` to sync the new document to the mdBook site
+   - Run `./scripts/build/update-mdbook.sh` to sync the new document to the mdBook site
    - Add the new document to `src/SUMMARY.md` in the appropriate section
    - Run `mdbook build` to rebuild with the new entry
 7. **Update Issue #3**:
@@ -256,14 +256,14 @@ The repository includes an mdBook static site generator that creates a searchabl
 **Current Workflow** (due to sync issues discovered):
 
 1. **Edit files** in the main `Ordinances/` directory
-2. **Manual sync**: Run `./update-mdbook.sh` to sync changes to `src/` and rebuild
+2. **Manual sync**: Run `./scripts/build/update-mdbook.sh` to sync changes to `src/` and rebuild
 3. **View changes** at `http://localhost:3000`
 
 **Automated sync** is available but currently **not recommended** due to content override issues:
 - `./watch-and-sync.py` - File watcher for auto-sync (use with caution)
 - Issue: Unknown process sometimes generates auto-headers that override file content
 - **Symptom**: File content temporarily disappears and gets replaced with auto-generated headers
-- **Workaround**: Use manual sync with `./update-mdbook.sh` and restore content if needed
+- **Workaround**: Use manual sync with `./scripts/build/update-mdbook.sh` and restore content if needed
 
 ### Directory Structure
 
@@ -280,7 +280,9 @@ city_of_rivergrove/
 ├── book/                # Built static website (generated)
 ├── sync-ordinances.py   # Manual sync script
 ├── watch-and-sync.py    # Auto file watcher (use with caution)
-├── update-mdbook.sh     # Combined sync + build script
+├── scripts/
+│   └── build/
+│       └── update-mdbook.sh  # Combined sync + build script
 ├── book.toml           # mdBook configuration
 ├── custom.css          # Custom styling
 └── add-cross-references.py  # Preprocessor script
@@ -297,7 +299,7 @@ city_of_rivergrove/
 
 3. **Sync changes**:
    ```bash
-   ./update-mdbook.sh
+   ./scripts/build/update-mdbook.sh
    ```
 
 4. **View at** `http://localhost:3000`
@@ -368,7 +370,7 @@ Legal documents require exact preservation of enumeration styles for reference i
 ### Maintenance
 
 - Edit in `Ordinances/` directory (main source of truth)
-- Use `./update-mdbook.sh` for safe syncing
+- Use `./scripts/build/update-mdbook.sh` for safe syncing
 - The `book/` directory is generated and can be safely regenerated
 - Monitor [Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) for navigation updates
 
@@ -404,7 +406,7 @@ Key files to review:
 1. generate-summary.py - Current Style E implementation
 2. navigation-integrated.html - Reference mockup for the relationship panel
 3. src/custom.css - Existing styles that may need updating
-4. update-mdbook.sh - Build automation script
+4. scripts/build/update-mdbook.sh - Build automation script
 
 Priority tasks:
 
