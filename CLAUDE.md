@@ -4,7 +4,7 @@
 
 Please read these two files for context on this project and how to work with Leah:
 
-1. **Project-specific guide**: Read the `digitization-guide.md` file in this repository for details about the Rivergrove ordinance digitization project, including:
+1. **Project-specific guide**: Read the `docs/digitization-guide.md` file in this repository for details about the Rivergrove ordinance digitization project, including:
 
    - Project overview and goals
    - Naming conventions for documents

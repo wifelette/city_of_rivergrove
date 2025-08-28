@@ -1,65 +1,55 @@
 # City of Rivergrove Digital Repository
 
-A searchable, centralized repository of all City of Rivergrove ordinances, resolutions, and interpretations. Converting hard-to-read photocopied versions into accessible markdown documents with full-text search capabilities.
-
-🌐 **Live Site**: [GitHub Pages](https://wifelette.github.io/city_of_rivergrove/)  
-📋 **Project Guide**: [digitization-guide.md](digitization-guide.md)
+Searchable, centralized repository of City of Rivergrove ordinances, resolutions, and interpretations.
 
 ## Quick Start
 
-### Local Development
+Main build commands:
+```bash
+./scripts/build/update-mdbook.sh              # Full rebuild
+./scripts/build/update-single.sh [file]       # Single file update  
+```
 
-1. **Start the mdBook server**:
-   ```bash
-   mdbook serve
-   ```
+## Repository Structure
 
-2. **Edit files** in the `Ordinances/` directory
+```
+city_of_rivergrove/
+├── Ordinances/              # Ordinance documents (.md and .pdf)
+├── Resolutions/             # Resolution documents (.md and .pdf)
+├── Interpretations/         # Planning Commission interpretations
+├── Other/                   # Other documents (City Charter, etc.)
+│
+├── src/                     # mdBook source files (auto-generated)
+├── book/                    # mdBook output (HTML site)
+│
+├── scripts/                 # All processing scripts
+│   ├── build/              # Main orchestration scripts
+│   ├── preprocessing/      # Scripts that run before mdBook
+│   ├── postprocessing/     # Scripts that run after mdBook
+│   ├── mdbook/            # mdBook-specific generation
+│   ├── utilities/         # Helper tools
+│   └── config/            # Configuration files
+│
+├── airtable/               # Airtable integration
+├── navigation-mockups/     # Navigation UI prototypes
+├── docs/                   # Project documentation
+│
+└── CLAUDE.md              # Instructions for Claude Code
+```
 
-3. **Sync changes**:
-   ```bash
-   ./update-mdbook.sh
-   ```
+## Key Files
 
-4. **View at**: http://localhost:3000
+- **CLAUDE.md** - Instructions for Claude Code assistant
+- **book.toml** - mdBook configuration
+- **custom.css** - Site styling
 
-### File Organization
+## Documentation
 
-- **`Ordinances/`** - Main directory for editing (with `#` in filenames)
-- **`src/ordinances/`** - mdBook source (synced from main directory)
-- **`book/`** - Generated static site
+- [Project Guide](docs/digitization-guide.md) - Complete project documentation
+- [Markdown Conventions](docs/markdown-conventions.md) - Document formatting standards
+- [Style Guide](docs/STYLE-GUIDE.md) - Writing style guidelines
+- [Scripts README](scripts/README.md) - Script documentation
 
-## Current Status
+## Live Site
 
-### ✅ Completed
-- Style E format implemented (#XX - Title (Year))
-- List formatting fixes applied to all ordinances
-- Manual sync workflow established
-- Cross-reference system working
-- Full-text search enabled
-
-### ⚠️ Known Issues
-- Automated file sync occasionally overrides content (use manual sync)
-- File watcher available but not recommended due to stability
-
-### 🔄 In Progress
-- Enhanced navigation controls ([Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10))
-- Right panel for document relationships
-- Improved sync stability
-
-## Document Standards
-
-All documents follow consistent formatting:
-
-- **Proper markdown lists**: Manual numbering `(1)` converted to `1.`
-- **Legal formatting preserved**: Roman numerals `(i)` as `- (i)`
-- **Bold nested markers**: Letter lists use `**a.**` for visibility
-- **Cross-references**: Automatic linking between related documents
-
-## Scripts
-
-- **`./update-mdbook.sh`** - Safe sync and rebuild (recommended)
-- **`./sync-ordinances.py`** - Manual sync only
-- **`./watch-and-sync.py`** - Auto file watcher (use with caution)
-
-For detailed workflow information, see [digitization-guide.md](digitization-guide.md).
+After running build scripts, view at: http://localhost:3000
