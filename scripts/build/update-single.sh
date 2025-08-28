@@ -47,11 +47,11 @@ cp "$SOURCE_FILE" "$DEST_FILE"
 
 # Run the footnote preprocessor on just this file
 echo "📝 Processing footnotes..."
-python3 footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
+python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
 
 # Regenerate SUMMARY.md (needed to include new files)
 echo "📋 Regenerating SUMMARY.md..."
-python3 generate-summary.py
+python3 scripts/mdbook/generate-summary.py
 
 # Rebuild mdBook
 echo "📚 Rebuilding mdBook..."
@@ -59,12 +59,12 @@ mdbook build
 
 # Apply custom formatting
 echo "🎨 Applying custom formatting..."
-python3 custom-list-processor.py
+python3 scripts/postprocessing/custom-list-processor.py
 
 # Apply enhanced formatting if available
-if [ -f "enhanced-custom-processor.py" ]; then
+if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     echo "✨ Applying enhanced document-specific formatting..."
-    python3 enhanced-custom-processor.py
+    python3 scripts/postprocessing/enhanced-custom-processor.py
 fi
 
 echo "✅ Done! Your changes should now be visible at http://localhost:3000"

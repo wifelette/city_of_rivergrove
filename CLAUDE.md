@@ -26,8 +26,8 @@ Please read these two files for context on this project and how to work with Lea
 
 ### Step 2: Run Standardization Script
 
-- Run `python3 standardize-single.py [path/to/file.md]` to standardize headers and signatures
-- Example: `python3 standardize-single.py Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Run `python3 scripts/preprocessing/standardize-single.py [path/to/file.md]` to standardize headers and signatures
+- Example: `python3 scripts/preprocessing/standardize-single.py Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 - This only processes the single file you're working on (much faster than processing all files)
 
 ### Step 3: Check and Fix Naming EVERYWHERE
@@ -64,11 +64,11 @@ Please read these two files for context on this project and how to work with Lea
 ### Step 7: Update mdBook
 
 **Option A - Single file (faster):**
-- Run `./update-single.sh [path/to/file.md]` to sync just this file and rebuild
-- Example: `./update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Run `./scripts/build/update-single.sh [path/to/file.md]` to sync just this file and rebuild
+- Example: `./scripts/build/update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
 **Option B - Full sync (if multiple files changed):**
-- Run `./update-mdbook.sh` to sync ALL files to src/ folders and rebuild
+- Run `./scripts/build/update-mdbook.sh` to sync ALL files to src/ folders and rebuild
 
 ### Step 8: Update Issue #3
 
