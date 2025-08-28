@@ -7,10 +7,10 @@
 **Adopted by Rivergrove City Council:** 10/16/2000
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 10-16-00                                        
+**Date**: 10-16-00                                          
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 10/16/2000                                        
+**Date**: 10/16/2000                                          
 
 Adopted
 

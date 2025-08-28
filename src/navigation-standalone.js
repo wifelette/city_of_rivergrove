@@ -202,18 +202,17 @@ class StandaloneNavigation {
         
         if (contextDropdown && contextMenu) {
             contextDropdown.addEventListener('click', (e) => {
-                console.log('StandaloneNavigation: Context dropdown clicked');
                 e.stopPropagation();
                 const isOpen = contextMenu.style.display !== 'none';
                 contextMenu.style.display = isOpen ? 'none' : 'block';
                 contextDropdown.classList.toggle('open', !isOpen);
-                console.log('StandaloneNavigation: Context menu now:', isOpen ? 'closed' : 'open');
             });
             
             // Context menu items
-            document.querySelectorAll('.context-item').forEach(item => {
+            const contextItems = document.querySelectorAll('.context-item');
+            
+            contextItems.forEach(item => {
                 item.addEventListener('click', (e) => {
-                    console.log('StandaloneNavigation: Context item clicked:', item.dataset.type);
                     e.stopPropagation();
                     const type = item.dataset.type;
                     
@@ -240,7 +239,6 @@ class StandaloneNavigation {
                         case 'transcripts': label = 'Meeting Records'; break;
                         default: label = type;
                     }
-                    console.log('StandaloneNavigation: Updating label to:', label);
                     contextDropdown.querySelector('.context-icon').textContent = icon;
                     contextDropdown.querySelector('.context-label').textContent = label;
                     
@@ -288,6 +286,11 @@ class StandaloneNavigation {
         
         // Update search placeholder
         const search = document.querySelector('.nav-search');
+        if (!search) {
+            console.error('StandaloneNavigation: Search input not found');
+            return;
+        }
+        
         const typeLabels = {
             'ordinances': 'ordinances',
             'resolutions': 'resolutions',
@@ -373,8 +376,6 @@ class StandaloneNavigation {
             return;
         }
         
-        console.log('StandaloneNavigation: Rendering documents for type:', this.currentDocType);
-        console.log('StandaloneNavigation: Available documents:', Object.keys(this.documents).length);
         
         // Filter documents by type
         const docs = Object.values(this.documents).filter(doc => {
@@ -385,35 +386,87 @@ class StandaloneNavigation {
             return false;
         });
         
-        console.log('StandaloneNavigation: Filtered documents:', docs.length);
+        // Debug logging
+        console.log(`renderDocuments: ${this.currentDocType} - Found ${docs.length} documents`);
+        if (this.currentDocType === 'resolutions') {
+            console.log('Resolution docs:', docs.map(d => d.id));
+        }
         
-        // Sort documents
-        docs.sort((a, b) => {
-            const yearA = parseInt(a.year) || 0;
-            const yearB = parseInt(b.year) || 0;
-            return this.currentOrder === 'asc' ? yearA - yearB : yearB - yearA;
-        });
+        // Minimum threshold for grouping
+        const MIN_DOCS_FOR_GROUPING = 10;
         
-        // Group documents based on view
-        const grouped = this.groupDocuments(docs);
-        
-        // Render grouped documents
         container.innerHTML = '';
-        
-        if (this.currentView === 'chronological' || this.currentView === 'bydate') {
-            this.renderChronologicalView(container, grouped);
-        } else if (this.currentView === 'numerical') {
-            this.renderNumericalView(container, grouped);
-        } else if (this.currentView === 'bysection') {
-            this.renderBySectionView(container, grouped);
-        } else {
-            // Default flat list
+        // If too few documents, just render a sorted flat list
+        if (docs.length < MIN_DOCS_FOR_GROUPING) {
+            console.log(`Using flat list for ${this.currentDocType} (${docs.length} < ${MIN_DOCS_FOR_GROUPING})`);
+            // Add visual indicator that grouping is disabled
+            const notice = document.createElement('div');
+            notice.className = 'grouping-disabled-notice';
+            notice.style.cssText = 'padding: 8px; margin-bottom: 10px; font-size: 0.9em; color: #666; font-style: italic;';
+            notice.textContent = `Showing all ${docs.length} ${this.currentDocType} (grouping disabled for small collections)`;
+            container.appendChild(notice);
+            
+            // Sort documents based on current view
+            this.sortDocumentsForView(docs);
             this.renderFlatList(container, docs);
+        } else {
+            // Sort documents
+            docs.sort((a, b) => {
+                const yearA = parseInt(a.year) || 0;
+                const yearB = parseInt(b.year) || 0;
+                return this.currentOrder === 'asc' ? yearA - yearB : yearB - yearA;
+            });
+            
+            // Group documents based on view
+            const grouped = this.groupDocuments(docs);
+            
+            if (this.currentView === 'chronological' || this.currentView === 'bydate') {
+                this.renderChronologicalView(container, grouped);
+            } else if (this.currentView === 'numerical') {
+                this.renderNumericalView(container, grouped);
+            } else if (this.currentView === 'bysection') {
+                this.renderBySectionView(container, grouped);
+            } else {
+                // Default flat list
+                console.log('StandaloneNavigation: Using flat list view');
+                this.renderFlatList(container, docs);
+            }
         }
         
         // Update counts
-        document.querySelector('.total-count').textContent = docs.length;
-        document.querySelector('.visible-count').textContent = docs.length;
+        const totalCountEl = document.querySelector('.total-count');
+        const visibleCountEl = document.querySelector('.visible-count');
+        if (totalCountEl) totalCountEl.textContent = docs.length;
+        if (visibleCountEl) visibleCountEl.textContent = docs.length;
+        
+        console.log('StandaloneNavigation: Rendered', container.children.length, 'items to container');
+    }
+    
+    sortDocumentsForView(docs) {
+        if (this.currentView === 'chronological' || this.currentView === 'bydate') {
+            // Sort by year
+            docs.sort((a, b) => {
+                const yearA = parseInt(a.year) || 0;
+                const yearB = parseInt(b.year) || 0;
+                return this.currentOrder === 'asc' ? yearA - yearB : yearB - yearA;
+            });
+        } else if (this.currentView === 'numerical') {
+            // Sort by number
+            docs.sort((a, b) => {
+                const matchA = a.id.match(/^(\d+)/);
+                const matchB = b.id.match(/^(\d+)/);
+                const numA = matchA ? parseInt(matchA[1]) : 0;
+                const numB = matchB ? parseInt(matchB[1]) : 0;
+                return this.currentOrder === 'asc' ? numA - numB : numB - numA;
+            });
+        } else if (this.currentView === 'bysection') {
+            // Sort by section then by ID
+            docs.sort((a, b) => {
+                const sectionCompare = (a.section || 'Other').localeCompare(b.section || 'Other');
+                if (sectionCompare !== 0) return sectionCompare;
+                return a.id.localeCompare(b.id);
+            });
+        }
     }
     
     groupDocuments(docs) {
@@ -453,11 +506,13 @@ class StandaloneNavigation {
     }
     
     renderChronologicalView(container, groups) {
+        console.log('StandaloneNavigation: renderChronologicalView with groups:', Object.keys(groups));
         const decades = Object.keys(groups).sort((a, b) => {
             return this.currentOrder === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
         });
         
         decades.forEach(decade => {
+            console.log('StandaloneNavigation: Creating group for', decade, 'with', groups[decade].length, 'docs');
             const group = this.createGroup(decade, groups[decade]);
             container.appendChild(group);
         });
@@ -1249,11 +1304,18 @@ class StandaloneNavigation {
     }
 }
 
+// Global instance to prevent multiple initializations
+let navigationInstance = null;
+
 // Initialize after everything loads
 function initNavigation() {
+    if (navigationInstance) {
+        return;
+    }
+    
     // Wait for mdBook to fully initialize
     setTimeout(() => {
-        new StandaloneNavigation();
+        navigationInstance = new StandaloneNavigation();
     }, 100);
 }
 
