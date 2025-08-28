@@ -6,10 +6,18 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+require('dotenv').config();
 
 // Airtable configuration
-const AIRTABLE_API_KEY = 'patmTIQyJmTtUfekh.75221e3bd677984018782065e3b2a5d696fbd2a07f7233b7c71435b7d789a250';
-const AIRTABLE_BASE_ID = 'appnsWognX10X9TDL';
+const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appnsWognX10X9TDL';
+
+// Validate required environment variables
+if (!AIRTABLE_API_KEY) {
+  console.error('Error: AIRTABLE_API_KEY environment variable is required');
+  console.error('Please create a .env file with your Airtable API key');
+  process.exit(1);
+}
 const ORDINANCES_TABLE = 'Ordinances and Resolutions';
 
 /**

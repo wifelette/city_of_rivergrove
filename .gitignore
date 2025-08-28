@@ -1,1 +1,16 @@
 book
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Never commit API keys
+*.key
+*.secret
+
+# Node dependencies
+node_modules/
+
+# OS files
+.DS_Store
