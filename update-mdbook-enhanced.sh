@@ -1,7 +1,12 @@
 #!/bin/bash
-# Sync all documents and rebuild mdBook
+# Enhanced mdBook update script with special formatting support
+# This version uses both standard and enhanced processing for better document display
 
-echo "🔄 Syncing documents to src/ folders..."
+echo "🔄 Enhanced mdBook sync and build process..."
+echo ""
+
+# Step 1: Sync all documents to src/ folders
+echo "📄 Step 1: Syncing documents to src/ folders..."
 
 echo "  📄 Syncing ordinances..."
 python3 sync-ordinances.py
@@ -106,24 +111,80 @@ if [ -d "Other" ]; then
     fi
 fi
 
-echo "  📝 Processing footnotes..."
+echo ""
+echo "📝 Step 2: Processing footnotes..."
 python3 footnote-preprocessor.py
 echo "  ✓ Footnotes processed"
 
-echo "  📋 Regenerating SUMMARY.md..."
+echo ""
+echo "📋 Step 3: Regenerating SUMMARY.md..."
 python3 generate-summary.py
 echo "  ✓ Table of contents updated"
 
-echo "📚 Rebuilding mdBook..."
+echo ""
+echo "📚 Step 4: Building mdBook..."
 mdbook build
 
-echo "  🎨 Applying custom formatting..."
+echo ""
+echo "🎨 Step 5: Applying standard list formatting..."
 python3 custom-list-processor.py
 
-# Apply enhanced formatting if available
+echo ""
+echo "✨ Step 6: Applying enhanced document-specific formatting..."
 if [ -f "enhanced-custom-processor.py" ]; then
-    echo "  ✨ Applying enhanced document-specific formatting..."
     python3 enhanced-custom-processor.py
+else
+    echo "  ⚠️  Enhanced processor not found, skipping..."
 fi
 
-echo "✅ Done! Your changes should now be visible at http://localhost:3000"
+echo ""
+echo "🎯 Step 7: Copying special formatting CSS..."
+if [ -f "special-formatting.css" ]; then
+    # Check if book directory exists
+    if [ -d "book" ]; then
+        # Copy CSS to book directory
+        cp special-formatting.css book/
+        echo "  ✓ Special formatting CSS copied to book/"
+        
+        # Also inject link into HTML files if not already present
+        for html_file in book/*.html book/**/*.html; do
+            if [ -f "$html_file" ]; then
+                # Check if the CSS link is already present
+                if ! grep -q "special-formatting.css" "$html_file"; then
+                    # Add link to special-formatting.css in the head section
+                    sed -i.bak '/<\/head>/i\
+    <link rel="stylesheet" href="/special-formatting.css">' "$html_file"
+                fi
+            fi
+        done
+        echo "  ✓ CSS links injected into HTML files"
+        
+        # Clean up backup files
+        find book -name "*.bak" -delete
+    else
+        echo "  ⚠️  Book directory not found"
+    fi
+else
+    echo "  ⚠️  Special formatting CSS not found"
+fi
+
+echo ""
+echo "✅ Enhanced build complete!"
+echo ""
+echo "📊 Summary:"
+echo "  • Documents synced to src/"
+echo "  • Footnotes processed"
+echo "  • Table of contents regenerated"
+echo "  • mdBook built"
+echo "  • Standard list formatting applied"
+echo "  • Enhanced document-specific formatting applied"
+echo "  • Special CSS styling injected"
+echo ""
+echo "🌐 Your enhanced site is ready at http://localhost:3000"
+echo ""
+echo "💡 Tips:"
+echo "  • Documents with tables now have enhanced styling"
+echo "  • WHEREAS clauses are specially formatted"
+echo "  • Definition lists (like in Sign Ordinance) have custom styling"
+echo "  • Complex nested lists preserve legal enumeration"
+echo "  • Fee schedule tables are responsive and styled"

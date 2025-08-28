@@ -61,4 +61,10 @@ mdbook build
 echo "🎨 Applying custom formatting..."
 python3 custom-list-processor.py
 
+# Apply enhanced formatting if available
+if [ -f "enhanced-custom-processor.py" ]; then
+    echo "✨ Applying enhanced document-specific formatting..."
+    python3 enhanced-custom-processor.py
+fi
+
 echo "✅ Done! Your changes should now be visible at http://localhost:3000"

@@ -1,0 +1,374 @@
+/* Special Formatting CSS for City of Rivergrove Documents
+   Works with enhanced-custom-processor.py for document-specific styling */
+
+/* =================================================================
+   TABLE FORMATTING - For Fee Schedules and Complex Tables
+   ================================================================= */
+
+/* Responsive table wrapper */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 2em 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    background: white;
+}
+
+/* Special styling for fee schedule tables */
+.fee-schedule-table {
+    background: linear-gradient(to bottom, #f8f9fa 0%, white 50%);
+    padding: 1.5em;
+    border: 1px solid #dee2e6;
+}
+
+.fee-schedule-table table {
+    width: 100%;
+    margin: 0;
+}
+
+/* Enhanced table formatting */
+.formatted-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95em;
+}
+
+.formatted-table thead {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+}
+
+.formatted-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #1a252f;
+    white-space: nowrap;
+}
+
+.formatted-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: top;
+}
+
+/* Alternate row coloring for better readability */
+.formatted-table tbody tr:nth-child(even) {
+    background: rgba(0, 105, 218, 0.03);
+}
+
+.formatted-table tbody tr:hover {
+    background: rgba(0, 105, 218, 0.08);
+    transition: background 0.2s ease;
+}
+
+/* Multi-column cells in complex tables (like WQRA Table 1) */
+.formatted-table td[colspan] {
+    background: #f8f9fa;
+    font-weight: 500;
+}
+
+/* Table footnote indicators */
+.has-footnote {
+    position: relative;
+}
+
+.has-footnote sup,
+.has-footnote::after {
+    color: #0969da;
+    font-weight: bold;
+    font-size: 0.75em;
+    vertical-align: super;
+}
+
+/* Table footnotes section */
+.table-footnotes {
+    margin-top: 1em;
+    padding: 1em 1.5em;
+    background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+    border-left: 4px solid #0969da;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.table-footnotes p {
+    margin: 0.5em 0;
+    line-height: 1.6;
+}
+
+.table-footnotes p:first-child {
+    margin-top: 0;
+}
+
+/* =================================================================
+   WHEREAS CLAUSES - For Ordinances and Resolutions
+   ================================================================= */
+
+.whereas-clause {
+    margin: 1.8em 0;
+    padding: 1em 1.5em;
+    background: linear-gradient(to right, rgba(9, 105, 218, 0.05) 0%, transparent 100%);
+    border-left: 3px solid #0969da;
+    position: relative;
+}
+
+.whereas-clause::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #0969da 0%, rgba(9, 105, 218, 0.3) 100%);
+}
+
+.whereas-marker {
+    font-weight: 700;
+    color: #0969da;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+/* NOW THEREFORE clauses get special treatment */
+p:has(.whereas-marker:contains("NOW THEREFORE")) {
+    background: linear-gradient(135deg, rgba(9, 105, 218, 0.1) 0%, rgba(9, 105, 218, 0.05) 100%);
+    padding: 1.2em;
+    border: 2px solid #0969da;
+    border-radius: 8px;
+    margin: 2em 0;
+    font-weight: 500;
+}
+
+/* =================================================================
+   DEFINITION LISTS - For Sign Ordinance and Similar Documents
+   ================================================================= */
+
+.definition-item {
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    background: linear-gradient(to right, #f8f9fa 0%, transparent 60%);
+    border-left: 4px solid #6c757d;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.definition-item:hover {
+    border-left-color: #0969da;
+    background: linear-gradient(to right, rgba(9, 105, 218, 0.05) 0%, transparent 60%);
+}
+
+.definition-term {
+    font-weight: 700;
+    color: #0969da;
+    font-size: 1.05em;
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.definition-separator {
+    color: #6c757d;
+    margin: 0 0.5em;
+}
+
+.definition-text {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =================================================================
+   NESTED SECTION QUOTES - For Land Development Ordinances
+   ================================================================= */
+
+.section-quote {
+    margin: 2em 1em;
+    padding: 1.5em;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 5px solid #0969da;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.section-quote blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* Nested section numbers */
+.section-quote strong:first-child {
+    color: #0969da;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+/* =================================================================
+   COMPLEX NESTED LISTS - For Multi-level Legal Documents
+   ================================================================= */
+
+/* Custom numbered lists with preserved legal formatting */
+.custom-numbered-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1em 0;
+}
+
+.custom-numbered-list li {
+    position: relative;
+    padding-left: 3em;
+    margin: 1em 0;
+    line-height: 1.6;
+}
+
+.custom-numbered-list .custom-list-marker {
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+    color: #0969da;
+    user-select: all; /* Allow copying the legal reference */
+}
+
+/* Letter sub-items */
+.letter-item {
+    margin: 1em 0;
+    padding-left: 3em;
+    position: relative;
+}
+
+.letter-marker {
+    position: absolute;
+    left: 1em;
+    font-weight: 600;
+    color: #495057;
+    user-select: all;
+}
+
+/* Roman numeral sub-sub-items */
+.roman-list {
+    list-style: none;
+    padding-left: 2em;
+    margin: 0.5em 0;
+}
+
+.roman-list li {
+    position: relative;
+    padding-left: 2em;
+    margin: 0.5em 0;
+}
+
+.roman-marker {
+    position: absolute;
+    left: 0;
+    color: #6c757d;
+    font-style: italic;
+    user-select: all;
+}
+
+/* =================================================================
+   SPECIAL INDENTATION - For Complex Legal Structures
+   ================================================================= */
+
+/* Deep nesting for documents like WQRA ordinance */
+.nested-section {
+    border-left: 2px solid #dee2e6;
+    padding-left: 1.5em;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.nested-section .nested-section {
+    border-left-color: #e9ecef;
+    border-left-style: dashed;
+}
+
+.nested-section .nested-section .nested-section {
+    border-left-style: dotted;
+}
+
+/* =================================================================
+   LEGAL SIGNATURES - Enhanced Styling
+   ================================================================= */
+
+.signature-block {
+    margin-top: 3em;
+    padding-top: 2em;
+    border-top: 2px solid #dee2e6;
+}
+
+.signature-line {
+    margin: 1.5em 0;
+    font-style: italic;
+}
+
+.signature-line strong {
+    font-style: normal;
+    color: #495057;
+}
+
+/* =================================================================
+   PRINT STYLES - Ensure Legal Documents Print Correctly
+   ================================================================= */
+
+@media print {
+    .table-wrapper {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .formatted-table {
+        font-size: 0.85em;
+    }
+    
+    .formatted-table thead {
+        background: #333 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .whereas-clause,
+    .definition-item,
+    .section-quote,
+    .signature-block {
+        page-break-inside: avoid;
+    }
+    
+    .custom-list-marker,
+    .letter-marker,
+    .roman-marker {
+        font-weight: bold !important;
+        color: black !important;
+    }
+}
+
+/* =================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+
+@media (max-width: 768px) {
+    .table-wrapper {
+        margin: 1em -15px;
+        border-radius: 0;
+    }
+    
+    .formatted-table {
+        font-size: 0.85em;
+    }
+    
+    .formatted-table th,
+    .formatted-table td {
+        padding: 8px 10px;
+    }
+    
+    .definition-item,
+    .whereas-clause,
+    .section-quote {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+    }
+}

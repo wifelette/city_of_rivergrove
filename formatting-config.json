@@ -1,0 +1,128 @@
+{
+  "document_formatting_rules": {
+    "description": "Configuration for special document formatting in City of Rivergrove documents",
+    "version": "1.0",
+    "documents": {
+      "sign_ordinance": {
+        "patterns": ["sign", "81-2011"],
+        "formatting": {
+          "definitions": true,
+          "bold_terms": true,
+          "nested_lists": true,
+          "preserve_markers": true
+        },
+        "css_classes": ["sign-ordinance", "definition-heavy"]
+      },
+      "fee_schedules": {
+        "patterns": ["fee", "259", "300", "schedule"],
+        "formatting": {
+          "tables": "enhanced",
+          "table_footnotes": true,
+          "striped_rows": true,
+          "responsive_wrapper": true
+        },
+        "css_classes": ["fee-schedule", "table-heavy"]
+      },
+      "wqra_ordinance": {
+        "patterns": ["wqra", "70-2001", "water-quality"],
+        "formatting": {
+          "complex_tables": true,
+          "deep_nesting": true,
+          "multi_column_cells": true,
+          "preserve_indentation": true
+        },
+        "css_classes": ["wqra", "complex-structure"]
+      },
+      "land_development": {
+        "patterns": ["land-development", "54-89", "59-97", "61-98", "62-98"],
+        "formatting": {
+          "nested_quotes": true,
+          "whereas_clauses": true,
+          "section_references": true
+        },
+        "css_classes": ["land-development", "legal-quotes"]
+      },
+      "manufactured_homes": {
+        "patterns": ["manufactured", "57-93"],
+        "formatting": {
+          "nested_requirements": true,
+          "letter_lists": true,
+          "roman_numerals": true
+        },
+        "css_classes": ["manufactured-homes", "nested-requirements"]
+      },
+      "resolutions": {
+        "patterns": ["resolution", "res-"],
+        "formatting": {
+          "whereas_clauses": true,
+          "formal_structure": true,
+          "signature_blocks": true
+        },
+        "css_classes": ["resolution", "formal-document"]
+      },
+      "interpretations": {
+        "patterns": ["interpretation", "pc-interpretation"],
+        "formatting": {
+          "section_references": true,
+          "legal_citations": true,
+          "preserve_formatting": true
+        },
+        "css_classes": ["interpretation", "planning-commission"]
+      }
+    },
+    "global_rules": {
+      "preserve_legal_markers": true,
+      "maintain_exact_enumeration": true,
+      "respect_indentation": true,
+      "convert_underlines_to_bold": true,
+      "preserve_handwritten_emphasis": true
+    },
+    "list_formatting": {
+      "numbered": {
+        "pattern": "\\(\\d+\\)",
+        "css_class": "custom-numbered-list",
+        "preserve_marker": true
+      },
+      "letter": {
+        "pattern": "\\([a-z]\\)",
+        "css_class": "letter-list",
+        "preserve_marker": true
+      },
+      "roman": {
+        "pattern": "\\([ivxlcdm]+\\)",
+        "css_class": "roman-list",
+        "preserve_marker": true
+      },
+      "standard_numbered": {
+        "pattern": "\\d+\\.",
+        "css_class": "standard-numbered",
+        "preserve_marker": false
+      }
+    },
+    "table_processing": {
+      "add_responsive_wrapper": true,
+      "detect_fee_tables": true,
+      "preserve_footnotes": true,
+      "enhance_headers": true,
+      "add_hover_states": true,
+      "stripe_rows": true
+    },
+    "special_sections": {
+      "whereas": {
+        "marker": "WHEREAS",
+        "css_class": "whereas-clause",
+        "bold_marker": true
+      },
+      "now_therefore": {
+        "marker": "NOW THEREFORE",
+        "css_class": "now-therefore-clause",
+        "emphasize": true
+      },
+      "emergency_clause": {
+        "marker": "EMERGENCY CLAUSE",
+        "css_class": "emergency-clause",
+        "highlight": true
+      }
+    }
+  }
+}
