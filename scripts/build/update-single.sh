@@ -53,6 +53,10 @@ python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null 
 echo "📋 Regenerating SUMMARY.md..."
 python3 scripts/mdbook/generate-summary.py
 
+# Regenerate relationships.json (needed for navigation)
+echo "🔗 Generating relationships.json..."
+python3 scripts/mdbook/generate-relationships.py
+
 # Rebuild mdBook
 echo "📚 Rebuilding mdBook..."
 mdbook build

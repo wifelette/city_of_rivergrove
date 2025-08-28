@@ -147,6 +147,23 @@ class StandaloneNavigation {
             return;
         }
         
+        // Calculate counts for each document type
+        const counts = {
+            ordinances: 0,
+            resolutions: 0,
+            interpretations: 0,
+            transcripts: 0,
+            other: 0
+        };
+        
+        Object.values(this.documents).forEach(doc => {
+            if (doc.type === 'ordinance') counts.ordinances++;
+            else if (doc.type === 'resolution') counts.resolutions++;
+            else if (doc.type === 'interpretation') counts.interpretations++;
+            else if (doc.type === 'transcript' || doc.type === 'meeting') counts.transcripts++;
+            else if (doc.type === 'other' || doc.type === 'charter') counts.other++;
+        });
+        
         // Create LEFT sidebar container
         const leftContainer = document.createElement('div');
         leftContainer.id = 'standalone-navigation';
@@ -165,27 +182,27 @@ class StandaloneNavigation {
                             <div class="context-item active" data-type="ordinances" data-icon="📋">
                                 <span class="context-icon">📋</span>
                                 Ordinances
-                                <span class="context-count">19</span>
+                                <span class="context-count">${counts.ordinances}</span>
                             </div>
                             <div class="context-item" data-type="resolutions" data-icon="📄">
                                 <span class="context-icon">📄</span>
                                 Resolutions
-                                <span class="context-count">3</span>
+                                <span class="context-count">${counts.resolutions}</span>
                             </div>
                             <div class="context-item" data-type="interpretations" data-icon="📝">
                                 <span class="context-icon">📝</span>
                                 Interpretations
-                                <span class="context-count">12</span>
+                                <span class="context-count">${counts.interpretations}</span>
                             </div>
                             <div class="context-item" data-type="transcripts" data-icon="🎙️">
                                 <span class="context-icon">🎙️</span>
                                 Meeting Records
-                                <span class="context-count">2</span>
+                                <span class="context-count">${counts.transcripts}</span>
                             </div>
                             <div class="context-item" data-type="other" data-icon="📚">
                                 <span class="context-icon">📚</span>
                                 Other Documents
-                                <span class="context-count">1</span>
+                                <span class="context-count">${counts.other}</span>
                             </div>
                             <hr class="context-divider">
                             <div class="context-item" data-type="home" data-icon="🏠">
@@ -339,6 +356,7 @@ class StandaloneNavigation {
     
     switchDocumentType(type) {
         this.currentDocType = type;
+        console.log('StandaloneNavigation: Switching to document type:', type);
         
         // Update search placeholder
         const search = document.querySelector('.nav-search');
@@ -449,6 +467,8 @@ class StandaloneNavigation {
                 return false;
             })
             .map(([key, doc]) => ({ ...doc, docKey: key }));
+        
+        console.log(`StandaloneNavigation: Rendering ${docs.length} ${this.currentDocType}`);
         
         // Minimum threshold for grouping
         const MIN_DOCS_FOR_GROUPING = 10;

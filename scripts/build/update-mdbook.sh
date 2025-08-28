@@ -114,6 +114,10 @@ echo "  📋 Regenerating SUMMARY.md..."
 python3 scripts/mdbook/generate-summary.py
 echo "  ✓ Table of contents updated"
 
+echo "  🔗 Generating relationships.json..."
+python3 scripts/mdbook/generate-relationships.py
+echo "  ✓ Document relationships updated"
+
 echo "📚 Rebuilding mdBook..."
 mdbook build
 
