@@ -94,9 +94,15 @@ def fix_signatures(content):
             i += 1
             continue
         
-        # Pattern 1: Bold name followed by title on same line
-        # BUT only if it looks like a person's name (contains at least one space or is a single word followed by a title)
-        match = re.match(r'^\*\*([^*]+)\*\*,?\s*(.+?)(\s*\*\*Date\*\*:.*)?$', line)
+        # Skip bold text that ends with a colon (like "**Email:**" or "**Regular mail:**")
+        if re.match(r'^\*\*[^*]+:\*\*', line):
+            fixed_lines.append(line)
+            i += 1
+            continue
+        
+        # Pattern 1: Bold name followed by comma and title on same line
+        # More specific: requires comma after the bold part
+        match = re.match(r'^\*\*([^*]+)\*\*,\s*(.+?)(\s*\*\*Date\*\*:.*)?$', line)
         if match:
             potential_name = match.group(1).strip()
             potential_title = match.group(2).strip()
