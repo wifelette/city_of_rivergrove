@@ -1,5 +1,33 @@
 /* Custom CSS for City of Rivergrove Documents */
 
+/* IMMEDIATELY hide mdBook's sidebar to prevent flicker */
+#sidebar, 
+.sidebar {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    opacity: 0 !important;
+}
+
+/* Set page wrapper margins immediately to prevent layout shift */
+.page-wrapper {
+    margin-left: 300px !important;
+    margin-right: 280px !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Prevent any slide animations */
+.page-wrapper,
+#content,
+.content,
+.chapter,
+main {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
 /* Hide mdBook's default navigation arrows */
 .nav-chapters {
     display: none !important;

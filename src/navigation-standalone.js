@@ -44,81 +44,31 @@ class StandaloneNavigation {
     }
     
     hideMdBookSidebar() {
-        // Hide mdBook's sidebar without removing it (mdBook needs it internally)
+        // CSS in custom.css now handles the immediate hiding
+        // This just adds any additional runtime overrides if needed
         const style = document.createElement('style');
         style.id = 'standalone-nav-override';
         style.textContent = `
-            /* Hide mdBook's sidebar completely */
+            /* Runtime reinforcement of CSS rules */
             #sidebar, .sidebar {
                 display: none !important;
                 visibility: hidden !important;
-                width: 0 !important;
-                opacity: 0 !important;
             }
             
-            /* AGGRESSIVELY override page wrapper positioning */
-            .page-wrapper {
-                margin-left: 300px !important;
-                margin-right: 280px !important;
-                transform: none !important;
-                transition: none !important;
-                animation: none !important;
-                animation-duration: 0s !important;
-                transition-duration: 0s !important;
-            }
-            
-            /* Override all possible animation sources - but preserve content visibility */
-            .page-wrapper,
-            #sidebar,
-            .sidebar {
-                animation: none !important;
-                animation-duration: 0s !important;
-                animation-delay: 0s !important;
-                animation-fill-mode: none !important;
-                transition: none !important;
-                transition-duration: 0s !important;
-                transition-delay: 0s !important;
-                transform: none !important;
-            }
-            
-            /* Prevent horizontal scrolling */
-            body, html {
-                overflow-x: hidden !important;
-            }
-            
-            /* Target specific mdBook classes - ensure they're visible */
+            /* Ensure content is visible */
             #content,
             .content,
             .chapter,
-            main {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                transform: translateX(0) !important;
-                transition: none !important;
-                animation: none !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            /* Make sure page content is visible */
+            main,
             .page {
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
             }
             
-            /* Override any slide effects */
-            @keyframes slide-in {
-                from, to { transform: translateX(0) !important; }
-            }
-            
-            /* Disable print styles that might interfere */
-            @media screen {
-                .page-wrapper {
-                    margin-left: 300px !important;
-                    margin-right: 280px !important;
-                }
+            /* Prevent horizontal scrolling */
+            body, html {
+                overflow-x: hidden !important;
             }
         `;
         document.head.appendChild(style);
