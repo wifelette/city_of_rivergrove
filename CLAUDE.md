@@ -24,10 +24,11 @@ Please read these two files for context on this project and how to work with Lea
 - Find the .md file in the appropriate folder (Resolutions/, Ordinances/, Interpretations/)
 - Note the document type, year, number, and topic (for naming verification)
 
-### Step 2: Run Standardization Scripts
+### Step 2: Run Standardization Script
 
-- Run `python3 standardize-headers.py` to ensure consistent header formatting
-- Run `python3 fix-signatures.py` to standardize signature blocks
+- Run `python3 standardize-single.py [path/to/file.md]` to standardize headers and signatures
+- Example: `python3 standardize-single.py Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- This only processes the single file you're working on (much faster than processing all files)
 
 ### Step 3: Check and Fix Naming EVERYWHERE
 
