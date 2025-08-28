@@ -3,8 +3,7 @@
 A searchable, centralized repository of all City of Rivergrove ordinances, resolutions, and interpretations. Converting hard-to-read photocopied versions into accessible markdown documents with full-text search capabilities.
 
 🌐 **Live Site**: [GitHub Pages](https://wifelette.github.io/city_of_rivergrove/)  
-📋 **Project Guide**: [digitization-guide.md](digitization-guide.md)  
-🎯 **Current Issues**: [Navigation Enhancement #10](https://github.com/wifelette/city_of_rivergrove/issues/10)
+📋 **Project Guide**: [digitization-guide.md](digitization-guide.md)
 
 ## Quick Start
 
