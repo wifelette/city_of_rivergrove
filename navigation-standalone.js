@@ -89,11 +89,11 @@ class StandaloneNavigation {
     }
     
     createNavigationUI() {
-        // Create main container for our navigation
-        const container = document.createElement('div');
-        container.id = 'standalone-navigation';
-        container.className = 'standalone-nav-container';
-        container.innerHTML = `
+        // Create LEFT sidebar container
+        const leftContainer = document.createElement('div');
+        leftContainer.id = 'standalone-navigation';
+        leftContainer.className = 'standalone-nav-container';
+        leftContainer.innerHTML = `
             <div class="nav-sidebar">
                 <div class="nav-header">
                     <!-- Context Switcher Dropdown -->
@@ -159,19 +159,23 @@ class StandaloneNavigation {
                     <span class="visible-count">0</span> of <span class="total-count">0</span> documents
                 </div>
             </div>
-            
-            <div class="nav-relationships">
-                <div class="relationships-header">
-                    <h3>Document Relationships</h3>
-                </div>
-                <div class="relationships-content">
-                    <!-- Relationships will be shown here -->
-                </div>
+        `;
+        
+        // Create RIGHT sidebar container separately
+        const rightContainer = document.createElement('div');
+        rightContainer.className = 'nav-relationships';
+        rightContainer.innerHTML = `
+            <div class="relationships-header">
+                <h3>Document Relationships</h3>
+            </div>
+            <div class="relationships-content">
+                <!-- Relationships will be shown here -->
             </div>
         `;
         
-        // Insert at the beginning of body
-        document.body.insertBefore(container, document.body.firstChild);
+        // Insert both containers
+        document.body.insertBefore(leftContainer, document.body.firstChild);
+        document.body.appendChild(rightContainer);
         
         // Add styles
         this.addStyles();
@@ -680,18 +684,43 @@ class StandaloneNavigation {
                 position: fixed;
                 top: 0;
                 left: 0;
+                bottom: 0;
+                width: 300px;
+                z-index: 100;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* Right relationships panel */
+            .nav-relationships {
+                position: fixed;
+                top: 0;
                 right: 0;
                 bottom: 0;
-                display: grid;
-                grid-template-columns: 300px 1fr 280px;
+                width: 280px;
+                background: white;
+                border-left: 1px solid #dee2e6;
+                display: flex;
+                flex-direction: column;
                 z-index: 100;
-                pointer-events: none;
             }
             
             /* Adjust page wrapper to account for our sidebars */
             .page-wrapper {
                 margin-left: 300px !important;
                 margin-right: 280px !important;
+                position: relative;
+            }
+            
+            /* Make sure main content is visible */
+            .page {
+                position: relative;
+                z-index: 1;
+            }
+            
+            main {
+                position: relative;
+                z-index: 1;
             }
             
             /* Navigation sidebar */
@@ -716,6 +745,7 @@ class StandaloneNavigation {
             /* Context Switcher Dropdown */
             .context-switcher {
                 margin-bottom: 12px;
+                position: relative;
             }
             
             .context-dropdown {
@@ -768,8 +798,8 @@ class StandaloneNavigation {
             .context-menu {
                 position: absolute;
                 top: 100%;
-                left: 14px;
-                right: 14px;
+                left: 0;
+                right: 0;
                 background: white;
                 border: 1px solid #dee2e6;
                 border-radius: 8px;
@@ -1050,16 +1080,6 @@ class StandaloneNavigation {
                 font-size: 11px;
             }
             
-            /* Relationships panel */
-            .nav-relationships {
-                background: white;
-                border-left: 1px solid #e1e4e8;
-                display: flex;
-                flex-direction: column;
-                height: 100vh;
-                overflow: hidden;
-                pointer-events: auto;
-            }
             
             .relationships-header {
                 padding: 15px;
