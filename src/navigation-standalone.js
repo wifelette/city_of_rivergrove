@@ -202,15 +202,18 @@ class StandaloneNavigation {
         
         if (contextDropdown && contextMenu) {
             contextDropdown.addEventListener('click', (e) => {
+                console.log('StandaloneNavigation: Context dropdown clicked');
                 e.stopPropagation();
                 const isOpen = contextMenu.style.display !== 'none';
                 contextMenu.style.display = isOpen ? 'none' : 'block';
                 contextDropdown.classList.toggle('open', !isOpen);
+                console.log('StandaloneNavigation: Context menu now:', isOpen ? 'closed' : 'open');
             });
             
             // Context menu items
             document.querySelectorAll('.context-item').forEach(item => {
                 item.addEventListener('click', (e) => {
+                    console.log('StandaloneNavigation: Context item clicked:', item.dataset.type);
                     e.stopPropagation();
                     const type = item.dataset.type;
                     
@@ -228,7 +231,8 @@ class StandaloneNavigation {
                     
                     // Update dropdown label
                     const icon = item.dataset.icon || '📋';
-                    const label = item.textContent.trim().split('\n')[1].trim();
+                    const label = item.textContent.trim().split('\n')[0].trim();
+                    console.log('StandaloneNavigation: Updating label to:', label);
                     contextDropdown.querySelector('.context-icon').textContent = icon;
                     contextDropdown.querySelector('.context-label').textContent = label;
                     
@@ -356,15 +360,24 @@ class StandaloneNavigation {
     
     renderDocuments() {
         const container = document.querySelector('.nav-content');
-        if (!container) return;
+        if (!container) {
+            console.error('StandaloneNavigation: nav-content container not found');
+            return;
+        }
+        
+        console.log('StandaloneNavigation: Rendering documents for type:', this.currentDocType);
+        console.log('StandaloneNavigation: Available documents:', Object.keys(this.documents).length);
         
         // Filter documents by type
         const docs = Object.values(this.documents).filter(doc => {
             if (this.currentDocType === 'ordinances') return doc.type === 'ordinance';
             if (this.currentDocType === 'resolutions') return doc.type === 'resolution';
             if (this.currentDocType === 'interpretations') return doc.type === 'interpretation';
+            if (this.currentDocType === 'transcripts') return doc.type === 'transcript';
             return false;
         });
+        
+        console.log('StandaloneNavigation: Filtered documents:', docs.length);
         
         // Sort documents
         docs.sort((a, b) => {
