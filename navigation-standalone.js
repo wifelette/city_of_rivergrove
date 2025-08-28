@@ -53,14 +53,31 @@ class StandaloneNavigation {
                 display: none !important;
             }
             
-            /* Adjust main content to use full width initially */
+            /* Set page wrapper margins immediately to prevent shift */
             .page-wrapper {
-                margin-left: 0 !important;
+                margin-left: 300px !important;
+                margin-right: 280px !important;
             }
             
-            /* Prepare for our custom layout */
+            /* Prevent horizontal scrolling */
             body {
                 overflow-x: hidden;
+            }
+            
+            /* Remove mdBook's slide-in animation */
+            .page-wrapper {
+                animation: none !important;
+            }
+            
+            /* Stabilize content position */
+            #content {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* Remove chapter transitions */
+            .chapter {
+                transition: none !important;
             }
         `;
         document.head.appendChild(style);
@@ -559,7 +576,7 @@ class StandaloneNavigation {
             path = `/interpretations/${doc.file.replace('.md', '.html')}`;
         }
         
-        // Use mdBook's navigation or direct navigation
+        // Navigate directly without animations
         if (window.location.pathname !== path) {
             window.location.pathname = path;
         }
@@ -705,14 +722,9 @@ class StandaloneNavigation {
                 z-index: 100;
             }
             
-            /* Adjust page wrapper to account for our sidebars */
-            .page-wrapper {
-                margin-left: 300px !important;
-                margin-right: 280px !important;
-                position: relative;
-            }
+            /* Page wrapper already styled in hideMdBookSidebar */
             
-            /* Make sure main content is visible */
+            /* Make sure main content is visible and stable */
             .page {
                 position: relative;
                 z-index: 1;
@@ -721,6 +733,17 @@ class StandaloneNavigation {
             main {
                 position: relative;
                 z-index: 1;
+            }
+            
+            /* Override mdBook's default transitions */
+            #content {
+                transition: none !important;
+            }
+            
+            /* Prevent the sliding effect on navigation */
+            .chapter {
+                animation: none !important;
+                transition: none !important;
             }
             
             /* Navigation sidebar */
