@@ -72,7 +72,6 @@ def fix_signatures(content):
     """
     Fix signature formatting in a document.
     Converts various formats to standardized: [Signature], Name, Title
-    BUT: Excludes WHEREAS clauses and other non-signature patterns
     """
     
     lines = content.split('\n')
@@ -82,53 +81,24 @@ def fix_signatures(content):
     while i < len(lines):
         line = lines[i]
         
-        # Skip WHEREAS clauses - these are NOT signatures
-        if 'WHEREAS' in line.upper():
-            fixed_lines.append(line)
-            i += 1
-            continue
-        
-        # Skip section headings that might be bold
-        if re.match(r'^\*\*(Section|SECTION|NOW,?\s*THEREFORE|Article|ARTICLE)\b', line, re.IGNORECASE):
-            fixed_lines.append(line)
-            i += 1
-            continue
-        
         # Pattern 1: Bold name followed by title on same line
-        # BUT only if it looks like a person's name (contains at least one space or is a single word followed by a title)
         match = re.match(r'^\*\*([^*]+)\*\*,?\s*(.+?)(\s*\*\*Date\*\*:.*)?$', line)
         if match:
-            potential_name = match.group(1).strip()
-            potential_title = match.group(2).strip()
+            name = match.group(1).strip()
+            title = match.group(2).strip()
             date_part = match.group(3) if match.group(3) else ""
             
-            # Check if this looks like an actual signature line
-            # Names typically have spaces, or are followed by titles like Mayor, Manager, etc.
-            title_keywords = ['mayor', 'manager', 'recorder', 'attorney', 'clerk', 'secretary', 
-                            'president', 'chair', 'commissioner', 'council', 'director']
-            
-            is_likely_signature = (
-                ' ' in potential_name or  # Names usually have spaces
-                any(keyword in potential_title.lower() for keyword in title_keywords) or
-                'Attested' in line or
-                'Approved' in line
-            )
-            
-            if is_likely_signature:
-                if date_part:
-                    fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
-                    fixed_lines.append(date_part.strip() + "  ")
-                else:
-                    # Check if next line has the date
-                    if i + 1 < len(lines) and '**Date**:' in lines[i + 1]:
-                        fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
-                        fixed_lines.append(lines[i + 1].strip() + "  ")
-                        i += 1
-                    else:
-                        fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
+            if date_part:
+                fixed_lines.append(f"[Signature], {name}, {title}  ")
+                fixed_lines.append(date_part.strip() + "  ")
             else:
-                # Not a signature, keep original
-                fixed_lines.append(line)
+                # Check if next line has the date
+                if i + 1 < len(lines) and '**Date**:' in lines[i + 1]:
+                    fixed_lines.append(f"[Signature], {name}, {title}  ")
+                    fixed_lines.append(lines[i + 1].strip() + "  ")
+                    i += 1
+                else:
+                    fixed_lines.append(f"[Signature], {name}, {title}  ")
             i += 1
             continue
         

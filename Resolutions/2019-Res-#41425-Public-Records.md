@@ -2,27 +2,27 @@
 
 ## A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS
 
-[Signature], WHEREAS,, the City is a custodian of the public record and citizens of the City are entitled to open access to public records;  
+**WHEREAS,** the City is a custodian of the public record and citizens of the City are entitled to open access to public records;
 
-[Signature], WHEREAS,, the City recognizes the right of every person to inspect any nonexempt public record of the City;  
+**WHEREAS,** the City recognizes the right of every person to inspect any nonexempt public record of the City;
 
-[Signature], WHEREAS,, the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;  
+**WHEREAS,** the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;  
 
-[Signature], WHEREAS,, the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;  
+**WHEREAS,** the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;  
 
-[Signature], WHEREAS,, the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and  
+**WHEREAS,** the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and  
 
-[Signature], WHEREAS,, the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and  
+**WHEREAS,** the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and  
 
-[Signature], WHEREAS,, the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and  
+**WHEREAS,** the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and  
 
-[Signature], WHEREAS,, the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,  
+**WHEREAS,** the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,  
 
 **NOW, THEREFORE, THE CITY OF RIVERGROVE RESOLVES AS FOLLOWS:**
 
-[Signature], Section 1., Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.  
+**Section 1., Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.  
 
-[Signature], Section 2., The City hereby adopts a public records request policy as follows:  
+**Section 2., The City hereby adopts a public records request policy as follows:  
 
 a. **Applicability**: This policy applies to all public record requests in the City of Rivergrove and governs the actions of staff and consultants working for the City.
 
@@ -92,15 +92,15 @@ Requests must be in writing using the form provided. (Please note, the City will
 
 **Submit request to the Rivergrove City Recorder through any of the following methods:**
 
-[Signature], Regular mail:,   
+**Regular mail:**  
 Rivergrove City Recorder  
 P.O. Box 1104  
 Lake Oswego, OR, 97034
 
-[Signature], Email:,   
+**Email:**  
 manager@cityofrivergrove.com
 
-[Signature], Web form:,   
+**Web form:**  
 https://www.cityofrivergrove.org/records-request
 
 1.4 The City shall acknowledge all requests within five (5) business days of receipt. The City shall endeavor to complete its response to all requests within fifteen (15) business days of receipt unless excused pursuant to ORS 192.329(6).
