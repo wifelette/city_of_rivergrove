@@ -7,10 +7,10 @@ Submitted to the Rivergrove City Council on **6-9-08**
 Adopted by the Rivergrove City Council on **6-9-08**
 
 [Signature], Hafez Darae, Mayor  
-**Date**: 6-9-08      
+**Date**: 6-9-08        
 
 [Signature], Sheri Richards, City Recorder  
-**Date**: 6-9-08      
+**Date**: 6-9-08        
 
 ---
 

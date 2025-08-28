@@ -110,7 +110,14 @@ echo "  📝 Processing footnotes..."
 python3 footnote-preprocessor.py
 echo "  ✓ Footnotes processed"
 
+echo "  📋 Regenerating SUMMARY.md..."
+python3 generate-summary.py
+echo "  ✓ Table of contents updated"
+
 echo "📚 Rebuilding mdBook..."
 mdbook build
+
+echo "  🎨 Applying custom formatting..."
+python3 custom-list-processor.py
 
 echo "✅ Done! Your changes should now be visible at http://localhost:3000"

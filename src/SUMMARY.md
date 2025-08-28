@@ -28,13 +28,14 @@
 - [#76 - Map (2008)](./ordinances/2008-Ord-76-2008-FEMA-Flood-Map.md)
 - [#81 - Sign Ordinance (2011)](./ordinances/2011-Ord-81-2011-Sign.md)
 - [#88 - Docks Amendment (2017)](./ordinances/2017-Ord-88-2017-Docks.md)
+- [#89 - Amendment (2018)](./ordinances/2018-Ord-89-2018-Tree-Cutting-Amendment.md)
 
 ---
 
 # Resolutions
 - [#22 - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
 - [#72 - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
-- [#259 - Planning Development Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
+- [#259 - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
 
 ---
 

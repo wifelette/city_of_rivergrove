@@ -135,6 +135,37 @@ def generate_summary():
     summary = ["# Summary\n"]
     summary.append("[Introduction](./introduction.md)\n")
     
+    # Process Other/Foundational Documents
+    other_dir = src_dir / "other"
+    if other_dir.exists():
+        others = []
+        for md_file in sorted(other_dir.glob("*.md")):
+            # Extract year and title from filename
+            name = md_file.stem
+            year_match = re.search(r'(\d{4})', name)
+            year = year_match.group(1) if year_match else ""
+            
+            # Get title from filename
+            if "Charter" in name or "charter" in name:
+                title = "City Charter"
+            else:
+                title = name.replace('-', ' ').replace('_', ' ')
+            
+            others.append({
+                'filename': md_file.name,
+                'title': title,
+                'year': year
+            })
+        
+        if others:
+            summary.append("\n---\n\n# Foundational Documents\n")
+            for doc in others:
+                if doc['year']:
+                    display = f"{doc['title']} ({doc['year']})"
+                else:
+                    display = doc['title']
+                summary.append(f"- [{display}](./other/{doc['filename']})\n")
+    
     # Process Ordinances
     ord_dir = src_dir / "ordinances"
     if ord_dir.exists():
