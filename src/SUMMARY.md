@@ -3,6 +3,11 @@
 
 ---
 
+# Foundational Documents
+- [City Charter (1974)](./other/1974-City-Charter.md)
+
+---
+
 # Ordinances
 - [#16 - Parks Advisory (1974)](./ordinances/1974-Ord-16-Parks.md)
 - [#28 - Parks Advisory (1978)](./ordinances/1978-Ord-28-Parks.md)

@@ -9,6 +9,17 @@
     opacity: 0 !important;
 }
 
+/* Hide the redundant title in mdBook's header */
+.menu-title {
+    display: none !important;
+}
+
+/* Hide the hamburger menu icon - we don't use mdBook's sidebar */
+#sidebar-toggle,
+.sidebar-toggle {
+    display: none !important;
+}
+
 /* Set page wrapper margins immediately to prevent layout shift */
 .page-wrapper {
     margin-left: 300px !important;

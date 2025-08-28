@@ -141,7 +141,7 @@
       "date": null,
       "year": "2000",
       "section": null,
-      "title": "⚠️ **STUB - THIS ORDINANCE WAS NEVER PASSED**",
+      "title": "\u26a0\ufe0f **STUB - THIS ORDINANCE WAS NEVER PASSED**",
       "file": "2000-Ord-#69-2000-Title-3-Compliance-STUB.md"
     },
     "ordinance-68-2000-Metro-Compliance": {
@@ -305,6 +305,15 @@
       "section": "5.080-setbacks",
       "title": "March 2, 1998",
       "file": "1998-03-02-RE-5.080-setbacks.md"
+    },
+    "other-1974-City-Charter": {
+      "type": "other",
+      "id": "1974-City-Charter",
+      "date": null,
+      "year": "1974",
+      "section": null,
+      "title": "City Charter",
+      "file": "1974-City-Charter.md"
     }
   },
   "relationships": {
@@ -1129,7 +1138,7 @@
   },
   "metadata": {
     "generated": "1756245104.954725",
-    "total_documents": 34,
+    "total_documents": 35,
     "total_relationships": 35
   }
 }

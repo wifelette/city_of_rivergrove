@@ -31,9 +31,9 @@ Welcome to the official digital repository of City of Rivergrove municipal docum
 </div>
 
 <div class="simple-card">
-<h3><a href="#">Other Documents</a></h3>
+<h3><a href="other/1974-City-Charter.html">Other Documents</a></h3>
 <p>City Charter, Comprehensive Plan, and other foundational documents</p>
-<p class="doc-count">Coming soon</p>
+<p class="doc-count">1 document</p>
 </div>
 
 </div>

@@ -44,11 +44,48 @@ class StandaloneNavigation {
     }
     
     hideMdBookSidebar() {
+        // Check if we're on the home page
+        const isHomePage = window.location.pathname === '/' || 
+                          window.location.pathname.endsWith('/index.html') ||
+                          window.location.pathname.endsWith('/introduction.html');
+        
         // CSS in custom.css now handles the immediate hiding
         // This just adds any additional runtime overrides if needed
         const style = document.createElement('style');
         style.id = 'standalone-nav-override';
-        style.textContent = `
+        
+        // Different styles for home page vs other pages
+        if (isHomePage) {
+            style.textContent = `
+                /* Hide all sidebars and menu controls on home page */
+                #sidebar, .sidebar,
+                #standalone-navigation, .standalone-nav-container,
+                #relationships-panel, .relationships-panel,
+                #menu-bar .left-buttons,
+                #sidebar-toggle,
+                .menu-bar .left-buttons,
+                .sidebar-toggle {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+                
+                /* Center content on home page */
+                .page-wrapper {
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                    max-width: 900px !important;
+                    padding: 0 20px !important;
+                }
+                
+                /* Ensure content is visible */
+                #content, .content, .chapter, main, .page {
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
+            `;
+        } else {
+            style.textContent = `
             /* Runtime reinforcement of CSS rules */
             #sidebar, .sidebar {
                 display: none !important;
@@ -71,6 +108,8 @@ class StandaloneNavigation {
                 overflow-x: hidden !important;
             }
         `;
+        }
+        
         document.head.appendChild(style);
     }
     
@@ -97,6 +136,17 @@ class StandaloneNavigation {
     }
     
     createNavigationUI() {
+        // Check if we're on the home page
+        const isHomePage = window.location.pathname === '/' || 
+                          window.location.pathname.endsWith('/index.html') ||
+                          window.location.pathname.endsWith('/introduction.html');
+        
+        // Don't create sidebars on home page
+        if (isHomePage) {
+            console.log('StandaloneNavigation: On home page, skipping sidebar creation');
+            return;
+        }
+        
         // Create LEFT sidebar container
         const leftContainer = document.createElement('div');
         leftContainer.id = 'standalone-navigation';
@@ -131,6 +181,11 @@ class StandaloneNavigation {
                                 <span class="context-icon">🎙️</span>
                                 Meeting Records
                                 <span class="context-count">2</span>
+                            </div>
+                            <div class="context-item" data-type="other" data-icon="📚">
+                                <span class="context-icon">📚</span>
+                                Other Documents
+                                <span class="context-count">1</span>
                             </div>
                             <hr class="context-divider">
                             <div class="context-item" data-type="home" data-icon="🏠">
@@ -237,6 +292,7 @@ class StandaloneNavigation {
                         case 'resolutions': label = 'Resolutions'; break;
                         case 'interpretations': label = 'Interpretations'; break;
                         case 'transcripts': label = 'Meeting Records'; break;
+                        case 'other': label = 'Other Documents'; break;
                         default: label = type;
                     }
                     contextDropdown.querySelector('.context-icon').textContent = icon;
@@ -295,7 +351,8 @@ class StandaloneNavigation {
             'ordinances': 'ordinances',
             'resolutions': 'resolutions',
             'interpretations': 'interpretations',
-            'transcripts': 'meeting records'
+            'transcripts': 'meeting records',
+            'other': 'other documents'
         };
         
         search.placeholder = `Search ${typeLabels[type] || type}...`;
@@ -311,6 +368,10 @@ class StandaloneNavigation {
             viewButtons.innerHTML = `
                 <button class="view-btn active" data-view="bydate">By Date</button>
                 <button class="view-btn" data-view="bymeeting">By Meeting</button>
+            `;
+        } else if (type === 'other') {
+            viewButtons.innerHTML = `
+                <button class="view-btn active" data-view="chronological">Chronological</button>
             `;
         } else {
             viewButtons.innerHTML = `
@@ -377,20 +438,17 @@ class StandaloneNavigation {
         }
         
         
-        // Filter documents by type
-        const docs = Object.values(this.documents).filter(doc => {
-            if (this.currentDocType === 'ordinances') return doc.type === 'ordinance';
-            if (this.currentDocType === 'resolutions') return doc.type === 'resolution';
-            if (this.currentDocType === 'interpretations') return doc.type === 'interpretation';
-            if (this.currentDocType === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
-            return false;
-        });
-        
-        // Debug logging
-        console.log(`renderDocuments: ${this.currentDocType} - Found ${docs.length} documents`);
-        if (this.currentDocType === 'resolutions') {
-            console.log('Resolution docs:', docs.map(d => d.id));
-        }
+        // Filter documents by type - preserve the full key as docKey
+        const docs = Object.entries(this.documents)
+            .filter(([key, doc]) => {
+                if (this.currentDocType === 'ordinances') return doc.type === 'ordinance';
+                if (this.currentDocType === 'resolutions') return doc.type === 'resolution';
+                if (this.currentDocType === 'interpretations') return doc.type === 'interpretation';
+                if (this.currentDocType === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
+                if (this.currentDocType === 'other') return doc.type === 'other' || doc.type === 'charter';
+                return false;
+            })
+            .map(([key, doc]) => ({ ...doc, docKey: key }));
         
         // Minimum threshold for grouping
         const MIN_DOCS_FOR_GROUPING = 10;
@@ -398,14 +456,6 @@ class StandaloneNavigation {
         container.innerHTML = '';
         // If too few documents, just render a sorted flat list
         if (docs.length < MIN_DOCS_FOR_GROUPING) {
-            console.log(`Using flat list for ${this.currentDocType} (${docs.length} < ${MIN_DOCS_FOR_GROUPING})`);
-            // Add visual indicator that grouping is disabled
-            const notice = document.createElement('div');
-            notice.className = 'grouping-disabled-notice';
-            notice.style.cssText = 'padding: 8px; margin-bottom: 10px; font-size: 0.9em; color: #666; font-style: italic;';
-            notice.textContent = `Showing all ${docs.length} ${this.currentDocType} (grouping disabled for small collections)`;
-            container.appendChild(notice);
-            
             // Sort documents based on current view
             this.sortDocumentsForView(docs);
             this.renderFlatList(container, docs);
@@ -438,8 +488,6 @@ class StandaloneNavigation {
         const visibleCountEl = document.querySelector('.visible-count');
         if (totalCountEl) totalCountEl.textContent = docs.length;
         if (visibleCountEl) visibleCountEl.textContent = docs.length;
-        
-        console.log('StandaloneNavigation: Rendered', container.children.length, 'items to container');
     }
     
     sortDocumentsForView(docs) {
@@ -453,8 +501,8 @@ class StandaloneNavigation {
         } else if (this.currentView === 'numerical') {
             // Sort by number
             docs.sort((a, b) => {
-                const matchA = a.id.match(/^(\d+)/);
-                const matchB = b.id.match(/^(\d+)/);
+                const matchA = a.id ? a.id.match(/^(\d+)/) : null;
+                const matchB = b.id ? b.id.match(/^(\d+)/) : null;
                 const numA = matchA ? parseInt(matchA[1]) : 0;
                 const numB = matchB ? parseInt(matchB[1]) : 0;
                 return this.currentOrder === 'asc' ? numA - numB : numB - numA;
@@ -464,7 +512,7 @@ class StandaloneNavigation {
             docs.sort((a, b) => {
                 const sectionCompare = (a.section || 'Other').localeCompare(b.section || 'Other');
                 if (sectionCompare !== 0) return sectionCompare;
-                return a.id.localeCompare(b.id);
+                return (a.id || '').localeCompare(b.id || '');
             });
         }
     }
@@ -484,7 +532,7 @@ class StandaloneNavigation {
         } else if (this.currentView === 'numerical') {
             // Group by number range
             docs.forEach(doc => {
-                const match = doc.id.match(/^(\d+)/);
+                const match = doc.id ? doc.id.match(/^(\d+)/) : null;
                 const num = match ? parseInt(match[1]) : 0;
                 let key = '#1-50';
                 if (num > 100) key = '#101+';
@@ -506,13 +554,11 @@ class StandaloneNavigation {
     }
     
     renderChronologicalView(container, groups) {
-        console.log('StandaloneNavigation: renderChronologicalView with groups:', Object.keys(groups));
         const decades = Object.keys(groups).sort((a, b) => {
             return this.currentOrder === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
         });
         
         decades.forEach(decade => {
-            console.log('StandaloneNavigation: Creating group for', decade, 'with', groups[decade].length, 'docs');
             const group = this.createGroup(decade, groups[decade]);
             container.appendChild(group);
         });
@@ -579,10 +625,17 @@ class StandaloneNavigation {
     createDocumentItem(doc) {
         const item = document.createElement('div');
         item.className = 'doc-item';
-        item.dataset.docId = doc.id;
+        // Use docKey if available (full key like 'ordinance-52-Flood'), otherwise fall back to doc.id
+        const fullId = doc.docKey || doc.id;
+        item.dataset.docId = fullId;
         
-        // Check if this document has relationships
-        const hasInterpretations = this.relationships[doc.id]?.interpretations?.length > 0;
+        // Check if this is the current document
+        if (fullId === this.currentDocId) {
+            item.classList.add('active');
+        }
+        
+        // Check if this document has relationships  
+        const hasInterpretations = this.relationships[fullId]?.interpretations?.length > 0;
         if (hasInterpretations) {
             item.classList.add('has-interpretations');
         }
@@ -641,6 +694,8 @@ class StandaloneNavigation {
             path = `/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'interpretation') {
             path = `/interpretations/${doc.file.replace('.md', '.html')}`;
+        } else if (doc.type === 'other' || doc.type === 'charter') {
+            path = `/other/${doc.file.replace('.md', '.html')}`;
         }
         
         // Navigate directly without animations
@@ -648,19 +703,24 @@ class StandaloneNavigation {
             window.location.pathname = path;
         }
         
-        // Update active state
-        this.setActiveDocument(doc.id);
+        // Update active state - use full key if available
+        const fullId = doc.docKey || doc.id;
+        this.setActiveDocument(fullId);
         
         // Show relationships
-        this.showRelationships(doc.id);
+        this.showRelationships(fullId);
     }
     
     setActiveDocument(docId) {
         this.currentDocId = docId;
         
         // Update active state in UI
-        document.querySelectorAll('.doc-item').forEach(item => {
-            item.classList.toggle('active', item.dataset.docId === docId);
+        const items = document.querySelectorAll('.doc-item');
+        
+        items.forEach(item => {
+            const itemId = item.dataset.docId;
+            const isActive = itemId === docId;
+            item.classList.toggle('active', isActive);
         });
     }
     
@@ -746,7 +806,55 @@ class StandaloneNavigation {
         for (const [id, doc] of Object.entries(this.documents)) {
             const docPath = doc.file.replace('.md', '.html').replace('#', '');
             if (path.includes(docPath)) {
-                this.setActiveDocument(id);
+                // Determine document type and update context switcher
+                let docType = 'ordinances';
+                if (doc.type === 'resolution') docType = 'resolutions';
+                else if (doc.type === 'interpretation') docType = 'interpretations';
+                else if (doc.type === 'transcript' || doc.type === 'meeting') docType = 'transcripts';
+                else if (doc.type === 'other' || doc.type === 'charter') docType = 'other';
+                
+                // Update current doc type if different
+                if (this.currentDocType !== docType) {
+                    this.currentDocType = docType;
+                    
+                    // Update dropdown to show correct type
+                    const contextDropdown = document.querySelector('.context-dropdown');
+                    if (contextDropdown) {
+                        const contextIcon = contextDropdown.querySelector('.context-icon');
+                        const contextLabel = contextDropdown.querySelector('.context-label');
+                        
+                        // Update icon and label
+                        const icons = {
+                            'ordinances': '📋',
+                            'resolutions': '📜',
+                            'interpretations': '💭',
+                            'transcripts': '🎙️',
+                            'other': '📚'
+                        };
+                        const labels = {
+                            'ordinances': 'Ordinances',
+                            'resolutions': 'Resolutions', 
+                            'interpretations': 'Interpretations',
+                            'transcripts': 'Meeting Records',
+                            'other': 'Other Documents'
+                        };
+                        
+                        if (contextIcon) contextIcon.textContent = icons[docType] || '📋';
+                        if (contextLabel) contextLabel.textContent = labels[docType] || docType;
+                    }
+                    
+                    // Re-render the documents list for the correct type
+                    this.renderDocuments();
+                    
+                    // Must set active AFTER re-rendering
+                    setTimeout(() => {
+                        this.setActiveDocument(id);
+                    }, 10);
+                } else {
+                    // No re-render needed, just set active
+                    this.setActiveDocument(id);
+                }
+                
                 this.showRelationships(id);
                 break;
             }
