@@ -36,6 +36,8 @@
 - [#22 - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
 - [#72 - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
 - [#259 - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
+- [#41425 - Records (2019)](./resolutions/2019-Res-41425-Public-Records.md)
+- [#41425 - Policy (2019)](./resolutions/2019-Res-41425-Public-Records-Policy.md)
 - [#300 - Modification (2024)](./resolutions/2024-Res-300-Fee-Schedule-Modification.md)
 
 ---
