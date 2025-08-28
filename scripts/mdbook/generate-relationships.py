@@ -104,6 +104,17 @@ def parse_document_id(filepath: Path) -> Dict:
             'file': filepath.name
         }
     
+    # Other documents: Pattern YYYY-Topic (e.g., 1974-City-Charter)
+    if filepath.parent.name == 'other':
+        year_match = re.match(r'(\d{4})-(.+)', name)
+        if year_match:
+            return {
+                'type': 'other',
+                'id': name,
+                'year': year_match.group(1),
+                'file': filepath.name
+            }
+    
     return None
 
 def identify_amendments(doc_id: str, content: str) -> List[str]:
@@ -128,7 +139,7 @@ def build_relationships():
     all_documents = {}
     
     # Process all markdown files
-    for dir_name in ['Ordinances', 'Resolutions', 'Interpretations']:
+    for dir_name in ['Ordinances', 'Resolutions', 'Interpretations', 'other']:
         dir_path = Path(dir_name)
         if not dir_path.exists():
             continue

@@ -1,6 +1,6 @@
-# RESOLUTION 41425
+ RESOLUTION 41425
 
-## A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS
+ A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS
 
 **WHEREAS,** the City is a custodian of the public record and citizens of the City are entitled to open access to public records;
 
@@ -89,7 +89,7 @@ Analeis Wiedlich, City Manager/ City Recorder      Bill Kabeiseman, City Attorne
 
 ---
 
-## CITY OF RIVERGROVE INSTRUCTIONS FOR REQUESTING PUBLIC RECORDS
+ CITY OF RIVERGROVE INSTRUCTIONS FOR REQUESTING PUBLIC RECORDS
 
 Requests must be in writing using the form provided. (Please note, the City will not create a new document in response to a records request.) All requests received within a 72-hour period will be treated as a single request.
 

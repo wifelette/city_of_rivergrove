@@ -51,6 +51,73 @@ def process_numbered_lists(html_content):
     
     return str(soup)
 
+def process_special_numbered_lists(html_content):
+    """Handle special numbered lists that start at non-standard numbers (e.g., 1.4)"""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Look for sequences of paragraphs that match our special numbering pattern
+    # Specifically looking for lists that start at 1.4 (Resolution 41425)
+    paragraphs = soup.find_all('p')
+    
+    for i, p in enumerate(paragraphs):
+        text = p.get_text().strip()
+        # Check if this is the start of our special list (1.4)
+        if text.startswith('1.4 '):
+            # Found the start of a special list
+            list_items = []
+            current_p = p
+            p_index = i
+            
+            # Collect all consecutive numbered items
+            while p_index < len(paragraphs):
+                current_text = paragraphs[p_index].get_text().strip()
+                match = re.match(r'^(1\.(\d+))\s+(.+)$', current_text)
+                
+                if match:
+                    list_items.append({
+                        'full_num': match.group(1),
+                        'sub_num': match.group(2),
+                        'content': match.group(3),
+                        'element': paragraphs[p_index]
+                    })
+                    p_index += 1
+                else:
+                    # End of the numbered sequence
+                    break
+            
+            # Only process if we found a sequence starting at 1.4
+            if list_items and list_items[0]['full_num'] == '1.4':
+                # Create an ordered list with custom styling
+                ol = soup.new_tag('ol', attrs={'class': 'special-start-list'})
+                
+                # Set the counter to start at 4
+                ol['style'] = 'counter-reset: list-item 3;'
+                
+                # Create list items
+                for item in list_items:
+                    li = soup.new_tag('li')
+                    # Don't set value attribute to avoid browser numbering
+                    
+                    # Add the content with the number as a prefix
+                    num_span = soup.new_tag('span', attrs={'class': 'special-list-number'})
+                    num_span.string = item['full_num'] + ' '
+                    li.append(num_span)
+                    
+                    # Add the rest of the content
+                    content_span = soup.new_tag('span')
+                    content_span.string = item['content']
+                    li.append(content_span)
+                    ol.append(li)
+                
+                # Replace the first paragraph with our new list
+                list_items[0]['element'].replace_with(ol)
+                
+                # Remove the remaining paragraphs that were part of the list
+                for item in list_items[1:]:
+                    item['element'].extract()
+    
+    return str(soup)
+
 def process_letter_lists(html_content):
     """Convert (a), (b) style lists to custom styled divs"""
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -152,6 +219,30 @@ def add_custom_css(html_content):
             margin-right: 0.5em;
         }
         
+        /* Special list that starts at non-standard number (e.g., 1.4) */
+        .special-start-list {
+            list-style: none !important;
+            padding-left: 2em;
+            counter-reset: none !important;
+        }
+        
+        .special-start-list li {
+            margin: 0.5em 0;
+            position: relative;
+            list-style: none !important;
+        }
+        
+        .special-start-list li::before {
+            content: none !important;
+        }
+        
+        .special-list-number {
+            font-weight: bold;
+            margin-right: 0.5em;
+            display: inline-block;
+            min-width: 2em;
+        }
+        
         /* Override mdBook's list styling for our custom lists */
         ol:has(.custom-list-marker) {
             list-style: none;
@@ -159,6 +250,10 @@ def add_custom_css(html_content):
         }
         
         ol:has(.custom-list-marker) li::before {
+            content: none;
+        }
+        
+        ol.special-start-list li::before {
             content: none;
         }
         """
@@ -172,6 +267,7 @@ def process_html_file(filepath):
         content = f.read()
     
     # Apply all processors
+    content = process_special_numbered_lists(content)  # Process special lists first
     content = process_numbered_lists(content)
     content = process_letter_lists(content)
     content = process_roman_lists(content)

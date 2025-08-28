@@ -49,6 +49,10 @@ cp "$SOURCE_FILE" "$DEST_FILE"
 echo "📝 Processing footnotes..."
 python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
 
+# Run the special list preprocessor for document-specific list handling
+echo "📝 Processing special lists..."
+python3 scripts/preprocessing/special-lists-preprocessor.py "$DEST_FILE" 2>/dev/null || true
+
 # Regenerate SUMMARY.md (needed to include new files)
 echo "📋 Regenerating SUMMARY.md..."
 python3 scripts/mdbook/generate-summary.py

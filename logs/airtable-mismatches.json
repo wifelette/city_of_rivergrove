@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-08-28T15:50:56.587527",
+  "summary": {
+    "matched": 37,
+    "missing_in_airtable": 1,
+    "missing_locally": 0
+  },
+  "details": {
+    "missing_in_airtable": [
+      {
+        "file": "1998-Ord-#59-97A-Land-Development-Amendment.md",
+        "type": "ordinance",
+        "title": "AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE"
+      }
+    ],
+    "missing_locally": [],
+    "filename_conflicts": []
+  }
+}
