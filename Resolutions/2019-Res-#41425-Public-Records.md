@@ -48,21 +48,24 @@ h. **Fee Collection.** If the estimated cost bill is twenty-five ($25.00) dollar
 
 i. **Waiver or Reduction of Fees.** Copies of public records may be furnished without cost, or at a reduced cost, if the City Manager determines that a waiver or reduction of fees is in the public interest because making the record available primarily benefits the general public.
 
-i.1 A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor's ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.
+   i.1 A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor's ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.
 
-i.2 Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor's disability.
+   i.2 Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor's disability.
 
-i.3 Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.
+   i.3 Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.
 
-i.4 Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.
+   i.4 Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.
 
-i.5 Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor's official capacity.
+   i.5 Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor's official capacity.
 
 **Section 4.**
 
 1. The City of Rivergrove hereby adopts the attached Forms to be used by the citizens of Rivergrove and the City of Rivergrove in providing public records:
+
    1.1 Instructions for Requesting Public Records.
+   
    1.2 Public Records Request form.
+   
    1.3 Response to Public Records Request.
 
 **Section 5.**
