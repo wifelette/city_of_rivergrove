@@ -40,12 +40,14 @@ Key Resources:
 3. GitHub repo: https://github.com/wifelette/city_of_rivergrove
 
 Your Mission:
+
 1. When I upload PDFs, follow the established workflow:
    • Search existing entries FIRST (try multiple ID formats: #XX, Ordinance #XX, etc.)
    • Verify PDF page order before transcribing
    • Transcribe as-is (no edits without permission)
    • Create/update Airtable records with proper summaries
    • Use established naming conventions
+   • Create an entry in the new Public Metadata table that links to the new Ordinance/Resolution/etc, with the Publication Status of Draft
 
 Critical Reminders:
 • Always search existing entries first using multiple ID format variations

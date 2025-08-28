@@ -231,7 +231,15 @@ class StandaloneNavigation {
                     
                     // Update dropdown label
                     const icon = item.dataset.icon || '📋';
-                    const label = item.textContent.trim().split('\n')[0].trim();
+                    // Get the text based on type
+                    let label = '';
+                    switch(type) {
+                        case 'ordinances': label = 'Ordinances'; break;
+                        case 'resolutions': label = 'Resolutions'; break;
+                        case 'interpretations': label = 'Interpretations'; break;
+                        case 'transcripts': label = 'Meeting Records'; break;
+                        default: label = type;
+                    }
                     console.log('StandaloneNavigation: Updating label to:', label);
                     contextDropdown.querySelector('.context-icon').textContent = icon;
                     contextDropdown.querySelector('.context-label').textContent = label;
@@ -373,7 +381,7 @@ class StandaloneNavigation {
             if (this.currentDocType === 'ordinances') return doc.type === 'ordinance';
             if (this.currentDocType === 'resolutions') return doc.type === 'resolution';
             if (this.currentDocType === 'interpretations') return doc.type === 'interpretation';
-            if (this.currentDocType === 'transcripts') return doc.type === 'transcript';
+            if (this.currentDocType === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
             return false;
         });
         
