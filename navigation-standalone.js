@@ -49,35 +49,69 @@ class StandaloneNavigation {
         style.id = 'standalone-nav-override';
         style.textContent = `
             /* Hide mdBook's sidebar completely */
-            #sidebar {
+            #sidebar, .sidebar {
                 display: none !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                opacity: 0 !important;
             }
             
-            /* Set page wrapper margins immediately to prevent shift */
-            .page-wrapper {
+            /* AGGRESSIVELY override page wrapper positioning */
+            .page-wrapper,
+            .page-wrapper * {
                 margin-left: 300px !important;
                 margin-right: 280px !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
+                animation-duration: 0s !important;
+                transition-duration: 0s !important;
+            }
+            
+            /* Override all possible animation sources */
+            *,
+            *::before,
+            *::after,
+            html,
+            body {
+                animation: none !important;
+                animation-duration: 0s !important;
+                animation-delay: 0s !important;
+                animation-fill-mode: none !important;
+                transition: none !important;
+                transition-duration: 0s !important;
+                transition-delay: 0s !important;
+                transform: none !important;
             }
             
             /* Prevent horizontal scrolling */
-            body {
-                overflow-x: hidden;
+            body, html {
+                overflow-x: hidden !important;
             }
             
-            /* Remove mdBook's slide-in animation */
-            .page-wrapper {
+            /* Target specific mdBook classes */
+            #content,
+            .content,
+            .chapter,
+            main {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                transform: translateX(0) !important;
+                transition: none !important;
                 animation: none !important;
             }
             
-            /* Stabilize content position */
-            #content {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
+            /* Override any slide effects */
+            @keyframes slide-in {
+                from, to { transform: translateX(0) !important; }
             }
             
-            /* Remove chapter transitions */
-            .chapter {
-                transition: none !important;
+            /* Disable print styles that might interfere */
+            @media screen {
+                .page-wrapper {
+                    margin-left: 300px !important;
+                    margin-right: 280px !important;
+                }
             }
         `;
         document.head.appendChild(style);
@@ -690,7 +724,46 @@ class StandaloneNavigation {
         // Handle browser back/forward
         window.addEventListener('popstate', () => {
             this.detectCurrentDocument();
+            // Reapply our styles after navigation
+            setTimeout(() => this.reapplyStyles(), 50);
         });
+        
+        // Monitor for DOM changes that might restore animations
+        const observer = new MutationObserver((mutations) => {
+            let needsReapply = false;
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                    // Check if page-wrapper got reset
+                    const pageWrapper = document.querySelector('.page-wrapper');
+                    if (pageWrapper) {
+                        const styles = window.getComputedStyle(pageWrapper);
+                        if (styles.marginLeft !== '300px') {
+                            needsReapply = true;
+                        }
+                    }
+                }
+            });
+            
+            if (needsReapply) {
+                this.reapplyStyles();
+            }
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'class']
+        });
+    }
+    
+    reapplyStyles() {
+        // Remove and re-add our override styles
+        const existingStyle = document.getElementById('standalone-nav-override');
+        if (existingStyle) {
+            existingStyle.remove();
+        }
+        this.hideMdBookSidebar();
     }
     
     addStyles() {
@@ -1198,12 +1271,33 @@ class StandaloneNavigation {
     }
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+// Initialize after everything loads
+function initNavigation() {
+    // Wait for mdBook to fully initialize
+    setTimeout(() => {
         new StandaloneNavigation();
-    });
-} else {
-    // DOM already loaded
-    new StandaloneNavigation();
+    }, 100);
 }
+
+// Try multiple initialization points
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+} else if (document.readyState === 'interactive') {
+    // DOM ready but resources still loading
+    setTimeout(initNavigation, 50);
+} else {
+    // Everything loaded
+    initNavigation();
+}
+
+// Also listen for page navigation events
+window.addEventListener('load', () => {
+    // Re-apply our styles after any page navigation
+    setTimeout(() => {
+        const existingStyle = document.getElementById('standalone-nav-override');
+        if (!existingStyle) {
+            // Styles got removed, need to reinitialize
+            initNavigation();
+        }
+    }, 50);
+});
