@@ -32,7 +32,9 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
   - 3. **Public Metadata** record linked to the Ordinance/Resolution (with Publication Status: Draft)
 - Leah saves artifact with established naming conventions
 - Leah uploads to GitHub and provides URLs to Claude for Airtable updates
-- Mark as Digitized once GitHub URL is added
+- Once GitHub URLs are added:
+  - Mark as Digitized in Ordinances and Resolutions table
+  - Change Publication Status from "Draft" to "Published" in Public Metadata table
 
 #### 1.1 PDF Page Order Verification
 
@@ -82,7 +84,7 @@ When processing a document:
   - Mark as Digitized when GitHub upload complete
 - Create `Public Metadata` entry with:
   - Link to Ordinance/Resolution record
-  - Publication Status: "Draft" (initially)
+  - Publication Status: "Draft" (initially, then "Published" after GitHub upload)
   - Any other relevant metadata fields
 
 ### 3. Content Standards
