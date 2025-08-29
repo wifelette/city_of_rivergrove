@@ -96,10 +96,10 @@ Standardized format for signatures (applies to ordinances, resolutions, and inte
 
 ```markdown
 [Signature], Name, Title  
-**Date**: [Date as written]  
+**Date**: {{filled:8-12-02}}  
 
 [Signature], Name, Title  
-**Date**: [Date as written]  
+**Date**: {{filled:8/12/02}}  
 ```
 
 **Important formatting rules:**
@@ -107,9 +107,11 @@ Standardized format for signatures (applies to ordinances, resolutions, and inte
 - Format: `[Signature], Name, Title` (all on one line)
 - Names and titles are NOT bolded
 - Add double spaces at the end of signature lines for proper Markdown line breaks
+- Use `{{filled:}}` syntax for handwritten dates (see [form-fields-syntax.md](form-fields-syntax.md))
 - Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
 - Different signers may use different date formats - preserve these differences
 - Use "[Signature]" placeholder for actual signatures
+- If the date was pre-printed (not handwritten), don't use `{{filled:}}`
 - Run `scripts/preprocessing/fix-signatures.py` to standardize formatting automatically
 
 #### 3.2 Page Break Handling
@@ -119,12 +121,15 @@ Standardized format for signatures (applies to ordinances, resolutions, and inte
 - **Single flowing document**: Present the entire ordinance as one continuous markdown file
 - **Exception**: Only note page breaks if they are for some reason meaningful (like when legal documents say "Continue on next page" or "this section intentionally left blank")
 
-#### 3.3 Handwritten Content and Emphasis
+#### 3.3 Handwritten Content and Form Fields
 
-- **Handwritten fill-ins**: Bold any content that was clearly filled in by hand on a form or blank (e.g., "Adopted on **March 15, 1998**")
-- **Underlined text**: Convert underlines to bold since we aren't using underlines
-- **Purpose**: Makes it immediately clear what was pre-printed vs. manually added
-- **Example**: "This ordinance shall take effect **30 days** after adoption" (where "30 days" was handwritten)
+See **[form-fields-syntax.md](form-fields-syntax.md)** for complete guide on handling blank and filled fields.
+
+**Key Points**:
+- Use `{{filled:}}` for blank fields in source documents
+- Use `{{filled:text}}` for handwritten/filled content
+- Always use `{{filled:}}` for handwritten dates in signature blocks
+- Underlined text: Convert to bold (we don't use underlines except for form fields)
 
 ### 4. Document Title Standards
 
@@ -182,24 +187,12 @@ After completing GitHub upload and URL updates:
 
 ### 1. File Organization & Naming Conventions
 
-#### Naming Conventions
+See **[naming-conventions.md](naming-conventions.md)** for complete naming standards and file organization rules.
 
-- **Resolutions**: `YYYY-Res-#XX-Topic` (e.g., `1984-Res-#72-Municipal-Services`)
-- **Interpretations**: `YYYY-MM-DD-RE-[section]-[brief topic]`
-- **Ordinances**: `YYYY-Ord-#XX-Topic` (e.g., `1974-Ord-#16-Parks`)
-
-#### File Organization
-
-- **Interpretations**: Go in `/Interpretations/` folder (both .md and .pdf files)
-- **Ordinances**: Go in `/Ordinances/` folder (both .md and .pdf files)
-- **Resolutions**: Go in `/Resolutions/` folder (both .md and .pdf files)
-- **Other Documents**: Root level or appropriate subfolder (both .md and .pdf files)
-
-**PDF Storage**: Source PDFs are stored alongside their markdown counterparts using identical naming:
-
-- Example: `1978-Ord-#28-Parks.md` and `1978-Ord-#28-Parks.pdf` in the same folder
-- PDFs are only added to GitHub after the markdown file has been created
-- Original PDFs remain in Dropbox (renamed to match convention) with copies in GitHub
+**Key Points**:
+- All documents follow strict naming patterns
+- PDFs must have identical names to their .md counterparts
+- Files are organized by document type in their respective folders
 
 ### 2. When Digitizing Documents
 
@@ -380,44 +373,6 @@ Legal documents require exact preservation of enumeration styles for reference i
 
 ---
 
-## Claude Code Session Startup Prompts
+## Session Startup Prompts
 
-### For Document Digitization Work
-
-```markdown
-I'm working on the City of Rivergrove ordinance digitization project. Please read the digitization-guide.md to understand the project context and workflow. Today I'll be processing documents from Dropbox and adding them to the repository.
-```
-
-### For Navigation Implementation Work
-
-```markdown
-I'm working on implementing the navigation redesign for the City of Rivergrove mdBook site. 
-
-Please start by reading:
-1. CLAUDE.md - Project-specific instructions and preferences
-2. /Users/leahsilber/Github/daily_tasks/CLAUDE.md - General working preferences
-3. digitization-guide.md - Full project context and workflow
-4. NAVIGATION-REDESIGN.md - Navigation redesign decisions and plan
-
-Current implementation status:
-
-- Style E format has been implemented in generate-summary.py
-- The sidebar now shows clean "#XX - Title (Year)" format
-- Next phase: Implement the right panel for document relationships
-
-Key files to review:
-
-1. generate-summary.py - Current Style E implementation
-2. navigation-integrated.html - Reference mockup for the relationship panel
-3. src/custom.css - Existing styles that may need updating
-4. scripts/build/update-mdbook.sh - Build automation script
-
-Priority tasks:
-
-1. Create right panel template structure
-2. Build relationship tracking JSON system
-3. Implement JavaScript view controls (List/By Decade/By Topic)
-4. Add document relationship display (interpretations, references, amendments)
-
-Remember: No Claude attribution in commits, always provide GitHub URLs after pushing.
-```
+See **[STARTUP-PROMPTS.md](STARTUP-PROMPTS.md)** for quick reference prompts to start new Claude sessions for both Claude Code and Claude Desktop workflows.

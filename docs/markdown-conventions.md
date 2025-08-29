@@ -95,17 +95,9 @@ Links automatically point to the correct file in the appropriate subdirectory:
 
 Note: The `#` character is removed from filenames in the /src directory for URL compatibility.
 
-## Document Naming Conventions
+## Document Naming
 
-### File Names
-
-- Ordinances: `YYYY-Ord-#XX-YYYY-Description.md`
-- Resolutions: `YYYY-Res-#XX-Description.md`
-- Interpretations: `YYYY-MM-DD-RE-topic.md`
-
-### In mdBook (src directory)
-
-File names have `#` removed and spaces replaced with hyphens for URL compatibility.
+See **[naming-conventions.md](naming-conventions.md)** for complete file naming standards and organization rules.
 
 ## Signature Blocks
 
@@ -120,7 +112,7 @@ File names have `#` removed and spaces replaced with hyphens for URL compatibili
 
 - Two spaces at end of first line for proper line break
 - Date on separate line with bold "Date:" prefix
-- If the dates were hand-written in the source docs, display them as such: {{filled:XX}}, where XX is the date in whatever format it was written.
+- For handwritten dates, use `{{filled:}}` syntax (see [form-fields-syntax.md](form-fields-syntax.md))
 
 ## Tables
 

@@ -43,10 +43,7 @@ Please read these files for context on this project and how to work with Leah:
 
 **CRITICAL - This step is often missed!**
 
-- Verify the naming convention is correct:
-  - **Resolutions**: `YYYY-Res-#XX-Topic` (e.g., `2024-Res-#300-Fee-Schedule-Modification`)
-  - **Ordinances**: `YYYY-Ord-#XX-Topic` (e.g., `1974-Ord-#16-Parks`)
-  - **Interpretations**: `YYYY-MM-DD-RE-[section]-[brief topic]`
+- Verify the naming convention is correct (see `docs/naming-conventions.md` for full details)
 - If naming is incorrect, rename files in BOTH locations:
   - Use `git mv` to rename the .md file in the GitHub repository
   - Use `mv` to rename the original PDF in Dropbox at the same path
@@ -84,7 +81,7 @@ Please read these files for context on this project and how to work with Leah:
 **IMPORTANT - mdBook serve limitations:**
 
 - If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
-- This means form fields (blue filled fields, blank underlines) and other custom formatting will disappear
+- This means form fields (see `docs/form-fields-syntax.md`) and other custom formatting will disappear
 - To see the REAL appearance with all formatting:
   1. After any changes while `mdbook serve` is running
   2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`

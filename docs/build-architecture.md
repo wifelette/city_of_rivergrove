@@ -89,8 +89,9 @@ These modify HTML AFTER mdBook generates it:
 
 ## Form Field Processing
 
-Form fields (`{{filled:}}` and `{{blank:}}`) are processed at multiple stages:
+Form fields are processed at multiple stages. See **[form-fields-syntax.md](form-fields-syntax.md)** for complete syntax guide.
 
+**Processing stages:**
 1. **During sync** (`sync-ordinances.py`, etc.) - Convert to HTML spans
 2. **During custom-list processing** - Apply CSS styling and tooltips
 

@@ -16,15 +16,17 @@ This guide ensures consistent formatting across all digitized City of Rivergrove
 ### Standard Format
 ```markdown
 [Signature], Name, Title  
-**Date**: [Date as written]  
+**Date**: {{filled:MM/DD/YY}}  
 ```
 
 ### Important Rules
 - Format: `[Signature], Name, Title` (all on one line)
 - Names and titles are NOT bolded
 - Add double spaces at the end of signature lines for proper Markdown line breaks
+- Use `{{filled:}}` for handwritten dates (see [form-fields-syntax.md](form-fields-syntax.md))
 - Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
 - Different signers may use different date formats - preserve these differences
+- If the date was pre-printed (not handwritten), don't use `{{filled:}}`
 
 ## Footnotes
 
@@ -135,20 +137,9 @@ If automatic processing fails, you can manually wrap footnotes:
 See Section III.A above
 ```
 
-## File Naming Conventions
+## File Naming
 
-### Ordinances
-`YYYY-Ord-#XX-Topic.md` (e.g., `1974-Ord-#16-Parks.md`)
-
-### Resolutions  
-`YYYY-Res-#XX-Topic.md` (e.g., `2018-Res-#259-Planning-Development-Fees.md`)
-
-### Interpretations
-`YYYY-MM-DD-RE-[section]-[brief topic].md`
-
-### Important
-- Include `#` in filenames for main folders
-- Remove `#` when syncing to src/ folders for mdBook
+See **[naming-conventions.md](naming-conventions.md)** for complete file naming standards and organization rules.
 
 ## General Principles
 
