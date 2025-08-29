@@ -53,7 +53,6 @@ city_of_rivergrove/
 - [Project Guide](docs/digitization-guide.md) - Complete project documentation
 - [Build Architecture](docs/build-architecture.md) - Build system and dependencies
 - [Airtable Integration](docs/airtable-integration.md) - Airtable sync documentation
-- [Navigation Redesign](docs/navigation-redesign.md) - Navigation system design
 - [Markdown Conventions](docs/markdown-conventions.md) - Document formatting standards
 
 ### Style Guides
@@ -65,7 +64,7 @@ city_of_rivergrove/
 
 ### Technical Documentation
 - [Scripts Guide](scripts/SCRIPTS-GUIDE.md) - Complete script documentation
-- [Startup Prompts](docs/STARTUP-PROMPTS.md) - Quick start prompts for Claude
+- [Startup Prompts](docs/startup-prompts.md) - Quick start prompts for Claude
 
 ## Live Site
 

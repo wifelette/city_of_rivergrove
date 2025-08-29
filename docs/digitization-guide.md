@@ -103,6 +103,7 @@ When processing a document:
 See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
 
 **Key Points:**
+
 - Use `[Signature], Name, Title` format (all on one line)
 - Add double spaces at end of lines for proper breaks
 - Use `{{filled:}}` for handwritten dates
@@ -121,6 +122,7 @@ See **[styles/signature-formatting.md](styles/signature-formatting.md)** for com
 See **[styles/form-fields.md](styles/form-fields.md)** for complete guide on handling blank and filled fields.
 
 **Key Points**:
+
 - Use `{{filled:}}` for blank fields in source documents
 - Use `{{filled:text}}` for handwritten/filled content
 - Always use `{{filled:}}` for handwritten dates in signature blocks
@@ -131,6 +133,7 @@ See **[styles/form-fields.md](styles/form-fields.md)** for complete guide on han
 See **[styles/inline-images.md](styles/inline-images.md)** for handling images, diagrams, and visual content.
 
 **Key Points**:
+
 - Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
 - Images are stored in `book/images/[document-type]/`
 - Screenshots and diagrams should be saved as PNG files
@@ -183,7 +186,6 @@ After completing GitHub upload and URL updates:
 - Preserve all original formatting, dates, and signatures
 - Claude should ask for GitHub URLs with correct filenames ready for immediate save
 - **Digitization Guide updates**: When Leah asks for text to add to the Digitization Guide, always provide it as inline copyable markdown in code blocks rather than artifacts - this allows single-button copying without downloads.
-- **Batch URL Updates**: When updating multiple documents with GitHub URLs, use the systematic approach: list all records first to see field structure, then update fileURL and mdURL fields (rawURL will auto-populate)
 
 ---
 
@@ -194,13 +196,14 @@ After completing GitHub upload and URL updates:
 See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complete naming standards and file organization rules.
 
 **Key Points**:
+
 - All documents follow strict naming patterns
 - PDFs must have identical names to their .md counterparts
 - Files are organized by document type in their respective folders
 
 ### 2. When Digitizing Documents
 
-1. **Check and fix naming EVERYWHERE**: 
+1. **Check and fix naming EVERYWHERE**:
    - **CRITICAL**: Rename files in BOTH locations to follow the naming convention:
      - In the GitHub repository (the .md file you're working with)
      - In the Dropbox source folder (the original PDF)
@@ -216,7 +219,7 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
 5. **Provide GitHub Links**: After pushing, always provide the GitHub web URLs for Airtable:
    - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
    - PDF: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.pdf`
-6. **Update mdBook**: 
+6. **Update mdBook**:
    - **Option A - Single file (faster)**: Run `./scripts/build/update-single.sh [path/to/file.md]`
    - **Option B - Full sync**: Run `./scripts/build/update-mdbook.sh` to sync ALL documents and rebuild
    - Note: The build scripts automatically update `src/SUMMARY.md`
@@ -263,6 +266,7 @@ The repository includes an mdBook static site generator that creates a searchabl
 3. **View changes** at `http://localhost:3000`
 
 **Automated sync** is available but currently **not recommended** due to content override issues:
+
 - `./scripts/utilities/watch-and-sync.py` - File watcher for auto-sync (use with caution)
 - Issue: Unknown process sometimes generates auto-headers that override file content
 - **Symptom**: File content temporarily disappears and gets replaced with auto-generated headers
@@ -298,10 +302,10 @@ city_of_rivergrove/
    ```bash
    mdbook serve
    ```
-   
 2. **Edit files** in `source-documents/` directories (Ordinances/, Resolutions/, etc.)
 
 3. **Sync changes**:
+
    - **For single file**: `./scripts/build/update-single.sh [path/to/file.md]`
    - **For all files**: `./scripts/build/update-mdbook.sh`
 
@@ -312,34 +316,39 @@ city_of_rivergrove/
 Legal documents require exact preservation of enumeration styles for reference integrity. Our system uses post-processing to handle special list formats while keeping source markdown pure.
 
 **Source Format Preservation:**
+
 - Keep original legal formatting in source files: `(1)`, `(a)`, `(i)`
 - Do NOT convert to standard markdown lists in source files
 - The custom-list-processor.py handles conversion during build
 
 **Supported List Formats:**
+
 - **Numbered lists**: `(1)`, `(2)`, `(3)` → Rendered with preserved markers
-- **Letter lists**: `(a)`, `(b)`, `(c)` → Rendered with preserved markers  
+- **Letter lists**: `(a)`, `(b)`, `(c)` → Rendered with preserved markers
 - **Roman numerals**: `(i)`, `(ii)`, `(iii)` → Rendered with preserved markers
 - **Standard markdown**: `1.`, `2.`, `3.` → Standard rendering
 
 **Processing Workflow:**
+
 1. Source files maintain exact legal formatting
 2. mdBook builds HTML from markdown
 3. `custom-list-processor.py` post-processes HTML to create proper lists
 4. CSS styling preserves original markers while improving visual structure
 
 **Examples in source markdown:**
+
 ```markdown
 (1) First numbered item with legal formatting
-(2) Second numbered item 
-    (a) Letter subitem preserved exactly
-    (b) Another letter subitem
-        (i) Roman numeral nested item
-        (ii) Another roman numeral
+(2) Second numbered item
+(a) Letter subitem preserved exactly
+(b) Another letter subitem
+(i) Roman numeral nested item
+(ii) Another roman numeral
 (3) Third numbered item
 ```
 
 **Common issues resolved:**
+
 - Lists not rendering as lists (appearing as paragraphs)
 - Wrong enumeration conversion (letters to numbers, etc.)
 - Sync scripts overwriting manual fixes
@@ -361,6 +370,7 @@ The enhanced navigation system is fully operational with:
 - ✅ mdBook UI elements properly hidden
 
 **Known limitations:**
+
 - File sync workflow needs stability improvements (use manual sync)
 - Right panel for document relationships not yet implemented
 
@@ -383,4 +393,4 @@ The enhanced navigation system is fully operational with:
 
 ## Session Startup Prompts
 
-See **[STARTUP-PROMPTS.md](STARTUP-PROMPTS.md)** for quick reference prompts to start new Claude sessions for both Claude Code and Claude Desktop workflows.
+See **[startup-prompts.md](startup-prompts.md)** for quick reference prompts to start new Claude sessions for both Claude Code and Claude Desktop workflows.
