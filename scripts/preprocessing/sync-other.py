@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sync ordinances from the main Ordinances directory to src/ordinances for mdBook
+Sync other documents from the main Other directory to src/other for mdBook
 """
 
 import os
@@ -16,52 +16,25 @@ def process_form_fields(content):
     Converts:
     - {{filled:}} -> <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
     - {{filled:text}} -> <span class="form-field-filled" data-tooltip="Field filled in on source doc">text</span>
-    
-    Special handling for headings to avoid breaking mdBook anchor generation.
     """
-    lines = content.split('\n')
-    processed_lines = []
+    # Handle empty fields first
+    content = re.sub(r'\{\{filled:\s*\}\}', 
+                    '<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>', 
+                    content)
     
-    for line in lines:
-        # Check if this is a markdown heading
-        if line.strip().startswith('#'):
-            # For headings, we need to be careful not to break anchor ID generation
-            # mdBook generates IDs from the text content, ignoring HTML tags
-            # So we can add the spans, but need to keep the text intact
-            
-            # Handle filled fields in headings - keep the text but add styling
-            def replace_heading_filled(match):
-                text = match.group(1).strip()
-                return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{text}</span>'
-            
-            line = re.sub(r'\{\{filled:([^}]+)\}\}', replace_heading_filled, line)
-            
-            # Handle empty fields in headings
-            line = re.sub(r'\{\{filled:\s*\}\}', 
-                        '<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>', 
-                        line)
-        else:
-            # For non-heading lines, process normally
-            # Handle empty fields first
-            line = re.sub(r'\{\{filled:\s*\}\}', 
-                        '<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>', 
-                        line)
-            
-            # Handle filled fields
-            def replace_filled(match):
-                text = match.group(1).strip()
-                return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{text}</span>'
-            
-            line = re.sub(r'\{\{filled:([^}]+)\}\}', replace_filled, line)
-        
-        processed_lines.append(line)
+    # Handle filled fields
+    def replace_filled(match):
+        text = match.group(1).strip()
+        return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{text}</span>'
     
-    return '\n'.join(processed_lines)
+    content = re.sub(r'\{\{filled:([^}]+)\}\}', replace_filled, content)
+    
+    return content
 
-def sync_ordinances():
-    """Copy all files from Ordinances/ to src/ordinances/"""
-    source_dir = Path("Ordinances")
-    dest_dir = Path("src/ordinances")
+def sync_other():
+    """Copy all files from Other/ to src/other/"""
+    source_dir = Path("Other")
+    dest_dir = Path("src/other")
     
     if not source_dir.exists():
         print(f"Source directory {source_dir} does not exist")
@@ -80,8 +53,8 @@ def sync_ordinances():
     # Copy all .md files from source to destination
     processed_dest_names = set()
     for file in source_dir.glob("*.md"):
-        # Map filename: remove # from ordinance files
-        dest_name = file.name.replace("#", "")
+        # No filename modification needed for other documents
+        dest_name = file.name
         dest_file = dest_dir / dest_name
         processed_dest_names.add(dest_name)
         
@@ -107,7 +80,7 @@ def sync_ordinances():
             # Write processed content
             with open(dest_file, 'w', encoding='utf-8') as f:
                 f.write(processed_content)
-            updated_files.append(f"{file.name} -> {dest_name}")
+            updated_files.append(dest_name)
     
     # Remove files that no longer exist in source
     for dest_name in existing_dest_files:
@@ -118,11 +91,11 @@ def sync_ordinances():
     # Print results
     if updated_files or removed_files:
         if updated_files:
-            print(f"  Updated {len(updated_files)} ordinance file(s):")
+            print(f"  Updated {len(updated_files)} other document file(s):")
             for filename in sorted(updated_files):
                 print(f"    ✓ {filename}")
         if removed_files:
-            print(f"  Removed {len(removed_files)} ordinance file(s):")
+            print(f"  Removed {len(removed_files)} other document file(s):")
             for filename in sorted(removed_files):
                 print(f"    ✗ {filename}")
     else:
@@ -131,8 +104,8 @@ def sync_ordinances():
     return True
 
 if __name__ == "__main__":
-    if sync_ordinances():
-        print("✓ Ordinances synced successfully")
+    if sync_other():
+        print("✓ Other documents synced successfully")
     else:
-        print("✗ Failed to sync ordinances")
+        print("✗ Failed to sync other documents")
         sys.exit(1)

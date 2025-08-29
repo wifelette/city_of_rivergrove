@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sync ordinances from the main Ordinances directory to src/ordinances for mdBook
+Sync resolutions from the main Resolutions directory to src/resolutions for mdBook
 """
 
 import os
@@ -58,10 +58,10 @@ def process_form_fields(content):
     
     return '\n'.join(processed_lines)
 
-def sync_ordinances():
-    """Copy all files from Ordinances/ to src/ordinances/"""
-    source_dir = Path("Ordinances")
-    dest_dir = Path("src/ordinances")
+def sync_resolutions():
+    """Copy all files from Resolutions/ to src/resolutions/"""
+    source_dir = Path("Resolutions")
+    dest_dir = Path("src/resolutions")
     
     if not source_dir.exists():
         print(f"Source directory {source_dir} does not exist")
@@ -80,7 +80,7 @@ def sync_ordinances():
     # Copy all .md files from source to destination
     processed_dest_names = set()
     for file in source_dir.glob("*.md"):
-        # Map filename: remove # from ordinance files
+        # Map filename: remove # from resolution files
         dest_name = file.name.replace("#", "")
         dest_file = dest_dir / dest_name
         processed_dest_names.add(dest_name)
@@ -118,11 +118,11 @@ def sync_ordinances():
     # Print results
     if updated_files or removed_files:
         if updated_files:
-            print(f"  Updated {len(updated_files)} ordinance file(s):")
+            print(f"  Updated {len(updated_files)} resolution file(s):")
             for filename in sorted(updated_files):
                 print(f"    ✓ {filename}")
         if removed_files:
-            print(f"  Removed {len(removed_files)} ordinance file(s):")
+            print(f"  Removed {len(removed_files)} resolution file(s):")
             for filename in sorted(removed_files):
                 print(f"    ✗ {filename}")
     else:
@@ -131,8 +131,8 @@ def sync_ordinances():
     return True
 
 if __name__ == "__main__":
-    if sync_ordinances():
-        print("✓ Ordinances synced successfully")
+    if sync_resolutions():
+        print("✓ Resolutions synced successfully")
     else:
-        print("✗ Failed to sync ordinances")
+        print("✗ Failed to sync resolutions")
         sys.exit(1)

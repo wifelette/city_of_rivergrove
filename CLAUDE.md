@@ -70,6 +70,15 @@ Please read these two files for context on this project and how to work with Lea
 **Option B - Full sync (if multiple files changed):**
 - Run `./scripts/build/update-mdbook.sh` to sync ALL files to src/ folders and rebuild
 
+**IMPORTANT - mdBook serve limitations:**
+- If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
+- This means form fields (blue filled fields, blank underlines) and other custom formatting will disappear
+- To see the REAL appearance with all formatting:
+  1. After any changes while `mdbook serve` is running
+  2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`
+  3. This restores form field styling and other custom formatting
+- Alternatively, use the build scripts above which include postprocessing
+
 ### Step 8: Update Issue #3
 
 - Add a comment to issue #3 noting the document has been processed

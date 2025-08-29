@@ -41,9 +41,18 @@ DEST_FILE="$DEST_DIR/$DEST_FILENAME"
 # Create destination directory if it doesn't exist
 mkdir -p "$DEST_DIR"
 
-# Copy the file
-echo "📄 Syncing $SOURCE_FILE -> $DEST_FILE"
-cp "$SOURCE_FILE" "$DEST_FILE"
+# Use the appropriate sync script to process the file
+echo "📄 Syncing $SOURCE_FILE (with form field processing)..."
+if [[ "$SOURCE_FILE" == Ordinances/*.md ]]; then
+    python3 scripts/preprocessing/sync-ordinances.py
+elif [[ "$SOURCE_FILE" == Resolutions/*.md ]]; then
+    python3 scripts/preprocessing/sync-resolutions.py
+elif [[ "$SOURCE_FILE" == Interpretations/*.md ]]; then
+    python3 scripts/preprocessing/sync-interpretations.py
+else
+    # For Other/ files, just copy directly as they don't need form field processing
+    cp "$SOURCE_FILE" "$DEST_FILE"
+fi
 
 # Run the footnote preprocessor on just this file
 echo "📝 Processing footnotes..."
@@ -53,13 +62,7 @@ python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null 
 echo "🔗 Converting URLs and emails to links..."
 python3 scripts/preprocessing/auto-link-converter.py "$DEST_FILE" 2>/dev/null || true
 
-# Run the form fields processor to convert blank fields
-echo "📋 Processing form fields..."
-python3 scripts/preprocessing/form-fields-processor.py "$DEST_FILE" 2>/dev/null || true
-
-# Run the special list preprocessor for document-specific list handling
-echo "📝 Processing special lists..."
-python3 scripts/preprocessing/special-lists-preprocessor.py "$DEST_FILE" 2>/dev/null || true
+# Form fields are now processed during sync, no separate step needed
 
 # Regenerate SUMMARY.md (needed to include new files)
 echo "📋 Regenerating SUMMARY.md..."

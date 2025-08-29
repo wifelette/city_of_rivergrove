@@ -260,19 +260,42 @@ def add_custom_css(html_content):
         /* Form field styles for legal documents */
         .form-field-empty {
             display: inline-block;
-            padding: 2px 8px;
-            margin: 0 4px;
-            background-color: #f5f5f5;
-            border: 1px dashed #999;
-            border-radius: 3px;
-            color: #666;
-            font-size: 0.9em;
-            cursor: help;
+            border-bottom: 1px solid #999;
+            margin: 0 2px;
+            cursor: default;
+            vertical-align: baseline;
+            height: 1em;
+            position: relative;
         }
         
         .form-field-empty:hover {
-            background-color: #e8e8e8;
-            border-color: #666;
+            background-color: #f0f0f0;
+            border-bottom-color: #666;
+        }
+        
+        /* Add a visual indicator for blank fields */
+        .form-field-empty::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-empty:hover::after {
+            opacity: 1;
         }
         
         .form-field-short {
@@ -288,17 +311,109 @@ def add_custom_css(html_content):
         }
         
         .form-field-filled {
-            display: inline;
-            padding: 1px 4px;
+            display: inline-block;
+            padding: 2px 4px 4px 4px;
             background-color: #e3f2fd;
             border-bottom: 2px solid #1976d2;
             color: #000;
             font-weight: 600;
-            cursor: help;
+            cursor: default !important;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        /* Ensure tooltips appear above other elements */
+        .form-field-filled:hover,
+        .form-field-empty:hover {
+            z-index: 1000;
+        }
+        
+        /* Force no help cursor for form fields and remove any title tooltips */
+        .form-field-filled,
+        .form-field-filled:hover,
+        .form-field-empty,
+        .form-field-empty:hover {
+            cursor: default !important;
+        }
+        
+        /* Hide any native browser tooltips */
+        .form-field-filled[title],
+        .form-field-empty[title] {
+            cursor: default !important;
+        }
+        
+        .form-field-filled[title]:hover::before,
+        .form-field-empty[title]:hover::before {
+            content: '' !important;
         }
         
         .form-field-filled:hover {
             background-color: #bbdefb;
+            border-bottom-color: #0d47a1;
+        }
+        
+        /* CSS tooltip for filled fields */
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1;
+        }
+        
+        /* Special positioning for tooltips in headings to avoid clipping */
+        h1 .form-field-filled::after,
+        h2 .form-field-filled::after,
+        h3 .form-field-filled::after {
+            top: 100%;
+            bottom: auto;
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Same for empty field tooltips in headings */
+        h1 .form-field-empty::after,
+        h2 .form-field-empty::after,
+        h3 .form-field-empty::after {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Special styling for form fields in headings */
+        h1 .form-field-filled, 
+        h2 .form-field-filled, 
+        h3 .form-field-filled {
+            font-size: inherit;
+            font-weight: inherit;
+            vertical-align: baseline;
+        }
+        
+        h1 .form-field-empty, 
+        h2 .form-field-empty, 
+        h3 .form-field-empty {
+            vertical-align: baseline;
+            height: 0.8em;
+            margin-bottom: -0.1em;
         }
         """
         head.append(style)
@@ -306,24 +421,24 @@ def add_custom_css(html_content):
     return str(soup)
 
 def process_form_fields(html_content):
-    """Convert [BLANK] markers to styled HTML elements."""
-    # Pattern to match [BLANK] or [BLANK:size] markers
-    blank_pattern = r'\[BLANK(?::(\w+))?\]'
+    """Convert <!--BLANK--> markers to styled HTML elements."""
+    # Pattern to match <!--BLANK--> or <!--BLANK:size--> markers
+    blank_pattern = r'<!--BLANK(?::(\w+))?-->'
     
     def replace_blank(match):
         size = match.group(1) if match.group(1) else 'medium'
         size_class = f'form-field-{size}'
-        return f'<span class="form-field-empty {size_class}" title="Empty field in original document">&nbsp;</span>'
+        return f'<span class="form-field-empty {size_class}" data-tooltip="Field left blank in source doc"></span>'
     
     # Replace all blank markers
     html_content = re.sub(blank_pattern, replace_blank, html_content)
     
-    # Pattern to match [FILLED: content] markers (if manually added)
-    filled_pattern = r'\[FILLED:\s*([^\]]+)\]'
+    # Pattern to match <!--FILLED: content--> markers (if manually added)
+    filled_pattern = r'<!--FILLED:\s*([^-]+)-->'
     
     def replace_filled(match):
         content = match.group(1)
-        return f'<span class="form-field-filled" title="Hand-filled field in original document">{content}</span>'
+        return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{content}</span>'
     
     # Replace all filled markers
     html_content = re.sub(filled_pattern, replace_filled, html_content)
@@ -340,7 +455,6 @@ def process_html_file(filepath):
     content = process_numbered_lists(content)
     content = process_letter_lists(content)
     content = process_roman_lists(content)
-    content = process_form_fields(content)  # Process form field markers
     content = add_custom_css(content)
     
     # Write back

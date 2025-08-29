@@ -14,6 +14,7 @@ def process_unfilled_blanks(content):
     """
     Convert unfilled blank fields (underscores) to markdown notation.
     Patterns like \_\_\_ or \_\_\_\_ or even __ become [BLANK] markers.
+    This is legacy support - new documents should use {{filled:}} syntax.
     """
     # Multiple patterns to catch different underscore variations
     patterns = [
@@ -22,13 +23,30 @@ def process_unfilled_blanks(content):
         # Regular underscores with spaces: ___ or ____
         (r'(?<!\w)_{2,}(?!\w)', lambda m: determine_blank_size(len(m.group(0)))),
         # Asterisk + underscores pattern: **\_\_\_**
-        (r'\*\*(\\_)+\*\*', lambda m: '[BLANK]'),
+        (r'\*\*(\\_)+\*\*', lambda m: '<!--BLANK-->'),
         # Multiple asterisks with underscores: ********\_\_\_\_********
-        (r'\*{2,}(\\_)+\*{2,}', lambda m: '[BLANK]'),
+        (r'\*{2,}(\\_)+\*{2,}', lambda m: '<!--BLANK-->'),
     ]
     
     for pattern, replacement in patterns:
         content = re.sub(pattern, replacement, content)
+    
+    return content
+
+def process_filled_fields(content):
+    """
+    Convert filled field markers to special notation.
+    
+    Syntax:
+    - {{filled:}} -> [BLANK] (empty field)
+    - {{filled:text}} -> [FILLED:text] (filled field)
+    """
+    # First handle empty filled fields (blank fields using new syntax)
+    content = re.sub(r'\{\{filled:\s*\}\}', '<!--BLANK-->', content)
+    
+    # Then handle filled fields with content
+    pattern = r'\{\{filled:([^}]+)\}\}'
+    content = re.sub(pattern, r'<!--FILLED:\1-->', content)
     
     return content
 
@@ -37,11 +55,11 @@ def determine_blank_size(underscore_count):
     Determine the size notation based on underscore count.
     """
     if underscore_count <= 3:
-        return '[BLANK:short]'
+        return '<!--BLANK:short-->'
     elif underscore_count <= 6:
-        return '[BLANK:medium]'
+        return '<!--BLANK:medium-->'
     else:
-        return '[BLANK:long]'
+        return '<!--BLANK:long-->'
 
 
 def process_file(file_path):
@@ -56,7 +74,10 @@ def process_file(file_path):
         content = path.read_text(encoding='utf-8')
         original_content = content
         
-        # Process unfilled blanks
+        # Process filled fields first (handles both empty and filled)
+        content = process_filled_fields(content)
+        
+        # Then process legacy underscore blanks
         content = process_unfilled_blanks(content)
         
         # Only write if changes were made
@@ -65,10 +86,13 @@ def process_file(file_path):
             print(f"✓ Processed form fields in: {path.name}")
             
             # Count what was processed
-            blank_count = content.count('[BLANK')
+            blank_count = content.count('<!--BLANK')
+            filled_count = content.count('<!--FILLED:')
             
             if blank_count > 0:
                 print(f"  Blank fields converted: {blank_count}")
+            if filled_count > 0:
+                print(f"  Filled fields marked: {filled_count}")
             
             return True
         else:

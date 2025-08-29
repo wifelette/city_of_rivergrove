@@ -192,6 +192,51 @@ class DocumentProcessor:
         
         return soup
     
+    def process_form_fields(self, soup):
+        """Process form field markers for blank and filled fields"""
+        
+        # Process [BLANK] markers - convert to styled empty fields
+        for p in soup.find_all(['p', 'li', 'td', 'div']):
+            html = str(p)
+            
+            # Pattern for blank field markers from preprocessing
+            if '[BLANK' in html:
+                # Replace different blank sizes
+                replacements = [
+                    (r'\[BLANK:short\]', '<span class="form-field-blank form-field-blank-short" title="Blank in source document"></span>'),
+                    (r'\[BLANK:medium\]', '<span class="form-field-blank form-field-blank-medium" title="Blank in source document"></span>'),
+                    (r'\[BLANK:long\]', '<span class="form-field-blank form-field-blank-long" title="Blank in source document"></span>'),
+                    (r'\[BLANK\]', '<span class="form-field-blank" title="Blank in source document"></span>'),
+                ]
+                
+                for pattern, replacement in replacements:
+                    html = re.sub(pattern, replacement, html)
+                
+                # Parse the modified HTML and replace the element
+                new_elem = BeautifulSoup(html, 'html.parser')
+                new_elem = new_elem.find(p.name)  # Get the same type of element
+                if new_elem:
+                    p.replace_with(new_elem)
+        
+        # Process [FILLED:text] markers - convert to styled filled fields
+        for p in soup.find_all(['p', 'li', 'td', 'div']):
+            html = str(p)
+            
+            # Pattern for filled field markers
+            if '[FILLED:' in html:
+                # Replace filled field markers with styled spans
+                pattern = r'\[FILLED:([^\]]+)\]'
+                replacement = r'<span class="form-field-filled" title="Hand-filled in source document">\1</span>'
+                html = re.sub(pattern, replacement, html)
+                
+                # Parse the modified HTML and replace the element
+                new_elem = BeautifulSoup(html, 'html.parser')
+                new_elem = new_elem.find(p.name)  # Get the same type of element
+                if new_elem:
+                    p.replace_with(new_elem)
+        
+        return soup
+    
     def add_custom_css(self, soup):
         """Add custom CSS for special formatting"""
         
@@ -347,6 +392,52 @@ class DocumentProcessor:
                 margin-top: 0.5em;
             }
             
+            /* Form Fields - Blank fields */
+            .form-field-blank {
+                display: inline-block;
+                border-bottom: 1px solid #999;
+                min-width: 60px;
+                height: 1.2em;
+                margin: 0 2px;
+                position: relative;
+                cursor: help;
+                vertical-align: baseline;
+            }
+            
+            .form-field-blank-short {
+                min-width: 40px;
+            }
+            
+            .form-field-blank-medium {
+                min-width: 80px;
+            }
+            
+            .form-field-blank-long {
+                min-width: 120px;
+            }
+            
+            .form-field-blank:hover {
+                background-color: #f0f0f0;
+                border-bottom-color: #666;
+            }
+            
+            /* Form Fields - Filled fields */
+            .form-field-filled {
+                display: inline;
+                padding: 2px 4px;
+                background-color: #e3f2fd;
+                border-bottom: 2px solid #1976d2;
+                color: #0d47a1;
+                font-weight: 500;
+                cursor: help;
+                border-radius: 2px 2px 0 0;
+            }
+            
+            .form-field-filled:hover {
+                background-color: #bbdefb;
+                border-bottom-color: #0d47a1;
+            }
+            
             /* Print styles */
             @media print {
                 .table-wrapper {
@@ -362,6 +453,17 @@ class DocumentProcessor:
                 .definition-item,
                 .section-quote {
                     page-break-inside: avoid;
+                }
+                
+                .form-field-blank {
+                    border-bottom: 1px solid #666;
+                    background: none;
+                }
+                
+                .form-field-filled {
+                    background-color: #f0f0f0;
+                    border-bottom: 1px solid #333;
+                    font-weight: bold;
                 }
             }
             """
@@ -403,6 +505,9 @@ class DocumentProcessor:
         # Always enhance tables if present
         if soup.find_all('table'):
             soup = self.enhance_tables(soup)
+        
+        # Process form fields (blank and filled)
+        soup = self.process_form_fields(soup)
         
         # Add custom CSS
         soup = self.add_custom_css(soup)
