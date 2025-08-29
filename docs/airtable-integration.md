@@ -174,18 +174,7 @@ AIRTABLE_TABLE_NAME=Public Metadata
 4. **Status filtering**: Hide drafts from navigation
 5. **Tag-based navigation**: Filter by Airtable tags
 
-## Implementation Checklist
-
-- [ ] Create `sync-airtable-metadata.py` script
-- [x] Add Airtable sync to `./scripts/build/update-mdbook.sh`
-- [x] Add Airtable sync to `./scripts/build/update-single.sh`
-- [ ] Update `navigation-standalone.js` to use merged data
-- [ ] Create `reconcile-airtable.sh` maintenance script
-- [ ] Add environment variables to `.env.example`
-- [ ] Test full sync mode
-- [ ] Test incremental update mode
-- [ ] Test fallback behavior
-- [ ] Document API credentials setup
+See [Issue #13](https://github.com/wifelette/city_of_rivergrove/issues/13) for tracking implementation status and additional improvements.
 
 ## Monitoring
 
