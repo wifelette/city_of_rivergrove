@@ -14,6 +14,7 @@ class StandaloneNavigation {
     constructor() {
         this.documents = {};
         this.relationships = {};
+        this.airtableMetadata = {};
         this.currentView = 'chronological';
         this.currentOrder = 'asc';
         this.currentDocType = 'ordinances';
@@ -115,11 +116,23 @@ class StandaloneNavigation {
     
     async loadRelationships() {
         try {
+            // Load relationships.json
             const response = await fetch('/relationships.json');
             const data = await response.json();
             this.documents = data.documents || {};
             this.relationships = data.relationships || {};
             console.log(`StandaloneNavigation: Loaded ${Object.keys(this.documents).length} documents`);
+            
+            // Load Airtable metadata if available
+            try {
+                const airtableResponse = await fetch('/airtable-metadata.json');
+                const airtableData = await airtableResponse.json();
+                this.airtableMetadata = airtableData.documents || {};
+                console.log(`StandaloneNavigation: Loaded Airtable metadata for ${Object.keys(this.airtableMetadata).length} documents`);
+            } catch (airtableError) {
+                console.log('StandaloneNavigation: Airtable metadata not available, using default names');
+                this.airtableMetadata = {};
+            }
         } catch (error) {
             console.error('StandaloneNavigation: Failed to load relationships.json:', error);
             // Fallback: parse from current page structure if needed
@@ -390,6 +403,23 @@ class StandaloneNavigation {
         
         // Re-render
         this.renderDocuments();
+        
+        // Navigate to the first document in the new category
+        const firstDoc = Object.entries(this.documents)
+            .find(([key, doc]) => {
+                if (type === 'ordinances') return doc.type === 'ordinance';
+                if (type === 'resolutions') return doc.type === 'resolution';
+                if (type === 'interpretations') return doc.type === 'interpretation';
+                if (type === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
+                if (type === 'other') return doc.type === 'other' || doc.type === 'charter';
+                return false;
+            });
+        
+        if (firstDoc) {
+            const [key, doc] = firstDoc;
+            // Add the docKey to the document object for navigation
+            this.navigateToDocument({ ...doc, docKey: key });
+        }
     }
     
     switchView(view) {
@@ -640,27 +670,57 @@ class StandaloneNavigation {
             item.classList.add('has-interpretations');
         }
         
-        // Format display based on document type
-        let display = '';
-        if (doc.type === 'ordinance') {
-            const match = doc.id.match(/^(\d+[\w-]*)-(.+)/);
-            if (match) {
-                const [, num, topic] = match;
-                display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
-            } else {
-                display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+        // Get metadata from Airtable cache if available
+        // Try to match using the file name (without path and extension)
+        const fileKey = doc.file ? doc.file.replace('.md', '') : null;
+        const airtableData = fileKey ? this.airtableMetadata[fileKey] : null;
+        
+        // Add special state badge if available
+        let specialStateBadge = '';
+        if (airtableData?.special_state) {
+            // Handle special_state being either a string or array
+            let stateValue = airtableData.special_state;
+            if (Array.isArray(stateValue)) {
+                stateValue = stateValue[0]; // Take first value if array
             }
-        } else if (doc.type === 'resolution') {
-            const match = doc.id.match(/^(\d+)-(.+)/);
-            if (match) {
-                const [, num, topic] = match;
-                display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
-            } else {
-                display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+            if (stateValue) {
+                const stateClass = stateValue.toLowerCase().replace(/\s+/g, '-');
+                specialStateBadge = `<span class="special-state state-${stateClass}">${stateValue}</span>`;
+            }
+        }
+        
+        // Format display - use Airtable display name if available
+        let display = '';
+        if (airtableData && airtableData.display_name) {
+            // Use curated display name from Airtable
+            display = `${airtableData.display_name} ${specialStateBadge}`;
+            
+            // Add year for ordinances and resolutions
+            if (doc.type === 'ordinance' || doc.type === 'resolution') {
+                display = `${airtableData.display_name} <span class="doc-year">(${doc.year})</span> ${specialStateBadge}`;
             }
         } else {
-            // Interpretation
-            display = `${doc.date || doc.year} - ${doc.section || doc.title}`;
+            // Fallback to auto-generated display
+            if (doc.type === 'ordinance') {
+                const match = doc.id.match(/^(\d+[\w-]*)-(.+)/);
+                if (match) {
+                    const [, num, topic] = match;
+                    display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
+                } else {
+                    display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+                }
+            } else if (doc.type === 'resolution') {
+                const match = doc.id.match(/^(\d+)-(.+)/);
+                if (match) {
+                    const [, num, topic] = match;
+                    display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
+                } else {
+                    display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+                }
+            } else {
+                // Interpretation
+                display = `${doc.date || doc.year} - ${doc.section || doc.title}`;
+            }
         }
         
         item.innerHTML = display;
@@ -826,8 +886,8 @@ class StandaloneNavigation {
                         // Update icon and label
                         const icons = {
                             'ordinances': '📋',
-                            'resolutions': '📜',
-                            'interpretations': '💭',
+                            'resolutions': '📄',
+                            'interpretations': '📝',
                             'transcripts': '🎙️',
                             'other': '📚'
                         };
@@ -842,6 +902,11 @@ class StandaloneNavigation {
                         if (contextIcon) contextIcon.textContent = icons[docType] || '📋';
                         if (contextLabel) contextLabel.textContent = labels[docType] || docType;
                     }
+                    
+                    // Update active state in dropdown menu
+                    document.querySelectorAll('.context-item').forEach(item => {
+                        item.classList.toggle('active', item.dataset.type === docType);
+                    });
                     
                     // Re-render the documents list for the correct type
                     this.renderDocuments();
@@ -1315,6 +1380,48 @@ class StandaloneNavigation {
             .doc-year {
                 color: #666;
                 font-size: 11px;
+            }
+            
+            /* Special state badges */
+            .special-state {
+                display: inline-block;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-size: 10px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-left: 4px;
+                vertical-align: middle;
+            }
+            
+            .state-never-passed {
+                background: #fee2e2;
+                color: #991b1b;
+                border: 1px solid #fca5a5;
+            }
+            
+            .state-repealed {
+                background: #fef3c7;
+                color: #92400e;
+                border: 1px solid #fcd34d;
+            }
+            
+            .state-amended {
+                background: #dbeafe;
+                color: #1e40af;
+                border: 1px solid #93c5fd;
+            }
+            
+            .state-superseded {
+                background: #f3e8ff;
+                color: #6b21a8;
+                border: 1px solid #d8b4fe;
+            }
+            
+            .state-draft {
+                background: #f3f4f6;
+                color: #374151;
+                border: 1px solid #d1d5db;
             }
             
             

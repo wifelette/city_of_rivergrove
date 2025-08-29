@@ -110,6 +110,10 @@ echo "  📝 Processing footnotes..."
 python3 scripts/preprocessing/footnote-preprocessor.py
 echo "  ✓ Footnotes processed"
 
+echo "  🔗 Converting URLs and emails to links..."
+python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
+echo "  ✓ Links converted"
+
 echo "  📋 Regenerating SUMMARY.md..."
 python3 scripts/mdbook/generate-summary.py
 echo "  ✓ Table of contents updated"
@@ -117,6 +121,14 @@ echo "  ✓ Table of contents updated"
 echo "  🔗 Generating relationships.json..."
 python3 scripts/mdbook/generate-relationships.py
 echo "  ✓ Document relationships updated"
+
+echo "  🔗 Syncing Airtable metadata..."
+python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
+# Copy metadata to src directory so it's served by mdBook
+if [ -f "book/airtable-metadata.json" ]; then
+    cp book/airtable-metadata.json src/
+fi
+echo "  ✓ Airtable metadata synced"
 
 echo "📚 Rebuilding mdBook..."
 mdbook build

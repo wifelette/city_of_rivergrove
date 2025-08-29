@@ -101,13 +101,11 @@ P.O. Box 1104
 Lake Oswego, OR, 97034
 
 **Email:**  
-manager@cityofrivergrove.com
+[manager@cityofrivergrove.com](mailto:manager@cityofrivergrove.com)
 
 **Web form:**  
-https://www.cityofrivergrove.org/records-request
+[https://www.cityofrivergrove.org/records-request](https://www.cityofrivergrove.org/records-request)
 
-
-<!-- SPECIAL_LIST_START:1.4 -->
 1.4 The City shall acknowledge all requests within five (5) business days of receipt. The City shall endeavor to complete its response to all requests within fifteen (15) business days of receipt unless excused pursuant to ORS 192.329(6).
 
 1.5 If inspection of documents is preferred over copies, such inspection shall occur during normal business hours. An acceptable inspection time and place will be arranged between the requestor and the staff person. Space will be provided for one person to inspect records per request.
@@ -119,5 +117,3 @@ https://www.cityofrivergrove.org/records-request
 1.8 If the estimated cost is less than $25.00, the City will fulfill the request and present the requestor with an invoice to be paid before release of the documents.
 
 1.9 If the record requested is in storage offsite at the City's document storage facility, a fee is charged for its retrieval.
-
-<!-- SPECIAL_LIST_END -->

@@ -49,6 +49,14 @@ cp "$SOURCE_FILE" "$DEST_FILE"
 echo "📝 Processing footnotes..."
 python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
 
+# Run the auto-link converter to make URLs and emails clickable
+echo "🔗 Converting URLs and emails to links..."
+python3 scripts/preprocessing/auto-link-converter.py "$DEST_FILE" 2>/dev/null || true
+
+# Run the form fields processor to convert blank fields
+echo "📋 Processing form fields..."
+python3 scripts/preprocessing/form-fields-processor.py "$DEST_FILE" 2>/dev/null || true
+
 # Run the special list preprocessor for document-specific list handling
 echo "📝 Processing special lists..."
 python3 scripts/preprocessing/special-lists-preprocessor.py "$DEST_FILE" 2>/dev/null || true
@@ -60,6 +68,15 @@ python3 scripts/mdbook/generate-summary.py
 # Regenerate relationships.json (needed for navigation)
 echo "🔗 Generating relationships.json..."
 python3 scripts/mdbook/generate-relationships.py
+
+# Update Airtable metadata for this single file
+echo "🔗 Updating Airtable metadata for $FILENAME..."
+python3 scripts/mdbook/sync-airtable-metadata.py --mode=single --file="$FILENAME" --create-if-missing
+
+# Copy metadata to src directory so it's served by mdBook
+if [ -f "book/airtable-metadata.json" ]; then
+    cp book/airtable-metadata.json src/
+fi
 
 # Rebuild mdBook
 echo "📚 Rebuilding mdBook..."

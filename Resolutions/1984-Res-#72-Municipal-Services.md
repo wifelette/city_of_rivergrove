@@ -1,10 +1,5 @@
 # RESOLUTION NO. 72
 
-**Date:** July 9, 1984  
-**Subject:** Municipal Services Certification under ORS 221.760
-
----
-
 **WHEREAS**, ORS 221.760 provides as follows:
 
 Section 1. The officer responsible for disbursing funds to cities under ORS 323.455, 366.785 to 366.820 and 471.805 shall, in the case of a city located within a county having more than 100,000 inhabitants according to the most recent federal decennial census, disburse such funds only if the city provides four or more of the following services:

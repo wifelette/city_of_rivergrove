@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Fields Style Mockup</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 10px;
+        }
+        
+        .example-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f6f8fa;
+            border-radius: 6px;
+        }
+        
+        /* Form field styles */
+        .form-field-empty {
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 0 4px;
+            background-color: #f5f5f5;
+            border: 1px dashed #999;
+            border-radius: 3px;
+            color: #666;
+            font-style: italic;
+            font-size: 0.9em;
+            cursor: help;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #e8e8e8;
+            border-color: #666;
+        }
+        
+        /* Alternative style 1: More input-like */
+        .form-field-empty-alt1 {
+            display: inline-block;
+            padding: 4px 10px;
+            margin: 0 4px;
+            background-color: #fff;
+            border: 1px solid #d1d5da;
+            border-radius: 4px;
+            color: #999;
+            font-family: monospace;
+            font-size: 0.9em;
+            cursor: help;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .form-field-empty-alt1:hover {
+            background-color: #f6f8fa;
+        }
+        
+        /* Alternative style 2: Underline style */
+        .form-field-empty-alt2 {
+            display: inline-block;
+            padding: 0 4px;
+            margin: 0 4px;
+            border-bottom: 1px dashed #666;
+            color: #999;
+            font-style: italic;
+            cursor: help;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .form-field-empty-alt2:hover {
+            border-bottom-color: #333;
+            background-color: #fff9e6;
+        }
+        
+        /* Filled field style (for manually marked content) */
+        .form-field-filled {
+            display: inline;
+            padding: 1px 4px;
+            background-color: #fff3cd;
+            border-bottom: 2px solid #856404;
+            color: #000;
+            font-weight: 600;
+            cursor: help;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #ffeaa7;
+        }
+        
+        /* Alternative filled style: Less prominent */
+        .form-field-filled-alt {
+            display: inline;
+            padding: 1px 2px;
+            background-color: #e3f2fd;
+            border-bottom: 1px solid #1976d2;
+            color: #000;
+            cursor: help;
+        }
+        
+        .form-field-filled-alt:hover {
+            background-color: #bbdefb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Fields Style Mockup</h1>
+    
+    <div class="example-section">
+        <h2>Option 1: Gray Box Style (Current)</h2>
+        <p>
+            This Agreement is entered into by and between the City of Rivergrove and 
+            <span class="form-field-empty" title="Empty field in original document">(blank)</span> 
+            (hereinafter "Applicant") for approval of 
+            <span class="form-field-empty" title="Empty field in original document">(blank)</span> 
+            as part of Planning File No. 
+            <span class="form-field-empty" title="Empty field in original document">(blank)</span>.
+        </p>
+    </div>
+    
+    <div class="example-section">
+        <h2>Option 2: Input Field Style</h2>
+        <p>
+            This Agreement is entered into by and between the City of Rivergrove and 
+            <span class="form-field-empty-alt1" title="Empty field in original document">_____</span> 
+            (hereinafter "Applicant") for approval of 
+            <span class="form-field-empty-alt1" title="Empty field in original document">_____</span> 
+            as part of Planning File No. 
+            <span class="form-field-empty-alt1" title="Empty field in original document">_____</span>.
+        </p>
+    </div>
+    
+    <div class="example-section">
+        <h2>Option 3: Underline Style</h2>
+        <p>
+            This Agreement is entered into by and between the City of Rivergrove and 
+            <span class="form-field-empty-alt2" title="Empty field in original document">_____</span> 
+            (hereinafter "Applicant") for approval of 
+            <span class="form-field-empty-alt2" title="Empty field in original document">_____</span> 
+            as part of Planning File No. 
+            <span class="form-field-empty-alt2" title="Empty field in original document">_____</span>.
+        </p>
+    </div>
+    
+    <div class="example-section">
+        <h2>Filled Fields (when manually marked)</h2>
+        <p>
+            This instrument was acknowledged before me on this 
+            <span class="form-field-filled" title="Hand-filled field in original document">15th</span> 
+            day of 
+            <span class="form-field-filled" title="Hand-filled field in original document">March</span>, 
+            20<span class="form-field-filled" title="Hand-filled field in original document">24</span> 
+            by 
+            <span class="form-field-filled" title="Hand-filled field in original document">John Smith</span>.
+        </p>
+        
+        <h3>Alternative (more subtle):</h3>
+        <p>
+            This instrument was acknowledged before me on this 
+            <span class="form-field-filled-alt" title="Hand-filled field in original document">15th</span> 
+            day of 
+            <span class="form-field-filled-alt" title="Hand-filled field in original document">March</span>, 
+            20<span class="form-field-filled-alt" title="Hand-filled field in original document">24</span> 
+            by 
+            <span class="form-field-filled-alt" title="Hand-filled field in original document">John Smith</span>.
+        </p>
+    </div>
+    
+    <div class="example-section">
+        <h2>Mixed Example</h2>
+        <p>
+            <strong>Applicant:</strong><br>
+            By: <span class="form-field-empty" title="Empty field in original document">(blank)</span> 
+            Date: <span class="form-field-empty" title="Empty field in original document">(blank)</span><br>
+            Title: <span class="form-field-empty" title="Empty field in original document">(blank)</span>
+        </p>
+        
+        <p>
+            <strong>STATE OF OREGON</strong> )<br>
+            ) ss.<br>
+            <strong>County of</strong> <span class="form-field-empty" title="Empty field in original document">(blank)</span> )
+        </p>
+    </div>
+    
+    <div class="example-section">
+        <h2>Notes</h2>
+        <ul>
+            <li>Hover over any field to see the tooltip</li>
+            <li>Empty fields show "(blank)" or underscores</li>
+            <li>Filled fields (when manually marked) get a highlight effect</li>
+            <li>We can adjust colors, borders, and hover effects as needed</li>
+        </ul>
+    </div>
+</body>
+</html>

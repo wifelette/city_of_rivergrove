@@ -256,10 +256,79 @@ def add_custom_css(html_content):
         ol.special-start-list li::before {
             content: none;
         }
+        
+        /* Form field styles for legal documents */
+        .form-field-empty {
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 0 4px;
+            background-color: #f5f5f5;
+            border: 1px dashed #999;
+            border-radius: 3px;
+            color: #666;
+            font-size: 0.9em;
+            cursor: help;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #e8e8e8;
+            border-color: #666;
+        }
+        
+        .form-field-short {
+            min-width: 60px;
+        }
+        
+        .form-field-medium {
+            min-width: 120px;
+        }
+        
+        .form-field-long {
+            min-width: 200px;
+        }
+        
+        .form-field-filled {
+            display: inline;
+            padding: 1px 4px;
+            background-color: #e3f2fd;
+            border-bottom: 2px solid #1976d2;
+            color: #000;
+            font-weight: 600;
+            cursor: help;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #bbdefb;
+        }
         """
         head.append(style)
     
     return str(soup)
+
+def process_form_fields(html_content):
+    """Convert [BLANK] markers to styled HTML elements."""
+    # Pattern to match [BLANK] or [BLANK:size] markers
+    blank_pattern = r'\[BLANK(?::(\w+))?\]'
+    
+    def replace_blank(match):
+        size = match.group(1) if match.group(1) else 'medium'
+        size_class = f'form-field-{size}'
+        return f'<span class="form-field-empty {size_class}" title="Empty field in original document">&nbsp;</span>'
+    
+    # Replace all blank markers
+    html_content = re.sub(blank_pattern, replace_blank, html_content)
+    
+    # Pattern to match [FILLED: content] markers (if manually added)
+    filled_pattern = r'\[FILLED:\s*([^\]]+)\]'
+    
+    def replace_filled(match):
+        content = match.group(1)
+        return f'<span class="form-field-filled" title="Hand-filled field in original document">{content}</span>'
+    
+    # Replace all filled markers
+    html_content = re.sub(filled_pattern, replace_filled, html_content)
+    
+    return html_content
 
 def process_html_file(filepath):
     """Process a single HTML file"""
@@ -271,6 +340,7 @@ def process_html_file(filepath):
     content = process_numbered_lists(content)
     content = process_letter_lists(content)
     content = process_roman_lists(content)
+    content = process_form_fields(content)  # Process form field markers
     content = add_custom_css(content)
     
     # Write back
