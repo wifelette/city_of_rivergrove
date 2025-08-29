@@ -30,20 +30,20 @@ Please read these files for context on this project and how to work with Leah:
 - Use MCP tool to search: `daily-tasks:council_public_metadata_list` with search parameter
 - Try multiple search formats: document number (e.g., "52"), full reference (e.g., "Ordinance 52"), or topic keywords
 - The record will show document type, year, number, topic, and processing status
-- Use this information to locate the .md file in the appropriate folder (Resolutions/, Ordinances/, Interpretations/)
+- Use this information to locate the .md file in the appropriate folder (source-documents/Resolutions/, source-documents/Ordinances/, source-documents/Interpretations/)
 - No need to read the full document just to get basic metadata
 
 ### Step 2: Run Standardization Script
 
 - Run `python3 scripts/preprocessing/standardize-single.py [path/to/file.md]` to standardize headers and signatures
-- Example: `python3 scripts/preprocessing/standardize-single.py Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Example: `python3 scripts/preprocessing/standardize-single.py source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 - This only processes the single file you're working on (much faster than processing all files)
 
 ### Step 3: Check and Fix Naming EVERYWHERE
 
 **CRITICAL - This step is often missed!**
 
-- Verify the naming convention is correct (see `docs/naming-conventions.md` for full details)
+- Verify the naming convention is correct (see `docs/styles/naming-conventions.md` for full details)
 - If naming is incorrect, rename files in BOTH locations:
   - Use `git mv` to rename the .md file in the GitHub repository
   - Use `mv` to rename the original PDF in Dropbox at the same path
@@ -72,7 +72,7 @@ Please read these files for context on this project and how to work with Leah:
 **Option A - Single file (faster):**
 
 - Run `./scripts/build/update-single.sh [path/to/file.md]` to sync just this file and rebuild
-- Example: `./scripts/build/update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Example: `./scripts/build/update-single.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
 **Option B - Full sync (if multiple files changed):**
 
@@ -81,7 +81,7 @@ Please read these files for context on this project and how to work with Leah:
 **IMPORTANT - mdBook serve limitations:**
 
 - If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
-- This means form fields (see `docs/form-fields-syntax.md`) and other custom formatting will disappear
+- This means form fields (see `docs/styles/form-fields-syntax.md`) and other custom formatting will disappear
 - To see the REAL appearance with all formatting:
   1. After any changes while `mdbook serve` is running
   2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`

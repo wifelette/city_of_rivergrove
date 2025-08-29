@@ -4,7 +4,7 @@
 
 if [ $# -eq 0 ]; then
     echo "Usage: ./update-single.sh <path/to/file.md>"
-    echo "Example: ./update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md"
+    echo "Example: ./update-single.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md"
     exit 1
 fi
 
@@ -16,20 +16,20 @@ if [ ! -f "$SOURCE_FILE" ]; then
 fi
 
 # Determine the directory and destination based on the source path
-if [[ "$SOURCE_FILE" == Ordinances/*.md ]]; then
+if [[ "$SOURCE_FILE" == source-documents/Ordinances/*.md ]]; then
     DEST_DIR="src/ordinances"
-    PREFIX="Ordinances/"
-elif [[ "$SOURCE_FILE" == Resolutions/*.md ]]; then
+    PREFIX="source-documents/Ordinances/"
+elif [[ "$SOURCE_FILE" == source-documents/Resolutions/*.md ]]; then
     DEST_DIR="src/resolutions"
-    PREFIX="Resolutions/"
-elif [[ "$SOURCE_FILE" == Interpretations/*.md ]]; then
+    PREFIX="source-documents/Resolutions/"
+elif [[ "$SOURCE_FILE" == source-documents/Interpretations/*.md ]]; then
     DEST_DIR="src/interpretations"
-    PREFIX="Interpretations/"
-elif [[ "$SOURCE_FILE" == Other/*.md ]]; then
+    PREFIX="source-documents/Interpretations/"
+elif [[ "$SOURCE_FILE" == source-documents/Other/*.md ]]; then
     DEST_DIR="src/other"
-    PREFIX="Other/"
+    PREFIX="source-documents/Other/"
 else
-    echo "Error: File must be in Ordinances/, Resolutions/, Interpretations/, or Other/ directory"
+    echo "Error: File must be in source-documents/Ordinances/, source-documents/Resolutions/, source-documents/Interpretations/, or source-documents/Other/ directory"
     exit 1
 fi
 
@@ -43,14 +43,14 @@ mkdir -p "$DEST_DIR"
 
 # Use the appropriate sync script to process the file
 echo "📄 Syncing $SOURCE_FILE (with form field processing)..."
-if [[ "$SOURCE_FILE" == Ordinances/*.md ]]; then
+if [[ "$SOURCE_FILE" == source-documents/Ordinances/*.md ]]; then
     python3 scripts/preprocessing/sync-ordinances.py
-elif [[ "$SOURCE_FILE" == Resolutions/*.md ]]; then
+elif [[ "$SOURCE_FILE" == source-documents/Resolutions/*.md ]]; then
     python3 scripts/preprocessing/sync-resolutions.py
-elif [[ "$SOURCE_FILE" == Interpretations/*.md ]]; then
+elif [[ "$SOURCE_FILE" == source-documents/Interpretations/*.md ]]; then
     python3 scripts/preprocessing/sync-interpretations.py
 else
-    # For Other/ files, just copy directly as they don't need form field processing
+    # For source-documents/Other/ files, just copy directly as they don't need form field processing
     cp "$SOURCE_FILE" "$DEST_FILE"
 fi
 

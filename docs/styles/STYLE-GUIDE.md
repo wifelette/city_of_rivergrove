@@ -13,20 +13,7 @@ This guide ensures consistent formatting across all digitized City of Rivergrove
 
 ## Signature Blocks
 
-### Standard Format
-```markdown
-[Signature], Name, Title  
-**Date**: {{filled:MM/DD/YY}}  
-```
-
-### Important Rules
-- Format: `[Signature], Name, Title` (all on one line)
-- Names and titles are NOT bolded
-- Add double spaces at the end of signature lines for proper Markdown line breaks
-- Use `{{filled:}}` for handwritten dates (see [form-fields-syntax.md](form-fields-syntax.md))
-- Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
-- Different signers may use different date formats - preserve these differences
-- If the date was pre-printed (not handwritten), don't use `{{filled:}}`
+See **[signature-formatting.md](signature-formatting.md)** for complete signature block formatting standards.
 
 ## Footnotes
 

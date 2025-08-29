@@ -16,7 +16,7 @@ if [ -d "Resolutions" ]; then
     mkdir -p src/resolutions
     updated=0
     # Copy all .md files, removing # from filenames
-    for file in Resolutions/*.md; do
+    for file in source-documents/Resolutions/*.md; do
         if [ -f "$file" ]; then
             filename=$(basename "$file" | sed 's/#//g')
             dest="src/resolutions/$filename"
@@ -33,8 +33,8 @@ if [ -d "Resolutions" ]; then
         if [ -f "$dest" ]; then
             filename=$(basename "$dest")
             # Check if source exists (need to add # back for some files)
-            source_file="Resolutions/$filename"
-            source_file_with_hash="Resolutions/$(echo "$filename" | sed 's/\([0-9]\{4\}-Res-\)\([0-9]\)/\1#\2/')"
+            source_file="source-documents/Resolutions/$filename"
+            source_file_with_hash="source-documents/Resolutions/$(echo "$filename" | sed 's/\([0-9]\{4\}-Res-\)\([0-9]\)/\1#\2/')"
             if [ ! -f "$source_file" ] && [ ! -f "$source_file_with_hash" ]; then
                 rm "$dest"
                 echo "    ✗ Removed: $filename"
@@ -43,7 +43,7 @@ if [ -d "Resolutions" ]; then
         fi
     done
     if [ $updated -eq 0 ]; then
-        echo "    No changes needed ($(ls -1 Resolutions/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
+        echo "    No changes needed ($(ls -1 source-documents/Resolutions/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
     fi
 fi
 
@@ -52,7 +52,7 @@ if [ -d "Interpretations" ]; then
     mkdir -p src/interpretations
     updated=0
     # Copy all .md files
-    for file in Interpretations/*.md; do
+    for file in source-documents/Interpretations/*.md; do
         if [ -f "$file" ]; then
             filename=$(basename "$file")
             dest="src/interpretations/$filename"
@@ -67,7 +67,7 @@ if [ -d "Interpretations" ]; then
     for dest in src/interpretations/*.md; do
         if [ -f "$dest" ]; then
             filename=$(basename "$dest")
-            if [ ! -f "Interpretations/$filename" ]; then
+            if [ ! -f "source-documents/Interpretations/$filename" ]; then
                 rm "$dest"
                 echo "    ✗ Removed: $filename"
                 ((updated++))
@@ -75,7 +75,7 @@ if [ -d "Interpretations" ]; then
         fi
     done
     if [ $updated -eq 0 ]; then
-        echo "    No changes needed ($(ls -1 Interpretations/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
+        echo "    No changes needed ($(ls -1 source-documents/Interpretations/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
     fi
 fi
 
@@ -84,7 +84,7 @@ if [ -d "Other" ]; then
     mkdir -p src/other
     updated=0
     # Copy all .md files
-    for file in Other/*.md; do
+    for file in source-documents/Other/*.md; do
         if [ -f "$file" ]; then
             filename=$(basename "$file")
             dest="src/other/$filename"
@@ -99,7 +99,7 @@ if [ -d "Other" ]; then
     for dest in src/other/*.md; do
         if [ -f "$dest" ]; then
             filename=$(basename "$dest")
-            if [ ! -f "Other/$filename" ]; then
+            if [ ! -f "source-documents/Other/$filename" ]; then
                 rm "$dest"
                 echo "    ✗ Removed: $filename"
                 ((updated++))
@@ -107,7 +107,7 @@ if [ -d "Other" ]; then
         fi
     done
     if [ $updated -eq 0 ]; then
-        echo "    No changes needed ($(ls -1 Other/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
+        echo "    No changes needed ($(ls -1 source-documents/Other/*.md 2>/dev/null | wc -l | tr -d ' ') files already in sync)"
     fi
 fi
 

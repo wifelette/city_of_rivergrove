@@ -47,15 +47,15 @@ All City of Rivergrove documents follow strict naming conventions to ensure cons
 
 ### Source Locations
 Documents are stored in their respective directories:
-- **Ordinances**: `/Ordinances/` (with # in filename)
-- **Resolutions**: `/Resolutions/` (with # in filename)
-- **Interpretations**: `/Interpretations/`
-- **Other Documents**: `/Other/` or root level
+- **Ordinances**: `/source-documents/Ordinances/` (with # in filename)
+- **Resolutions**: `/source-documents/Resolutions/` (with # in filename)
+- **Interpretations**: `/source-documents/Interpretations/`
+- **Other Documents**: `/source-documents/Other/` or root level
 
 ### mdBook Source (src/)
 When synced to mdBook, files are copied to `/src/` subdirectories with the # character removed:
-- `/Ordinances/1974-Ord-#16-Parks.md` → `/src/ordinances/1974-Ord-16-Parks.md`
-- `/Resolutions/1984-Res-#72-Municipal-Services.md` → `/src/resolutions/1984-Res-72-Municipal-Services.md`
+- `/source-documents/Ordinances/1974-Ord-#16-Parks.md` → `/src/ordinances/1974-Ord-16-Parks.md`
+- `/source-documents/Resolutions/1984-Res-#72-Municipal-Services.md` → `/src/resolutions/1984-Res-72-Municipal-Services.md`
 
 ## PDF Storage
 
@@ -79,7 +79,7 @@ Before finalizing any document:
 1. Verify the naming follows the correct pattern
 2. Ensure both .md and .pdf files have matching names
 3. Check that files are in the correct directory
-4. Confirm the # character is present in source files (Ordinances/Resolutions)
+4. Confirm the # character is present in source files (source-documents/Ordinances/Resolutions)
 
 ## Airtable Correspondence
 

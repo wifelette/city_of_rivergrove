@@ -33,7 +33,7 @@ def process_form_fields(content):
 
 def sync_other():
     """Copy all files from Other/ to src/other/"""
-    source_dir = Path("Other")
+    source_dir = Path("source-documents/Other")
     dest_dir = Path("src/other")
     
     if not source_dir.exists():

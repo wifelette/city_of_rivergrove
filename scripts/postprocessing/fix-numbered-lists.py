@@ -93,8 +93,8 @@ def main():
     """Main function"""
     # Files to process
     files_to_fix = [
-        "Ordinances/1987-Ord-#52-Flood.md",
-        "Ordinances/1989-Ord-#54-89-C-Land-Development.md"
+        "source-documents/Ordinances/1987-Ord-#52-Flood.md",
+        "source-documents/Ordinances/1989-Ord-#54-89-C-Land-Development.md"
     ]
     
     total_fixed = 0

@@ -11,6 +11,7 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 - **Airtable MCP base** with:
   - Ordinances and Resolutions inventory table (40+ records with varying completeness)
   - Documents table (linked to ordinances)
+  - See **[airtable-integration.md](airtable-integration.md)** for technical integration details
 - **Document storage**: GitHub URLs in Airtable (fileURL for PDFs, mdURL for Markdown)
 - **Final output**: Markdown files in GitHub repo
 
@@ -92,27 +93,14 @@ When processing a document:
 
 #### 3.1 Signature Section Formatting
 
-Standardized format for signatures (applies to ordinances, resolutions, and interpretations):
+See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
 
-```markdown
-[Signature], Name, Title  
-**Date**: {{filled:8-12-02}}  
-
-[Signature], Name, Title  
-**Date**: {{filled:8/12/02}}  
-```
-
-**Important formatting rules:**
-
-- Format: `[Signature], Name, Title` (all on one line)
-- Names and titles are NOT bolded
-- Add double spaces at the end of signature lines for proper Markdown line breaks
-- Use `{{filled:}}` syntax for handwritten dates (see [form-fields-syntax.md](form-fields-syntax.md))
-- Transcribe dates exactly as written (e.g., "8-12-02" vs "8/12/02")
-- Different signers may use different date formats - preserve these differences
-- Use "[Signature]" placeholder for actual signatures
-- If the date was pre-printed (not handwritten), don't use `{{filled:}}`
-- Run `scripts/preprocessing/fix-signatures.py` to standardize formatting automatically
+**Key Points:**
+- Use `[Signature], Name, Title` format (all on one line)
+- Add double spaces at end of lines for proper breaks
+- Use `{{filled:}}` for handwritten dates
+- Preserve exact date formats from source
+- Run `scripts/preprocessing/fix-signatures.py` to standardize automatically
 
 #### 3.2 Page Break Handling
 
@@ -123,13 +111,22 @@ Standardized format for signatures (applies to ordinances, resolutions, and inte
 
 #### 3.3 Handwritten Content and Form Fields
 
-See **[form-fields-syntax.md](form-fields-syntax.md)** for complete guide on handling blank and filled fields.
+See **[styles/form-fields-syntax.md](styles/form-fields-syntax.md)** for complete guide on handling blank and filled fields.
 
 **Key Points**:
 - Use `{{filled:}}` for blank fields in source documents
 - Use `{{filled:text}}` for handwritten/filled content
 - Always use `{{filled:}}` for handwritten dates in signature blocks
 - Underlined text: Convert to bold (we don't use underlines except for form fields)
+
+#### 3.4 Images and Diagrams
+
+See **[styles/inline-images-guide.md](styles/inline-images-guide.md)** for handling images, diagrams, and visual content.
+
+**Key Points**:
+- Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
+- Images are stored in `book/images/[document-type]/`
+- Screenshots and diagrams should be saved as PNG files
 
 ### 4. Document Title Standards
 
@@ -187,7 +184,7 @@ After completing GitHub upload and URL updates:
 
 ### 1. File Organization & Naming Conventions
 
-See **[naming-conventions.md](naming-conventions.md)** for complete naming standards and file organization rules.
+See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complete naming standards and file organization rules.
 
 **Key Points**:
 - All documents follow strict naming patterns
@@ -247,12 +244,12 @@ The repository includes an mdBook static site generator that creates a searchabl
 
 **IMPORTANT**: There are two separate directories for ordinances:
 
-- **`Ordinances/`** (capital O) - Main directory for editing files (includes `#` in filenames)
+- **`source-documents/Ordinances/`** (capital O) - Main directory for editing files (includes `#` in filenames)
 - **`src/ordinances/`** (lowercase o) - mdBook source directory (filenames without `#`)
 
 **Current Workflow** (due to sync issues discovered):
 
-1. **Edit files** in the main `Ordinances/` directory
+1. **Edit files** in the main `source-documents/Ordinances/` directory
 2. **Manual sync**: Run `./scripts/build/update-mdbook.sh` to sync changes to `src/` and rebuild
 3. **View changes** at `http://localhost:3000`
 
@@ -266,7 +263,7 @@ The repository includes an mdBook static site generator that creates a searchabl
 
 ```text
 city_of_rivergrove/
-├── Ordinances/           # Main editing directory (with # in filenames)
+├── source-documents/Ordinances/           # Main editing directory (with # in filenames)
 ├── src/                  # Source content for mdBook
 │   ├── SUMMARY.md       # Table of contents
 │   ├── introduction.md  # Welcome page
@@ -292,7 +289,7 @@ city_of_rivergrove/
    mdbook serve
    ```
    
-2. **Edit files** in `Ordinances/` directory
+2. **Edit files** in `source-documents/Ordinances/` directory
 
 3. **Sync changes**:
    ```bash
@@ -366,7 +363,7 @@ Legal documents require exact preservation of enumeration styles for reference i
 
 ### Maintenance
 
-- Edit in `Ordinances/` directory (main source of truth)
+- Edit in `source-documents/Ordinances/` directory (main source of truth)
 - Use `./scripts/build/update-mdbook.sh` for safe syncing
 - The `book/` directory is generated and can be safely regenerated
 - Monitor [Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) for navigation updates

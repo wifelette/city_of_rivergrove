@@ -14,7 +14,7 @@ A searchable, centralized repository of all City of Rivergrove ordinances, resol
    mdbook serve
    ```
 
-2. **Edit files** in the `Ordinances/` directory
+2. **Edit files** in the `source-documents/Ordinances/` directory
 
 3. **Sync changes**:
    ```bash
@@ -25,7 +25,7 @@ A searchable, centralized repository of all City of Rivergrove ordinances, resol
 
 ### File Organization
 
-- **`Ordinances/`** - Main directory for editing (with `#` in filenames)
+- **`source-documents/Ordinances/`** - Main directory for editing (with `#` in filenames)
 - **`src/ordinances/`** - mdBook source (synced from main directory)
 - **`book/`** - Generated static site
 

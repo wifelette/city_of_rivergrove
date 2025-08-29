@@ -97,22 +97,11 @@ Note: The `#` character is removed from filenames in the /src directory for URL 
 
 ## Document Naming
 
-See **[naming-conventions.md](naming-conventions.md)** for complete file naming standards and organization rules.
+See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complete file naming standards and organization rules.
 
 ## Signature Blocks
 
-### Pattern
-
-```markdown
-[Signature], Name, Title  
-**Date:** MM-DD-YY
-```
-
-### Notes
-
-- Two spaces at end of first line for proper line break
-- Date on separate line with bold "Date:" prefix
-- For handwritten dates, use `{{filled:}}` syntax (see [form-fields-syntax.md](form-fields-syntax.md))
+See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
 
 ## Tables
 

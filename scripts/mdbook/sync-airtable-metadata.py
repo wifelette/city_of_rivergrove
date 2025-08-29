@@ -91,7 +91,7 @@ class AirtableSync:
         md_url = airtable_record.get('md_url', '')
         if md_url:
             # Extract the path from URL and compare with local filename
-            # The URL contains the full path like .../Ordinances/2001-Ord-#70-2001-WQRA.md
+            # The URL contains the full path like .../source-documents/Ordinances/2001-Ord-#70-2001-WQRA.md
             if local_file in md_url:
                 return True
             
@@ -224,7 +224,7 @@ class AirtableSync:
         md_url = fields.get('mdURL', '')
         filename = None
         if md_url:
-            # Extract filename from URL like .../blob/main/Ordinances/2001-Ord-#70-2001-WQRA.md
+            # Extract filename from URL like .../blob/main/source-documents/Ordinances/2001-Ord-#70-2001-WQRA.md
             parts = md_url.split('/blob/main/')
             if len(parts) == 2:
                 path = parts[1]

@@ -33,7 +33,7 @@ def process_form_fields(content):
 
 def sync_interpretations():
     """Copy all files from Interpretations/ to src/interpretations/"""
-    source_dir = Path("Interpretations")
+    source_dir = Path("source-documents/Interpretations")
     dest_dir = Path("src/interpretations")
     
     if not source_dir.exists():

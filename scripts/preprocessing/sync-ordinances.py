@@ -106,8 +106,8 @@ def process_form_fields(content):
     return '\n'.join(processed_lines)
 
 def sync_ordinances():
-    """Copy all files from Ordinances/ to src/ordinances/"""
-    source_dir = Path("Ordinances")
+    """Copy all files from source-documents/Ordinances/ to src/ordinances/"""
+    source_dir = Path("source-documents/Ordinances")
     dest_dir = Path("src/ordinances")
     
     if not source_dir.exists():

@@ -109,7 +109,7 @@ The `navigation-standalone.js` file merges both data sources:
 Uses GitHub filename (without path) as the linking key between systems.
 
 **Example**:
-- File: `/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- File: `/source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 - Key: `2024-Res-#300-Fee-Schedule-Modification`
 - Airtable GitHub Path contains: This filename
 - Match made on: Extracted filename

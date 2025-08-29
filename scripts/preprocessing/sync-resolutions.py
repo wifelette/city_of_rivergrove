@@ -60,7 +60,7 @@ def process_form_fields(content):
 
 def sync_resolutions():
     """Copy all files from Resolutions/ to src/resolutions/"""
-    source_dir = Path("Resolutions")
+    source_dir = Path("source-documents/Resolutions")
     dest_dir = Path("src/resolutions")
     
     if not source_dir.exists():

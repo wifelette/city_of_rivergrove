@@ -48,7 +48,7 @@ Examples:
 
 ### Step 1: Add the Image Tag
 
-Edit the source document (in `Ordinances/`, `Resolutions/`, or `Interpretations/`) and add the image tag where you want the image to appear:
+Edit the source document (in `source-documents/Ordinances/`, `source-documents/Resolutions/`, or `source-documents/Interpretations/`) and add the image tag where you want the image to appear:
 
 ```markdown
 ## APPENDIX B
@@ -75,7 +75,7 @@ Run the update script to sync and rebuild:
 
 ```bash
 # For a single file
-./scripts/build/update-single.sh Ordinances/2001-Ord-#70-2001-WQRA.md
+./scripts/build/update-single.sh source-documents/Ordinances/2001-Ord-#70-2001-WQRA.md
 
 # For all files
 ./scripts/build/update-mdbook.sh

@@ -48,7 +48,7 @@ Full build with Airtable metadata integration. Use when Airtable data needs sync
 #### `./scripts/build/update-single.sh <file>`
 Quick update for a single document. Example:
 ```bash
-./scripts/build/update-single.sh Ordinances/1978-Ord-#28-Parks.md
+./scripts/build/update-single.sh source-documents/Ordinances/1978-Ord-#28-Parks.md
 ```
 
 #### `./scripts/build/build.sh`
@@ -89,7 +89,7 @@ These modify HTML AFTER mdBook generates it:
 
 ## Form Field Processing
 
-Form fields are processed at multiple stages. See **[form-fields-syntax.md](form-fields-syntax.md)** for complete syntax guide.
+Form fields are processed at multiple stages. See **[styles/form-fields-syntax.md](styles/form-fields-syntax.md)** for complete syntax guide.
 
 **Processing stages:**
 1. **During sync** (`sync-ordinances.py`, etc.) - Convert to HTML spans
