@@ -214,9 +214,11 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
    - **Option B - Full sync**: Run `./scripts/build/update-mdbook.sh` to sync ALL documents and rebuild
    - Note: The build scripts automatically update `src/SUMMARY.md`
 7. **Update Issue #3**:
-   - Remove item from the "Documents Needing Processing" list
-   - Add to "Completed Documents" section at bottom with format: `- [x] Document Name`
-   - Include commit link if significant: `([commit-hash](link))`
+   - **Always update the issue body**:
+     - Check off completed items in the checklist
+     - Move to "Completed Documents" section with format: `- [x] Document Name ([commit](link))`
+     - If not already listed, add directly to completed section
+   - **Optionally add a comment** only when there are meaningful changes/decisions to document
    - No need to write "Complete" - the checked box is sufficient
 
 ### 3. Issue Management
@@ -254,7 +256,7 @@ The repository includes an mdBook static site generator that creates a searchabl
 3. **View changes** at `http://localhost:3000`
 
 **Automated sync** is available but currently **not recommended** due to content override issues:
-- `./watch-and-sync.py` - File watcher for auto-sync (use with caution)
+- `./scripts/utilities/watch-and-sync.py` - File watcher for auto-sync (use with caution)
 - Issue: Unknown process sometimes generates auto-headers that override file content
 - **Symptom**: File content temporarily disappears and gets replaced with auto-generated headers
 - **Workaround**: Use manual sync with `./scripts/build/update-mdbook.sh` and restore content if needed
@@ -272,14 +274,15 @@ city_of_rivergrove/
 │   ├── interpretations/ # Interpretation markdown files
 │   └── transcripts/     # Transcript markdown files
 ├── book/                # Built static website (generated)
-├── sync-ordinances.py   # Manual sync script
-├── watch-and-sync.py    # Auto file watcher (use with caution)
 ├── scripts/
-│   └── build/
-│       └── update-mdbook.sh  # Combined sync + build script
+│   ├── build/
+│   │   └── update-mdbook.sh  # Combined sync + build script
+│   ├── preprocessing/
+│   │   └── sync-ordinances.py  # Manual sync script
+│   └── utilities/
+│       └── watch-and-sync.py   # Auto file watcher (use with caution)
 ├── book.toml           # mdBook configuration
-├── custom.css          # Custom styling
-└── add-cross-references.py  # Preprocessor script
+└── custom.css          # Custom styling
 ```
 
 ### Local Development
@@ -335,22 +338,24 @@ Legal documents require exact preservation of enumeration styles for reference i
 - Sync scripts overwriting manual fixes
 - Need to preserve exact legal enumeration for reference
 
-### Navigation System Status
+### Navigation System
 
-**Tracking**: [GitHub Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) - Navigation Enhancement Implementation
+**Implementation Complete**: [GitHub Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) (Closed)
 
-**Status**: Navigation system operational with the following components:
+The enhanced navigation system is fully operational with:
 
-- ✅ Style E format implemented (#XX - Title (Year))
-- ✅ List formatting fixes applied to all ordinances
+- ✅ Style E format (#XX - Title (Year))
+- ✅ List formatting fixes for all documents
 - ✅ Enhanced navigation controls with dropdown context switcher
-- ✅ Other Documents section functional (City Charter)
-- ✅ Clean home page presentation with hidden sidebars
-- ✅ Minimum threshold grouping (10+ documents) prevents single-item groups
-- ✅ Document selection states and active indicators working
-- ✅ mdBook UI elements properly hidden (duplicate titles, hamburger menu)
-- ⚠️ File sync workflow established but needs stability improvements
-- 🔄 Right panel for document relationships planned
+- ✅ Other Documents section (City Charter, etc.)
+- ✅ Clean home page with hidden sidebars
+- ✅ Minimum threshold grouping (10+ documents)
+- ✅ Document selection states and active indicators
+- ✅ mdBook UI elements properly hidden
+
+**Known limitations:**
+- File sync workflow needs stability improvements (use manual sync)
+- Right panel for document relationships not yet implemented
 
 ### Features
 

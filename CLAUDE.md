@@ -90,7 +90,15 @@ Please read these files for context on this project and how to work with Leah:
 
 ### Step 8: Update Issue #3
 
-- Update the checklist in the body of issue #3 noting the document has been processed; if it's already on the list, check it off, link to the commit, and move it to the appropriate section of the completed section below. If it wasn't on the list, add it to the completed items section, also with a commit link.
+- **Always update the issue body**:
+  - Check off completed items in the checklist
+  - Move completed items to the appropriate "Completed Documents" section
+  - Include commit link when moving items
+  - If document wasn't on the list, add it directly to completed section with commit link
+- **Optionally add a comment** only if:
+  - There were meaningful changes or decisions made worth documenting
+  - You encountered and resolved specific issues that might be helpful for future reference
+  - The changes involved something beyond standard processing
 
 ## Cross-References
 
