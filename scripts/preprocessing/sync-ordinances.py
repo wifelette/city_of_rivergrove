@@ -9,6 +9,53 @@ import shutil
 import sys
 from pathlib import Path
 
+def process_images(content, doc_name):
+    """
+    Convert image syntax to HTML figure elements.
+    
+    Converts:
+    {{image:filename|alt=text|caption=text}} to proper HTML figure elements
+    """
+    def replace_image_tag(match):
+        params = match.group(1)
+        parts = params.split('|')
+        filename = parts[0].strip()
+        
+        # Default values
+        alt_text = ""
+        caption = ""
+        
+        # Parse additional parameters
+        for part in parts[1:]:
+            if '=' in part:
+                key, value = part.split('=', 1)
+                key = key.strip()
+                value = value.strip()
+                
+                if key == 'alt':
+                    alt_text = value
+                elif key == 'caption':
+                    caption = value
+        
+        # Build image path - relative to the HTML file location in book/ordinances/
+        image_filename = f"{doc_name}-{filename}.png"
+        image_path = f"../images/ordinances/{image_filename}"
+        
+        # Build HTML
+        html = f'<figure class="document-figure">\n'
+        html += f'    <img src="{image_path}" alt="{alt_text}" />\n'
+        if caption:
+            html += f'    <figcaption>{caption}</figcaption>\n'
+        html += f'</figure>'
+        
+        return html
+    
+    # Pattern to match {{image:...}} tags
+    pattern = r'\{\{image:([^}]+)\}\}'
+    content = re.sub(pattern, replace_image_tag, content)
+    
+    return content
+
 def process_form_fields(content):
     """
     Convert form field syntax to inline HTML during sync.
@@ -89,8 +136,14 @@ def sync_ordinances():
         with open(file, 'r', encoding='utf-8') as f:
             source_content = f.read()
         
+        # Get document name for image processing
+        doc_name = dest_file.stem
+        
+        # Process images first (before form fields, as images might contain form fields)
+        processed_content = process_images(source_content, doc_name)
+        
         # Process form fields
-        processed_content = process_form_fields(source_content)
+        processed_content = process_form_fields(processed_content)
         
         # Check if file needs updating
         needs_update = False

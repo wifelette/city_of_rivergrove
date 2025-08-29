@@ -415,6 +415,50 @@ def add_custom_css(html_content):
             height: 0.8em;
             margin-bottom: -0.1em;
         }
+        
+        /* Document figure styles for inline images */
+        .document-figure {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        .document-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .document-figure figcaption {
+            margin-top: 1em;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        /* Responsive image sizing */
+        @media screen and (min-width: 768px) {
+            .document-figure {
+                max-width: 80%;
+            }
+        }
+        
+        @media print {
+            .document-figure {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+            
+            .document-figure img {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
         """
         head.append(style)
     
