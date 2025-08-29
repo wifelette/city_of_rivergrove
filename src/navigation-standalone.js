@@ -672,8 +672,19 @@ class StandaloneNavigation {
         
         // Get metadata from Airtable cache if available
         // Try to match using the file name (without path and extension)
-        const fileKey = doc.file ? doc.file.replace('.md', '') : null;
-        const airtableData = fileKey ? this.airtableMetadata[fileKey] : null;
+        let fileKey = doc.file ? doc.file.replace('.md', '') : null;
+        
+        // Try both with and without # symbol for resolutions/ordinances
+        let airtableData = fileKey ? this.airtableMetadata[fileKey] : null;
+        
+        // If not found and it looks like a resolution/ordinance, try adding # after the type
+        if (!airtableData && fileKey && (doc.type === 'resolution' || doc.type === 'ordinance')) {
+            // Try inserting # after year and before number (e.g., "2024-Res-300..." becomes "2024-Res-#300...")
+            const altKey = fileKey.replace(/^(\d{4}-(?:Res|Ord)-)(\d+)/, '$1#$2');
+            if (altKey !== fileKey) {
+                airtableData = this.airtableMetadata[altKey];
+            }
+        }
         
         // Add special state badge if available
         let specialStateBadge = '';
@@ -692,30 +703,49 @@ class StandaloneNavigation {
         // Format display - use Airtable display name if available
         let display = '';
         if (airtableData && airtableData.display_name) {
-            // Use curated display name from Airtable
-            display = `${airtableData.display_name} ${specialStateBadge}`;
+            // Build display text based on available fields
+            let displayText = airtableData.display_name;
             
-            // Add year for ordinances and resolutions
+            if (doc.type === 'resolution') {
+                // For resolutions, prefer short_title if available, otherwise just the number
+                if (airtableData.short_title) {
+                    // Use doc number + short title for a clean display
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                } else if (airtableData.doc_number) {
+                    // Fall back to just the number
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span>`;
+                }
+            } else if (doc.type === 'ordinance' && airtableData.short_title) {
+                // For ordinances with short_title, use it
+                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+            }
+            
+            display = `${displayText} ${specialStateBadge}`;
+            
+            // Add year for ordinances and resolutions with proper layout
             if (doc.type === 'ordinance' || doc.type === 'resolution') {
-                display = `${airtableData.display_name} <span class="doc-year">(${doc.year})</span> ${specialStateBadge}`;
+                // Put badge after the title text, not in a separate container
+                display = `<div class="doc-item-main">${displayText} ${specialStateBadge}<span class="doc-year-tag">${airtableData.year || doc.year}</span></div>`;
             }
         } else {
             // Fallback to auto-generated display
             if (doc.type === 'ordinance') {
-                const match = doc.id.match(/^(\d+[\w-]*)-(.+)/);
+                // More specific regex: match numbers optionally followed by hyphen and more numbers/letters (like 54-89 or 73-2003A)
+                const match = doc.id.match(/^(\d+(?:-\d+[A-Z]?)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
-                    display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+                    display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
             } else if (doc.type === 'resolution') {
-                const match = doc.id.match(/^(\d+)-(.+)/);
+                // For resolutions, match just numbers or numbers with hyphen and year (like 259-2018)
+                const match = doc.id.match(/^(\d+(?:-\d+)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<span class="doc-number">#${num}</span> - ${this.truncateTitle(topic)} <span class="doc-year">[${doc.year}]</span>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
-                    display = `${doc.id} <span class="doc-year">[${doc.year}]</span>`;
+                    display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
             } else {
                 // Interpretation
@@ -1382,15 +1412,53 @@ class StandaloneNavigation {
                 font-size: 11px;
             }
             
+            /* Enhanced layout styles */
+            .doc-item-main {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                gap: 8px;
+                flex-wrap: nowrap;
+            }
+            
+            .doc-title {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 11px;
+            }
+            
+            .doc-year-tag {
+                margin-left: auto;
+                color: #9ca3af;
+                font-size: 10px;
+                font-weight: 500;
+                padding: 2px 6px;
+                background: #f3f4f6;
+                border-radius: 3px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            
+            .doc-badges {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                margin: 0 8px;
+                flex-shrink: 0;
+            }
+            
             /* Special state badges */
             .special-state {
                 display: inline-block;
                 padding: 2px 6px;
+                margin-left: 6px;
                 border-radius: 3px;
                 font-size: 10px;
                 font-weight: 600;
                 text-transform: uppercase;
-                margin-left: 4px;
                 vertical-align: middle;
             }
             

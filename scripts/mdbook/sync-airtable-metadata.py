@@ -95,6 +95,10 @@ class AirtableSync:
             if local_file in md_url:
                 return True
             
+            # Special case for 54-89C: URL has 54-89-C but file is 54-89C
+            if '54-89-C' in md_url and '54-89C' in local_file:
+                return True
+            
             # Also try matching just the filename from the URL
             airtable_filename = airtable_record.get('filename')
             if airtable_filename and airtable_filename == local_file:
@@ -121,6 +125,14 @@ class AirtableSync:
         if local_doc_info['type'] in ['ordinance', 'resolution']:
             airtable_num = str(airtable_record.get('doc_number', '')).replace('#', '').strip().upper()
             local_num = str(local_doc_info.get('number', '')).replace('#', '').strip().upper()
+            
+            # Special case for 54-89C matching 54-89-C or vice versa
+            # Remove all hyphens for comparison if one ends with a letter
+            if (airtable_num and airtable_num[-1].isalpha()) or (local_num and local_num[-1].isalpha()):
+                airtable_clean = airtable_num.replace('-', '')
+                local_clean = local_num.replace('-', '')
+                if airtable_clean == local_clean:
+                    return True
             
             # Handle year in doc number
             if '-' in airtable_num and '-' not in local_num:
@@ -230,6 +242,7 @@ class AirtableSync:
         return {
             'airtable_id': record.get('id'),
             'display_name': fields.get('display_name'),
+            'short_title': fields.get('short_title'),
             'type': doc_type,
             'year': year,
             'doc_number': doc_number,

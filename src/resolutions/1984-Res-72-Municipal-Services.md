@@ -1,4 +1,4 @@
-# RESOLUTION NO. 72
+# RESOLUTION NO. <span class="form-field-filled" data-tooltip="Field filled in on source doc">72</span>
 
 **WHEREAS**, ORS 221.760 provides as follows:
 
@@ -16,14 +16,14 @@ and
 
 **WHEREAS**, city officials recognize the desirability of assisting the state officer responsible for determining the eligibility of cities to receive such funds in accordance with ORS 221.760, now, therefore,
 
-**BE IT RESOLVED**, that the City of **RIVERGROVE** hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:
+**BE IT RESOLVED**, that the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:
 
-- Police protection;
-- Street construction, maintenance & lighting;
-- Storm sewers; and
-- Planning, zoning and subdivision control.
+- <span class="form-field-filled" data-tooltip="Field filled in on source doc">Police protection;</span>
+- <span class="form-field-filled" data-tooltip="Field filled in on source doc">Street construction, maintenance & lighting;</span>
+- <span class="form-field-filled" data-tooltip="Field filled in on source doc">Storm sewers; and</span>
+- <span class="form-field-filled" data-tooltip="Field filled in on source doc">Planning, zoning and subdivision control.</span>
 
-Approved by the City of **RIVERGROVE** this **9th** day of **July** 1984.
+Approved by the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">9th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">July</span> 1984.
 
 [Signature]
 [Illegible], Mayor

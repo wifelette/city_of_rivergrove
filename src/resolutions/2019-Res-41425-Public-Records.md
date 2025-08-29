@@ -6,23 +6,23 @@
 
 **WHEREAS,** the City recognizes the right of every person to inspect any nonexempt public record of the City;
 
-**WHEREAS,** the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;  
+**WHEREAS,** the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;
 
-**WHEREAS,** the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;  
+**WHEREAS,** the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;
 
-**WHEREAS,** the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and  
+**WHEREAS,** the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and
 
-**WHEREAS,** the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and  
+**WHEREAS,** the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and
 
-**WHEREAS,** the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and  
+**WHEREAS,** the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and
 
-**WHEREAS,** the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,  
+**WHEREAS,** the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,
 
 **NOW, THEREFORE, THE CITY OF RIVERGROVE RESOLVES AS FOLLOWS:**
 
 **Section 1.** Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.
 
-**Section 2.** The City hereby adopts a public records request policy as follows:  
+**Section 2.** The City hereby adopts a public records request policy as follows:
 
 a. **Applicability**: This policy applies to all public record requests in the City of Rivergrove and governs the actions of staff and consultants working for the City.
 
@@ -48,24 +48,24 @@ h. **Fee Collection.** If the estimated cost bill is twenty-five ($25.00) dollar
 
 i. **Waiver or Reduction of Fees.** Copies of public records may be furnished without cost, or at a reduced cost, if the City Manager determines that a waiver or reduction of fees is in the public interest because making the record available primarily benefits the general public.
 
-   1. A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor's ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.
+1.  A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor's ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.
 
-   2. Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor's disability.
+2.  Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor's disability.
 
-   3. Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.
+3.  Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.
 
-   4. Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.
+4.  Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.
 
-   5. Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor's official capacity.
+5.  Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor's official capacity.
 
 **Section 4.**
 
 1. The City of Rivergrove hereby adopts the attached Forms to be used by the citizens of Rivergrove and the City of Rivergrove in providing public records:
 
    1.1 Instructions for Requesting Public Records.
-   
+
    1.2 Public Records Request form.
-   
+
    1.3 Response to Public Records Request.
 
 **Section 5.**
@@ -74,18 +74,21 @@ The City of Rivergrove hereby adopts the Fee Schedule for Responding to Public R
 
 ---
 
-**Approved and adopted at the City Council meeting on the _____day of April , 2025**
+**Approved and adopted at the City Council meeting on the <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> day of April , 2025**
 
-__ Yeas  
-__ Nays
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> Yeas  
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> Nays
 
-___________________________________  
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>  
 Chris Barhyte, Mayor of Rivergrove
 
-[Signature], Attested on this 13th day of May, 2019, **Approved a to legal sufficiency**  
+[Signature], Attested on this 13th day of May, 2019, **Approved a to legal sufficiency**
 
-________________________________________      ________________________  
-Analeis Wiedlich, City Manager/ City Recorder      Bill Kabeiseman, City Attorney
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+Analeis Wiedlich, City Manager/ City Recorder
+
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+Bill Kabeiseman, City Attorney
 
 ---
 

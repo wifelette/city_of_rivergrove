@@ -12,7 +12,7 @@
 - [#16 - Parks Advisory (1974)](./ordinances/1974-Ord-16-Parks.md)
 - [#28 - Parks Advisory (1978)](./ordinances/1978-Ord-28-Parks.md)
 - [#52 - Flood Prevention (1987)](./ordinances/1987-Ord-52-Flood.md)
-- [#54 - Development (1989)](./ordinances/1989-Ord-54-89-C-Land-Development.md)
+- [#54 - Development (1989)](./ordinances/1989-Ord-54-89C-Land-Development.md)
 - [#57 - Homes (1993)](./ordinances/1993-Ord-57-93-Manufactured-Homes.md)
 - [#59 - Amendment (1998)](./ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)
 - [#61 - Amendment (1998)](./ordinances/1998-Ord-61-98-Land-Development-Amendment.md)

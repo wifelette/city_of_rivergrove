@@ -32,17 +32,17 @@
 
 **Section 5:** Resolution 256-2018 dated June 11, 2018 is hereby superseded.
 
-Approved and adopted at a regular meeting of the City Council held on the **10th** day of **December**, 2018.
+Approved and adopted at a regular meeting of the City Council held on the 10th day of December, 2018.
 
-[Signature], Heather Kibbey, Mayor  
+[Signature], HEATHER KIBBEY, Mayor
 
-Attested on this **10th** day of **December 2018**:
+Attested on this 10th day of December 2018:
 
-[Signature], Leanne Moll, City Manager/City Recorder  
+[Signature], Leanne Moll, City Manager/City Recorder
 
 **Approved as to legal sufficiency:**
 
-[Signature], City Attorney  
+[Signature], City Attorney
 
 ---
 
@@ -50,21 +50,21 @@ Attested on this **10th** day of **December 2018**:
 
 ### FEE SCHEDULE
 
-| **PERMIT/APPLICATION TYPE** | **FEE**                                                        |
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| **Building Permit (City Fee)** | $25.00\*¹                                                      |
-| **Variance/Hardship Relief** | Actual Costs                                                   |
-| **Type I Review** | Actual Costs                                                   |
-| **Type II Review** | Actual Costs                                                   |
-| **Type III Review** | Actual Costs                                                   |
-| **Type IV Review** | Actual Costs                                                   |
-| **Tree Cutting Permit Outside Of WQRA** | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Within WQRA** | $30 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Dead, Dying, Dangerous** | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Emergency Removal** | No Fee                                                         |
-| **Area Accessory Development Permit** | $65.00                                                         |
-| **System Development Charge** | $500.00 per residential unit for parks under Ordinance 82-2011 |
-| **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL) | $250.00                                                        |
+| **PERMIT/APPLICATION TYPE**                                                             | **FEE**                                                        |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Building Permit (City Fee)**                                                          | $25.00\*¹                                                      |
+| **Variance/Hardship Relief**                                                            | Actual Costs                                                   |
+| **Type I Review**                                                                       | Actual Costs                                                   |
+| **Type II Review**                                                                      | Actual Costs                                                   |
+| **Type III Review**                                                                     | Actual Costs                                                   |
+| **Type IV Review**                                                                      | Actual Costs                                                   |
+| **Tree Cutting Permit Outside Of WQRA**                                                 | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Within WQRA**                                                     | $30 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Dead, Dying, Dangerous**                                          | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Emergency Removal**                                               | No Fee                                                         |
+| **Area Accessory Development Permit**                                                   | $65.00                                                         |
+| **System Development Charge**                                                           | $500.00 per residential unit for parks under Ordinance 82-2011 |
+| **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
 | **Appeal of Type II, III, and IV Decisions**<br>(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
 ¹ **Basic building permit.** Plus the actual cost of hearings officer, notification and specialized services the city may require. Other building permits, like subdivision building permits may be more expensive based on actual costs.
@@ -97,7 +97,7 @@ Where the City's actual cost of review of the land use application does not amou
 
 ### AGREEMENT TO MEET COSTS OF DEVELOPMENT REVIEW
 
-This Agreement to Meet Costs of Development Review ("Agreement") is entered into on the last signed date indicated below by and between the City of Rivergrove, Oregon (hereinafter the "City") and **********\_\_\_\_********** (hereinafter "Applicant") in connection with Applicant's land use application for approval of **************\_************** as part of Rivergrove Planning File No. ****\_\_\_**** (hereinafter "Application").
+This Agreement to Meet Costs of Development Review ("Agreement") is entered into on the last signed date indicated below by and between the City of Rivergrove, Oregon (hereinafter the "City") and {{filled:}} (hereinafter "Applicant") in connection with Applicant's land use application for approval of {{filled:}} as part of Rivergrove Planning File No. {{filled:}} (hereinafter "Application").
 
 #### RECITALS
 
@@ -153,19 +153,18 @@ c. The parties shall use their best efforts to complete any arbitration within s
 
 **Applicant:**
 
-By:**************\_************** Date:************\_\_\_\_************  
+By:{{filled:}}
+Date:{{filled:}}
 Title:
 
 **STATE OF OREGON** )  
 ) ss.  
-**County of** )
+**County of** {{filled:}})
 
-This instrument was acknowledged before me on this **\_** day of ******\_******, 20**\_ by **************\_\_****************, the **********\_\_\_\_********** of ****\_\_\_\_****, a **********\_\_**********, for and on behalf thereof.
-
----
+This instrument was acknowledged before me on this {{filled:}} day of {{filled:}}, 20{{filled:}} by {{filled:}}, the {{filled:}} of {{filled:}}, a {{filled:}}, for and on behalf thereof.
 
 **Notary Public for Oregon**  
-**My commission expires:**
+**My commission expires:** {{filled:}}
 
 ---
 
@@ -175,7 +174,7 @@ This instrument was acknowledged before me on this **\_** day of ******\_******,
 
 ### AGREEMENT TO MEET COSTS OF APPEAL
 
-This Agreement to Meet Costs of Appeal ("Agreement") is entered into on the last signed date indicated below by and between the City of Rivergrove, Oregon (hereinafter the "City") and **********\_\_\_\_********** (hereinafter "Appellant") in connection with Appellant's letter of Appeal regarding **************\_************** as part of Rivergrove Planning File No. ****\_\_\_**** (hereinafter "Appeal").
+This Agreement to Meet Costs of Appeal ("Agreement") is entered into on the last signed date indicated below by and between the City of Rivergrove, Oregon (hereinafter the "City") and {{filled:}} (hereinafter "Appellant") in connection with Appellant's letter of Appeal regarding {{filled:}} as part of Rivergrove Planning File No. {{filled:}} (hereinafter "Appeal").
 
 #### RECITALS
 
@@ -219,16 +218,15 @@ c. The parties shall use their best efforts to complete any arbitration within s
 
 **Appellant:**
 
-By:**************\_************** Date:************\_\_\_\_************  
+By:{{filled:}}
+Date:{{filled:}}
 Title:
 
 **STATE OF OREGON** )  
 ) ss.  
-**County of** )
+**County of** {{filled:}})
 
-This instrument was acknowledged before me on this **\_** day of ******\_******, 20**\_ by **************\_\_****************, the **********\_\_\_\_********** of ****\_\_\_\_****, a **********\_\_**********, for and on behalf thereof.
-
----
+This instrument was acknowledged before me on this {{filled:}} day of {{filled:}}, 20{{filled:}} by {{filled:}}, the {{filled:}} of {{filled:}}, a {{filled:}}\*, for and on behalf thereof.
 
 **Notary Public for Oregon**  
-**My commission expires:**
+**My commission expires:** {{filled:}}

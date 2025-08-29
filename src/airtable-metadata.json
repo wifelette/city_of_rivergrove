@@ -1,14 +1,22 @@
 {
   "metadata": {
     "cache_version": "1.1",
-    "last_full_sync": "2025-08-28T17:07:41.244186",
-    "last_updated": "2025-08-28T17:07:41.244986",
-    "total_records": 38
+    "last_full_sync": "2025-08-29T11:39:00.023792",
+    "last_updated": "2025-08-29T11:49:30.534542",
+    "total_records": 38,
+    "last_partial_update": "2025-08-29T11:49:30.534441",
+    "incremental_updates": [
+      {
+        "filename": "2001-Ord-#70-2001-WQRA.md",
+        "updated_at": "2025-08-29T11:49:30.534444"
+      }
+    ]
   },
   "documents": {
     "2001-05-07-RE-balanced-cut-and-fill": {
       "airtable_id": "rec0kNUkKWI2vXiRo",
       "display_name": "Interpretation of 5.2-4",
+      "short_title": "Bankful Stage",
       "type": "interpretation",
       "year": 2001,
       "doc_number": "",
@@ -19,11 +27,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2001-05-07",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:18:56.000Z"
     },
     "1978-Ord-#28-Parks": {
       "airtable_id": "rec1XAH0RhBp0CUUf",
       "display_name": "Ordinance #28",
+      "short_title": "Park Council",
       "type": "ordinance",
       "year": 1978,
       "doc_number": "28",
@@ -34,11 +43,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1978-06-12",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:02.000Z"
     },
     "1998-03-02-RE-5.080-setbacks": {
       "airtable_id": "rec1yhrXPNo42C42T",
       "display_name": "Interpretation of 5.080 #1",
+      "short_title": "Setback Measurement",
       "type": "interpretation",
       "year": 1998,
       "doc_number": "",
@@ -49,11 +59,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-03-02",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:06.000Z"
     },
     "2004-Ord-#74-2004-Tree-Cutting-Amendment": {
       "airtable_id": "rec30SuqOZmJ2DEBb",
       "display_name": "Ordinance #74-2004",
+      "short_title": "Tree Cutting",
       "type": "ordinance",
       "year": 2004,
       "doc_number": "74-2004",
@@ -64,11 +75,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2004-05-10",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:11.000Z"
     },
     "2001-Ord-#70-2001-WQRA": {
       "airtable_id": "rec6BZE7Q7dWDC6sB",
       "display_name": "Ordinance #70-2001",
+      "short_title": "Water Quality",
       "type": "ordinance",
       "year": 2001,
       "doc_number": "70-2001",
@@ -79,11 +91,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2001-12-10",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:18.000Z"
     },
     "2017-Ord-#88-2017-Docks": {
       "airtable_id": "rec6NC010dgafzKHe",
       "display_name": "Ordinance #88-2017",
+      "short_title": "Dock Regulations",
       "type": "ordinance",
       "year": 2017,
       "doc_number": "88-2017",
@@ -94,11 +107,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2017-11-13",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:24.000Z"
     },
     "1993-Ord-#57-93-Manufactured-Homes": {
       "airtable_id": "rec8ZM4179unDRAKG",
       "display_name": "Ordinance #57-93",
+      "short_title": "Manufactured Homes",
       "type": "ordinance",
       "year": 1993,
       "doc_number": "57-93",
@@ -109,14 +123,15 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1993-12-13",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:30.000Z"
     },
-    "1989-Ord-#54-89-C-Land-Development": {
+    "1989-Ord-#54-89C-Land-Development": {
       "airtable_id": "rec9RH05bcMuOohsW",
-      "display_name": "Ordinance #54-89",
+      "display_name": "Ordinance #54-89C",
+      "short_title": "Land Development",
       "type": "ordinance",
       "year": 1989,
-      "doc_number": "54-89",
+      "doc_number": "54-89C",
       "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1989-Ord-%2354-89-C-Land-Development.md",
       "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1989-Ord-%2354-89-C-Land-Development.pdf",
       "filename": "1989-Ord-%2354-89-C-Land-Development.md",
@@ -124,11 +139,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1989-03-01",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:35.000Z"
     },
     "1998-07-06-RE-5.080-setback-orientation": {
       "airtable_id": "rec9lEPsieSuUeTU6",
       "display_name": "Interpretation of 5.080 #3",
+      "short_title": "Building Setbacks",
       "type": "interpretation",
       "year": 1998,
       "doc_number": "",
@@ -139,11 +155,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-07-06",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:40.000Z"
     },
     "2002-08-05-RE-lots-partially-in-floodplain": {
       "airtable_id": "recA4SuAkkMtGwInT",
       "display_name": "Interpretation of 5.010 #1",
+      "short_title": "Floodplain Lots",
       "type": "interpretation",
       "year": 2002,
       "doc_number": "",
@@ -154,11 +171,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2002-08-05",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:45.000Z"
     },
     "2003-Ord-#73-2003A-Conditional-Use-Provisions": {
       "airtable_id": "recF0JKuHeliTnxg8",
       "display_name": "Ordinance #73-2003A",
+      "short_title": "Conditional Uses",
       "type": "ordinance",
       "year": 2003,
       "doc_number": "73-2003A",
@@ -169,11 +187,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2003-05-12",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:50.000Z"
     },
     "2008-02-04-RE-multi-family": {
       "airtable_id": "recF5KB1bSDkguXuk",
       "display_name": "Interpretation of ORD 68-2000",
+      "short_title": "Multi-Family",
       "type": "interpretation",
       "year": 2008,
       "doc_number": "",
@@ -184,11 +203,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2008-02-04",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:42.000Z"
     },
     "2002-09-05-RE-duplicate": {
       "airtable_id": "recFwOq0VmM0X8ONN",
       "display_name": "Interpretation of 5.010 #2",
+      "short_title": "Floodplain Lots",
       "type": "interpretation",
       "year": 2002,
       "doc_number": "",
@@ -199,11 +219,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2002-09-05",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:48.000Z"
     },
     "1998-Ord-#62-98-Flood-and-Land-Development-Amendment": {
       "airtable_id": "recH1DOjGNnlfiWiJ",
       "display_name": "Ordinance #62-98",
+      "short_title": "Flood Prevention",
       "type": "ordinance",
       "year": 1998,
       "doc_number": "62-98",
@@ -214,11 +235,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-07-13",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:41.000Z"
     },
     "2000-Ord-#69-2000-Title-3-Compliance-STUB": {
       "airtable_id": "recJUQe9EWz7ZNoSR",
       "display_name": "Ordinance #69-2000",
+      "short_title": "Never Passed",
       "type": "ordinance",
       "year": 2000,
       "doc_number": "69-2000",
@@ -229,11 +251,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2000-10-16",
-      "last_updated": "2025-08-28T05:22:49.000Z"
+      "last_updated": "2025-08-29T17:22:08.000Z"
     },
     "2002-Ord-#72-2002-Penalties-and-Abatement-Amendment": {
       "airtable_id": "recPEgtJZ34yLiB7g",
       "display_name": "Ordinance #72-2002",
+      "short_title": "Penalties",
       "type": "ordinance",
       "year": 2002,
       "doc_number": "72-2002",
@@ -244,11 +267,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2002-10-14",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:56.000Z"
     },
     "2008-Ord-#76-2008-FEMA-Flood-Map": {
       "airtable_id": "recQxKEJ9XXGp38Nd",
       "display_name": "Ordinance #76-2008",
+      "short_title": "Flood Maps",
       "type": "ordinance",
       "year": 2008,
       "doc_number": "76-2008",
@@ -259,11 +283,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2008-06-09",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:35.000Z"
     },
     "1984-Res-#72-Municipal-Services": {
       "airtable_id": "recScMrgDZYNK1uib",
       "display_name": "Resolution #72",
+      "short_title": "Municipal Services",
       "type": "resolution",
       "year": 1984,
       "doc_number": "72",
@@ -274,11 +299,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1984-07-09",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:02.000Z"
     },
     "1976-Res-#22-PC": {
       "airtable_id": "recZQIxEEratDayLS",
       "display_name": "Resolution #22",
+      "short_title": "Citizen Involvement",
       "type": "resolution",
       "year": 1976,
       "doc_number": "22",
@@ -289,11 +315,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1976-03-01",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:46.000Z"
     },
     "2002-Ord-#71-2002-Gates": {
       "airtable_id": "reca2YaHD9trNta4D",
       "display_name": "Ordinance #71-2002",
+      "short_title": "Gates Prohibited",
       "type": "ordinance",
       "year": 2002,
       "doc_number": "71-2002",
@@ -304,11 +331,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2002-08-12",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:51.000Z"
     },
     "1997-09-08-RE-9.030-permit-fees-and-completeness": {
       "airtable_id": "recaK0zKb0FCfTUcw",
       "display_name": "Interpretation of 9.030 #1",
+      "short_title": "Permit Fees",
       "type": "interpretation",
       "year": 1997,
       "doc_number": "",
@@ -319,11 +347,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1997-09-08",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:12.000Z"
     },
     "2018-Res-#259-Planning-Development-Fees": {
       "airtable_id": "recbNm9L52ybVFWva",
       "display_name": "Resolution #259-2018",
+      "short_title": "Development Fees",
       "type": "resolution",
       "year": 2019,
       "doc_number": "259-2018",
@@ -336,11 +365,12 @@
       ],
       "digitized": true,
       "passed_date": "2019-01-01",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:09.000Z"
     },
     "2024-Res-#300-Fee-Schedule-Modification": {
       "airtable_id": "receyAxTqbdJqJyFY",
       "display_name": "Resolution #300-2024",
+      "short_title": "Fee Increases",
       "type": "resolution",
       "year": 2024,
       "doc_number": "300-2024",
@@ -351,11 +381,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2024-04-09",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:04.000Z"
     },
     "2004-10-11-RE-5.080-setbacks": {
       "airtable_id": "recfETfmA4byCU8xB",
       "display_name": "Interpretation of 5.080 #4",
+      "short_title": "WQRA Setbacks",
       "type": "interpretation",
       "year": 2004,
       "doc_number": "",
@@ -366,11 +397,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2004-10-11",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:36.000Z"
     },
     "1999-Ord-#65-99-Sewer-Services": {
       "airtable_id": "reci5ca85Tb79A92m",
       "display_name": "Ordinance #65-99",
+      "short_title": "Sewer Services",
       "type": "ordinance",
       "year": 1999,
       "doc_number": "65-99",
@@ -381,11 +413,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1999-12-13",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:19.000Z"
     },
     "1997-07-07-RE-2.040h-permitting-adus": {
       "airtable_id": "reck48O74lMmcymgv",
       "display_name": "Interpretation of 2.040",
+      "short_title": "Accessory Structures",
       "type": "interpretation",
       "year": 1997,
       "doc_number": "",
@@ -396,11 +429,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1997-07-07",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:22.000Z"
     },
     "1974-City-Charter": {
       "airtable_id": "reclyELhguy8TlX5V",
       "display_name": "City Charter",
+      "short_title": "City Charter",
       "type": "other",
       "year": 1974,
       "doc_number": "",
@@ -411,11 +445,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1974-11-05",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:19:55.000Z"
     },
     "1998-Ord-#61-98-Land-Development-Amendment": {
       "airtable_id": "recolD2T4bOeuHmk0",
       "display_name": "Ordinance #61-98",
+      "short_title": "Flood Districts",
       "type": "ordinance",
       "year": 1998,
       "doc_number": "61-98",
@@ -426,11 +461,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-04-13",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:58.000Z"
     },
     "2018-Ord-#89-2018-Tree-Cutting-Amendment": {
       "airtable_id": "recpNyXsXnZ7AUrjV",
       "display_name": "Ordinance #89-2018",
+      "short_title": "Tree Protection",
       "type": "ordinance",
       "year": 2018,
       "doc_number": "89-2018",
@@ -441,11 +477,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2018-12-12",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:15.000Z"
     },
     "2019-Res-#41425-Public-Records": {
       "airtable_id": "recqYL5LY005ECYHv",
       "display_name": "Resolution #41425",
+      "short_title": "Public Records",
       "type": "resolution",
       "year": 2025,
       "doc_number": "41425",
@@ -456,11 +493,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2025-07-14",
-      "last_updated": "2025-08-28T22:54:16.000Z"
+      "last_updated": "2025-08-29T17:19:59.000Z"
     },
     "1998-06-01-RE-5.080-setback-orientation": {
       "airtable_id": "recrFR1FFEeCOhMTp",
       "display_name": "Interpretation of 5.080 #2",
+      "short_title": "Setback Orientation",
       "type": "interpretation",
       "year": 1998,
       "doc_number": "",
@@ -471,11 +509,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-06-01",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:31.000Z"
     },
     "2011-Ord-#81-2011-Sign": {
       "airtable_id": "recv41BWUGbLej49o",
       "display_name": "Ordinance #81-2011",
+      "short_title": "Sign Regulations",
       "type": "ordinance",
       "year": null,
       "doc_number": "81-2011",
@@ -486,11 +525,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": null,
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:24.000Z"
     },
     "1974-Ord-#16-Parks": {
       "airtable_id": "recwYRV5AsxDOpaqI",
       "display_name": "Ordinance #16",
+      "short_title": "Park Advisory",
       "type": "ordinance",
       "year": 1974,
       "doc_number": "16",
@@ -501,11 +541,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1974-08-12",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:07.000Z"
     },
     "2005-04-04-RE-adu-sewer": {
       "airtable_id": "recxQfCglUVSRjlln",
       "display_name": "Interpretation of 4.020",
+      "short_title": "Sewer Permits",
       "type": "interpretation",
       "year": 2005,
       "doc_number": "",
@@ -516,11 +557,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2005-04-04",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:26.000Z"
     },
     "1987-Ord-#52-Flood": {
       "airtable_id": "recyd4bnd2NTw2jUF",
       "display_name": "Ordinance #52",
+      "short_title": "Flood Prevention",
       "type": "ordinance",
       "year": 1987,
       "doc_number": "52",
@@ -531,11 +573,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1987-09-21",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:20:30.000Z"
     },
     "1997-11-03-RE-9.030-permit-fees-and-completeness": {
       "airtable_id": "recypxivGOJeTTioq",
       "display_name": "Interpretation of 9.030 #2",
+      "short_title": "Development Charges",
       "type": "interpretation",
       "year": 1997,
       "doc_number": "",
@@ -546,11 +589,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1997-11-03",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:21:17.000Z"
     },
     "1998-Ord-#59-97A-Land-Development-Amendment": {
       "airtable_id": "reczRX6QQJ01tNIkD",
       "display_name": "Ordinance #59-97A",
+      "short_title": "Lot Standards",
       "type": "ordinance",
       "year": 1998,
       "doc_number": "59-97A",
@@ -561,11 +605,12 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1998-10-12",
-      "last_updated": "2025-08-28T22:53:46.000Z"
+      "last_updated": "2025-08-29T17:21:54.000Z"
     },
     "2000-Ord-#68-2000-Metro-Compliance": {
       "airtable_id": "reczSnEze5MzDL9u7",
       "display_name": "Ordinance #68-2000",
+      "short_title": "Metro Compliance",
       "type": "ordinance",
       "year": 2000,
       "doc_number": "68-2000",
@@ -576,7 +621,7 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "2000-10-16",
-      "last_updated": "2025-08-28T22:42:12.000Z"
+      "last_updated": "2025-08-29T17:22:03.000Z"
     }
   }
 }
