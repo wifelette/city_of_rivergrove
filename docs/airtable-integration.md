@@ -11,13 +11,18 @@ This document describes the integration between the City of Rivergrove mdBook si
 #### Airtable Public Metadata Table
 - **Purpose**: Stores manually curated metadata for all documents
 - **Key Fields**:
-  - `Display Name`: Human-friendly document titles
-  - `GitHub Path`: Links to repository files  
-  - `Status`: Publication status (Draft, Published, etc.)
-  - `Tags`: Categorical organization
-  - `Type`: Document type (Ordinance, Resolution, etc.)
-  - `Year`: Document year
-  - `Doc Number`: Official document number
+  - `display_name`: Human-friendly document titles
+  - `mdURL`: GitHub URL for markdown files
+  - `fileURL`: GitHub URL for PDF files
+  - `status`: Publication status (Draft, Published, etc.)
+  - `type`: Document type (Ordinance, Resolution, etc.)
+  - `year`: Document year
+  - `doc_number`: Official document number
+  - `short_title`: Brief title for navigation
+  - `passed_date`: Date document was passed
+  - `digitized`: Whether document has been digitized
+  - `special_state`: Special status flags
+  - `last_updated`: Last modification timestamp
 
 #### Local relationships.json
 - **Purpose**: Auto-generated document relationships and references
