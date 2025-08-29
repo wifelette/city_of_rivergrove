@@ -26,9 +26,10 @@ Creating a searchable, centralized repository of all City of Rivergrove ordinanc
 - Claude creates clean markdown version fixing OCR errors
 - Claude reviews for legal terms, dates, and signatures, but doesn't make any changes without explicit approval by Leah, not even fixing typos. We're strictly digitizing as is.
 - **Claude searches existing Airtable entries first** before creating new ones
-- Claude creates or updates two entries in the Airtable MCP base:
-  - 1 Document record for the file
-  - 2 Ordinances and Resolutions record for the file
+- Claude creates or updates three entries in the Airtable MCP base:
+  - 1. **Document** record for the file
+  - 2. **Ordinances and Resolutions** record for the file
+  - 3. **Public Metadata** record linked to the Ordinance/Resolution (with Publication Status: Draft)
 - Leah saves artifact with established naming conventions
 - Leah uploads to GitHub and provides URLs to Claude for Airtable updates
 - Mark as Digitized once GitHub URL is added
@@ -79,6 +80,10 @@ When processing a document:
   - Summary (dry, objective, searchable)
   - Topics (use existing valid options)
   - Mark as Digitized when GitHub upload complete
+- Create `Public Metadata` entry with:
+  - Link to Ordinance/Resolution record
+  - Publication Status: "Draft" (initially)
+  - Any other relevant metadata fields
 
 ### 3. Content Standards
 
