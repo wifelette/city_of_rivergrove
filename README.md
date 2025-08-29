@@ -60,13 +60,14 @@ city_of_rivergrove/
 - [Naming Conventions](docs/styles/naming-conventions.md) - File naming standards
 - [Style Guide](docs/styles/STYLE-GUIDE.md) - Writing style guidelines
 - [Signature Formatting](docs/styles/signature-formatting.md) - Signature block standards
-- [Form Fields](docs/styles/form-fields-syntax.md) - Form field syntax
-- [Inline Images](docs/styles/inline-images-guide.md) - Image handling
+- [Form Fields](docs/styles/form-fields.md) - Form field syntax
+- [Inline Images](docs/styles/inline-images.md) - Image handling
 
 ### Technical Documentation
-- [Scripts README](scripts/README.md) - Script documentation
-- [Startup Prompts](docs/startup-prompts.md) - Quick start prompts for Claude
+- [Scripts Guide](scripts/SCRIPTS-GUIDE.md) - Complete script documentation
+- [Startup Prompts](docs/STARTUP-PROMPTS.md) - Quick start prompts for Claude
 
 ## Live Site
 
-After running build scripts, view at: http://localhost:3000
+- **Production**: https://wifelette.github.io/city_of_rivergrove/
+- **Local Development**: http://localhost:3000 (after running `mdbook serve`)

@@ -27,7 +27,7 @@ This guide defines the standard format for signature blocks in all City of River
 - Include full titles as written (e.g., "City Recorder", "Mayor")
 
 ### Dates
-- **Handwritten dates**: Use `{{filled:}}` syntax (see [form-fields-syntax.md](form-fields-syntax.md))
+- **Handwritten dates**: Use `{{filled:}}` syntax (see [form-fields.md](form-fields.md))
   - Example: `**Date**: {{filled:8-12-02}}`
 - **Pre-printed dates**: Don't use `{{filled:}}`, just transcribe as regular text
   - Example: `**Date**: January 1, 2024`

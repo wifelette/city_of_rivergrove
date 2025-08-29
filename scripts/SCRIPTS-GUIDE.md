@@ -1,4 +1,4 @@
-# City of Rivergrove Scripts Organization
+# Scripts Documentation - City of Rivergrove
 
 ## ⚠️ Important: Processing Order Matters!
 

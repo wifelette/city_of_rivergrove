@@ -9,6 +9,7 @@ Hello! We're working on the City of Rivergrove digitization project. Please star
 1. CLAUDE.md - workflow and conventions
 2. docs/digitization-guide.md - complete project guide
 3. docs/build-architecture.md - build system and script dependencies
+4. docs/styles/ - formatting standards (naming, signatures, form fields, images)
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 

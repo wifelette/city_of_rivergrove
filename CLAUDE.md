@@ -81,7 +81,7 @@ Please read these files for context on this project and how to work with Leah:
 **IMPORTANT - mdBook serve limitations:**
 
 - If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
-- This means form fields (see `docs/styles/form-fields-syntax.md`) and other custom formatting will disappear
+- This means form fields (see `docs/styles/form-fields.md`) and other custom formatting will disappear
 - To see the REAL appearance with all formatting:
   1. After any changes while `mdbook serve` is running
   2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`

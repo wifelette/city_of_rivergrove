@@ -111,7 +111,7 @@ See **[styles/signature-formatting.md](styles/signature-formatting.md)** for com
 
 #### 3.3 Handwritten Content and Form Fields
 
-See **[styles/form-fields-syntax.md](styles/form-fields-syntax.md)** for complete guide on handling blank and filled fields.
+See **[styles/form-fields.md](styles/form-fields.md)** for complete guide on handling blank and filled fields.
 
 **Key Points**:
 - Use `{{filled:}}` for blank fields in source documents
@@ -121,7 +121,7 @@ See **[styles/form-fields-syntax.md](styles/form-fields-syntax.md)** for complet
 
 #### 3.4 Images and Diagrams
 
-See **[styles/inline-images-guide.md](styles/inline-images-guide.md)** for handling images, diagrams, and visual content.
+See **[styles/inline-images.md](styles/inline-images.md)** for handling images, diagrams, and visual content.
 
 **Key Points**:
 - Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
@@ -210,9 +210,9 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
    - Markdown: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.md`
    - PDF: `https://github.com/wifelette/city_of_rivergrove/blob/main/[path]/file.pdf`
 6. **Update mdBook**: 
-   - Run `./scripts/build/update-mdbook.sh` to sync the new document to the mdBook site
-   - Add the new document to `src/SUMMARY.md` in the appropriate section
-   - Run `mdbook build` to rebuild with the new entry
+   - **Option A - Single file (faster)**: Run `./scripts/build/update-single.sh [path/to/file.md]`
+   - **Option B - Full sync**: Run `./scripts/build/update-mdbook.sh` to sync ALL documents and rebuild
+   - Note: The build scripts automatically update `src/SUMMARY.md`
 7. **Update Issue #3**:
    - Remove item from the "Documents Needing Processing" list
    - Add to "Completed Documents" section at bottom with format: `- [x] Document Name`
@@ -289,12 +289,11 @@ city_of_rivergrove/
    mdbook serve
    ```
    
-2. **Edit files** in `source-documents/Ordinances/` directory
+2. **Edit files** in `source-documents/` directories (Ordinances/, Resolutions/, etc.)
 
 3. **Sync changes**:
-   ```bash
-   ./scripts/build/update-mdbook.sh
-   ```
+   - **For single file**: `./scripts/build/update-single.sh [path/to/file.md]`
+   - **For all files**: `./scripts/build/update-mdbook.sh`
 
 4. **View at** `http://localhost:3000`
 

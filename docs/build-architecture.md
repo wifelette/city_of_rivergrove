@@ -4,13 +4,20 @@
 
 The City of Rivergrove documentation system uses a multi-stage pipeline to convert source markdown files into a beautifully formatted mdBook website with automatic cross-references, form field styling, and document-specific formatting.
 
+## Related Documentation
+
+- **[styles/naming-conventions.md](styles/naming-conventions.md)** - File naming standards and organization
+- **[styles/signature-formatting.md](styles/signature-formatting.md)** - Signature block formatting standards
+- **[styles/form-fields.md](styles/form-fields.md)** - Form field syntax and processing
+- **[styles/inline-images.md](styles/inline-images.md)** - Image handling and syntax
+
 ## Processing Pipeline Order
 
 The build process MUST follow this specific order to ensure proper processing:
 
 ```mermaid
 graph TD
-    A[Source Files: /Ordinances, /Resolutions, etc.] --> B[1. Sync to /src]
+    A[Source Files: source-documents/Ordinances, Resolutions, etc.] --> B[1. Sync to /src]
     B --> C[2. Process Footnotes]
     C --> D[3. Auto-link URLs/Emails]
     D --> E[4. Add Cross-References]
@@ -62,10 +69,11 @@ These modify markdown files BEFORE mdBook processes them:
 
 | Script | Purpose | Dependencies | When Called |
 |--------|---------|--------------|-------------|
-| `sync-ordinances.py` | Copy ordinances to /src, remove #, apply form fields | Source files in /Ordinances | Step 1 |
-| `sync-resolutions.py` | Copy resolutions to /src, remove #, apply form fields | Source files in /Resolutions | Step 1 |
+| `sync-ordinances.py` | Copy ordinances to /src, remove #, apply form fields | Source files in source-documents/Ordinances | Step 1 |
+| `sync-resolutions.py` | Copy resolutions to /src, remove #, apply form fields | Source files in source-documents/Resolutions | Step 1 |
 | `footnote-preprocessor.py` | Convert footnote syntax | Files in /src | Step 2 |
 | `auto-link-converter.py` | Convert URLs/emails to markdown links | Files in /src | Step 3 |
+| `image-processor.py` | Process inline image syntax | Files with {{image:}} tags | During sync |
 
 ### mdBook Scripts (`scripts/mdbook/`)
 
@@ -89,11 +97,20 @@ These modify HTML AFTER mdBook generates it:
 
 ## Form Field Processing
 
-Form fields are processed at multiple stages. See **[styles/form-fields-syntax.md](styles/form-fields-syntax.md)** for complete syntax guide.
+Form fields are processed at multiple stages. See **[styles/form-fields.md](styles/form-fields.md)** for complete syntax guide.
 
 **Processing stages:**
 1. **During sync** (`sync-ordinances.py`, etc.) - Convert to HTML spans
 2. **During custom-list processing** - Apply CSS styling and tooltips
+
+## Inline Images
+
+Documents can include images, diagrams, and visual content. See **[styles/inline-images.md](styles/inline-images.md)** for complete syntax and usage guide.
+
+**Processing:**
+- The `{{image:}}` syntax is processed during document sync
+- Images are stored in `book/images/[document-type]/` directories
+- The `image-processor.py` script handles conversion to proper HTML
 
 ## Cross-Reference System
 
