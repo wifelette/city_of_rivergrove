@@ -1,12 +1,17 @@
 # City of Rivergrove Scripts Organization
 
+## ⚠️ Important: Processing Order Matters!
+
+**See `/docs/build-architecture.md` for complete build system documentation and dependencies.**
+
 ## Quick Start - Main Build Scripts
 
 The most commonly used scripts are in `scripts/build/`:
 
-- **`./scripts/build/update-mdbook.sh`** - Full sync and rebuild of all documents
+- **`./scripts/build/update-mdbook.sh`** - Full sync and rebuild of all documents (recommended)
 - **`./scripts/build/update-single.sh [file]`** - Quick sync and rebuild for a single file
-- **`./scripts/build/update-mdbook-enhanced.sh`** - Full build with enhanced formatting (tables, WHEREAS clauses, etc.)
+- **`./scripts/build/update-mdbook-enhanced.sh`** - Full build with enhanced formatting
+- **`./scripts/build/update-mdbook-airtable.sh`** - Full build with Airtable integration
 
 ## Directory Structure
 
@@ -19,26 +24,30 @@ Main orchestration scripts that tie everything together:
 
 ### preprocessing/
 Scripts that modify source markdown BEFORE mdBook builds:
+- `sync-ordinances.py` - Copy ordinances to src/, remove #, apply form fields
+- `sync-resolutions.py` - Copy resolutions to src/, remove #, apply form fields  
+- `sync-interpretations.py` - Copy interpretations to src/
+- `sync-other.py` - Copy other documents to src/
+- `footnote-preprocessor.py` - Convert footnote syntax to HTML
+- `auto-link-converter.py` - Convert URLs/emails to markdown links
 - `standardize-single.py` - Fix headers and signatures for one file
-- `standardize-headers.py` - Batch fix all ordinance headers
-- `fix-signatures.py` - Batch fix all signature blocks
-- `sync-ordinances.py` - Sync ordinances from source to src/
-- `footnote-preprocessor.py` - Process footnote formatting
+- `remove-manual-links.py` - Remove manual markdown links (one-time cleanup)
 
 ### postprocessing/
 Scripts that enhance HTML AFTER mdBook builds:
-- `custom-list-processor.py` - Standard list formatting
-- `enhanced-custom-processor.py` - Document-specific formatting
-- `fix-numbered-lists.py` - Fix numbered list issues
-- `fix-definition-sublists.py` - Fix definition sublists
-- `clean-table-formatting.py` - Clean table formatting
+- `custom-list-processor.py` - Apply form fields, fix special lists, add tooltips
+- `enhanced-custom-processor.py` - Document-specific formatting (tables, WHEREAS clauses)
+- `fix-numbered-lists.py` - Fix numbered list issues (legacy)
+- `fix-definition-sublists.py` - Fix definition sublists (legacy)
+- `clean-table-formatting.py` - Clean table formatting (legacy)
 
 ### mdbook/
 Scripts for mdBook-specific generation:
+- `add-cross-references.py` - Convert document references to clickable links
 - `generate-summary.py` - Create SUMMARY.md table of contents
-- `add-cross-references.py` - Add cross-references between docs
-- `cross-reference-preprocessor.py` - Process cross-references
-- `generate-relationships.py` - Generate relationship data
+- `generate-relationships.py` - Build document relationship graph
+- `sync-airtable-metadata.py` - Fetch and sync Airtable metadata
+- `cross-reference-preprocessor.py` - mdBook preprocessor for cross-refs (not currently used)
 
 ### utilities/
 Helper and analysis tools:

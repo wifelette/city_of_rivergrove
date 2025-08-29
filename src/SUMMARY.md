@@ -26,6 +26,7 @@
 - [#73 - Provisions (2003)](./ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.md)
 - [#74 - Amendment (2004)](./ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.md)
 - [#76 - Map (2008)](./ordinances/2008-Ord-76-2008-FEMA-Flood-Map.md)
+- [#80 - Hours (2011)](./ordinances/2011-Ord-80-2011-Park-Hours.md)
 - [#81 - Sign Ordinance (2011)](./ordinances/2011-Ord-81-2011-Sign.md)
 - [#88 - Docks Amendment (2017)](./ordinances/2017-Ord-88-2017-Docks.md)
 - [#89 - Amendment (2018)](./ordinances/2018-Ord-89-2018-Tree-Cutting-Amendment.md)

@@ -62,6 +62,10 @@ python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null 
 echo "🔗 Converting URLs and emails to links..."
 python3 scripts/preprocessing/auto-link-converter.py "$DEST_FILE" 2>/dev/null || true
 
+# Add cross-references between documents
+echo "🔗 Adding cross-references..."
+python3 scripts/mdbook/add-cross-references.py
+
 # Form fields are now processed during sync, no separate step needed
 
 # Regenerate SUMMARY.md (needed to include new files)

@@ -113,7 +113,7 @@ This Agreement to Meet Costs of Development Review ("Agreement") is entered into
 
 **WHEREAS**, the parties are uncertain about the total costs of land use planners, engineers or attorneys necessary to review and process the Applicant's Application;
 
-**WHEREAS**, ORS 227.175 authorizes City to charge Applicant for the actual cost of processing Applicant's Application and the City has elected to do so under Ordinance #54-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
+**WHEREAS**, ORS 227.175 authorizes City to charge Applicant for the actual cost of processing Applicant's Application and the City has elected to do so under [Ordinance #54](../ordinances/1989-Ord-54-89C-Land-Development.md)-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
 
 **WHEREAS**, if actual costs are less than the deposit, a refund will be given, if actual costs exceed the deposit, Applicant is responsible for paying the actual costs.
 
@@ -190,7 +190,7 @@ This Agreement to Meet Costs of Appeal ("Agreement") is entered into on the last
 
 **WHEREAS**, the parties are uncertain about the total costs of land use planners, engineers or attorneys necessary to review and process the Appeal;
 
-**WHEREAS**, ORS 227.175 authorizes City to charge Appellants for the actual cost of processing Appeals and the City has elected to do so under Ordinance #54-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
+**WHEREAS**, ORS 227.175 authorizes City to charge Appellants for the actual cost of processing Appeals and the City has elected to do so under [Ordinance #54](../ordinances/1989-Ord-54-89C-Land-Development.md)-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
 
 **WHEREAS**, if actual costs are less than the deposit, a refund will be given.
 

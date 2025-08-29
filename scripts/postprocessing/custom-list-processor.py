@@ -175,6 +175,21 @@ def process_roman_lists(html_content):
             if ol.contents:
                 pre.replace_with(ol)
     
+    # Also look for ordered lists where items start with (i), (ii), etc.
+    for ol in soup.find_all('ol'):
+        has_roman = False
+        for li in ol.find_all('li', recursive=False):
+            # Get the text content
+            text = li.get_text(strip=True)
+            # Check if it starts with a roman numeral in parentheses
+            if re.match(r'^\([ivx]+\)', text, re.IGNORECASE):
+                has_roman = True
+                break
+        
+        # If this list has roman numerals, add special class
+        if has_roman:
+            ol['class'] = ol.get('class', []) + ['roman-parenthetical-list']
+    
     return str(soup)
 
 def add_custom_css(html_content):
@@ -217,6 +232,22 @@ def add_custom_css(html_content):
         .roman-marker {
             font-weight: normal;
             margin-right: 0.5em;
+        }
+        
+        /* Roman numeral lists that shouldn't show automatic numbering */
+        .roman-parenthetical-list {
+            list-style: none !important;
+            counter-reset: none !important;
+            padding-left: 2em;
+        }
+        
+        .roman-parenthetical-list > li {
+            list-style: none !important;
+            position: relative;
+        }
+        
+        .roman-parenthetical-list > li::before {
+            content: none !important;
         }
         
         /* Special list that starts at non-standard number (e.g., 1.4) */
@@ -369,14 +400,15 @@ def add_custom_css(html_content):
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease-in;
-            transition-delay: 0.5s;
+            transition: opacity 0.15s ease-in-out;
+            transition-delay: 0.2s;
             margin-top: 4px;
             z-index: 100000;
         }
         
         .form-field-filled:hover::after {
             opacity: 1;
+            transition-delay: 0.3s;
         }
         
         /* Special positioning for tooltips in headings to avoid clipping */

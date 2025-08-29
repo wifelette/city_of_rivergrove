@@ -117,20 +117,30 @@ python3 scripts/preprocessing/footnote-preprocessor.py
 echo "  ✓ Footnotes processed"
 
 echo ""
-echo "📋 Step 3: Regenerating SUMMARY.md..."
+echo "🔗 Step 3: Converting URLs and emails to links..."
+python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
+echo "  ✓ Links converted"
+
+echo ""
+echo "🔗 Step 4: Adding cross-references between documents..."
+python3 scripts/mdbook/add-cross-references.py
+echo "  ✓ Cross-references added"
+
+echo ""
+echo "📋 Step 5: Regenerating SUMMARY.md..."
 python3 scripts/mdbook/generate-summary.py
 echo "  ✓ Table of contents updated"
 
 echo ""
-echo "📚 Step 4: Building mdBook..."
+echo "📚 Step 6: Building mdBook..."
 mdbook build
 
 echo ""
-echo "🎨 Step 5: Applying standard list formatting..."
+echo "🎨 Step 7: Applying standard list formatting..."
 python3 scripts/postprocessing/custom-list-processor.py
 
 echo ""
-echo "✨ Step 6: Applying enhanced document-specific formatting..."
+echo "✨ Step 8: Applying enhanced document-specific formatting..."
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     python3 scripts/postprocessing/enhanced-custom-processor.py
 else

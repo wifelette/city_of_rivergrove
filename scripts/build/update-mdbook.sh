@@ -24,8 +24,17 @@ echo "  🔗 Converting URLs and emails to links..."
 python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
 echo "  ✓ Links converted"
 
+echo "  🔗 Adding cross-references between documents..."
+python3 scripts/mdbook/add-cross-references.py
+echo "  ✓ Cross-references added"
+
 echo "  📋 Regenerating SUMMARY.md..."
-python3 scripts/mdbook/generate-summary.py
+# Use the enhanced version if it exists, otherwise fall back to standard
+if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ]; then
+    python3 scripts/mdbook/generate-summary-with-airtable.py
+else
+    python3 scripts/mdbook/generate-summary.py
+fi
 echo "  ✓ Table of contents updated"
 
 echo "  🔗 Generating relationships.json..."

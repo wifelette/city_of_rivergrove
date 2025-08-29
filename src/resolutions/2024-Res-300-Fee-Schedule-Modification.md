@@ -1,9 +1,9 @@
 # Resolution NO. 300 – 2024
 
-A resolution modifying the fee schedule of resolution 259-2018. This resolution changes exhibit 1 of resolution 259-2018. All fees listed on this resolution shall take effect April 9th, 2024.
+A resolution modifying the fee schedule of [resolution 259](../resolutions/2018-Res-259-Planning-Development-Fees.md)-2018. This resolution changes exhibit 1 of [resolution 259](../resolutions/2018-Res-259-Planning-Development-Fees.md)-2018. All fees listed on this resolution shall take effect April 9th, 2024.
 
 ## Exhibit 1
-(replaces exhibit 1 in resolution 259-2018 - previous fees are listed in red)
+(replaces exhibit 1 in [resolution 259](../resolutions/2018-Res-259-Planning-Development-Fees.md)-2018 - previous fees are listed in red)
 
 ### Fees
 

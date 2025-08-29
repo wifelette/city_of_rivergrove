@@ -85,6 +85,10 @@ When processing a document:
 - **Preserve all metadata**: Stamps, signatures, dates, handwritten notes
 - **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
 - **Markdown formatting**: Use headers, lists, and clear structure
+- **Cross-references**: Keep document references as plain text (e.g., "Ordinance #52", "Resolution #22")
+  - NEVER add manual markdown links for cross-references
+  - The build system automatically converts these to clickable links
+  - See `docs/markdown-conventions.md` for patterns that are detected
 
 #### 3.1 Signature Section Formatting
 

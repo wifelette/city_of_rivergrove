@@ -1,14 +1,14 @@
 {
   "metadata": {
     "cache_version": "1.1",
-    "last_full_sync": "2025-08-29T11:39:00.023792",
-    "last_updated": "2025-08-29T11:49:30.534542",
-    "total_records": 38,
-    "last_partial_update": "2025-08-29T11:49:30.534441",
+    "last_full_sync": "2025-08-29T15:35:20.968210",
+    "last_updated": "2025-08-29T15:38:11.540167",
+    "total_records": 39,
+    "last_partial_update": "2025-08-29T15:38:11.540120",
     "incremental_updates": [
       {
-        "filename": "2001-Ord-#70-2001-WQRA.md",
-        "updated_at": "2025-08-29T11:49:30.534444"
+        "filename": "1978-Ord-#28-Parks.md",
+        "updated_at": "2025-08-29T15:38:11.540122"
       }
     ]
   },
@@ -510,6 +510,22 @@
       "digitized": true,
       "passed_date": "1998-06-01",
       "last_updated": "2025-08-29T17:21:31.000Z"
+    },
+    "2011-Ord-#80-2011-Park-Hours": {
+      "airtable_id": "recs6BpCugW94iEKX",
+      "display_name": "Ordinance #80-2011",
+      "short_title": "Park Hours",
+      "type": "ordinance",
+      "year": 2011,
+      "doc_number": "80-2011",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2011-Ord-%2380-2011-Park-Hours.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2011-Ord-%2380-2011-Park-Hours.pdf",
+      "filename": "2011-Ord-%2380-2011-Park-Hours.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "2011-07-14",
+      "last_updated": "2025-08-29T22:19:42.000Z"
     },
     "2011-Ord-#81-2011-Sign": {
       "airtable_id": "recv41BWUGbLej49o",

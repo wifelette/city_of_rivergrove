@@ -18,7 +18,7 @@ A searchable, centralized repository of all City of Rivergrove ordinances, resol
 
 3. **Sync changes**:
    ```bash
-   ./update-mdbook.sh
+   ./scripts/build/update-mdbook.sh
    ```
 
 4. **View at**: http://localhost:3000
@@ -58,8 +58,9 @@ All documents follow consistent formatting:
 
 ## Scripts
 
-- **`./update-mdbook.sh`** - Safe sync and rebuild (recommended)
-- **`./sync-ordinances.py`** - Manual sync only
-- **`./watch-and-sync.py`** - Auto file watcher (use with caution)
+- **`./scripts/build/update-mdbook.sh`** - Safe sync and rebuild (recommended)
+- **`./scripts/build/update-single.sh`** - Update single file (faster)
+- **`./scripts/preprocessing/sync-ordinances.py`** - Manual sync only
+- **`./scripts/utilities/watch-and-sync.py`** - Auto file watcher (use with caution)
 
 For detailed workflow information, see [digitization-guide.md](digitization-guide.md).

@@ -5,28 +5,21 @@ Quick reference for starting new Claude sessions on the Rivergrove digitization 
 ## Claude Code Startup
 
 ```
-Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing CLAUDE.md and docs/digitization-guide.md to understand the workflow and conventions.
+Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing:
+1. CLAUDE.md - workflow and conventions
+2. docs/digitization-guide.md - complete project guide
+3. docs/build-architecture.md - build system and script dependencies
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
 Today I'll be working on: [specify which ordinances/resolutions/interpretations]
 
-Current State:
-  - Navigation enhancement script (navigation-working.js) has clean title
-  abbreviation code
-  - Script is running but titles need correct format detection
-  - Check browser console for "Processing:" logs to see actual title format
-
-  Next Steps:
-  1. Debug why titles aren't being parsed (check console logs)
-  2. Continue navigation enhancement from Issue #10
-  3. Implement right panel for document relationships
-  4. Complete view controls (Numerical/Chronological/Topical)
-
-  Key Files:
-  - /navigation-working.js - Main navigation enhancement
-  - /book/navigation-controls.js - Live version in mdBook
-  - Issue #10 tracks remaining navigation work
+Key Reminders:
+- NEVER add manual markdown links for cross-references (e.g., [Ordinance #52](../))
+- Keep document references as plain text - the build system handles linking
+- Use ./scripts/build/update-single.sh for single file rebuilds
+- Use ./scripts/build/update-mdbook.sh for full rebuilds
+- If mdBook serve is running, manually run custom-list-processor.py to restore form fields
 ```
 
 ## Claude Desktop Startup
@@ -45,6 +38,7 @@ Your Mission:
    • Search existing entries FIRST (try multiple ID formats: #XX, Ordinance #XX, etc.)
    • Verify PDF page order before transcribing
    • Transcribe as-is (no edits without permission)
+   • Keep document references as plain text (e.g., "Ordinance #52") - NO manual links
    • Create/update Airtable records with proper summaries
    • Use established naming conventions
    • Create an entry in the new Public Metadata table that links to the new Ordinance/Resolution/etc, with the Publication Status of Draft

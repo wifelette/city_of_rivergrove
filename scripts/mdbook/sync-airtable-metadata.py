@@ -483,15 +483,23 @@ class AirtableSync:
         
         # Try to extract number and year
         year_match = re.match(r'^(\d{4})', name)
-        num_match = re.search(r'#?(\d+)', name)
+        
+        # Look for number after Ord/Res, not just any digits
+        # Pattern: YYYY-Ord-#NUMBER-... or YYYY-Res-#NUMBER-...
+        if 'Ord' in name or 'Res' in name:
+            num_match = re.search(r'(?:Ord|Res)-#?(\d+(?:-\d+)?[A-Z]?)', name)
+        else:
+            num_match = re.search(r'#?(\d+)', name)
         
         if year_match and num_match:
             year = year_match.group(1)
             num = num_match.group(1)
             
             # Get topic from remaining parts
-            topic_parts = parts[3:] if len(parts) > 3 else parts[2:]
-            topic = ' '.join(topic_parts).replace('-', ' ').title()
+            # Find where the number ends to get the topic
+            num_end_idx = name.find(num) + len(num)
+            remaining = name[num_end_idx:].lstrip('-')
+            topic = remaining.replace('-', ' ').title() if remaining else "Unknown"
             
             return f"{doc_type} #{num} - {topic} ({year})"
         

@@ -10,11 +10,11 @@
 
 ---
 
-**FIRST READING** May 5, 1978
+**FIRST READING** <span class="form-field-filled" data-tooltip="Field filled in on source doc">May 5, 1978</span>
 
-**SECOND READING** June 12, 1978
+**SECOND READING** <span class="form-field-filled" data-tooltip="Field filled in on source doc">June 12, 1978</span>
 
-**ADOPTED** by the Rivergrove City Council this 12 day of June, 1978
+**ADOPTED** by the Rivergrove City Council this <span class="form-field-filled" data-tooltip="Field filled in on source doc">12</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">June, 1978</span>
 
 [Signature]
 John Nelson, Mayor
@@ -26,10 +26,4 @@ Rosalie Morrison, City Recorder
 
 ---
 
-## Document Notes
-
-**Exhibit B** (transcribed above): Fully executed ordinance changing Park Advisory Council from 3 to 5 members, signed and adopted June 12, 1978.
-
-**Exhibit C** (alternative version): Draft version proposing 7 members instead of 5, with first reading noted as April 10, 1978, but second reading and adoption dates left blank. Contains handwritten note that appears to read "changed minutes & date publication March ?, 1978".
-
-**Context**: This ordinance amends the original [Ordinance #16 (1974)](../ordinances/1974-Ord-16-Parks.md) which established a 3-member Park Advisory Council.
+**NOTE**: A version of this Ordinance, stipulating 7 members of the council, was reviewed (first reading) on April 10, 1978, and then the version above replaced it and was executed.

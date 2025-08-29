@@ -2,7 +2,7 @@
 
 ## Important Context Files to Read
 
-Please read these two files for context on this project and how to work with Leah:
+Please read these files for context on this project and how to work with Leah:
 
 1. **Project-specific guide**: Read the `docs/digitization-guide.md` file in this repository for details about the Rivergrove ordinance digitization project, including:
 
@@ -10,7 +10,13 @@ Please read these two files for context on this project and how to work with Lea
    - Naming conventions for documents
    - Claude Code workflow for repository management
 
-2. **General working preferences**: Read `/Users/leahsilber/Github/daily_tasks/CLAUDE.md` for Leah's general preferences when working with Claude Code, including:
+2. **Build system architecture**: Read `docs/build-architecture.md` for understanding the processing pipeline:
+
+   - Script dependencies and order
+   - How cross-references work
+   - Common issues and solutions
+
+3. **General working preferences**: Read `/Users/leahsilber/Github/daily_tasks/CLAUDE.md` for Leah's general preferences when working with Claude Code, including:
    - Communication style preferences
    - How to handle errors and issues
    - General productivity tips
@@ -19,10 +25,13 @@ Please read these two files for context on this project and how to work with Lea
 
 **When Leah says "process [document name]", follow ALL these steps:**
 
-### Step 1: Locate the Document
+### Step 1: Find Document in Public Metadata
 
-- Find the .md file in the appropriate folder (Resolutions/, Ordinances/, Interpretations/)
-- Note the document type, year, number, and topic (for naming verification)
+- Use MCP tool to search: `daily-tasks:council_public_metadata_list` with search parameter
+- Try multiple search formats: document number (e.g., "52"), full reference (e.g., "Ordinance 52"), or topic keywords
+- The record will show document type, year, number, topic, and processing status
+- Use this information to locate the .md file in the appropriate folder (Resolutions/, Ordinances/, Interpretations/)
+- No need to read the full document just to get basic metadata
 
 ### Step 2: Run Standardization Script
 
@@ -64,13 +73,16 @@ Please read these two files for context on this project and how to work with Lea
 ### Step 7: Update mdBook
 
 **Option A - Single file (faster):**
+
 - Run `./scripts/build/update-single.sh [path/to/file.md]` to sync just this file and rebuild
 - Example: `./scripts/build/update-single.sh Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
 **Option B - Full sync (if multiple files changed):**
+
 - Run `./scripts/build/update-mdbook.sh` to sync ALL files to src/ folders and rebuild
 
 **IMPORTANT - mdBook serve limitations:**
+
 - If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
 - This means form fields (blue filled fields, blank underlines) and other custom formatting will disappear
 - To see the REAL appearance with all formatting:
@@ -81,11 +93,20 @@ Please read these two files for context on this project and how to work with Lea
 
 ### Step 8: Update Issue #3
 
-- Add a comment to issue #3 noting the document has been processed
-- Format: "✅ [Document Name] has been added to the repository"
+- Update the checklist in the body of issue #3 noting the document has been processed; if it's already on the list, check it off, link to the commit, and move it to the appropriate section of the completed section below. If it wasn't on the list, add it to the completed items section, also with a commit link.
+
+## Cross-References
+
+**IMPORTANT**: Never add manual markdown links for document references in source files!
+
+- Keep references as plain text (e.g., "Ordinance #52", "Resolution #22")
+- The build system automatically converts these to clickable links
+- Manual links will be removed if found
+- See `docs/markdown-conventions.md` for patterns that are detected
 
 ## Key Reminders
 
 - No Claude attribution in commit messages
 - Work is part of digitizing City of Rivergrove's ordinances, resolutions, and interpretations
 - This applies to ALL document types (Ordinances, Resolutions, Interpretations)
+- Never add manual cross-reference links - let the build system handle them

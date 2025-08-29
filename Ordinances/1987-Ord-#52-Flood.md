@@ -1,10 +1,10 @@
-# ORDINANCE # 52
+# ORDINANCE #{{filled:52}}
 
 **AN ORDINANCE ADOPTING THE MODEL FLOOD DAMAGE PREVENTION ORDINANCE OF THE FEDERAL EMERGENCY MANAGEMENT AGENCY (FEMA)**
 
-**Public Hearing:** September 21, 1987
+**Public Hearing:** {{filled:September 21, 1987}}
 
-**Adopted by Rivergrove City Council:** September 21, 1987
+**Adopted by Rivergrove City Council:** {{filled:September 21, 1987}}
 
 [Signature], Mayor Neil McFarlane
 
@@ -22,11 +22,11 @@
 
 #### 1.1 STATUTORY AUTHORIZATION
 
-The Legislature of the State of **Oregon** has delegated the responsibility to local governmental units to adopt regulations designed to promote the public health, safety, and general welfare of its citizenry. Therefore, the **City Council of Rivergrove, Oregon**, does ordain as follows:
+The Legislature of the State of {{filled:Oregon}} has delegated the responsibility to local governmental units to adopt regulations designed to promote the public health, safety, and general welfare of its citizenry. Therefore, the {{filled:City Council}} of {{filled:Rivergrove, Oregon}}, does ordain as follows:
 
 #### 1.2 FINDINGS OF FACT
 
-(1) The flood hazard areas of **Rivergrove** are subject to periodic inundation which results in loss of life and property, health, and safety hazards, disruption of commerce and governmental services, extraordinary public expenditures for flood protection and relief, and impairment of the tax base, all of which adversely affect the public health, safety, and general welfare.
+(1) The flood hazard areas of {{filled:Rivergrove}} are subject to periodic inundation which results in loss of life and property, health, and safety hazards, disruption of commerce and governmental services, extraordinary public expenditures for flood protection and relief, and impairment of the tax base, all of which adversely affect the public health, safety, and general welfare.
 
 (2) These flood losses are caused by the cumulative effect of obstructions in areas of special flood hazards which increase flood heights and velocities, and when inadequately anchored, damage uses in other areas. Uses that are inadequately floodproofed, elevated, or otherwise protected from flood damage also contribute to the flood loss.
 
@@ -61,7 +61,7 @@ In order to accomplish its purposes, this ordinance includes methods and provisi
 
 Unless specifically defined below, words or phrases used in this ordinance shall be interpreted so as to give them the meaning they have in common usage and to give this ordinance its most reasonable application.
 
-**"APPEAL"** means a request for a review of the **City Council's** interpretation of any provision of this ordinance or a request for a variance.
+**"APPEAL"** means a request for a review of the {{filled:City Council's}} interpretation of any provision of this ordinance or a request for a variance.
 
 **"AREA OF SHALLOW FLOODING"** means a designated AO or AH Zone on the Flood Insurance Rate Map (FIRM). The base flood depths range from one to three feet; a clearly defined channel does not exist; the path of flooding is unpredictable and indeterminate; and, velocity flow may be evident. AO is characterized as sheet flow and AH indicates ponding.
 
@@ -111,15 +111,15 @@ The term does not, however, include either:
 
 #### 3.1 LANDS TO WHICH THIS ORDINANCE APPLIES
 
-This ordinance shall apply to all areas of special flood hazards within the jurisdiction of **City of Rivergrove**.
+This ordinance shall apply to all areas of special flood hazards within the jurisdiction of {{filled:City of Rivergrove}}.
 
 #### 3.2 BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD
 
-The areas of special flood hazard identified by the Federal Insurance Administration in a scientific and engineering report entitled "The Flood Insurance Study for the Rivergrove," dated **August 4, 1987** with accompanying Flood Insurance Maps is hereby adopted by reference and declared to be a part of this ordinance. The Flood Insurance Study is on file at **4640 S.W. Dogwood Dr**.
+The areas of special flood hazard identified by the Federal Insurance Administration in a scientific and engineering report entitled "The Flood Insurance Study for the {{filled:Rivergrove}}," dated {{filled:August 4}}, 19{{filled:87}} with accompanying Flood Insurance Maps is hereby adopted by reference and declared to be a part of this ordinance. The Flood Insurance Study is on file at {{filled:4640 S.W. Dogwood Dr}}.
 
 #### 3.3 PENALTIES FOR NONCOMPLIANCE
 
-No structure or land shall hereafter be constructed, located, extended, converted, or altered without full compliance with the terms of this ordinance and other applicable regulations. Violation of the provisions of this ordinance by failure to comply with any of its requirements (including violations of conditions and safeguards established in connection with conditions) shall constitute a misdemeanor. Any person who violates this ordinance or fails to comply with any of its requirements shall upon conviction thereof be fined not more than **$500.00** or imprisoned for not more than **30** days, or both, for each violation, and in addition shall pay all costs and expenses involved in the case. Nothing herein contained shall prevent **Rivergrove** from taking such other lawful action as is necessary to prevent or remedy any violation.
+No structure or land shall hereafter be constructed, located, extended, converted, or altered without full compliance with the terms of this ordinance and other applicable regulations. Violation of the provisions of this ordinance by failure to comply with any of its requirements (including violations of conditions and safeguards established in connection with conditions) shall constitute a misdemeanor. Any person who violates this ordinance or fails to comply with any of its requirements shall upon conviction thereof be fined not more than {{filled:$500.00}} or imprisoned for not more than {{filled:30}} days, or both, for each violation, and in addition shall pay all costs and expenses involved in the case. Nothing herein contained shall prevent {{filled:Rivergrove}} from taking such other lawful action as is necessary to prevent or remedy any violation.
 
 #### 3.4 ABROGATION AND GREATER RESTRICTIONS
 
@@ -134,7 +134,7 @@ In the interpretation and application of this ordinance, all provisions shall be
 
 #### 3.6 WARNING AND DISCLAIMER OF LIABILITY
 
-The degree of flood protection required by this ordinance is considered reasonable for regulatory purposes and is based on scientific and engineering considerations. Larger floods can and will occur on rare occasions. Flood heights may be increased by man-made or natural causes. This ordinance does not imply that land outside the areas of special flood hazards or uses permitted within such areas will be free from flooding or flood damages. This ordinance shall not create liability on the part of **Rivergrove**, any officer or employee thereof, or the Federal Insurance Administration, for any flood damages that result from reliance on this ordinance or any administrative decision lawfully made hereunder.
+The degree of flood protection required by this ordinance is considered reasonable for regulatory purposes and is based on scientific and engineering considerations. Larger floods can and will occur on rare occasions. Flood heights may be increased by man-made or natural causes. This ordinance does not imply that land outside the areas of special flood hazards or uses permitted within such areas will be free from flooding or flood damages. This ordinance shall not create liability on the part of {{filled:Rivergrove}}, any officer or employee thereof, or the Federal Insurance Administration, for any flood damages that result from reliance on this ordinance or any administrative decision lawfully made hereunder.
 
 ---
 
@@ -150,20 +150,20 @@ A development permit shall be obtained before construction or development begins
 
 #### 4.1-2 Application for Development Permit
 
-Application for a development permit shall be made on forms furnished by the **City Recorder** and may include, but not be limited to, plans in duplicate drawn to scale showing the nature, location, dimensions, and elevations of the area in question; existing or proposed structures, fill, storage of materials, drainage facilities, and the location of the foregoing. Specifically, the following information is required:
+Application for a development permit shall be made on forms furnished by the {{filled:City Recorder}} and may include, but not be limited to, plans in duplicate drawn to scale showing the nature, location, dimensions, and elevations of the area in question; existing or proposed structures, fill, storage of materials, drainage facilities, and the location of the foregoing. Specifically, the following information is required:
 
 (1) Elevation in relation to mean sea level, of the lowest floor (including basement) of all structures;
 (2) Elevation in relation to mean sea level to which any structure has been floodproofed;
 (3) Certification by a registered professional engineer or architect that the floodproofing methods for any nonresidential structure meet the floodproofing criteria in Section 5.2-2; and
 (4) Description of the extent to which a watercourse will be altered or relocated as a result of proposed development.
 
-#### 4.2 DESIGNATION OF THE **PLANNING COMMISSION**
+#### 4.2 DESIGNATION OF THE {{filled:PLANNING COMMISSION}}
 
-The **Planning Commission** is hereby appointed to administer and implement this ordinance by granting or denying development permit applications in accordance with its provisions.
+The {{filled:Planning Commission}} is hereby appointed to administer and implement this ordinance by granting or denying development permit applications in accordance with its provisions.
 
-#### 4.3 DUTIES AND RESPONSIBILITIES OF THE **PLANNING COMMISSION**
+#### 4.3 DUTIES AND RESPONSIBILITIES OF THE {{filled:PLANNING COMMISSION}}
 
-Duties of the **Planning Commission** shall include, but not be limited to:
+Duties of the {{filled:Planning Commission}} shall include, but not be limited to:
 
 #### 4.3-1 Permit Review
 
@@ -173,7 +173,7 @@ Duties of the **Planning Commission** shall include, but not be limited to:
 
 #### 4.3-2 Use of Other Base Flood Data
 
-When base flood elevation data has not been provided in accordance with Section 3.2, BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD, the **Planning Commission** shall obtain, review, and reasonably utilize any base flood elevation and floodway data available from a federal, State or other source, in order to administer Sections 5.2, SPECIFIC STANDARDS, and 5.3 FLOODWAYS.
+When base flood elevation data has not been provided in accordance with Section 3.2, BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD, the {{filled:Planning Commission}} shall obtain, review, and reasonably utilize any base flood elevation and floodway data available from a federal, State or other source, in order to administer Sections 5.2, SPECIFIC STANDARDS, and 5.3 FLOODWAYS.
 
 #### 4.3-3 Information to be Obtained and Maintained
 
@@ -185,7 +185,7 @@ When base flood elevation data has not been provided in accordance with Section 
 
 #### 4.3-4 Alteration of Watercourses
 
-(1) Notify adjacent communities and the **Dept. of Land Conservation and Development** prior to any alteration or relocation of a watercourse, and submit evidence of such notification to the Federal Insurance Administration.
+(1) Notify adjacent communities and the {{filled:Dept. of Land Conservation and Development}} prior to any alteration or relocation of a watercourse, and submit evidence of such notification to the Federal Insurance Administration.
 (2) Require that maintenance is provided within the altered or relocated portion of said watercourse so that the flood carrying capacity is not diminished.
 
 #### 4.3-5 Interpretation of FIRM Boundaries
@@ -196,10 +196,10 @@ Make interpretations where needed, as to exact location of the boundaries of the
 
 #### 4.4-1 Appeal Board
 
-(1) The **City Council**, as established by Rivergrove shall hear and decide appeals and requests for variances from the requirements of this ordinance.
-(2) The **City Council** shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
-(3) Those aggrieved by the decision of the **City Council**, or any taxpayer, may appeal such decision to the **Land Use Board of Appeals**, as provided in State law.
-(4) In passing upon such applications, the **City Council** shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
+(1) The {{filled:City Council}} as established by {{filled:Rivergrove}} shall hear and decide appeals and requests for variances from the requirements of this ordinance.
+(2) The {{filled:City Counci}} shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
+(3) Those aggrieved by the decision of the {{filled:City Council}} or any taxpayer, may appeal such decision to the {{filled:Land Use Board of Appeals}}, as provided in State law.
+(4) In passing upon such applications, the {{filled:City Counci}} shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
 
     (i) the danger that materials may be swept onto other lands to the injury of others;
     (ii) the danger to life and property due to flooding or erosion damage;
@@ -213,8 +213,8 @@ Make interpretations where needed, as to exact location of the boundaries of the
     (x) the expected heights, velocity, duration, rate of rise, and sediment transport of the flood waters and the effects of wave action, if applicable, expected at the site; and,
     (xi) the costs of providing governmental services during and after flood conditions, including maintenance and repair of public utilities and facilities such as sewer, gas, electrical, and water systems, and streets and bridges.
 
-(5) Upon consideration of the factors of Section 4.4-1(4) and the purposes of this ordinance, the **City Council** may attach such conditions to the granting of variances as it deems necessary to further the purposes of this ordinance.
-(6) The **City Recorder** shall maintain the records of all appeal actions and report any variances to the Federal Insurance Administration upon request.
+(5) Upon consideration of the factors of Section 4.4-1(4) and the purposes of this ordinance, the {{filled:City Council}} may attach such conditions to the granting of variances as it deems necessary to further the purposes of this ordinance.
+(6) The {{filled:City Recorder}} shall maintain the records of all appeal actions and report any variances to the Federal Insurance Administration upon request.
 
 #### 4.4-2 Conditions for Variances
 

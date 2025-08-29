@@ -22,10 +22,13 @@ def build_document_map():
             filename = file.stem
             
             # Parse different filename patterns
-            if match := re.match(r'(\d{4})-Ord-(\d+(?:-\d+)?(?:[A-Z])?)', filename):
+            # Handle patterns like: 1978-Ord-28-Parks, 1989-Ord-54-89C-Land-Development, etc.
+            if match := re.match(r'(\d{4})-Ord-(?:#)?(\d+(?:-\d+)?(?:[A-Z])?)', filename):
                 year, ord_num = match.groups()
-                # Remove leading zeros
-                ord_num = ord_num.lstrip('0')
+                # Remove leading zeros but preserve suffixes like -89C
+                parts = ord_num.split('-')
+                parts[0] = parts[0].lstrip('0')
+                ord_num = '-'.join(parts)
                 
                 # Add various reference patterns (all lowercase for matching)
                 # The regex search is case-insensitive, so we only need lowercase keys
@@ -35,13 +38,18 @@ def build_document_map():
                 doc_map[f"ordinance {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 doc_map[f"ord. #{ord_num_lower}"] = f"../ordinances/{filename}.md"
                 doc_map[f"ord #{ord_num_lower}"] = f"../ordinances/{filename}.md"
+                doc_map[f"ord. {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 doc_map[f"ordinance no. {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 
-                # Add year-specific variations if applicable
+                # Add year-specific variations if applicable (e.g., 54-89 becomes just 54)
                 if "-" in ord_num_lower:
                     base_num = ord_num_lower.split("-")[0]
-                    doc_map[f"ordinance #{base_num}"] = f"../ordinances/{filename}.md"
-                    doc_map[f"ordinance {base_num}"] = f"../ordinances/{filename}.md"
+                    # Only add base number if it's not already added
+                    if f"ordinance #{base_num}" not in doc_map:
+                        doc_map[f"ordinance #{base_num}"] = f"../ordinances/{filename}.md"
+                        doc_map[f"ordinance {base_num}"] = f"../ordinances/{filename}.md"
+                        doc_map[f"ord. #{base_num}"] = f"../ordinances/{filename}.md"
+                        doc_map[f"ord #{base_num}"] = f"../ordinances/{filename}.md"
     
     # Process resolutions
     res_dir = src_dir / "resolutions"
@@ -60,18 +68,8 @@ def build_document_map():
                 doc_map[f"res. #{res_num}"] = f"../resolutions/{filename}.md"
                 doc_map[f"res #{res_num}"] = f"../resolutions/{filename}.md"
     
-    # Add some known references to documents not yet digitized
-    # These will become valid links once the documents are added
-    doc_map["ordinance #70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
-    doc_map["ordinance 70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
-    doc_map["ordinance no. 70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
-    doc_map["ord. #70-2001"] = "../ordinances/2001-Ord-70-2001-WQRA.md"
-    
-    # Add specific mapping for 54-89 with -C suffix
-    doc_map["ordinance #54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
-    doc_map["ordinance 54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
-    doc_map["ordinance no. 54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
-    doc_map["ord. #54-89"] = "../ordinances/1989-Ord-54-89-C-Land-Development.md"
+    # The dynamic building above should handle all cases now
+    # No need for hardcoded references
     
     return doc_map
 
@@ -156,8 +154,9 @@ def process_markdown_files():
     print(f"\nProcessed {processed_count} files, added {link_count} total cross-reference links")
 
 if __name__ == "__main__":
-    # Change to repository root
+    # Change to repository root (two levels up from scripts/mdbook/)
     script_dir = Path(__file__).parent
-    os.chdir(script_dir)
+    repo_root = script_dir.parent.parent
+    os.chdir(repo_root)
     
     process_markdown_files()

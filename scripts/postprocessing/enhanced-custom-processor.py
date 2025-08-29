@@ -161,22 +161,29 @@ class DocumentProcessor:
                     is_fee_schedule = True
                     break
             
-            # Wrap table in responsive container
-            wrapper = soup.new_tag('div', attrs={'class': 'table-wrapper'})
-            if is_fee_schedule:
-                wrapper['class'] = wrapper.get('class', []) + ['fee-schedule-table']
+            # Check if table is already wrapped
+            parent = table.parent
+            if not (parent and parent.name == 'div' and 'table-wrapper' in parent.get('class', [])):
+                # Wrap table in responsive container only if not already wrapped
+                wrapper = soup.new_tag('div', attrs={'class': 'table-wrapper'})
+                if is_fee_schedule:
+                    wrapper['class'] = wrapper.get('class', []) + ['fee-schedule-table']
+                
+                table.wrap(wrapper)
             
-            table.wrap(wrapper)
-            
-            # Add striped rows class
-            table['class'] = table.get('class', []) + ['formatted-table']
+            # Add striped rows class if not already present
+            existing_classes = table.get('class', [])
+            if 'formatted-table' not in existing_classes:
+                table['class'] = existing_classes + ['formatted-table']
             
             # Process table footnotes
             # Look for superscript numbers in cells
             for cell in table.find_all(['td', 'th']):
                 text = cell.get_text()
                 if re.search(r'[¹²³⁴⁵]', text) or re.search(r'\*+\d*', text):
-                    cell['class'] = cell.get('class', []) + ['has-footnote']
+                    existing_classes = cell.get('class', [])
+                    if 'has-footnote' not in existing_classes:
+                        cell['class'] = existing_classes + ['has-footnote']
         
         return soup
     
@@ -218,22 +225,8 @@ class DocumentProcessor:
                 if new_elem:
                     p.replace_with(new_elem)
         
-        # Process [FILLED:text] markers - convert to styled filled fields
-        for p in soup.find_all(['p', 'li', 'td', 'div']):
-            html = str(p)
-            
-            # Pattern for filled field markers
-            if '[FILLED:' in html:
-                # Replace filled field markers with styled spans
-                pattern = r'\[FILLED:([^\]]+)\]'
-                replacement = r'<span class="form-field-filled" title="Hand-filled in source document">\1</span>'
-                html = re.sub(pattern, replacement, html)
-                
-                # Parse the modified HTML and replace the element
-                new_elem = BeautifulSoup(html, 'html.parser')
-                new_elem = new_elem.find(p.name)  # Get the same type of element
-                if new_elem:
-                    p.replace_with(new_elem)
+        # Form field processing is handled by sync scripts
+        # (no processing needed here)
         
         return soup
     
@@ -306,7 +299,7 @@ class DocumentProcessor:
             }
             
             .formatted-table thead {
-                background: linear-gradient(135deg, #0969da 0%, #0856b6 100%);
+                background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
                 color: white;
             }
             
@@ -314,7 +307,7 @@ class DocumentProcessor:
                 padding: 12px 16px;
                 text-align: left;
                 font-weight: 600;
-                border-bottom: 2px solid #0856b6;
+                border-bottom: 2px solid #495057;
             }
             
             .formatted-table td {
@@ -391,52 +384,7 @@ class DocumentProcessor:
                 margin-left: 1em;
                 margin-top: 0.5em;
             }
-            
-            /* Form Fields - Blank fields */
-            .form-field-blank {
-                display: inline-block;
-                border-bottom: 1px solid #999;
-                min-width: 60px;
-                height: 1.2em;
-                margin: 0 2px;
-                position: relative;
-                cursor: help;
-                vertical-align: baseline;
-            }
-            
-            .form-field-blank-short {
-                min-width: 40px;
-            }
-            
-            .form-field-blank-medium {
-                min-width: 80px;
-            }
-            
-            .form-field-blank-long {
-                min-width: 120px;
-            }
-            
-            .form-field-blank:hover {
-                background-color: #f0f0f0;
-                border-bottom-color: #666;
-            }
-            
-            /* Form Fields - Filled fields */
-            .form-field-filled {
-                display: inline;
-                padding: 2px 4px;
-                background-color: #e3f2fd;
-                border-bottom: 2px solid #1976d2;
-                color: #0d47a1;
-                font-weight: 500;
-                cursor: help;
-                border-radius: 2px 2px 0 0;
-            }
-            
-            .form-field-filled:hover {
-                background-color: #bbdefb;
-                border-bottom-color: #0d47a1;
-            }
+            /* Form field styles are handled by custom-list-processor.py */
             
             /* Print styles */
             @media print {
@@ -453,17 +401,6 @@ class DocumentProcessor:
                 .definition-item,
                 .section-quote {
                     page-break-inside: avoid;
-                }
-                
-                .form-field-blank {
-                    border-bottom: 1px solid #666;
-                    background: none;
-                }
-                
-                .form-field-filled {
-                    background-color: #f0f0f0;
-                    border-bottom: 1px solid #333;
-                    font-weight: bold;
                 }
             }
             """

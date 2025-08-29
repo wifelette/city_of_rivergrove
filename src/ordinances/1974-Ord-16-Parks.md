@@ -16,7 +16,7 @@ THE CITY OF RIVERGROVE DOES ORDAIN AS FOLLOWS:
 
 5. Inasmuch as this ordinance is required for the public health, peace and safety of the City of Rivergrove, it is deemed necessary that an emergency be and hereby is declared to exist and this ordinance shall be in full force and effect from and after its passage by the council.
 
-Passed unanimously on first reading of the ordinance in full by title at a meeting of the Rivergrove City Council on the **12th** day of **August**, 1974, and filed with the City Recorder on the **12th** day of **August**, 1974.
+Passed unanimously on first reading of the ordinance in full by title at a meeting of the Rivergrove City Council on the <span class="form-field-filled" data-tooltip="Field filled in on source doc">12th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">August</span>, 1974, and filed with the City Recorder on the <span class="form-field-filled" data-tooltip="Field filled in on source doc">12th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">August</span>, 1974.
 
 [Signature]
 John Nelson, Mayor

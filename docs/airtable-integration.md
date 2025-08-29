@@ -71,13 +71,13 @@ book/airtable-metadata.json
 
 #### Build Scripts
 
-**update-mdbook.sh** (Full rebuild)
+**./scripts/build/update-mdbook.sh** (Full rebuild)
 ```bash
 echo "🔗 Checking Airtable metadata..."
 python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
 ```
 
-**update-single.sh** (Single document)
+**./scripts/build/update-single.sh** (Single document)
 ```bash
 echo "🔗 Updating Airtable metadata for $FILENAME..."
 python3 scripts/mdbook/sync-airtable-metadata.py \
@@ -172,8 +172,8 @@ AIRTABLE_TABLE_NAME=Public Metadata
 ## Implementation Checklist
 
 - [ ] Create `sync-airtable-metadata.py` script
-- [ ] Add Airtable sync to `update-mdbook.sh`
-- [ ] Add Airtable sync to `update-single.sh`
+- [x] Add Airtable sync to `./scripts/build/update-mdbook.sh`
+- [x] Add Airtable sync to `./scripts/build/update-single.sh`
 - [ ] Update `navigation-standalone.js` to use merged data
 - [ ] Create `reconcile-airtable.sh` maintenance script
 - [ ] Add environment variables to `.env.example`
