@@ -19,7 +19,7 @@
 - [#62 - Amendment (1998)](./ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.md)
 - [#65 - Services (1999)](./ordinances/1999-Ord-65-99-Sewer-Services.md)
 - [#68 - Compliance (2000)](./ordinances/2000-Ord-68-2000-Metro-Compliance.md)
-- [#69 - Stub (2000)](./ordinances/2000-Ord-69-2000-Title-3-Compliance-STUB.md)
+- [#69 - Compliance (2000)](./ordinances/2000-Ord-69-2000-Title-3-Compliance.md)
 - [#70 - Water Quality Resource Area (2001)](./ordinances/2001-Ord-70-2001-WQRA.md)
 - [#71 - Gates Ordinance (2002)](./ordinances/2002-Ord-71-2002-Gates.md)
 - [#72 - Amendment (2002)](./ordinances/2002-Ord-72-2002-Penalties-and-Abatement-Amendment.md)
@@ -34,27 +34,29 @@
 ---
 
 # Resolutions
-- [#22 - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
-- [#72 - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
-- [#259 - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
-- [#41425 - Records (2019)](./resolutions/2019-Res-41425-Public-Records.md)
-- [#300 - Modification (2024)](./resolutions/2024-Res-300-Fee-Schedule-Modification.md)
+- [#22-PC - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
+- [#72-Municipal-Services - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
+- [#256-Planning-Development-Fees - Fees (2018)](./resolutions/2018-Res-256-Planning-Development-Fees.md)
+- [#259-Planning-Development-Fees - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
+- [#265-2019 - 2019 (2019)](./resolutions/2019-Res-265-2019.md)
+- [#41425-Public-Records - Records (2019)](./resolutions/2019-Res-41425-Public-Records.md)
+- [#300-Fee-Schedule-Modification - Modification (2024)](./resolutions/2024-Res-300-Fee-Schedule-Modification.md)
 
 ---
 
 # Planning Commission Interpretations
-- [2.040H Permitting Adus (1997-07-07)](./interpretations/1997-07-07-RE-2.040h-permitting-adus.md)
-- [9.030 Permit Fees And Completeness (1997-09-08)](./interpretations/1997-09-08-RE-9.030-permit-fees-and-completeness.md)
-- [9.030 Permit Fees And Completeness (1997-11-03)](./interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.md)
-- [5.080 Setbacks (1998-03-02)](./interpretations/1998-03-02-RE-5.080-setbacks.md)
-- [5.080 Setback Orientation (1998-06-01)](./interpretations/1998-06-01-RE-5.080-setback-orientation.md)
-- [5.080 Setback Orientation (1998-07-06)](./interpretations/1998-07-06-RE-5.080-setback-orientation.md)
-- [Balanced Cut And Fill (2001-05-07)](./interpretations/2001-05-07-RE-balanced-cut-and-fill.md)
-- [Lots Partially In Floodplain (2002-08-05)](./interpretations/2002-08-05-RE-lots-partially-in-floodplain.md)
-- [Duplicate (2002-09-05)](./interpretations/2002-09-05-RE-duplicate.md)
-- [5.080 Setbacks (2004-10-11)](./interpretations/2004-10-11-RE-5.080-setbacks.md)
-- [Adu Sewer (2005-04-04)](./interpretations/2005-04-04-RE-adu-sewer.md)
-- [Multi Family (2008-02-04)](./interpretations/2008-02-04-RE-multi-family.md)
+- [Accessory Structures (1997-07-07)](./interpretations/1997-07-07-RE-2.040h-permitting-adus.md)
+- [Permit Fees (1997-09-08)](./interpretations/1997-09-08-RE-9.030-permit-fees-and-completeness.md)
+- [Development Charges (1997-11-03)](./interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.md)
+- [Setback Measurement (1998-03-02)](./interpretations/1998-03-02-RE-5.080-setbacks.md)
+- [Setback Orientation (1998-06-01)](./interpretations/1998-06-01-RE-5.080-setback-orientation.md)
+- [Building Setbacks (1998-07-06)](./interpretations/1998-07-06-RE-5.080-setback-orientation.md)
+- [Bankful Stage (2001-05-07)](./interpretations/2001-05-07-RE-balanced-cut-and-fill.md)
+- [Floodplain Lots (2002-08-05)](./interpretations/2002-08-05-RE-lots-partially-in-floodplain.md)
+- [Floodplain Lots (2002-09-05)](./interpretations/2002-09-05-RE-duplicate.md)
+- [Wqra Setbacks (2004-10-11)](./interpretations/2004-10-11-RE-5.080-setbacks.md)
+- [Sewer Permits (2005-04-04)](./interpretations/2005-04-04-RE-adu-sewer.md)
+- [Multi-Family (2008-02-04)](./interpretations/2008-02-04-RE-multi-family.md)
 
 ---
 

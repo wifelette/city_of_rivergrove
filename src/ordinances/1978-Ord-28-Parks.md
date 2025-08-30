@@ -1,6 +1,6 @@
 # ORDINANCE NO. 28
 
-## AN ORDINANCE AMENDING THE CITY OF RIVERGROVE PARK ADVISORY COUNCIL ORDINANCE NO. 16 BY SUBSTITUTING THE NEW PART 2 THEREOF, as follows:
+## AN ORDINANCE AMENDING THE CITY OF RIVERGROVE PARK ADVISORY COUNCIL [ORDINANCE NO. 16](../ordinances/1974-Ord-16-Parks.md) BY SUBSTITUTING THE NEW PART 2 THEREOF, as follows:
 
 > The Park Advisory Council shall consist of five (5) members to be appointed by the Mayor with the approval of the City Council. The term of the members thereof shall be for a period of two (2) years, except that the Mayor shall designate two (2) members who shall serve to and including December 31, 1978 and the remaining three (3) members shall serve to and including December 31, 1979.
 

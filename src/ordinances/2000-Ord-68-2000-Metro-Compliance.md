@@ -38,7 +38,7 @@ The legislature of the State of Oregon has delegated the responsibility of local
 
 #### 1.3 Statement of Purpose
 
-The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, ORD #69-2000, will be enacted to comply with Title 3.
+The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, [ORD #69-2000](../ordinances/2000-Ord-69-2000-Title-3-Compliance.md), will be enacted to comply with Title 3.
 
 ### Section 2.0
 

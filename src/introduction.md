@@ -9,13 +9,13 @@ Welcome to the official digital repository of City of Rivergrove municipal docum
 <div class="simple-card">
 <h3><a href="ordinances/1974-Ord-16-Parks.html">Ordinances</a></h3>
 <p>Local laws enacted by the City Council</p>
-<p class="doc-count">19 documents</p>
+<p class="doc-count">21 documents</p>
 </div>
 
 <div class="simple-card">
 <h3><a href="resolutions/1976-Res-22-PC.html">Resolutions</a></h3>
 <p>Formal decisions and opinions by the City Council</p>
-<p class="doc-count">2 documents</p>
+<p class="doc-count">7 documents</p>
 </div>
 
 <div class="simple-card">

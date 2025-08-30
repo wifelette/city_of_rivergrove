@@ -56,6 +56,8 @@ After pushing, always provide the GitHub web URLs for Airtable:
 
 ### 6. Update mdBook
 
+**⚠️ IMPORTANT**: Never edit files in `/src` directly! Always edit source documents, then run sync scripts. The `/src` directory is auto-generated and any direct edits will be lost.
+
 **Option A - Single file (faster):**
 - Run `./scripts/build/update-single.sh [path/to/file.md]`
 - Example: `./scripts/build/update-single.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`

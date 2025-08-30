@@ -79,7 +79,8 @@ def add_cross_references(content, doc_map, current_file):
     # Build regex pattern from document map
     patterns = sorted(doc_map.keys(), key=len, reverse=True)
     escaped_patterns = [re.escape(p) for p in patterns]
-    pattern = r'\b(' + '|'.join(escaped_patterns) + r')(?:\s*\(\d{4}\))?'
+    # Include optional year suffix (like -2018) as part of the match
+    pattern = r'\b(' + '|'.join(escaped_patterns) + r')(?:-\d{4})?(?:\s*\(\d{4}\))?'
     regex = re.compile(pattern, re.IGNORECASE)
     
     def replace_reference(match):

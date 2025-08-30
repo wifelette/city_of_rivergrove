@@ -28,6 +28,10 @@ echo "  🔗 Adding cross-references between documents..."
 python3 scripts/mdbook/add-cross-references.py
 echo "  ✓ Cross-references added"
 
+echo "  📊 Updating document counts..."
+python3 scripts/preprocessing/update-document-counts.py
+echo "  ✓ Document counts updated"
+
 echo "  📋 Regenerating SUMMARY.md..."
 # Use the enhanced version if it exists, otherwise fall back to standard
 if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ]; then

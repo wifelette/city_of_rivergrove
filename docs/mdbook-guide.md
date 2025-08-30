@@ -17,6 +17,8 @@ The repository includes an mdBook static site generator that creates a searchabl
 - **`source-documents/Ordinances/`** (capital O) - Main directory for editing files (includes `#` in filenames)
 - **`src/ordinances/`** (lowercase o) - mdBook source directory (filenames without `#`)
 
+**⚠️ NEVER EDIT FILES IN `/src` DIRECTLY!** The `/src` directory is automatically generated from source documents. Any direct edits to `/src` will be lost when sync scripts run. Always edit files in `source-documents/` or the main folders (`Ordinances/`, `Resolutions/`, etc.)
+
 ### Current Workflow (due to sync issues discovered)
 
 1. **Edit files** in the main `source-documents/Ordinances/` directory

@@ -1,20 +1,340 @@
 {
-  "timestamp": "2025-08-29T11:39:00.025094",
+  "timestamp": "2025-08-29T21:42:51.584780",
   "summary": {
-    "matched": 38,
+    "matched": 0,
     "missing_in_airtable": 0,
-    "missing_locally": 1
+    "missing_locally": 41
   },
   "details": {
     "missing_in_airtable": [],
     "missing_locally": [
       {
-        "airtable_id": "recQaJ9CzOZScD1O3",
-        "display_name": "New Record",
-        "type": "unknown",
-        "year": null,
+        "airtable_id": "rec0kNUkKWI2vXiRo",
+        "display_name": "Interpretation of 5.2-4",
+        "type": "interpretation",
+        "year": 2001,
         "doc_number": "",
-        "md_url": ""
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2001-05-07-RE-balanced-cut-and-fill.md"
+      },
+      {
+        "airtable_id": "rec1XAH0RhBp0CUUf",
+        "display_name": "Ordinance #28",
+        "type": "ordinance",
+        "year": 1978,
+        "doc_number": "28",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1978-Ord-%2328-Parks.md"
+      },
+      {
+        "airtable_id": "rec1yhrXPNo42C42T",
+        "display_name": "Interpretation of 5.080 #1",
+        "type": "interpretation",
+        "year": 1998,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1998-03-02-RE-5.080-setbacks.md"
+      },
+      {
+        "airtable_id": "rec30SuqOZmJ2DEBb",
+        "display_name": "Ordinance #74-2004",
+        "type": "ordinance",
+        "year": 2004,
+        "doc_number": "74-2004",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2004-Ord-%2374-2004-Tree-Cutting-Amendment.md"
+      },
+      {
+        "airtable_id": "rec6BZE7Q7dWDC6sB",
+        "display_name": "Ordinance #70-2001",
+        "type": "ordinance",
+        "year": 2001,
+        "doc_number": "70-2001",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2001-Ord-%2370-2001-WQRA.md"
+      },
+      {
+        "airtable_id": "rec6NC010dgafzKHe",
+        "display_name": "Ordinance #88-2017",
+        "type": "ordinance",
+        "year": 2017,
+        "doc_number": "88-2017",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2017-Ord-%2388-Docks.md"
+      },
+      {
+        "airtable_id": "rec8ZM4179unDRAKG",
+        "display_name": "Ordinance #57-93",
+        "type": "ordinance",
+        "year": 1993,
+        "doc_number": "57-93",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1993-Ord-%2357-Manufactured-Homes.md"
+      },
+      {
+        "airtable_id": "rec9RH05bcMuOohsW",
+        "display_name": "Ordinance #54-89C",
+        "type": "ordinance",
+        "year": 1989,
+        "doc_number": "54-89C",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1989-Ord-%2354-89-C-Land-Development.md"
+      },
+      {
+        "airtable_id": "rec9lEPsieSuUeTU6",
+        "display_name": "Interpretation of 5.080 #3",
+        "type": "interpretation",
+        "year": 1998,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1998-07-06-RE-5.080-setback-orientation.md"
+      },
+      {
+        "airtable_id": "recA4SuAkkMtGwInT",
+        "display_name": "Interpretation of 5.010 #1",
+        "type": "interpretation",
+        "year": 2002,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2002-08-05-RE-lots-partially-in-floodplain.md"
+      },
+      {
+        "airtable_id": "recF0JKuHeliTnxg8",
+        "display_name": "Ordinance #73-2003A",
+        "type": "ordinance",
+        "year": 2003,
+        "doc_number": "73-2003A",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2003-Ord-%2373-2003A-Conditional-Use-Provisions.md"
+      },
+      {
+        "airtable_id": "recF5KB1bSDkguXuk",
+        "display_name": "Interpretation of ORD 68-2000",
+        "type": "interpretation",
+        "year": 2008,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2008-02-04-RE-multi-family.md"
+      },
+      {
+        "airtable_id": "recFwOq0VmM0X8ONN",
+        "display_name": "Interpretation of 5.010 #2",
+        "type": "interpretation",
+        "year": 2002,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2002-09-05-RE-duplicate.md"
+      },
+      {
+        "airtable_id": "recH1DOjGNnlfiWiJ",
+        "display_name": "Ordinance #62-98",
+        "type": "ordinance",
+        "year": 1998,
+        "doc_number": "62-98",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1998-Ord-%2362-98-Flood-and-Land-Development-Amendment.md"
+      },
+      {
+        "airtable_id": "recJUQe9EWz7ZNoSR",
+        "display_name": "Ordinance #69-2000",
+        "type": "ordinance",
+        "year": 2000,
+        "doc_number": "69-2000",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/2000-Ord-%2369-2000-Title-3-Compliance-STUB.md"
+      },
+      {
+        "airtable_id": "recPEgtJZ34yLiB7g",
+        "display_name": "Ordinance #72-2002",
+        "type": "ordinance",
+        "year": 2002,
+        "doc_number": "72-2002",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2002-Ord-%2372-2002-Penalties-and-Abatement-Amendment.md"
+      },
+      {
+        "airtable_id": "recQxKEJ9XXGp38Nd",
+        "display_name": "Ordinance #76-2008",
+        "type": "ordinance",
+        "year": 2008,
+        "doc_number": "76-2008",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2008-Ord-%2376-2008-FEMA-Flood-Map.md"
+      },
+      {
+        "airtable_id": "recScMrgDZYNK1uib",
+        "display_name": "Resolution #72",
+        "type": "resolution",
+        "year": 1984,
+        "doc_number": "72",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Resolutions/1984-Res-%2372-Municipal-Services.md"
+      },
+      {
+        "airtable_id": "recZQIxEEratDayLS",
+        "display_name": "Resolution #22",
+        "type": "resolution",
+        "year": 1976,
+        "doc_number": "22",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Resolutions/1976-Res-%2322-PC.md"
+      },
+      {
+        "airtable_id": "reca2YaHD9trNta4D",
+        "display_name": "Ordinance #71-2002",
+        "type": "ordinance",
+        "year": 2002,
+        "doc_number": "71-2002",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2002-Ord-%2371-2002-Gates.md"
+      },
+      {
+        "airtable_id": "recaK0zKb0FCfTUcw",
+        "display_name": "Interpretation of 9.030 #1",
+        "type": "interpretation",
+        "year": 1997,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1997-09-08-RE-9.030-permit-fees-and-completeness.md"
+      },
+      {
+        "airtable_id": "recbNm9L52ybVFWva",
+        "display_name": "Resolution #259-2018",
+        "type": "resolution",
+        "year": 2018,
+        "doc_number": "259-2018",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Resolutions/2018-Res-%23259-Planning-Development-Fees.md"
+      },
+      {
+        "airtable_id": "receyAxTqbdJqJyFY",
+        "display_name": "Resolution #300-2024",
+        "type": "resolution",
+        "year": 2024,
+        "doc_number": "300-2024",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Resolutions/2024-Res-%23300-Fee-Schedule-Modification.md"
+      },
+      {
+        "airtable_id": "recfETfmA4byCU8xB",
+        "display_name": "Interpretation of 5.080 #4",
+        "type": "interpretation",
+        "year": 2004,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2004-10-11-RE-5.080-setbacks.md"
+      },
+      {
+        "airtable_id": "reci5ca85Tb79A92m",
+        "display_name": "Ordinance #65-99",
+        "type": "ordinance",
+        "year": 1999,
+        "doc_number": "65-99",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1999-Ord-%2365-99-Sewer-Services.md"
+      },
+      {
+        "airtable_id": "reck48O74lMmcymgv",
+        "display_name": "Interpretation of 2.040",
+        "type": "interpretation",
+        "year": 1997,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1997-07-07-RE-2.040h-permitting-adus.md"
+      },
+      {
+        "airtable_id": "reclyELhguy8TlX5V",
+        "display_name": "City Charter",
+        "type": "other",
+        "year": 1974,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Other/1974-City-Charter.md"
+      },
+      {
+        "airtable_id": "recolD2T4bOeuHmk0",
+        "display_name": "Ordinance #61-98",
+        "type": "ordinance",
+        "year": 1998,
+        "doc_number": "61-98",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1998-Ord-%2361-98-Land-Development-Amendment.md"
+      },
+      {
+        "airtable_id": "recpNyXsXnZ7AUrjV",
+        "display_name": "Ordinance #89-2018",
+        "type": "ordinance",
+        "year": 2018,
+        "doc_number": "89-2018",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2018-Ord-%2389-2018-Tree-Cutting-Amendment.md"
+      },
+      {
+        "airtable_id": "recqYL5LY005ECYHv",
+        "display_name": "Resolution #41425",
+        "type": "resolution",
+        "year": 2025,
+        "doc_number": "41425",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Resolutions/2019-Res-%2341425-Public-Records.md"
+      },
+      {
+        "airtable_id": "recrFR1FFEeCOhMTp",
+        "display_name": "Interpretation of 5.080 #2",
+        "type": "interpretation",
+        "year": 1998,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1998-06-01-RE-5.080-setback-orientation.md"
+      },
+      {
+        "airtable_id": "recs6BpCugW94iEKX",
+        "display_name": "Ordinance #80-2011",
+        "type": "ordinance",
+        "year": 2011,
+        "doc_number": "80-2011",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2011-Ord-%2380-2011-Park-Hours.md"
+      },
+      {
+        "airtable_id": "recsoGppV3TA0TOwn",
+        "display_name": "Resolution #256-2018",
+        "type": "resolution",
+        "year": 2018,
+        "doc_number": "256-2018",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/src/resolutions/2018-Res-256-Planning-Development-Fees.md"
+      },
+      {
+        "airtable_id": "recv41BWUGbLej49o",
+        "display_name": "Ordinance #81-2011",
+        "type": "ordinance",
+        "year": 2011,
+        "doc_number": "81-2011",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2011-Ord-%2381-2011-Sign.md"
+      },
+      {
+        "airtable_id": "recwYRV5AsxDOpaqI",
+        "display_name": "Ordinance #16",
+        "type": "ordinance",
+        "year": 1974,
+        "doc_number": "16",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1974-Ord-%2316-Parks.md"
+      },
+      {
+        "airtable_id": "recwyM9jbzgy65PvE",
+        "display_name": "Resolution #265-2019",
+        "type": "resolution",
+        "year": 2020,
+        "doc_number": "265-2019",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Resolutions/2019-Res-%23265-2019-STUB.md"
+      },
+      {
+        "airtable_id": "recxQfCglUVSRjlln",
+        "display_name": "Interpretation of 4.020",
+        "type": "interpretation",
+        "year": 2005,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/2005-04-04-RE-adu-sewer.md"
+      },
+      {
+        "airtable_id": "recyd4bnd2NTw2jUF",
+        "display_name": "Ordinance #52",
+        "type": "ordinance",
+        "year": 1987,
+        "doc_number": "52",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1987-Ord-%2352-Flood.md"
+      },
+      {
+        "airtable_id": "recypxivGOJeTTioq",
+        "display_name": "Interpretation of 9.030 #2",
+        "type": "interpretation",
+        "year": 1997,
+        "doc_number": "",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.md"
+      },
+      {
+        "airtable_id": "reczRX6QQJ01tNIkD",
+        "display_name": "Ordinance #59-97A",
+        "type": "ordinance",
+        "year": 1998,
+        "doc_number": "59-97A",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1998-Ord-#59-97A-Land-Development-Amendment.md"
+      },
+      {
+        "airtable_id": "reczSnEze5MzDL9u7",
+        "display_name": "Ordinance #68-2000",
+        "type": "ordinance",
+        "year": 2000,
+        "doc_number": "68-2000",
+        "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2000-Ord-%2368-2000-Metro-Compliance.md"
       }
     ],
     "filename_conflicts": []

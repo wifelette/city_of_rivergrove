@@ -13,6 +13,8 @@ The City of Rivergrove documentation system uses a multi-stage pipeline to conve
 
 ## Processing Pipeline Order
 
+**⚠️ CRITICAL**: Never edit files in `/src` directly! The pipeline always flows FROM source documents TO `/src`. Any direct edits to `/src` will be overwritten when sync scripts run. Always edit files in `source-documents/` or the main folders (`Ordinances/`, `Resolutions/`, etc.)
+
 The build process MUST follow this specific order to ensure proper processing:
 
 ```mermaid

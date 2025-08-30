@@ -1,32 +1,9 @@
 {
   "metadata": {
     "cache_version": "1.1",
-    "total_records": 1,
-    "last_partial_update": "2025-08-29T16:23:19.527281",
-    "incremental_updates": [
-      {
-        "filename": "1974-Ord-#16-Parks.md",
-        "updated_at": "2025-08-29T16:23:19.527283"
-      }
-    ],
-    "last_updated": "2025-08-29T16:23:19.527329"
+    "last_full_sync": "2025-08-29T21:42:51.584434",
+    "last_updated": "2025-08-29T21:42:51.584490",
+    "total_records": 0
   },
-  "documents": {
-    "1974-Ord-#16-Parks": {
-      "airtable_id": "recwYRV5AsxDOpaqI",
-      "display_name": "Ordinance #16",
-      "short_title": "Park Advisory",
-      "type": "ordinance",
-      "year": 1974,
-      "doc_number": "16",
-      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1974-Ord-%2316-Parks.md",
-      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1974-Ord-%2316-Parks.pdf",
-      "filename": "1974-Ord-%2316-Parks.md",
-      "status": "Published",
-      "special_state": null,
-      "digitized": true,
-      "passed_date": "1974-08-12",
-      "last_updated": "2025-08-29T17:21:07.000Z"
-    }
-  }
+  "documents": {}
 }

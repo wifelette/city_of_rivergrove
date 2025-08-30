@@ -184,9 +184,9 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 (h) "Land Division" means a lot or parcel of land created through the process of dividing land.
 
 (i) "Lot" means a unit of land created by a subdivision of land or other means.
-    (1) "Corner Lot" means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.
-    (2) "Reversed Corner Lot" means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.
-    (3) "Through Lot" means a lot having frontage on two parallel or approximately parallel streets other than alleys.
+- (1) "Corner Lot" means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.
+- (2) "Reversed Corner Lot" means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.
+- (3) "Through Lot" means a lot having frontage on two parallel or approximately parallel streets other than alleys.
 
 (j) "Major Partition" means the dividing of land into two or three parcels within one calendar year and including the creation of a road or street, either public or private and including easements.
 
@@ -215,10 +215,10 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 (v) "Sidewalk" means a pedestrian walkway with permanent surfacing to City standards.
 
 (w) "Street" means a public or private way that is created to provide ingress or egress for persons to one or more lots, parcels, areas, or tracts of land, and the placement of utilities and including the terms "road," "highway," "lane," "avenue," "way," "place," "court," "boulevard," "circle," "drive," "alley," or other similar designation.
-    (1) "Alley" means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.
-    (2) "Arterial" means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.
-    (3) "Collector" means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.
-    (4) "Cul-de-sac" means a short street having one end open to traffic and terminated by a vehicle turnaround; also called a dead end street.
+- (1) "Alley" means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.
+- (2) "Arterial" means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.
+- (3) "Collector" means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.
+- (4) "Cul-de-sac" means a short street having one end open to traffic and terminated by a vehicle turnaround; also called a dead end street.
 
 (x) "Subdivide Land" means to divide an area or tract of land into four or more lots within a calendar year when such area or tract of land exists as a unit or contiguous units of land under a single ownership at the beginning of such year.
 
@@ -271,11 +271,11 @@ Except as provided in Section 2.080, a nonconforming development or use may cont
 
 (b) With the approval of the City Council, under the procedure set out in Section 6.060 and Section 6.070, a nonconforming development or use may be changed provided, however, that the maximum special relief shall be as follows:
 
-    (1) the floor area of a building shall not be increased by more than twenty (20) percent;
+- (1) the floor area of a building shall not be increased by more than twenty (20) percent;
 
-    (2) the land area covered by structures shall not be increased by more than twenty (20) percent; or
+- (2) the land area covered by structures shall not be increased by more than twenty (20) percent; or
 
-    (3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
+- (3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
 
 (c) The entire contiguous ownership of land shall be considered as a single parcel for determination of noncompliance as a consideration for approval of any further development. A record of separate lot or parcel boundaries shall be disregarded.
 
@@ -428,7 +428,7 @@ This type of procedure is intended for use in reaching decisions on ordinance am
 All land within the city of Rivergrove shall be classified as residential (R).
 
 ### Section 5.020. Flood Hazard District. 
-All land development within the 100-year flood boundary as defined in the "Flood Insurance Study: City of Rivergrove, Oregon, August 4, 1987" [FEMA] shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. A map based on these studies shows the boundaries of this district and is entitled the "Floodway Flood Boundary and Floodway Map" and shall be available to public inspection at City Hall during regular business hours. All development within the 100-year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove (Ord. #52).
+All land development within the 100-year flood boundary as defined in the "Flood Insurance Study: City of Rivergrove, Oregon, August 4, 1987" [FEMA] shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. A map based on these studies shows the boundaries of this district and is entitled the "Floodway Flood Boundary and Floodway Map" and shall be available to public inspection at City Hall during regular business hours. All development within the 100-year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove ([Ord. #52](../ordinances/1987-Ord-52-Flood.md)).
 
 ### Section 5.030. Change in Classification. 
 The land use classifications of this ordinance may be changed according to the provisions of Section 6.221 or by legislative action. A change in classification shall take effect 20 days after the date of approval, unless appealed.
