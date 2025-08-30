@@ -4,11 +4,10 @@
 
 Please read these files for context on this project and how to work with Leah:
 
-1. **Project-specific guide**: Read the `docs/digitization-guide.md` file in this repository for details about the Rivergrove ordinance digitization project, including:
-
-   - Project overview and goals
-   - Naming conventions for documents
-   - Claude Code workflow for repository management
+1. **Project guides**: Read these guides for the Rivergrove ordinance digitization project:
+   - `docs/digitization-guide.md` - Project overview and links to all guides
+   - `docs/claude-code-guide.md` - Repository management workflow (most relevant for Claude Code)
+   - `docs/mdbook-guide.md` - mdBook site generation and technical details
 
 2. **Build system architecture**: Read `docs/build-architecture.md` for understanding the processing pipeline:
 

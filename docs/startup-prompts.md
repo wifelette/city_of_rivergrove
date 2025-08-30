@@ -7,9 +7,10 @@ Quick reference for starting new Claude sessions on the Rivergrove digitization 
 ```
 Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing:
 1. CLAUDE.md - workflow and conventions
-2. docs/digitization-guide.md - complete project guide
-3. docs/build-architecture.md - build system and script dependencies
-4. docs/styles/ - formatting standards (naming, signatures, form fields, images)
+2. docs/claude-code-guide.md - repository management workflow
+3. docs/mdbook-guide.md - mdBook site and build information
+4. docs/build-architecture.md - build system and script dependencies
+5. docs/styles/ - formatting standards (naming, signatures, form fields, images)
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
@@ -29,7 +30,7 @@ Key Reminders:
 Hi! We're continuing the Rivergrove ordinance digitization project. Here's what you need to know to jump right in:
 
 Key Resources:
-1. Review the Digitization Guide in Project Knowledge - contains complete workflow
+1. Review the Claude Desktop Guide in Project Knowledge - contains document processing workflow
 2. Airtable MCP tools are connected (daily-tasks:council_*)
 3. GitHub repo: https://github.com/wifelette/city_of_rivergrove
 

@@ -50,7 +50,10 @@ city_of_rivergrove/
 ## Documentation
 
 ### Main Guides
-- [Project Guide](docs/digitization-guide.md) - Complete project documentation
+- [Project Overview](docs/digitization-guide.md) - Project overview and workflow guides
+- [Claude Desktop Guide](docs/claude-desktop-guide.md) - Document processing & Airtable
+- [Claude Code Guide](docs/claude-code-guide.md) - Repository management
+- [mdBook Guide](docs/mdbook-guide.md) - Site generation and technical details
 - [Build Architecture](docs/build-architecture.md) - Build system and dependencies
 - [Airtable Integration](docs/airtable-integration.md) - Airtable sync documentation
 - [Markdown Conventions](docs/markdown-conventions.md) - Document formatting standards
