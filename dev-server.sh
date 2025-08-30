@@ -42,6 +42,16 @@ process_file_change() {
     echo ""
     echo -e "${BLUE}📝 Detected change: $filename${NC}"
     
+    # First validate form field syntax
+    echo "  Validating form fields..."
+    if ! python3 scripts/validation/validate-form-fields.py "$file" --quiet 2>/dev/null; then
+        echo -e "${RED}  ✗ Form field errors detected!${NC}"
+        python3 scripts/validation/validate-form-fields.py "$file" 2>&1
+        echo -e "${YELLOW}  Fix the errors above and save again${NC}"
+        PROCESSING=false
+        return
+    fi
+    
     # Determine document type and run appropriate sync
     if [[ "$file" == *source-documents/Ordinances/* ]]; then
         echo "  Syncing ordinances..."

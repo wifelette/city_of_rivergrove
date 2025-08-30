@@ -7,9 +7,9 @@
 **Adopted by Rivergrove City Council:** {{filled:10/16/2000}}
 
 [Signature], Larry Barrett, Mayor  
-**Date**: {{filled:10-16-00
+**Date**: {{filled:10-16-00}}
 
-[Signature], Mike Collmeyer, City Recorder}}  
+[Signature], Mike Collmeyer, City Recorder  
 **Date**: {{filled:10/16/2000}}
 
 Adopted
@@ -129,3 +129,6 @@ Rivergrove hereby amends Article 5 of its LDO to comply with Title 2 by adding t
 > **Note:** Calculations resulting in fractional numbers shall be rounded up to the next whole number. Parking calculations shall be based on, and apply to individual lots, regardless of the number of lots in the development application.
 >
 > **(b)** Variances for parking when a development application is received which may result in approval of construction of parking spaces either in excess of the maximum parking ratios or less than the city's minimum parking ratios established by the above table may be made under the provisions of Section 6.060
+
+
+

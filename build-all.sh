@@ -61,26 +61,36 @@ python3 scripts/preprocessing/sync-other.py
 echo "  ✅ All documents synced"
 echo ""
 
-# STEP 2: Process footnotes
-echo "📝 Step 2: Processing footnotes..."
+# STEP 2: Validate form field syntax
+echo "🔍 Step 2: Validating form field syntax..."
+python3 scripts/validation/validate-form-fields.py --quiet || {
+    echo "  ❌ Form field validation failed!"
+    echo "  Run 'python3 scripts/validation/validate-form-fields.py' for details"
+    exit 1
+}
+echo "  ✅ Form fields validated"
+echo ""
+
+# STEP 3: Process footnotes
+echo "📝 Step 3: Processing footnotes..."
 python3 scripts/preprocessing/footnote-preprocessor.py
 echo "  ✅ Footnotes processed"
 echo ""
 
-# STEP 3: Convert URLs and emails (MUST be before cross-references)
-echo "🔗 Step 3: Converting URLs and emails to links..."
+# STEP 4: Convert URLs and emails (MUST be before cross-references)
+echo "🔗 Step 4: Converting URLs and emails to links..."
 python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
 echo "  ✅ Links converted"
 echo ""
 
-# STEP 4: Add cross-references (MUST be after auto-link)
-echo "🔗 Step 4: Adding cross-references between documents..."
+# STEP 5: Add cross-references (MUST be after auto-link)
+echo "🔗 Step 5: Adding cross-references between documents..."
 python3 scripts/mdbook/add-cross-references.py
 echo "  ✅ Cross-references added"
 echo ""
 
-# STEP 5: Update document counts
-echo "📊 Step 5: Updating document counts..."
+# STEP 6: Update document counts
+echo "📊 Step 6: Updating document counts..."
 if [ -f "scripts/preprocessing/update-document-counts.py" ]; then
     python3 scripts/preprocessing/update-document-counts.py
     echo "  ✅ Document counts updated"
@@ -89,8 +99,8 @@ else
 fi
 echo ""
 
-# STEP 6: Generate SUMMARY.md
-echo "📋 Step 6: Generating table of contents..."
+# STEP 7: Generate SUMMARY.md
+echo "📋 Step 7: Generating table of contents..."
 if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
     python3 scripts/mdbook/generate-summary-with-airtable.py
 else
@@ -99,15 +109,15 @@ fi
 echo "  ✅ Table of contents updated"
 echo ""
 
-# STEP 7: Generate relationships
-echo "🔗 Step 7: Generating document relationships..."
+# STEP 8: Generate relationships
+echo "🔗 Step 8: Generating document relationships..."
 python3 scripts/mdbook/generate-relationships.py
 echo "  ✅ Relationships updated"
 echo ""
 
-# STEP 8: Sync Airtable metadata (optional)
+# STEP 9: Sync Airtable metadata (optional)
 if [ "$SKIP_AIRTABLE" = false ]; then
-    echo "☁️  Step 8: Syncing Airtable metadata..."
+    echo "☁️  Step 9: Syncing Airtable metadata..."
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
         # Copy metadata to src directory
@@ -119,18 +129,18 @@ if [ "$SKIP_AIRTABLE" = false ]; then
         echo "  ⏭️  Skipped (script not found)"
     fi
 else
-    echo "⏭️  Step 8: Skipping Airtable sync (--quick mode)"
+    echo "⏭️  Step 9: Skipping Airtable sync (--quick mode)"
 fi
 echo ""
 
-# STEP 9: Build mdBook
-echo "📚 Step 9: Building mdBook..."
+# STEP 10: Build mdBook
+echo "📚 Step 10: Building mdBook..."
 mdbook build
 echo "  ✅ mdBook built"
 echo ""
 
-# STEP 10: Copy data files to book directory
-echo "📂 Step 10: Copying data files..."
+# STEP 11: Copy data files to book directory
+echo "📂 Step 11: Copying data files..."
 if [ -f "src/relationships.json" ]; then
     cp src/relationships.json book/
 fi
@@ -140,19 +150,19 @@ fi
 echo "  ✅ Data files copied"
 echo ""
 
-# STEP 11: Apply custom formatting (MUST be after mdBook build)
-echo "🎨 Step 11: Applying custom formatting..."
+# STEP 12: Apply custom formatting (MUST be after mdBook build)
+echo "🎨 Step 12: Applying custom formatting..."
 python3 scripts/postprocessing/custom-list-processor.py
 echo "  ✅ Custom formatting applied"
 echo ""
 
-# STEP 12: Apply enhanced formatting (if available)
+# STEP 13: Apply enhanced formatting (if available)
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
-    echo "✨ Step 12: Applying enhanced document formatting..."
+    echo "✨ Step 13: Applying enhanced document formatting..."
     python3 scripts/postprocessing/enhanced-custom-processor.py
     echo "  ✅ Enhanced formatting applied"
 else
-    echo "⏭️  Step 12: Enhanced formatting not available"
+    echo "⏭️  Step 13: Enhanced formatting not available"
 fi
 echo ""
 

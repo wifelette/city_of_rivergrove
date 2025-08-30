@@ -94,8 +94,23 @@ DEST_FILE="$DEST_DIR/$DEST_FILENAME"
 echo -e "  ${GREEN}✓ Synced to $DEST_FILE${NC}"
 echo ""
 
+# Validate form field syntax
+echo "🔍 Step 2: Validating form fields..."
+if python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE" --quiet 2>/dev/null; then
+    echo -e "  ${GREEN}✓ Form fields valid${NC}"
+else
+    echo -e "  ${RED}✗ Form field errors found!${NC}"
+    echo ""
+    # Show detailed errors
+    python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE"
+    echo ""
+    echo -e "${YELLOW}Fix the errors above and try again${NC}"
+    exit 1
+fi
+echo ""
+
 # Process the specific file through the pipeline
-echo "🔧 Step 2: Processing file..."
+echo "🔧 Step 3: Processing file..."
 
 # Only run if file exists in destination
 if [ -f "$DEST_FILE" ]; then
@@ -118,7 +133,7 @@ echo -e "${GREEN}✓${NC}"
 echo ""
 
 # Regenerate only what's needed
-echo "📋 Step 3: Updating indexes..."
+echo "📋 Step 4: Updating indexes..."
 
 echo -n "  • Table of contents... "
 python3 scripts/mdbook/generate-summary.py >/dev/null 2>&1
@@ -156,13 +171,13 @@ fi
 echo ""
 
 # Rebuild mdBook
-echo "📚 Step 4: Rebuilding mdBook..."
+echo "📚 Step 5: Rebuilding mdBook..."
 mdbook build >/dev/null 2>&1
 echo -e "  ${GREEN}✓ Built${NC}"
 echo ""
 
 # Apply postprocessing
-echo "🎨 Step 5: Applying custom formatting..."
+echo "🎨 Step 6: Applying custom formatting..."
 python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
