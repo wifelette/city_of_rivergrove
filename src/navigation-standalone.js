@@ -116,8 +116,9 @@ class StandaloneNavigation {
     
     async loadRelationships() {
         try {
-            // Load relationships.json
-            const response = await fetch('/relationships.json');
+            // Load relationships.json - detect GitHub Pages base path
+            const basePath = window.location.pathname.includes('/city_of_rivergrove/') ? '/city_of_rivergrove' : '';
+            const response = await fetch(basePath + '/relationships.json');
             const data = await response.json();
             this.documents = data.documents || {};
             this.relationships = data.relationships || {};
@@ -125,7 +126,7 @@ class StandaloneNavigation {
             
             // Load Airtable metadata if available
             try {
-                const airtableResponse = await fetch('/airtable-metadata.json');
+                const airtableResponse = await fetch(basePath + '/airtable-metadata.json');
                 const airtableData = await airtableResponse.json();
                 this.airtableMetadata = airtableData.documents || {};
                 console.log(`StandaloneNavigation: Loaded Airtable metadata for ${Object.keys(this.airtableMetadata).length} documents`);
@@ -776,16 +777,19 @@ class StandaloneNavigation {
     }
     
     navigateToDocument(doc) {
+        // Detect GitHub Pages base path
+        const basePath = window.location.pathname.includes('/city_of_rivergrove/') ? '/city_of_rivergrove' : '';
+        
         // Construct the URL path based on document type and file
         let path = '';
         if (doc.type === 'ordinance') {
-            path = `/ordinances/${doc.file.replace('.md', '.html').replace('#', '')}`;
+            path = `${basePath}/ordinances/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'resolution') {
-            path = `/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
+            path = `${basePath}/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'interpretation') {
-            path = `/interpretations/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/interpretations/${doc.file.replace('.md', '.html')}`;
         } else if (doc.type === 'other' || doc.type === 'charter') {
-            path = `/other/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/other/${doc.file.replace('.md', '.html')}`;
         }
         
         // Navigate directly without animations
