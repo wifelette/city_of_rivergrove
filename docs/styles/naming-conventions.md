@@ -55,6 +55,15 @@ All City of Rivergrove documents follow strict naming conventions to ensure cons
 - `2024-02-12-Minutes.md`
 - `2024-12-09-Transcript.md`
 
+**Special Meeting Types** (optional suffixes):
+- `2024-03-15-Minutes-Special` (Special Meeting)
+- `2024-06-20-Agenda-Emergency` (Emergency Meeting)
+- `2024-09-10-Transcript-Workshop` (Workshop)
+
+**Multiple Meetings Same Day**:
+- `2024-04-11-Minutes-1` (First meeting)
+- `2024-04-11-Minutes-2` (Second meeting)
+
 ## File Organization
 
 ### Source Locations
@@ -62,16 +71,32 @@ Documents are stored in their respective directories:
 - **Ordinances**: `/source-documents/Ordinances/` (with # in filename)
 - **Resolutions**: `/source-documents/Resolutions/` (with # in filename)
 - **Interpretations**: `/source-documents/Interpretations/`
-- **Meeting Documents**: `/source-documents/Meetings/`
+- **Meeting Documents**: `/source-documents/Meetings/[YYYY]/[YYYY-MM-DD]/` (organized by year and date)
 - **Other Documents**: `/source-documents/Other/` or root level
+
+**Meeting Documents Organization**:
+Each meeting has its own folder containing all related documents:
+```
+source-documents/Meetings/
+├── 2024/
+│   ├── 2024-12-09/
+│   │   ├── 2024-12-09-Agenda.md
+│   │   ├── 2024-12-09-Minutes.md
+│   │   └── 2024-12-09-Transcript.md
+│   └── 2024-02-12/
+│       └── 2024-02-12-Transcript.md
+└── 2018/
+    └── 2018-04-11/
+        └── 2018-04-11-Agenda.md
+```
 
 ### mdBook Source (src/)
 When synced to mdBook, files are copied to `/src/` subdirectories with the # character removed where applicable:
 - `/source-documents/Ordinances/1974-Ord-#16-Parks.md` → `/src/ordinances/1974-Ord-16-Parks.md`
 - `/source-documents/Resolutions/1984-Res-#72-Municipal-Services.md` → `/src/resolutions/1984-Res-72-Municipal-Services.md`
-- `/source-documents/Meetings/2018-04-11-Agenda.md` → `/src/agendas/2018-04-11-Agenda.md`
-- `/source-documents/Meetings/2024-02-12-Minutes.md` → `/src/minutes/2024-02-12-Minutes.md`
-- `/source-documents/Meetings/2024-12-09-Transcript.md` → `/src/transcripts/2024-12-09-Transcript.md`
+- `/source-documents/Meetings/2018/2018-04-11/2018-04-11-Agenda.md` → `/src/agendas/2018-04-11-Agenda.md`
+- `/source-documents/Meetings/2024/2024-02-12/2024-02-12-Minutes.md` → `/src/minutes/2024-02-12-Minutes.md`
+- `/source-documents/Meetings/2024/2024-12-09/2024-12-09-Transcript.md` → `/src/transcripts/2024-12-09-Transcript.md`
 
 ## PDF Storage
 
