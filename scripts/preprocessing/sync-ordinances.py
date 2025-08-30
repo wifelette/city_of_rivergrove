@@ -101,6 +101,17 @@ def process_form_fields(content):
             
             line = re.sub(r'\{\{filled:([^}]+)\}\}', replace_filled, line)
         
+        # Handle new patterns (both in headings and regular lines)
+        # Convert {{br}} to HTML line break
+        line = re.sub(r'\{\{br\}\}', '<br>', line)
+        
+        # Convert {{table-footnote:...}} to div with class
+        def replace_table_footnote(match):
+            content = match.group(1).strip()
+            return f'<div class="table-footnotes">{content}</div>'
+        
+        line = re.sub(r'\{\{table-footnote:\s*([^}]+)\}\}', replace_table_footnote, line)
+        
         processed_lines.append(line)
     
     return '\n'.join(processed_lines)

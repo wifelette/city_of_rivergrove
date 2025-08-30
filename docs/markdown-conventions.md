@@ -11,19 +11,14 @@ This document outlines special markdown patterns and conventions used in the dig
 
 ### Markdown Pattern
 
-```html
-<div class="table-footnotes">
-  ¹ **Primary Protected Water Features.** See definition... ² **Secondary
-  Protected Water Features.** See definition...
-</div>
+```markdown
+{{table-footnote: ¹ **Primary Protected Water Features.** See definition... ² **Secondary Protected Water Features.** See definition...}}
 ```
 
 Or for general notes:
 
-```html
-<div class="table-footnotes">
-  **Note:** The middle column, being italicized...
-</div>
+```markdown
+{{table-footnote: **Note:** The middle column, being italicized...}}
 ```
 
 ### Styling Applied
@@ -110,5 +105,5 @@ See **[styles/signature-formatting.md](styles/signature-formatting.md)** for com
 For tables with merged cells or complex formatting:
 
 - Preserve as much structure as possible in markdown
-- Use `<br>` tags for line breaks within cells
+- Use `{{br}}` for line breaks within cells (processed during build)
 - Consider breaking very wide tables into multiple sections if needed

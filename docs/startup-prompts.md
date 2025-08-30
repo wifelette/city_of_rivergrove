@@ -32,7 +32,7 @@ Hi! We're continuing the Rivergrove ordinance digitization project. Here's what 
 Key Resources:
 1. Review the Claude Desktop Guide in Project Knowledge - contains document processing workflow
 2. Airtable MCP tools are connected (daily-tasks:council_*)
-3. GitHub repo: https://github.com/wifelette/city_of_rivergrove
+3. GitHub repo: https://github.com/wifelette/city_of_rivergrove (and you have access to some of the contents of the repo via Project Documents)
 
 Your Mission:
 

@@ -64,8 +64,8 @@ Attested on this 10th day of December 2018:
 | **Tree Cutting Permit Emergency Removal**                                               | No Fee                                                         |
 | **Area Accessory Development Permit**                                                   | $65.00                                                         |
 | **System Development Charge**                                                           | $500.00 per residential unit for parks under Ordinance 82-2011 |
-| **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
-| **Appeal of Type II, III, and IV Decisions**<br>(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
+| **Appeal of Type I Decision**{{br}}(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
+| **Appeal of Type II, III, and IV Decisions**{{br}}(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
 ¹ **Basic building permit.** Plus the actual cost of hearings officer, notification and specialized services the city may require. Other building permits, like subdivision building permits may be more expensive based on actual costs.
 
