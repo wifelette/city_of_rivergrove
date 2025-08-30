@@ -93,7 +93,7 @@ When processing a document:
 
 ### Signature Section Formatting
 
-See **[../styles/signature-formatting.md](../styles/signature-formatting.md)** for complete signature block formatting standards.
+See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
 
 **Key Points:**
 
@@ -112,7 +112,7 @@ See **[../styles/signature-formatting.md](../styles/signature-formatting.md)** f
 
 ### Handwritten Content and Form Fields
 
-See **[../styles/form-fields.md](../styles/form-fields.md)** for complete guide on handling blank and filled fields.
+See **[styles/form-fields.md](styles/form-fields.md)** for complete guide on handling blank and filled fields.
 
 **Key Points**:
 
@@ -123,7 +123,7 @@ See **[../styles/form-fields.md](../styles/form-fields.md)** for complete guide 
 
 ### Images and Diagrams
 
-See **[../styles/inline-images.md](../styles/inline-images.md)** for handling images, diagrams, and visual content.
+See **[styles/inline-images.md](styles/inline-images.md)** for handling images, diagrams, and visual content.
 
 **Key Points**:
 

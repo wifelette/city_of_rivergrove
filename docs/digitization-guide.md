@@ -47,10 +47,10 @@ The digitization project involves three main workflows, each documented separate
 - **Final output**: Markdown files in GitHub repo
 
 ### Style Guides
-- [Naming Conventions](../styles/naming-conventions.md) - File naming standards
-- [Signature Formatting](../styles/signature-formatting.md) - Signature block standards
-- [Form Fields](../styles/form-fields.md) - Form field syntax
-- [Inline Images](../styles/inline-images.md) - Image handling
+- [Naming Conventions](styles/naming-conventions.md) - File naming standards
+- [Signature Formatting](styles/signature-formatting.md) - Signature block standards
+- [Form Fields](styles/form-fields.md) - Form field syntax
+- [Inline Images](styles/inline-images.md) - Image handling
 - [Markdown Conventions](markdown-conventions.md) - Document formatting standards
 
 ### Technical Documentation

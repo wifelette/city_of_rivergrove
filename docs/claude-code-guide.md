@@ -12,7 +12,7 @@ This guide covers the Claude Code workflow for managing the City of Rivergrove r
 
 ## File Organization & Naming Conventions
 
-See **[../styles/naming-conventions.md](../styles/naming-conventions.md)** for complete naming standards and file organization rules.
+See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complete naming standards and file organization rules.
 
 **Key Points**:
 
