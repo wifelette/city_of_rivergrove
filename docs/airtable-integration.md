@@ -15,7 +15,7 @@ This document describes the integration between the City of Rivergrove mdBook si
   - `mdURL`: GitHub URL for markdown files
   - `fileURL`: GitHub URL for PDF files
   - `status`: Publication status (Draft, Published, etc.)
-  - `type`: Document type (Ordinance, Resolution, etc.)
+  - `governing_doc_type`: Document type (Ordinance, Resolution, etc.)
   - `year`: Document year
   - `doc_number`: Official document number
   - `short_title`: Brief title for navigation
@@ -23,6 +23,10 @@ This document describes the integration between the City of Rivergrove mdBook si
   - `digitized`: Whether document has been digitized
   - `special_state`: Special status flags
   - `last_updated`: Last modification timestamp
+  - `Stub?`: Boolean flag for stub documents
+  - `governing_docs`: Linked records to governing documents table
+  - `meeting_docs`: Linked records to meeting documents table
+  - `meeting_doc_type`: Document type for meeting documents (Agenda, Minutes, etc.)
 
 #### Local relationships.json
 - **Purpose**: Auto-generated document relationships and references
