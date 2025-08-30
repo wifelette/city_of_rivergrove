@@ -19,11 +19,13 @@ The repository includes an mdBook static site generator that creates a searchabl
 
 **⚠️ NEVER EDIT FILES IN `/src` DIRECTLY!** The `/src` directory is automatically generated from source documents. Any direct edits to `/src` will be lost when sync scripts run. Always edit files in `source-documents/` or the main folders (`Ordinances/`, `Resolutions/`, etc.)
 
-### Current Workflow (due to sync issues discovered)
+### Current Workflow
 
-1. **Edit files** in the main `source-documents/Ordinances/` directory
-2. **Manual sync**: Run `./scripts/build/update-mdbook.sh` to sync changes to `src/` and rebuild
-3. **View changes** at `http://localhost:3000`
+1. **Edit files** in the main `source-documents/` directories
+2. **For development**: Run `./dev-server.sh` for hot-reload from source edits
+3. **For single file**: Run `./build-one.sh [file]` to update one document
+4. **For full rebuild**: Run `./build-all.sh` to rebuild everything
+5. **View changes** at `http://localhost:3000`
 
 ### Automated Sync (Not Recommended)
 
@@ -32,7 +34,7 @@ The repository includes an mdBook static site generator that creates a searchabl
 - `./scripts/utilities/watch-and-sync.py` - File watcher for auto-sync (use with caution)
 - Issue: Unknown process sometimes generates auto-headers that override file content
 - **Symptom**: File content temporarily disappears and gets replaced with auto-generated headers
-- **Workaround**: Use manual sync with `./scripts/build/update-mdbook.sh` and restore content if needed
+- **Workaround**: Use manual sync with `./build-all.sh` and restore content if needed
 
 ## Directory Structure
 
@@ -49,7 +51,7 @@ city_of_rivergrove/
 ├── book/                # Built static website (generated)
 ├── scripts/
 │   ├── build/
-│   │   └── update-mdbook.sh  # Combined sync + build script
+│   │   └── (deprecated)  # Old scripts moved to deprecated/
 │   ├── preprocessing/
 │   │   └── sync-ordinances.py  # Manual sync script
 │   └── utilities/
@@ -68,8 +70,8 @@ city_of_rivergrove/
 2. **Edit files** in `source-documents/` directories (Ordinances/, Resolutions/, etc.)
 
 3. **Sync changes**:
-   - **For single file**: `./scripts/build/update-single.sh [path/to/file.md]`
-   - **For all files**: `./scripts/build/update-mdbook.sh`
+   - **For single file**: `./build-one.sh [path/to/file.md]`
+   - **For all files**: `./build-all.sh`
 
 4. **View at** `http://localhost:3000`
 
@@ -147,7 +149,7 @@ The enhanced navigation system is fully operational with:
 ## Maintenance
 
 - Edit in `source-documents/Ordinances/` directory (main source of truth)
-- Use `./scripts/build/update-mdbook.sh` for safe syncing
+- Use `./build-all.sh` for safe syncing
 - The `book/` directory is generated and can be safely regenerated
 - Monitor [Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) for navigation updates
 

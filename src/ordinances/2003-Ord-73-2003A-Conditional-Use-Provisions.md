@@ -32,7 +32,7 @@ Adopted by the Rivergrove City Council on **5/12/03**
 
 **WHEREAS**, the annexation of Rivers Edge Athletic Club, which is operating under a Clackamas County conditional use permit, establishes a need for the City of Rivergrove to enact its own conditional use provisions;
 
-**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to [Ordinance #54](../ordinances/1989-Ord-54-89C-Land-Development.md)-89 as amended by [Ordinance No. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)) is hereby amended as follows:
+**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to [Ordinance #54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) as amended by [Ordinance No. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)) is hereby amended as follows:
 
 ## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 

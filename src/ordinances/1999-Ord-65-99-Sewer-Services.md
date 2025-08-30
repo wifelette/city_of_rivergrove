@@ -44,15 +44,15 @@ The City of Rivergrove hereby adopts by reference those portions of Chapters 38,
 
 **E.** After forwarding a resolution supporting the LID or ZOB, the City of Lake Oswego shall have exclusive jurisdiction to deal with these matters in a manner strictly consistent with the terms of the resolution of support to include any conditions contained therein, insofar as they relate to the delivery of sanitary sewer services.
 
-YEAS <!--FILLED:5-->
-NAYS <!--FILLED:0-->
-ABSTAINED <!--FILLED:0-->
+YEAS <span class="form-field-filled" data-tooltip="Field filled in on source doc">5</span>
+NAYS <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
+ABSTAINED <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
 
 [Signature], Mayor, Larry Barrett  
-**Date:** <!--FILLED:12-13-99-->
+**Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12-13-99</span>
 
 [Signature], City Recorder, Mike Collmeyer  
-**Adopted:** <!--FILLED:12/13/99-->
+**Adopted:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12/13/99</span>
 
 ---
 
@@ -64,7 +64,7 @@ ABSTAINED <!--FILLED:0-->
 **EXP/COMPL DATE**  
 **DESTROY**
 
-THIS AGREEMENT is made and entered into as of the <!--FILLED:17th--> day of <!--FILLED:December-->, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego, both municipal corporations of the State of Oregon.
+THIS AGREEMENT is made and entered into as of the <span class="form-field-filled" data-tooltip="Field filled in on source doc">17th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">December</span>, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego, both municipal corporations of the State of Oregon.
 
 The purpose of this agreement is to provide for the collection, transport, and treatment of sanitary sewage generated within Rivergrove.
 
@@ -180,25 +180,29 @@ IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority 
 
 **CITY OF LAKE OSWEGO**  
 By: [Signature] **Alice L. Schlenker, Mayor**  
-As per City Council Resolution No. <!--FILLED:96-62-->, <!--FILLED:December 17, 1996-->  
-**Dated:** <!--FILLED:Dec 18, 1996-->
+As per City Council Resolution No. <span class="form-field-filled" data-tooltip="Field filled in on source doc">96-62</span>, <span class="form-field-filled" data-tooltip="Field filled in on source doc">December 17, 1996</span>
+**Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">Dec 18, 1996</span>
 
-**ATTEST:**  
+**ATTEST:**
 [Signature] **Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
 [Signature] **Jeffrey G. Condit, City Attorney**
 
-**CITY OF RIVERGROVE**  
-By: [Signature], **Sue Salch, Mayor**  
-As per City Council vote at its meeting of: <!--FILLED:November 18, 1996-->  
-**Dated:** <!--FILLED:11/25/96-->
+**CITY OF RIVERGROVE**
+By: [Signature], **Sue Salch, Mayor**
+As per City Council vote at its meeting of: <span class="form-field-filled" data-tooltip="Field filled in on source doc">November 18, 1996</span>
+**Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">11/25/96</span>
 
-**ATTEST:**  
+**ATTEST:**
 [Signature] **Jami K Morrison, City Recorder**
 
 **APPROVED AS TO FORM:**
 
-<!--BLANK-->
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
 **City of Rivergrove Legal Counsel**
+
+
+
+

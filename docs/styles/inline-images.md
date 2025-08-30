@@ -75,10 +75,10 @@ Run the update script to sync and rebuild:
 
 ```bash
 # For a single file
-./scripts/build/update-single.sh source-documents/Ordinances/2001-Ord-#70-2001-WQRA.md
+./build-one.sh source-documents/Ordinances/2001-Ord-#70-2001-WQRA.md
 
 # For all files
-./scripts/build/update-mdbook.sh
+./build-all.sh
 ```
 
 ## How It Works

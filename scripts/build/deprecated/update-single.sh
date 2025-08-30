@@ -1,4 +1,8 @@
 #!/bin/bash
+# ⚠️ DEPRECATED - Use ./build-one.sh instead
+# This script is being phased out in favor of the simplified build system
+# See BUILD-QUICKSTART.md for the new workflow
+#
 # Sync a single document to src/ and rebuild mdBook
 # Usage: ./update-single.sh <path/to/file.md>
 

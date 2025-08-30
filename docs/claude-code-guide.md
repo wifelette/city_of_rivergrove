@@ -59,11 +59,11 @@ After pushing, always provide the GitHub web URLs for Airtable:
 **⚠️ IMPORTANT**: Never edit files in `/src` directly! Always edit source documents, then run sync scripts. The `/src` directory is auto-generated and any direct edits will be lost.
 
 **Option A - Single file (faster):**
-- Run `./scripts/build/update-single.sh [path/to/file.md]`
-- Example: `./scripts/build/update-single.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Run `./build-one.sh [path/to/file.md]`
+- Example: `./build-one.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
 **Option B - Full sync (if multiple files changed):**
-- Run `./scripts/build/update-mdbook.sh` to sync ALL files to src/ folders and rebuild
+- Run `./build-all.sh` to sync ALL files to src/ folders and rebuild
 
 **Note**: The build scripts automatically update `src/SUMMARY.md`
 

@@ -2,8 +2,52 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-29T23:22:32.270145",
-    "last_updated": "2025-08-29T23:22:32.270200",
-    "total_records": 0
+    "last_updated": "2025-08-30T09:37:59.335431",
+    "total_records": 2,
+    "last_partial_update": "2025-08-30T09:37:59.335394",
+    "incremental_updates": [
+      {
+        "filename": "1999-Ord-#65-99-Sewer-Services.md",
+        "updated_at": "2025-08-30T09:22:31.608152"
+      },
+      {
+        "filename": "2000-Ord-#68-2000-Metro-Compliance.md",
+        "updated_at": "2025-08-30T09:37:59.335395"
+      }
+    ]
   },
-  "documents": {}
+  "documents": {
+    "1999-Ord-#65-99-Sewer-Services": {
+      "airtable_id": "rec3uXbwWeNZ3sv45",
+      "display_name": "Ordinance #65-99",
+      "short_title": "Sewer Services",
+      "type": "ordinance",
+      "year": 1999,
+      "doc_number": "65-99",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1999-Ord-%2365-99-Sewer-Services.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/1999-Ord-%2365-99-Sewer-Services.pdf",
+      "filename": "1999-Ord-%2365-99-Sewer-Services.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1999-12-13",
+      "last_updated": "2025-08-29T17:20:19.000Z"
+    },
+    "2000-Ord-#68-2000-Metro-Compliance": {
+      "airtable_id": "reckh8FX5qorxDvwQ",
+      "display_name": "Ordinance #68-2000",
+      "short_title": "Metro Compliance",
+      "type": "ordinance",
+      "year": 2000,
+      "doc_number": "68-2000",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2000-Ord-%2368-2000-Metro-Compliance.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/Ordinances/2000-Ord-%2368-2000-Metro-Compliance.pdf",
+      "filename": "2000-Ord-%2368-2000-Metro-Compliance.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "2000-10-16",
+      "last_updated": "2025-08-30T04:36:32.000Z"
+    }
+  }
 }

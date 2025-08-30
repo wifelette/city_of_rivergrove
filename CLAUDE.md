@@ -70,12 +70,12 @@ Please read these files for context on this project and how to work with Leah:
 
 **Option A - Single file (faster):**
 
-- Run `./scripts/build/update-single.sh [path/to/file.md]` to sync just this file and rebuild
-- Example: `./scripts/build/update-single.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
+- Run `./build-one.sh [path/to/file.md]` to sync just this file and rebuild
+- Example: `./build-one.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
 **Option B - Full sync (if multiple files changed):**
 
-- Run `./scripts/build/update-mdbook.sh` to sync ALL files to src/ folders and rebuild
+- Run `./build-all.sh` to sync ALL files to src/ folders and rebuild
 
 **IMPORTANT - mdBook serve limitations:**
 

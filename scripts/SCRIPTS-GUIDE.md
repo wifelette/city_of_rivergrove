@@ -4,23 +4,28 @@
 
 **See `/docs/build-architecture.md` for complete build system documentation and dependencies.**
 
-## Quick Start - Main Build Scripts
+## Quick Start - The Only 3 Scripts You Need
 
-The most commonly used scripts are in `scripts/build/`:
+**All build scripts are now in the repository root for easy access:**
 
-- **`./scripts/build/update-mdbook.sh`** - Full sync and rebuild of all documents (recommended)
-- **`./scripts/build/update-single.sh [file]`** - Quick sync and rebuild for a single file
-- **`./scripts/build/update-mdbook-enhanced.sh`** - Full build with enhanced formatting
-- **`./scripts/build/update-mdbook-airtable.sh`** - Full build with Airtable integration
+- **`./build-all.sh [--quick]`** - Complete rebuild with all processing (use `--quick` to skip Airtable)
+- **`./build-one.sh [file]`** - Smart single-file update with auto-detection
+- **`./dev-server.sh`** - Development server with hot-reload from source edits
 
 ## Directory Structure
 
-### build/
-Main orchestration scripts that tie everything together:
-- `update-mdbook.sh` - Standard full build
-- `update-single.sh` - Single file update
-- `update-mdbook-enhanced.sh` - Enhanced formatting build
-- `build.sh` - Original build script
+### Root Directory Build Scripts
+The three main scripts are in the repository root:
+- `build-all.sh` - Complete rebuild with all processing
+- `build-one.sh` - Smart single-file update
+- `dev-server.sh` - Development server with hot-reload
+
+### scripts/build/ (DEPRECATED)
+Old scripts with deprecation warnings - do not use:
+- `update-mdbook.sh` - ❌ Use `./build-all.sh` instead
+- `update-single.sh` - ❌ Use `./build-one.sh` instead  
+- `serve.sh` - ❌ Use `./dev-server.sh` instead
+- Others - ❌ All replaced by the three main scripts
 
 ### preprocessing/
 Scripts that modify source markdown BEFORE mdBook builds:
@@ -70,13 +75,24 @@ Configuration files:
 ## Most Common Commands
 
 ```bash
+# Development server (hot-reload from source edits)
+./dev-server.sh
+
 # Process a single document
-python3 scripts/preprocessing/standardize-single.py Resolutions/2024-Res-#300-Fee-Schedule.md
-./scripts/build/update-single.sh Resolutions/2024-Res-#300-Fee-Schedule.md
+python3 scripts/preprocessing/standardize-single.py source-documents/Resolutions/2024-Res-#300-Fee-Schedule.md
+./build-one.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule.md
 
 # Full rebuild
-./scripts/build/update-mdbook.sh
+./build-all.sh
 
-# Full rebuild with enhanced formatting
-./scripts/build/update-mdbook-enhanced.sh
+# Full rebuild without Airtable (faster)
+./build-all.sh --quick
 ```
+
+## Key Improvements
+
+1. **Simplified to 3 scripts** - Down from 6+ confusing variants
+2. **Smart detection** - Scripts auto-detect document types
+3. **True hot-reload** - `dev-server.sh` watches source files, not generated output
+4. **Safety rails** - Warns about /src edits, stops conflicting processes
+5. **Clear names** - `build-all`, `build-one`, `dev-server` are self-explanatory

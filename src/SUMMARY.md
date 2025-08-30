@@ -34,13 +34,13 @@
 ---
 
 # Resolutions
-- [#22-PC - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
-- [#72-Municipal-Services - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
-- [#256-Planning-Development-Fees - Fees (2018)](./resolutions/2018-Res-256-Planning-Development-Fees.md)
-- [#259-Planning-Development-Fees - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
-- [#265-2019 - 2019 (2019)](./resolutions/2019-Res-265-2019.md)
-- [#41425-Public-Records - Records (2019)](./resolutions/2019-Res-41425-Public-Records.md)
-- [#300-Fee-Schedule-Modification - Modification (2024)](./resolutions/2024-Res-300-Fee-Schedule-Modification.md)
+- [#22 - Planning Commission (1976)](./resolutions/1976-Res-22-PC.md)
+- [#72 - Services (1984)](./resolutions/1984-Res-72-Municipal-Services.md)
+- [#256 - Fees (2018)](./resolutions/2018-Res-256-Planning-Development-Fees.md)
+- [#259 - Fees (2018)](./resolutions/2018-Res-259-Planning-Development-Fees.md)
+- [#265 - 2019 (2019)](./resolutions/2019-Res-265-2019.md)
+- [#41425 - Records (2019)](./resolutions/2019-Res-41425-Public-Records.md)
+- [#300 - Modification (2024)](./resolutions/2024-Res-300-Fee-Schedule-Modification.md)
 
 ---
 
@@ -60,10 +60,6 @@
 
 ---
 
-# Council Meetings
-- [Agendas]()
-  - [2018 04 11 Agenda](./agendas/2018-04-11-Agenda.md)
-  - [2018 05 14 Agenda](./agendas/2018-05-14-Agenda.md)
-- [Transcripts]()
-  - [02 2024 Transcript](./transcripts/02-2024-Transcript.md)
-  - [12 2024 Transcript](./transcripts/12-2024-Transcript.md)
+# Council Meeting Transcripts
+- [02 2024 Transcript](./transcripts/02-2024-Transcript.md)
+- [12 2024 Transcript](./transcripts/12-2024-Transcript.md)

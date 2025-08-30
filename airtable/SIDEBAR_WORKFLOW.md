@@ -35,8 +35,9 @@ The correct order is critical to preserve custom formatting and Airtable data:
 - Legal enumeration styles revert to standard markdown
 
 **Solution**: 
-- Use `./scripts/build/update-mdbook-airtable.sh` for full builds
-- After changes while `mdbook serve` is running, manually run:
+- Use `./build-all.sh` for full builds
+- Or use `./dev-server.sh` which automatically applies post-processing
+- If using `mdbook serve` directly, manually run:
   ```bash
   python3 scripts/postprocessing/custom-list-processor.py
   ```
@@ -48,7 +49,7 @@ The correct order is critical to preserve custom formatting and Airtable data:
 **Solution**:
 - Ensure Airtable sync runs BEFORE generating SUMMARY.md
 - Use `generate-summary-with-airtable.py` instead of `generate-summary.py`
-- Run the enhanced build script: `./scripts/build/update-mdbook-airtable.sh`
+- Run the build script: `./build-all.sh`
 
 ### Issue 3: Missing Airtable Data
 
@@ -71,31 +72,22 @@ The correct order is critical to preserve custom formatting and Airtable data:
 
 ```bash
 # Update a single document and rebuild
-./scripts/build/update-single.sh Ordinances/2024-Ord-#95-Example.md
+./build-one.sh source-documents/Ordinances/2024-Ord-#95-Example.md
 ```
 
 ### For Multiple Changes
 
 ```bash
 # Full rebuild with all enhancements
-./scripts/build/update-mdbook-airtable.sh
+./build-all.sh
 ```
 
-### For Development (with mdbook serve)
+### For Development (Recommended)
 
 ```bash
-# Start mdbook serve in one terminal
-mdbook serve
-
-# In another terminal, after making changes:
-# 1. Sync Airtable if needed
-python3 scripts/mdbook/sync-airtable-metadata.py --if-stale
-
-# 2. Regenerate SUMMARY with Airtable data
-python3 scripts/mdbook/generate-summary-with-airtable.py
-
-# 3. Apply post-processing manually
-python3 scripts/postprocessing/custom-list-processor.py
+# Use the smart dev server that handles everything
+./dev-server.sh
+# Edit files in source-documents/ and save - auto-processes on save!
 ```
 
 ## File Locations
@@ -103,7 +95,7 @@ python3 scripts/postprocessing/custom-list-processor.py
 - **Airtable Metadata Cache**: `src/airtable-metadata.json` and `book/airtable-metadata.json`
 - **Relationships Data**: `src/relationships.json` and `book/relationships.json`
 - **Navigation**: `src/SUMMARY.md`
-- **Build Scripts**: `scripts/build/`
+- **Build Scripts**: Root directory (`./build-all.sh`, `./build-one.sh`, `./dev-server.sh`)
 - **Processing Scripts**: `scripts/mdbook/`, `scripts/preprocessing/`, `scripts/postprocessing/`
 
 ## Environment Setup
@@ -132,7 +124,7 @@ python3 scripts/mdbook/sync-airtable-metadata.py --reconcile
 
 ```bash
 # Run build with verbose output
-bash -x ./scripts/build/update-mdbook-airtable.sh
+bash -x ./build-all.sh
 ```
 
 ### Test Individual Components

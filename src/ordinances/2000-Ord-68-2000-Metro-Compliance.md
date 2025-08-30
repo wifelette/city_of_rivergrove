@@ -2,15 +2,15 @@
 
 **AN ORDINANCE ADOPTING AMENDMENTS TO THE RIVERGROVE LAND DEVELOPMENT ORDINANCE AND THE RIVERGROVE COMPREHENSIVE PLAN IN ORDER TO COMPLY WITH THE REQUIREMENTS OF METRO'S URBAN GROWTH MANAGEMENT FUNCTIONAL PLAN.**
 
-**Planning Commission Public Hearings:** 8/10/2000, 9/7/2000, 9/11/2000, 9/28/2000  
-**City Council Public Hearings:** 10/16/2000  
-**Adopted by Rivergrove City Council:** 10/16/2000
+**Planning Commission Public Hearings:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">8/10/2000, 9/7/2000, 9/11/2000, 9/28/2000</span>  
+**City Council Public Hearings:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>
+**Adopted by Rivergrove City Council:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 10-16-00                                            
+**Date**: {{filled:10-16-00
 
-[Signature], Mike Collmeyer, City Recorder  
-**Date**: 10/16/2000                                            
+[Signature], Mike Collmeyer, City Recorder}}  
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>
 
 Adopted
 
@@ -60,37 +60,37 @@ Rivergrove hereby amends its Land Development Ordinance (LDO) to meet the densit
 >
 > **a.** The calculation of minimum and maximum densities shall be made as follows:
 >
->    1. The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
->       
->       - Land within the 100-year flood plain;  
->       - Land with slopes exceeding 25%;  
->       - Water Quality Resource Areas;  
->       - All land dedicated for public rights-of-way;  
->       - All land used or proposed as a private road for access benefiting more than one lot.
+> 1.  The "net development area", in acres, shall be determined by subtracting the following land areas from the gross acres, which is all of the land included in the legal description of the property to be developed or divided:
 >
->    2. To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
+>     - Land within the 100-year flood plain;
+>     - Land with slopes exceeding 25%;
+>     - Water Quality Resource Areas;
+>     - All land dedicated for public rights-of-way;
+>     - All land used or proposed as a private road for access benefiting more than one lot.
 >
->    3. To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
+> 2.  To calculate the maximum number of residential units per net acre, divide the number of square feet in the net acres by the minimum number of square feet required for each lot, i.e. 10,000 square feet.
+>
+> 3.  To calculate the minimum density standard, multiply the maximum number of residential units per net acre by 80% (0.8), and round down to the next whole number.
 >
 > **b.** The minimum density standard states the number of units to be placed on the property to be developed or divided.
 >
->    1. Units shall be counted as follows:
->       
->       - a single-family detached dwelling -one unit;  
->       - a secondary dwelling unit -one unit;  
->       - a duplex -two units;  
->       - a triplex -three units.
+> 1.  Units shall be counted as follows:
 >
->    2. Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
->       
->       - a single-family with a secondary dwelling unit; or  
->       - a duplex; or  
->       - a triplex.
+>     - a single-family detached dwelling -one unit;
+>     - a secondary dwelling unit -one unit;
+>     - a duplex -two units;
+>     - a triplex -three units.
 >
->    3. Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
->       
->       - the configuration of the property to be developed or divided;  
->       - the availability of sewer service to the property to be developed or divided.
+> 2.  Units shall be counted when a development permit is issued for one of the above or when a lot is restricted by plat restrictions or covenants to development as:
+>
+>     - a single-family with a secondary dwelling unit; or
+>     - a duplex; or
+>     - a triplex.
+>
+> 3.  Applicants may request a variance from the minimum density standard under Section 6.060. Added to the criteria to be considered on a variance request from the minimum density standard are:
+>
+>     - the configuration of the property to be developed or divided;
+>     - the availability of sewer service to the property to be developed or divided.
 >
 > **(c)** The provisions of this section do not apply to land within 100-year flood plain or to multi-family developments.
 

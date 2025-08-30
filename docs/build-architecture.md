@@ -41,27 +41,30 @@ graph TD
 
 ## Main Build Scripts
 
-### Full Builds
+### The Three Essential Scripts
 
-#### `./scripts/build/update-mdbook.sh`
-Standard full build with all processing steps. Use this for normal updates.
+#### `./build-all.sh [--quick]`
+Complete rebuild with all processing steps in correct order.
+- Automatically stops any running mdbook serve to prevent conflicts
+- Runs all preprocessing, processing, and postprocessing steps
+- Use `--quick` flag to skip Airtable sync for faster local testing
+- Detects and warns if files in /src were manually edited
 
-#### `./scripts/build/update-mdbook-enhanced.sh` 
-Full build with enhanced document-specific formatting. Use for special document types.
-
-#### `./scripts/build/update-mdbook-airtable.sh`
-Full build with Airtable metadata integration. Use when Airtable data needs syncing.
-
-### Partial Builds
-
-#### `./scripts/build/update-single.sh <file>`
-Quick update for a single document. Example:
+#### `./build-one.sh <file>`
+Smart single-file update that auto-detects document type. Example:
 ```bash
-./scripts/build/update-single.sh source-documents/Ordinances/1978-Ord-#28-Parks.md
+./build-one.sh source-documents/Ordinances/1978-Ord-#28-Parks.md
 ```
+- Automatically determines document type from path
+- Runs only necessary processing for that file
+- Much simpler than old 100+ line script
 
-#### `./scripts/build/build.sh`
-Minimal rebuild - assumes files already in /src. Use only when source files haven't changed.
+#### `./dev-server.sh`
+Development server with true hot-reload from source edits.
+- Watches `source-documents/` for changes (where you actually edit)
+- Automatically runs full processing pipeline on save
+- Applies postprocessors to maintain custom formatting
+- Replaces both `mdbook serve` and old serve scripts
 
 ## Script Categories & Dependencies
 
@@ -151,26 +154,25 @@ When adding a new processing step:
 
 1. Determine if it modifies markdown (preprocessing) or HTML (postprocessing)
 2. Add to appropriate directory
-3. Update ALL build scripts in correct order:
-   - `update-mdbook.sh`
-   - `update-single.sh`
-   - `update-mdbook-enhanced.sh`
-   - `update-mdbook-airtable.sh`
-   - `build.sh` (if applicable)
+3. Update the THREE build scripts in correct order:
+   - `build-all.sh` - Add to the main pipeline
+   - `build-one.sh` - Add to single-file processing if applicable
+   - `dev-server.sh` - Add to the `process_file_change()` function
 4. Update this documentation
 
 ## Testing Changes
 
 After modifying the build pipeline:
 
-1. Test with a single file: `./scripts/build/update-single.sh [test-file]`
+1. Test with a single file: `./build-one.sh [test-file]`
 2. Check that all features work:
    - Form fields show blue highlighting
    - Cross-references are clickable
    - Tables have proper formatting
    - Special lists render correctly
-3. Run full build: `./scripts/build/update-mdbook.sh`
-4. Verify no regressions in other documents
+3. Run full build: `./build-all.sh`
+4. Test hot-reload: `./dev-server.sh` and edit a source file
+5. Verify no regressions in other documents
 
 ## Performance Considerations
 

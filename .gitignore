@@ -1,5 +1,11 @@
 book
 
+# IMPORTANT: /src is auto-generated - DO NOT EDIT DIRECTLY
+# All files in /src except these two are generated from source-documents/
+src/*
+!src/SUMMARY.md
+!src/introduction.md
+
 # Environment files
 .env
 .env.local

@@ -102,13 +102,13 @@ book/airtable-metadata.json
 
 #### Build Scripts
 
-**./scripts/build/update-mdbook.sh** (Full rebuild)
+**./build-all.sh** (Full rebuild)
 ```bash
 echo "🔗 Checking Airtable metadata..."
 python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
 ```
 
-**./scripts/build/update-single.sh** (Single document)
+**./build-one.sh [file]** (Single document)
 ```bash
 echo "🔗 Updating Airtable metadata for $FILENAME..."
 python3 scripts/mdbook/sync-airtable-metadata.py \
@@ -166,7 +166,7 @@ If document not found in Airtable:
 #### Manual Cache Clear
 ```bash
 rm book/airtable-metadata.json
-./scripts/build/update-mdbook.sh  # Will rebuild cache
+./build-all.sh  # Will rebuild cache
 ```
 
 ### 8. Environment Variables

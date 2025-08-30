@@ -1,4 +1,8 @@
 #!/bin/bash
+# ⚠️ DEPRECATED - Use ./build-all.sh instead
+# This script is being phased out in favor of the simplified build system
+# See BUILD-QUICKSTART.md for the new workflow
+#
 # Sync all documents and rebuild mdBook
 
 echo "🔄 Syncing documents to src/ folders..."

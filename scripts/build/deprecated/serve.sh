@@ -1,4 +1,8 @@
 #!/bin/bash
+# ⚠️ DEPRECATED - Use ./dev-server.sh instead
+# This script is being phased out in favor of the improved dev server
+# See BUILD-QUICKSTART.md for the new workflow
+#
 # Custom serve script that runs postprocessing after mdBook rebuilds
 
 echo "🚀 Starting mdBook with automatic postprocessing..."

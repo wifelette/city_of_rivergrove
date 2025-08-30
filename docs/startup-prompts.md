@@ -11,6 +11,7 @@ Hello! We're working on the City of Rivergrove digitization project. Please star
 3. docs/mdbook-guide.md - mdBook site and build information
 4. docs/build-architecture.md - build system and script dependencies
 5. docs/styles/ - formatting standards (naming, signatures, form fields, images)
+6. scripts/SCRIPTS_GUIDE.md - more on script dependencies
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
@@ -19,9 +20,9 @@ Today I'll be working on: [specify which ordinances/resolutions/interpretations]
 Key Reminders:
 - NEVER add manual markdown links for cross-references (e.g., [Ordinance #52](../))
 - Keep document references as plain text - the build system handles linking
-- Use ./scripts/build/update-single.sh for single file rebuilds
-- Use ./scripts/build/update-mdbook.sh for full rebuilds
-- If mdBook serve is running, manually run custom-list-processor.py to restore form fields
+- Use ./build-one.sh for single file rebuilds
+- Use ./build-all.sh for full rebuilds
+- Use ./dev-server.sh for development (auto-processes on save)
 ```
 
 ## Claude Desktop Startup
