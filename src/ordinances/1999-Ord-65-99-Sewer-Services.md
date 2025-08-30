@@ -44,53 +44,27 @@ The City of Rivergrove hereby adopts by reference those portions of Chapters 38,
 
 **E.** After forwarding a resolution supporting the LID or ZOB, the City of Lake Oswego shall have exclusive jurisdiction to deal with these matters in a manner strictly consistent with the terms of the resolution of support to include any conditions contained therein, insofar as they relate to the delivery of sanitary sewer services.
 
-YEAS **5**  
-NAYS **0**  
-ABSTAINED **0**
-
-**Adopted** **12-13-99**
-
-**Dated**
+YEAS <!--FILLED:5-->
+NAYS <!--FILLED:0-->
+ABSTAINED <!--FILLED:0-->
 
 [Signature], Mayor, Larry Barrett  
-**Date:** 12-13-99
+**Date:** <!--FILLED:12-13-99-->
 
 [Signature], City Recorder, Mike Collmeyer  
-**Date:** 12/13/99
-
-**Adopted**
+**Adopted:** <!--FILLED:12/13/99-->
 
 ---
 
-# COPY
+# INTERGOVERNMENTAL AGREEMENT FOR SEWERAGE SERVICES
 
-## INTERGOVERNMENTAL AGREEMENT FOR SEWERAGE SERVICES
+## COPY
 
 **RETENTION**  
 **EXP/COMPL DATE**  
 **DESTROY**
 
-The purpose of this agreement is to provide for the collection, transport, and treatment of sanitary sewage generated within Rivergrove.
-
-WHEREAS, Lake Oswego acting by and through its Mayor and City Council, pursuant to authority granted by its City Charter and ORS 224, has authority to enter into this agreement; and
-
-WHEREAS, Rivergrove acting by and through its Mayor and City Council, pursuant to authority granted by its City Charter and ORS 224, has authority to enter into this agreement; and
-
-WHEREAS, Rivergrove and Lake Oswego have the authority to enter into intergovernmental agreements for the cooperative operation of service facilities under ORS Chapter 190; and
-
-WHEREAS, it is in the best interest of Rivergrove and Lake Oswego to enter into an agreement which provides for the collection, transport, and treatment of sanitary sewage generated within Rivergrove; and
-
-WHEREAS, Rivergrove and Lake Oswego have determined that the provisions of this Agreement are consistent with and an acceptable means of implementing the Metro Area Sanitary Sewage Wastewater Management ("208") Plan; and
-
-WHEREAS, Lake Oswego has previously entered into an agreement with the City of Portland to provide treatment of sanitary sewage generated within Lake Oswego at the Tryon Creek Wastewater Treatment Plant (WWTP); and
-
-WHEREAS, the Tryon Creek WWTP facilities plan also provides for the treatment of sanitary sewage generated within Rivergrove; and
-
-WHEREAS, Lake Oswego has developed a master plan and a master plan update for sewerage collection facilities for both Lake Oswego, Rivergrove and areas within the Lake Oswego Urban Services Boundary; and
-
-WHEREAS, this Agreement would implement these plans;
-
-THIS AGREEMENT is made and entered into as of the **17th** day of **December**, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego" both municipal corporations of the State of Oregon.
+THIS AGREEMENT is made and entered into as of the <!--FILLED:17th--> day of <!--FILLED:December-->, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego, both municipal corporations of the State of Oregon.
 
 The purpose of this agreement is to provide for the collection, transport, and treatment of sanitary sewage generated within Rivergrove.
 
@@ -205,25 +179,26 @@ In the event a court of competent jurisdiction shall deem any portion or part of
 IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority of lawful actions by the Lake Oswego City Council and Rivergrove City Council.
 
 **CITY OF LAKE OSWEGO**  
-**CITY OF RIVERGROVE**
-
 By: [Signature] **Alice L. Schlenker, Mayor**  
-By: [Signature] **Joel Komarek, Mayor**
-
-As per City Council Resolution No. **96-62**  
-**December 17, 1996**
-
-As per City Council vote at its meeting of: **11/25/96**
-
-**Dated:** **Dec 17, 1996**  
-**Dated:** **11/25/96**
+As per City Council Resolution No. <!--FILLED:96-62-->, <!--FILLED:December 17, 1996-->
+**Dated:** <!--FILLED:Dec 18, 1996-->
 
 **ATTEST:**
-
-[Signature] **Kristi Hitchcock, City Recorder**  
-[Signature] **Jami K Moulton, City Recorder**
+[Signature] **Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
 [Signature] **Jeffrey G. Condit, City Attorney**
+
+**CITY OF RIVERGROVE**
+By: [Signature], **Sue Salch, Mayor**
+As per City Council vote at its meeting of: <!--FILLED:November 18, 1996-->
+**Dated:** <!--FILLED:11/25/96-->
+
+**ATTEST:**
+[Signature] **Jami K Morrison, City Recorder**
+
+**APPROVED AS TO FORM:**
+
+<!--BLANK-->
 **City of Rivergrove Legal Counsel**

@@ -510,7 +510,7 @@ def process_form_fields(html_content):
     html_content = re.sub(blank_pattern, replace_blank, html_content)
     
     # Pattern to match <!--FILLED: content--> markers (if manually added)
-    filled_pattern = r'<!--FILLED:\s*([^-]+)-->'
+    filled_pattern = r'<!--FILLED:\s*([^>]+?)-->'
     
     def replace_filled(match):
         content = match.group(1)
@@ -531,6 +531,7 @@ def process_html_file(filepath):
     content = process_numbered_lists(content)
     content = process_letter_lists(content)
     content = process_roman_lists(content)
+    content = process_form_fields(content)  # Process form fields
     content = add_custom_css(content)
     
     # Write back

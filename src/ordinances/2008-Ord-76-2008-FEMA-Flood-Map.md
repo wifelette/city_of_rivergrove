@@ -40,7 +40,7 @@ Adopted by the Rivergrove City Council on **6-9-08**
 >
 > The area of special flood hazard identified by the Federal Insurance Administration in a scientific and engineering report entitled "Flood Insurance Study Clackamas County, Oregon and Incorporated Areas Volume 1 of 3 effective June 17, 2008 FIS Number 41005CV001A," with accompanying Flood Insurance Maps is hereby adopted by reference and declared to be a part of this ordinance. The Flood Insurance Study is on file at the City Recorder's office.
 
-### Section 2: Attachment C to Ordinance No. 54-89 (the Rivergrove Land Development Ordinance) is amended to read as follows:
+### Section 2: Attachment C to [Ordinance No. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) (the Rivergrove Land Development Ordinance) is amended to read as follows:
 
 > ### Section 5.020 Flood Hazard District.
 >

@@ -61,11 +61,9 @@
 ---
 
 # Council Meetings
-
-## Agendas
-- [2018-04-11 - Agenda](./agendas/2018-04-11-Agenda.md)
-- [2018-05-14 - Agenda](./agendas/2018-05-14-Agenda.md)
-
-## Transcripts
-- [02 2024 Transcript](./transcripts/02-2024-Transcript.md)
-- [12 2024 Transcript](./transcripts/12-2024-Transcript.md)
+- [Agendas]()
+  - [2018 04 11 Agenda](./agendas/2018-04-11-Agenda.md)
+  - [2018 05 14 Agenda](./agendas/2018-05-14-Agenda.md)
+- [Transcripts]()
+  - [02 2024 Transcript](./transcripts/02-2024-Transcript.md)
+  - [12 2024 Transcript](./transcripts/12-2024-Transcript.md)

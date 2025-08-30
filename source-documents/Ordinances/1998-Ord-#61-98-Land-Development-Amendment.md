@@ -2,17 +2,17 @@
 
 **AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
-Adopted by the Planning Commission of the City of Rivergrove on **April 6, 1998**
+Adopted by the Planning Commission of the City of Rivergrove on {{filled:April 6, 1998}}
 
-Submitted to the Rivergrove City Council on **April 13, 1998**
+Submitted to the Rivergrove City Council on {{filled:April 13, 1998}}
 
-Adopted by the Rivergrove City Council on **April 13, 1998**
+Adopted by the Rivergrove City Council on {{filled:April 13, 1998}}
 
 [Signature], Larry Barrett, Mayor  
-**Date:** 4-13-98
+**Date:** {{filled:4-13-98}}
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date:** 4/13/98
+**Date:** {{filled:4/13/98}}
 
 ---
 

@@ -1,18 +1,18 @@
 # ORDINANCE NO. 62-98
 
-**AN ORDINANCE AMENDING [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md), THE CITY OF RIVERGROVE'S FLOOD DAMAGE PREVENTION ORDINANCE, AND ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
+**AN ORDINANCE AMENDING [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md), THE CITY OF RIVERGROVE'S FLOOD DAMAGE PREVENTION ORDINANCE, AND ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
-Approved by the Planning Commission of the City of Rivergrove on **July 6, 1998**
+Approved by the Planning Commission of the City of Rivergrove on <!--FILLED:July 6, 1998-->
 
-Submitted to the Rivergrove City Council on **July 13, 1998**
+Submitted to the Rivergrove City Council on <!--FILLED:July 13, 1998-->
 
-Adopted by the Rivergrove City Council on **July 13, 1998**
+Adopted by the Rivergrove City Council on <!--FILLED:July 13, 1998-->
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 7-13-98        
+**Date**: <!--FILLED:7-13-98-->
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 7/13/98        
+**Date**: <!--FILLED:7/13/98-->
 
 ---
 
@@ -72,11 +72,11 @@ Section 5.055, Secondary Dwelling Units, is hereby added to the Rivergrove Land 
 >
 > **c.** Outside the Flood Hazard District, the minimum lot size is 10,000 sq. ft. and the maximum density allowed is:
 >
->    1. one (1) house (single-family dwelling) per lot plus one secondary dwelling unit as permitted by Section 5.050(b), or
+> 1.  one (1) house (single-family dwelling) per lot plus one secondary dwelling unit as permitted by Section 5.050(b), or
 >
->    2. one duplex per lot (secondary dwelling units not permitted in conjunction with duplexes), or
+> 2.  one duplex per lot (secondary dwelling units not permitted in conjunction with duplexes), or
 >
->    3. one triplex per lot (secondary dwelling units not permitted in conjunction with triplexes).
+> 3.  one triplex per lot (secondary dwelling units not permitted in conjunction with triplexes).
 >
 > **d.** This section clarifies secondary dwelling unit policy but is not limited in its scope and/or application to development proposals including secondary dwelling units. It shall apply to all proposals for residential development within the City of Rivergrove.
 

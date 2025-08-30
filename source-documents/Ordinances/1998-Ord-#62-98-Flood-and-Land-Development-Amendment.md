@@ -2,17 +2,17 @@
 
 **AN ORDINANCE AMENDING ORDINANCE NO. 52, THE CITY OF RIVERGROVE'S FLOOD DAMAGE PREVENTION ORDINANCE, AND ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
-Approved by the Planning Commission of the City of Rivergrove on **July 6, 1998**
+Approved by the Planning Commission of the City of Rivergrove on {{filled:July 6, 1998}}
 
 Submitted to the Rivergrove City Council on {{filled:July 13, 1998}}
 
 Adopted by the Rivergrove City Council on {{filled:July 13, 1998}}
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 7-13-98
+**Date**: {{filled:7-13-98}}
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 7/13/98
+**Date**: {{filled:7/13/98}}
 
 ---
 
