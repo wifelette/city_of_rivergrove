@@ -63,23 +63,21 @@ elif [[ "$SOURCE_FILE" == source-documents/Other/* ]]; then
     python3 scripts/preprocessing/sync-other.py
     DEST_DIR="src/other"
     
-elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Agenda* ]]; then
-    echo "  Type: Meeting Agenda"
-    DEST_FILENAME=$(echo "$FILENAME" | sed 's/#//g')
-    cp "$SOURCE_FILE" "src/agendas/$DEST_FILENAME"
-    DEST_DIR="src/agendas"
+elif [[ "$SOURCE_FILE" == source-documents/Meetings/* ]]; then
+    echo "  Type: Meeting Document"
+    python3 scripts/preprocessing/sync-meetings.py
     
-elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Minutes* ]]; then
-    echo "  Type: Meeting Minutes"
-    DEST_FILENAME=$(echo "$FILENAME" | sed 's/#//g')
-    cp "$SOURCE_FILE" "src/minutes/$DEST_FILENAME"
-    DEST_DIR="src/minutes"
-    
-elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Transcript* ]]; then
-    echo "  Type: Meeting Transcript"
-    DEST_FILENAME=$(echo "$FILENAME" | sed 's/#//g')
-    cp "$SOURCE_FILE" "src/transcripts/$DEST_FILENAME"
-    DEST_DIR="src/transcripts"
+    # Determine specific type for destination
+    if [[ "$FILENAME" == *Agenda* ]]; then
+        DEST_DIR="src/agendas"
+    elif [[ "$FILENAME" == *Minutes* ]]; then
+        DEST_DIR="src/minutes"
+    elif [[ "$FILENAME" == *Transcript* ]]; then
+        DEST_DIR="src/transcripts"
+    else
+        echo -e "${RED}Error: Unknown meeting document type in $FILENAME${NC}"
+        exit 1
+    fi
     
 else
     echo -e "${RED}Error: File must be in a recognized source-documents/ subdirectory${NC}"

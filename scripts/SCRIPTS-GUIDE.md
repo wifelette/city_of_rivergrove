@@ -32,6 +32,7 @@ Scripts that modify source markdown BEFORE mdBook builds:
 - `sync-ordinances.py` - Copy ordinances to src/, remove #, apply form fields
 - `sync-resolutions.py` - Copy resolutions to src/, remove #, apply form fields  
 - `sync-interpretations.py` - Copy interpretations to src/
+- `sync-meetings.py` - Copy meeting documents (agendas, minutes, transcripts) to src/
 - `sync-other.py` - Copy other documents to src/
 - `footnote-preprocessor.py` - Convert footnote syntax to HTML
 - `auto-link-converter.py` - Convert URLs/emails to markdown links
@@ -53,9 +54,10 @@ Scripts that enhance HTML AFTER mdBook builds:
 ### mdbook/
 Scripts for mdBook-specific generation:
 - `add-cross-references.py` - Convert document references to clickable links
-- `generate-summary.py` - Create SUMMARY.md table of contents
+- `generate-summary.py` - Create SUMMARY.md table of contents (includes agendas, minutes, transcripts)
 - `generate-relationships.py` - Build document relationship graph
 - `sync-airtable-metadata.py` - Fetch and sync Airtable metadata
+- `sync-meetings-metadata.py` - Fetch and sync meeting metadata from Airtable
 - `cross-reference-preprocessor.py` - mdBook preprocessor for cross-refs (not currently used)
 
 ### utilities/
@@ -98,6 +100,30 @@ python3 scripts/validation/validate-form-fields.py source-documents/Ordinances/e
 python3 scripts/validation/validate-form-fields.py --fix  # Auto-fix simple issues
 ```
 
+## Meeting Documents Structure
+
+Meeting documents are organized in a year/date folder structure:
+```
+source-documents/Meetings/
+├── 2024/
+│   ├── 2024-12-09/
+│   │   └── 2024-12-09-Transcript.md
+│   └── 2024-02-12/
+│       └── 2024-02-12-Transcript.md
+└── 2018/
+    ├── 2018-04-11/
+    │   └── 2018-04-11-Agenda.md
+    └── 2018-05-14/
+        └── 2018-05-14-Agenda.md
+```
+
+The `sync-meetings.py` script automatically:
+- Copies files from nested year/date folders
+- Distributes them to appropriate /src directories:
+  - `/src/agendas/` for Agenda files
+  - `/src/minutes/` for Minutes files
+  - `/src/transcripts/` for Transcript files
+
 ## Key Improvements
 
 1. **Simplified to 3 scripts** - Down from 6+ confusing variants
@@ -105,3 +131,4 @@ python3 scripts/validation/validate-form-fields.py --fix  # Auto-fix simple issu
 3. **True hot-reload** - `dev-server.sh` watches source files, not generated output
 4. **Safety rails** - Warns about /src edits, stops conflicting processes
 5. **Clear names** - `build-all`, `build-one`, `dev-server` are self-explanatory
+6. **Meeting documents support** - Full handling of agendas, minutes, and transcripts

@@ -56,6 +56,8 @@ echo "  • Resolutions..."
 python3 scripts/preprocessing/sync-resolutions.py
 echo "  • Interpretations..."
 python3 scripts/preprocessing/sync-interpretations.py
+echo "  • Meeting documents..."
+python3 scripts/preprocessing/sync-meetings.py
 echo "  • Other documents..."
 python3 scripts/preprocessing/sync-other.py
 echo "  ✅ All documents synced"

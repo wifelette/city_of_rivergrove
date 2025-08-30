@@ -265,23 +265,106 @@ def generate_summary():
                 
                 summary.append(f"- [{display}](./interpretations/{doc['filename']})\n")
     
+    # Process Meeting Documents (Agendas, Minutes, Transcripts)
+    
+    # Process Agendas
+    agenda_dir = src_dir / "agendas"
+    if agenda_dir.exists():
+        agendas = []
+        for md_file in sorted(agenda_dir.glob("*.md")):
+            name = md_file.stem
+            # Parse date from filename (YYYY-MM-DD-Agenda format)
+            date_match = re.match(r'^(\d{4}-\d{2}-\d{2})-Agenda', name)
+            if date_match:
+                date_str = date_match.group(1)
+                # Convert to readable format
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    display_date = date_obj.strftime('%B %d, %Y')
+                except:
+                    display_date = date_str
+            else:
+                display_date = name.replace('-', ' ')
+            
+            agendas.append({
+                'date': date_str if date_match else name,
+                'display': display_date,
+                'filename': md_file.name
+            })
+        
+        # Sort by date
+        agendas.sort(key=lambda x: x['date'], reverse=True)
+        
+        if agendas:
+            summary.append("\n---\n\n# Meeting Agendas\n")
+            for doc in agendas:
+                summary.append(f"- [{doc['display']}](./agendas/{doc['filename']})\n")
+    
+    # Process Minutes
+    minutes_dir = src_dir / "minutes"
+    if minutes_dir.exists():
+        minutes = []
+        for md_file in sorted(minutes_dir.glob("*.md")):
+            name = md_file.stem
+            # Parse date from filename (YYYY-MM-DD-Minutes format)
+            date_match = re.match(r'^(\d{4}-\d{2}-\d{2})-Minutes', name)
+            if date_match:
+                date_str = date_match.group(1)
+                # Convert to readable format
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    display_date = date_obj.strftime('%B %d, %Y')
+                except:
+                    display_date = date_str
+            else:
+                display_date = name.replace('-', ' ')
+            
+            minutes.append({
+                'date': date_str if date_match else name,
+                'display': display_date,
+                'filename': md_file.name
+            })
+        
+        # Sort by date
+        minutes.sort(key=lambda x: x['date'], reverse=True)
+        
+        if minutes:
+            summary.append("\n---\n\n# Meeting Minutes\n")
+            for doc in minutes:
+                summary.append(f"- [{doc['display']}](./minutes/{doc['filename']})\n")
+    
     # Process Transcripts
     trans_dir = src_dir / "transcripts"
     if trans_dir.exists():
         transcripts = []
         for md_file in sorted(trans_dir.glob("*.md")):
             name = md_file.stem
-            # Clean up the name for display
-            clean_name = name.replace('-', ' ').replace('_', ' ')
+            # Parse date from filename (YYYY-MM-DD-Transcript format)
+            date_match = re.match(r'^(\d{4}-\d{2}-\d{2})-Transcript', name)
+            if date_match:
+                date_str = date_match.group(1)
+                # Convert to readable format
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    display_date = date_obj.strftime('%B %d, %Y')
+                except:
+                    display_date = date_str
+            else:
+                display_date = name.replace('-', ' ')
+            
             transcripts.append({
-                'name': clean_name,
+                'date': date_str if date_match else name,
+                'display': display_date,
                 'filename': md_file.name
             })
         
+        # Sort by date
+        transcripts.sort(key=lambda x: x['date'], reverse=True)
+        
         if transcripts:
-            summary.append("\n---\n\n# Council Meeting Transcripts\n")
+            summary.append("\n---\n\n# Meeting Transcripts\n")
             for doc in transcripts:
-                summary.append(f"- [{doc['name']}](./transcripts/{doc['filename']})\n")
+                summary.append(f"- [{doc['display']}](./transcripts/{doc['filename']})\n")
     
     # Write the SUMMARY.md file
     summary_file = src_dir / "SUMMARY.md"
