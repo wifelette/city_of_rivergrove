@@ -637,7 +637,7 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 
 (4) other relevant impacts of the development
 
-**Hardship Relief**
+## Hardship Relief
 
 ### Section 6.060. Type II Hardship Relief Procedure.
 
@@ -664,7 +664,7 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 ### Section 6.070. Authority to Grant Hardship Relief Under Type I Procedure. 
 The Council may grant hardship relief under a Type I procedure if the request involves only the expansion or reduction by no more than 20 percent of one or more quantifiable provisions of yard or area standards of the Development Standards Document or comparable deviation from such additional standards set by the Commission. The decision shall be based on the criteria in Section 6.060.
 
-**Land Division**
+## Land Division
 
 ### Section 6.080. Division of Land.
 
@@ -773,7 +773,7 @@ The Commission shall approve a non-legislative land use or district change if it
 
 (b) The change will not be detrimental to public interests of the Community.
 
-**Vacation**
+## Vacation
 
 ### Section 6.223. Vacation Criteria. 
 A proposal to vacate a street, plat, public square or other public place shall be under a Type IV procedure and applicable State law. The Commission shall base its recommendation on the following criteria:
@@ -795,7 +795,7 @@ The following conditions may be attached to the approval of a vacation:
 
 (d) Construction or improvement of replacement facilities.
 
-**Legislation**
+## Legislation
 
 ### Section 6.225. Definition. 
 A legislative action under this ordinance is land use action that the Council finds involves a substantial area of the City and number of property owners or such broad public policy that administrative processing would be inappropriate. Some examples of legislative decisions are amendments to the plan or this ordinance or changes in the use or classification of land or vacation actions.
@@ -830,7 +830,7 @@ In making its recommendation, the Commission shall:
 
 If such referral is later returned, no further hearing is required provided the proposal is processed under the City's procedure for the enactment of ordinances.
 
-**Site Design Review**
+## Site Design Review
 
 ### Section 6.231. Site Design Review. 
 The Commission may require a site review for any development which is proposed in environmentally sensitive areas, a flood plain or as required in other sections of this Ordinance. New Multiple Family Developments shall be subject to Site Design Review. All developments subject to Design Review shall follow the procedures established in Section 6.232. A development permit for multi-family housing units and for area accessory developments shall comply with the requirements of Section 6.232 if the development permit is for initial development or construction or for an alteration that affects the use or significant elements of the site plan or exterior building design. Information on the proposed development shall include detail sufficient to establish compliance with Sections 2.010 and 2.020 and this Section, and shall include sketches of the proposed development showing its integration and separation with its surroundings, and such other information as the Commission believes will reasonably aid in evaluating the proposal. In reaching a decision, the reviewing committee shall consider whether the proposal avoids endangering life and property; prevents the creation of public nuisances; prevents exposure to hazardous conditions; encourages preservation and use of natural drainageways; utilizes a site that is easily accessible to all necessary elements of the community infrastructure and avoids expansion of the infrastructure to accommodate uses which can be more easily accommodated elsewhere; encourages energy conservation; harmonizes with the lay of the land; respects the limitations of soils and geology; prevents excessive cuts and fills, unsightly grading, and scarring of natural landforms; prevents excessive loss of vegetation and limits disruption to areas with a relatively high potential for successful revegetation; avoids loss of watershed and wind shelter; preserves wetland areas and wildlife habitats; prevents disruption of natural watercourses; minimizes potential sources of pollution; and is consistent with applicable requirements of the Development Standards Document.
@@ -1056,10 +1056,12 @@ All fees and system development charges under this ordinance, and the Developmen
 
 For construction of new residential units which will use streets and roads within the City of Rivergrove, the City may assess a roadway system development fee. This fee will be deposited in to the City's Road fund and may be used only for the purposes legally allowed for road funds. The roadway system development fee may be waived by the City Council should the City determine it will be a hardship, and, at the City's discretion, may credit the cost of required public facility improvements against such fees.
 
-**FEE SCHEDULE**
+## FEE SCHEDULE
 
-| **BUILDING PERMIT (CITY FEE)** | $10.00* |
-| **VARIANCE (HARDSHIP RELIEF)** | $50.00* |
+| Fee Type | Amount |
+|----------|--------|
+| **BUILDING PERMIT (CITY FEE)** | $10.00¹ |
+| **VARIANCE (HARDSHIP RELIEF)** | $50.00¹ |
 | **TYPE I LAND DIVISION** | $15.00 per lot plus actual City Costs |
 | **TYPE II LAND DIVISION** | $25.00 per lot plus actual City Costs |
 | **TYPE III LAND DIVISION** | $35.00 per lot plus actual City Costs |
@@ -1068,7 +1070,7 @@ For construction of new residential units which will use streets and roads withi
 | **AREA DEVELOPMENT PERMIT** | $25.00 |
 | **ROADWAY SYSTEM DEVELOPMENT CHARGE** | $500.00 per residential unit with access provided by a roadway within the City of Rivergrove |
 
-*Plus the cost of hearings officer, notification and specialized services the City may require.
+**¹** Plus the cost of hearings officer, notification and specialized services the City may require.
 
 ---
 

@@ -45,18 +45,18 @@
 ---
 
 # Planning Commission Interpretations
-- [2.040H Permitting Adus (1997-07-07)](./interpretations/1997-07-07-RE-2.040h-permitting-adus.md)
-- [9.030 Permit Fees And Completeness (1997-09-08)](./interpretations/1997-09-08-RE-9.030-permit-fees-and-completeness.md)
-- [9.030 Permit Fees And Completeness (1997-11-03)](./interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.md)
-- [5.080 Setbacks (1998-03-02)](./interpretations/1998-03-02-RE-5.080-setbacks.md)
-- [5.080 Setback Orientation (1998-06-01)](./interpretations/1998-06-01-RE-5.080-setback-orientation.md)
-- [5.080 Setback Orientation (1998-07-06)](./interpretations/1998-07-06-RE-5.080-setback-orientation.md)
-- [Balanced Cut And Fill (2001-05-07)](./interpretations/2001-05-07-RE-balanced-cut-and-fill.md)
-- [Lots Partially In Floodplain (2002-08-05)](./interpretations/2002-08-05-RE-lots-partially-in-floodplain.md)
-- [Duplicate (2002-09-05)](./interpretations/2002-09-05-RE-duplicate.md)
-- [5.080 Setbacks (2004-10-11)](./interpretations/2004-10-11-RE-5.080-setbacks.md)
-- [Adu Sewer (2005-04-04)](./interpretations/2005-04-04-RE-adu-sewer.md)
-- [Multi Family (2008-02-04)](./interpretations/2008-02-04-RE-multi-family.md)
+- [Accessory Structures (1997-07-07)](./interpretations/1997-07-07-RE-2.040h-permitting-adus.md)
+- [Permit Fees (1997-09-08)](./interpretations/1997-09-08-RE-9.030-permit-fees-and-completeness.md)
+- [Development Charges (1997-11-03)](./interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.md)
+- [Setback Measurement (1998-03-02)](./interpretations/1998-03-02-RE-5.080-setbacks.md)
+- [Setback Orientation (1998-06-01)](./interpretations/1998-06-01-RE-5.080-setback-orientation.md)
+- [Building Setbacks (1998-07-06)](./interpretations/1998-07-06-RE-5.080-setback-orientation.md)
+- [Bankful Stage (2001-05-07)](./interpretations/2001-05-07-RE-balanced-cut-and-fill.md)
+- [Floodplain Lots (2002-08-05)](./interpretations/2002-08-05-RE-lots-partially-in-floodplain.md)
+- [Floodplain Lots (2002-09-05)](./interpretations/2002-09-05-RE-duplicate.md)
+- [Wqra Setbacks (2004-10-11)](./interpretations/2004-10-11-RE-5.080-setbacks.md)
+- [Sewer Permits (2005-04-04)](./interpretations/2005-04-04-RE-adu-sewer.md)
+- [Multi-Family (2008-02-04)](./interpretations/2008-02-04-RE-multi-family.md)
 
 ---
 
