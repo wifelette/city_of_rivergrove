@@ -85,7 +85,7 @@ After pushing, always provide the GitHub web URLs for Airtable:
 ## Airtable Integration
 
 - Claude Code can potentially update Airtable directly if provided with:
-  - Record ID from the Ordinances and Resolutions table
+  - Record ID from the Governing table
   - The GitHub URL to add to the Public URL field
 - Otherwise, provide both GitHub web URLs (fileURL for PDF, mdURL for Markdown) for manual entry
 

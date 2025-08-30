@@ -28,13 +28,27 @@ The metadata is now split into two tables:
   - `special_state`: Special status flags
   - `last_updated`: Last modification timestamp
   - `Stub?`: Boolean flag for stub documents
-  - `governing_docs`: Linked records to governing documents table
+  - `governing_docs`: Linked records to Governing table
   - `meeting_docs`: Linked records to meeting documents table
   - `meeting_doc_type`: Document type for meeting documents (Agenda, Minutes, etc.)
 
-#### Airtable Meetings_Metadata Table (In Development)
+#### Airtable Meetings_Metadata Table
 - **Purpose**: Stores metadata for meeting-related documents
-- **Key Fields**: TBD - similar structure to Governing_Metadata but tailored for meeting documents
+- **Table ID**: `tbl2wm9xx6cffZCPN`
+- **Status**: Ready for use (no data yet)
+- **Key Fields**: Similar structure to Governing_Metadata but tailored for meeting documents:
+  - `display_name`: Human-friendly document titles
+  - `meeting_doc_type`: Type of meeting document (Agenda, Minutes, etc.)
+  - `meeting_date`: Date of the meeting
+  - Additional fields to be documented as data is added
+
+#### Related Airtable Tables
+- **Governing Table**: Contains the actual governing document records (ordinances, resolutions, interpretations)
+  - Linked to Governing_Metadata via `governing_docs` field
+  - Previously named "Ordinances and Resolutions"
+- **Documents Table**: Contains document files and links
+- **Meetings Table**: Contains meeting records (in development)
+  - Will link to Meetings_Metadata
 
 #### Local relationships.json
 - **Purpose**: Auto-generated document relationships and references

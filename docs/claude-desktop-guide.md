@@ -21,12 +21,12 @@ This guide covers the Claude Desktop workflow for processing City of Rivergrove 
 - **Claude searches existing Airtable entries first** before creating new ones
 - Claude creates or updates three entries in the Airtable MCP base:
   - 1. **Document** record for the file
-  - 2. **Ordinances and Resolutions** record for the file
+  - 2. **Governing** record for the file
   - 3. **Public Metadata** record linked to the Ordinance/Resolution (with Publication Status: Draft)
 - Leah saves artifact with established naming conventions
 - Leah uploads to GitHub and provides URLs to Claude for Airtable updates
 - Once GitHub URLs are added:
-  - Mark as Digitized in Ordinances and Resolutions table
+  - Mark as Digitized in Governing table
   - Change Publication Status from "Draft" to "Published" in Public Metadata table
 
 ### 2. PDF Page Order Verification
@@ -70,7 +70,7 @@ When processing a document:
   - rawURL (auto-populates from mdURL - don't touch)
   - ytURL (YouTube video URLs, when applicable)
   - description
-- Update `Ordinances and Resolutions` entry with:
+- Update `Governing` entry with:
   - Link to document
   - Summary (dry, objective, searchable)
   - Topics (use existing valid options)

@@ -39,7 +39,7 @@ The digitization project involves three main workflows, each documented separate
 
 ### Infrastructure
 - **Airtable MCP base** with:
-  - Ordinances and Resolutions inventory table (40+ records with varying completeness)
+  - Governing table (40+ records with varying completeness)
   - Documents table (linked to ordinances)
   - Public Metadata table (publication status tracking)
   - See **[airtable-integration.md](airtable-integration.md)** for technical integration details
