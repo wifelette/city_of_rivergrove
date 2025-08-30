@@ -99,6 +99,22 @@ Please read these files for context on this project and how to work with Leah:
   - You encountered and resolved specific issues that might be helpful for future reference
   - The changes involved something beyond standard processing
 
+## Form Field Validation
+
+The build system automatically validates `{{filled:}}` form field syntax at multiple levels:
+
+- **VSCode**: Real-time validation with custom markdownlint rule (red squiggles for errors)
+- **Build Scripts**: Automatic validation prevents broken tags from reaching production
+- **Dev Server**: Validates on every file save, blocks processing if errors found
+
+If you encounter form field errors:
+1. Check for unclosed tags: `{{filled:text` should be `{{filled:text}}`
+2. Ensure colon after "filled": `{{filled:text}}` not `{{filledtext}}`
+3. Run manual validation: `python3 scripts/validation/validate-form-fields.py [file]`
+4. Use `--fix` flag to auto-fix simple issues: `python3 scripts/validation/validate-form-fields.py --fix`
+
+See `docs/styles/form-fields.md` for complete syntax guide and validation details.
+
 ## Cross-References
 
 **IMPORTANT**: Never add manual markdown links for document references in source files!

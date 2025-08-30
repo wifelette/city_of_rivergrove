@@ -20,7 +20,7 @@ The digitization process now handles two distinct document types with separate w
 - **Tables Used**: Documents, Governing, Governing_Metadata
 - **Process**: OCR/transcription → Create 3 Airtable records → Upload to GitHub → Update URLs
 
-### Meeting Documents Workflow
+### Meeting Records Workflow
 
 - **Document Types**: Meeting Agendas, Meeting Minutes
 - **Tables Used**: Meetings, Minutes and Agendas, Documents, Meetings_Metadata
@@ -100,9 +100,9 @@ When processing a governing document:
 
 ---
 
-## Meeting Documents Processing
+## Meeting Records Processing
 
-### 1. Meeting Document Digitization Workflow
+### 1. Meeting Records Digitization Workflow
 
 When digitizing meeting agendas or minutes:
 
@@ -111,13 +111,12 @@ When digitizing meeting agendas or minutes:
    - Set date
    - Set appropriate inventory boolean: `Agenda?: true` for agendas, `Minutes?: true` for minutes
    - Note: Both can be checked if digitizing both document types for the same meeting
-3. **Create Minutes and Agendas record**:
+3. **Create Meeting Records record**:
    - Link to Meeting record
-   - Set Document Type: "Agenda" or "Minutes"
+   - Set Document Type: "Agenda", "Minutes" or "Transcript"
    - Add notes about content/context
 4. **Create Documents record**:
-   - Use correct `documentType`: "Agendas" for agendas, "Minutes" for minutes
-   - `tags`: "Meeting Documentation"
+   - Use correct `documentType`: "Agendas" for agendas, "Minutes" for minutes, etc.
 5. **Create Meetings_Metadata record**:
    - For website publication
    - Status: "Draft" initially
@@ -125,36 +124,37 @@ When digitizing meeting agendas or minutes:
 7. **Create markdown artifact**
 8. **Upload to GitHub and update URLs**
 
-### 2. Meeting Documents Airtable Updates
+### 2. Meeting Records Airtable Updates
 
-**Meeting record:**
+**Meetings record:**
 
 - Date (required)
-- Set inventory boolean: `Agenda?: true` for agendas, `Minutes?: true` for minutes
-- Links to Minutes and Agendas records
+- Set `Meeting Type` to `Regular` as default, unless I say otherwise; ask if it ought be changed if the contents make you think it wasn't a regular meeting
+- Set inventory booleans: `Agenda?: true` for agendas, `Minutes?: true` for minutes, etc.
+- Links to Meeting Records record(s)
 
-**Minutes and Agendas record:**
+**Meeting Records record:**
 
-- Link to Meeting record (auto-populates Meeting Date)
-- Document Type: "Agenda" or "Minutes"
+- Link to Meetings record (auto-populates Meeting Date)
+- Document Type: "Agenda", "Minutes", etc.
 - Notes about content/significance
 - Source URL (if from website)
-- Status tracking
+- Set `Digitized` boolean to `Digitized?: true` assuming you've indeed processed the markdown file
 
 **Documents record:**
 
-- `documentType`: "Agendas" for agendas, "Minutes" for minutes
+- `documentType`: "Agendas" for agendas, "Minutes" for minutes, etc.
 - `tags`: "Meeting Documentation"
 - documentDate (meeting date)
 - documentTitle following naming convention
-- Link to Minutes and Agendas record
+- Link to Meeting Records record
 
 **Meetings_Metadata record:**
 
-- Link to Minutes and Agendas record via `meeting_docs` field
+- Link to Meeting Records record via `meeting_docs` field
 - Status: "Draft" initially, "Published" after GitHub upload
 - Short title for navigation
-- Tags for meeting content (only if substantive topics discussed)
+- Tags for meeting content (only if substantive topics evident—things like a regular Planning Commission update don't need to be noted since they happen most meetings)
 
 ---
 
@@ -179,7 +179,6 @@ See **[styles/signature-formatting.md](styles/signature-formatting.md)** for com
 - Add double spaces at end of lines for proper breaks
 - Use `{{filled:}}` for handwritten dates
 - Preserve exact date formats from source
-- Run `scripts/preprocessing/fix-signatures.py` to standardize automatically
 
 ### Page Break Handling
 
@@ -206,8 +205,9 @@ See **[styles/inline-images.md](styles/inline-images.md)** for handling images, 
 **Key Points**:
 
 - Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
-- Images are stored in `book/images/[document-type]/`
+- Images should be stored in `book/images/[document-type]/`
 - Screenshots and diagrams should be saved as PNG files
+- If an image or complex table is found and would be useful to include, point it out to Leah so she can extract it (or do it for her) and save it where it needs to go
 
 ## Document Title Standards
 

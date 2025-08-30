@@ -51,3 +51,41 @@ The system still recognizes underscore patterns (`___`) from existing documents,
 - **Filled fields**: Blue background (#e3f2fd) with blue underline (#1976d2)
 
 Both styles include hover effects and are print-friendly.
+
+## Validation
+
+Form field syntax is automatically validated at three levels:
+
+### 1. VSCode (Real-time)
+- Custom markdownlint rule detects errors as you type
+- Shows red squiggles for unclosed `{{filled:` tags
+- Warns about malformed tags and orphaned brackets
+
+### 2. Build Scripts (Build-time)
+- `scripts/validation/validate-form-fields.py` runs automatically
+- Prevents broken tags from reaching production
+- Shows clear error messages with line numbers
+
+### 3. Dev Server (Save-time)
+- Validates on every file save
+- Blocks processing if errors are found
+- Displays errors immediately for quick fixes
+
+### Common Errors Caught
+- Unclosed tags: `{{filled:text` (missing `}}`)
+- Malformed tags: `{{filledtext}}` (missing `:`)
+- Orphaned brackets: Random `}}` without opening
+- Nested tags: `{{filled:{{filled:text}}}}` (not supported)
+
+### Manual Validation
+Run validation manually on any file or directory:
+```bash
+# Check a single file
+python3 scripts/validation/validate-form-fields.py source-documents/Ordinances/example.md
+
+# Check all documents
+python3 scripts/validation/validate-form-fields.py
+
+# Auto-fix simple issues (adds closing brackets)
+python3 scripts/validation/validate-form-fields.py --fix
+```

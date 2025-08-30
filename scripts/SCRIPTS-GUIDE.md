@@ -38,6 +38,10 @@ Scripts that modify source markdown BEFORE mdBook builds:
 - `standardize-single.py` - Fix headers and signatures for one file
 - `remove-manual-links.py` - Remove manual markdown links (one-time cleanup)
 
+### validation/
+Scripts that ensure document syntax is correct:
+- `validate-form-fields.py` - Check {{filled:}} tag syntax, detect unclosed tags
+
 ### postprocessing/
 Scripts that enhance HTML AFTER mdBook builds:
 - `custom-list-processor.py` - Apply form fields, fix special lists, add tooltips
@@ -87,6 +91,11 @@ python3 scripts/preprocessing/standardize-single.py source-documents/Resolutions
 
 # Full rebuild without Airtable (faster)
 ./build-all.sh --quick
+
+# Validate form field syntax
+python3 scripts/validation/validate-form-fields.py  # Check all files
+python3 scripts/validation/validate-form-fields.py source-documents/Ordinances/example.md  # Check one file
+python3 scripts/validation/validate-form-fields.py --fix  # Auto-fix simple issues
 ```
 
 ## Key Improvements

@@ -20,24 +20,26 @@ The build process MUST follow this specific order to ensure proper processing:
 ```mermaid
 graph TD
     A[Source Files: source-documents/Ordinances, Resolutions, etc.] --> B[1. Sync to /src]
-    B --> C[2. Process Footnotes]
-    C --> D[3. Auto-link URLs/Emails]
-    D --> E[4. Add Cross-References]
-    E --> F[5. Generate SUMMARY.md]
-    F --> G[6. Generate relationships.json]
-    G --> H[7. Sync Airtable Metadata]
-    H --> I[8. Build mdBook HTML]
-    I --> J[9. Custom List Processor]
-    J --> K[10. Enhanced Processor]
+    B --> V[2. Validate Form Fields]
+    V --> C[3. Process Footnotes]
+    C --> D[4. Auto-link URLs/Emails]
+    D --> E[5. Add Cross-References]
+    E --> F[6. Generate SUMMARY.md]
+    F --> G[7. Generate relationships.json]
+    G --> H[8. Sync Airtable Metadata]
+    H --> I[9. Build mdBook HTML]
+    I --> J[10. Custom List Processor]
+    J --> K[11. Enhanced Processor]
     K --> L[Final HTML Output]
 ```
 
 ### Critical Dependencies
 
-1. **Cross-references MUST come after auto-link converter** - Prevents conflicts with URL detection
-2. **Both link processors MUST come before mdBook build** - Links must be in markdown, not HTML
-3. **Post-processors MUST run after mdBook** - They modify generated HTML
-4. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
+1. **Form field validation MUST run early** - Catches syntax errors before they propagate through pipeline
+2. **Cross-references MUST come after auto-link converter** - Prevents conflicts with URL detection
+3. **Both link processors MUST come before mdBook build** - Links must be in markdown, not HTML
+4. **Post-processors MUST run after mdBook** - They modify generated HTML
+5. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
 
 ## Main Build Scripts
 
@@ -76,9 +78,17 @@ These modify markdown files BEFORE mdBook processes them:
 |--------|---------|--------------|-------------|
 | `sync-ordinances.py` | Copy ordinances to /src, remove #, apply form fields | Source files in source-documents/Ordinances | Step 1 |
 | `sync-resolutions.py` | Copy resolutions to /src, remove #, apply form fields | Source files in source-documents/Resolutions | Step 1 |
-| `footnote-preprocessor.py` | Convert footnote syntax | Files in /src | Step 2 |
-| `auto-link-converter.py` | Convert URLs/emails to markdown links | Files in /src | Step 3 |
+| `footnote-preprocessor.py` | Convert footnote syntax | Files in /src | Step 3 |
+| `auto-link-converter.py` | Convert URLs/emails to markdown links | Files in /src | Step 4 |
 | `image-processor.py` | Process inline image syntax | Files with {{image:}} tags | During sync |
+
+### Validation Scripts (`scripts/validation/`)
+
+These ensure document syntax is correct:
+
+| Script | Purpose | Dependencies | When Called |
+|--------|---------|--------------|-------------|
+| `validate-form-fields.py` | Check {{filled:}} tag syntax | Source markdown files | Step 2 |
 
 ### mdBook Scripts (`scripts/mdbook/`)
 
@@ -86,10 +96,10 @@ These prepare data for mdBook or modify markdown:
 
 | Script | Purpose | Dependencies | When Called |
 |--------|---------|--------------|-------------|
-| `add-cross-references.py` | Convert document references to links | Files in /src, after auto-link | Step 4 |
-| `generate-summary.py` | Create table of contents | All files in /src | Step 5 |
-| `generate-relationships.py` | Build document relationship graph | All files in /src | Step 6 |
-| `sync-airtable-metadata.py` | Fetch and cache Airtable data | Network access, API key | Step 7 |
+| `add-cross-references.py` | Convert document references to links | Files in /src, after auto-link | Step 5 |
+| `generate-summary.py` | Create table of contents | All files in /src | Step 6 |
+| `generate-relationships.py` | Build document relationship graph | All files in /src | Step 7 |
+| `sync-airtable-metadata.py` | Fetch and cache Airtable data | Network access, API key | Step 8 |
 
 ### Postprocessing Scripts (`scripts/postprocessing/`)
 
@@ -97,8 +107,8 @@ These modify HTML AFTER mdBook generates it:
 
 | Script | Purpose | Dependencies | When Called |
 |--------|---------|--------------|-------------|
-| `custom-list-processor.py` | Apply form fields, fix lists, add tooltips | HTML in /book | Step 9 |
-| `enhanced-custom-processor.py` | Document-specific formatting (tables, WHEREAS) | HTML in /book, after custom-list | Step 10 |
+| `custom-list-processor.py` | Apply form fields, fix lists, add tooltips | HTML in /book | Step 10 |
+| `enhanced-custom-processor.py` | Document-specific formatting (tables, WHEREAS) | HTML in /book, after custom-list | Step 11 |
 
 ## Form Field Processing
 
