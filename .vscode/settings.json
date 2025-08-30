@@ -1,0 +1,8 @@
+{
+  "markdownlint.config": {
+    "extends": "../.markdownlint.cjs"
+  },
+  "markdownlint.customRules": [
+    ".markdownlint/rules/form-fields.js"
+  ]
+}
