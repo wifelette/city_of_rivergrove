@@ -208,7 +208,7 @@ class AirtableSync:
         fields = record.get('fields', {})
         
         # Extract type - handle it being a list
-        doc_type = fields.get('type', [])
+        doc_type = fields.get('governing_doc_type', [])
         if isinstance(doc_type, list) and len(doc_type) > 0:
             doc_type = doc_type[0].lower()
         elif isinstance(doc_type, str):
