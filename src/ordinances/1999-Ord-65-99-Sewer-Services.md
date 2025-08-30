@@ -180,22 +180,22 @@ IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority 
 
 **CITY OF LAKE OSWEGO**  
 By: [Signature] **Alice L. Schlenker, Mayor**  
-As per City Council Resolution No. <!--FILLED:96-62-->, <!--FILLED:December 17, 1996-->
+As per City Council Resolution No. <!--FILLED:96-62-->, <!--FILLED:December 17, 1996-->  
 **Dated:** <!--FILLED:Dec 18, 1996-->
 
-**ATTEST:**
+**ATTEST:**  
 [Signature] **Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
 [Signature] **Jeffrey G. Condit, City Attorney**
 
-**CITY OF RIVERGROVE**
-By: [Signature], **Sue Salch, Mayor**
-As per City Council vote at its meeting of: <!--FILLED:November 18, 1996-->
+**CITY OF RIVERGROVE**  
+By: [Signature], **Sue Salch, Mayor**  
+As per City Council vote at its meeting of: <!--FILLED:November 18, 1996-->  
 **Dated:** <!--FILLED:11/25/96-->
 
-**ATTEST:**
+**ATTEST:**  
 [Signature] **Jami K Morrison, City Recorder**
 
 **APPROVED AS TO FORM:**
