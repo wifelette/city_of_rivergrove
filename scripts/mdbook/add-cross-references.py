@@ -41,15 +41,31 @@ def build_document_map():
                 doc_map[f"ord. {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 doc_map[f"ordinance no. {ord_num_lower}"] = f"../ordinances/{filename}.md"
                 
-                # Add year-specific variations if applicable (e.g., 54-89 becomes just 54)
+                # Add year-specific variations if applicable (e.g., 54-89C becomes 54-89 and 54)
                 if "-" in ord_num_lower:
-                    base_num = ord_num_lower.split("-")[0]
-                    # Only add base number if it's not already added
+                    parts = ord_num_lower.split("-")
+                    base_num = parts[0]
+                    
+                    # Add base number patterns (e.g., "54" from "54-89C")
                     if f"ordinance #{base_num}" not in doc_map:
                         doc_map[f"ordinance #{base_num}"] = f"../ordinances/{filename}.md"
                         doc_map[f"ordinance {base_num}"] = f"../ordinances/{filename}.md"
                         doc_map[f"ord. #{base_num}"] = f"../ordinances/{filename}.md"
                         doc_map[f"ord #{base_num}"] = f"../ordinances/{filename}.md"
+                        doc_map[f"ord. {base_num}"] = f"../ordinances/{filename}.md"
+                        doc_map[f"ordinance no. {base_num}"] = f"../ordinances/{filename}.md"
+                    
+                    # For patterns like "54-89C", also add "54-89" (without the letter suffix)
+                    if len(parts) > 1 and parts[-1] and parts[-1][-1].isalpha():
+                        # Remove the letter suffix from the last part
+                        without_letter = "-".join(parts[:-1] + [parts[-1].rstrip('abcdefghijklmnopqrstuvwxyz')])
+                        if without_letter != ord_num_lower and without_letter not in doc_map:
+                            doc_map[f"ordinance #{without_letter}"] = f"../ordinances/{filename}.md"
+                            doc_map[f"ordinance {without_letter}"] = f"../ordinances/{filename}.md"
+                            doc_map[f"ord. #{without_letter}"] = f"../ordinances/{filename}.md"
+                            doc_map[f"ord #{without_letter}"] = f"../ordinances/{filename}.md"
+                            doc_map[f"ord. {without_letter}"] = f"../ordinances/{filename}.md"
+                            doc_map[f"ordinance no. {without_letter}"] = f"../ordinances/{filename}.md"
     
     # Process resolutions
     res_dir = src_dir / "resolutions"
