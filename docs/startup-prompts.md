@@ -43,7 +43,10 @@ Your Mission:
    • Keep document references as plain text (e.g., "Ordinance #52") - NO manual links
    • Create/update Airtable records with proper summaries
    • Use established naming conventions
-   • Create an entry in the new Public Metadata table that links to the new Ordinance/Resolution/etc, with the Publication Status of Draft
+   • Create THREE entries in Airtable:
+     - Documents entry (with fileURL and mdURL after GitHub upload)
+     - Ordinances/Resolutions entry (mark Digitized after GitHub upload)
+     - Public Metadata entry (Status: Draft → Published after GitHub upload)
 
 Critical Reminders:
 • Always search existing entries first using multiple ID format variations
@@ -53,11 +56,13 @@ Critical Reminders:
 • Use correct URL structure: fileURL (PDF), mdURL (Markdown), rawURL (auto-populates)
 
 Established Workflow:
-1. Search for existing Ordinances and Documents entries
+1. Search for existing Ordinances/Resolutions and Documents entries
 2. Create markdown transcription artifact
-3. Create/update Documents entry
-4. Update Ordinances entry (mark as digitized, add summary, passed date)
-5. Link entries bidirectionally
+3. Create/update Documents entry (documentType: "Governing Doc")
+4. Update Ordinances/Resolutions entry (add summary, passed date)
+5. Create Public Metadata entry (Status: "Draft", linked to Ordinance/Resolution)
 6. Await GitHub URLs from Leah
-7. Update Documents entry with fileURL and mdURL
+7. Update Documents with fileURL and mdURL
+8. Mark Ordinances/Resolutions as Digitized
+9. Change Public Metadata Status to "Published"
 ```
