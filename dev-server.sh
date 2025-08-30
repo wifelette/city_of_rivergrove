@@ -24,40 +24,54 @@ if pgrep -f "mdbook serve" > /dev/null; then
     sleep 1
 fi
 
+# Track if we're currently processing to avoid loops
+PROCESSING=false
+
 # Function to process a changed file
 process_file_change() {
     local file="$1"
     local filename=$(basename "$file")
     
+    # Skip if we're already processing
+    if [ "$PROCESSING" = true ]; then
+        return
+    fi
+    
+    PROCESSING=true
+    
     echo ""
     echo -e "${BLUE}📝 Detected change: $filename${NC}"
     
     # Determine document type and run appropriate sync
-    if [[ "$file" == source-documents/Ordinances/* ]]; then
+    if [[ "$file" == *source-documents/Ordinances/* ]]; then
         echo "  Syncing ordinances..."
         python3 scripts/preprocessing/sync-ordinances.py >/dev/null 2>&1
-    elif [[ "$file" == source-documents/Resolutions/* ]]; then
+    elif [[ "$file" == *source-documents/Resolutions/* ]]; then
         echo "  Syncing resolutions..."
         python3 scripts/preprocessing/sync-resolutions.py >/dev/null 2>&1
-    elif [[ "$file" == source-documents/Interpretations/* ]]; then
+    elif [[ "$file" == *source-documents/Interpretations/* ]]; then
         echo "  Syncing interpretations..."
         python3 scripts/preprocessing/sync-interpretations.py >/dev/null 2>&1
-    elif [[ "$file" == source-documents/Other/* ]]; then
+    elif [[ "$file" == *source-documents/Other/* ]]; then
         echo "  Syncing other documents..."
         python3 scripts/preprocessing/sync-other.py >/dev/null 2>&1
-    elif [[ "$file" == source-documents/Meetings/* ]]; then
+    elif [[ "$file" == *source-documents/Meetings/* ]]; then
         echo "  Syncing meeting documents..."
         # Just copy meeting files
         local dest_filename=$(echo "$filename" | sed 's/#//g')
         if [[ "$file" == *Agenda* ]]; then
+            mkdir -p src/agendas
             cp "$file" "src/agendas/$dest_filename"
         elif [[ "$file" == *Minutes* ]]; then
+            mkdir -p src/minutes
             cp "$file" "src/minutes/$dest_filename"
         elif [[ "$file" == *Transcript* ]]; then
+            mkdir -p src/transcripts
             cp "$file" "src/transcripts/$dest_filename"
         fi
     else
         echo -e "${YELLOW}  Skipping (not a recognized document type)${NC}"
+        PROCESSING=false
         return
     fi
     
@@ -65,13 +79,13 @@ process_file_change() {
     local dest_filename=$(echo "$filename" | sed 's/#//g')
     local dest_file=""
     
-    if [[ "$file" == source-documents/Ordinances/* ]]; then
+    if [[ "$file" == *source-documents/Ordinances/* ]]; then
         dest_file="src/ordinances/$dest_filename"
-    elif [[ "$file" == source-documents/Resolutions/* ]]; then
+    elif [[ "$file" == *source-documents/Resolutions/* ]]; then
         dest_file="src/resolutions/$dest_filename"
-    elif [[ "$file" == source-documents/Interpretations/* ]]; then
+    elif [[ "$file" == *source-documents/Interpretations/* ]]; then
         dest_file="src/interpretations/$dest_filename"
-    elif [[ "$file" == source-documents/Other/* ]]; then
+    elif [[ "$file" == *source-documents/Other/* ]]; then
         dest_file="src/other/$dest_filename"
     fi
     
@@ -93,25 +107,19 @@ process_file_change() {
     python3 scripts/mdbook/generate-summary.py >/dev/null 2>&1
     python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
     
-    echo -e "${GREEN}  ✓ Processing complete${NC}"
-}
-
-# Function to run postprocessors
-run_postprocessors() {
-    if ! python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1; then
-        echo -e "${RED}❌ Error in custom-list-processor.py${NC}"
-        return 1
-    fi
+    # Wait a moment for mdBook to detect and rebuild
+    sleep 2
     
+    # Apply postprocessors after mdBook rebuilds
+    echo "  Applying custom formatting..."
+    python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
     if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
-        if ! python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1; then
-            echo -e "${RED}❌ Error in enhanced-custom-processor.py${NC}"
-            return 1
-        fi
+        python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
     fi
     
-    echo -e "${GREEN}✨ Custom formatting applied${NC}"
-    return 0
+    echo -e "${GREEN}  ✓ Processing complete${NC}"
+    
+    PROCESSING=false
 }
 
 # Initial build
@@ -143,6 +151,7 @@ echo ""
 watch_source_documents() {
     if command -v fswatch >/dev/null 2>&1; then
         # Use fswatch for better performance
+        # Exclude PDFs, git files, and other non-markdown files
         fswatch -r -e ".*\.pdf$" -e "\.git" -e "\.DS_Store" source-documents/ | while read changed_file; do
             if [[ "$changed_file" == *.md ]]; then
                 process_file_change "$changed_file"
@@ -180,37 +189,12 @@ watch_source_documents() {
     fi
 }
 
-# Function to watch for mdBook HTML changes and apply postprocessing
-watch_html_changes() {
-    if command -v fswatch >/dev/null 2>&1; then
-        fswatch -o book/*.html book/**/*.html 2>/dev/null | while read change; do
-            sleep 0.5  # Let mdBook finish writing
-            run_postprocessors
-        done
-    else
-        # Fallback polling for HTML changes
-        LAST_HTML_MODIFIED=$(find book -name "*.html" -type f -exec stat -f "%m" {} \; 2>/dev/null | sort -n | tail -1)
-        
-        while true; do
-            sleep 2
-            CURRENT_HTML_MODIFIED=$(find book -name "*.html" -type f -exec stat -f "%m" {} \; 2>/dev/null | sort -n | tail -1)
-            
-            if [ "$CURRENT_HTML_MODIFIED" != "$LAST_HTML_MODIFIED" ]; then
-                sleep 0.5  # Let mdBook finish writing
-                run_postprocessors
-                LAST_HTML_MODIFIED=$CURRENT_HTML_MODIFIED
-            fi
-        done
-    fi
-}
-
 # Cleanup function
 cleanup() {
     echo ""
     echo "🛑 Shutting down..."
     kill $MDBOOK_PID 2>/dev/null || true
     kill $SOURCE_WATCHER_PID 2>/dev/null || true
-    kill $HTML_WATCHER_PID 2>/dev/null || true
     echo -e "${GREEN}✅ Server stopped${NC}"
     exit 0
 }
@@ -218,12 +202,9 @@ cleanup() {
 # Set up signal handlers
 trap cleanup INT TERM
 
-# Start both watchers in background
+# Start the source watcher in background
 watch_source_documents &
 SOURCE_WATCHER_PID=$!
 
-watch_html_changes &
-HTML_WATCHER_PID=$!
-
-# Wait for any process to exit
-wait $MDBOOK_PID $SOURCE_WATCHER_PID $HTML_WATCHER_PID
+# Wait for processes to exit
+wait $MDBOOK_PID $SOURCE_WATCHER_PID
