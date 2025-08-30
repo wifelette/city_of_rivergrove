@@ -56,8 +56,8 @@ The digitization project involves three main workflows, each documented separate
 ### Technical Documentation
 - [Build Architecture](build-architecture.md) - Complete build system documentation
 - [Scripts Guide](../scripts/SCRIPTS-GUIDE.md) - All script documentation
-- [Startup Prompts](STARTUP-PROMPTS.md) - Quick reference for starting new Claude sessions
+- [Startup Prompts](startup-prompts.md) - Quick reference for starting new Claude sessions
 
 ## Session Startup
 
-For quick reference prompts to start new Claude sessions, see **[STARTUP-PROMPTS.md](STARTUP-PROMPTS.md)** which contains specific prompts for both Claude Code and Claude Desktop workflows.
+For quick reference prompts to start new Claude sessions, see **[startup-prompts.md](startup-prompts.md)** which contains specific prompts for both Claude Code and Claude Desktop workflows.
