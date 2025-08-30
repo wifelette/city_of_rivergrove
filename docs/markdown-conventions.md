@@ -97,11 +97,11 @@ Note: The `#` character is removed from filenames in the /src directory for URL 
 
 ## Document Naming
 
-See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complete file naming standards and organization rules.
+See **[../styles/naming-conventions.md](../styles/naming-conventions.md)** for complete file naming standards and organization rules.
 
 ## Signature Blocks
 
-See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
+See **[../styles/signature-formatting.md](../styles/signature-formatting.md)** for complete signature block formatting standards.
 
 ## Tables
 

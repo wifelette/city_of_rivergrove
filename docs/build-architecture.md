@@ -6,10 +6,10 @@ The City of Rivergrove documentation system uses a multi-stage pipeline to conve
 
 ## Related Documentation
 
-- **[styles/naming-conventions.md](styles/naming-conventions.md)** - File naming standards and organization
-- **[styles/signature-formatting.md](styles/signature-formatting.md)** - Signature block formatting standards
-- **[styles/form-fields.md](styles/form-fields.md)** - Form field syntax and processing
-- **[styles/inline-images.md](styles/inline-images.md)** - Image handling and syntax
+- **[../styles/naming-conventions.md](../styles/naming-conventions.md)** - File naming standards and organization
+- **[../styles/signature-formatting.md](../styles/signature-formatting.md)** - Signature block formatting standards
+- **[../styles/form-fields.md](../styles/form-fields.md)** - Form field syntax and processing
+- **[../styles/inline-images.md](../styles/inline-images.md)** - Image handling and syntax
 
 ## Processing Pipeline Order
 
@@ -97,7 +97,7 @@ These modify HTML AFTER mdBook generates it:
 
 ## Form Field Processing
 
-Form fields are processed at multiple stages. See **[styles/form-fields.md](styles/form-fields.md)** for complete syntax guide.
+Form fields are processed at multiple stages. See **[../styles/form-fields.md](../styles/form-fields.md)** for complete syntax guide.
 
 **Processing stages:**
 1. **During sync** (`sync-ordinances.py`, etc.) - Convert to HTML spans
@@ -105,7 +105,7 @@ Form fields are processed at multiple stages. See **[styles/form-fields.md](styl
 
 ## Inline Images
 
-Documents can include images, diagrams, and visual content. See **[styles/inline-images.md](styles/inline-images.md)** for complete syntax and usage guide.
+Documents can include images, diagrams, and visual content. See **[../styles/inline-images.md](../styles/inline-images.md)** for complete syntax and usage guide.
 
 **Processing:**
 - The `{{image:}}` syntax is processed during document sync
