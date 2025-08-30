@@ -50,8 +50,10 @@ class MeetingsSync:
                     meeting_date = meeting_date[0]
                 
                 # Generate a key based on date and type
+                # Use YYYY-MM-DD format to match standard naming convention
                 if meeting_date and doc_type:
-                    key = f"{meeting_date}-{doc_type}"
+                    # Capitalize doc_type to match filename convention
+                    key = f"{meeting_date}-{doc_type.capitalize()}"
                 else:
                     key = fields.get('display_name', 'unknown')
                 

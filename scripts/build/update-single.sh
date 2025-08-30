@@ -28,8 +28,17 @@ elif [[ "$SOURCE_FILE" == source-documents/Interpretations/*.md ]]; then
 elif [[ "$SOURCE_FILE" == source-documents/Other/*.md ]]; then
     DEST_DIR="src/other"
     PREFIX="source-documents/Other/"
+elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Agenda*.md ]]; then
+    DEST_DIR="src/agendas"
+    PREFIX="source-documents/Meetings/"
+elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Minutes*.md ]]; then
+    DEST_DIR="src/minutes"
+    PREFIX="source-documents/Meetings/"
+elif [[ "$SOURCE_FILE" == source-documents/Meetings/*Transcript*.md ]]; then
+    DEST_DIR="src/transcripts"
+    PREFIX="source-documents/Meetings/"
 else
-    echo "Error: File must be in source-documents/Ordinances/, source-documents/Resolutions/, source-documents/Interpretations/, or source-documents/Other/ directory"
+    echo "Error: File must be in source-documents/Ordinances/, source-documents/Resolutions/, source-documents/Interpretations/, source-documents/Other/, or source-documents/Meetings/ directory"
     exit 1
 fi
 
@@ -49,6 +58,9 @@ elif [[ "$SOURCE_FILE" == source-documents/Resolutions/*.md ]]; then
     python3 scripts/preprocessing/sync-resolutions.py
 elif [[ "$SOURCE_FILE" == source-documents/Interpretations/*.md ]]; then
     python3 scripts/preprocessing/sync-interpretations.py
+elif [[ "$SOURCE_FILE" == source-documents/Meetings/*.md ]]; then
+    # For meeting files, just copy directly as they don't need form field processing
+    cp "$SOURCE_FILE" "$DEST_FILE"
 else
     # For source-documents/Other/ files, just copy directly as they don't need form field processing
     cp "$SOURCE_FILE" "$DEST_FILE"
@@ -77,8 +89,17 @@ echo "🔗 Generating relationships.json..."
 python3 scripts/mdbook/generate-relationships.py
 
 # Update Airtable metadata for this single file
-echo "🔗 Updating Airtable metadata for $FILENAME..."
-python3 scripts/mdbook/sync-airtable-metadata.py --mode=single --file="$FILENAME" --create-if-missing
+if [[ "$SOURCE_FILE" == source-documents/Meetings/*.md ]]; then
+    echo "🔗 Syncing meetings metadata..."
+    python3 scripts/mdbook/sync-meetings-metadata.py
+    # Copy meetings metadata to src directory
+    if [ -f "book/meetings-metadata.json" ]; then
+        cp book/meetings-metadata.json src/
+    fi
+else
+    echo "🔗 Updating Airtable metadata for $FILENAME..."
+    python3 scripts/mdbook/sync-airtable-metadata.py --mode=single --file="$FILENAME" --create-if-missing
+fi
 
 # Copy metadata to src directory so it's served by mdBook
 if [ -f "book/airtable-metadata.json" ]; then

@@ -43,6 +43,18 @@ All City of Rivergrove documents follow strict naming conventions to ensure cons
 - `1998-06-01-RE-5.080-setback-orientation.md`
 - `2001-05-07-RE-balanced-cut-and-fill.md`
 
+### Meeting Documents
+**Pattern**: `YYYY-MM-DD-[Type]`
+
+- **YYYY-MM-DD**: Full date of meeting
+- **[Type]**: Document type (Agenda, Minutes, Transcript)
+
+**Examples**:
+- `2018-04-11-Agenda.md`
+- `2018-05-14-Agenda.md`
+- `2024-02-12-Minutes.md`
+- `2024-12-09-Transcript.md`
+
 ## File Organization
 
 ### Source Locations
@@ -50,12 +62,16 @@ Documents are stored in their respective directories:
 - **Ordinances**: `/source-documents/Ordinances/` (with # in filename)
 - **Resolutions**: `/source-documents/Resolutions/` (with # in filename)
 - **Interpretations**: `/source-documents/Interpretations/`
+- **Meeting Documents**: `/source-documents/Meetings/`
 - **Other Documents**: `/source-documents/Other/` or root level
 
 ### mdBook Source (src/)
-When synced to mdBook, files are copied to `/src/` subdirectories with the # character removed:
+When synced to mdBook, files are copied to `/src/` subdirectories with the # character removed where applicable:
 - `/source-documents/Ordinances/1974-Ord-#16-Parks.md` → `/src/ordinances/1974-Ord-16-Parks.md`
 - `/source-documents/Resolutions/1984-Res-#72-Municipal-Services.md` → `/src/resolutions/1984-Res-72-Municipal-Services.md`
+- `/source-documents/Meetings/2018-04-11-Agenda.md` → `/src/agendas/2018-04-11-Agenda.md`
+- `/source-documents/Meetings/2024-02-12-Minutes.md` → `/src/minutes/2024-02-12-Minutes.md`
+- `/source-documents/Meetings/2024-12-09-Transcript.md` → `/src/transcripts/2024-12-09-Transcript.md`
 
 ## PDF Storage
 

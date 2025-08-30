@@ -5,12 +5,30 @@
 This guide covers the Claude Desktop workflow for processing City of Rivergrove documents, including OCR, transcription, and Airtable updates.
 
 - **Repository**: [GitHub](https://github.com/wifelette/city_of_rivergrove)
-- **Related Guides**: 
+- **Related Guides**:
   - [Claude Code Guide](claude-code-guide.md) - Repository management
   - [mdBook Guide](mdbook-guide.md) - Site generation and technical details
   - [Airtable Integration](airtable-integration.md) - Technical integration details
 
-## Document Processing
+## Document Types and Workflows
+
+The digitization process now handles two distinct document types with separate workflows:
+
+### Governing Documents Workflow
+
+- **Document Types**: Ordinances, Resolutions, Interpretations
+- **Tables Used**: Documents, Governing, Governing_Metadata
+- **Process**: OCR/transcription → Create 3 Airtable records → Upload to GitHub → Update URLs
+
+### Meeting Documents Workflow
+
+- **Document Types**: Meeting Agendas, Meeting Minutes
+- **Tables Used**: Meetings, Minutes and Agendas, Documents, Meetings_Metadata
+- **Process**: Create Meeting record → Create 4 Airtable records → Upload to GitHub → Update URLs
+
+---
+
+## Governing Documents Processing
 
 ### 1. OCR and Transcription
 
@@ -20,14 +38,14 @@ This guide covers the Claude Desktop workflow for processing City of Rivergrove 
 - Claude reviews for legal terms, dates, and signatures, but doesn't make any changes without explicit approval by Leah, not even fixing typos. We're strictly digitizing as is.
 - **Claude searches existing Airtable entries first** before creating new ones
 - Claude creates or updates three entries in the Airtable MCP base:
-  - 1. **Document** record for the file
-  - 2. **Governing** record for the file
-  - 3. **Public Metadata** record linked to the Ordinance/Resolution (with Publication Status: Draft)
+  - 1. **Documents** record for file storage
+  - 2. **Governing** record for the ordinance/resolution/interpretation
+  - 3. **Governing_Metadata** record for website publication (with Publication Status: Draft)
 - Leah saves artifact with established naming conventions
 - Leah uploads to GitHub and provides URLs to Claude for Airtable updates
 - Once GitHub URLs are added:
   - Mark as Digitized in Governing table
-  - Change Publication Status from "Draft" to "Published" in Public Metadata table
+  - Change Publication Status from "Draft" to "Published" in Governing_Metadata table
 
 ### 2. PDF Page Order Verification
 
@@ -42,9 +60,9 @@ This guide covers the Claude Desktop workflow for processing City of Rivergrove 
 3. If pages are out of order, mentally reorganize before transcribing
 4. Create artifact with correct logical structure, not PDF page order
 
-## Airtable Updates
+### 3. Governing Documents Airtable Updates
 
-When processing a document:
+When processing a governing document:
 
 - **Always search existing entries first** using multiple search terms
 - **Search with multiple ID format variations**: When searching for existing entries, try multiple formats of the same ID:
@@ -53,32 +71,92 @@ When processing a document:
   - Also try key topic words from the title/subject
 - **Discover field names before creating/updating**: Use list functions with small limits (3-5 records) to see actual field names and avoid validation errors from incorrect field naming.
   - `daily-tasks:council_documents_list (limit: 3)`
-  - `daily-tasks:council_ordinances_list (limit: 3)`
+  - `daily-tasks:council_governing_list (limit: 3)`
   - etc.
-- **Field validation failures**: If any specific field fails validation, inform Leah immediately so she can decide whether to resolve or ignore
-- **IMPORTANT - Array Fields**: For tags and linked record fields, pass values as simple strings, NOT arrays:
-  - ✅ CORRECT: `tags: "Ordinance/Resolution/Interpretation"`
-  - ❌ WRONG: `tags: ["Ordinance/Resolution/Interpretation"]` (will be double-wrapped!)
-  - The MCP server auto-wraps string values in arrays for these fields
-- Create/update Documents entry with:
-  - `documentType`: "Governing Doc"
-  - `tags`: "Ordinance/Resolution/Interpretation" (pass as string, not array!)
-  - documentDate
-  - documentTitle
-  - fileURL (PDF files on GitHub)
-  - mdURL (Markdown files on GitHub)
-  - rawURL (auto-populates from mdURL - don't touch)
-  - ytURL (YouTube video URLs, when applicable)
-  - description
-- Update `Governing` entry with:
-  - Link to document
-  - Summary (dry, objective, searchable)
-  - Topics (use existing valid options)
-  - Mark as Digitized when GitHub upload complete
-- Create `Public Metadata` entry with:
-  - Link to Ordinance/Resolution record
-  - Publication Status: "Draft" (initially, then "Published" after GitHub upload)
-  - Any other relevant metadata fields
+
+**Create/update Documents entry:**
+
+- `documentType`: "Governing Doc"
+- `tags`: "Ordinance/Resolution/Interpretation" (pass as string, not array!)
+- documentDate
+- documentTitle
+- fileURL (PDF files on GitHub)
+- mdURL (Markdown files on GitHub)
+- rawURL (auto-populates from mdURL - don't touch)
+- description
+
+**Update Governing entry:**
+
+- Link to Documents record
+- Summary (dry, objective, searchable)
+- Topics (use existing valid options)
+- Mark as Digitized when GitHub upload complete
+
+**Create Governing_Metadata entry:**
+
+- Link to Governing record via `governing_docs` field
+- Publication Status: "Draft" (initially, then "Published" after GitHub upload)
+- Any other relevant metadata fields
+
+---
+
+## Meeting Documents Processing
+
+### 1. Meeting Document Digitization Workflow
+
+When digitizing meeting agendas or minutes:
+
+1. **Check for existing Meeting record** - Search by date
+2. **Create Meeting record** (if doesn't exist):
+   - Set date
+   - Set appropriate inventory boolean: `Agenda?: true` for agendas, `Minutes?: true` for minutes
+   - Note: Both can be checked if digitizing both document types for the same meeting
+3. **Create Minutes and Agendas record**:
+   - Link to Meeting record
+   - Set Document Type: "Agenda" or "Minutes"
+   - Add notes about content/context
+4. **Create Documents record**:
+   - Use correct `documentType`: "Agendas" for agendas, "Minutes" for minutes
+   - `tags`: "Meeting Documentation"
+5. **Create Meetings_Metadata record**:
+   - For website publication
+   - Status: "Draft" initially
+6. **Link all records together**
+7. **Create markdown artifact**
+8. **Upload to GitHub and update URLs**
+
+### 2. Meeting Documents Airtable Updates
+
+**Meeting record:**
+
+- Date (required)
+- Set inventory boolean: `Agenda?: true` for agendas, `Minutes?: true` for minutes
+- Links to Minutes and Agendas records
+
+**Minutes and Agendas record:**
+
+- Link to Meeting record (auto-populates Meeting Date)
+- Document Type: "Agenda" or "Minutes"
+- Notes about content/significance
+- Source URL (if from website)
+- Status tracking
+
+**Documents record:**
+
+- `documentType`: "Agendas" for agendas, "Minutes" for minutes
+- `tags`: "Meeting Documentation"
+- documentDate (meeting date)
+- documentTitle following naming convention
+- Link to Minutes and Agendas record
+
+**Meetings_Metadata record:**
+
+- Link to Minutes and Agendas record via `meeting_docs` field
+- Status: "Draft" initially, "Published" after GitHub upload
+- Short title for navigation
+- Tags for meeting content (only if substantive topics discussed)
+
+---
 
 ## Content Standards
 
@@ -135,6 +213,8 @@ See **[styles/inline-images.md](styles/inline-images.md)** for handling images, 
 
 All documentTitle fields in Airtable follow standardized formats:
 
+**Governing Documents:**
+
 - **Interpretations**: "PC Interpretation - [Topic]"
   - Example: "PC Interpretation - Section 5.080 Setbacks"
 - **Ordinances**: "Ordinance #XX - [Topic]" (convert roman numerals to standard numbers)
@@ -143,22 +223,38 @@ All documentTitle fields in Airtable follow standardized formats:
 - **Resolutions**: "Resolution #XX - [Topic]"
   - Example: "Resolution #22 - Planning Commission CCI"
 
+**Meeting Documents:**
+
+- **Agendas**: "[Month DD, YYYY] Council Meeting Agenda"
+  - Example: "May 14, 2018 Council Meeting Agenda"
+- **Minutes**: "[Month DD, YYYY] Council Meeting Minutes"
+  - Example: "May 14, 2018 Council Meeting Minutes"
+
 When processing documents, always check existing titles and update them to match these standards if needed.
 
 ## Quality Control & Best Practices
 
 ### Post-Digitization Verification
 
-After completing GitHub upload and URL updates:
+**For Governing Documents:**
 
 - [ ] Documents entry has both fileURL and mdURL
 - [ ] rawURL auto-populated correctly
-- [ ] Ordinances entry marked as Digitized
-- [ ] Public Metadata status changed to Published
+- [ ] Governing entry marked as Digitized
+- [ ] Governing_Metadata status changed to Published
 - [ ] Bidirectional linking verified
 - [ ] Amendment relationships preserved
 - [ ] Document title follows naming convention
 - [ ] Passed date matches signatures/adoption date
+
+**For Meeting Documents:**
+
+- [ ] Meeting record has appropriate inventory boolean checked
+- [ ] Minutes and Agendas record properly linked
+- [ ] Documents entry has correct documentType ("Agendas" or "Minutes")
+- [ ] Meetings_Metadata record linked and published
+- [ ] All bidirectional linking verified
+- [ ] GitHub URLs updated in appropriate records
 
 ### MCP Tool Notes
 
@@ -167,9 +263,24 @@ After completing GitHub upload and URL updates:
 - **Array fields (tags, linked records)**: Always pass as strings, not arrays - MCP auto-wraps them
   - See `/Users/leahsilber/Github/daily-claude/mcp-server/MCP_USAGE_GUIDE.md` for full details
 - **Inform Leah immediately of any field validation failures** for her decision on resolution
-- Link documents to ordinance/resolution records
+- Link documents to governing/meeting records appropriately
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
+
+### MCP Function Reference
+
+**Governing Documents:**
+
+- `daily-tasks:council_governing_search/list/create/update`
+- `daily-tasks:council_governing_metadata_search/list/create/update`
+- `daily-tasks:council_documents_search/list/create/update`
+
+**Meeting Documents:**
+
+- `daily-tasks:council_meetings_list/create` (limited update capabilities)
+- `daily-tasks:council_minutes_agendas_search/list/create/update`
+- `daily-tasks:council_meetings_metadata_search/list/create/update`
+- `daily-tasks:council_documents_search/list/create/update`
 
 ### Key Reminders
 
@@ -179,5 +290,8 @@ After completing GitHub upload and URL updates:
 - Focus on accurate transcription over content analysis
 - Preserve all original formatting, dates, and signatures
 - Claude should ask for GitHub URLs with correct filenames ready for immediate save
+- **For Meeting Documents**: Set appropriate inventory boolean in Meeting records
+- **For Agendas**: Use documentType "Agendas", not "Minutes"
+- **Tagging**: Only tag meeting documents if substantive topics were discussed, not for routine items
 - **Digitization Guide updates**: When Leah asks for text to add to the Digitization Guide, always provide it as inline copyable markdown in code blocks rather than artifacts - this allows single-button copying without downloads.
 - **Batch URL Updates**: When updating multiple documents with GitHub URLs, use the systematic approach: list all records first to see field structure, then update fileURL and mdURL fields (rawURL will auto-populate)
