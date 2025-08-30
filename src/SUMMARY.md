@@ -60,6 +60,11 @@
 
 ---
 
-# Council Meeting Transcripts
+# Council Meetings
+
+## Agendas
+- [05 14 2018 Agenda](./agendas/05-14-2018-Agenda.md)
+
+## Transcripts
 - [02 2024 Transcript](./transcripts/02-2024-Transcript.md)
 - [12 2024 Transcript](./transcripts/12-2024-Transcript.md)

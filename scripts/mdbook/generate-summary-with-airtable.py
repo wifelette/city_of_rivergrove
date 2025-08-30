@@ -412,6 +412,65 @@ def generate_summary():
                 
                 summary.append(f"- [{display}](./interpretations/{doc['filename']})\n")
     
+    # Process Meetings (Agendas, Minutes, Transcripts)
+    meetings_added = False
+    
+    # Check for meetings metadata
+    meetings_metadata_file = Path('book/meetings-metadata.json')
+    meetings_metadata = {}
+    if meetings_metadata_file.exists():
+        with open(meetings_metadata_file, 'r') as f:
+            data = json.load(f)
+            meetings_metadata = data.get('meetings', {})
+    
+    # Process Agendas
+    agendas_dir = src_dir / "agendas"
+    if agendas_dir.exists():
+        agendas = []
+        for md_file in sorted(agendas_dir.glob("*.md")):
+            # Check if in metadata
+            file_key = md_file.stem
+            if file_key in meetings_metadata:
+                display = meetings_metadata[file_key].get('display_name', md_file.stem)
+            else:
+                display = md_file.stem.replace('-', ' ').replace('_', ' ')
+            agendas.append({
+                'display': display,
+                'filename': md_file.name
+            })
+        
+        if agendas:
+            if not meetings_added:
+                summary.append("\n---\n\n# Council Meetings\n")
+                meetings_added = True
+            summary.append("\n## Agendas\n")
+            for doc in agendas:
+                summary.append(f"- [{doc['display']}](./agendas/{doc['filename']})\n")
+    
+    # Process Minutes
+    minutes_dir = src_dir / "minutes"
+    if minutes_dir.exists():
+        minutes = []
+        for md_file in sorted(minutes_dir.glob("*.md")):
+            # Check if in metadata
+            file_key = md_file.stem
+            if file_key in meetings_metadata:
+                display = meetings_metadata[file_key].get('display_name', md_file.stem)
+            else:
+                display = md_file.stem.replace('-', ' ').replace('_', ' ')
+            minutes.append({
+                'display': display,
+                'filename': md_file.name
+            })
+        
+        if minutes:
+            if not meetings_added:
+                summary.append("\n---\n\n# Council Meetings\n")
+                meetings_added = True
+            summary.append("\n## Minutes\n")
+            for doc in minutes:
+                summary.append(f"- [{doc['display']}](./minutes/{doc['filename']})\n")
+    
     # Process Transcripts
     trans_dir = src_dir / "transcripts"
     if trans_dir.exists():
@@ -426,7 +485,10 @@ def generate_summary():
             })
         
         if transcripts:
-            summary.append("\n---\n\n# Council Meeting Transcripts\n")
+            if not meetings_added:
+                summary.append("\n---\n\n# Council Meetings\n")
+                meetings_added = True
+            summary.append("\n## Transcripts\n")
             for doc in transcripts:
                 summary.append(f"- [{doc['name']}](./transcripts/{doc['filename']})\n")
     
