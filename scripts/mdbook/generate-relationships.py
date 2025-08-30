@@ -62,9 +62,9 @@ def parse_document_id(filepath: Path) -> Dict:
     """Parse document ID and type from filepath."""
     name = filepath.stem
     
-    # Ordinances: Pattern YYYY-Ord-#XX-Topic
-    if 'Ord-#' in name:
-        match = re.search(r'(\d{4})-Ord-#(\d+[-\w]*)', name)
+    # Ordinances: Pattern YYYY-Ord-XX-Topic (# removed in src)
+    if 'Ord-' in name:
+        match = re.search(r'(\d{4})-Ord-(\d+[-\w]*)', name)
         if match:
             return {
                 'type': 'ordinance',
@@ -73,9 +73,9 @@ def parse_document_id(filepath: Path) -> Dict:
                 'file': filepath.name
             }
     
-    # Resolutions: Pattern YYYY-Res-#XX-Topic  
-    if 'Res-#' in name:
-        match = re.search(r'(\d{4})-Res-#(\d+[-\w]*)', name)
+    # Resolutions: Pattern YYYY-Res-XX-Topic (# removed in src)
+    if 'Res-' in name:
+        match = re.search(r'(\d{4})-Res-(\d+[-\w]*)', name)
         if match:
             return {
                 'type': 'resolution',
@@ -138,9 +138,9 @@ def build_relationships():
     relationships = {}
     all_documents = {}
     
-    # Process all markdown files
-    for dir_name in ['Ordinances', 'Resolutions', 'Interpretations', 'other']:
-        dir_path = Path(dir_name)
+    # Process all markdown files from src directory
+    for dir_name in ['ordinances', 'resolutions', 'interpretations', 'other']:
+        dir_path = Path('src') / dir_name
         if not dir_path.exists():
             continue
         
