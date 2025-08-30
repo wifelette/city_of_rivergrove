@@ -14,9 +14,8 @@
 
 **B)** Bear an insignia of compliance with the Manufactured Housing Construction and Safety Standards Code and be:
 
-> **i)** A new or not previously occupied unit, or;
-> 
-> **ii)** Be found upon inspection to be in excellent condition and free of structural, electrical, mechanical, and plumbing defects, and in compliance with federal, state, and county codes in effect at the time; any of which must be corrected prior to placement.
+- **i)** A new or not previously occupied unit, or;
+- **ii)** Be found upon inspection to be in excellent condition and free of structural, electrical, mechanical, and plumbing defects, and in compliance with federal, state, and county codes in effect at the time; any of which must be corrected prior to placement.
 
 **C)** Transportation mechanisms including wheels, axels and hitches must be removed and stored where they cannot be seen.
 
@@ -36,13 +35,13 @@
 
 Each application for a placement permit shall be accompanied by:
 
-> 1. A plot plan as required for all dwelling units and elevations or photographs of all sides of the home; drawings showing exterior dimensions; information illustrating the type of roofing and siding materials, foundation support system, and foundation enclosure method and materials.
-> 
-> 2. A copy of the manufacturer's approved instructions to be used for installation purposes.
-> 
-> 3. An agreement signed by the homeowner or authorized representative pledging compliance with the terms of the placement permit.
-> 
-> 4. A completed pre-placement elevation certificate if the property is in the flood plain. A second post-placement elevation certificate must be submitted prior to occupancy.
+1. A plot plan as required for all dwelling units and elevations or photographs of all sides of the home; drawings showing exterior dimensions; information illustrating the type of roofing and siding materials, foundation support system, and foundation enclosure method and materials.
+
+2. A copy of the manufacturer's approved instructions to be used for installation purposes.
+
+3. An agreement signed by the homeowner or authorized representative pledging compliance with the terms of the placement permit.
+
+4. A completed pre-placement elevation certificate if the property is in the flood plain. A second post-placement elevation certificate must be submitted prior to occupancy.
 
 **B)** Consideration by the Rivergrove Planning Commission and City Council of the permit application will proceed in the same manner as for a single family dwelling.
 

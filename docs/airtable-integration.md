@@ -2,14 +2,18 @@
 
 ## Overview
 
-This document describes the integration between the City of Rivergrove mdBook site and the Airtable Public Metadata table. The integration provides enhanced document metadata, human-curated display names, and administrative tracking capabilities.
+This document describes the integration between the City of Rivergrove mdBook site and the Airtable metadata tables. The integration provides enhanced document metadata, human-curated display names, and administrative tracking capabilities.
+
+The metadata is now split into two tables:
+- **Governing_Metadata**: For ordinances, resolutions, interpretations, and other governing documents
+- **Meetings_Metadata**: For agendas, minutes, and other meeting-related documents (in development)
 
 ## Architecture Components
 
 ### 1. Data Sources
 
-#### Airtable Public Metadata Table
-- **Purpose**: Stores manually curated metadata for all documents
+#### Airtable Governing_Metadata Table
+- **Purpose**: Stores manually curated metadata for governing documents (ordinances, resolutions, interpretations)
 - **Key Fields**:
   - `display_name`: Human-friendly document titles
   - `mdURL`: GitHub URL for markdown files
@@ -27,6 +31,10 @@ This document describes the integration between the City of Rivergrove mdBook si
   - `governing_docs`: Linked records to governing documents table
   - `meeting_docs`: Linked records to meeting documents table
   - `meeting_doc_type`: Document type for meeting documents (Agenda, Minutes, etc.)
+
+#### Airtable Meetings_Metadata Table (In Development)
+- **Purpose**: Stores metadata for meeting-related documents
+- **Key Fields**: TBD - similar structure to Governing_Metadata but tailored for meeting documents
 
 #### Local relationships.json
 - **Purpose**: Auto-generated document relationships and references
@@ -153,8 +161,10 @@ Required for Airtable API access:
 ```bash
 AIRTABLE_API_KEY=your_key_here
 AIRTABLE_BASE_ID=your_base_id
-AIRTABLE_TABLE_NAME=Public Metadata
+AIRTABLE_TABLE_NAME=Governing_Metadata  # Default table for governing documents
 ```
+
+Note: The table name defaults to `Governing_Metadata` in the sync script if not specified.
 
 ### 9. Error Handling
 

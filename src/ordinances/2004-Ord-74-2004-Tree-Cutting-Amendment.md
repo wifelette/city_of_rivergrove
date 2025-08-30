@@ -34,7 +34,7 @@ Adopted by the Rivergrove City Council on **May 10, 2004**.
 
 **WHEREAS**, the Comprehensive Plan encourages, especially in Environmentally Sensitive Areas, the preservation of existing wildlife habitat and major stands of trees to the maximum extent practical;
 
-**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to [Ordinance #54](../ordinances/1989-Ord-54-89C-Land-Development.md)-89) is hereby amended as follows:
+**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to Ordinance #54-89) is hereby amended as follows:
 
 ## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 

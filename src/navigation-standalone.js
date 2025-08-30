@@ -35,6 +35,9 @@ class StandaloneNavigation {
         // Create our navigation UI
         this.createNavigationUI();
         
+        // Update document counts in the dropdown
+        this.updateDocumentCounts();
+        
         // Handle browser navigation
         this.setupNavigationHandlers();
         
@@ -42,6 +45,45 @@ class StandaloneNavigation {
         this.detectCurrentDocument();
         
         console.log('StandaloneNavigation: Initialization complete');
+    }
+    
+    calculateDocumentCounts() {
+        const counts = {
+            ordinances: 0,
+            resolutions: 0,
+            interpretations: 0,
+            transcripts: 0,
+            other: 0
+        };
+        
+        Object.values(this.documents).forEach(doc => {
+            if (doc.type === 'ordinance') counts.ordinances++;
+            else if (doc.type === 'resolution') counts.resolutions++;
+            else if (doc.type === 'interpretation') counts.interpretations++;
+            else if (doc.type === 'transcript' || doc.type === 'meeting') counts.transcripts++;
+            else if (doc.type === 'other' || doc.type === 'charter') counts.other++;
+        });
+        
+        return counts;
+    }
+    
+    updateDocumentCounts() {
+        if (!this.documentCounts) return;
+        
+        const countElements = {
+            'count-ordinances': this.documentCounts.ordinances,
+            'count-resolutions': this.documentCounts.resolutions,
+            'count-interpretations': this.documentCounts.interpretations,
+            'count-transcripts': this.documentCounts.transcripts,
+            'count-other': this.documentCounts.other
+        };
+        
+        Object.entries(countElements).forEach(([id, count]) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = count;
+            }
+        });
     }
     
     hideMdBookSidebar() {
@@ -124,6 +166,9 @@ class StandaloneNavigation {
             this.relationships = data.relationships || {};
             console.log(`StandaloneNavigation: Loaded ${Object.keys(this.documents).length} documents`);
             
+            // Calculate document counts by type
+            this.documentCounts = this.calculateDocumentCounts();
+            
             // Load Airtable metadata if available
             try {
                 const airtableResponse = await fetch(basePath + '/airtable-metadata.json');
@@ -179,27 +224,27 @@ class StandaloneNavigation {
                             <div class="context-item active" data-type="ordinances" data-icon="📋">
                                 <span class="context-icon">📋</span>
                                 Ordinances
-                                <span class="context-count">19</span>
+                                <span class="context-count" id="count-ordinances">0</span>
                             </div>
                             <div class="context-item" data-type="resolutions" data-icon="📄">
                                 <span class="context-icon">📄</span>
                                 Resolutions
-                                <span class="context-count">3</span>
+                                <span class="context-count" id="count-resolutions">0</span>
                             </div>
                             <div class="context-item" data-type="interpretations" data-icon="📝">
                                 <span class="context-icon">📝</span>
                                 Interpretations
-                                <span class="context-count">12</span>
+                                <span class="context-count" id="count-interpretations">0</span>
                             </div>
                             <div class="context-item" data-type="transcripts" data-icon="🎙️">
                                 <span class="context-icon">🎙️</span>
                                 Meeting Records
-                                <span class="context-count">2</span>
+                                <span class="context-count" id="count-transcripts">0</span>
                             </div>
                             <div class="context-item" data-type="other" data-icon="📚">
                                 <span class="context-icon">📚</span>
                                 Other Documents
-                                <span class="context-count">1</span>
+                                <span class="context-count" id="count-other">0</span>
                             </div>
                             <hr class="context-divider">
                             <div class="context-item" data-type="home" data-icon="🏠">

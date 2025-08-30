@@ -2,15 +2,15 @@
 
 **AN ORDINANCE AMENDING ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S COMPREHENSIVE PLAN AND LAND DEVELOPMENT ORDINANCE**
 
-Submitted to the Rivergrove City Council on **October 12, 1998**
+Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">October 12, 1998</span>
 
-Adopted by the Rivergrove City Council on **October 12, 1998**
+Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">October 12, 1998</span>
 
 [Signature], Larry Barrett, Mayor  
-**Date:** 10-12-98
+**Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10-12-98</span>
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date:** 10/12/98
+**Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/12/98</span>
 
 ---
 
@@ -43,13 +43,9 @@ Adopted by the Rivergrove City Council on **October 12, 1998**
 > **Section 5.050. Permitted Uses.** The following developments are permitted. Uses not listed here are prohibited.
 >
 > **(a)** One single-family detached dwelling, including manufactured home, or one duplex, or one triplex residential unit per lot. All residential structures must have at least two of the following elements:
->
 > 1. the dwelling shall be placed on an excavated and backfilled foundation;
->
 > 2. the dwelling shall have a pitched roof with a slope no less than three feet in height for each 12 feet in width;
->
 > 3. the dwelling shall have an exterior thermal envelope meeting performance standards at or equivalent to those required of dwellings built under the state building code as defined in ORS 455.010;
->
 > 4. the dwelling shall have a garage or carport built of the same materials as the main dwelling.
 >
 > **(b)** Secondary Dwelling Unit (defined as a residential unit either within the primary residence or above a garage up to 750 sq. ft. of floor area).

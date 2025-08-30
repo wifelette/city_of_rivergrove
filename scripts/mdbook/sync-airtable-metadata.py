@@ -23,7 +23,7 @@ load_dotenv()
 from pyairtable import Api
 api = Api(os.environ['AIRTABLE_API_KEY'])
 base = api.base(os.environ['AIRTABLE_BASE_ID'])
-table = base.table(os.environ.get('AIRTABLE_TABLE_NAME', 'Public Metadata'))
+table = base.table(os.environ.get('AIRTABLE_TABLE_NAME', 'Governing_Metadata'))
 
 class AirtableSync:
     def __init__(self, cache_file='book/airtable-metadata.json', 

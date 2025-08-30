@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-29T22:10:47.817768",
+  "timestamp": "2025-08-29T22:29:13.939631",
   "summary": {
     "matched": 41,
     "missing_in_airtable": 0,
@@ -10,7 +10,7 @@
     "missing_locally": [
       {
         "airtable_id": "rechuzUNkS9zHd60H",
-        "display_name": "New Record",
+        "display_name": "Unnamed record",
         "type": "unknown",
         "year": null,
         "doc_number": "",
