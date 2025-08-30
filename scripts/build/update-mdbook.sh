@@ -52,6 +52,15 @@ echo "  ✓ Airtable metadata synced"
 echo "📚 Rebuilding mdBook..."
 mdbook build
 
+# Copy JSON files to book directory for serving
+echo "  📋 Copying data files..."
+if [ -f "src/relationships.json" ]; then
+    cp src/relationships.json book/
+fi
+if [ -f "src/airtable-metadata.json" ]; then
+    cp src/airtable-metadata.json book/
+fi
+
 echo "  🎨 Applying custom formatting..."
 python3 scripts/postprocessing/custom-list-processor.py
 
