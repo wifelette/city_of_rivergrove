@@ -114,7 +114,7 @@ process_file_change() {
     
     # Regenerate SUMMARY.md and relationships
     echo "  Updating indexes..."
-    python3 scripts/mdbook/generate-summary.py >/dev/null 2>&1
+    python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
     python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
     
     # Wait a moment for mdBook to detect and rebuild

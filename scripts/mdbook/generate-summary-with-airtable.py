@@ -11,18 +11,22 @@ from datetime import datetime
 
 def load_airtable_metadata():
     """Load Airtable metadata from cache file."""
-    metadata_file = Path("src/airtable-metadata.json")
-    if not metadata_file.exists():
-        # Fallback to book directory
-        metadata_file = Path("book/airtable-metadata.json")
+    # Always use book directory as single source of truth
+    metadata_file = Path("book/airtable-metadata.json")
     
     if metadata_file.exists():
         try:
             with open(metadata_file, 'r') as f:
                 data = json.load(f)
-                return data.get('documents', {})
+                documents = data.get('documents', {})
+                print(f"Loaded {len(documents)} documents from Airtable metadata")
+                return documents
         except Exception as e:
-            print(f"Warning: Could not load Airtable metadata: {e}")
+            print(f"ERROR: Could not load Airtable metadata: {e}")
+            print("  Run './build-all.sh' to sync Airtable data")
+    else:
+        print(f"WARNING: No Airtable metadata found at {metadata_file}")
+        print("  Run './build-all.sh' to sync Airtable data")
     
     return {}
 
@@ -31,15 +35,8 @@ def get_document_key(filepath):
     # Remove extension and convert to key format
     stem = Path(filepath).stem
     
-    # The metadata keys have # but src files don't
-    # Need to add # back for Ord and Res files
-    if '-Ord-' in stem:
-        # Add # after Ord- (e.g., 2001-Ord-70-2001-WQRA -> 2001-Ord-#70-2001-WQRA)
-        stem = re.sub(r'(-Ord-)(\d)', r'\1#\2', stem)
-    elif '-Res-' in stem:
-        # Add # after Res- (e.g., 2018-Res-259-Planning -> 2018-Res-#259-Planning)
-        stem = re.sub(r'(-Res-)(\d)', r'\1#\2', stem)
-    
+    # The metadata keys DON'T have # - they match the src/ filenames exactly
+    # So we just return the stem as-is
     return stem
 
 def extract_title_from_file(filepath):
@@ -332,8 +329,10 @@ def generate_summary():
                 
                 doc['status'] = airtable_info.get('status', 'Unknown')
             else:
-                doc['full_title'] = extract_title_from_file(md_file)
-                doc['status'] = 'Unknown'
+                # Mark as missing Airtable data
+                doc['full_title'] = f"[NO AIRTABLE DATA] {extract_title_from_file(md_file)}"
+                doc['status'] = 'Missing Airtable Data'
+                print(f"  WARNING: No Airtable data for {doc_key}")
             
             resolutions.append(doc)
         

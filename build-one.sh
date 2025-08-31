@@ -134,7 +134,7 @@ echo ""
 echo "📋 Step 4: Updating indexes..."
 
 echo -n "  • Table of contents... "
-python3 scripts/mdbook/generate-summary.py >/dev/null 2>&1
+python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
 echo -e "${GREEN}✓${NC}"
 
 echo -n "  • Relationships... "
