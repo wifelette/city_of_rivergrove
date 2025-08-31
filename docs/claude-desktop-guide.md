@@ -23,7 +23,7 @@ The digitization process now handles two distinct document types with separate w
 ### Meeting Records Workflow
 
 - **Document Types**: Meeting Agendas, Meeting Minutes
-- **Tables Used**: Meetings, Minutes and Agendas, Documents, Meetings_Metadata
+- **Tables Used**: Meetings, Meeting Records, Documents, Meetings_Metadata
 - **Process**: Create Meeting record → Create 4 Airtable records → Upload to GitHub → Update URLs
 
 ---
@@ -250,7 +250,7 @@ When processing documents, always check existing titles and update them to match
 **For Meeting Documents:**
 
 - [ ] Meeting record has appropriate inventory boolean checked
-- [ ] Minutes and Agendas record properly linked
+- [ ] Meeting Records record properly linked
 - [ ] Documents entry has correct documentType ("Agendas" or "Minutes")
 - [ ] Meetings_Metadata record linked and published
 - [ ] All bidirectional linking verified
@@ -278,7 +278,7 @@ When processing documents, always check existing titles and update them to match
 **Meeting Documents:**
 
 - `daily-tasks:council_meetings_list/create` (limited update capabilities)
-- `daily-tasks:council_minutes_agendas_search/list/create/update`
+- `daily-tasks:council_meeting_records_search/list/create/update`
 - `daily-tasks:council_meetings_metadata_search/list/create/update`
 - `daily-tasks:council_documents_search/list/create/update`
 

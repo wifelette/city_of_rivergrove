@@ -25,9 +25,9 @@ Welcome to the official digital repository of City of Rivergrove municipal docum
 </div>
 
 <div class="simple-card">
-<h3><a href="transcripts/02-2024-Transcript.html">Meeting Records</a></h3>
-<p>Council meeting transcripts and minutes</p>
-<p class="doc-count">2 transcripts</p>
+<h3><a href="agendas/2018-05-14-Agenda.html">Meeting Records</a></h3>
+<p>Council meeting agendas, transcripts and minutes</p>
+<p class="doc-count">2 agendas</p>
 </div>
 
 <div class="simple-card">

@@ -96,11 +96,28 @@ def parse_document_id(filepath: Path) -> Dict:
             'file': filepath.name
         }
     
-    # Transcripts
-    if 'Transcript' in name:
+    # Meeting documents: Transcripts, Agendas, Minutes
+    if 'Transcript' in name or filepath.parent.name == 'transcripts':
+        date_match = re.match(r'(\d{4}-\d{2}-\d{2})', name)
         return {
             'type': 'transcript',
-            'date': name.replace('-Transcript', ''),
+            'date': date_match.group(1) if date_match else name.replace('-Transcript', ''),
+            'file': filepath.name
+        }
+    
+    if 'Agenda' in name or filepath.parent.name == 'agendas':
+        date_match = re.match(r'(\d{4}-\d{2}-\d{2})', name)
+        return {
+            'type': 'agenda',
+            'date': date_match.group(1) if date_match else name.replace('-Agenda', ''),
+            'file': filepath.name
+        }
+    
+    if 'Minutes' in name or filepath.parent.name == 'minutes':
+        date_match = re.match(r'(\d{4}-\d{2}-\d{2})', name)
+        return {
+            'type': 'minutes',
+            'date': date_match.group(1) if date_match else name.replace('-Minutes', ''),
             'file': filepath.name
         }
     
@@ -139,7 +156,7 @@ def build_relationships():
     all_documents = {}
     
     # Process all markdown files from src directory
-    for dir_name in ['ordinances', 'resolutions', 'interpretations', 'other']:
+    for dir_name in ['ordinances', 'resolutions', 'interpretations', 'other', 'transcripts', 'agendas', 'minutes']:
         dir_path = Path('src') / dir_name
         if not dir_path.exists():
             continue

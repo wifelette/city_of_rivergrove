@@ -2,9 +2,9 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-29T23:22:32.270145",
-    "last_updated": "2025-08-30T09:37:59.335431",
-    "total_records": 2,
-    "last_partial_update": "2025-08-30T09:37:59.335394",
+    "last_updated": "2025-08-30T19:44:03.217462",
+    "total_records": 3,
+    "last_partial_update": "2025-08-30T19:44:03.217430",
     "incremental_updates": [
       {
         "filename": "1999-Ord-#65-99-Sewer-Services.md",
@@ -13,6 +13,10 @@
       {
         "filename": "2000-Ord-#68-2000-Metro-Compliance.md",
         "updated_at": "2025-08-30T09:37:59.335395"
+      },
+      {
+        "filename": "2001-Ord-#70-2001-WQRA.md",
+        "updated_at": "2025-08-30T19:44:03.217432"
       }
     ]
   },
@@ -48,6 +52,22 @@
       "digitized": true,
       "passed_date": "2000-10-16",
       "last_updated": "2025-08-30T04:36:32.000Z"
+    },
+    "2001-Ord-#70-2001-WQRA": {
+      "airtable_id": "recR0KFvHsPOxusuk",
+      "display_name": "Ordinance #70-2001",
+      "short_title": "Water Quality",
+      "type": "ordinance",
+      "year": 2001,
+      "doc_number": "70-2001",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/2001-Ord-%2370-2001-WQRA.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/2001-Ord-%2370-2001-WQRA.pdf",
+      "filename": "2001-Ord-%2370-2001-WQRA.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "2001-12-10",
+      "last_updated": "2025-08-30T19:38:45.000Z"
     }
   }
 }
