@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitization Notes - Style Options</title>
+    <style>
+        body {
+            font-family: "Open Sans", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        /* Sample document content */
+        .document-content {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .document-content h3 {
+            color: #0969da;
+            margin-bottom: 15px;
+        }
+        
+        /* ===== OPTION 1: Subtle Info Box ===== */
+        .digitization-note-v1 {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            border-radius: 0 4px 4px 0;
+            position: relative;
+        }
+        
+        .digitization-note-v1 h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .digitization-note-v1 p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        /* ===== OPTION 2: Amber Alert Style ===== */
+        .digitization-note-v2 {
+            margin: 30px 0;
+            padding: 20px 20px 20px 50px;
+            background: #fff8dc;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .digitization-note-v2::before {
+            content: "ℹ️";
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            font-size: 20px;
+        }
+        
+        .digitization-note-v2 h3 {
+            margin: 0 0 10px 0;
+            color: #856404;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .digitization-note-v2 p {
+            margin: 0;
+            color: #664d03;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* ===== OPTION 3: Integrated with Document Accent Colors ===== */
+        .digitization-note-v3 {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(to right, rgba(9, 105, 218, 0.05) 0%, transparent 100%);
+            border-left: 4px solid #0969da;
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+        
+        .digitization-note-v3.ordinance {
+            background: linear-gradient(to right, rgba(9, 105, 218, 0.05) 0%, transparent 100%);
+            border-left-color: #0969da;
+        }
+        
+        .digitization-note-v3.resolution {
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.05) 0%, transparent 100%);
+            border-left-color: #22c55e;
+        }
+        
+        .digitization-note-v3.interpretation {
+            background: linear-gradient(to right, rgba(147, 51, 234, 0.05) 0%, transparent 100%);
+            border-left-color: #9333ea;
+        }
+        
+        .digitization-note-v3 h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .digitization-note-v3 p {
+            margin: 0;
+            color: #495057;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* ===== OPTION 4: Card Style with Shadow ===== */
+        .digitization-note-v4 {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .digitization-note-v4::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6c757d 0%, #adb5bd 100%);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .digitization-note-v4 h3 {
+            margin: 0 0 12px 0;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .digitization-note-v4 h3::before {
+            content: "📝";
+            font-size: 16px;
+        }
+        
+        .digitization-note-v4 p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* ===== OPTION 5: Minimal with Dashed Border ===== */
+        .digitization-note-v5 {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(108, 117, 125, 0.03);
+            border: 2px dashed #dee2e6;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .digitization-note-v5 h3 {
+            margin: 0 0 10px 0;
+            color: #6c757d;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .digitization-note-v5 p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 13px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        /* Different note types for Option 3 */
+        .note-type-label {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+            color: #6c757d;
+        }
+        
+        /* ===== REFINED OPTIONS BASED ON FEEDBACK ===== */
+        
+        /* Refined A: Card with subtle top accent (based on Option 4) */
+        .digitization-note-refined-a {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        
+        .digitization-note-refined-a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #6c757d;
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .digitization-note-refined-a h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-refined-a p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Refined B: Card with left accent */
+        .digitization-note-refined-b {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-left: 3px solid #6c757d;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        
+        .digitization-note-refined-b h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-refined-b p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Refined C: Lighter integrated style */
+        .digitization-note-refined-c {
+            margin: 30px 0;
+            padding: 18px 20px;
+            background: #fafbfc;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+        
+        .digitization-note-refined-c h3 {
+            margin: 0 0 8px 0;
+            color: #586069;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-refined-c p {
+            margin: 0;
+            color: #586069;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Refined D: With icon, no borders */
+        .digitization-note-refined-d {
+            margin: 30px 0;
+            padding: 20px 20px 20px 50px;
+            background: #f6f8fa;
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .digitization-note-refined-d::before {
+            content: "📝";
+            position: absolute;
+            left: 18px;
+            top: 20px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .digitization-note-refined-d h3 {
+            margin: 0 0 10px 0;
+            color: #24292e;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-refined-d p {
+            margin: 0;
+            color: #586069;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* HYBRID: Combines A's top accent with D's icon */
+        .digitization-note-hybrid {
+            margin: 30px 0;
+            padding: 20px 20px 20px 50px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        
+        .digitization-note-hybrid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #6c757d;
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .digitization-note-hybrid::after {
+            content: "📝";
+            position: absolute;
+            left: 18px;
+            top: 20px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .digitization-note-hybrid h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-hybrid p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Alternative hybrid with B's left accent + icon */
+        .digitization-note-hybrid-alt {
+            margin: 30px 0;
+            padding: 20px 20px 20px 50px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-left: 3px solid #6c757d;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        
+        .digitization-note-hybrid-alt::before {
+            content: "📝";
+            position: absolute;
+            left: 18px;
+            top: 20px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .digitization-note-hybrid-alt h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .digitization-note-hybrid-alt p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digitization Notes - Style Options</h1>
+        
+        <!-- REFINED OPTIONS SECTION -->
+        <div style="background: #e7f1ff; padding: 20px; border-radius: 8px; margin-bottom: 40px;">
+            <h2 style="margin-top: 0; color: #0969da;">🎯 Refined Options Based on Feedback</h2>
+            <p style="color: #586069; font-size: 14px; margin-bottom: 20px;">
+                These refined versions focus on neutral, professional styling that indicates supplementary information without alarm or false hierarchy.
+            </p>
+            
+            <h3 style="color: #333; margin-top: 30px;">Refined A: Card with Subtle Top Accent</h3>
+            <div class="digitization-note-refined-a">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">Refined B: Card with Left Accent</h3>
+            <div class="digitization-note-refined-b">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">Refined C: Lighter Integrated Style</h3>
+            <div class="digitization-note-refined-c">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">Refined D: With Icon, No Borders</h3>
+            <div class="digitization-note-refined-d">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">🌟 HYBRID: Best of Both Worlds (A + D)</h3>
+            <p style="color: #586069; font-size: 14px; margin-bottom: 15px;">
+                <em>Combines the visual separation of A's top accent with D's helpful icon</em>
+            </p>
+            <div class="digitization-note-hybrid">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">Alternative Hybrid (B + D)</h3>
+            <p style="color: #586069; font-size: 14px; margin-bottom: 15px;">
+                <em>If you prefer the left accent over top accent</em>
+            </p>
+            <div class="digitization-note-hybrid-alt">
+                <h3>Document Notes</h3>
+                <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+            </div>
+            
+            <h3 style="color: #333; margin-top: 30px;">Example: Multiple Notes Using Hybrid Style</h3>
+            <div class="digitization-note-hybrid">
+                <h3>Document Notes</h3>
+                <p>The source document was in ALL CAPS and has been converted to standard case for readability.</p>
+            </div>
+            <div class="digitization-note-hybrid">
+                <h3>Document Notes</h3>
+                <p>Pages 3-5 of the original document contained unrelated material from a different ordinance and were not included in this digitization.</p>
+            </div>
+        </div>
+        
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e9ecef;">
+        
+        <h2 style="color: #6c757d; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px;">Original Exploration (For Reference)</h2>
+        
+        <div class="document-content">
+            <h3>Sample Document Content</h3>
+            <p>WHEREAS, the City of Rivergrove has determined that it is necessary to establish regulations...</p>
+            <p>NOW, THEREFORE, BE IT ORDAINED by the City Council of the City of Rivergrove...</p>
+        </div>
+        
+        <h2>Option 1: Subtle Info Box</h2>
+        <div class="digitization-note-v1">
+            <h3>Document Notes</h3>
+            <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+        </div>
+        
+        <h2>Option 2: Amber Alert Style (More Prominent)</h2>
+        <div class="digitization-note-v2">
+            <h3>Digitization Note</h3>
+            <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+        </div>
+        
+        <h2>Option 3: Integrated with Document Type Colors</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+            <em>These would automatically match the document type - blue for ordinances, green for resolutions, purple for interpretations</em>
+        </p>
+        
+        <div class="digitization-note-v3 ordinance">
+            <h3>Document Notes <span class="note-type-label">Ordinance</span></h3>
+            <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+        </div>
+        
+        <div class="digitization-note-v3 resolution">
+            <h3>Source Document Notes <span class="note-type-label">Resolution</span></h3>
+            <p>A version of this Resolution, stipulating 7 members of the council, was reviewed (first reading) on April 10, 1978, and then the version above replaced it and was executed.</p>
+        </div>
+        
+        <div class="digitization-note-v3 interpretation">
+            <h3>Handwritten Notations <span class="note-type-label">Interpretation</span></h3>
+            <p>This document contains handwritten notes and stamps that have been preserved in the digitization. See the source PDF for the original markings.</p>
+        </div>
+        
+        <h2>Option 4: Card Style with Top Accent</h2>
+        <div class="digitization-note-v4">
+            <h3>Document Notes</h3>
+            <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+        </div>
+        
+        <h2>Option 5: Minimal with Dashed Border</h2>
+        <div class="digitization-note-v5">
+            <h3>Digitization Note</h3>
+            <p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+        </div>
+        
+        <h2>Multiple Note Types Example</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+            <em>Using Option 3 style with different note headers</em>
+        </p>
+        
+        <div class="digitization-note-v3 ordinance">
+            <h3>Digitization Notes</h3>
+            <p>The source document was in ALL CAPS and has been converted to standard case for readability.</p>
+        </div>
+        
+        <div class="digitization-note-v3 ordinance">
+            <h3>Source Document Notes</h3>
+            <p>Pages 3-5 of the original document contained unrelated material and were not included in this digitization.</p>
+        </div>
+        
+        <div class="digitization-note-v3 ordinance">
+            <h3>Historical Notes</h3>
+            <p>This ordinance replaced an earlier version that was reviewed but not executed in April 1978.</p>
+        </div>
+    </div>
+</body>
+</html>

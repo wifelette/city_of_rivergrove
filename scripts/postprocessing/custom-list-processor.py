@@ -119,30 +119,58 @@ def process_special_numbered_lists(html_content):
     return str(soup)
 
 def process_letter_lists(html_content):
-    """Convert (a), (b) style lists to custom styled divs"""
+    """
+    Simplified processor for letter/number lists:
+    1. Remove any special divs from list items (they should be plain)
+    2. Bold the markers for clarity
+    3. Don't add blockquote-like styling
+    """
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # Process definition-style letter lists
-    for p in soup.find_all('p'):
-        text = p.get_text()
-        
-        # Check for letter markers at start of paragraph
-        match = re.match(r'^(\(([a-z])\))\s+(.+)$', text.strip(), re.IGNORECASE)
+    # First, remove any definition-item or letter-item divs that are inside list items
+    # These should NEVER have special styling when already in a list
+    for li in soup.find_all('li'):
+        for div in li.find_all('div', class_=['definition-item', 'letter-item']):
+            # Extract just the text content and replace the div
+            text_content = div.get_text()
+            div.replace_with(text_content)
+    
+    # Process list items to bold their markers (but no other styling)
+    for li in soup.find_all('li'):
+        text = li.get_text().strip()
+        # Match various marker patterns: (a), (1), (i), etc.
+        match = re.match(r'^(\([a-z0-9ivx]+\))\s+(.+)$', text, re.IGNORECASE)
         if match:
-            # Create a custom div for definition items
-            div = soup.new_tag('div', attrs={'class': 'definition-item'})
+            marker = match.group(1)
+            content = match.group(2)
             
-            # Add the marker
-            marker_span = soup.new_tag('span', attrs={'class': 'definition-marker'})
-            marker_span.string = match.group(1)
-            div.append(marker_span)
+            # Clear and rebuild with bold marker only
+            li.clear()
+            strong = soup.new_tag('strong')
+            strong.string = marker
+            li.append(strong)
+            li.append(' ' + content)
+    
+    # For standalone paragraphs with markers - just make the marker bold
+    # No special divs or backgrounds
+    for p in soup.find_all('p'):
+        # Skip if inside a list or blockquote
+        if p.find_parent(['li', 'ul', 'ol', 'blockquote']):
+            continue
             
-            # Add the content
-            content_span = soup.new_tag('span', attrs={'class': 'definition-content'})
-            content_span.string = ' ' + match.group(3)
-            div.append(content_span)
+        text = p.get_text().strip()
+        # Check for markers at start of paragraph
+        match = re.match(r'^(\([a-z0-9ivx]+\))\s+(.+)$', text, re.IGNORECASE)
+        if match:
+            marker = match.group(1)
+            content = match.group(2)
             
-            p.replace_with(div)
+            # Just make the marker bold, no special divs
+            p.clear()
+            strong = soup.new_tag('strong')
+            strong.string = marker
+            p.append(strong)
+            p.append(' ' + content)
     
     return str(soup)
 

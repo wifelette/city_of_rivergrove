@@ -1113,3 +1113,79 @@ table + .table-footnotes {
     margin: 0.25em 0;
     line-height: 1.5;
 }
+
+/* ===== Document Notes Styling ===== */
+/* Special styling for digitization notes and document metadata */
+.document-note {
+    margin: 30px 0;
+    padding: 20px 20px 20px 50px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    position: relative;
+}
+
+/* Top accent bar for visual separation */
+.document-note::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #6c757d;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Note icon */
+.document-note::after {
+    content: "📝";
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+/* Note heading - always shows as "Document Notes" */
+.document-note h2 {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border: none;
+    padding: 0;
+}
+
+/* Note content */
+.document-note p {
+    margin: 0 0 10px 0;
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.document-note p:last-child {
+    margin-bottom: 0;
+}
+
+/* Remove the need for --- separator before notes */
+.document-note + hr,
+hr + .document-note {
+    display: none;
+}
+
+/* Print styles for document notes */
+@media print {
+    .document-note {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .document-note::after {
+        content: none; /* Hide emoji in print */
+    }
+}
