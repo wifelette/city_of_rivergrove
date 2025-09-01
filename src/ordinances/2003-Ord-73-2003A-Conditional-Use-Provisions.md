@@ -4,17 +4,17 @@
 
 _[Handwritten notation: "Conditional Use"]_
 
-Approved by the Planning Commission of the City of Rivergrove on **05/07/03**
+Approved by the Planning Commission of the City of Rivergrove on <span class="form-field-filled" data-tooltip="Field filled in on source doc">05/07/03</span>
 
-Submitted to the Rivergrove City Council on **5/12/03**
+Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span>
 
-Adopted by the Rivergrove City Council on **5/12/03**
+Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span>
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 5/12/03                                      
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span>
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 5/12/03                                      
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span>
 
 ---
 

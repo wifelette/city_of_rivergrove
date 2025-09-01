@@ -1,0 +1,723 @@
+<!DOCTYPE HTML>
+
+<html class="light sidebar-visible" dir="ltr" lang="en">
+<head>
+<!-- Book generated using mdBook -->
+<meta charset="utf-8"/>
+<title>#41425 - Public Records (2025) - City of Rivergrove Documents</title>
+<!-- Custom HTML head -->
+<meta content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations" name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="../favicon.svg" rel="icon"/>
+<link href="../favicon.png" rel="shortcut icon"/>
+<link href="../css/variables.css" rel="stylesheet"/>
+<link href="../css/general.css" rel="stylesheet"/>
+<link href="../css/chrome.css" rel="stylesheet"/>
+<link href="../css/print.css" media="print" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="../FontAwesome/css/font-awesome.css" rel="stylesheet"/>
+<link href="../fonts/fonts.css" rel="stylesheet"/>
+<!-- Highlight.js Stylesheets -->
+<link href="../highlight.css" id="highlight-css" rel="stylesheet"/>
+<link href="../tomorrow-night.css" id="tomorrow-night-css" rel="stylesheet"/>
+<link href="../ayu-highlight.css" id="ayu-highlight-css" rel="stylesheet"/>
+<!-- Custom theme stylesheets -->
+<link href="../custom.css" rel="stylesheet"/>
+<!-- Provide site root and default themes to javascript -->
+<script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+<!-- Start loading toc.js asap -->
+<script src="../toc.js"></script>
+<style id="custom-list-styles">
+        /* Custom list styles for legal documents */
+        .custom-list-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .definition-item {
+            margin: 1em 0;
+        }
+        
+        .definition-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .roman-list {
+            list-style: none;
+            padding-left: 2em;
+        }
+        
+        .roman-list li {
+            margin: 0.5em 0;
+        }
+        
+        .roman-marker {
+            font-weight: normal;
+            margin-right: 0.5em;
+        }
+        
+        /* Roman numeral lists that shouldn't show automatic numbering */
+        .roman-parenthetical-list {
+            list-style: none !important;
+            counter-reset: none !important;
+            padding-left: 2em;
+        }
+        
+        .roman-parenthetical-list > li {
+            list-style: none !important;
+            position: relative;
+        }
+        
+        .roman-parenthetical-list > li::before {
+            content: none !important;
+        }
+        
+        /* Special list that starts at non-standard number (e.g., 1.4) */
+        .special-start-list {
+            list-style: none !important;
+            padding-left: 2em;
+            counter-reset: none !important;
+        }
+        
+        .special-start-list li {
+            margin: 0.5em 0;
+            position: relative;
+            list-style: none !important;
+        }
+        
+        .special-start-list li::before {
+            content: none !important;
+        }
+        
+        .special-list-number {
+            font-weight: bold;
+            margin-right: 0.5em;
+            display: inline-block;
+            min-width: 2em;
+        }
+        
+        /* Override mdBook's list styling for our custom lists */
+        ol:has(.custom-list-marker) {
+            list-style: none;
+            counter-reset: none;
+        }
+        
+        ol:has(.custom-list-marker) li::before {
+            content: none;
+        }
+        
+        ol.special-start-list li::before {
+            content: none;
+        }
+        
+        /* Form field styles for legal documents */
+        .form-field-empty {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            margin: 0 2px;
+            cursor: default;
+            vertical-align: baseline;
+            height: 1em;
+            position: relative;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #f0f0f0;
+            border-bottom-color: #666;
+        }
+        
+        /* Add a visual indicator for blank fields */
+        .form-field-empty::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-empty:hover::after {
+            opacity: 1;
+        }
+        
+        .form-field-short {
+            min-width: 60px;
+        }
+        
+        .form-field-medium {
+            min-width: 120px;
+        }
+        
+        .form-field-long {
+            min-width: 200px;
+        }
+        
+        .form-field-filled {
+            display: inline-block;
+            padding: 2px 4px 4px 4px;
+            background-color: #e3f2fd;
+            border-bottom: 2px solid #1976d2;
+            color: #000;
+            font-weight: 600;
+            cursor: default !important;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        /* Ensure tooltips appear above other elements */
+        .form-field-filled:hover,
+        .form-field-empty:hover {
+            z-index: 1000;
+        }
+        
+        /* Force no help cursor for form fields and remove any title tooltips */
+        .form-field-filled,
+        .form-field-filled:hover,
+        .form-field-empty,
+        .form-field-empty:hover {
+            cursor: default !important;
+        }
+        
+        /* Hide any native browser tooltips */
+        .form-field-filled[title],
+        .form-field-empty[title] {
+            cursor: default !important;
+        }
+        
+        .form-field-filled[title]:hover::before,
+        .form-field-empty[title]:hover::before {
+            content: '' !important;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #bbdefb;
+            border-bottom-color: #0d47a1;
+        }
+        
+        /* CSS tooltip for filled fields */
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+        
+        /* Special positioning for tooltips in headings to avoid clipping */
+        h1 .form-field-filled::after,
+        h2 .form-field-filled::after,
+        h3 .form-field-filled::after {
+            top: 100%;
+            bottom: auto;
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Same for empty field tooltips in headings */
+        h1 .form-field-empty::after,
+        h2 .form-field-empty::after,
+        h3 .form-field-empty::after {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Special styling for form fields in headings */
+        h1 .form-field-filled, 
+        h2 .form-field-filled, 
+        h3 .form-field-filled {
+            font-size: inherit;
+            font-weight: inherit;
+            vertical-align: baseline;
+        }
+        
+        h1 .form-field-empty, 
+        h2 .form-field-empty, 
+        h3 .form-field-empty {
+            vertical-align: baseline;
+            height: 0.8em;
+            margin-bottom: -0.1em;
+        }
+        
+        /* Document figure styles for inline images */
+        .document-figure {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        .document-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .document-figure figcaption {
+            margin-top: 1em;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        /* Responsive image sizing */
+        @media screen and (min-width: 768px) {
+            .document-figure {
+                max-width: 80%;
+            }
+        }
+        
+        @media print {
+            .document-figure {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+            
+            .document-figure img {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+        </style><style id="enhanced-formatting-styles">
+            /* Enhanced formatting for special document types */
+            
+            /* WHEREAS Clauses */
+            .whereas-clause {
+                margin: 1.5em 0;
+                padding-left: 2em;
+                position: relative;
+            }
+            
+            .whereas-marker {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            /* Definition Lists */
+            .definition-item {
+                margin: 1.2em 0;
+                padding: 0.8em;
+                background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+                border-left: 3px solid #0969da;
+            }
+            
+            .definition-term {
+                font-weight: bold;
+                color: #0969da;
+                margin-right: 0.3em;
+            }
+            
+            .definition-separator {
+                margin: 0 0.3em;
+                color: #6c757d;
+            }
+            
+            .definition-text {
+                color: #333;
+            }
+            
+            /* Enhanced Tables */
+            .table-wrapper {
+                overflow-x: auto;
+                margin: 1.5em 0;
+                border-radius: 8px;
+            }
+            
+            .fee-schedule-table {
+                background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+                padding: 1em;
+            }
+            
+            .formatted-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                background: white;
+            }
+            
+            .formatted-table thead {
+                background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                color: white;
+            }
+            
+            .formatted-table th {
+                padding: 12px 16px;
+                text-align: left;
+                font-weight: 600;
+                border-bottom: 2px solid #495057;
+            }
+            
+            .formatted-table td {
+                padding: 10px 16px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .formatted-table tbody tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .formatted-table tbody tr:nth-child(even) {
+                background: rgba(0, 105, 218, 0.02);
+            }
+            
+            /* Cells with footnotes */
+            .has-footnote {
+                position: relative;
+            }
+            
+            .has-footnote sup {
+                color: #0969da;
+                font-weight: bold;
+            }
+            
+            /* Section Quotes */
+            .section-quote {
+                border-left: 4px solid #0969da;
+                padding-left: 1.5em;
+                margin: 1.5em 0;
+                background: #f8f9fa;
+                padding: 1em 1.5em;
+                border-radius: 0 8px 8px 0;
+            }
+            
+            /* Custom Numbered Lists */
+            .custom-numbered-list {
+                list-style: none;
+                counter-reset: none;
+                padding-left: 0;
+            }
+            
+            .custom-numbered-list li {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .custom-numbered-list .custom-list-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #0969da;
+            }
+            
+            /* Letter Items */
+            .letter-item {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .letter-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #495057;
+            }
+            
+            /* Nested structures */
+            .nested-section {
+                border-left: 2px solid #dee2e6;
+                padding-left: 1em;
+                margin-left: 1em;
+                margin-top: 0.5em;
+            }
+            /* Form field styles are handled by custom-list-processor.py */
+            
+            /* Print styles */
+            @media print {
+                .table-wrapper {
+                    box-shadow: none;
+                    page-break-inside: avoid;
+                }
+                
+                .formatted-table {
+                    font-size: 0.9em;
+                }
+                
+                .whereas-clause,
+                .definition-item,
+                .section-quote {
+                    page-break-inside: avoid;
+                }
+            }
+            </style></head>
+<body>
+<div id="mdbook-help-container">
+<div id="mdbook-help-popup">
+<h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+<div>
+<p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+<p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+<p>Press <kbd>?</kbd> to show this help</p>
+<p>Press <kbd>Esc</kbd> to hide this help</p>
+</div>
+</div>
+</div>
+<div id="body-container">
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+<input class="hidden" id="sidebar-toggle-anchor" type="checkbox"/>
+<!-- Hide / unhide sidebar before it is displayed -->
+<script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+<nav aria-label="Table of contents" class="sidebar" id="sidebar">
+<!-- populated by js -->
+<mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+<noscript>
+<iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+</noscript>
+<div class="sidebar-resize-handle" id="sidebar-resize-handle">
+<div class="sidebar-resize-indicator"></div>
+</div>
+</nav>
+<div class="page-wrapper" id="page-wrapper">
+<div class="page">
+<div id="menu-bar-hover-placeholder"></div>
+<div class="menu-bar sticky" id="menu-bar">
+<div class="left-buttons">
+<label aria-controls="sidebar" aria-label="Toggle Table of Contents" class="icon-button" for="sidebar-toggle-anchor" id="sidebar-toggle" title="Toggle Table of Contents">
+<i class="fa fa-bars"></i>
+</label>
+<button aria-controls="theme-list" aria-expanded="false" aria-haspopup="true" aria-label="Change theme" class="icon-button" id="theme-toggle" title="Change theme" type="button">
+<i class="fa fa-paint-brush"></i>
+</button>
+<ul aria-label="Themes" class="theme-popup" id="theme-list" role="menu">
+<li role="none"><button class="theme" id="default_theme" role="menuitem">Auto</button></li>
+<li role="none"><button class="theme" id="light" role="menuitem">Light</button></li>
+<li role="none"><button class="theme" id="rust" role="menuitem">Rust</button></li>
+<li role="none"><button class="theme" id="coal" role="menuitem">Coal</button></li>
+<li role="none"><button class="theme" id="navy" role="menuitem">Navy</button></li>
+<li role="none"><button class="theme" id="ayu" role="menuitem">Ayu</button></li>
+</ul>
+<button aria-controls="searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-label="Toggle Searchbar" class="icon-button" id="search-toggle" title="Search (`/`)" type="button">
+<i class="fa fa-search"></i>
+</button>
+</div>
+<h1 class="menu-title">City of Rivergrove Documents</h1>
+<div class="right-buttons">
+<a aria-label="Print this book" href="../print.html" title="Print this book">
+<i class="fa fa-print" id="print-button"></i>
+</a>
+<a aria-label="Git repository" href="https://github.com/wifelette/city_of_rivergrove" title="Git repository">
+<i class="fa fa-github" id="git-repository-button"></i>
+</a>
+</div>
+</div>
+<div class="hidden" id="search-wrapper">
+<form class="searchbar-outer" id="searchbar-outer">
+<div class="search-wrapper">
+<input aria-controls="searchresults-outer" aria-describedby="searchresults-header" id="searchbar" name="searchbar" placeholder="Search this book ..." type="search"/>
+<div class="spinner-wrapper">
+<i class="fa fa-spinner fa-spin"></i>
+</div>
+</div>
+</form>
+<div class="searchresults-outer hidden" id="searchresults-outer">
+<div class="searchresults-header" id="searchresults-header"></div>
+<ul id="searchresults">
+</ul>
+</div>
+</div>
+<!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+<script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+<div class="content" id="content">
+<main>
+<h1 id="resolution-41425"><a class="header" href="#resolution-41425">RESOLUTION 41425</a></h1>
+<h2 id="a-resolution-of-the-city-of-rivergrove-amending-its-public-records-policy-including-fees-and-forms"><a class="header" href="#a-resolution-of-the-city-of-rivergrove-amending-its-public-records-policy-including-fees-and-forms">A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS</a></h2>
+<p><strong>WHEREAS,</strong> the City is a custodian of the public record and citizens of the City are entitled to open access to public records;</p>
+<p><strong>WHEREAS,</strong> the City recognizes the right of every person to inspect any nonexempt public record of the City;</p>
+<p><strong>WHEREAS,</strong> the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;</p>
+<p><strong>WHEREAS,</strong> the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;</p>
+<p><strong>WHEREAS,</strong> the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and</p>
+<p><strong>WHEREAS,</strong> the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and</p>
+<p><strong>WHEREAS,</strong> the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and</p>
+<p><strong>WHEREAS,</strong> the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,</p>
+<p><strong>NOW, THEREFORE, THE CITY OF RIVERGROVE RESOLVES AS FOLLOWS:</strong></p>
+<p><strong>Section 1.</strong> Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed.</p>
+<p><strong>Section 2.</strong> The City hereby adopts a public records request policy as follows:</p>
+<p>a. <strong>Applicability</strong>: This policy applies to all public record requests in the City of Rivergrove and governs the actions of staff and consultants working for the City.</p>
+<p>b. <strong>Preservation.</strong> The City hereby adopts the record retention schedule promulgated by the Oregon Secretary of State in OAR Division 166-200.</p>
+<p><strong>Section 3. Public Record Requests.</strong></p>
+<p>a. <strong>Document Requests.</strong> Document requests must be shall be made on the form attached to this ordinance and shall include the information as provided on that form, most particularly, a complete and detailed description of the materials requested to the extent known by the requester. Where known to the requester, the request shall include information such as the departmental file number, year of creation and any other pertinent information that may assist City staff in locating the requested documents. Multiple document requests from the same person filed within 72 hours of each other will be consolidated and treated as one request.</p>
+<p>b. <strong>Creation of Documents.</strong> The City will not author or prepare any new documents in response to a records request.</p>
+<p>c. <strong>Document Inspection.</strong> Any person has the right to personally inspect any document retained by the City, but the right to inspect documents does not include the right to rummage through file cabinets or file folders or the right to disassemble or change the order of materials in files or document binders. Inspection of public documents shall occur during normal business hours. A City staff member shall be present while any original public records are being inspected to insure protection of the documents. Any request shall occur at a time mutually convenient to the requestor and the affected staff person. Original documents shall not be taken out of the custody of the City except through special arrangement with City staff, which shall assure that the document(s) will be returned in the original condition and order.</p>
+<p>d. <strong>Request Response Time.</strong> The City shall provide an initial written response acknowledging a public records response within five business days of receipt. If possible, the City shall acknowledge whether it has any responsive documents in that written acknowledgment. The City shall endeavor to complete its response to all public documents requests as soon as practical and without unreasonable delay or within fifteen (15) business days. Reasons for such a delay may include where staff needs to consult with the City Attorney’s office to obtain legal advice prior to releasing documents or where multiple public records requests are filed in proximity to each other. This will be necessary when the City is presented with a physically extensive or legally complex document request.</p>
+<p>e. <strong>Cost Estimate.</strong> After acknowledgment of receipt of a request, and if the request exceeds the minimum amount of time to respond, the City Manager shall first prepare an estimated cost bill reflecting the full, actual cost of City staff time, contractor costs, and materials required to complete the request, including time required for retrieval, copying, preparation, assisting the requester, separating exempt from non-exempt materials as provided by ORS 192.496 through 192.502, organization of the results and, if requested, delivery of the search results.</p>
+<p>f. <strong>Labor Costs.</strong> The cost bill estimate for staff time will be based on the staff person’s regular hourly wage rate multiplied by the time estimated to respond to the request. The current percentage for compensation for City benefits received by the staff person will be added. There will be no charge for the first half hour of staff time required to respond to a documents request. The staff people who respond to public records request shall be those with the lowest hourly wage that are qualified to respond to the request. To the extent the City chooses to use a contractor to complete the request, the City will charge the contractor’s actual cost.</p>
+<p>g. <strong>Materials Costs.</strong> If the request entails less than one-half (1/2) hour of staff time, then copying charges shall be included at the rate of fifty (.50) cents per page if twenty (20) or fewer copies are made; twenty-five (.25) cents per page if twenty-one (21) to fifty (50) copies are made; and fifteen (.15) cents per page if the project entails more than fifty (50) copies. Charges for large-scale documents are actual cost+ 15%. If the documents are removed from City custody for copying at a commercial copy shop, the requester shall be responsible for the actual cost of the commercial copying, including any transportation costs. If delivery of the copied material is requested, mailing or delivering costs shall be included in the estimated cost bill. If the request requires retrieval of documents stored offsite at the City’s document storage facility, then the actual cost of the retrieval fee charged by the storage facility will be charged to retrieve the document(s).</p>
+<p>h. <strong>Fee Collection.</strong> If the estimated cost bill is twenty-five ($25.00) dollars or more, the City shall require a deposit in the full amount of the estimate before expending any additional City resources toward responding to the document request. The City shall proceed to fulfill the request only upon receipt of the deposit. If the actual cost of completing the request exceeds the estimate, the City will not release the search results until the City’s full actual costs, calculated in accordance with this policy are received in full. If the actual cost of responding to the request is less than the estimated cost bill, then the balance of the deposit will be refunded promptly. If the estimated cost bill is less than twenty-five ($25.00) dollars, the City shall proceed to fulfill the request and shall present a cost bill for the City’s full actual expenses, calculated in accordance with this policy and payable in full upon receipt of the requested documents. The affected department will not release the requested documents result until the cost bill has been paid in full. To the extent a requesting party has outstanding charges for previous document requests that have not been paid, the City shall not release the requested documents until all outstanding debts have been paid.</p>
+<p>i. <strong>Waiver or Reduction of Fees.</strong> Copies of public records may be furnished without cost, or at a reduced cost, if the City Manager determines that a waiver or reduction of fees is in the public interest because making the record available primarily benefits the general public.</p>
+<ol>
+<li>
+<p>A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor’s ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.</p>
+</li>
+<li>
+<p>Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor’s disability.</p>
+</li>
+<li>
+<p>Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.</p>
+</li>
+<li>
+<p>Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.</p>
+</li>
+<li>
+<p>Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor’s official capacity.</p>
+</li>
+</ol>
+<p><strong>Section 4.</strong></p>
+<ol>
+<li>
+<p>The City of Rivergrove hereby adopts the attached Forms to be used by the citizens of Rivergrove and the City of Rivergrove in providing public records:</p>
+<p>1.1 Instructions for Requesting Public Records.</p>
+<p>1.2 Public Records Request form.</p>
+<p>1.3 Response to Public Records Request.</p>
+</li>
+</ol>
+<p><strong>Section 5.</strong></p>
+<p>The City of Rivergrove hereby adopts the Fee Schedule for Responding to Public Records Requests attached to this resolution for responding to public records requests.</p>
+<hr/>
+<p><strong>Approved and adopted at the City Council meeting on the <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> day of April , 2025</strong></p>
+<p><span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> Yeas<br/>
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> Nays</p>
+<p><span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span><br/>
+Chris Barhyte, Mayor of Rivergrove</p>
+<p>[Signature], Attested on this 13th day of May, 2019, <strong>Approved a to legal sufficiency</strong></p>
+<p><span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+Analeis Wiedlich, City Manager/ City Recorder</p>
+<p><span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+Bill Kabeiseman, City Attorney</p>
+<hr/>
+<h2 id="city-of-rivergrove-instructions-for-requesting-public-records"><a class="header" href="#city-of-rivergrove-instructions-for-requesting-public-records">CITY OF RIVERGROVE INSTRUCTIONS FOR REQUESTING PUBLIC RECORDS</a></h2>
+<p>Requests must be in writing using the form provided. (Please note, the City will not create a new document in response to a records request.) All requests received within a 72-hour period will be treated as a single request.</p>
+<p><strong>Submit request to the Rivergrove City Recorder through any of the following methods:</strong></p>
+<p><strong>Regular mail:</strong><br/>
+Rivergrove City Recorder<br/>
+P.O. Box 1104<br/>
+Lake Oswego, OR, 97034</p>
+<p><strong>Email:</strong><br/>
+<a href="mailto:manager@cityofrivergrove.com">manager@cityofrivergrove.com</a></p>
+<p><strong>Web form:</strong><br/>
+<a href="https://www.cityofrivergrove.org/records-request">https://www.cityofrivergrove.org/records-request</a></p>
+<ol class="special-start-list" style="counter-reset: list-item 3;"><li><span class="special-list-number">1.4 </span><span>The City shall acknowledge all requests within five (5) business days of receipt. The City shall endeavor to complete its response to all requests within fifteen (15) business days of receipt unless excused pursuant to ORS 192.329(6).</span></li><li><span class="special-list-number">1.5 </span><span>If inspection of documents is preferred over copies, such inspection shall occur during normal business hours. An acceptable inspection time and place will be arranged between the requestor and the staff person. Space will be provided for one person to inspect records per request.</span></li><li><span class="special-list-number">1.6 </span><span>The City will submit a cost estimate to the requestor to provide the requested documents, including transportation, copying charges, research time (if required), and separating exempt from non-exempt materials. There is no research cost for the first½ hour of staff time. Requestor must confirm to the City to proceed with the request following receipt of the cost estimate.</span></li><li><span class="special-list-number">1.7 </span><span>If the estimated cost is $25.00 or more, the City shall require a deposit in the full amount of the estimate before fulfilling the request. If the actual cost exceeds the deposit, the City will not release the documents until the fee is received in full. The City shall not release any records to a person who has an outstanding debt to the City related to previous document requests.</span></li><li><span class="special-list-number">1.8 </span><span>If the estimated cost is less than $25.00, the City will fulfill the request and present the requestor with an invoice to be paid before release of the documents.</span></li><li><span class="special-list-number">1.9 </span><span>If the record requested is in storage offsite at the City’s document storage facility, a fee is charged for its retrieval.</span></li></ol>
+</main>
+<nav aria-label="Page navigation" class="nav-wrapper">
+<!-- Mobile navigation buttons -->
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="mobile-nav-chapters previous" href="../resolutions/2024-Res-300-Fee-Schedule-Modification.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="mobile-nav-chapters next" href="../interpretations/1997-07-07-RE-2.040h-permitting-adus.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+<div style="clear: both"></div>
+</nav>
+</div>
+</div>
+<nav aria-label="Page navigation" class="nav-wide-wrapper">
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="nav-chapters previous" href="../resolutions/2024-Res-300-Fee-Schedule-Modification.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="nav-chapters next" href="../interpretations/1997-07-07-RE-2.040h-permitting-adus.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+</nav>
+</div>
+<script>
+            window.playground_copyable = true;
+        </script>
+<script src="../elasticlunr.min.js"></script>
+<script src="../mark.min.js"></script>
+<script src="../searcher.js"></script>
+<script src="../clipboard.min.js"></script>
+<script src="../highlight.js"></script>
+<script src="../book.js"></script>
+<!-- Custom JS scripts -->
+<script src="../navigation-standalone.js"></script>
+</div>
+</body>
+</html>

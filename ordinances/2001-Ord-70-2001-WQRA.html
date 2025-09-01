@@ -1,0 +1,1133 @@
+<!DOCTYPE HTML>
+
+<html class="light sidebar-visible" dir="ltr" lang="en">
+<head>
+<!-- Book generated using mdBook -->
+<meta charset="utf-8"/>
+<title>#70 - Water Quality (2001) - City of Rivergrove Documents</title>
+<!-- Custom HTML head -->
+<meta content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations" name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="../favicon.svg" rel="icon"/>
+<link href="../favicon.png" rel="shortcut icon"/>
+<link href="../css/variables.css" rel="stylesheet"/>
+<link href="../css/general.css" rel="stylesheet"/>
+<link href="../css/chrome.css" rel="stylesheet"/>
+<link href="../css/print.css" media="print" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="../FontAwesome/css/font-awesome.css" rel="stylesheet"/>
+<link href="../fonts/fonts.css" rel="stylesheet"/>
+<!-- Highlight.js Stylesheets -->
+<link href="../highlight.css" id="highlight-css" rel="stylesheet"/>
+<link href="../tomorrow-night.css" id="tomorrow-night-css" rel="stylesheet"/>
+<link href="../ayu-highlight.css" id="ayu-highlight-css" rel="stylesheet"/>
+<!-- Custom theme stylesheets -->
+<link href="../custom.css" rel="stylesheet"/>
+<!-- Provide site root and default themes to javascript -->
+<script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+<!-- Start loading toc.js asap -->
+<script src="../toc.js"></script>
+<style id="custom-list-styles">
+        /* Custom list styles for legal documents */
+        .custom-list-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .definition-item {
+            margin: 1em 0;
+        }
+        
+        .definition-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .roman-list {
+            list-style: none;
+            padding-left: 2em;
+        }
+        
+        .roman-list li {
+            margin: 0.5em 0;
+        }
+        
+        .roman-marker {
+            font-weight: normal;
+            margin-right: 0.5em;
+        }
+        
+        /* Roman numeral lists that shouldn't show automatic numbering */
+        .roman-parenthetical-list {
+            list-style: none !important;
+            counter-reset: none !important;
+            padding-left: 2em;
+        }
+        
+        .roman-parenthetical-list > li {
+            list-style: none !important;
+            position: relative;
+        }
+        
+        .roman-parenthetical-list > li::before {
+            content: none !important;
+        }
+        
+        /* Special list that starts at non-standard number (e.g., 1.4) */
+        .special-start-list {
+            list-style: none !important;
+            padding-left: 2em;
+            counter-reset: none !important;
+        }
+        
+        .special-start-list li {
+            margin: 0.5em 0;
+            position: relative;
+            list-style: none !important;
+        }
+        
+        .special-start-list li::before {
+            content: none !important;
+        }
+        
+        .special-list-number {
+            font-weight: bold;
+            margin-right: 0.5em;
+            display: inline-block;
+            min-width: 2em;
+        }
+        
+        /* Override mdBook's list styling for our custom lists */
+        ol:has(.custom-list-marker) {
+            list-style: none;
+            counter-reset: none;
+        }
+        
+        ol:has(.custom-list-marker) li::before {
+            content: none;
+        }
+        
+        ol.special-start-list li::before {
+            content: none;
+        }
+        
+        /* Form field styles for legal documents */
+        .form-field-empty {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            margin: 0 2px;
+            cursor: default;
+            vertical-align: baseline;
+            height: 1em;
+            position: relative;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #f0f0f0;
+            border-bottom-color: #666;
+        }
+        
+        /* Add a visual indicator for blank fields */
+        .form-field-empty::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-empty:hover::after {
+            opacity: 1;
+        }
+        
+        .form-field-short {
+            min-width: 60px;
+        }
+        
+        .form-field-medium {
+            min-width: 120px;
+        }
+        
+        .form-field-long {
+            min-width: 200px;
+        }
+        
+        .form-field-filled {
+            display: inline-block;
+            padding: 2px 4px 4px 4px;
+            background-color: #e3f2fd;
+            border-bottom: 2px solid #1976d2;
+            color: #000;
+            font-weight: 600;
+            cursor: default !important;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        /* Ensure tooltips appear above other elements */
+        .form-field-filled:hover,
+        .form-field-empty:hover {
+            z-index: 1000;
+        }
+        
+        /* Force no help cursor for form fields and remove any title tooltips */
+        .form-field-filled,
+        .form-field-filled:hover,
+        .form-field-empty,
+        .form-field-empty:hover {
+            cursor: default !important;
+        }
+        
+        /* Hide any native browser tooltips */
+        .form-field-filled[title],
+        .form-field-empty[title] {
+            cursor: default !important;
+        }
+        
+        .form-field-filled[title]:hover::before,
+        .form-field-empty[title]:hover::before {
+            content: '' !important;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #bbdefb;
+            border-bottom-color: #0d47a1;
+        }
+        
+        /* CSS tooltip for filled fields */
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+        
+        /* Special positioning for tooltips in headings to avoid clipping */
+        h1 .form-field-filled::after,
+        h2 .form-field-filled::after,
+        h3 .form-field-filled::after {
+            top: 100%;
+            bottom: auto;
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Same for empty field tooltips in headings */
+        h1 .form-field-empty::after,
+        h2 .form-field-empty::after,
+        h3 .form-field-empty::after {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Special styling for form fields in headings */
+        h1 .form-field-filled, 
+        h2 .form-field-filled, 
+        h3 .form-field-filled {
+            font-size: inherit;
+            font-weight: inherit;
+            vertical-align: baseline;
+        }
+        
+        h1 .form-field-empty, 
+        h2 .form-field-empty, 
+        h3 .form-field-empty {
+            vertical-align: baseline;
+            height: 0.8em;
+            margin-bottom: -0.1em;
+        }
+        
+        /* Document figure styles for inline images */
+        .document-figure {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        .document-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .document-figure figcaption {
+            margin-top: 1em;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        /* Responsive image sizing */
+        @media screen and (min-width: 768px) {
+            .document-figure {
+                max-width: 80%;
+            }
+        }
+        
+        @media print {
+            .document-figure {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+            
+            .document-figure img {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+        </style><style id="enhanced-formatting-styles">
+            /* Enhanced formatting for special document types */
+            
+            /* WHEREAS Clauses */
+            .whereas-clause {
+                margin: 1.5em 0;
+                padding-left: 2em;
+                position: relative;
+            }
+            
+            .whereas-marker {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            /* Definition Lists */
+            .definition-item {
+                margin: 1.2em 0;
+                padding: 0.8em;
+                background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+                border-left: 3px solid #0969da;
+            }
+            
+            .definition-term {
+                font-weight: bold;
+                color: #0969da;
+                margin-right: 0.3em;
+            }
+            
+            .definition-separator {
+                margin: 0 0.3em;
+                color: #6c757d;
+            }
+            
+            .definition-text {
+                color: #333;
+            }
+            
+            /* Enhanced Tables */
+            .table-wrapper {
+                overflow-x: auto;
+                margin: 1.5em 0;
+                border-radius: 8px;
+            }
+            
+            .fee-schedule-table {
+                background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+                padding: 1em;
+            }
+            
+            .formatted-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                background: white;
+            }
+            
+            .formatted-table thead {
+                background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                color: white;
+            }
+            
+            .formatted-table th {
+                padding: 12px 16px;
+                text-align: left;
+                font-weight: 600;
+                border-bottom: 2px solid #495057;
+            }
+            
+            .formatted-table td {
+                padding: 10px 16px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .formatted-table tbody tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .formatted-table tbody tr:nth-child(even) {
+                background: rgba(0, 105, 218, 0.02);
+            }
+            
+            /* Cells with footnotes */
+            .has-footnote {
+                position: relative;
+            }
+            
+            .has-footnote sup {
+                color: #0969da;
+                font-weight: bold;
+            }
+            
+            /* Section Quotes */
+            .section-quote {
+                border-left: 4px solid #0969da;
+                padding-left: 1.5em;
+                margin: 1.5em 0;
+                background: #f8f9fa;
+                padding: 1em 1.5em;
+                border-radius: 0 8px 8px 0;
+            }
+            
+            /* Custom Numbered Lists */
+            .custom-numbered-list {
+                list-style: none;
+                counter-reset: none;
+                padding-left: 0;
+            }
+            
+            .custom-numbered-list li {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .custom-numbered-list .custom-list-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #0969da;
+            }
+            
+            /* Letter Items */
+            .letter-item {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .letter-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #495057;
+            }
+            
+            /* Nested structures */
+            .nested-section {
+                border-left: 2px solid #dee2e6;
+                padding-left: 1em;
+                margin-left: 1em;
+                margin-top: 0.5em;
+            }
+            /* Form field styles are handled by custom-list-processor.py */
+            
+            /* Print styles */
+            @media print {
+                .table-wrapper {
+                    box-shadow: none;
+                    page-break-inside: avoid;
+                }
+                
+                .formatted-table {
+                    font-size: 0.9em;
+                }
+                
+                .whereas-clause,
+                .definition-item,
+                .section-quote {
+                    page-break-inside: avoid;
+                }
+            }
+            </style></head>
+<body>
+<div id="mdbook-help-container">
+<div id="mdbook-help-popup">
+<h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+<div>
+<p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+<p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+<p>Press <kbd>?</kbd> to show this help</p>
+<p>Press <kbd>Esc</kbd> to hide this help</p>
+</div>
+</div>
+</div>
+<div id="body-container">
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+<input class="hidden" id="sidebar-toggle-anchor" type="checkbox"/>
+<!-- Hide / unhide sidebar before it is displayed -->
+<script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+<nav aria-label="Table of contents" class="sidebar" id="sidebar">
+<!-- populated by js -->
+<mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+<noscript>
+<iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+</noscript>
+<div class="sidebar-resize-handle" id="sidebar-resize-handle">
+<div class="sidebar-resize-indicator"></div>
+</div>
+</nav>
+<div class="page-wrapper" id="page-wrapper">
+<div class="page">
+<div id="menu-bar-hover-placeholder"></div>
+<div class="menu-bar sticky" id="menu-bar">
+<div class="left-buttons">
+<label aria-controls="sidebar" aria-label="Toggle Table of Contents" class="icon-button" for="sidebar-toggle-anchor" id="sidebar-toggle" title="Toggle Table of Contents">
+<i class="fa fa-bars"></i>
+</label>
+<button aria-controls="theme-list" aria-expanded="false" aria-haspopup="true" aria-label="Change theme" class="icon-button" id="theme-toggle" title="Change theme" type="button">
+<i class="fa fa-paint-brush"></i>
+</button>
+<ul aria-label="Themes" class="theme-popup" id="theme-list" role="menu">
+<li role="none"><button class="theme" id="default_theme" role="menuitem">Auto</button></li>
+<li role="none"><button class="theme" id="light" role="menuitem">Light</button></li>
+<li role="none"><button class="theme" id="rust" role="menuitem">Rust</button></li>
+<li role="none"><button class="theme" id="coal" role="menuitem">Coal</button></li>
+<li role="none"><button class="theme" id="navy" role="menuitem">Navy</button></li>
+<li role="none"><button class="theme" id="ayu" role="menuitem">Ayu</button></li>
+</ul>
+<button aria-controls="searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-label="Toggle Searchbar" class="icon-button" id="search-toggle" title="Search (`/`)" type="button">
+<i class="fa fa-search"></i>
+</button>
+</div>
+<h1 class="menu-title">City of Rivergrove Documents</h1>
+<div class="right-buttons">
+<a aria-label="Print this book" href="../print.html" title="Print this book">
+<i class="fa fa-print" id="print-button"></i>
+</a>
+<a aria-label="Git repository" href="https://github.com/wifelette/city_of_rivergrove" title="Git repository">
+<i class="fa fa-github" id="git-repository-button"></i>
+</a>
+</div>
+</div>
+<div class="hidden" id="search-wrapper">
+<form class="searchbar-outer" id="searchbar-outer">
+<div class="search-wrapper">
+<input aria-controls="searchresults-outer" aria-describedby="searchresults-header" id="searchbar" name="searchbar" placeholder="Search this book ..." type="search"/>
+<div class="spinner-wrapper">
+<i class="fa fa-spinner fa-spin"></i>
+</div>
+</div>
+</form>
+<div class="searchresults-outer hidden" id="searchresults-outer">
+<div class="searchresults-header" id="searchresults-header"></div>
+<ul id="searchresults">
+</ul>
+</div>
+</div>
+<!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+<script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+<div class="content" id="content">
+<main>
+<h1 id="ordinance--70-2001"><a class="header" href="#ordinance--70-2001">ORDINANCE # 70-2001</a></h1>
+<p><strong>AN ORDINANCE ADOPTING AMENDMENTS TO THE RIVERGROVE LAND DEVELOPMENT AND FLOOD DAMAGE PREVENTION ORDINANCES AND THE RIVERGROVE COMPREHENSIVE PLAN IN ORDER TO COMPLY WITH THE REQUIREMENTS OF METRO’S URBAN GROWTH MANAGEMENT FUNCTIONAL PLAN.</strong></p>
+<p>Planning Commission Public Hearings: <span class="form-field-filled" data-tooltip="Field filled in on source doc">08/10/2000, 09/07/2000, 09/11/2000, 09/28/2000</span></p>
+<p>City Council Public Hearings: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span></p>
+<p>Adopted by Rivergrove City Council: <span class="form-field-filled" data-tooltip="Field filled in on source doc">12/10/2001</span></p>
+<p>[Signature], Larry Barrett, Mayor<br/>
+<strong>Date</strong>: <span class="form-field-filled" data-tooltip="Field filled in on source doc">12-10-01</span></p>
+<p><strong>Attest:</strong></p>
+<p>[Signature], Mike Collmeyer, City Recorder<br/>
+<strong>Date</strong>: <span class="form-field-filled" data-tooltip="Field filled in on source doc">12/10/01</span></p>
+<hr/>
+<h2 id="index"><a class="header" href="#index">Index</a></h2>
+<p><strong>Section I.</strong> Intent<br/>
+<strong>Section II.</strong> Applicability<br/>
+<strong>Section III.</strong> Administration<br/>
+<strong>Section IV.</strong> Water Quality Resource Areas<br/>
+<strong>Section V.</strong> Flood Management Areas<br/>
+<strong>Section VI.</strong> Subdivisions and Partitions<br/>
+<strong>Section VII.</strong> Erosion Prevention and Sediment Control<br/>
+<strong>Section VIII.</strong> Variances<br/>
+<strong>Section IX.</strong> Map Administration<br/>
+<strong>Section X.</strong> Consistency<br/>
+<strong>Section XI.</strong> Warning and Disclaimer of Liability<br/>
+<strong>Section XII.</strong> Severability and Interpretation<br/>
+<strong>Section XIII.</strong> Enforcement<br/>
+<strong>Section XIV.</strong> Definitions<br/>
+<strong>Appendix A</strong> Map Presently on File with METRO<br/>
+<strong>Appendix B</strong> Slope Measurement<br/>
+<strong>Appendix C</strong> Rivergrove Native Plant List</p>
+<hr/>
+<h1 id="ordinance--70-2001-1"><a class="header" href="#ordinance--70-2001-1">ORDINANCE # 70-2001</a></h1>
+<p><strong>AN ORDINANCE ADOPTING AMENDMENTS TO THE RIVERGROVE LAND DEVELOPMENT AND FLOOD DAMAGE PREVENTION ORDINANCES AND THE RIVERGROVE COMPREHENSIVE PLAN IN ORDER TO COMPLY WITH THE REQUIREMENTS OF METRO’S URBAN GROWTH MANAGEMENT FUNCTIONAL PLAN.</strong></p>
+<h2 id="statutory-authorization"><a class="header" href="#statutory-authorization">Statutory Authorization</a></h2>
+<p>The legislature of the State of Oregon has delegated the responsibility to local governmental units to adopt regulations designed to promote public health, safety and general welfare of its citizenry. <strong>Therefore, the City of Rivergrove ordains as follows:</strong></p>
+<h2 id="water-quality-and-flood-management-area-ordinance"><a class="header" href="#water-quality-and-flood-management-area-ordinance">Water Quality and Flood Management Area Ordinance</a></h2>
+<h3 id="section-i-intent"><a class="header" href="#section-i-intent">Section I. Intent</a></h3>
+<p>The purpose of this ordinance is:</p>
+<p><strong>A.</strong> To protect and improve water quality, to support the designated beneficial water uses and to protect the functions and values of existing and newly established Water Quality Resource Areas, by:</p>
+<ol>
+<li>Providing and improving the vegetated corridor separating Protected Water Features from development;</li>
+<li>Maintaining or reducing stream temperatures;</li>
+<li>Maintaining natural stream corridors;</li>
+<li>Minimizing erosion, nutrient and pollutant loading into water;</li>
+<li>Providing filtration, infiltration and natural water purification; and</li>
+<li>Stabilizing slopes to prevent landslides contributing to the sedimentation of protected water features.</li>
+</ol>
+<p><strong>B.</strong> To protect and maintain Flood Management Areas, which provide for:</p>
+<ol>
+<li>Protection of life and property from dangers associated with flooding;</li>
+<li>The storage and conveyance of stream flows through existing and natural conveyance systems, flood storage, reduction of flood velocities, reduction of flood peak flows and reduction of wind and wave impacts;</li>
+<li>Maintenance of water quality by reducing and sorting sediment loads, processing chemical and organic wastes and reducing nutrients;</li>
+<li>Recharging, storage and discharging of groundwater; and</li>
+<li>Plant and animal habitat, and the support of riparian ecosystems.</li>
+</ol>
+<p><strong>C.</strong> To establish overlay zones, Water Quality Resource Areas and Flood Management Areas, which operate contemporaneously with base zones and implement the performance standards found herein.</p>
+<h3 id="section-ii-applicability"><a class="header" href="#section-ii-applicability">Section II. Applicability</a></h3>
+<p><strong>A.</strong> This ordinance applies to:</p>
+<ol>
+<li>Development in Water Quality Resource Areas and Flood Management Areas.</li>
+<li>Development that may cause visible or measurable erosion on any property within the City of Rivergrove.</li>
+</ol>
+<p><strong>B.</strong> This ordinance does not apply to work necessary to protect, repair, maintain, or replace existing structures, utility facilities, roadways, driveways, accessory uses and exterior improvements in response to emergencies provided that after the emergency has passed, adverse impacts are mitigated in accordance with Table 2 standards for restoring marginal existing vegetated corridors.</p>
+<p><strong>Note:</strong> Prior to doing any emergency work in a Water Quality Resource Area it is advisable to check with other regulatory agencies, including but not limited to, the U. S. Army Corp of Engineers, the National Marine Fishery Service, the Oregon Division of State Lands, Oregon Fish &amp; Wildlife Department, the Oregon Department of Environmental Quality and Clackamas County.</p>
+<h3 id="section-iii-administration"><a class="header" href="#section-iii-administration">Section III. Administration</a></h3>
+<p><strong>A.</strong> The provisions of this ordinance shall be applied as follows:</p>
+<ol>
+<li>The text provisions of this ordinance, including the definitions, shall determine whether an application for development is subject to the requirements of this ordinance.</li>
+<li>Existing map information on file with the City shall be used as a reference to identify areas within a Water Quality Resource Area or Flood Management Area.</li>
+<li>Applications shall include a delineation of any Water Quality Resource Areas and Flood Management Areas on the subject property.</li>
+<li>The map information provided shall be interpreted by the City to define and refine the exact location of the boundaries of Water Quality Resource Areas and Flood Management Areas.</li>
+</ol>
+<p><strong>B.</strong> A development permit shall be obtained before development begins within any Water Quality Resource Area and/or Flood Management Area.</p>
+<p><strong>C.</strong> The Planning Commission is hereby appointed to administer and implement this ordinance. Duties of the Planning Commission shall include, but not be limited to:</p>
+<ol>
+<li>Permit review including:
+<ul>
+<li><strong>a.</strong> Review of all development permit applications to determine that the requirements of this ordinance have been satisfied;</li>
+<li><strong>b.</strong> Review all development permit applications to determine that all necessary permits have been obtained from those Federal, State, or local governmental agencies from which prior approval is required;</li>
+</ul>
+</li>
+<li>Review and maintenance of:
+<ul>
+<li><strong>a.</strong> Information accepted by the Planning Commission as delineating Protected Water Features, Water Quality Resource Areas and Flood Management Areas;</li>
+<li><strong>b.</strong> Information showing the actual elevation of the lowest floor of all new or substantially improved structures, and whether or not the structure contains a basement;</li>
+</ul>
+</li>
+<li>Interpretation of this ordinance.</li>
+</ol>
+<h3 id="section-iv-water-quality-resource-areas"><a class="header" href="#section-iv-water-quality-resource-areas">Section IV. Water Quality Resource Areas</a></h3>
+<p><strong>A.</strong> This ordinance establishes a Water Quality Resource Area Overlay Zone.</p>
+<p><strong>B.</strong> The Water Quality Resource Area is the vegetated corridor and the Protected Water Feature. The width of the vegetated corridor is specified in the Table One. At least three slope measurements along the water feature, at no more than 100-foot increments, shall be made for each property for which development is proposed. Depending on the width of the property, the width of the vegetated corridor will vary.</p>
+<h4 id="table-1"><a class="header" href="#table-1">Table 1</a></h4>
+<div class="table-wrapper"><table class="formatted-table"><thead><tr><th><strong>Protected Water Feature Type</strong></th><th><strong>Slope Adjacent to Protected Water Feature</strong></th><th><strong>Starting Point for Measurements from Water Feature</strong></th><th><strong>Width of Vegetated Corridor</strong></th></tr></thead><tbody>
+<tr><td class="has-footnote"><strong>Primary Protected Water Features¹</strong></td><td>&lt; 25%</td><td>• Edge of bankful stage or 2-year storm level;<br/>• Delineated edge of wetland</td><td>50 feet</td></tr>
+<tr><td class="has-footnote"><strong>Primary Protected Water Features¹</strong></td><td class="has-footnote">&gt;25% for 150 feet or more⁵</td><td>• Edge of bankful stage or 2-year storm level;<br/>• Delineated edge of wetland</td><td>200 feet</td></tr>
+<tr><td class="has-footnote"><strong>Primary Protected Water Features¹</strong></td><td class="has-footnote">&gt;25% for less than 150 feet⁵</td><td>• Edge of bankful stage or 2-year storm level;<br/>• Delineated edge of wetland</td><td class="has-footnote">Distance from starting point of measurement to top of ravine (break in &gt;25% slope)³, plus 50 feet.⁴</td></tr>
+<tr><td class="has-footnote"><strong>Secondary Protected Water Features²</strong></td><td>&lt; 25%</td><td>• Edge of bankful stage or 2-year storm level;<br/>• Delineated edge of wetland</td><td>15 feet</td></tr>
+<tr><td class="has-footnote"><strong>Secondary Protected Water Features²</strong></td><td>&gt; 25%</td><td>• Edge of bankful stage or 2-year storm level;<br/>• Delineated edge of wetland</td><td>50 feet</td></tr>
+</tbody></table>
+</div><div class="footnotes">
+<p>¹ <strong>Primary Protected Water Features.</strong> See definition of Protected Water Feature.<br/>
+² <strong>Secondary Protected Water Features.</strong> See definition of Protected Water Feature.<br/>
+³ Where the <em>Protected Water Feature</em> is confined by a ravine or gully, the top of ravine is the break in the &gt; 25% slope (see slope measurement in Appendix).<br/>
+⁴ A maximum reduction of 25 feet may be permitted in the width of <em>vegetated corridor</em> beyond the slope break if a geotechnical report demonstrates that slope is stable. To establish the width of the <em>vegetated corridor</em>, slope should be measured in 25-foot increments away from the water feature until slope is less than 25% (top of ravine).<br/>
+⁵ <em>Vegetated corridors</em> in excess of 50-feet for primary protected features, or in excess of 15-feet for secondary protected features apply on steep slopes only in the uphill direction from the <em>Protected Water Feature</em>.
+⁶ Suggested method to determine two year recurrent flood elevations: obtain two year recurrent flood elevations from City of Tualatin at the Railroad Bridge Flood Gate, or, preferably, from the Lake Corp., at the head gate of the channel for Lake Oswego Canal, and extrapolate using FEMA flood-plain elevations.</p>
+</div>
+<p><strong>C.</strong> Uses Permitted Outright</p>
+<ol>
+<li>Stream, wetland, riparian and upland enhancement or restoration projects; farming practices as defined in ORS 30.930 and farm uses, excluding buildings and structures, as defined in ORS 215.203.</li>
+<li>Placement of structures that do not require a grading or building permit.</li>
+<li>Routine repair and maintenance of existing structures, roadways, driveways, utility facilities, accessory uses and other development.</li>
+<li>Repair, replacement or improvement of utility facilities where:
+<ul>
+<li><strong>a.</strong> The disturbed portion of the Water Quality Resource Area is restored; and</li>
+<li><strong>b.</strong> Non-native vegetation is removed from the disturbed portion of the Water Quality Resource Area and replaced with vegetation from the Rivergrove Native Plant List.</li>
+</ul>
+</li>
+<li>Additions to and/or alterations, rehabilitation, or replacement of existing structures that do not increase the existing structural footprint in the Water Quality Resource Area where:
+<ul>
+<li><strong>a.</strong> The disturbed portion of the Water Quality Resource Area is restored; and</li>
+<li><strong>b.</strong> Non-native vegetation is removed from the disturbed portion of the Water Quality Resource Area and replaced with vegetation from the Rivergrove Native Plant List.</li>
+</ul>
+</li>
+<li>Measures to remove or abate nuisances, or any other violation of State statute, administrative agency rule or city or county ordinance where:
+<ul>
+<li><strong>a.</strong> The method selected to remove or abate the nuisance or other violation will avoid or minimize adverse impacts to the Water Quality Resource Area as compared to other alternatives;</li>
+<li><strong>b.</strong> The disturbed portion of the Water Quality Resource Area is restored; and</li>
+<li><strong>c.</strong> Non-native vegetation is removed from the disturbed portion of the Water Quality Resource Area and replaced with vegetation from the Rivergrove Native Plant List.</li>
+</ul>
+</li>
+<li>New public utility facilities and stormwater pre-treatment facilities where:
+<ul>
+<li><strong>a.</strong> No reasonable alternative to the requested development exists that will not disturb the Water Quality Resource Area;</li>
+<li><strong>b.</strong> An explanation acceptable to the City of the rationale behind choosing the alternative selected, including how adverse impacts will be avoided and/or minimized is advanced;</li>
+<li><strong>c.</strong> To the extent reasonable, existing vegetation shall be protected and left in place. Work areas shall be carefully located and marked to reduce potential damage to the Water Quality Resource Area. Trees in the Water Quality Resource Area shall not be used as anchors for stabilizing construction equipment;</li>
+<li><strong>d.</strong> The disturbed portion of the Water Quality Resource Area is restored; and</li>
+<li><strong>e.</strong> Non-native vegetation is removed from the disturbed portion of the Water Quality Resource Area and replaced with vegetation from the Rivergrove Native Plant List.</li>
+</ul>
+</li>
+<li>The continued maintenance and replanting of established gardens and lawns.</li>
+</ol>
+<p><strong>D.</strong> Conditional Uses<br/>
+The following uses are allowed in the Water Quality Resource Area Overlay Zone subject to compliance with the Application Requirements and Development Standards of subsections F and G:</p>
+<ol>
+<li>Any use allowed in the base zone, other than those listed in subsection C above.</li>
+<li>Roads and walkways to provide access to Protected Water Features or necessary ingress and egress across Water Quality Resource Areas.</li>
+<li>Private utility facilities.</li>
+<li>Walkways and bike paths. (Subsection G.5).</li>
+<li>New private stormwater pre-treatment facilities. (Subsection G.6).</li>
+<li>Widening an existing road adjacent to or running parallel to a Water Quality Resource Area.</li>
+<li>Additions to and/or alterations, rehabilitation or replacement of existing structures, roadways, accessory uses and development that increase the structural footprint within the Water Quality Resource Area consistent with Subsection G.7.</li>
+</ol>
+<p><strong>E.</strong> Prohibited Uses</p>
+<ol>
+<li>Any new structures and/or development, construction activities, gardens, and lawns, other than those listed in Subsection C and D; dumping of any materials of any kind.</li>
+<li>Uncontained areas of hazardous materials as defined by the Department of Environmental Quality.</li>
+<li>Planting of any species from the Metro Prohibited Plant List or the Metro Nuisance Plant List.</li>
+</ol>
+<p><strong>F.</strong> Application Requirements<br/>
+Applications for Conditional Uses in the Water Quality Resource Area Overlay Zone must provide the following information in addition to the information required for the base zone:</p>
+<ol>
+<li>Plans drawn to scale showing the nature, location, dimensions, and elevations of the area in question, existing and proposed structures, fill, storage of materials, drainage facilities.</li>
+<li>A topographic map of the site at vertical contour intervals of one foot or less showing a delineation of the Water Quality Resource Area as described in Table 1.</li>
+<li>The location of all existing natural features including, but not limit to, any trees of a caliper greater than six (6) inches diameter at a height of four feet, the natural drainage on the site, and any springs or seeps therein.</li>
+<li>Location of wetlands.</li>
+<li>An inventory and location of existing debris and noxious materials as defined by the Department of Environmental Quality.</li>
+<li>An assessment of the existing condition of the Water Quality Resource Area in accordance with Table 2.</li>
+<li>An inventory of vegetation, including percentage ground and canopy coverage.</li>
+<li>Alternatives analysis demonstrating that:
+<ul>
+<li><strong>a.</strong> No practicable alternatives to the requested development exist that will not disturb the Water Quality Resource Area; and</li>
+<li><strong>b.</strong> Development in the Water Quality Resource Area has been limited to the area necessary to allow for the proposed use; and</li>
+<li><strong>c.</strong> The Water Quality Resource Area can be restored to an equal or better condition in accordance with Table 2; and</li>
+<li><strong>d.</strong> It will be consistent with any Water Quality Resource Area Mitigation Plan already in place.</li>
+<li><strong>e.</strong> An explanation of the rationale behind choosing the alternative selected, including how adverse impacts to resource areas will be avoided and/or minimized.</li>
+<li><strong>f.</strong> For applications seeking an addition to and/or alteration, rehabilitation or replacement of existing structures, roadways, accessory uses and development that will increase the structural footprint within the Water Quality Resource Area:
+<ol>
+<li>Demonstrate that no reasonably practicable alternative design or method of development exists that would have a lesser impact on the Water Quality Resource Area than the one proposed; and</li>
+<li>If no such reasonably practicable alternative design or method of development exists, the project should be conditioned to limit its disturbance and impact on the Water Quality Resource Area to the minimum extent necessary to achieve the proposed addition, alteration, restoration, replacement or rehabilitation; and</li>
+<li>Provide mitigation to ensure that impacts to the functions and values of the Water Quality Resource Area will be mitigated or restored to the extent practicable.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>A Water Quality Resource Area Mitigation Plan shall contain the following information:
+<ul>
+<li><strong>a.</strong> A description of adverse impacts that will be caused as a result of development.</li>
+<li><strong>b.</strong> An explanation of how adverse impacts to resource areas will be avoided, minimized, and/or mitigated in accordance with, but not limited to, Table 2.</li>
+<li><strong>c.</strong> A list of all responsible parties including, but not limited to, the owner, applicant, contractor or other persons responsible for work on the development site.</li>
+<li><strong>d.</strong> A map showing where the specific mitigation activities will occur.</li>
+<li><strong>e.</strong> An implementation schedule, including timeline for construction, mitigation, mitigation maintenance, monitoring, reporting and a contingency plan. All in-stream work in fish-bearing streams shall be done in accordance with the Oregon Department of Fish and Wildlife in-stream timing schedule.</li>
+</ul>
+</li>
+<li>Other items deemed necessary and requested by the Planning Commission.</li>
+</ol>
+<p><strong>G.</strong> Development Standards<br/>
+Applications for Conditional Uses in the Water Quality Resource Area Overlay Zone shall satisfy the following standards:</p>
+<ol>
+<li>The Water Quality Resource Area shall be restored and maintained in accordance with the mitigation plan and the specifications in Table 2.</li>
+<li>To the extent practicable, existing vegetation shall be protected and left in place. Work areas shall be carefully located and marked to reduce potential damage to the Water Quality Resource Area. Trees in the Water Quality Resource Area shall not be used as anchors for stabilizing construction equipment.</li>
+<li>Where existing vegetation has been removed, or the original land contours disturbed, the site shall be revegetated, and the vegetation shall be established as soon as practicable. Nuisance plants, as identified in the Rivergrove Native Plant List, may be removed at any time. Interim erosion control measures such as mulching shall be used to avoid erosion on bare areas. Nuisance vegetation shall be replaced with native vegetation by the next growing season.</li>
+<li>Prior to construction, the Water Quality Resource Area shall be flagged, fenced or otherwise marked and shall remain undisturbed except as allowed in Subsections C and D. Such markings shall be maintained until construction is complete.</li>
+<li>Public walkways, boardwalks and bike paths:
+<ul>
+<li><strong>a.</strong> A walkway or bike path shall be unpaved and not be constructed closer than 10 feet from the boundary of the Protected Water Feature. Walkways and bike paths shall be constructed so as to minimize disturbance to existing vegetation. Where practicable, a maximum of 10 percent of the trail may be within 30 feet of the Protected Water Feature.</li>
+<li><strong>b.</strong> A walkway or bike path shall not exceed 10 feet in width.</li>
+<li><strong>c.</strong> A raised boardwalk may cross a Protected Water Feature if it serves the interest of the public.</li>
+</ul>
+</li>
+<li>Stormwater pre-treatment facilities:
+<ul>
+<li><strong>a.</strong> The stormwater pre-treatment facility may only encroach a maximum of 25 feet into the outside boundary of the Water Quality Resource Area of a primary water feature; and</li>
+<li><strong>b.</strong> The area of encroachment must be replaced by adding an equal area to the Water Quality Resource Area on the subject property.</li>
+</ul>
+</li>
+<li>Additions to and/or alterations, rehabilitation and replacement of lawful structures that increase the structural footprint:
+<ul>
+<li><strong>a.</strong> For existing structures, roadways, driveways, accessory uses and development which are nonconforming, this ordinance shall apply in addition to the nonconforming use regulations of the city zoning ordinance.</li>
+<li><strong>b.</strong> Additions, alterations, rehabilitation or replacement of existing structures, roadways, driveways, accessory uses and development shall not encroach closer to the Protected Water Feature than the existing structures, roadways, driveways, accessory uses and development.</li>
+</ul>
+</li>
+<li>Off-site Mitigation:
+<ul>
+<li><strong>a.</strong> Where the alternatives analysis demonstrates that there are no practicable alternatives for mitigation on site, off-site mitigation shall be located as follows:
+<ol>
+<li>As close to the development as is practicable above the confluence of the next downstream tributary, or if this is not practicable;</li>
+<li>Within the watershed where the development will take place or as otherwise specified by the city or county in an approved Wetland Mitigation Bank.</li>
+</ol>
+</li>
+<li><strong>b.</strong> In order to ensure that the mitigation area will be protected in perpetuity, proof of placement of a conservation easement or other means preserving the restriction on the property where the mitigation is to occur is required.</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h4 id="table-2"><a class="header" href="#table-2">Table 2</a></h4>
+<p><strong>WATER QUALITY RESOURCE AREA REQUIREMENTS</strong></p>
+<div class="table-wrapper"><table class="formatted-table"><thead><tr><th><strong>EXISTING CONDITION OF WATER QUALITY RESOURCE AREA</strong></th><th><strong>SUGGESTIONS IF WATER QUALITY RESOURCE AREA REMAINS UNDISTURBED DURING CONSTRUCTION</strong></th><th><strong>REQUIREMENTS IF WATER QUALITY RESOURCE AREA IS DISTURBED DURING CONSTRUCTION</strong></th></tr></thead><tbody>
+<tr><td><strong>Good Existing Corridor:</strong> Combination of trees, shrubs and groundcover is 80% present, and 90% or greater of said surface coverage is native vegetation, and there is more than 50% tree canopy coverage in the vegetated corridor.</td><td>1. Obtain certification by a Registered professional engineer, landscape architect, or biologist or other person trained or certified in riparian or wetland delineation describing the condition of the vegetated corridor.<br/><br/>2. Inventory and remove debris and noxious materials.</td><td>1. Obtain certification by a Registered professional engineer, landscape architect, or biologist or other person trained or certified in riparian or wetland delineation describing the condition of the vegetated corridor, specifically addressing the areas proposed to be disturbed and setting forth a plan for mitigating water quality impacts related to the development, including: sediments, temperature and nutrients, sediment control, temperature control or addressing any other condition that may have caused the Protected Water Feature to be listed on DEQ’s 303 (d) list.<br/><br/>2. Inventory and remove debris and noxious vegetation and materials.<br/><br/>3. Re-vegetate disturbed areas and mitigation areas with native vegetation to restore the groundcover and canopy condition to that found in a Good Corridor pursuant to an approved mitigation plan.</td></tr>
+<tr><td><strong>Marginal Existing Vegetated Corridor:</strong> Combination of trees, shrubs and groundcover are less than 80% present, or less than 90% of said surface coverage is native vegetation, or less than 50% tree canopy coverage in the vegetated corridor.</td><td>1 and 2 above, and<br/><br/>3. Vegetate bare areas with Native Vegetation to enhance groundcover and canopy condition to that found in a Good Corridor.<br/><br/>4. Remove non-native species and re-vegetate with Native Vegetation to enhance groundcover and canopy condition to that found in a Good Corridor.</td><td>1 and 2 above, and<br/><br/>4. Re-vegetate disturbed areas and mitigation areas with native vegetation to enhance the groundcover and canopy condition to that found in a Good Corridor pursuant to an approved mitigation plan. Re-vegetation must occur during the next planting season following site disturbance. Annual replacement of plants that do not survive is required during the life of the mitigation plan. Seeding may be required prior to establishing plants for site stabilization.</td></tr>
+<tr><td><strong>Degraded Existing Vegetated Corridor:</strong> Combination of trees, shrubs and groundcover are less than 70% present, or less than 70% of said surface coverage is native vegetation, or less than 25% tree canopy coverage in the vegetated corridor.</td><td>1, 2, 3 and 4 above, and<br/><br/>5. Develop a Mitigation Plan to enhance groundcover and canopy condition to that found in a Good Corridor and implement pursuant to plan.<br/><br/>6. All mitigation must meet the performance standards for Water Quality Resource Areas.</td><td>1, 2 and 4 above, and<br/><br/>5. Develop a Mitigation Plan to enhance the groundcover and canopy condition to that found in a Good Corridor and implement pursuant to plan.<br/><br/>6. All mitigation must meet the performance standards for Water Quality Resource Areas.</td></tr>
+</tbody></table>
+</div>
+<h3 id="section-v-flood-management-areas"><a class="header" href="#section-v-flood-management-areas">Section V. Flood Management Areas</a></h3>
+<p><strong>A.</strong> This ordinance establishes a Flood Management Area Overlay Zone. The standards set forth herein apply to the Flood Management Areas in addition to other local, state or federal restrictions governing floodplains or flood hazard areas.</p>
+<p><strong>B.</strong> Flood Management Areas include land contained within the 100-year floodplain and floodway as shown on the Federal Emergency Management Agency Flood Insurance maps.</p>
+<p><strong>C.</strong> Uses Permitted Outright:</p>
+<ol>
+<li>Excavation and fill required to plant any new trees or vegetation.</li>
+<li>Restoration or enhancement of floodplains, riparian areas, wetland, upland and streams that meet federal and state standards.</li>
+</ol>
+<p><strong>D.</strong> Conditional Uses:<br/>
+All uses allowed in the base zone or existing flood hazard overlay zone are allowed in the Flood Management Overlay Zone subject to compliance with the Development Standards herein.</p>
+<p><strong>E.</strong> Prohibited Uses:</p>
+<ol>
+<li>Any use prohibited in the base zone or existing flood hazard overlay zone.</li>
+<li>Uncontained areas of hazardous materials as defined by the Department of Environmental Quality.</li>
+</ol>
+<p><strong>F.</strong> Application Requirements<br/>
+Applications for a development permit within any Flood Management Area Overlay Zone shall include, in addition to the items specified base zone:</p>
+<ol>
+<li>Plans drawn to scale showing the nature, location, dimensions, and elevations of the area in question, existing and proposed structures, fill, storage of materials, drainage facilities;</li>
+<li>Elevation in relation to mean sea level, of the lowest floor (including basement) of all structures;</li>
+<li>Elevation in relation to mean sea level to which any structure has been floodproofed;</li>
+<li>Demonstration that the plans meet the floodproofing criteria herein; and</li>
+<li>Demonstration of how the development will impact flood storage capacities, watercourses and their velocities.</li>
+<li>Other items deemed necessary and requested by the Planning Commission.</li>
+</ol>
+<p><strong>G.</strong> Development Standards<br/>
+All development, excavation and fill in the floodplain shall conform to the following standards:</p>
+<ol>
+<li>
+<p>No net fill in any floodplain is allowed. All fill placed in a floodplain shall be balanced with at least an equal amount of soil material removal.</p>
+</li>
+<li>
+<p>Excavation areas shall not exceed fill areas by more than 50 percent of the square footage.</p>
+</li>
+<li>
+<p>Any excavation below the 10 year flood elevation for the property shall not count toward compensating for the fill.</p>
+</li>
+<li>
+<p>Excavation to balance a fill shall be located on the same parcel as the fill unless it is not reasonable or practicable to do so. In such cases, the excavation shall be located in the same drainage basin and as close as possible to the fill site, so long as the proposed excavation and fill will not increase flood impacts for surrounding properties as determined through hydrologic and hydraulic analysis.</p>
+</li>
+<li>
+<p>For excavated areas identified by the city or county to remain dry in the summer, such as parks or mowed areas, the lowest elevation of the excavated area shall be at least 6 inches above the winter “low water” elevation, and sloped at a minimum of two percent towards the Protected Water Feature. One percent slopes will be allowed in smaller areas.</p>
+</li>
+<li>
+<p>For excavated areas identified by the city or county to remain wet in the summer, such as a constructed wetland, the grade shall be designed not to drain into the Protected Water Feature.</p>
+</li>
+<li>
+<p>Minimum finished floor elevations must be at least one foot above the design flood elevation for new habitable structures in the Flood Area.</p>
+</li>
+<li>
+<p>Short-term parking in the floodplain may be located at an elevation of no more than one foot below the ten-year floodplain so long as the parking facilities do not occur in a Water Quality Resource Area. Long-term parking in the floodplain may be located at an elevation of no more than one foot below the 100-year floodplain so long as the parking facilities do not occur in a Water Quality Resource Area.</p>
+</li>
+<li>
+<p>Temporary fills permitted during construction shall be removed.</p>
+</li>
+<li>
+<p>New culverts, stream crossings and transportation projects shall be designed as balanced cut and fill projects or designed not to significantly raise the design flood elevation. Such projects shall be designed to minimize the area of fill in Flood Management Areas and to minimize erosive velocities. Stream crossings shall be as close to perpendicular to the stream as practicable. Bridges shall be used instead of culverts wherever practicable.</p>
+</li>
+<li>
+<p>Excavation and fill required for the construction of detention facilities or structures, and other facilities, such as levees, specifically shall be designed to reduce or mitigate flood impacts and improve water quality. Levees shall not be used to create vacant buildable lands.</p>
+</li>
+<li>
+<p>Venting<br/>
+a. Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of flood waters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
+(i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
+(ii) The bottom of all openings shall be no higher than one foot above grade.
+(iii) Openings may be equipped with screens, louvers or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.</p>
+</li>
+<li>
+<p>Anchoring<br/>
+a. All new construction and substantial improvements shall be anchored to prevent flotation, collapse, or lateral movement of the structure.
+b. All manufactured homes must likewise be anchored to prevent flotation, collapse or lateral movement, and shall be installed using methods and practices that minimize load damage. Anchoring methods may include, but are not limited to, use of over-the-top or frame ties to ground anchors.</p>
+</li>
+<li>
+<p>Construction Materials and Methods<br/>
+a. All new construction and substantial improvements lying below the 100-year flood elevation shall be constructed with materials and utility equipment resistant to flood damage.
+b. All new construction and substantial improvements shall be constructed using methods and practices that minimize flood damage.
+c. Electrical, heating, ventilation, plumbing, and air-conditioning equipment and other service facilities shall be designed and/or otherwise elevated or located so as to prevent water from entering or accumulating within the components during conditions of flooding.</p>
+</li>
+<li>
+<p>Utilities<br/>
+a. All new and replacement water supply systems shall be designed to minimize or eliminate infiltration of flood waters into the system;
+b. New and replacement sanitary sewage systems shall be designed to minimize or eliminate infiltration of flood waters into the systems and discharge from the system into flood waters; and,
+c. On-site waste disposal systems shall be located to avoid impairment to them or contamination from them during flooding.</p>
+</li>
+<li>
+<p>Subdivision Proposals<br/>
+a. All subdivision proposals shall be consistent with the need to minimize flood damage;
+b. All subdivision proposals shall have public utilities and facilities such as sewer, gas, electrical, and water systems located and constructed to minimize flood damage;
+c. All subdivision proposals shall have adequate drainage provided to reduce exposure to flood damage.</p>
+</li>
+</ol>
+<h3 id="section-vi-subdivisions-and-partitions"><a class="header" href="#section-vi-subdivisions-and-partitions">Section VI. Subdivisions and Partitions</a></h3>
+<p><strong>A.</strong> The purpose of this section is to amend the city regulations governing land divisions to require that new subdivision and partition plats delineate and show the Water Quality Resource Area as a separate tract.</p>
+<p><strong>B.</strong> The standards for land divisions in Water Quality Resource Areas Overlay Zone shall apply in addition to the requirements of the city land division ordinance and zoning ordinance.</p>
+<p><strong>C.</strong> Prior to preliminary plat approval, the Water Quality Resource Area shall be shown as a separate tract, which shall not be a part of any parcel used for construction of a dwelling unit.</p>
+<p><strong>D.</strong> Prior to final plat approval, ownership of the Water Quality Resource Area tract shall be identified to distinguish it from lots intended for development. The tract may be identified as any one of the following:</p>
+<ol>
+<li>Private open space held by the owner or homeowners association; or</li>
+<li>For residential land divisions, private open space subject to an easement conveying storm and surface water management rights to the county and preventing the owner of the tract from activities and uses inconsistent with the purpose of this ordinance; or</li>
+<li>At the owner’s option, public open space where the tract has been dedicated to the city or other governmental unit; or</li>
+<li>Any other ownership proposed by the owner and approved by the City Council.</li>
+</ol>
+<p><strong>Note:</strong> Approval by the governmental unit of any dedication or transfer to the governmental unit is required prior to transfer.</p>
+<p><strong>E.</strong> Where the Water Quality Resource Area tract is dedicated to the city or other governmental unit, development shall be subject to a minimum 3-foot setback from the Water Quality Resource Area.</p>
+<p><strong>F.</strong> The density of development that would otherwise be permitted on an area of land contained within a Water Quality Resource Area tract that is set aside as provided above may be transferred to adjacent lots. Once density is transferred from a lot within the Water Quality Resource Area, the increase allocated to the transfer lot may not be transferred to any other lot. Density transfers shall be noted on the partition or subdivision map.</p>
+<h3 id="section-vii-erosion-prevention-and-sediment-control"><a class="header" href="#section-vii-erosion-prevention-and-sediment-control">Section VII. Erosion Prevention and Sediment Control</a></h3>
+<p><strong>A.</strong> The purpose of this section is to require erosion prevention measures and sediment control practices for all development inside and outside the Water Quality Resource Area and Flood Management Area Overlay Zones during construction to prevent and restrict the discharge of sediments, and to require final permanent erosion prevention measures, which may include landscaping, after development is completed. Erosion prevention techniques shall be designed to protect soil particles from the force of water and wind so that they will not be transported from the site. Sediment control measures shall be designed to capture soil particles after they have become dislodged by erosion and attempt to retain the soil particles on site.</p>
+<p><strong>B.</strong> Prior to beginning work the applicant shall obtain an Erosion and Sediment Control Permit from the County.</p>
+<p><strong>C.</strong> The County may inspect the development site to determine compliance with the Erosion and Sediment Control Plan and Permit.</p>
+<p><strong>D.</strong> Erosion that occurs on a development site that does not have an Erosion and Sediment Control Permit, or that results from a failure to comply with the terms of such a Permit, constitutes a violation of this ordinance.</p>
+<p><em>Note: Sections E and F are missing from the original source document, this is not a digitization error.</em></p>
+<p><strong>G.</strong> If the County finds that the facilities and techniques approved in an Erosion and Sediment Control Plan and Permit are not sufficient to prevent erosion, the County shall notify the permittee. Upon receiving notice, the permittee shall immediately install interim erosion and sediment control measures as required by the County. If required by the County, the applicant shall submit and implement a revised Erosion and Sediment Control Plan.</p>
+<h3 id="section-viii-variances"><a class="header" href="#section-viii-variances">Section VIII. Variances</a></h3>
+<p><strong>A.</strong> The purpose of this Section is to ensure that compliance with this ordinance does not cause unreasonable hardship. To avoid such instances, the requirements of this ordinance may be varied. Variances are also allowed when strict application of this ordinance would deprive an owner of all economically viable use of land.</p>
+<p><strong>B.</strong> This Section applies in addition to the standards governing proposals to vary the requirements of the base zone.</p>
+<p><strong>C.</strong> The Planning Commission shall, upon receiving an application to vary the requirements of this ordinance, provide notice of the request to all property owners within (200) feet.</p>
+<p><strong>D.</strong> Development may occur on lots located completely within the Water Quality Resource Area Overlay Zone that were legally created on or before the date this ordinance was adopted or on lots legally created after the adoption of this ordinance so long as the application to create the lot or lots was deemed complete prior to the adoption of this ordinance. Development shall not disturb more than 5,000 square feet of the vegetated corridor, including access roads and driveways, subject to the erosion and sediment control standards of this ordinance.</p>
+<p><strong>E.</strong> Hardship Variance<br/>
+Variances to avoid unreasonable hardship caused by the strict application of this ordinance are permitted subject to the criteria set forth in this section. To vary from the requirements of this ordinance, the applicant must demonstrate the following:</p>
+<ol>
+<li>The variance is the minimum necessary to allow the proposed use or activity;</li>
+<li>The variance does not increase danger to life and property due to flooding or erosion;</li>
+<li>The impact of the increase in flood hazard, which will result from the variance, will not prevent the city or county from meeting the requirements of this ordinance. In support of this criteria the applicant shall have a qualified professional engineer document the expected height, velocity and duration of flood waters, and estimate the rate of increase in sediment transport of the flood waters expected both downstream and upstream as a result of the variance;</li>
+<li>The variance will not increase the cost of providing and maintaining public services during and after flood conditions so as to unduly burden public agencies and taxpayers;</li>
+<li>Unless the proposed variance is from Section IV F.9 (mitigation) or Section VII (erosion control), the proposed use will comply with those standards; and</li>
+<li>The proposed use complies with the standards of the base zone.</li>
+</ol>
+<p><strong>F.</strong> Buildable Lot Variance<br/>
+A variance to avoid the loss of substantial economically viable use of a lot that is partially inside the Water Quality Resource Area Overlay Zone is permitted. Development on such lots shall not disturb more than 5,000 square feet of the vegetated corridor, including access roads and driveways, subject to the erosion and sediment control standards in Section VII of this ordinance. Applicants must demonstrate the following:</p>
+<ol>
+<li>Without the proposed variance, the applicant would be denied economically viable use of the subject property. To meet this criterion, the applicant must show that:
+<ul>
+<li><strong>a.</strong> The proposed use cannot meet the standards in Section VIII E (hardship variance); and</li>
+<li><strong>b.</strong> No other application could result in permission for an economically viable use of the subject property. Evidence to meet this criterion shall include a list of uses allowed on the subject property.</li>
+</ul>
+</li>
+<li>The proposed variance is the minimum necessary to allow for the requested use;</li>
+<li>The proposed variance will comply with Section IV F.9 (mitigation) and Section VII (erosion control); and</li>
+<li>The proposed use complies with the standards of the base zone.</li>
+</ol>
+<p><strong>G.</strong> Variance Conditions<br/>
+The Planning Commission may impose such conditions as are deemed necessary to limit any adverse impacts that may result from granting relief. If a variance is granted pursuant to Subsections E 1-6, the variance shall be subject to the following conditions:</p>
+<ol>
+<li>The minimum width of the vegetated corridor shall be 15 feet on each side of a Primary Protected Water Feature, except as allowed in Section IV C and D;</li>
+<li>No more than 25 percent of the length of the Water Quality Resource Area for a Primary Protected Water Feature within a development site can be less than 30 feet in width on each side of the water feature; and</li>
+<li>In either case, the average width of the Water Quality Resource Area shall be a minimum of 15 feet on each side for Secondary Protected Water Features, a minimum of 50 feet on each side for Primary Protected Water Features, or up to 200 feet on each side in areas with slopes greater than 25 percent. The stream shall be allowed to meander within this area, but in no case shall the stream be less than 10 feet from the outer boundary of the Water Quality Resource Area.</li>
+</ol>
+<h3 id="section-ix-map-administration"><a class="header" href="#section-ix-map-administration">Section IX. Map Administration</a></h3>
+<p><strong>A.</strong> The purpose of this section is to provide for maps designating the Protected Water Features, Water Quality Resource Areas and Flood Management Areas in the City of Rivergrove.</p>
+<p><strong>B.</strong> Copies of the maps on file which have been accepted by the city as delineating a Protected Water Feature or the Flood Management Area shall be submitted to Metro to update Metro’s Water Quality Management Maps and may be used by the city as a reference.</p>
+<p><strong>C.</strong> When the city makes a finding in the processing of a new application that adds, corrects or alters the location of a Protected Water Feature, Water Quality Resource Area and/or Flood Management Area it shall retain the map for future reference and submit a copy to Metro to update Metro’s Water Quality Management Maps. Areas added to Wetlands, Water Quality Resource Areas and Flood Management Areas in mitigation of uses allowed herein shall be treated as an addition or alteration of the location of a Protected Water Feature, Water Quality Resource Area and/or Flood Management Area.</p>
+<h3 id="section-x-consistency"><a class="header" href="#section-x-consistency">Section X. Consistency</a></h3>
+<p>Where the provisions of this ordinance are less restrictive or conflict with comparable provisions of the zoning ordinance, regional, state or federal law, the provisions that are more restrictive shall govern. Where this ordinance imposes restrictions that are more stringent than regional, state and federal law, the provisions of this ordinance shall govern.</p>
+<h3 id="section-xi-warning-and-disclaimer-of-liability"><a class="header" href="#section-xi-warning-and-disclaimer-of-liability">Section XI. Warning and Disclaimer of Liability</a></h3>
+<p>The degree of flood protection required by this ordinance is considered reasonable for regulatory purposes and is based on scientific and engineering considerations. Larger floods can and will occur on rare occasions. Flood heights may be increased by man-made or natural causes. This ordinance does not imply that land outside the areas of special flood hazards or uses permitted within such areas will be free from flooding or flood damages. This ordinance shall not create liability on the part of the City or County, any officer or employee thereof, or the Federal Insurance Administration, for any damages that result from reliance on this ordinance or any administrative decision lawfully made hereunder.</p>
+<h3 id="section-xii-severability-and-interpretation"><a class="header" href="#section-xii-severability-and-interpretation">Section XII. Severability and Interpretation</a></h3>
+<p><strong>A.</strong> If any section, subsection, sentence, clause, phrase or word of this ordinance should be declared invalid or unconstitutional by a court of competent jurisdiction, such invalidity or unconstitutionality thereof shall not affect the validity or constitutionality of any other section, subsection, sentence, clause, phrase or word of this ordinance.</p>
+<p><strong>B.</strong> Any conflict between the text of this ordinance and any heading, caption, figure, illustration, table or map is resolved in favor of the text.</p>
+<h3 id="section-xiii-enforcement"><a class="header" href="#section-xiii-enforcement">Section XIII. Enforcement</a></h3>
+<p><strong>A.</strong> No person shall engage in or cause to occur any development, use or activity that fails to meet the standards and requirements of this ordinance.</p>
+<p><strong>B.</strong> In addition to other powers the city or county may exercise to enforce this ordinance, the city or county may:</p>
+<ol>
+<li>Establish a cooperative agreement between the city and the applicant (or responsible party) to remedy the violation.</li>
+<li>Issue a stop work order.</li>
+<li>Impose a civil penalty of not more than $500 for each violation upon the permittee, contractor or person responsible for carrying out the development work. Each day of violation shall constitute a separate offense.</li>
+<li>Cause an action to be instituted in a court of competent jurisdiction.</li>
+<li>Authorize summary abatement and subsequent recovery of costs incurred by the city.</li>
+</ol>
+<h3 id="section-xiv-definitions"><a class="header" href="#section-xiv-definitions">Section XIV. Definitions</a></h3>
+<p>Definitions. Unless specifically defined below, words or phrases used in this section shall be interpreted to give them the same meaning as they have in common usage and to give this classification its most reasonable application.</p>
+<p><strong>Architect</strong> - An architect licensed by the State of Oregon.</p>
+<p><strong>Bankful Stage</strong> - Defined in OAR 141-85-010 as the stage or elevation at which water overflows the natural banks of a stream or other waters of the state and begin to inundate upland areas. In the absence of a physically defined top of bank, the two-year recurrent flood elevation may be used to approximate the bankful stage.</p>
+<p><strong>Base Zone</strong> - The zoning for a parcel in the City of Rivergrove as established by the Comprehensive Plan and the Rivergrove Land Development Ordinance.</p>
+<p><strong>Created Wetlands</strong> - Those wetlands developed in an area previously identified as a non-wetland to replace, or mitigate wetland destruction or displacement. A created wetland shall be regulated and managed the same as an existing wetland.</p>
+<p><strong>Debris</strong> - discarded man-made objects that would not occur in an undeveloped stream corridor or wetlands. Debris includes, but is not limited to, tires, vehicles, litter, scrap metal, construction waste, lumber, plastic or styrofoam. Debris does not include objects necessary to a use allowed by this ordinance, or ornamental and recreational structures. Debris does not include existing natural plant materials or natural plant materials which are left after flooding, downed or standing dead trees or trees which have fallen into Protected Water Features.</p>
+<p><strong>Department of Environmental Quality (DEQ) Water Quality Standards</strong> - The numerical criteria or narrative condition needed in order to protect an identified beneficial use.</p>
+<p><strong>Design Flood Elevation</strong> -the elevation of the 100-year storm as defined in FEMA Flood Insurance Studies.</p>
+<p><strong>Development</strong> - any man-made change defined as buildings, the siting of manufactured homes or other structures, mining, dredging paving, filling, or grading in amounts greater than ten (10) cubic yards on any lot or excavation. In addition, any other activity that results in the removal of more than 20 percent of the vegetation in the Water Quality Resource Area on a lot is defined as development, for the purpose of this ordinance. An activity that is not development but results in the removal of vegetation in the Water Quality Resource Area on a lot must comply with the Erosion and Sediment Control measures set forth herein. Development for the purposes of this ordinance does not include the following: a) Stream enhancement or restoration projects approved by cities and counties and b) Farming practices as defined in ORS 30.930 and farm use as defined in ORS 215.203, except that buildings associated with farm practices and farm uses are subject to the requirements of this ordinance.</p>
+<p><strong>Disturb</strong> - man-made changes to the existing physical status of the land, which are made in connection with development. The following uses are excluded from the definition:</p>
+<p>enhancement or restoration of the Water Quality Resource Area;</p>
+<p>planting native cover identified in the Rivergrove Native Plant List.</p>
+<p><strong>Emergency</strong> - any man-made or natural event or circumstance causing or threatening loss of life, injury to person or property, and includes, but is not limited to, fire, explosion, flood, severe weather, drought earthquake, volcanic activity, spills or releases of oil or hazardous material, contamination, utility or transportation disruptions, and disease.</p>
+<p><strong>Engineer</strong> - A registered professional engineer licensed by the State of Oregon.</p>
+<p><strong>Enhancement</strong> - the process of improving upon the natural functions and/or values of an area or feature which has been degraded by human activity. Enhancement activities may or may not return the site to a pre-disturbance condition, but create/recreate processes and features that occur naturally.</p>
+<p><strong>Erosion</strong> - Erosion is the movement of soil particles resulting from actions of water or wind.</p>
+<p><strong>Fill</strong> - any material such as, but not limited to, sand, gravel, soil, rock or gravel that is placed in a wetland or floodplain for the purposes of development or redevelopment.</p>
+<p><strong>Floodplain</strong> - The land area identified and designated by the FEMA that has been or may be covered temporarily by water as a result of a storm event of identified frequency. It is usually the flat area of land adjacent to a stream or river formed by floods.</p>
+<p><strong>Floodway</strong> - The portion of a watercourse required for the passage or conveyance of a given storm event as identified and designated by FEMA. The floodway shall include the channel of the watercourse and the adjacent floodplain that must be reserved in an unobstructed condition in order to discharge the base flood without flood levels by more than one foot. <strong>Flood Management Areas</strong> - all lands contained within the 100-year floodplain and floodway as shown on the Federal Emergency Management Agency Flood Insurance Maps.</p>
+<p><strong>Invasive Non-native or Noxious Vegetation</strong> - plant species that have been introduced and due to aggressive growth patterns and lack of natural enemies in the area where introduced, spread rapidly into native plant communities, or which are not listed on the Rivergrove Native Plant List as adopted by Rivergrove Council resolution.</p>
+<p><strong>Lot</strong> - Lot means a single unit of land that is created by a subdivision of land. (ORS 92.010(3)).</p>
+<p><strong>Metro Prohibited Plant List or Metro Nuisance Plant List</strong> – lists of prohibited or nuisance plants for Water Quality Resource Areas as adopted by Metro Council resolution.</p>
+<p><strong>Mitigation</strong> - the reduction of adverse effects of a proposed project by considering, in the order: a) avoiding the impact all together by not taking a certain action or parts of an action; b) minimizing impacts by limiting the degree or magnitude of the action and its implementation; c) rectifying the impact by repairing, rehabilitating or restoring the affected environment; d) reducing or eliminating the impact over time by preservation and maintenance operations during the life of the action by monitoring and taking appropriate measures; and e) compensating for the impact by replacing or providing comparable substitute Water Quality Resource Areas.</p>
+<p><strong>Native Vegetation</strong> - any vegetation native to the Portland metropolitan area or listed on the Rivergrove Native Plant List as adopted by Rivergrove Council resolution.</p>
+<p><strong>Open Space</strong> - Land that is undeveloped and that is planned to remain so indefinitely. The term encompasses parks, forests and farmland. It may also refer only to land zoned as being available to the public, including playgrounds, watershed preserves and parks.</p>
+<p><strong>Overlay Zone</strong> - An area within the City of Rivergrove that lies within a Water Quality Resource Area and/or a Flood Management Area.</p>
+<p><strong>Owner or Property Owner</strong> - The person who is the legal record owner of the land, and where there is a recorded land sale contract, the purchaser thereunder.</p>
+<p><strong>Parcel</strong> - Parcel means a single unit of land that is created by a partitioning of land. (ORS 92.010(7)).</p>
+<p><strong>Plans</strong> - The drawings and designs that specify construction details.</p>
+<p><strong>Practicable</strong> - means available and capable of being done after taking into consideration cost, existing technology, and logistics in light of overall project purpose.</p>
+<p><strong>Protected Water Features</strong><br/>
+Primary Protected Water Features shall include:</p>
+<ul>
+<li><strong>a.</strong> wetlands; and</li>
+<li><strong>b.</strong> rivers, streams, and drainages downstream from the point at which 100 acres or more are drained to that water feature (regardless of whether it carries year-round flow); and</li>
+<li><strong>c.</strong> streams carrying year-round flow; and</li>
+<li><strong>d.</strong> springs which feed streams and wetlands and have year-round flow and</li>
+<li><strong>e.</strong> natural lakes.</li>
+</ul>
+<p>Secondary Protected Water Features shall include intermittent streams and seeps downstream of the point at which 50 acres are drained and upstream of the point at which 100 acres are drained to that water feature.</p>
+<p><strong>Restoration</strong> - the process of returning a disturbed or altered area or feature to a previously existing natural condition. Restoration activities reestablish the structure, function, and/or diversity to that which occurred prior to impacts caused by human activity.</p>
+<p><strong>“Resource” versus “Facility”</strong> - The distinction being made is between a “resource,” a functioning natural system such as a wetland or stream; and a “facility” which refers to a created or constructed structure or drainage way that is designed, constructed and maintained to collect and filter, retain, or detain surface water run-off during and after a storm event for the purpose of water quality improvement.</p>
+<p><strong>Riparian</strong> -Those areas associated with streams, lakes and wetlands where vegetation communities are predominately influenced by their association with water.</p>
+<p><strong>Routine Repair and Maintenance</strong> - activities directed at preserving an existing allowed use or facility, without expanding the development footprint or site use.</p>
+<p><strong>Stormwater Pre-treatment Facility</strong> - any structure or drainage way that is designed, constructed, and maintained to collect and filter, retain, or detain surface water runoff during and after a storm event for the purpose of water quality improvement.</p>
+<p><strong>Stream</strong> - a body of running water moving over the earth’s surface in a channel or bed, such as a creek, rivulet or river. It flows at least part of the year, including perennial and intermittent streams. Streams are dynamic in nature and their structure is maintained through build-up and loss of sediment.</p>
+<p><strong>Structure</strong> - A building or other major improvement that is built, constructed or installed, not including minor improvements, such as utility poles, flagpoles or irrigation system components, that are not customarily regulated through zoning codes. Fences and decks are considered structures for the purpose of this ordinance.</p>
+<p><strong>Top of Bank</strong> - The same as “bankful stage” defined in OAR 141-85-010(2).</p>
+<p><strong>Utility Facilities</strong> - buildings, structures or any constructed portion of a system which provides for the production, transmission, conveyance, delivery or furnishing of services including, but not limited to, heat, light, water, power, natural gas, sanitary sewer, stormwater, telephone and cable television. Utility facilities do not include stormwater pretreatment facilities.</p>
+<p><strong>Variance</strong> - means a discretionary decision to permit modification of the terms of an implementing ordinance based on a demonstration of unusual hardship or exceptional circumstances unique to a specific property.</p>
+<p><strong>Vegetated Corridor</strong> - the area of setback between the top of bank of a Protected Water Feature and the delineated edge of the Water Quality Resource Area as defined in Table 1.</p>
+<p><strong>Visible or Measurable Erosion</strong> - Visible or measurable erosion includes, but is not limited to:</p>
+<p>Deposits of mud, dirt sediment or similar material exceeding one-half cubic foot in volume on public or private streets, adjacent property, or onto the storm and surface water system, either by direct deposit, dropping discharge, or as a result of the action of erosion. Evidence of concentrated flows of water over bare soils; turbid or sediment laden flows; or evidence of on-site erosion such as rivulets on bare soil slopes, where the flow of water is not filtered or captured on the site. Earth slides, mudflows, earth sloughing, or other earth movement that leaves the property.</p>
+<p><strong>Water Quality Resource Areas</strong> - The Protected Water Feature and the adjacent Vegetated Corridor as established in this ordinance.</p>
+<p><strong>Watershed</strong> - A watershed is a geographic unit defined by the flows of rainwater or snowmelt. All land in a watershed drains to a common outlet, such as a stream, lake or wetland.</p>
+<p><strong>Wetlands</strong> - Wetlands are those areas inundated or saturated by surface or ground water at a frequency and duration sufficient to support, and under normal circumstances do support, a prevalence of vegetation typically adapted for life in saturated soil conditions. Wetlands generally include swamps, marshes, bogs and similar areas. Wetlands are those areas identified and delineated by a qualified wetland specialist as set forth in the most recent Corps of Engineers Wetland Delineation Manual and created wetlands.</p>
+<h2 id="appendix-a"><a class="header" href="#appendix-a"><strong>APPENDIX A</strong></a></h2>
+<p><em>Not found in source documents</em></p>
+<h2 id="appendix-b"><a class="header" href="#appendix-b"><strong>APPENDIX B</strong></a></h2>
+<p><strong>SLOPE MEASUREMENT</strong></p>
+<figure class="document-figure">
+<img alt="Proposed Method for Determining Vegetated Corridors Next to Primary Protected Water Features" src="../images/ordinances/2001-Ord-70-2001-WQRA-slope-measurement.png"/>
+<figcaption>Diagrams showing how to measure slope in 50-foot areas for determining vegetated corridor widths</figcaption>
+</figure>
+<p><strong>Advantages:</strong>
+• Provides protection for most steep slopes, yet corridor widths can be varied to fit a number of different situations (corridor widths include 50 feet to 100 feet, 125 feet, 150 feet, 175 feet, and 200 feet)
+• Provides flexibility.</p>
+<p><strong>Disadvantages:</strong>
+• Does not protect slopes that rise steeply after a gradual “floodplain” area.</p>
+<hr/>
+<figure class="document-figure">
+<img alt="Diagram of Applicable Flood Regulations and land areas" src="../images/ordinances/2001-Ord-70-2001-WQRA-flood-zones.png"/>
+<figcaption>Diagram showing the ordering of the various flood zones and how the regulations apply. This image is NOT part of the original source document but has been posted on the Rivergrove City Website for years beside the Ordinance. Source unknown.</figcaption>
+</figure>
+</main>
+<nav aria-label="Page navigation" class="nav-wrapper">
+<!-- Mobile navigation buttons -->
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="mobile-nav-chapters previous" href="../ordinances/2000-Ord-69-2000-Title-3-Compliance.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="mobile-nav-chapters next" href="../ordinances/2002-Ord-71-2002-Gates.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+<div style="clear: both"></div>
+</nav>
+</div>
+</div>
+<nav aria-label="Page navigation" class="nav-wide-wrapper">
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="nav-chapters previous" href="../ordinances/2000-Ord-69-2000-Title-3-Compliance.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="nav-chapters next" href="../ordinances/2002-Ord-71-2002-Gates.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+</nav>
+</div>
+<script>
+            window.playground_copyable = true;
+        </script>
+<script src="../elasticlunr.min.js"></script>
+<script src="../mark.min.js"></script>
+<script src="../searcher.js"></script>
+<script src="../clipboard.min.js"></script>
+<script src="../highlight.js"></script>
+<script src="../book.js"></script>
+<!-- Custom JS scripts -->
+<script src="../navigation-standalone.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,1386 @@
+<!DOCTYPE HTML>
+
+<html class="light sidebar-visible" dir="ltr" lang="en">
+<head>
+<!-- Book generated using mdBook -->
+<meta charset="utf-8"/>
+<title>#54 - Land Development (1989) - City of Rivergrove Documents</title>
+<!-- Custom HTML head -->
+<meta content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations" name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="../favicon.svg" rel="icon"/>
+<link href="../favicon.png" rel="shortcut icon"/>
+<link href="../css/variables.css" rel="stylesheet"/>
+<link href="../css/general.css" rel="stylesheet"/>
+<link href="../css/chrome.css" rel="stylesheet"/>
+<link href="../css/print.css" media="print" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="../FontAwesome/css/font-awesome.css" rel="stylesheet"/>
+<link href="../fonts/fonts.css" rel="stylesheet"/>
+<!-- Highlight.js Stylesheets -->
+<link href="../highlight.css" id="highlight-css" rel="stylesheet"/>
+<link href="../tomorrow-night.css" id="tomorrow-night-css" rel="stylesheet"/>
+<link href="../ayu-highlight.css" id="ayu-highlight-css" rel="stylesheet"/>
+<!-- Custom theme stylesheets -->
+<link href="../custom.css" rel="stylesheet"/>
+<!-- Provide site root and default themes to javascript -->
+<script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+<!-- Start loading toc.js asap -->
+<script src="../toc.js"></script>
+<style id="custom-list-styles">
+        /* Custom list styles for legal documents */
+        .custom-list-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .definition-item {
+            margin: 1em 0;
+        }
+        
+        .definition-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .roman-list {
+            list-style: none;
+            padding-left: 2em;
+        }
+        
+        .roman-list li {
+            margin: 0.5em 0;
+        }
+        
+        .roman-marker {
+            font-weight: normal;
+            margin-right: 0.5em;
+        }
+        
+        /* Roman numeral lists that shouldn't show automatic numbering */
+        .roman-parenthetical-list {
+            list-style: none !important;
+            counter-reset: none !important;
+            padding-left: 2em;
+        }
+        
+        .roman-parenthetical-list > li {
+            list-style: none !important;
+            position: relative;
+        }
+        
+        .roman-parenthetical-list > li::before {
+            content: none !important;
+        }
+        
+        /* Special list that starts at non-standard number (e.g., 1.4) */
+        .special-start-list {
+            list-style: none !important;
+            padding-left: 2em;
+            counter-reset: none !important;
+        }
+        
+        .special-start-list li {
+            margin: 0.5em 0;
+            position: relative;
+            list-style: none !important;
+        }
+        
+        .special-start-list li::before {
+            content: none !important;
+        }
+        
+        .special-list-number {
+            font-weight: bold;
+            margin-right: 0.5em;
+            display: inline-block;
+            min-width: 2em;
+        }
+        
+        /* Override mdBook's list styling for our custom lists */
+        ol:has(.custom-list-marker) {
+            list-style: none;
+            counter-reset: none;
+        }
+        
+        ol:has(.custom-list-marker) li::before {
+            content: none;
+        }
+        
+        ol.special-start-list li::before {
+            content: none;
+        }
+        
+        /* Form field styles for legal documents */
+        .form-field-empty {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            margin: 0 2px;
+            cursor: default;
+            vertical-align: baseline;
+            height: 1em;
+            position: relative;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #f0f0f0;
+            border-bottom-color: #666;
+        }
+        
+        /* Add a visual indicator for blank fields */
+        .form-field-empty::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-empty:hover::after {
+            opacity: 1;
+        }
+        
+        .form-field-short {
+            min-width: 60px;
+        }
+        
+        .form-field-medium {
+            min-width: 120px;
+        }
+        
+        .form-field-long {
+            min-width: 200px;
+        }
+        
+        .form-field-filled {
+            display: inline-block;
+            padding: 2px 4px 4px 4px;
+            background-color: #e3f2fd;
+            border-bottom: 2px solid #1976d2;
+            color: #000;
+            font-weight: 600;
+            cursor: default !important;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        /* Ensure tooltips appear above other elements */
+        .form-field-filled:hover,
+        .form-field-empty:hover {
+            z-index: 1000;
+        }
+        
+        /* Force no help cursor for form fields and remove any title tooltips */
+        .form-field-filled,
+        .form-field-filled:hover,
+        .form-field-empty,
+        .form-field-empty:hover {
+            cursor: default !important;
+        }
+        
+        /* Hide any native browser tooltips */
+        .form-field-filled[title],
+        .form-field-empty[title] {
+            cursor: default !important;
+        }
+        
+        .form-field-filled[title]:hover::before,
+        .form-field-empty[title]:hover::before {
+            content: '' !important;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #bbdefb;
+            border-bottom-color: #0d47a1;
+        }
+        
+        /* CSS tooltip for filled fields */
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+        
+        /* Special positioning for tooltips in headings to avoid clipping */
+        h1 .form-field-filled::after,
+        h2 .form-field-filled::after,
+        h3 .form-field-filled::after {
+            top: 100%;
+            bottom: auto;
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Same for empty field tooltips in headings */
+        h1 .form-field-empty::after,
+        h2 .form-field-empty::after,
+        h3 .form-field-empty::after {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Special styling for form fields in headings */
+        h1 .form-field-filled, 
+        h2 .form-field-filled, 
+        h3 .form-field-filled {
+            font-size: inherit;
+            font-weight: inherit;
+            vertical-align: baseline;
+        }
+        
+        h1 .form-field-empty, 
+        h2 .form-field-empty, 
+        h3 .form-field-empty {
+            vertical-align: baseline;
+            height: 0.8em;
+            margin-bottom: -0.1em;
+        }
+        
+        /* Document figure styles for inline images */
+        .document-figure {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        .document-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .document-figure figcaption {
+            margin-top: 1em;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        /* Responsive image sizing */
+        @media screen and (min-width: 768px) {
+            .document-figure {
+                max-width: 80%;
+            }
+        }
+        
+        @media print {
+            .document-figure {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+            
+            .document-figure img {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+        </style><style id="enhanced-formatting-styles">
+            /* Enhanced formatting for special document types */
+            
+            /* WHEREAS Clauses */
+            .whereas-clause {
+                margin: 1.5em 0;
+                padding-left: 2em;
+                position: relative;
+            }
+            
+            .whereas-marker {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            /* Definition Lists */
+            .definition-item {
+                margin: 1.2em 0;
+                padding: 0.8em;
+                background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+                border-left: 3px solid #0969da;
+            }
+            
+            .definition-term {
+                font-weight: bold;
+                color: #0969da;
+                margin-right: 0.3em;
+            }
+            
+            .definition-separator {
+                margin: 0 0.3em;
+                color: #6c757d;
+            }
+            
+            .definition-text {
+                color: #333;
+            }
+            
+            /* Enhanced Tables */
+            .table-wrapper {
+                overflow-x: auto;
+                margin: 1.5em 0;
+                border-radius: 8px;
+            }
+            
+            .fee-schedule-table {
+                background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+                padding: 1em;
+            }
+            
+            .formatted-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                background: white;
+            }
+            
+            .formatted-table thead {
+                background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                color: white;
+            }
+            
+            .formatted-table th {
+                padding: 12px 16px;
+                text-align: left;
+                font-weight: 600;
+                border-bottom: 2px solid #495057;
+            }
+            
+            .formatted-table td {
+                padding: 10px 16px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .formatted-table tbody tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .formatted-table tbody tr:nth-child(even) {
+                background: rgba(0, 105, 218, 0.02);
+            }
+            
+            /* Cells with footnotes */
+            .has-footnote {
+                position: relative;
+            }
+            
+            .has-footnote sup {
+                color: #0969da;
+                font-weight: bold;
+            }
+            
+            /* Section Quotes */
+            .section-quote {
+                border-left: 4px solid #0969da;
+                padding-left: 1.5em;
+                margin: 1.5em 0;
+                background: #f8f9fa;
+                padding: 1em 1.5em;
+                border-radius: 0 8px 8px 0;
+            }
+            
+            /* Custom Numbered Lists */
+            .custom-numbered-list {
+                list-style: none;
+                counter-reset: none;
+                padding-left: 0;
+            }
+            
+            .custom-numbered-list li {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .custom-numbered-list .custom-list-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #0969da;
+            }
+            
+            /* Letter Items */
+            .letter-item {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .letter-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #495057;
+            }
+            
+            /* Nested structures */
+            .nested-section {
+                border-left: 2px solid #dee2e6;
+                padding-left: 1em;
+                margin-left: 1em;
+                margin-top: 0.5em;
+            }
+            /* Form field styles are handled by custom-list-processor.py */
+            
+            /* Print styles */
+            @media print {
+                .table-wrapper {
+                    box-shadow: none;
+                    page-break-inside: avoid;
+                }
+                
+                .formatted-table {
+                    font-size: 0.9em;
+                }
+                
+                .whereas-clause,
+                .definition-item,
+                .section-quote {
+                    page-break-inside: avoid;
+                }
+            }
+            </style></head>
+<body>
+<div id="mdbook-help-container">
+<div id="mdbook-help-popup">
+<h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+<div>
+<p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+<p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+<p>Press <kbd>?</kbd> to show this help</p>
+<p>Press <kbd>Esc</kbd> to hide this help</p>
+</div>
+</div>
+</div>
+<div id="body-container">
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+<input class="hidden" id="sidebar-toggle-anchor" type="checkbox"/>
+<!-- Hide / unhide sidebar before it is displayed -->
+<script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+<nav aria-label="Table of contents" class="sidebar" id="sidebar">
+<!-- populated by js -->
+<mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+<noscript>
+<iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+</noscript>
+<div class="sidebar-resize-handle" id="sidebar-resize-handle">
+<div class="sidebar-resize-indicator"></div>
+</div>
+</nav>
+<div class="page-wrapper" id="page-wrapper">
+<div class="page">
+<div id="menu-bar-hover-placeholder"></div>
+<div class="menu-bar sticky" id="menu-bar">
+<div class="left-buttons">
+<label aria-controls="sidebar" aria-label="Toggle Table of Contents" class="icon-button" for="sidebar-toggle-anchor" id="sidebar-toggle" title="Toggle Table of Contents">
+<i class="fa fa-bars"></i>
+</label>
+<button aria-controls="theme-list" aria-expanded="false" aria-haspopup="true" aria-label="Change theme" class="icon-button" id="theme-toggle" title="Change theme" type="button">
+<i class="fa fa-paint-brush"></i>
+</button>
+<ul aria-label="Themes" class="theme-popup" id="theme-list" role="menu">
+<li role="none"><button class="theme" id="default_theme" role="menuitem">Auto</button></li>
+<li role="none"><button class="theme" id="light" role="menuitem">Light</button></li>
+<li role="none"><button class="theme" id="rust" role="menuitem">Rust</button></li>
+<li role="none"><button class="theme" id="coal" role="menuitem">Coal</button></li>
+<li role="none"><button class="theme" id="navy" role="menuitem">Navy</button></li>
+<li role="none"><button class="theme" id="ayu" role="menuitem">Ayu</button></li>
+</ul>
+<button aria-controls="searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-label="Toggle Searchbar" class="icon-button" id="search-toggle" title="Search (`/`)" type="button">
+<i class="fa fa-search"></i>
+</button>
+</div>
+<h1 class="menu-title">City of Rivergrove Documents</h1>
+<div class="right-buttons">
+<a aria-label="Print this book" href="../print.html" title="Print this book">
+<i class="fa fa-print" id="print-button"></i>
+</a>
+<a aria-label="Git repository" href="https://github.com/wifelette/city_of_rivergrove" title="Git repository">
+<i class="fa fa-github" id="git-repository-button"></i>
+</a>
+</div>
+</div>
+<div class="hidden" id="search-wrapper">
+<form class="searchbar-outer" id="searchbar-outer">
+<div class="search-wrapper">
+<input aria-controls="searchresults-outer" aria-describedby="searchresults-header" id="searchbar" name="searchbar" placeholder="Search this book ..." type="search"/>
+<div class="spinner-wrapper">
+<i class="fa fa-spinner fa-spin"></i>
+</div>
+</div>
+</form>
+<div class="searchresults-outer hidden" id="searchresults-outer">
+<div class="searchresults-header" id="searchresults-header"></div>
+<ul id="searchresults">
+</ul>
+</div>
+</div>
+<!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+<script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+<div class="content" id="content">
+<main>
+<h1 id="rivergrove-land-development-ordinance"><a class="header" href="#rivergrove-land-development-ordinance">RIVERGROVE LAND DEVELOPMENT ORDINANCE</a></h1>
+<p><strong>Attachment C to Ordinance No. 54-89</strong></p>
+<p>Adopted March, 1989</p>
+<p>City of Rivergrove<br/>
+P.O. Box 1104<br/>
+Lake Oswego, OR 97035<br/>
+(503) 639-6919</p>
+<hr/>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">TABLE OF CONTENTS</a></h2>
+<p><strong>ARTICLE 1 - General Provisions</strong></p>
+<ul>
+<li>1.010 Title</li>
+<li>1.020 Repeal</li>
+<li>1.030 Severability and Validity</li>
+<li>1.040 Interpretation</li>
+<li>1.050 Definitions</li>
+</ul>
+<p><strong>ARTICLE 2 - Scope and Compliance</strong></p>
+<ul>
+<li>2.010 Scope and Compliance</li>
+<li>2.020 Consistency with Plan and Laws</li>
+<li>2.030 Development Permit Required</li>
+<li>2.040 Exclusions</li>
+<li>2.050 Use</li>
+<li>2.060 Nonconforming Development</li>
+<li>2.070 Completion of Nonconforming Development</li>
+<li>2.080 Termination of Nonconforming Development</li>
+<li>2.090 Timeline for Development Permit Review &amp; Decision</li>
+</ul>
+<p><strong>ARTICLE 3 - Planning Commission and Hearings Officer</strong></p>
+<ul>
+<li>3.010 Establishment</li>
+<li>3.020 Membership</li>
+<li>3.030 Terms</li>
+<li>3.040 Vacancies and Removal</li>
+<li>3.050 Officers</li>
+<li>3.060 Meetings</li>
+<li>3.070 Powers and Duties</li>
+<li>3.080 Hearings Officer</li>
+</ul>
+<p><strong>ARTICLE 4 - Procedures for Decision-Making</strong></p>
+<ul>
+<li>4.010 Procedures for Processing Permits</li>
+<li>4.020 Coordination</li>
+<li>4.030 Pre-Application Conference</li>
+<li>4.040 Development Permit Application</li>
+<li>4.050 Submission of Application</li>
+<li>4.060 Permit Referral</li>
+<li>4.070 Decision</li>
+<li>4.080 Resubmission</li>
+<li>4.090 Type I Procedure</li>
+<li>4.100 Type II Procedure</li>
+<li>4.110 Type III Procedure</li>
+<li>4.120 Type IV Procedure</li>
+</ul>
+<p><strong>ARTICLE 5 - Districts and Zones</strong></p>
+<ul>
+<li>5.010 Land Use</li>
+<li>5.020 Flood Hazard District</li>
+<li>5.030 Classification Change</li>
+<li>5.040 Land Development Map</li>
+<li>5.050 Permitted Uses</li>
+<li>5.060 Permitted Uses - FHD</li>
+<li>5.070 Future Development</li>
+<li>5.080 General Building Setbacks in All Zones and Districts</li>
+<li>5.090 Building Height Limit</li>
+<li>5.100 Tree Cutting</li>
+<li>5.110 Houses Moved Into City</li>
+<li>5.120 Home Occupations in All Districts and Zones</li>
+</ul>
+<p><strong>ARTICLE 6 - Permit and Issue Determinations</strong></p>
+<ul>
+<li>6.010 Area Accessory Development</li>
+<li>6.020 Application</li>
+<li>6.030 Action On Application</li>
+<li>6.040 Notice</li>
+<li>6.050 Criteria</li>
+<li>6.060 Hardship Relief - Procedure</li>
+<li>6.070 Authority To Grant Hardship Relief</li>
+<li>6.080 Land Division</li>
+<li>6.090 Type I Division</li>
+<li>6.100 Type II Division</li>
+<li>6.110 Type III Division</li>
+<li>6.120 Pre-Application Conference</li>
+<li>6.130 Future Street and Public Facilities Plan</li>
+<li>6.140 Recording and Filing</li>
+<li>6.150 Revision</li>
+<li>6.160 Criteria</li>
+<li>6.170 Tentative Plan</li>
+<li>6.180 Staged Development</li>
+<li>6.190 Final Plat</li>
+<li>6.200 Approval Signatures - Final Subdivision Plat</li>
+<li>6.210 Approval Signatures - Final Partition Plat</li>
+<li>6.221 Change of Land Use Classification</li>
+<li>6.222 Criteria</li>
+<li>6.223 Vacation Criteria</li>
+<li>6.224 Conditions</li>
+<li>6.225 Legislation</li>
+<li>6.226 Procedure</li>
+<li>6.227 Notice</li>
+<li>6.228 Public Participation</li>
+<li>6.229 Recommendation</li>
+<li>6.230 Legislative Action - City Council</li>
+<li>6.231 Site Design Review</li>
+<li>6.232 Procedure</li>
+<li>6.233 Identification of Environmentally Sensitive Areas</li>
+<li>6.234 Requests for Development/Site Design Review</li>
+<li>6.235 Annexation Criteria</li>
+<li>6.236 Designation of Annexed Property</li>
+</ul>
+<p><strong>ARTICLE 7 - Reserved for Planned Unit Development</strong></p>
+<p><strong>ARTICLE 8 - Public Deliberations and Hearings</strong></p>
+<ul>
+<li>8.010 Responsibility of Commission</li>
+<li>8.020 Notice</li>
+<li>8.030 Procedure</li>
+<li>8.040 Published or Posted Notice</li>
+<li>8.050 Time and Cost of Notice</li>
+<li>8.060 Challenges to Impartiality</li>
+<li>8.070 Disqualifications</li>
+<li>8.080 Interested Officers</li>
+<li>8.090 Ex Parte Contacts</li>
+<li>8.100 Disqualifications</li>
+<li>8.110 Rights of Disqualified Members</li>
+<li>8.120 Burden of Proof</li>
+<li>8.130 Decision</li>
+<li>8.140 Findings and Order</li>
+<li>8.150 Record</li>
+<li>8.160 Request for Review</li>
+<li>8.170 Notice of Appeal</li>
+<li>8.180 Scope of Review</li>
+<li>8.190 Review on Record</li>
+<li>8.200 De Novo Review</li>
+<li>8.210 Review Decision</li>
+</ul>
+<p><strong>ARTICLE 9 - Bonds, Deposits and Penalties</strong></p>
+<ul>
+<li>9.010 Bonds or Cash Deposits</li>
+<li>9.020 Penalties and Abatement</li>
+<li>9.030 Fees and System Development Charges</li>
+</ul>
+<p><strong>ARTICLE 10 - Reserved</strong></p>
+<hr/>
+<h1 id="attachment-c-to-ordinance-no-54-89"><a class="header" href="#attachment-c-to-ordinance-no-54-89">Attachment C to Ordinance No. 54-89</a></h1>
+<h2 id="a-land-development-ordinance-and-a-development-standards-documents-ordinance-for-the-city-of-rivergrove-oregon"><a class="header" href="#a-land-development-ordinance-and-a-development-standards-documents-ordinance-for-the-city-of-rivergrove-oregon">A LAND DEVELOPMENT ORDINANCE AND A DEVELOPMENT STANDARDS DOCUMENTS ORDINANCE FOR THE CITY OF RIVERGROVE, OREGON.</a></h2>
+<p><strong>THE CITY OF RIVERGROVE, OREGON, ORDAINS AS FOLLOWS:</strong></p>
+<hr/>
+<h2 id="article-1---general-provisions"><a class="header" href="#article-1---general-provisions">ARTICLE 1 - GENERAL PROVISIONS</a></h2>
+<h3 id="section-1010-title"><a class="header" href="#section-1010-title">Section 1.010. Title.</a></h3>
+<p>This ordinance shall be known as the Rivergrove Development Ordinance of 1989 (hereinafter the “ordinance”) and is comprised of the ordinance and the Rivergrove Land Development Standards Document.</p>
+<h3 id="section-1020-repeal"><a class="header" href="#section-1020-repeal">Section 1.020. Repeal.</a></h3>
+<p>Ordinance Nos. 11, 12, 14, 26, 27, 34 and 36 and all other ordinances and parts of ordinances in conflict herewith are hereby repealed.</p>
+<h3 id="section-1030-severability-and-validity"><a class="header" href="#section-1030-severability-and-validity">Section 1.030. Severability and Validity.</a></h3>
+<p>The provisions of this ordinance are severable. If any section, sentence, clause or phrase of this ordinance is adjudged by a court of competent jurisdiction to be invalid, that decision shall not affect the validity of the remaining portions of this ordinance.</p>
+<h3 id="section-1040-interpretation"><a class="header" href="#section-1040-interpretation">Section 1.040. Interpretation.</a></h3>
+<p>Where the conditions imposed by a provision of this ordinance are less restrictive than comparable conditions imposed by any other provisions of this or any other ordinance, the more restrictive provision shall govern.</p>
+<h3 id="section-1050-definitions"><a class="header" href="#section-1050-definitions">Section 1.050. Definitions.</a></h3>
+<p>As used in this ordinance the masculine includes the feminine and the neuter and the singular includes the plural. The following words and phrases, unless the context otherwise requires, shall mean:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> “Building line” means a line on a plat or map indicating the limit beyond which buildings, structures or development may not be erected or undertaken.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> “City” means the city of Rivergrove, Oregon.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> “City Council” means the governing body of the city of Rivergrove, Oregon.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> “Comprehensive Plan” means the official plan adopted by the City for the guidance of growth and development including those amendments which may be made to it.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> “Development” means any man-made change to improved or unimproved real estate, including but not limited to construction, installation or alteration of a building or other structure, land division, establishment or termination of a right to access, storage on the land, tree cutting, drilling and site alteration such as that due to land or surface mining, dredging, paving grading, excavation, clearing, or the alteration of the banks or bed of any waterway in the City.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> “Dividing Land” means the process of separating a parcel of land or a lot in a subdivision into a number of lots by subdivision or parcels by partitioning. Dividing occurs when an improved plat or plan has been filed, or, if approval is not required, when less than the entire contiguous land holdings in a single ownership on the effective date of this ordinance is transferred to a new owner.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> “Impact Area” means an area that has been identified in the plan or map as needing land or water management to protect against adverse impact such as erosion, slippage, loss of unique wildlife or plant habitat or another feature identified as needing special consideration and protection where such management is to be implemented through a site investigation program.</span></div>
+<div class="definition-item"><span class="definition-marker">(h)</span><span class="definition-content"> “Land Division” means a lot or parcel of land created through the process of dividing land.</span></div>
+<div class="definition-item"><span class="definition-marker">(i)</span><span class="definition-content"> “Lot” means a unit of land created by a subdivision of land or other means.</span></div>
+<ul>
+<li>(1) “Corner Lot” means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.</li>
+<li>(2) “Reversed Corner Lot” means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.</li>
+<li>(3) “Through Lot” means a lot having frontage on two parallel or approximately parallel streets other than alleys.</li>
+</ul>
+<div class="definition-item"><span class="definition-marker">(j)</span><span class="definition-content"> “Major Partition” means the dividing of land into two or three parcels within one calendar year and including the creation of a road or street, either public or private and including easements.</span></div>
+<div class="definition-item"><span class="definition-marker">(k)</span><span class="definition-content"> “Map” means a final diagram, drawing or other writing concerning a land division.</span></div>
+<div class="definition-item"><span class="definition-marker">(l)</span><span class="definition-content"> “Minor Partition” means the dividing of land into two or three parcels within one calendar year that does not include the creation of a road or street or easement.</span></div>
+<div class="definition-item"><span class="definition-marker">(m)</span><span class="definition-content"> “Nonconforming Use or Development” means a use or development lawfully existing at the time this ordinance became applicable to it by being in compliance with the standards applicable to it at the time it came into existence, but that would not be lawful except for its pre-existence.</span></div>
+<div class="definition-item"><span class="definition-marker">(n)</span><span class="definition-content"> “Owner” means the legal owner of record, or where there is a recorded land sales contract, the purchaser thereunder.</span></div>
+<div class="definition-item"><span class="definition-marker">(o)</span><span class="definition-content"> “Pedestrian Way” means a right-of-way for pedestrian traffic.</span></div>
+<div class="definition-item"><span class="definition-marker">(p)</span><span class="definition-content"> “Person” means an individual, including any trustee, receiver, assignee, or any group or combination acting as a unit, a including any political subdivision.</span></div>
+<div class="definition-item"><span class="definition-marker">(q)</span><span class="definition-content"> “Planning Commission” or “Commission” means the Planning Commission of the city of Rivergrove, Oregon, and also serves as the City Design Review Body.</span></div>
+<div class="definition-item"><span class="definition-marker">(r)</span><span class="definition-content"> “Plat” means the final map, diagram, drawing, replat, or other writing containing all the descriptions, locations, specifications, dedications, provisions, and other information concerning a land division.</span></div>
+<div class="definition-item"><span class="definition-marker">(s)</span><span class="definition-content"> “Resident” mens a person or persons living as a resident for some continuous period (as distinguished as a transient).</span></div>
+<div class="definition-item"><span class="definition-marker">(t)</span><span class="definition-content"> “Right-of-way” means the area between boundary lines of a street or other easement.</span></div>
+<div class="definition-item"><span class="definition-marker">(u)</span><span class="definition-content"> “Roadway” means the portion of a street right-of-way developed for vehicular traffic.</span></div>
+<div class="definition-item"><span class="definition-marker">(v)</span><span class="definition-content"> “Sidewalk” means a pedestrian walkway with permanent surfacing to City standards.</span></div>
+<div class="definition-item"><span class="definition-marker">(w)</span><span class="definition-content"> “Street” means a public or private way that is created to provide ingress or egress for persons to one or more lots, parcels, areas, or tracts of land, and the placement of utilities and including the terms “road,” “highway,” “lane,” “avenue,” “way,” “place,” “court,” “boulevard,” “circle,” “drive,” “alley,” or other similar designation.</span></div>
+<ul>
+<li>(1) “Alley” means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.</li>
+<li>(2) “Arterial” means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.</li>
+<li>(3) “Collector” means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.</li>
+<li>(4) “Cul-de-sac” means a short street having one end open to traffic and terminated by a vehicle turnaround; also called a dead end street.</li>
+</ul>
+<div class="definition-item"><span class="definition-marker">(x)</span><span class="definition-content"> “Subdivide Land” means to divide an area or tract of land into four or more lots within a calendar year when such area or tract of land exists as a unit or contiguous units of land under a single ownership at the beginning of such year.</span></div>
+<div class="definition-item"><span class="definition-marker">(y)</span><span class="definition-content"> “Subdivision” means either an act of subdividing land or an area or a tract of land subdivided as defined in this ordinance.</span></div>
+<hr/>
+<h2 id="article-2---scope-and-compliance"><a class="header" href="#article-2---scope-and-compliance">ARTICLE 2 - SCOPE AND COMPLIANCE</a></h2>
+<h3 id="section-2010-scope-and-compliance"><a class="header" href="#section-2010-scope-and-compliance">Section 2.010. Scope and Compliance.</a></h3>
+<p>A parcel of land may be used, developed by land division or otherwise, and a structure may be used or developed by construction, reconstruction, alteration, occupancy, or otherwise only as this ordinance permits. The requirements of this ordinance shall apply to the person initiating any development, the user of any development, and to all successors in interest.</p>
+<h3 id="section-2020-consistency-with-plan-and-laws"><a class="header" href="#section-2020-consistency-with-plan-and-laws">Section 2.020. Consistency with Plan and Laws.</a></h3>
+<p>Development under this ordinance shall be consistent with the adopted comprehensive plan of the city of Rivergrove (hereinafter the “plan”) and with applicable state and federal laws and regulations.</p>
+<h3 id="section-2030-development-permit-required"><a class="header" href="#section-2030-development-permit-required">Section 2.030. Development Permit Required.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Except as provided by Section 2.040, no person shall engage in or cause to take place any development for which a development permit has not been issued. The City Council shall not issue a permit for the construction, reconstruction, or alteration of a structure or a part of a structure for which a development permit has not been issued.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A development permit shall be issued by the City Council according to the provisions of this ordinance. The City Council shall not issue a development permit for the improvement or use of land that has been previously divided or otherwise developed in violation of the plan or this ordinance, unless such violation can be cured as part of the development for which the permit is sought.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Unless appealed, a decision on a development permit shall be final upon expiration of the period provided for filing an appeal or, if appealed, upon final decision by the reviewing body.</span></div>
+<h3 id="section-2040-exclusions-from-development-permit-requirement"><a class="header" href="#section-2040-exclusions-from-development-permit-requirement">Section 2.040. Exclusions From Development Permit Requirement.</a></h3>
+<p>An activity or development listed below is excluded from the requirement for a development permit:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Landscaping or other treatment or use of the land surface not involving a structure.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A change internal to a building or other structure that does not substantially affect the use or appearance of the structure.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> An emergency measure for the safety or protection of property.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Erection of a tent or similar portable temporary structure provided that the structure is in place for no more than 3 months per calendar year.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Farming, truck gardening, orchards and nurseries provided that no wholesale business office is maintained on the premises, and provided that no poultry or livestock, other than household pets, shall be housed within 100 feet of any residence other than the dwelling on the same lot.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> An alteration that does not substantially affect the use or appearance of land or a structure.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> The establishment, construction, or termination of a public facility that directly serves development authorized for an area including facilities such as public or private streets, sewer and water lines, or telephone or television cable systems. However, as an alternative to complying with this ordinance the developing public body shall supply to the city, engineered drawings of the public facility.</span></div>
+<div class="definition-item"><span class="definition-marker">(h)</span><span class="definition-content"> Installation or construction of an accessory structure that does not require a building permit (i.e. 108 square feet in size).</span></div>
+<h3 id="section-2050-use-of-a-development"><a class="header" href="#section-2050-use-of-a-development">Section 2.050. Use of a Development.</a></h3>
+<p>A development may be used only for a lawful use. A lawful use is one that is not prohibited by law and for which the development is designed, arranged or intended or which is nonconforming.</p>
+<h3 id="section-2060-continuation-of-a-nonconforming-development"><a class="header" href="#section-2060-continuation-of-a-nonconforming-development">Section 2.060. Continuation of a Nonconforming Development.</a></h3>
+<p>Except as provided in Section 2.080, a nonconforming development or use may continue but shall be changed only as authorized by this section.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A development that is nonconforming only because of a failure to comply with the Comprehensive Plan or this ordinance may be altered or extended only if the Planning Commission and the City Council find the alteration or extension will decrease the extent of noncompliance and the development is not a land division that is nonconforming because of a public facility deficiency. A land division that is nonconforming because of a public facility deficiency may not be further altered or extended before the public facility deficiency is cured.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> With the approval of the City Council, under the procedure set out in Section 6.060 and Section 6.070, a nonconforming development or use may be changed provided, however, that the maximum special relief shall be as follows:</span></div>
+<ul>
+<li>
+<p>(1) the floor area of a building shall not be increased by more than twenty (20) percent;</p>
+</li>
+<li>
+<p>(2) the land area covered by structures shall not be increased by more than twenty (20) percent; or</p>
+</li>
+<li>
+<p>(3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.</p>
+</li>
+</ul>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The entire contiguous ownership of land shall be considered as a single parcel for determination of noncompliance as a consideration for approval of any further development. A record of separate lot or parcel boundaries shall be disregarded.</span></div>
+<h3 id="section-2070-completion-of-a-nonconforming-development"><a class="header" href="#section-2070-completion-of-a-nonconforming-development">Section 2.070. Completion of a Nonconforming Development.</a></h3>
+<p>A development that is lawfully under construction on the effective date of this ordinance may be completed even though not in compliance with the requirements of this ordinance and may be used for the purpose for which it was designed, arranged or intended. Such development and its use are nonconforming.</p>
+<h3 id="section-2080-termination-of-a-nonconforming-development"><a class="header" href="#section-2080-termination-of-a-nonconforming-development">Section 2.080. Termination of a Nonconforming Development.</a></h3>
+<p>A nonconforming development or use shall automatically terminate when any of the following conditions are met:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> the use has been discontinued for a period of 12 months.</span></div>
+<h3 id="section-2090-timeline-for-development-permit-reviewdecision"><a class="header" href="#section-2090-timeline-for-development-permit-reviewdecision">Section 2.090. Timeline for Development Permit Review/Decision.</a></h3>
+<p>Development permit review and decision shall be accomplished within 120 days of application – unless an extension is agreed to in writing by both the City and the applicant.</p>
+<hr/>
+<h2 id="article-3---planning-commission-and-hearings-officer"><a class="header" href="#article-3---planning-commission-and-hearings-officer">ARTICLE 3 - PLANNING COMMISSION AND HEARINGS OFFICER</a></h2>
+<h3 id="section-3010"><a class="header" href="#section-3010">Section 3.010.</a></h3>
+<p>There is hereby established a city Planning Commission for the city of Rivergrove, Oregon (hereinafter the “Commission”).</p>
+<h3 id="section-3020-membership"><a class="header" href="#section-3020-membership">Section 3.020. Membership.</a></h3>
+<p>The Commission shall consist of seven members who are not officials or employees of the City. The Mayor and President of the Council shall be entitled to sit with the Commission and take part in its deliberations, but shall not have any voting privileges.</p>
+<h3 id="section-3030-term-of-office"><a class="header" href="#section-3030-term-of-office">Section 3.030. Term of Office.</a></h3>
+<p>Members of the Commission shall serve for a term of three (3) years.</p>
+<h3 id="section-3040-vacancies-and-removal"><a class="header" href="#section-3040-vacancies-and-removal">Section 3.040. Vacancies and Removal.</a></h3>
+<p>Appointments to fill vacancies shall be for the remainder of any expired term. A member may be removed by the City Council, after hearing, for misconduct or nonperformance of duty. A member who is absent from three (3) consecutive meetings, without good cause shown, shall be rebuttably presumed to be in nonperformance of duty and the City Council shall declare the position to be vacant unless it finds otherwise after a public hearing.</p>
+<h3 id="section-3050-presiding-officers"><a class="header" href="#section-3050-presiding-officers">Section 3.050. Presiding Officers.</a></h3>
+<p>At its first meeting of each calendar year, the Commission shall elect a chairperson and vice-chairperson to serve for that year.</p>
+<h3 id="section-3060-meetings"><a class="header" href="#section-3060-meetings">Section 3.060. Meetings.</a></h3>
+<p>The Commission shall meet at least once a month and shall be open to the public. Meetings other than at regularly scheduled times may be announced at a prior meeting which announcement shall be entered in the minutes. The chairperson upon his/her own motion, or upon the request of two or more of the Commission members, may call a special meeting previously unannounced and notice shall be given to other Commission members no later than 24 hours after such notice. Such notice shall be posted at the City Hall and, to the extent possible under the circumstances, shall be given to the public and other interested persons.</p>
+<h3 id="section-3070-powers-and-duties"><a class="header" href="#section-3070-powers-and-duties">Section 3.070. Powers and Duties.</a></h3>
+<p>The Commission shall have the powers and duties which are now or may hereafter be assigned to it by the Charter, ordinances, resolutions of the City and provisions of this ordinance and general laws of this State.</p>
+<h3 id="section-3080-hearings-officer"><a class="header" href="#section-3080-hearings-officer">Section 3.080. Hearings Officer.</a></h3>
+<p>The Planning Commission may refer such land use matters as it deems necessary to one or more Hearings Officers. The scope of authority of such officials shall be as provided in this ordinance and as otherwise provided by law. The findings of fact and recommendations of the Hearings Officers shall be acted upon by the Commission and City Council as provided in this ordinance. Appeals from the action of the Planning Commission on a Hearings Officer’s report and recommendation shall be as provided in this ordinance. The cost of all Hearings Officer expenses shall be borne by the applicant.</p>
+<h3 id="section-3090-interpretation-of-the-land-development-code"><a class="header" href="#section-3090-interpretation-of-the-land-development-code">Section 3.090. Interpretation of the Land Development Code.</a></h3>
+<p>It is the duty of the Planning Commission to interpret this Ordinance when necessary. These interpretations shall be made in writing and shall be available with copies of this Ordinance. A Planning Commission Interpretation of this Ordinance may be appealed to the City Council following the appeals procedure set forth in this Ordinance.</p>
+<hr/>
+<h2 id="article-4---procedures-for-decision-making"><a class="header" href="#article-4---procedures-for-decision-making">ARTICLE 4 - PROCEDURES FOR DECISION-MAKING</a></h2>
+<h3 id="section-4010-procedures-for-processing-development-permits"><a class="header" href="#section-4010-procedures-for-processing-development-permits">Section 4.010. Procedures for Processing Development Permits.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> An application for a development permit shall be processed under a Type I, II or III procedure as these procedures are described below. The difference between the procedures are generally associated with the different nature of the decisions as described in TABLE 4.010 below.</span></div>
+<p><strong>TABLE 4.010 - APPLICATION PROCESSING PROCEDURES</strong></p>
+<div class="table-wrapper"><table class="formatted-table"><thead><tr><th>Type I Procedure (Objective Decisions)</th><th>Type II Procedure (Objective Decisions)</th><th>Type III Procedure (Complex or Subjective Decisions)</th></tr></thead><tbody>
+<tr><td>Little discretion required.</td><td>Little discretion required.</td><td>Discretion or Judgement Required.</td></tr>
+<tr><td>Minimal or no effect on others; issuance of permit is not dependent on involving others.</td><td>Application of the standards may require knowing effect on others.</td><td>Possible significant effect on some or broad effect on a number of persons.</td></tr>
+<tr><td>Participation of applicant only.</td><td>Affected persons invited to respond to tentative decision.</td><td>In addition to applicant, others affected invited to present initial information.</td></tr>
+</tbody></table>
+</div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> At its next regular meeting after an application and proposed development is submitted, the Commission shall determine the type procedure the ordinance specifies for processing and shall identify the affected agencies to which the application shall be referred. In the event of doubt about which type procedure the application should be processed, it shall be processed under the higher number type. An application shall be processed under the highest numbered type procedure required for any part of the development proposal.</span></div>
+<h3 id="section-4020-coordination-of-development-procedure"><a class="header" href="#section-4020-coordination-of-development-procedure">Section 4.020. Coordination of Development Procedure.</a></h3>
+<p>The Commission shall be responsible for coordinating the development permit application and decision-making procedure and shall issue a development permit to an applicant whose application and proposed development complies with the plan and this ordinance after being provided with the detail required to establish full compliance with the requirements of this ordinance.</p>
+<h3 id="section-4030-pre-application-conference"><a class="header" href="#section-4030-pre-application-conference">Section 4.030. Pre-Application Conference.</a></h3>
+<p>An applicant or his authorized representative may request the Commission to conduct a pre-application conference. Upon such request, the conference shall be held at the next regular meeting of the Commission. The purpose of the conference shall be to acquaint the applicant with the substantive and procedural requirements of this ordinance, provide for an exchange of information regarding applicable elements of the plan and development requirements, arrange any technical and design assistance that will aid the applicant, and to otherwise identify policies and regulations that create opportunities or pose significant problems for the proposed development, and to simplify and expedite the development process. If requested by the applicant at the time of the conference, the Commission shall provide the applicant with a brief written summary of the conference within five days of the conference. The summary shall include confirmation of the procedures to be used to process the application, a list of materials to be submitted, and the criteria and standards which may apply to the approval of the application.</p>
+<h3 id="section-4040-development-permit-application"><a class="header" href="#section-4040-development-permit-application">Section 4.040. Development Permit Application.</a></h3>
+<p>An application for a development permit shall consist of the materials below, and any that are otherwise required by this or other City ordinances.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A completed development permit application form, plus a copy of all plans to be submitted for the building permit.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A brief statement of intent, explaining the nature of the proposed development, reasons for the request, background information, and any other information that may be reasonably expected to aid the Commission in processing the application.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Legal description of the affected property.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Proof of exclusive ownership of the affected property, or proof that the applicant has the consent of all co-owners of the affected property.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Proof of sewer connection and/or septic system approval, where construction of a new residence is proposed.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Site Plan, certified survey, and building plans.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> Other information as may be requested by the Planning Commission.</span></div>
+<div class="definition-item"><span class="definition-marker">(h)</span><span class="definition-content"> Fee as required for the permit (see City of Rivergrove fee schedule).</span></div>
+<h3 id="section-4050-submission-of-permit-application"><a class="header" href="#section-4050-submission-of-permit-application">Section 4.050. Submission of Permit Application.</a></h3>
+<p>Application materials shall be submitted to the City Recorder who shall mark the date of submission on each copy of the materials submitted. At the next regular meeting of the Commission, the Commission shall determine whether the application is complete. If the Commission determines that the application is incomplete or does not comply with this ordinance, the Commission shall immediately notify the applicant of the negative determination by mailing an explanation to the applicant. An application on which a negative determination has been made may be resubmitted under Section 4.080 after revision and correction. If a development permit application is complete and complies with this ordinance, the Commission shall accept it and note the date of acceptance and the approvals needed for granting the permit on all copies.</p>
+<h3 id="section-4060-referral-and-review-of-permit-applications"><a class="header" href="#section-4060-referral-and-review-of-permit-applications">Section 4.060. Referral and Review of Permit Applications.</a></h3>
+<p>Upon acceptance of an application, the Commission shall do the following at the next regular meeting.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Transmit one copy of the application, or appropriate parts of it, to each referral agency for review and comment, including those responsible for determination of compliance with state and federal requirements. If the referral agency does not return its comment with ten (10) days, unless an extension of no more than ten (10) days has been granted by the Commission, the referral agency shall be presumed to have no comment. The Commission shall grant a request for an extension only under unusual circumstances or where a Type III procedure is involved.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Transmit an application involving approval by others for disposition as otherwise required by this ordinance. The Commission shall, to the greatest extent possible, consolidate action on approvals.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> If a Type III procedure is required, provide for notice and hearing as required by Article 8.</span></div>
+<h3 id="section-4070-development-permit-decision"><a class="header" href="#section-4070-development-permit-decision">Section 4.070. Development Permit Decision.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Within 15 days of acceptance of a permit application not involving approval by others or at the next regular meeting of the Commission after receipt of required approval by others the Commission shall grant or deny the development permit. The Commission’s decision shall be based on the application, evidence, comments from referral agencies, and approvals from others. The Commission shall notify the applicant and, where required by this ordinance, others entitled to notice the disposition of the application. Such notice shall state the effective date of the decision and shall describe applicant’s right to appeal the decision pursuant to Section 8.160.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The Commission shall issue the permit if it finds that necessary approvals by others have been granted and the proposed development otherwise meets the requirements of this ordinance.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The Commission shall deny the application if it does not meet the requirements of this ordinance. Notice of denial of the application shall state the reasons therefore and shall indicate the information listed in paragraph (a) which was relied on for the decision.</span></div>
+<h3 id="section-4080-action-on-resubmission-of-denied-application"><a class="header" href="#section-4080-action-on-resubmission-of-denied-application">Section 4.080. Action On Resubmission of Denied Application.</a></h3>
+<p>Upon a final determination denying an application, an applicant may take appropriate measures to cure the defect and resubmit the proposal with payment of any additional fees required. If a previously denied application is submitted within one year, previous approvals need not be reconsidered unless the Commission finds that changed conditions or changes in the proposal warrant reconsideration of the entire proposal.</p>
+<h3 id="section-4090-type-i-procedure"><a class="header" href="#section-4090-type-i-procedure">Section 4.090. Type I Procedure.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Under a Type I procedure, an application shall be processed without a public hearing or notification of other interested parties. As provided by other provisions of this ordinance, the nature of the development proposed may require the Commission sitting as a review Committee to determine compliance with standards. In that event, the action of the Commission to issue or deny the permit pursuant to Sections 4.010 to 4.080 shall include implementation of the determination of the Committee.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A decision of the Commission under a Type I procedure may be appealed by an affected party or referred by the Commission according to Sections 8.160 to 8.210, except review of a Type I decision shall be a review of the record supplemented by oral testimony.</span></div>
+<h3 id="section-4100-type-ii-procedure"><a class="header" href="#section-4100-type-ii-procedure">Section 4.100. Type II Procedure.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Except as provided in paragraph (b) of this Section, an application under a Type II procedure shall be processed without a public hearing. If the Commission finds, considering any determination of the Review Committee, that the proposal meets the applicable standards, the Commission shall mail notice of the proposal as required by Sections 8.030 and 8.050. The applicant shall provide a list of abutting landowners or other affected persons. The notice shall briefly summarize the standards and facts that the decision was based on and shall be sent to abutting landowners and affected persons and shall invite persons to submit information relevant to standards applicable to the proposal within 10 days, stating specific reasons why the application should be approved or denied and any modifications that would bring the proposal into compliance. Notice shall advise of rights to appeal the decision pursuant to Sections 8.150 to 8.210.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> If the Commission finds that persons other than the applicant may be expected to question the applicant’s compliance with this ordinance of the plan, the Commission shall initiate a public hearing. The Commission shall set a date for the hearing and mail notices as required by Sections 8.030 to 8.050. At the hearing the applicant and other affected or interested persons may present testimony and submit evidence regarding the proposal, including specific reasons why the application should be approved or denied and may suggest any modifications that would bring the proposal into compliance.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The Commission shall review any information and evidence received under paragraph (a) or (b), make findings, and make a decision on the application by approving, approving conditionally or denying the application. A decision may be appealed by the applicant or other affected persons or interested person who appeared at the hearing or referred by the Commission. Appeals procedure shall follow Sections 8.150 to 8.210, except that review of a Type II decision is a review of the record supplemented by oral testimony relevant to the record.</span></div>
+<h3 id="section-4110-type-iii-procedure"><a class="header" href="#section-4110-type-iii-procedure">Section 4.110. Type III Procedure.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Under a Type III procedure an application shall be set for public hearing pursuant to Article 8 before the Commission or its hearings officer. The form of notice and persons to receive it shall be as required by Sections 8.030 to 8.050 or this ordinance. The applicant shall provide the City with a list of abutting or affected property owners. At the hearing, the City staff, applicant and any interested person may present information and testimony on the criteria and standards relevant to the proposal, giving specific reasons why the application should be approved or denied and may suggest any modifications that would bring the proposal into compliance. If the application is approved, the Commission shall issue a development permit upon compliance with all other requirements of this ordinance.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A decision of the Commission may be appealed according to Sections 8.150 to 8.210.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The decision of the Planning Commission, with regards to a matter requiring a Type III hearing shall be based upon the Policies set forth in the Comprehensive Plan, the standards established on the Land Development Ordinance, and the factual evidence presented at the Public Hearing. The Commission shall make findings which explain the basis for the approval or denial of each particular proposal.</span></div>
+<h3 id="section-4120-type-iv-procedure"><a class="header" href="#section-4120-type-iv-procedure">Section 4.120. Type IV Procedure.</a></h3>
+<p>This type of procedure is intended for use in reaching decisions on ordinance amendments, street vacations, and other similar issues that are characterized by the establishment or revision of City land use policy and it is not intended for use in processing development permit applications.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The Commission shall schedule a public hearing pursuant to Article 8 before the Commission. Form of notice and the persons entitled to it shall be as set out in Sections 8.030 to 8.050. At the hearing, the City staff, and all interested persons may present evidence and testimony relevant to the proposal, giving specific reasons why the proposal does or does not meet the plan or this ordinance and may suggest any modifications that would bring the proposal into compliance. Where criteria are involved, the Commission shall make a finding for each that applies. A written report and recommendation shall be submitted to the City Council.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> If the Commission has recommended against a proposal or fails to act on a proposal, the City Council may terminate further consideration of the proposal. Upon a favorable recommendation by the Commission and for proposals that have not been terminated, the City Council shall conduct a public hearing pursuant to Article 8. The Council shall set a date for the hearing and provide for notice in the form and to the persons that are required in Sections 8.030 to 8.050. At the hearing the City Council shall review the report of the Commission and all interested persons shall be given the opportunity to present new information and evidence relevant to the proposal and to present testimony why the proposal should be approved or denied.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The City Council shall make a finding for each of the criteria applicable and may reverse, modify or sustain the findings of the report of the Commission.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> To the extent that a policy is to be established or revised, the City Council shall make its decision only according to procedures set forth above. The decision shall be enacted by ordinance.</span></div>
+<hr/>
+<h2 id="article-5---district-and-zones"><a class="header" href="#article-5---district-and-zones">ARTICLE 5 - DISTRICT AND ZONES</a></h2>
+<h3 id="section-5010-land-use"><a class="header" href="#section-5010-land-use">Section 5.010. Land Use.</a></h3>
+<p>All land within the city of Rivergrove shall be classified as residential (R).</p>
+<h3 id="section-5020-flood-hazard-district"><a class="header" href="#section-5020-flood-hazard-district">Section 5.020. Flood Hazard District.</a></h3>
+<p>All land development within the 100-year flood boundary as defined in the “Flood Insurance Study: City of Rivergrove, Oregon, August 4, 1987” [FEMA] shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. A map based on these studies shows the boundaries of this district and is entitled the “Floodway Flood Boundary and Floodway Map” and shall be available to public inspection at City Hall during regular business hours. All development within the 100-year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove (<a href="../ordinances/1987-Ord-52-Flood.html">Ord. #52</a>).</p>
+<h3 id="section-5030-change-in-classification"><a class="header" href="#section-5030-change-in-classification">Section 5.030. Change in Classification.</a></h3>
+<p>The land use classifications of this ordinance may be changed according to the provisions of Section 6.221 or by legislative action. A change in classification shall take effect 20 days after the date of approval, unless appealed.</p>
+<h3 id="section-5050-permitted-uses"><a class="header" href="#section-5050-permitted-uses">Section 5.050. Permitted Uses.</a></h3>
+<p>The following developments and their accessory developments are permitted:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Dwellings, other than mobile homes, including residential homes as defined in ORS 443.590.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Area accessory development, subject to Sections 6.010 to 6.050.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Accessory buildings such as garages, carports, studios, pergolas, private workshops, play-houses, private greenhouses or other similar structures related to the dwelling in design, whether attached or not.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Cultivation of land and growing crops, subject to Section 2.040(5).</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Special uses, such as government uses, parks playgrounds or community centers, churches, schools, golf courses and use of similar nature as approved by the Commission.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Temporary structures provided they relate directly to the building or sale of land or houses, and provided that a temporary permit from the Commission shall first be obtained for such structure. The permit shall expire automatically one year from the date of approval and may be extended no more than once.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> Signs for the sale or rental of houses or land or for use by roadside vendors of fruit or produce, and signs stating the name of the owner or occupant of property. No sign shall be artificially illuminated, permanent or exceed 4 square feet in area on one side.</span></div>
+<h3 id="section-5060-permitted-uses-in-flood-hazard-district"><a class="header" href="#section-5060-permitted-uses-in-flood-hazard-district">Section 5.060. Permitted Uses in Flood Hazard District.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Open spaces.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Any use permitted otherwise, provided it is elevated above the regulation flood protection elevation and complies with the requirements of the City of Rivergrove Flood Damage Prevention Ordinance.</span></div>
+<h3 id="section-5070-future-development"><a class="header" href="#section-5070-future-development">Section 5.070. Future Development.</a></h3>
+<p>New development shall be approved only where necessary and adequate services are available or provisions have been made to provide those services and facilities. There shall be no new development within 25 feet of the ordinary high watermark of the Tualatin River. There shall be no new development within 25 feet of a wetland area identified by the U.S. Army Corps of Engineers.</p>
+<h3 id="section-5080-general-building-setbacks-in-all-zones-and-districts"><a class="header" href="#section-5080-general-building-setbacks-in-all-zones-and-districts">Section 5.080 General Building Setbacks in All Zones and Districts.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> All new detached residential structures built with any zone or district in the City of Rivergrove shall maintain the following setbacks from the property lines of the lot on which they are constructed or erected.</span></div>
+<p>Front Setback - 25 feet<br/>
+Side Setback - 10 feet<br/>
+Side Setback on a Corner Lot - 15 feet (to insure better visibility).<br/>
+Rear Setback - 25 feet (from the rear lot line or the ordinary high water mark- whichever is greater).</p>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> All new attached residential shall maintain the same set backs as detached residential around the perimeter of the structure.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> All new detached accessory buildings (permanently placed on a site) shall maintain the following setbacks from the property line of the lot on which they are constructed or erected.</span></div>
+<p>Front Setback - 30 feet<br/>
+Side Setback - 3 feet<br/>
+Side Setback (corner lot) - 10 feet.<br/>
+Rear Setback - 3 feet.</p>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Site specific variances from these setbacks may be granted to allow the location of building that use solar energy as a heating source. As requested for variance for solar access purposes shall be submitted with a detail site plan showing the location of all structures to be constructed, and other appropriate information as deemed necessary - such as solar easements obtained over adjoining properties.</span></div>
+<h3 id="section-5090-building-height-limit"><a class="header" href="#section-5090-building-height-limit">Section 5.090. Building Height Limit.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> No new residential structure may exceed 35 feet in height (not including the height of antennas, solar collectors, or wind generators).</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> No new accessory structures may exceed 20 feet in height.</span></div>
+<h3 id="section-5100-tree-cutting"><a class="header" href="#section-5100-tree-cutting">Section 5.100. Tree Cutting.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> DEFINITIONS:</span></div>
+<ol>
+<li>
+<p>“Tree”: Any living, standing woody plant having a trunk 36“ in circumference measured three (3) feet from the ground</p>
+</li>
+<li>
+<p>“Cutting”: Falling or removal or any procedure that has the natural result of causing the death or substantial destruction of a tree; cutting - does not include trimming pruning or topping.</p>
+</li>
+</ol>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> APPLICATION FOR PERMIT</span></div>
+<p>A person desiring to cut more than three trees in any one calendar year shall file an application with the City Council or Planning Commission at one of their regularly scheduled meetings (exception - see Emergencies).</p>
+<p>The application shall contain the number, size, species, and location of the trees to be cut, the time and method of cutting or removal. In addition, the applicant shall furnish other information as may reasonably be required by the City.</p>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> EMERGENCIES</span></div>
+<p>In emergency conditions that require the immediate cutting or removal of trees to avoid danger or hazard to persons or property, an emergency permit may be issued by Mayor, President of the City Council or Chairman of the Planning Commission, without formal application. If they are unavailable, it shall be lawful to cut trees without a permit to the extent necessary to avoid an immediate danger or hazard. If a tree is cut under the provisions of this section, without an application having been filed, the person cutting the tree shall report the action taken to one of the aforementioned people within 48 hours and provide information and evidence as may be reasonably required to explain and justify the action.</p>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> CRITERIA FOR ISSUANCE OF PERMITS</span></div>
+<p>A permit may be issued as requested in the application; may be issued in part and denied in part, or may be issued subject to compliance by the applicant with reasonable conditions to be imposed in order to promote the purposes of this Ordinance. A permit shall state the period of time for which it is valid. A permit issued for the reason that an improvement is to be constructed upon the premises shall contain a provisions that the permit is not valid until a building permit has been issued for the construction of the improvement. The burden is on the applicant to show that granting of a permit would be consistent with the stated purposes of this Ordinance. The following criteria shall be considered:</p>
+<ol>
+<li>
+<p>The condition of the trees with respect to disease, danger of falling, proximity to existing or proposed structures, and interference with utility services or traffic safety.</p>
+</li>
+<li>
+<p>The necessity to remove trees in order to construct proposed improvements, or to otherwise utilize the applicant’s property in a reasonable manner.</p>
+</li>
+<li>
+<p>The topography of the land and the effect of tree removal on erosion, soil retention, stability of earth, flow of surface waters, protection of nearby trees, windbreaks, and a desirable balance between shade and open space.</p>
+</li>
+<li>
+<p>The number of trees existing in the neighborhood; the character and property uses in the neighborhood, and the effect of tree removal upon neighborhood characteristics, beauty and property values.</p>
+</li>
+</ol>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> APPEAL</span></div>
+<p>A decision made by the Planning Commission may be appealed to the City Council. A Notice of Appeal must be submitted in writing within 10 days after the denial, shall briefly state the facts and grounds of appeal and shall be signed by the applicant. Following receipt of the Notice of Appeal the matter shall be set for hearing no later than 30 days from the date of receipt. The applicant shall be notified of the hearing date.</p>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> PENALTIES</span></div>
+<p>Cutting a tree in violation of the Ordinance, breach of a term or conditions of a permit granted under this Ordinance, or violation of any other provision of this Ordinance is an offense punishable by fine not to exceed $1,500.00. The unlawful cutting of each individual tree is a separate offense.</p>
+<p>The City retains the authority to require the applicant to replace any illegally removed trees pursuant to a plan, and meet any conditions as set forth by the City Council. No future permits or approvals for any use of the subject property shall be granted without compliance with the plan.</p>
+<p>Nothing in the Tree Cutting section shall prevent any landowner or person responsible for trees on undeveloped land from cutting, pruning or removing trees which present a danger to persons or property because of damage, disease, or otherwise.</p>
+<h3 id="section-5110-houses-moved-into-city"><a class="header" href="#section-5110-houses-moved-into-city">Section 5.110. Houses Moved Into City.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> That any house moved onto a new foundation on a new lot in the City of Rivergrove must meet code requirements as if it were new construction; and</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> That in applying for a permit for a new dwelling unit, where an existing structure is to be moved, the applicant must provide photographs of all elevations of that structure and provide certification by appropriate professional engineers that the house to be moved meets all building code requirements as if it were new construction pursuant to the Uniform Building Code Section 104 (e); and</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The City must find that the structure will not be detrimental to the quality of the City’s neighborhoods and that the dwelling is comparable in all respects to other dwellings in the immediate area; and</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> The City may impose conditions on the building permit related both to the structural character of the house and its aesthetics, and that no permit for occupancy of the residence shall be issued by the City or its agents until those conditions have been met to the satisfaction of the Mayor of the City of Rivergrove;</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Violations of this ordinance shall result in revocation of the Building Permit and/or Occupancy Permit.</span></div>
+<h3 id="section-5120-home-occupations-in-all-zones-and-districts"><a class="header" href="#section-5120-home-occupations-in-all-zones-and-districts">Section 5.120. Home Occupations in All Zones and Districts</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> DEFINITION</span></div>
+<ol>
+<li>
+<p>“Home Occupation” is an occupation or business activity which results in a product or service and which: is conducted, in whole or in part, in either the dwelling or in an accessory building normally associated with permitted uses; is conducted by at least one family member occupying the residence; and is clearly subordinate to the residential use of the dwelling and premises.</p>
+</li>
+<li>
+<p>Home occupations do not include garage sales, yard sales, Christmas bazaars, or home parties which are held for the purpose of the sale or distribution of goods or services. However, if such sales and/or parties are held more than six times in any calendar year, or operate in excess of 24 cumulative days in a calendar year, such sales and/or parties shall be considered a home occupation.</p>
+</li>
+</ol>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> PURPOSE AND INTENT</span></div>
+<p>The conduct of business in residences may be permitted under the provisions of this section. It is the intent of this section to only allow such uses which:</p>
+<ol>
+<li>
+<p>Ensure the compatibility of home occupations with other uses permitted in the district.</p>
+</li>
+<li>
+<p>Maintain and preserve the character of the community and residential neighborhoods; and</p>
+</li>
+<li>
+<p>Promote the efficient use of public services and facilities by assuring these services are provided to the residential population for which they were planned and constructed, rather than to commercial uses.</p>
+</li>
+<li>
+<p>Provide peace, quiet, and domestic tranquility within all areas permitting residences within the County.</p>
+</li>
+<li>
+<p>Guarantee to all residents freedom from excessive noise, excessive traffic, nuisance, fire hazard, and other possible effects of commercial uses being conducted in areas permitting residences.</p>
+</li>
+</ol>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> MINOR HOME OCCUPATIONS</span></div>
+<p>In all zones permitting residences, minor home occupations in compliance with the following regulations are permitting as accessory uses. Due to their small scale and residential nature, minor home occupations are relatively common accessory uses which are not easily detectable and are not reasonable or desirable to regulate through a special use permit.</p>
+<ol>
+<li>
+<p>Scale: A minor home occupation shall be conducted within a dwelling and shall be clearly incidental to the use of the structure as a dwelling.</p>
+</li>
+<li>
+<p>Character: There shall be no change in the outside appearance of the dwelling or premises or any visible evidence of the conduct of a minor home occupation.</p>
+</li>
+<li>
+<p>Participants: No more than one (1) person other than residents of the dwelling shall be employed in the conduct of a minor home occupation.</p>
+</li>
+<li>
+<p>Storage and Accessory Space: There shall be no storage of equipment, vehicles, or supplies associated with the minor home occupation outside the dwelling.</p>
+</li>
+<li>
+<p>Display of Products: There shall be no display of products visible in any manner from the outside of the dwelling.</p>
+</li>
+<li>
+<p>Signs: No advertising or display signs shall be permitted.</p>
+</li>
+<li>
+<p>Parking: The use shall not require additional off-street parking spaces for clients or customers of the minor home occupation.</p>
+</li>
+<li>
+<p>Traffic: The use shall not generate more than five vehicle trips to and from the property in one day. No vehicle associated with a home occupation shall be stored, parked, or repaired on public rights-of-way.</p>
+</li>
+<li>
+<p>Noise, Equipment, and Process Restrictions:</p>
+</li>
+</ol>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> No equipment or process shall be used in a home occupation which creates noise, vibration, glare, fumes, or odor detectable to normal sense off the property.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> No equipment or process shall be used which creates visual or audible electrical interference in any radio or television receiver off the premises or causes fluctuations in line voltage off the premises.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Deliveries and Large Vehicles Storage: The home occupation shall not involve the use, parking, storage or repair of any vehicle exceeding a gross vehicle weight of 11,000 pounds, except deliveries by parcel post, United Parcel Service, or similar in-town delivery service trucks.</span></div>
+<ol start="10">
+<li>
+<p>Vehicle Repair: No more than two (2) vehicles for repair shall be located on the property at any time, and such vehicles shall be stored, parked, and repaired within an enclosed building.</p>
+</li>
+<li>
+<p>Lodging: Business offering transient lodging shall be allowed only with an approved permit from the City.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="article-6---permit-and-issue-determinations"><a class="header" href="#article-6---permit-and-issue-determinations">ARTICLE 6 - PERMIT AND ISSUE DETERMINATIONS</a></h2>
+<h3 id="section-6010-area-accessory-development"><a class="header" href="#section-6010-area-accessory-development">Section 6.010. Area Accessory Development.</a></h3>
+<p>Area accessory developments may be necessary in a particular area because of social or technical needs. The following are examples of appropriate area accessory developments:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Removal or deposit of earth or rock that changes the contour of the ground without being part of another development.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Utility structure, including a pole, line, pipe, substation or other facility required for the transmission of power or communication.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Sewerage or drainageway, including a pump station, manhole, or other collection or treatment facility for sewage or storm water.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Street, including a sidewalk, catch basin, street light, traffic control device or other facility associated with an access, collector or arterial street.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Water system, including a main, fire hydrant, treatment plant, storage reservoir, pump station or other facility associated with the supply or distribution of water.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Emergency service facilities or other public facilities needing location in the area to permit effective service within the area.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> Any of these uses in Section 5.050(f).</span></div>
+<h3 id="section-6020-application-for-area-accessory-development"><a class="header" href="#section-6020-application-for-area-accessory-development">Section 6.020. Application for Area Accessory Development.</a></h3>
+<p>Applications for an area accessory development shall be made by application for a permit and, unless the development is excluded from the development permit requirements of Section 2.040, shall provide facts and information sufficient to enable the Commission to make its determination and shall include the names and addresses of the owners of property situated within 200 feet of a boundary of the property to be developed.</p>
+<h3 id="section-6030-action-on-application"><a class="header" href="#section-6030-action-on-application">Section 6.030. Action on Application.</a></h3>
+<p>Unless referred to a hearings official, the Commission shall act on an application for area accessory development permit under Type II procedure. The Commission may refer an application to the hearings official for disposition under a Type III procedure if the Commission finds that the scope of the application requires a full public hearing to protect the best interests of affected properties or the City as a whole. Determination by either Type II or III procedure shall follow the criteria in Section 6.050.</p>
+<h3 id="section-6040-notice"><a class="header" href="#section-6040-notice">Section 6.040. Notice.</a></h3>
+<p>Notice of a Type II or III hearing on an area accessory development shall be mailed to the owners of property within 200 feet of the property to be developed.</p>
+<h3 id="section-6050-criteria-for-decisions-on-area-accessory-development"><a class="header" href="#section-6050-criteria-for-decisions-on-area-accessory-development">Section 6.050. Criteria for Decisions on Area Accessory Development</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A development permit shall be issued for an area accessory development if, in addition to complying with the plan and applicable standards, the location size, design and operating characteristics of the proposal are appropriate to the needs of the area and will be reasonably compatible with and have minimal impact on the livability and development of abutting property and the surrounding area.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Consideration shall be given also to the following:</span></div>
+<p>(1) harmony in scale, bulk, coverage and density;</p>
+<p>(2) the availability of public facilities and utilities; and</p>
+<p>(3) the generation of traffic and the capacity of surrounding streets.</p>
+<p>(4) other relevant impacts of the development</p>
+<h2 id="hardship-relief"><a class="header" href="#hardship-relief">Hardship Relief</a></h2>
+<h3 id="section-6060-type-ii-hardship-relief-procedure"><a class="header" href="#section-6060-type-ii-hardship-relief-procedure">Section 6.060. Type II Hardship Relief Procedure.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The Council may grant hardship relief waiving a provision of this ordinance for an individual parcel of land under a Type II procedure upon a finding that a literal application of the requirement would render the parcel incapable of reasonable economic use. Authority to grant relief under this section does not grant authority to approve a development that is designed, arranged or intended for a use otherwise not approvable in the location, or that violates the plan. When submitting a written application for hardship relief, the applicant shall provide facts and information sufficient to enable findings in compliance with the criteria of this Section.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The criteria are:</span></div>
+<p>(1) The hardship is not the result of any act or omission of the applicant;</p>
+<p>(2) The grant of relief will not result in a land use not otherwise permissible;</p>
+<p>(3) Grant of the relief will not violate the Plan;</p>
+<p>(4) The relief sought will not be materially detrimental to the public welfare;</p>
+<p>(5) The development will be on a parcel of land that in conjunction with adjacent land in the same ownership is not otherwise reasonably capable of economic use;</p>
+<p>(6) Or materially injurious to the property in the vicinity;</p>
+<p>(7) The development will be the same as development permitted under this ordinance and City standards to the greatest extent possible while permitting some economic use of the land;</p>
+<p>(8) Special circumstances or conditions exist that do not apply to other property in the vicinity.</p>
+<h3 id="section-6070-authority-to-grant-hardship-relief-under-type-i-procedure"><a class="header" href="#section-6070-authority-to-grant-hardship-relief-under-type-i-procedure">Section 6.070. Authority to Grant Hardship Relief Under Type I Procedure.</a></h3>
+<p>The Council may grant hardship relief under a Type I procedure if the request involves only the expansion or reduction by no more than 20 percent of one or more quantifiable provisions of yard or area standards of the Development Standards Document or comparable deviation from such additional standards set by the Commission. The decision shall be based on the criteria in Section 6.060.</p>
+<h2 id="land-division"><a class="header" href="#land-division">Land Division</a></h2>
+<h3 id="section-6080-division-of-land"><a class="header" href="#section-6080-division-of-land">Section 6.080. Division of Land.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Section 2.030 requires that a land division not occur unless a development permit has been issued. No land shall be divided prior to approval of a major or minor partition or subdivision in accordance with this ordinance. If a land division application is submitted that does not involve other proposed development, the application shall state an intended form of future development for the parcels created. The future development will then be processed along with the land division processing just as if the applicant were intending to proceed with further development. Where the nature of the development associated with the land division does not otherwise require, the procedures of Sections 6.090 to 6.110 shall be followed.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Land division is processed by approving a tentative plan prior to approval of the complete land division plat or map. Where a Type II or III procedure is required, that procedure shall also apply to approval of the tentative plan. Upon compliance with the approved tentative plan the Commission shall approve final plats and maps for land division in conjunction with issuing a development permit under Section 4.010.</span></div>
+<h3 id="section-6090-type-i-land-division"><a class="header" href="#section-6090-type-i-land-division">Section 6.090. Type I Land Division.</a></h3>
+<p>Minor partitioning shall be approved by the Council under a Type I procedure if the parcels created comply with standards for the form of additional development contemplated. A permit fee defined by a schedule of fees adopted by the City Council shall be charged only if the partition is one of the following:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The partition is located at the end of the street;</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The partition abuts a street that has a center line-to-property line width less than one-half the width specified for that functional street classification according to City standards;</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The partition contains a parcel having 25 feet or less street frontage;</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> The partition contains a parcel with depth-to-width ratio exceeding 2.5-to-1;</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> The partition contains a parcel with an area four or more times the area of the smallest parcel.</span></div>
+<h3 id="section-6100-type-ii-land-division"><a class="header" href="#section-6100-type-ii-land-division">Section 6.100. Type II Land Division.</a></h3>
+<p>Except as provided in Section 6.110, a major partition or subdivision shall be processed by the Commission under a Type II procedure when satisfactory street conditions exist. Satisfactory street conditions exist when:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> An existing street or a new proposed street need not continue beyond the land to be divided in order to complete an appropriate street system or to provide access to adjacent property; or</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The proposed street layout is consistent with a street pattern adopted as part of the plan, or with a future street plan approved under Section 6.130. The applicant shall provide a list of owners of property abutting the property proposed for development.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Improvement of streets or other public facilities may be required by the Commission as a condition of permit approval.</span></div>
+<h3 id="section-6110-type-iii-land-division"><a class="header" href="#section-6110-type-iii-land-division">Section 6.110. Type III Land Division.</a></h3>
+<p>A land division of major significance shall be processed under a Type III procedure by the Commission. A land division of major significance is one of the following:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A land division that will create a street that is not part of a planned street; or</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A land division that the Commission finds may either eliminate or make impractical the establishment of a planned street. The applicant shall provide an ownership list containing the names and addresses of property owners within 200 feet of the property to be divided.</span></div>
+<h3 id="section-6120-pre-application-conference"><a class="header" href="#section-6120-pre-application-conference">Section 6.120. Pre-Application Conference.</a></h3>
+<p>Prior to submission of a tentative plan for land division requiring a Type II or III procedure, the applicant may request a pre-application conference pursuant to Section 4.030.</p>
+<h3 id="section-6130-future-street-and-public-facilities-plan-required"><a class="header" href="#section-6130-future-street-and-public-facilities-plan-required">Section 6.130. Future Street and Public Facilities Plan Required.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Except as required in paragraph (b) of this Section, a Future Street and Public Facilities Plan shall be filed simultaneously with an application for a land division requiring a Type III procedure. The plan shall show a pattern of future street from the boundaries of the proposed land division to include the other tracts within 200 feet surrounding and adjacent to the proposed land division.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A Future Street and Public Facilities Plan shall not be required for any portion of the area for which a proposed street layout has been established by either the plan or a Future Street and Public Facilities Plan already adopted by the Commission.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Construction of all or part of the Future Street and Public Facilities Plan may be required as a condition of approval by the Commission.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> The Commission shall have the power to adopt a Future Street and Public Facilities Plan for which there is no proposal for a land division, providing that plan is adopted under a Type III procedure.</span></div>
+<h3 id="section-6140-recording-and-filing-of-future-street-and-public-facilities-plans"><a class="header" href="#section-6140-recording-and-filing-of-future-street-and-public-facilities-plans">Section 6.140. Recording and Filing of Future Street and Public Facilities Plans.</a></h3>
+<p>Upon final approval, a Future Street and Public Facilities Plan shall be:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Recorded by the applicant or, if there is no applicant, by the Commission, with the City Recorder; and</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Indexed and filed with the Commission.</span></div>
+<h3 id="section-6150-revision"><a class="header" href="#section-6150-revision">Section 6.150. Revision.</a></h3>
+<p>An approved Future Street and Public Facilities Plan may be revised under a Type III procedure by the Commission, including revision in conjunction with approval of a land division. An approved Future Street and Public Facilities Plan may be revised by the City Council in conjunction with a revision of the plan.</p>
+<h3 id="section-6160-criteria-for-approval"><a class="header" href="#section-6160-criteria-for-approval">Section 6.160. Criteria for Approval.</a></h3>
+<p>A tentative land division plan or adopted Future Street and Public Facilities Plan shall comply with Sections 2.010, 2.020, and:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Development of any remainder of property under the same ownership must comply with this ordinance; and</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> It must not prevent access to or the development of adjoining land in accordance with the requirements of this ordinance or the plan,</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Adequate bonding is provided to provide for construction and maintenance of the public improvements required as a condition of approval for a period of not less than two years from the date of approval of the final subdivision plot.</span></div>
+<h3 id="section-6170-tentative-plan-expiration-date"><a class="header" href="#section-6170-tentative-plan-expiration-date">Section 6.170. Tentative Plan Expiration Date.</a></h3>
+<p>Within six months after the effective date of approval of a tentative land division plan, the final plat or map shall be submitted in the form required by Section 4.040 and shall further state any modification or condition required by approval of the tentative plan. The Commission may, upon written request, grant an extension of time for up to six months upon a written finding that the facts relied on to grant the initial approval have not significantly changed and that no other development approval will be affected.</p>
+<h3 id="section-6180-staged-subdivision-development"><a class="header" href="#section-6180-staged-subdivision-development">Section 6.180. Staged Subdivision Development.</a></h3>
+<p>When an application desires to record and develop subdivision plats covering portions of an approved tentative plan in stages, the Commission may authorize a time schedule for platting and otherwise developing the stages in periods of time in excess of one year but in no case shall the total time for all stages be more than five years, unless there is a resubmission of the tentative plan. Each stage platted and developed shall comply with the plan and this ordinance and portions platted after one year may be required to be modified to comply with amendments to the plan or this ordinance and other regulations.</p>
+<h3 id="section-6190-submission-and-review-of-final-plat-or-map"><a class="header" href="#section-6190-submission-and-review-of-final-plat-or-map">Section 6.190. Submission and Review of Final Plat or Map.</a></h3>
+<p>A final plat or map shall be submitted and, at its next regular meeting, the Commission shall determine whether it complies with the approved tentative plan and this ordinance. If it does not comply, the applicant shall be notified and afforded an opportunity to make corrections. Upon compliance, the plat or map shall be signed and dated by the Commission if all other requirements for a development permit have been met.</p>
+<h3 id="section-6200-approval-signatures-for-final-subdivision-plat"><a class="header" href="#section-6200-approval-signatures-for-final-subdivision-plat">Section 6.200. Approval Signatures for Final Subdivision Plat.</a></h3>
+<p>Following review and approval of a subdivision plat, the applicant shall perform the following:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Obtain the approval signature by the county surveyor certifying that the plat complies with applicable survey laws. The surveyor may conduct field investigations to verify that the plat survey is accurate. Upon notice of noncompliance, the applicant shall be notified and given and opportunity to make corrections. Upon compliance, the plat shall be signed and dated by the surveyor.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Obtain the signatures, required by ORS 92.110, of the board of directors of any irrigation district, drainage district, water control district or district improvement company if the subdivision is within such a district.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Obtain the approval signatures of a majority of the City Council certifying approval of the plat.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Obtain the approval signature of the county assessor certifying that all property taxes have been paid or bonded for in accordance with the law.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Obtain proof of adequate bonding and provide for construction and maintenance of the public improvements as required by §6.160(c) and Section 9.010 of this Ordinance.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Deliver the approved subdivision plat and accompanying documents for recording with the appropriate official.</span></div>
+<h3 id="section-6210-approval-signatures-for-final-partition-map"><a class="header" href="#section-6210-approval-signatures-for-final-partition-map">Section 6.210. Approval Signatures for Final Partition Map.</a></h3>
+<p>Following review and approval of a final partition map, the applicant shall follow the provisions of Section 6.200(a), shall obtain certification that the map is approved, and deliver the approved partition map and accompanying documents for recording with the appropriate official.</p>
+<h3 id="section-6220-effective-date-for-approval"><a class="header" href="#section-6220-effective-date-for-approval">Section 6.220. Effective Date for Approval.</a></h3>
+<p>Approval for a subdivision shall become final upon the recording of the approved subdivision plat under ORS 92.120(1), and for a partition, upon the recording of the approved partition map together with any required documents with the county recorder. Final approval constitutes the approval necessary before a development permit may be issued. Action expressly authorized by a tentative approval may take place prior to issuance of the development permit.</p>
+<h3 id="section-6221-change-of-land-use-classification"><a class="header" href="#section-6221-change-of-land-use-classification">Section 6.221. Change of Land Use Classification.</a></h3>
+<p>Unless part of a legislative action, a change of land use or district classification may be made by the Commission to Section 6.222 or as otherwise authorized. The change shall be under a Type III procedure and may be initiated by the Commission, either on its own motion or upon request of the City Council, or by petition of a majority of property owners in the area proposed for change. Written notice of the hearing shall be given to owners of property within 200 feet of the area.</p>
+<h3 id="section-6222-criteria"><a class="header" href="#section-6222-criteria">Section 6.222. Criteria.</a></h3>
+<p>The Commission shall approve a non-legislative land use or district change if it would comply with the requirements of Sections 2.010 and 2.020 and:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The change will not interfere with the development or value of other land in the vicinity when compared to the public interest in allowing the change; and</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The change will not be detrimental to public interests of the Community.</span></div>
+<h2 id="vacation"><a class="header" href="#vacation">Vacation</a></h2>
+<h3 id="section-6223-vacation-criteria"><a class="header" href="#section-6223-vacation-criteria">Section 6.223. Vacation Criteria.</a></h3>
+<p>A proposal to vacate a street, plat, public square or other public place shall be under a Type IV procedure and applicable State law. The Commission shall base its recommendation on the following criteria:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The proposal shall not violate the plan.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> No street to be vacated shall substantially reduce the fair market value of abutting property unless a majority of the owners of the affected property consent to the vacation in writing.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The Commission finds that the vacation is in the public interest of the community. The City Council shall make affirmative findings on the criteria and vacation proceedings may be terminated at any time.</span></div>
+<h3 id="section-6224-conditions"><a class="header" href="#section-6224-conditions">Section 6.224. Conditions.</a></h3>
+<p>The following conditions may be attached to the approval of a vacation:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Retention of an easement for a public utility or public service facility and limitations on the use of the area adjacent to such facility.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Construction or removal of a public utility or public facility.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Replotting of land in a subdivision to be vacated.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Construction or improvement of replacement facilities.</span></div>
+<h2 id="legislation"><a class="header" href="#legislation">Legislation</a></h2>
+<h3 id="section-6225-definition"><a class="header" href="#section-6225-definition">Section 6.225. Definition.</a></h3>
+<p>A legislative action under this ordinance is land use action that the Council finds involves a substantial area of the City and number of property owners or such broad public policy that administrative processing would be inappropriate. Some examples of legislative decisions are amendments to the plan or this ordinance or changes in the use or classification of land or vacation actions.</p>
+<h3 id="section-6226-procedure"><a class="header" href="#section-6226-procedure">Section 6.226. Procedure.</a></h3>
+<p>Unless an emergency is declared by the City Council, legislative actions under this ordinance shall be considered only once in a 12-month period and may follow or be in conjunction with amendment of the plan. Legislative action shall follow Type IV procedure subject to the requirements of Sections 6.227 to 6.230.</p>
+<h3 id="section-6227-notice-of-legislative-hearing"><a class="header" href="#section-6227-notice-of-legislative-hearing">Section 6.227. Notice of Legislative Hearing.</a></h3>
+<p>Notice of a hearing on a legislative matter under this ordinance shall be reasonably calculated to actual notice to the owners of specific affected property, and shall be given to the community as a whole by posting and publishing notice as required by Section 8.040.</p>
+<h3 id="section-6228-public-participation"><a class="header" href="#section-6228-public-participation">Section 6.228. Public Participation.</a></h3>
+<p>The Commission shall provide all interested persons the opportunity to submit written recommendations and comments in advance of the hearing and this material shall be available for public inspection prior to the hearing. At the hearing, written recommendations and other material shall be received and oral statements shall be permitted. In addition to matters relating to compliance with applicable criteria and standards of this ordinance and with the Plan, a person may submit testimony and evidence regarding desirable policy the City should adopt.</p>
+<h3 id="section-6229-recommendations"><a class="header" href="#section-6229-recommendations">Section 6.229. Recommendations.</a></h3>
+<p>In making its recommendation, the Commission shall:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Identify the provisions of the plan that are relevant to the decision and prepare adequate findings on how the proposal does or does not comply with each provision;</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Review the nature of the proposal and state whether the proposal is appropriate for processing as a legislative matter; and</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Make appropriate recommendations, along with the reason for each.</span></div>
+<h3 id="section-6230-legislative-action-by-the-city-council"><a class="header" href="#section-6230-legislative-action-by-the-city-council">Section 6.230. Legislative Action by the City Council.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The Council may limit information at the hearing in order to avoid unduly repetitive or cumulative information or testimony and may limit comment to whether the proposal (1) is appropriate for legislative consideration, (2) complies with the plan, and (3) presents issues of significant policy change or refinement;</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> After confirming, amending or denying the recommendations of the Commission, the Council may:</span></div>
+<p>(1) Enact or defeat an ordinance on all or part of the proposal;</p>
+<p>(2) Refer some or all of the proposal back to the Commission for further consideration.</p>
+<p>If such referral is later returned, no further hearing is required provided the proposal is processed under the City’s procedure for the enactment of ordinances.</p>
+<h2 id="site-design-review"><a class="header" href="#site-design-review">Site Design Review</a></h2>
+<h3 id="section-6231-site-design-review"><a class="header" href="#section-6231-site-design-review">Section 6.231. Site Design Review.</a></h3>
+<p>The Commission may require a site review for any development which is proposed in environmentally sensitive areas, a flood plain or as required in other sections of this Ordinance. New Multiple Family Developments shall be subject to Site Design Review. All developments subject to Design Review shall follow the procedures established in Section 6.232. A development permit for multi-family housing units and for area accessory developments shall comply with the requirements of Section 6.232 if the development permit is for initial development or construction or for an alteration that affects the use or significant elements of the site plan or exterior building design. Information on the proposed development shall include detail sufficient to establish compliance with Sections 2.010 and 2.020 and this Section, and shall include sketches of the proposed development showing its integration and separation with its surroundings, and such other information as the Commission believes will reasonably aid in evaluating the proposal. In reaching a decision, the reviewing committee shall consider whether the proposal avoids endangering life and property; prevents the creation of public nuisances; prevents exposure to hazardous conditions; encourages preservation and use of natural drainageways; utilizes a site that is easily accessible to all necessary elements of the community infrastructure and avoids expansion of the infrastructure to accommodate uses which can be more easily accommodated elsewhere; encourages energy conservation; harmonizes with the lay of the land; respects the limitations of soils and geology; prevents excessive cuts and fills, unsightly grading, and scarring of natural landforms; prevents excessive loss of vegetation and limits disruption to areas with a relatively high potential for successful revegetation; avoids loss of watershed and wind shelter; preserves wetland areas and wildlife habitats; prevents disruption of natural watercourses; minimizes potential sources of pollution; and is consistent with applicable requirements of the Development Standards Document.</p>
+<h3 id="section-6232-procedure"><a class="header" href="#section-6232-procedure">Section 6.232. Procedure.</a></h3>
+<p>Land Development Ordinance Section 6.232 Procedure shall be amended to read as follows:</p>
+<p>“Proposed Developments which are subject to a Site Design Review shall be considered by the Commission sitting as the Site Review Committee. All Site Design Reviews which occur within an environmentally sensitive area shall be processed under the Type III procedure. The review of a multi-family development outside of an Environmentally Sensitive Area shall be conducted under a Type III procedure.”</p>
+<p>Notice shall be given to all owners of land located within 200 feet of the property to be developed.</p>
+<h3 id="section-6233-identification-of-environmentally-sensitive-areas"><a class="header" href="#section-6233-identification-of-environmentally-sensitive-areas">Section 6.233. Identification of Environmentally Sensitive Areas.</a></h3>
+<p>The Commission shall identify environmentally sensitive areas, including, but not limited to, wetland and wildlife habitats, areas having significant drainage or erosion problems and areas where development may be constrained by the type of soil. These areas shall be delineated on the appropriate maps accompanying the Rivergrove Comprehensive Plan.</p>
+<h3 id="section-6234-requests-for-developmentsite-design-review"><a class="header" href="#section-6234-requests-for-developmentsite-design-review">Section 6.234. Requests for Development/Site Design Review:</a></h3>
+<p>Requests for Development, which require Site Design Review shall be submitted along with adequate information to allow the design review to occur. This information shall include site plans, grading plans, architectural drawings and any other supporting materials which would be helpful in explaining the development proposal to the Planning Commission.</p>
+<p>The Planning Commission may require changes in a proposed project to ensure that the following general design criteria are met to the maximum extent practical in a particular development proposal.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The project shall contain a safe and efficient traffic circulation system which meets the needs of both pedestrians and automobiles.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The project shall not create any situations which contain significant hazard to life or property.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> In an Environmentally sensitive area, grading, filling, and diversion of drainage ways shall be minimized.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Natural vegetation, specifically large trees shall be preserved whenever practical.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> The proposed projects shall meet the criteria established in the Policies of the Comprehensive Plan when appropriate.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Appropriate screening shall be provided between multi-family dwelling and existing single family dwellings.</span></div>
+<h3 id="section-6235-annexation-criteria"><a class="header" href="#section-6235-annexation-criteria">Section 6.235. Annexation Criteria.</a></h3>
+<p>A proposal to annex territory to the city shall be conducted under the Type IV procedure with supplements or modifications required to comply with state law. When an annexation proposal has been initiated and the (planning director) has determined the territory is eligible for annexation it shall be referred to the planning commission. The commission shall base its recommendation on whether the following criteria have been met:</p>
+<p>(1) The proposal conforms to the comprehensive plan or substantial changes in conditions have occurred which render the comprehensive plan inapplicable to the annexation.</p>
+<p>(2) The inclusion of the territory within the city would be consistent with the purpose served by the city.</p>
+<p>Although the city council shall make affirmative findings on the two criteria if it proceeds with the annexation, proceedings may be terminated by the council at any time.</p>
+<h3 id="section-6236-designation-of-annexed-property"><a class="header" href="#section-6236-designation-of-annexed-property">Section 6.236. Designation of Annexed Property.</a></h3>
+<p>Territory annexed to the city shall remain subject to the land development regulations of the county until changed by the city. Such change may be entirely or partially carried out as a part of the annexation proceedings if included in the Type IV proceedings of the council. Within thirty days after the effective date of annexation the city recorder shall report on any further steps that appear necessary to have the annexed territory fully subject to the provisions of this ordinance and shall initiate appropriate action to have those steps carried out. If the city council finds it is important to the protection or implementation of city policies, interim regulations may be applied in the annexed area until more permanent action can be taken.</p>
+<hr/>
+<h2 id="article-7---reserved-for-planned-unit-development"><a class="header" href="#article-7---reserved-for-planned-unit-development">ARTICLE 7 - RESERVED FOR PLANNED UNIT DEVELOPMENT</a></h2>
+<hr/>
+<h2 id="article-8---public-deliberations-and-hearings"><a class="header" href="#article-8---public-deliberations-and-hearings">ARTICLE 8 - PUBLIC DELIBERATIONS AND HEARINGS</a></h2>
+<h3 id="section-810-responsibility-of-commission-for-hearings"><a class="header" href="#section-810-responsibility-of-commission-for-hearings">Section 8.10. Responsibility of Commission for Hearings.</a></h3>
+<p>The Commission shall carry out the following duties relating to public hearings on land use matters according to the requirements of this ordinance:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Schedule and assign the matter for hearing and review.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Conduct the correspondence of the hearing body.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> Give notice as required.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> Maintain a record of all proceedings and enter into the record all relevant dates such as those of giving notice, hearings, postponement and continuances and a summary of actions taken by the hearing body.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Prepare minutes of all decisions and the reasons for the decisions.</span></div>
+<div class="definition-item"><span class="definition-marker">(f)</span><span class="definition-content"> Reduce the decisions of the hearings body to writing no more than 15 days from the date of the hearing.</span></div>
+<div class="definition-item"><span class="definition-marker">(g)</span><span class="definition-content"> Mail a copy of the decision to any person requesting it upon payment of a reasonable copying fee and postage.</span></div>
+<h3 id="section-8020-notice-of-hearing"><a class="header" href="#section-8020-notice-of-hearing">Section 8.020. Notice of Hearing.</a></h3>
+<p>Notice shall be reasonably calculated to give actual notice and, except for a legislative action under Sections 6.225 to 6.230, shall contain the following information:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The date, time and place of the hearing.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A brief description of the property for which a development permit or other action is pending, including reference to a map or postal address and a subdivision lot and block designation, a metes and bounds description or the tax map designation of the county assessor.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The nature of the issues.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> The section of the plan, this ordinance, or other ordinance that are believed to apply to the matter at issue.</span></div>
+<div class="definition-item"><span class="definition-marker">(e)</span><span class="definition-content"> Where information and evidence may be examined and the manner in which written comment or testimony addressing the issue may be submitted.</span></div>
+<h3 id="section-8030-procedure-for-mailed-notice"><a class="header" href="#section-8030-procedure-for-mailed-notice">Section 8.030. Procedure for Mailed Notice.</a></h3>
+<p>Unless otherwise required, addresses for mailed notice required by this ordinance shall be obtained from the county real property tax record. Unless the name and address is on file with the City, a person whose name is not on the tax records at the time an application is filed, or other action not based on an application is begun, need not be furnished mailed notice. Failure to receive notice shall not invalidate an action if a good faith effort was made to comply with the requirements for notice. In addition to persons required to be given notice by this ordinance, the Commission shall provide notice to persons it has reasonable cause to believe are affected by the proposal.</p>
+<h3 id="section-8040-posted-or-published-notice"><a class="header" href="#section-8040-posted-or-published-notice">Section 8.040. Posted or Published Notice.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Where posted notice is required, it shall be posted in at least two conspicuous places within the area containing affected property and at City Hall.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Where published notice is required, it shall be published in a newspaper of general circulation at least twice and a copy of the notice shall be posted at City Hall.</span></div>
+<h3 id="section-8050-time-and-cost-of-notice"><a class="header" href="#section-8050-time-and-cost-of-notice">Section 8.050. Time and Cost of Notice.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Unless otherwise required, notice shall be mailed, posted, or first published not less than 10 nor more than 15 days prior to the action or hearing requiring the notice.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Cost of notice shall be assessed as part of the development permit application fee.</span></div>
+<h3 id="section-8060-challenges-to-impartiality"><a class="header" href="#section-8060-challenges-to-impartiality">Section 8.060. Challenges to Impartiality.</a></h3>
+<p>Any interested persons or member of a hearing body may challenge the qualifications of a member of the hearing body to participate in the hearing and decision regarding the matter. The challenge shall be in writing and shall state the facts relied upon by the challenger relating to bias, prejudgment, personal or pecuniary interest, or other facts from which the challenger concludes that the member of the hearing body cannot participate in an impartial manner. Any challenges shall be made part of the record.</p>
+<h3 id="section-8070-disqualifications"><a class="header" href="#section-8070-disqualifications">Section 8.070. Disqualifications.</a></h3>
+<p>No member of a hearing body shall participate in a discussion of a proposal or vote on it if any one of the following conditions exist:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Any of the following have a direct or substantial pecuniary or financial interest in the proposal: the hearing body member or the member’s spouse, brother, sister, child, parent, father-in-law, mother-in-law, any business in which the member is serving or employed or has served or been employed within the previous two years, or employment;</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> The member owns property within the area entitled to receive notice of the hearing;</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The member has direct private interest in the proposal;</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> For any reasons the member has concluded that he cannot reasonably reach an impartial decision on the matter. A member shall disclose any disqualifications.</span></div>
+<h3 id="section-8080-participation-by-interested-officers-or-employees"><a class="header" href="#section-8080-participation-by-interested-officers-or-employees">Section 8.080. Participation by Interested Officers or Employees.</a></h3>
+<p>No officer or employee of the City who has a financial or other private interest in a proposal shall participate in discussion with or give an official opinion to the hearing body on the proposal without first disclosing the nature and extent of that interest.</p>
+<h3 id="section-8090-ex-parte-contacts"><a class="header" href="#section-8090-ex-parte-contacts">Section 8.090. Ex Parte Contacts.</a></h3>
+<p>Hearing body members shall disclose any prehearing or ex parte contacts with regard to any matter before the body at the commencement of the hearing.</p>
+<h3 id="section-8100-disqualification"><a class="header" href="#section-8100-disqualification">Section 8.100. Disqualification.</a></h3>
+<p>A majority of the members of a hearing body present and voting may order the disqualification of a member for any reasons stated in Sections 8.070 or 8.080. The member who is the subject of the motion to disqualify shall not vote on that motion.</p>
+<h3 id="section-8110-rights-of-disqualified-member"><a class="header" href="#section-8110-rights-of-disqualified-member">Section 8.110. Rights of Disqualified Member.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> An abstaining or disqualified member of a hearing body may be counted for purposes of forming a quorum. A member who represents his/her personal interest at a hearing shall do so only by abstaining from voting on the proposal, physically joining the audience and vacating the seat on the hearing body, and making full disclosure of his/her role at the time he/she addresses the body;</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> If all members of a hearing body are disqualified or abstain, all members present shall state their reasons for abstention or disqualification and after doing so shall be considered requalified and may proceed to resolve the issues before them;</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> A member absent during the presentation of evidence at a hearing shall not participate in the deliberations or decision on the matter until he/she reviews the evidence.</span></div>
+<h3 id="section-8120-burden-of-proof"><a class="header" href="#section-8120-burden-of-proof">Section 8.120. Burden of Proof.</a></h3>
+<p>The burden of proof is on the proponent. “In all cases, the burden of proof shall be the preponderance or greater weight of the creditable evidence.” The proposal must be supported by proof that it complies with the applicable elements of the plan and to applicable provisions of this ordinance, including the specific criteria and standards set forth for the particular type of proposal or action.</p>
+<h3 id="section-8130-decision"><a class="header" href="#section-8130-decision">Section 8.130. Decision.</a></h3>
+<p>The hearing body shall approve or deny the application or, if the hearing is in the nature of an appeal, affirm, modify, reverse or remand the decision or appeal. A decision on a hearing or an application for development permit shall be made within 10 days of the application except that with the express agreement of the hearing body and the applicant or appellant, consideration may be extended for a reasonable time, but no longer than 45 days from the date of the first hearing on the matter.</p>
+<h3 id="section-8140-findings-and-order"><a class="header" href="#section-8140-findings-and-order">Section 8.140. Findings and Order.</a></h3>
+<p>The hearing body shall prepare brief written findings of fact and an order which shall include:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A statement of the criteria and standards against which the proposal was tested, and of the hearing body’s interpretation of what is required to comply with those criteria and standards.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A statement of the facts which were found to establish compliance or noncompliance with the criteria and standards.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The reason for approval, modification, or denial.</span></div>
+<h3 id="section-8150-record-of-proceedings"><a class="header" href="#section-8150-record-of-proceedings">Section 8.150. Record of Proceedings.</a></h3>
+<p>Proceedings shall be recorded stenographically or electronically.</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Testimony shall be transcribed if required for judicial review or if ordered by the hearing body.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Where practicable each item of evidence shall be marked with the name of the person introducing it, and shall be retained in the file until the expiration of the appropriate time of appeal. Unclaimed exhibits may be destroyed thereafter.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The findings and order shall be included in the record.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> All proceedings’ records shall be open for public inspection and copying during business hours at City Hall.</span></div>
+<h3 id="section-8160-request-for-review"><a class="header" href="#section-8160-request-for-review">Section 8.160. Request for Review.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Where a decision has been made by a Hearings Officer, a decision on the issuance of a development permit may be appealed to the Commission by an affected person by filing an appeal with the Commission within 30 days of receipt of notice of the decision. Notice of appeal shall be as set out in Section 8.170.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A decision of the Commission may be appealed to the City Council by an affected person by filing an appeal within 10 days of receipt of notice of the decision. Notice of appeal shall clearly indicate the decision that is being appealed.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The City Council may limit its review to a review of the record and oral argument on the record, or it may accept new evidence and testimony in which case a hearing shall be conducted pursuant to this Article.</span></div>
+<h3 id="section-8170-notice-of-appeal"><a class="header" href="#section-8170-notice-of-appeal">Section 8.170. Notice of Appeal.</a></h3>
+<p>Notice of appeal shall contain the following:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> An identification of the decision being appealed, including the date of the decision.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> A short statement of the interest of the person seeking review.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The specific grounds for the appeal.</span></div>
+<div class="definition-item"><span class="definition-marker">(d)</span><span class="definition-content"> If de novo review or review by additional testimony and evidence is sought, a statement relating the request to the factors listed in Section 8.200 (a).</span></div>
+<h3 id="section-8180-scope-of-review"><a class="header" href="#section-8180-scope-of-review">Section 8.180. Scope of Review.</a></h3>
+<p>The reviewing body shall issue an order stating the scope of review to be one of the following:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Restricted to the record made on the decision appealed.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Limited to such issues as the reviewing body determines necessary for a proper resolution of the matter.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> A de novo hearing.</span></div>
+<h3 id="section-8190-review-on-the-record"><a class="header" href="#section-8190-review-on-the-record">Section 8.190. Review on the Record.</a></h3>
+<p>Unless otherwise required by this ordinance, review of a decision on appeal shall be confined to the record of the proceeding, which record shall include:</p>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> A factual report prepared by the hearing body.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> All exhibits, materials, pleadings, memoranda, stipulations and motions.</span></div>
+<div class="definition-item"><span class="definition-marker">(c)</span><span class="definition-content"> The transcript of the hearing below, if one was required. The reviewing body shall allow oral argument on the record by the parties.</span></div>
+<h3 id="section-8200-de-novo-review"><a class="header" href="#section-8200-de-novo-review">Section 8.200. De Novo Review.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> The reviewing body may hear the matter de novo; or it may admit additional testimony or evidence not previously admitted if such evidence or testimony could not reasonably have been presented at the earlier hearing. In deciding whether to admit such testimony or evidence the reviewing body shall consider all of the following:</span></div>
+<p>(1) Prejudice to a party;</p>
+<p>(2) Convenience or availability of the evidence at the time of the initial hearing;</p>
+<p>(3) Surprise to other parties;</p>
+<p>(4) The nature and relevancy of the testimony or evidence.</p>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> “De novo hearing” shall mean a hearing by the review body as if the action had not been previously heard and as if no decision had been rendered, except that all testimony, evidence and other material from the prior hearing shall be included in the record of the review.</span></div>
+<h3 id="section-8210-decision-upon-review"><a class="header" href="#section-8210-decision-upon-review">Section 8.210. Decision Upon Review.</a></h3>
+<div class="definition-item"><span class="definition-marker">(a)</span><span class="definition-content"> Upon review, the review body may by order affirm, remand, reverse or modify, in whole or part, a determination of the decision under review. The review body shall clearly state its findings and the reasons for its decision.</span></div>
+<div class="definition-item"><span class="definition-marker">(b)</span><span class="definition-content"> Action by the review body shall be taken by a majority vote of the members present at the review session. The review body shall render its decision no later than 10 days after the filing of a request for review and shall file its decision with the City Recorder no later than five days after it is rendered.</span></div>
+<hr/>
+<h2 id="article-9---bonds-deposits-and-penalties"><a class="header" href="#article-9---bonds-deposits-and-penalties">ARTICLE 9 - BONDS, DEPOSITS AND PENALTIES</a></h2>
+<h3 id="section-9010-bonds-of-cash-deposits"><a class="header" href="#section-9010-bonds-of-cash-deposits">Section 9.010. Bonds of Cash Deposits.</a></h3>
+<p>Before issuing or renewing a development permit where the applicant has an obligation to construct or improve public facilities to serve the development or to reclaim land, the obligation shall be fulfilled prior to the issuance of the permit or the applicant shall file with the city recorder an acknowledgment of the obligation. The acknowledgment shall state the time within which it shall be met and a surety bond or cash or negotiable security deposit sufficient to cover the cost of the work as estimated by the Commission for the year fulfillment of the obligation is expected. The bond shall be conditioned on carrying out the obligation and meeting the requirements of this ordinance and the Development Standards Document that apply to the development. The deposit or bond shall be forfeit to the City in the event of failure to comply with this section and shall remain in the custody of the City until the obligation is completed or the deposit or bond is forfeited. “All maintenance bonds for maintenance of constructed public facilities shall be for a period of two years from the date of acceptance by the City of the completed improvements.”</p>
+<h3 id="section-9020-penalties-and-abatement"><a class="header" href="#section-9020-penalties-and-abatement">Section 9.020. Penalties and Abatement.</a></h3>
+<p>This ordinance may be enforced in any manner now or hereafter authorized by law. Any person using land in violation of this ordinance shall be punished, upon conviction, by a fine of not more than $100 for each day of violation where the offense is a continuing offense, but such fine shall not exceed $1,500. For a noncontinuing offense, the fine shall be not more than $500. In addition, the City Council, the District Attorney, or a person whose interest in real property in the city of Rivergrove is or may be affected by the violation may, in addition to all other remedies provided by law, institute injunction, mandamus, abatement or other proceedings to prevent, temporarily or permanently enjoin or abate the unlawful use.</p>
+<h3 id="section-9030-fees-and-system-development-charges"><a class="header" href="#section-9030-fees-and-system-development-charges">Section 9.030. Fees and System Development Charges.</a></h3>
+<p>All fees and system development charges under this ordinance, and the Development Standards Document, shall be as outlined below. This fee schedule may be amended at any time by Resolution of the City Council. Fee must be paid to the City by the applicant at the time of application. Fees assessed to an applicant may include the costs to the City of legal services, hearings officers, engineering services, planning services, and design services as the City determines are necessary to consider the permit. When such costs are not known in advance, the City shall estimate the cost, and provide a full accounting at the end of the permit process. Overcharges will be refunded to the applicant, and the applicant shall be responsible to the City for any additional costs not covered by the estimate.</p>
+<p>For construction of new residential units which will use streets and roads within the City of Rivergrove, the City may assess a roadway system development fee. This fee will be deposited in to the City’s Road fund and may be used only for the purposes legally allowed for road funds. The roadway system development fee may be waived by the City Council should the City determine it will be a hardship, and, at the City’s discretion, may credit the cost of required public facility improvements against such fees.</p>
+<h2 id="fee-schedule"><a class="header" href="#fee-schedule">FEE SCHEDULE</a></h2>
+<div class="table-wrapper"><table class="formatted-table"><thead><tr><th>Fee Type</th><th>Amount</th></tr></thead><tbody>
+<tr><td><strong>BUILDING PERMIT (CITY FEE)</strong></td><td class="has-footnote">$10.00¹</td></tr>
+<tr><td><strong>VARIANCE (HARDSHIP RELIEF)</strong></td><td class="has-footnote">$50.00¹</td></tr>
+<tr><td><strong>TYPE I LAND DIVISION</strong></td><td>$15.00 per lot plus actual City Costs</td></tr>
+<tr><td><strong>TYPE II LAND DIVISION</strong></td><td>$25.00 per lot plus actual City Costs</td></tr>
+<tr><td><strong>TYPE III LAND DIVISION</strong></td><td>$35.00 per lot plus actual City Costs</td></tr>
+<tr><td><strong>TYPE IV STREET VACATIONS</strong></td><td>$50.00 plus actual City Costs</td></tr>
+<tr><td><strong>TREE CUTTING</strong></td><td>No Cost – Actual City Cost upon appeal</td></tr>
+<tr><td><strong>AREA DEVELOPMENT PERMIT</strong></td><td>$25.00</td></tr>
+<tr><td><strong>ROADWAY SYSTEM DEVELOPMENT CHARGE</strong></td><td>$500.00 per residential unit with access provided by a roadway within the City of Rivergrove</td></tr>
+</tbody></table>
+</div>
+<p><strong>¹</strong> Plus the cost of hearings officer, notification and specialized services the City may require.</p>
+<hr/>
+<h2 id="article-10---reserved"><a class="header" href="#article-10---reserved">ARTICLE 10 - RESERVED</a></h2>
+</main>
+<nav aria-label="Page navigation" class="nav-wrapper">
+<!-- Mobile navigation buttons -->
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="mobile-nav-chapters previous" href="../ordinances/1987-Ord-52-Flood.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="mobile-nav-chapters next" href="../ordinances/1993-Ord-57-93-Manufactured-Homes.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+<div style="clear: both"></div>
+</nav>
+</div>
+</div>
+<nav aria-label="Page navigation" class="nav-wide-wrapper">
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="nav-chapters previous" href="../ordinances/1987-Ord-52-Flood.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="nav-chapters next" href="../ordinances/1993-Ord-57-93-Manufactured-Homes.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+</nav>
+</div>
+<script>
+            window.playground_copyable = true;
+        </script>
+<script src="../elasticlunr.min.js"></script>
+<script src="../mark.min.js"></script>
+<script src="../searcher.js"></script>
+<script src="../clipboard.min.js"></script>
+<script src="../highlight.js"></script>
+<script src="../book.js"></script>
+<!-- Custom JS scripts -->
+<script src="../navigation-standalone.js"></script>
+</div>
+</body>
+</html>

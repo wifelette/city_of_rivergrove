@@ -35,6 +35,9 @@ class StandaloneNavigation {
         // Create our navigation UI
         this.createNavigationUI();
         
+        // Update document counts in the dropdown
+        this.updateDocumentCounts();
+        
         // Handle browser navigation
         this.setupNavigationHandlers();
         
@@ -42,6 +45,45 @@ class StandaloneNavigation {
         this.detectCurrentDocument();
         
         console.log('StandaloneNavigation: Initialization complete');
+    }
+    
+    calculateDocumentCounts() {
+        const counts = {
+            ordinances: 0,
+            resolutions: 0,
+            interpretations: 0,
+            transcripts: 0,
+            other: 0
+        };
+        
+        Object.values(this.documents).forEach(doc => {
+            if (doc.type === 'ordinance') counts.ordinances++;
+            else if (doc.type === 'resolution') counts.resolutions++;
+            else if (doc.type === 'interpretation') counts.interpretations++;
+            else if (doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes') counts.transcripts++;
+            else if (doc.type === 'other' || doc.type === 'charter') counts.other++;
+        });
+        
+        return counts;
+    }
+    
+    updateDocumentCounts() {
+        if (!this.documentCounts) return;
+        
+        const countElements = {
+            'count-ordinances': this.documentCounts.ordinances,
+            'count-resolutions': this.documentCounts.resolutions,
+            'count-interpretations': this.documentCounts.interpretations,
+            'count-transcripts': this.documentCounts.transcripts,
+            'count-other': this.documentCounts.other
+        };
+        
+        Object.entries(countElements).forEach(([id, count]) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = count;
+            }
+        });
     }
     
     hideMdBookSidebar() {
@@ -116,79 +158,32 @@ class StandaloneNavigation {
     
     async loadRelationships() {
         try {
-            // Load the main relationships data
-            const response = await fetch('/relationships.json');
+            // Load relationships.json - detect GitHub Pages base path
+            const basePath = window.location.pathname.includes('/city_of_rivergrove/') ? '/city_of_rivergrove' : '';
+            const response = await fetch(basePath + '/relationships.json');
             const data = await response.json();
             this.documents = data.documents || {};
             this.relationships = data.relationships || {};
-            
-            // Load Airtable metadata for badges and special states
-            try {
-                const airtableResponse = await fetch('/airtable-metadata.json');
-                const airtableData = await airtableResponse.json();
-                // Index by filename without extension - the documents are stored under a 'documents' key
-                this.airtableMetadata = {};
-                const documents = airtableData.documents || airtableData;
-                Object.entries(documents).forEach(([key, doc]) => {
-                    // The key itself is already the filename without extension
-                    this.airtableMetadata[key] = doc;
-                });
-                console.log(`StandaloneNavigation: Loaded Airtable metadata for ${Object.keys(this.airtableMetadata).length} documents`);
-            } catch (error) {
-                console.log('StandaloneNavigation: No airtable metadata found');
-                this.airtableMetadata = {};
-            }
-            
-            // Load Airtable metadata for meetings to filter what should be shown
-            try {
-                const meetingsResponse = await fetch('/meetings-metadata.json');
-                const meetingsData = await meetingsResponse.json();
-                this.meetingsMetadata = meetingsData.meetings || {};
-                
-                // Filter out meeting documents that aren't in Airtable
-                this.filterMeetingDocuments();
-            } catch (error) {
-                console.log('StandaloneNavigation: No meetings metadata found, showing all meeting documents');
-                this.meetingsMetadata = {};
-            }
-            
             console.log(`StandaloneNavigation: Loaded ${Object.keys(this.documents).length} documents`);
+            
+            // Calculate document counts by type
+            this.documentCounts = this.calculateDocumentCounts();
+            
+            // Load Airtable metadata if available
+            try {
+                const airtableResponse = await fetch(basePath + '/airtable-metadata.json');
+                const airtableData = await airtableResponse.json();
+                this.airtableMetadata = airtableData.documents || {};
+                console.log(`StandaloneNavigation: Loaded Airtable metadata for ${Object.keys(this.airtableMetadata).length} documents`);
+            } catch (airtableError) {
+                console.log('StandaloneNavigation: Airtable metadata not available, using default names');
+                this.airtableMetadata = {};
+            }
         } catch (error) {
             console.error('StandaloneNavigation: Failed to load relationships.json:', error);
             // Fallback: parse from current page structure if needed
             this.parseDocumentsFromDOM();
         }
-    }
-    
-    filterMeetingDocuments() {
-        // Only show meeting documents that are in Airtable metadata
-        const filteredDocs = {};
-        
-        for (const [key, doc] of Object.entries(this.documents)) {
-            // Keep non-meeting documents
-            if (!['transcript', 'agenda', 'minutes', 'meeting'].includes(doc.type)) {
-                filteredDocs[key] = doc;
-                continue;
-            }
-            
-            // For meeting documents, check if they're in Airtable
-            // The Airtable key format is like "2018-05-14-agenda"
-            const dateMatch = doc.file?.match(/(\d{4}-\d{2}-\d{2})/);
-            if (dateMatch) {
-                const date = dateMatch[1];
-                const airtableKey = `${date}-${doc.type}`;
-                
-                // Check if this document exists in Airtable metadata
-                if (this.meetingsMetadata[airtableKey]) {
-                    filteredDocs[key] = doc;
-                    console.log(`StandaloneNavigation: Including ${doc.type} from ${date} (found in Airtable)`);
-                } else {
-                    console.log(`StandaloneNavigation: Excluding ${doc.type} from ${date} (not in Airtable)`);
-                }
-            }
-        }
-        
-        this.documents = filteredDocs;
     }
     
     parseDocumentsFromDOM() {
@@ -211,23 +206,6 @@ class StandaloneNavigation {
             return;
         }
         
-        // Calculate counts for each document type
-        const counts = {
-            ordinances: 0,
-            resolutions: 0,
-            interpretations: 0,
-            transcripts: 0,
-            other: 0
-        };
-        
-        Object.values(this.documents).forEach(doc => {
-            if (doc.type === 'ordinance') counts.ordinances++;
-            else if (doc.type === 'resolution') counts.resolutions++;
-            else if (doc.type === 'interpretation') counts.interpretations++;
-            else if (doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes') counts.transcripts++;
-            else if (doc.type === 'other' || doc.type === 'charter') counts.other++;
-        });
-        
         // Create LEFT sidebar container
         const leftContainer = document.createElement('div');
         leftContainer.id = 'standalone-navigation';
@@ -246,27 +224,27 @@ class StandaloneNavigation {
                             <div class="context-item active" data-type="ordinances" data-icon="📋">
                                 <span class="context-icon">📋</span>
                                 Ordinances
-                                <span class="context-count">${counts.ordinances}</span>
+                                <span class="context-count" id="count-ordinances">0</span>
                             </div>
                             <div class="context-item" data-type="resolutions" data-icon="📄">
                                 <span class="context-icon">📄</span>
                                 Resolutions
-                                <span class="context-count">${counts.resolutions}</span>
+                                <span class="context-count" id="count-resolutions">0</span>
                             </div>
                             <div class="context-item" data-type="interpretations" data-icon="📝">
                                 <span class="context-icon">📝</span>
                                 Interpretations
-                                <span class="context-count">${counts.interpretations}</span>
+                                <span class="context-count" id="count-interpretations">0</span>
                             </div>
                             <div class="context-item" data-type="transcripts" data-icon="🎙️">
                                 <span class="context-icon">🎙️</span>
                                 Meeting Records
-                                <span class="context-count">${counts.transcripts}</span>
+                                <span class="context-count" id="count-transcripts">0</span>
                             </div>
                             <div class="context-item" data-type="other" data-icon="📚">
                                 <span class="context-icon">📚</span>
                                 Other Documents
-                                <span class="context-count">${counts.other}</span>
+                                <span class="context-count" id="count-other">0</span>
                             </div>
                             <hr class="context-divider">
                             <div class="context-item" data-type="home" data-icon="🏠">
@@ -420,7 +398,6 @@ class StandaloneNavigation {
     
     switchDocumentType(type) {
         this.currentDocType = type;
-        console.log('StandaloneNavigation: Switching to document type:', type);
         
         // Update search placeholder
         const search = document.querySelector('.nav-search');
@@ -440,27 +417,32 @@ class StandaloneNavigation {
         search.placeholder = `Search ${typeLabels[type] || type}...`;
         
         // Update view controls visibility
+        const viewControls = document.querySelector('.view-controls');
         const viewButtons = document.querySelector('.view-buttons');
-        if (type === 'interpretations') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="bydate">By Date</button>
-                <button class="view-btn" data-view="bysection">By Code Section</button>
-            `;
-        } else if (type === 'transcripts') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="bydate">By Date</button>
-                <button class="view-btn" data-view="bymeeting">By Meeting</button>
-            `;
-        } else if (type === 'other') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="chronological">Chronological</button>
-            `;
+        
+        if (type === 'transcripts') {
+            // Hide view controls entirely for meetings
+            if (viewControls) viewControls.style.display = 'none';
         } else {
-            viewButtons.innerHTML = `
-                <button class="view-btn" data-view="numerical">Numerical</button>
-                <button class="view-btn active" data-view="chronological">Chronological</button>
-                <button class="view-btn" data-view="topical">Topical</button>
-            `;
+            // Show view controls for other document types
+            if (viewControls) viewControls.style.display = '';
+            
+            if (type === 'interpretations') {
+                viewButtons.innerHTML = `
+                    <button class="view-btn active" data-view="bydate">By Date</button>
+                    <button class="view-btn" data-view="bysection">By Code Section</button>
+                `;
+            } else if (type === 'other') {
+                viewButtons.innerHTML = `
+                    <button class="view-btn active" data-view="chronological">Chronological</button>
+                `;
+            } else {
+                viewButtons.innerHTML = `
+                    <button class="view-btn" data-view="numerical">Numerical</button>
+                    <button class="view-btn active" data-view="chronological">Chronological</button>
+                    <button class="view-btn" data-view="topical">Topical</button>
+                `;
+            }
         }
         
         // Re-bind view button events
@@ -473,39 +455,21 @@ class StandaloneNavigation {
         // Re-render
         this.renderDocuments();
         
-        // Navigate to the first document in this category
-        const docs = Object.entries(this.documents)
-            .filter(([key, doc]) => {
+        // Navigate to the first document in the new category
+        const firstDoc = Object.entries(this.documents)
+            .find(([key, doc]) => {
                 if (type === 'ordinances') return doc.type === 'ordinance';
                 if (type === 'resolutions') return doc.type === 'resolution';
                 if (type === 'interpretations') return doc.type === 'interpretation';
                 if (type === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes';
                 if (type === 'other') return doc.type === 'other' || doc.type === 'charter';
                 return false;
-            })
-            .map(([key, doc]) => ({ ...doc, docKey: key }));
+            });
         
-        // If we have documents in this category, navigate to the first one
-        if (docs.length > 0) {
-            // Sort by date (newest first) for meeting documents, or by year for others
-            if (type === 'transcripts') {
-                docs.sort((a, b) => {
-                    const dateA = new Date(a.date || '1900-01-01');
-                    const dateB = new Date(b.date || '1900-01-01');
-                    return dateB - dateA;
-                });
-            } else {
-                docs.sort((a, b) => {
-                    const yearA = parseInt(a.year) || 0;
-                    const yearB = parseInt(b.year) || 0;
-                    return yearB - yearA;
-                });
-            }
-            
-            // Navigate to the first document
-            this.navigateToDocument(docs[0]);
-        } else {
-            console.log(`StandaloneNavigation: No documents found for type ${type}`);
+        if (firstDoc) {
+            const [key, doc] = firstDoc;
+            // Add the docKey to the document object for navigation
+            this.navigateToDocument({ ...doc, docKey: key });
         }
     }
     
@@ -567,7 +531,11 @@ class StandaloneNavigation {
             })
             .map(([key, doc]) => ({ ...doc, docKey: key }));
         
-        console.log(`StandaloneNavigation: Rendering ${docs.length} ${this.currentDocType}`);
+        // Special handling for meeting documents
+        if (this.currentDocType === 'transcripts') {
+            this.renderMeetingDocuments(container, docs);
+            return;
+        }
         
         // Minimum threshold for grouping
         const MIN_DOCS_FOR_GROUPING = 10;
@@ -759,9 +727,21 @@ class StandaloneNavigation {
             item.classList.add('has-interpretations');
         }
         
-        // Get Airtable metadata for badges and display formatting
-        const fileKey = doc.file ? doc.file.replace('.md', '') : null;
-        const airtableData = fileKey ? this.airtableMetadata[fileKey] : null;
+        // Get metadata from Airtable cache if available
+        // Try to match using the file name (without path and extension)
+        let fileKey = doc.file ? doc.file.replace('.md', '') : null;
+        
+        // Try both with and without # symbol for resolutions/ordinances
+        let airtableData = fileKey ? this.airtableMetadata[fileKey] : null;
+        
+        // If not found and it looks like a resolution/ordinance, try adding # after the type
+        if (!airtableData && fileKey && (doc.type === 'resolution' || doc.type === 'ordinance')) {
+            // Try inserting # after year and before number (e.g., "2024-Res-300..." becomes "2024-Res-#300...")
+            const altKey = fileKey.replace(/^(\d{4}-(?:Res|Ord)-)(\d+)/, '$1#$2');
+            if (altKey !== fileKey) {
+                airtableData = this.airtableMetadata[altKey];
+            }
+        }
         
         // Add special state badge if available
         let specialStateBadge = '';
@@ -777,67 +757,55 @@ class StandaloneNavigation {
             }
         }
         
-        // Format display - use Airtable data if available for better formatting
+        // Format display - use Airtable display name if available
         let display = '';
-        if (airtableData && airtableData.doc_number) {
-            // Use Airtable metadata for clean display
-            const docNumber = airtableData.doc_number;
-            const shortTitle = airtableData.short_title || '';
-            const year = airtableData.year || doc.year;
+        if (airtableData && airtableData.display_name) {
+            // Build display text based on available fields
+            let displayText = airtableData.display_name;
             
+            if (doc.type === 'resolution') {
+                // For resolutions, prefer short_title if available, otherwise just the number
+                if (airtableData.short_title) {
+                    // Use doc number + short title for a clean display
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                } else if (airtableData.doc_number) {
+                    // Fall back to just the number
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span>`;
+                }
+            } else if (doc.type === 'ordinance' && airtableData.short_title) {
+                // For ordinances with short_title, use it
+                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+            }
+            
+            display = `${displayText} ${specialStateBadge}`;
+            
+            // Add year for ordinances and resolutions with proper layout
             if (doc.type === 'ordinance' || doc.type === 'resolution') {
-                // Format with floating year on the right
-                display = `<div class="doc-item-main">
-                    <span class="doc-number">#${docNumber}</span>
-                    ${shortTitle ? ` - <span class="doc-title">${shortTitle}</span>` : ''}
-                    ${specialStateBadge}
-                    <span class="doc-year-tag">${year}</span>
-                </div>`;
-            } else {
-                // Other document types
-                display = `${airtableData.display_name || doc.id} ${specialStateBadge}`;
+                // Put badge after the title text, not in a separate container
+                display = `<div class="doc-item-main">${displayText} ${specialStateBadge}<span class="doc-year-tag">${airtableData.year || doc.year}</span></div>`;
             }
         } else {
-            // Fallback to auto-generated display when no Airtable data
+            // Fallback to auto-generated display
             if (doc.type === 'ordinance') {
-                const match = doc.id.match(/^(\d+[\w-]*)-(.+)/);
+                // More specific regex: match numbers optionally followed by hyphen and more numbers/letters (like 54-89 or 73-2003A)
+                const match = doc.id.match(/^(\d+(?:-\d+[A-Z]?)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main">
-                        <span class="doc-number">#${num}</span> - 
-                        <span class="doc-title">${this.truncateTitle(topic)}</span>
-                        ${specialStateBadge}
-                        <span class="doc-year-tag">${doc.year}</span>
-                    </div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
-                    display = `${doc.id} ${specialStateBadge} <span class="doc-year">[${doc.year}]</span>`;
+                    display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
             } else if (doc.type === 'resolution') {
-                const match = doc.id.match(/^(\d+)-(.+)/);
+                // For resolutions, match just numbers or numbers with hyphen and year (like 259-2018)
+                const match = doc.id.match(/^(\d+(?:-\d+)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main">
-                        <span class="doc-number">#${num}</span> - 
-                        <span class="doc-title">${this.truncateTitle(topic)}</span>
-                        ${specialStateBadge}
-                        <span class="doc-year-tag">${doc.year}</span>
-                    </div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
-                    display = `${doc.id} ${specialStateBadge} <span class="doc-year">[${doc.year}]</span>`;
-                }
-            } else if (doc.type === 'transcript' || doc.type === 'agenda' || doc.type === 'minutes') {
-                // Meeting documents - format as date and type
-                const typeLabel = doc.type.charAt(0).toUpperCase() + doc.type.slice(1);
-                if (doc.date) {
-                    // Try to format the date nicely
-                    const dateObj = new Date(doc.date + 'T00:00:00');
-                    const formatted = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                    display = `${formatted} - ${typeLabel}`;
-                } else {
-                    display = `${doc.title || doc.file} - ${typeLabel}`;
+                    display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
             } else {
-                // Interpretation and other documents
+                // Interpretation
                 display = `${doc.date || doc.year} - ${doc.section || doc.title}`;
             }
         }
@@ -865,22 +833,25 @@ class StandaloneNavigation {
     }
     
     navigateToDocument(doc) {
+        // Detect GitHub Pages base path
+        const basePath = window.location.pathname.includes('/city_of_rivergrove/') ? '/city_of_rivergrove' : '';
+        
         // Construct the URL path based on document type and file
         let path = '';
         if (doc.type === 'ordinance') {
-            path = `/ordinances/${doc.file.replace('.md', '.html').replace('#', '')}`;
+            path = `${basePath}/ordinances/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'resolution') {
-            path = `/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
+            path = `${basePath}/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'interpretation') {
-            path = `/interpretations/${doc.file.replace('.md', '.html')}`;
-        } else if (doc.type === 'transcript') {
-            path = `/transcripts/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/interpretations/${doc.file.replace('.md', '.html')}`;
         } else if (doc.type === 'agenda') {
-            path = `/agendas/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/agendas/${doc.file.replace('.md', '.html')}`;
+        } else if (doc.type === 'transcript' || doc.type === 'meeting') {
+            path = `${basePath}/transcripts/${doc.file.replace('.md', '.html')}`;
         } else if (doc.type === 'minutes') {
-            path = `/minutes/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/minutes/${doc.file.replace('.md', '.html')}`;
         } else if (doc.type === 'other' || doc.type === 'charter') {
-            path = `/other/${doc.file.replace('.md', '.html')}`;
+            path = `${basePath}/other/${doc.file.replace('.md', '.html')}`;
         }
         
         // Navigate directly without animations
@@ -983,6 +954,105 @@ class StandaloneNavigation {
         });
     }
     
+    renderMeetingDocuments(container, docs) {
+        // Group meeting documents by date
+        const meetingsByDate = {};
+        
+        docs.forEach(doc => {
+            // Extract date from document
+            const date = doc.date || doc.year || 'Unknown';
+            if (!meetingsByDate[date]) {
+                meetingsByDate[date] = [];
+            }
+            meetingsByDate[date].push(doc);
+        });
+        
+        // Sort dates based on current order
+        const dates = Object.keys(meetingsByDate).sort((a, b) => {
+            if (this.currentOrder === 'asc') {
+                return a.localeCompare(b);
+            } else {
+                return b.localeCompare(a);
+            }
+        });
+        
+        container.innerHTML = '';
+        
+        // Render each date group
+        dates.forEach(date => {
+            const group = document.createElement('div');
+            group.className = 'doc-group';
+            
+            // Create group header with formatted date
+            const header = document.createElement('div');
+            header.className = 'group-header';
+            
+            // Format the date nicely (e.g., "February 12, 2024")
+            let formattedDate = date;
+            if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                const dateObj = new Date(date + 'T12:00:00');
+                formattedDate = dateObj.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            }
+            
+            header.innerHTML = `
+                <span class="group-title">${formattedDate}</span>
+                <span class="group-count">${meetingsByDate[date].length}</span>
+            `;
+            group.appendChild(header);
+            
+            // Create items container
+            const items = document.createElement('div');
+            items.className = 'group-items';
+            
+            // Sort documents within date group alphabetically by type
+            const sortedDocs = meetingsByDate[date].sort((a, b) => {
+                // Order: Agenda, Minutes, Transcript
+                const typeOrder = { 'agenda': 1, 'minutes': 2, 'transcript': 3, 'meeting': 3 };
+                const orderA = typeOrder[a.type] || 99;
+                const orderB = typeOrder[b.type] || 99;
+                return orderA - orderB;
+            });
+            
+            // Render each document without showing individual dates
+            sortedDocs.forEach(doc => {
+                const item = document.createElement('div');
+                item.className = 'doc-item';
+                item.dataset.docId = doc.docKey;
+                
+                // Get the document type label
+                const typeLabel = {
+                    'agenda': 'Agenda',
+                    'minutes': 'Minutes',
+                    'transcript': 'Transcript',
+                    'meeting': 'Meeting'
+                }[doc.type] || doc.type;
+                
+                // Simple display without date
+                item.innerHTML = `<span class="meeting-type">${typeLabel}</span>`;
+                
+                // Add click handler
+                item.addEventListener('click', () => {
+                    this.navigateToDocument(doc);
+                });
+                
+                items.appendChild(item);
+            });
+            
+            group.appendChild(items);
+            container.appendChild(group);
+        });
+        
+        // Update counts
+        const totalCountEl = document.querySelector('.total-count');
+        const visibleCountEl = document.querySelector('.visible-count');
+        if (totalCountEl) totalCountEl.textContent = docs.length;
+        if (visibleCountEl) visibleCountEl.textContent = docs.length;
+    }
+    
     detectCurrentDocument() {
         // Detect which document we're currently viewing based on URL
         const path = window.location.pathname;
@@ -1011,8 +1081,8 @@ class StandaloneNavigation {
                         // Update icon and label
                         const icons = {
                             'ordinances': '📋',
-                            'resolutions': '📜',
-                            'interpretations': '💭',
+                            'resolutions': '📄',
+                            'interpretations': '📝',
                             'transcripts': '🎙️',
                             'other': '📚'
                         };
@@ -1028,18 +1098,10 @@ class StandaloneNavigation {
                         if (contextLabel) contextLabel.textContent = labels[docType] || docType;
                     }
                     
-                    // Update search placeholder to match document type
-                    const search = document.querySelector('.nav-search');
-                    if (search) {
-                        const searchLabels = {
-                            'ordinances': 'ordinances',
-                            'resolutions': 'resolutions',
-                            'interpretations': 'interpretations',
-                            'transcripts': 'meeting records',
-                            'other': 'other documents'
-                        };
-                        search.placeholder = `Search ${searchLabels[docType] || docType}...`;
-                    }
+                    // Update active state in dropdown menu
+                    document.querySelectorAll('.context-item').forEach(item => {
+                        item.classList.toggle('active', item.dataset.type === docType);
+                    });
                     
                     // Re-render the documents list for the correct type
                     this.renderDocuments();
@@ -1513,6 +1575,44 @@ class StandaloneNavigation {
             .doc-year {
                 color: #666;
                 font-size: 11px;
+            }
+            
+            /* Enhanced layout styles */
+            .doc-item-main {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                gap: 8px;
+                flex-wrap: nowrap;
+            }
+            
+            .doc-title {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 11px;
+            }
+            
+            .doc-year-tag {
+                margin-left: auto;
+                color: #9ca3af;
+                font-size: 10px;
+                font-weight: 500;
+                padding: 2px 6px;
+                background: #f3f4f6;
+                border-radius: 3px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            
+            .doc-badges {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                margin: 0 8px;
+                flex-shrink: 0;
             }
             
             /* Special state badges */

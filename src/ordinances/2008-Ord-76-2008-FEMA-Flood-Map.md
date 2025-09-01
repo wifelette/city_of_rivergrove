@@ -2,15 +2,15 @@
 
 ## AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md) AND [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) AND DECLARING AN EMERGENCY
 
-Submitted to the Rivergrove City Council on **6-9-08**
+Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 
-Adopted by the Rivergrove City Council on **6-9-08**
+Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 
 [Signature], Hafez Darae, Mayor  
-**Date**: 6-9-08        
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 
 [Signature], Sheri Richards, City Recorder  
-**Date**: 6-9-08        
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 
 ---
 

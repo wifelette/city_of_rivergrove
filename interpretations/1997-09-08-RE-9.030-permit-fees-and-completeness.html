@@ -1,0 +1,687 @@
+<!DOCTYPE HTML>
+
+<html class="light sidebar-visible" dir="ltr" lang="en">
+<head>
+<!-- Book generated using mdBook -->
+<meta charset="utf-8"/>
+<title>Permit Fees (1997-09-08) - City of Rivergrove Documents</title>
+<!-- Custom HTML head -->
+<meta content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations" name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="../favicon.svg" rel="icon"/>
+<link href="../favicon.png" rel="shortcut icon"/>
+<link href="../css/variables.css" rel="stylesheet"/>
+<link href="../css/general.css" rel="stylesheet"/>
+<link href="../css/chrome.css" rel="stylesheet"/>
+<link href="../css/print.css" media="print" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="../FontAwesome/css/font-awesome.css" rel="stylesheet"/>
+<link href="../fonts/fonts.css" rel="stylesheet"/>
+<!-- Highlight.js Stylesheets -->
+<link href="../highlight.css" id="highlight-css" rel="stylesheet"/>
+<link href="../tomorrow-night.css" id="tomorrow-night-css" rel="stylesheet"/>
+<link href="../ayu-highlight.css" id="ayu-highlight-css" rel="stylesheet"/>
+<!-- Custom theme stylesheets -->
+<link href="../custom.css" rel="stylesheet"/>
+<!-- Provide site root and default themes to javascript -->
+<script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+<!-- Start loading toc.js asap -->
+<script src="../toc.js"></script>
+<style id="custom-list-styles">
+        /* Custom list styles for legal documents */
+        .custom-list-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .definition-item {
+            margin: 1em 0;
+        }
+        
+        .definition-marker {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        .roman-list {
+            list-style: none;
+            padding-left: 2em;
+        }
+        
+        .roman-list li {
+            margin: 0.5em 0;
+        }
+        
+        .roman-marker {
+            font-weight: normal;
+            margin-right: 0.5em;
+        }
+        
+        /* Roman numeral lists that shouldn't show automatic numbering */
+        .roman-parenthetical-list {
+            list-style: none !important;
+            counter-reset: none !important;
+            padding-left: 2em;
+        }
+        
+        .roman-parenthetical-list > li {
+            list-style: none !important;
+            position: relative;
+        }
+        
+        .roman-parenthetical-list > li::before {
+            content: none !important;
+        }
+        
+        /* Special list that starts at non-standard number (e.g., 1.4) */
+        .special-start-list {
+            list-style: none !important;
+            padding-left: 2em;
+            counter-reset: none !important;
+        }
+        
+        .special-start-list li {
+            margin: 0.5em 0;
+            position: relative;
+            list-style: none !important;
+        }
+        
+        .special-start-list li::before {
+            content: none !important;
+        }
+        
+        .special-list-number {
+            font-weight: bold;
+            margin-right: 0.5em;
+            display: inline-block;
+            min-width: 2em;
+        }
+        
+        /* Override mdBook's list styling for our custom lists */
+        ol:has(.custom-list-marker) {
+            list-style: none;
+            counter-reset: none;
+        }
+        
+        ol:has(.custom-list-marker) li::before {
+            content: none;
+        }
+        
+        ol.special-start-list li::before {
+            content: none;
+        }
+        
+        /* Form field styles for legal documents */
+        .form-field-empty {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            margin: 0 2px;
+            cursor: default;
+            vertical-align: baseline;
+            height: 1em;
+            position: relative;
+        }
+        
+        .form-field-empty:hover {
+            background-color: #f0f0f0;
+            border-bottom-color: #666;
+        }
+        
+        /* Add a visual indicator for blank fields */
+        .form-field-empty::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in;
+            transition-delay: 0.5s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-empty:hover::after {
+            opacity: 1;
+        }
+        
+        .form-field-short {
+            min-width: 60px;
+        }
+        
+        .form-field-medium {
+            min-width: 120px;
+        }
+        
+        .form-field-long {
+            min-width: 200px;
+        }
+        
+        .form-field-filled {
+            display: inline-block;
+            padding: 2px 4px 4px 4px;
+            background-color: #e3f2fd;
+            border-bottom: 2px solid #1976d2;
+            color: #000;
+            font-weight: 600;
+            cursor: default !important;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        /* Ensure tooltips appear above other elements */
+        .form-field-filled:hover,
+        .form-field-empty:hover {
+            z-index: 1000;
+        }
+        
+        /* Force no help cursor for form fields and remove any title tooltips */
+        .form-field-filled,
+        .form-field-filled:hover,
+        .form-field-empty,
+        .form-field-empty:hover {
+            cursor: default !important;
+        }
+        
+        /* Hide any native browser tooltips */
+        .form-field-filled[title],
+        .form-field-empty[title] {
+            cursor: default !important;
+        }
+        
+        .form-field-filled[title]:hover::before,
+        .form-field-empty[title]:hover::before {
+            content: '' !important;
+        }
+        
+        .form-field-filled:hover {
+            background-color: #bbdefb;
+            border-bottom-color: #0d47a1;
+        }
+        
+        /* CSS tooltip for filled fields */
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+        
+        /* Special positioning for tooltips in headings to avoid clipping */
+        h1 .form-field-filled::after,
+        h2 .form-field-filled::after,
+        h3 .form-field-filled::after {
+            top: 100%;
+            bottom: auto;
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Same for empty field tooltips in headings */
+        h1 .form-field-empty::after,
+        h2 .form-field-empty::after,
+        h3 .form-field-empty::after {
+            font-weight: normal;
+            font-size: 12px;
+        }
+        
+        /* Special styling for form fields in headings */
+        h1 .form-field-filled, 
+        h2 .form-field-filled, 
+        h3 .form-field-filled {
+            font-size: inherit;
+            font-weight: inherit;
+            vertical-align: baseline;
+        }
+        
+        h1 .form-field-empty, 
+        h2 .form-field-empty, 
+        h3 .form-field-empty {
+            vertical-align: baseline;
+            height: 0.8em;
+            margin-bottom: -0.1em;
+        }
+        
+        /* Document figure styles for inline images */
+        .document-figure {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        .document-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .document-figure figcaption {
+            margin-top: 1em;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        /* Responsive image sizing */
+        @media screen and (min-width: 768px) {
+            .document-figure {
+                max-width: 80%;
+            }
+        }
+        
+        @media print {
+            .document-figure {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+            
+            .document-figure img {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+        </style><style id="enhanced-formatting-styles">
+            /* Enhanced formatting for special document types */
+            
+            /* WHEREAS Clauses */
+            .whereas-clause {
+                margin: 1.5em 0;
+                padding-left: 2em;
+                position: relative;
+            }
+            
+            .whereas-marker {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            /* Definition Lists */
+            .definition-item {
+                margin: 1.2em 0;
+                padding: 0.8em;
+                background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+                border-left: 3px solid #0969da;
+            }
+            
+            .definition-term {
+                font-weight: bold;
+                color: #0969da;
+                margin-right: 0.3em;
+            }
+            
+            .definition-separator {
+                margin: 0 0.3em;
+                color: #6c757d;
+            }
+            
+            .definition-text {
+                color: #333;
+            }
+            
+            /* Enhanced Tables */
+            .table-wrapper {
+                overflow-x: auto;
+                margin: 1.5em 0;
+                border-radius: 8px;
+            }
+            
+            .fee-schedule-table {
+                background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+                padding: 1em;
+            }
+            
+            .formatted-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                background: white;
+            }
+            
+            .formatted-table thead {
+                background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                color: white;
+            }
+            
+            .formatted-table th {
+                padding: 12px 16px;
+                text-align: left;
+                font-weight: 600;
+                border-bottom: 2px solid #495057;
+            }
+            
+            .formatted-table td {
+                padding: 10px 16px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .formatted-table tbody tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .formatted-table tbody tr:nth-child(even) {
+                background: rgba(0, 105, 218, 0.02);
+            }
+            
+            /* Cells with footnotes */
+            .has-footnote {
+                position: relative;
+            }
+            
+            .has-footnote sup {
+                color: #0969da;
+                font-weight: bold;
+            }
+            
+            /* Section Quotes */
+            .section-quote {
+                border-left: 4px solid #0969da;
+                padding-left: 1.5em;
+                margin: 1.5em 0;
+                background: #f8f9fa;
+                padding: 1em 1.5em;
+                border-radius: 0 8px 8px 0;
+            }
+            
+            /* Custom Numbered Lists */
+            .custom-numbered-list {
+                list-style: none;
+                counter-reset: none;
+                padding-left: 0;
+            }
+            
+            .custom-numbered-list li {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .custom-numbered-list .custom-list-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #0969da;
+            }
+            
+            /* Letter Items */
+            .letter-item {
+                margin: 0.8em 0;
+                padding-left: 2.5em;
+                position: relative;
+            }
+            
+            .letter-marker {
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                color: #495057;
+            }
+            
+            /* Nested structures */
+            .nested-section {
+                border-left: 2px solid #dee2e6;
+                padding-left: 1em;
+                margin-left: 1em;
+                margin-top: 0.5em;
+            }
+            /* Form field styles are handled by custom-list-processor.py */
+            
+            /* Print styles */
+            @media print {
+                .table-wrapper {
+                    box-shadow: none;
+                    page-break-inside: avoid;
+                }
+                
+                .formatted-table {
+                    font-size: 0.9em;
+                }
+                
+                .whereas-clause,
+                .definition-item,
+                .section-quote {
+                    page-break-inside: avoid;
+                }
+            }
+            </style></head>
+<body>
+<div id="mdbook-help-container">
+<div id="mdbook-help-popup">
+<h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+<div>
+<p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+<p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+<p>Press <kbd>?</kbd> to show this help</p>
+<p>Press <kbd>Esc</kbd> to hide this help</p>
+</div>
+</div>
+</div>
+<div id="body-container">
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+<input class="hidden" id="sidebar-toggle-anchor" type="checkbox"/>
+<!-- Hide / unhide sidebar before it is displayed -->
+<script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+<nav aria-label="Table of contents" class="sidebar" id="sidebar">
+<!-- populated by js -->
+<mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+<noscript>
+<iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+</noscript>
+<div class="sidebar-resize-handle" id="sidebar-resize-handle">
+<div class="sidebar-resize-indicator"></div>
+</div>
+</nav>
+<div class="page-wrapper" id="page-wrapper">
+<div class="page">
+<div id="menu-bar-hover-placeholder"></div>
+<div class="menu-bar sticky" id="menu-bar">
+<div class="left-buttons">
+<label aria-controls="sidebar" aria-label="Toggle Table of Contents" class="icon-button" for="sidebar-toggle-anchor" id="sidebar-toggle" title="Toggle Table of Contents">
+<i class="fa fa-bars"></i>
+</label>
+<button aria-controls="theme-list" aria-expanded="false" aria-haspopup="true" aria-label="Change theme" class="icon-button" id="theme-toggle" title="Change theme" type="button">
+<i class="fa fa-paint-brush"></i>
+</button>
+<ul aria-label="Themes" class="theme-popup" id="theme-list" role="menu">
+<li role="none"><button class="theme" id="default_theme" role="menuitem">Auto</button></li>
+<li role="none"><button class="theme" id="light" role="menuitem">Light</button></li>
+<li role="none"><button class="theme" id="rust" role="menuitem">Rust</button></li>
+<li role="none"><button class="theme" id="coal" role="menuitem">Coal</button></li>
+<li role="none"><button class="theme" id="navy" role="menuitem">Navy</button></li>
+<li role="none"><button class="theme" id="ayu" role="menuitem">Ayu</button></li>
+</ul>
+<button aria-controls="searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-label="Toggle Searchbar" class="icon-button" id="search-toggle" title="Search (`/`)" type="button">
+<i class="fa fa-search"></i>
+</button>
+</div>
+<h1 class="menu-title">City of Rivergrove Documents</h1>
+<div class="right-buttons">
+<a aria-label="Print this book" href="../print.html" title="Print this book">
+<i class="fa fa-print" id="print-button"></i>
+</a>
+<a aria-label="Git repository" href="https://github.com/wifelette/city_of_rivergrove" title="Git repository">
+<i class="fa fa-github" id="git-repository-button"></i>
+</a>
+</div>
+</div>
+<div class="hidden" id="search-wrapper">
+<form class="searchbar-outer" id="searchbar-outer">
+<div class="search-wrapper">
+<input aria-controls="searchresults-outer" aria-describedby="searchresults-header" id="searchbar" name="searchbar" placeholder="Search this book ..." type="search"/>
+<div class="spinner-wrapper">
+<i class="fa fa-spinner fa-spin"></i>
+</div>
+</div>
+</form>
+<div class="searchresults-outer hidden" id="searchresults-outer">
+<div class="searchresults-header" id="searchresults-header"></div>
+<ul id="searchresults">
+</ul>
+</div>
+</div>
+<!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+<script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+<div class="content" id="content">
+<main>
+<h1 id="an-interpretation-of-the-planning-commission"><a class="header" href="#an-interpretation-of-the-planning-commission">An Interpretation of the Planning Commission</a></h1>
+<h2 id="september-8-1997"><a class="header" href="#september-8-1997">September 8, 1997</a></h2>
+<p>Section 9.030 of the Rivergrove Land Development Ordinance (RLDO) reads, in part, as follows:</p>
+<p>“All fees and system development charges under this ordinance, and the Development Standards Document, shall be as outlined below. This fee schedule may be amended at any time by Resolution of the City Council. Fee[s]¹ must be paid to the City by the applicant at the time of application. Fees assessed to an applicant may include the costs to the City of legal services, hearings officers, engineering services, planning services, and design services as the City determines are necessary to consider the permit. When such costs are not known in advance, the City shall estimate the cost, and provide a full accounting at the end of the permit process. Overcharges will be refunded to the applicant, and the applicant shall be responsible to the City for any additional costs not covered by the estimate.” (Emphasis added.)</p>
+<p>“For construction of new residential units which will use streets and roads within the City of Rivergrove, the City may assess a roadway system development fee. This fee will be deposited in to the City’s Road fund and may be used only for the purposes legally allowed for road funds. The roadway system development fee may be waived by the City Council should the City determine it will be a hardship, and, at the City’s discretion, may credit the cost of required public facility improvements against such fees.” (Emphasis added.)</p>
+<p>The following matters are explicitly (and clearly) stated and thus do not require an interpretation: 1) fees must be paid at the time of application; 2) fees may include costs, which, when not known in advance, shall be estimated; and 3) the City may assess roadway system development fees.</p>
+<p>The following matters are less explicitly stated: 1) estimated costs necessary to consider the permit are included in the fees that must be paid to the City by the applicant at the time of application; 2) system development charges (system development fees) are included in the fees that must be paid to the City by the applicant at the time of application; and 3) An application is not complete until the fees due at the time of application are, in fact, fully paid to the City by the applicant. To the extent that these matters rely upon “interpretations” of the Rivergrove Land Development Ordinance,² those interpretations are hereby made by the Planning Commission and are explained below.</p>
+<ol>
+<li>
+<p>An interpretation that the estimated costs the City will incur should be included in the fees due at the time of application follows directly from the wording of Section 9.030 (“Fees assessed to an applicant may include the costs … necessary to consider the permit.” “When such costs are not known in advance, the City shall estimate the cost …” “Fee[s] must be paid to the City by the applicant at the time of application.”). This interpretation is reinforced by the part of the Section which provides for overcharges to be refunded (i.e., the provision contemplates payment in advance coupled with a refund - or additional payment - based upon the full accounting at the end of the permit process).</p>
+</li>
+<li>
+<p>An interpretation that system development charges (system development fees) should be included in the fees due at the time of application has two (2) bases of support:</p>
+<p>a. It is only in the first sentence of Section 9.030 that fees and system development charges are separately mentioned and distinctly identified. That same sentence goes on to indicate that both “shall be as outlined below.” The manner in which they are outlined below is a manner which treats them without distinction (i.e., as though they were the same and/or interchangeable). For example, system development charges are included on the fee schedule. With respect to the fee schedule, therefore, system development charges are fees. Thus it is consistent to interpret this Section in a manner which determines that system development charges are also fees with respect to the requirement that fees must be paid at the time of application.</p>
+<p>b. In the second paragraph of Section 9.030 the word fee is used to identify, describe, or refer to the assessment of a system development fee no less than four (4) times. From the predominant use of the word fee with respect to this assessment, it is reasonable to conclude that the authors of this Section intended the phrases ‘system development charge’ and ‘system development fee’ to be interchangeable and to mean exactly the same thing. Thus system development charges are fees and are to be included in the fees required to be paid at the time of application.</p>
+</li>
+</ol>
+<p>Either of the two bases discussed above would be adequate by itself to support the interpretation being made here. Combined, they seem to allow no other reasonable interpretation on this particular point.</p>
+<ol start="3">
+<li>An interpretation that an application is not complete until the fees due at the time of application are, in fact, fully paid to the City by the applicant follows directly from the language of Section 9.030: “Fee[s] must be paid to the City by the applicant at the time of application.” (Emphasis added.) If the “time of application” has arrived, then the fees must be paid. If the fees have not been paid, then the “time of application” has not yet arrived. Thus, the Planning Commission may determine that an application is not complete³ until the fees due at the time of application (to include estimated costs and system development charges - see above discussion) are paid in full as required by Section 9.030 as interpreted herein.</li>
+</ol>
+<p>The Planning Commission has the authority and responsibility to interpret the RLDO (Section 3.090 of the RLDO). That interpretation shall be in writing and shall be available with copies of the RLDO. The following interpretation of Section 9.030 is hereby adopted by the Planning Commission at its regular meeting on September 8, 1997. Until this Section is revised or until a different interpretation of this Section is adopted by the Planning Commission, this Section shall be applied and enforced in accordance with the following interpretation:</p>
+<h2 id="interpretation"><a class="header" href="#interpretation">INTERPRETATION</a></h2>
+<h3 id="section-9030-rivergrove-land-development-ordinance"><a class="header" href="#section-9030-rivergrove-land-development-ordinance">Section 9.030, Rivergrove Land Development Ordinance</a></h3>
+<p>The Planning Commission hereby interprets Section 9.030 of the Rivergrove Land Development Ordinance to include the following requirements:</p>
+<ol>
+<li>
+<p>Estimated costs necessary to consider the permit are included in the fees that must be paid to the City by the applicant at the time of application.</p>
+</li>
+<li>
+<p>System development charges (system development fees) are included in the fees that must be paid to the City by the applicant at the time of application.</p>
+</li>
+<li>
+<p>An application is not complete until the fees due at the time of application are, in fact, fully paid to the City by the applicant.</p>
+</li>
+</ol>
+<p>Important Note: Section 9.030 is the principal provision of the Rivergrove Land Development Ordinance covering fees and system development charges. In the case of any possible inconsistency between the requirements of Section 9.030 as interpreted above, and any other provision of a City ordinance or City document (to include an old application form, for example), the requirements of Section 9.030 as interpreted above shall govern.</p>
+<hr/>
+<p>² The Planning Commission has the authority and the responsibility to interpret the Rivergrove Land Development Ordinance (RLDO) when necessary. See RLDO Section 3.090.</p>
+<p>³ RLDO Section 4.050 assigns to the Planning Commission the authority and the responsibility for determining whether an application is complete.</p>
+<p>To be Filed in Article 9 of the Rivergrove Land Development Ordinance</p>
+</main>
+<nav aria-label="Page navigation" class="nav-wrapper">
+<!-- Mobile navigation buttons -->
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="mobile-nav-chapters previous" href="../interpretations/1997-07-07-RE-2.040h-permitting-adus.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="mobile-nav-chapters next" href="../interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+<div style="clear: both"></div>
+</nav>
+</div>
+</div>
+<nav aria-label="Page navigation" class="nav-wide-wrapper">
+<a aria-keyshortcuts="Left" aria-label="Previous chapter" class="nav-chapters previous" href="../interpretations/1997-07-07-RE-2.040h-permitting-adus.html" rel="prev" title="Previous chapter">
+<i class="fa fa-angle-left"></i>
+</a>
+<a aria-keyshortcuts="Right" aria-label="Next chapter" class="nav-chapters next" href="../interpretations/1997-11-03-RE-9.030-permit-fees-and-completeness.html" rel="next prefetch" title="Next chapter">
+<i class="fa fa-angle-right"></i>
+</a>
+</nav>
+</div>
+<script>
+            window.playground_copyable = true;
+        </script>
+<script src="../elasticlunr.min.js"></script>
+<script src="../mark.min.js"></script>
+<script src="../searcher.js"></script>
+<script src="../clipboard.min.js"></script>
+<script src="../highlight.js"></script>
+<script src="../book.js"></script>
+<!-- Custom JS scripts -->
+<script src="../navigation-standalone.js"></script>
+</div>
+</body>
+</html>
