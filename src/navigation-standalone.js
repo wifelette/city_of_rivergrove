@@ -955,7 +955,7 @@ class StandaloneNavigation {
                 let docType = 'ordinances';
                 if (doc.type === 'resolution') docType = 'resolutions';
                 else if (doc.type === 'interpretation') docType = 'interpretations';
-                else if (doc.type === 'transcript' || doc.type === 'meeting') docType = 'transcripts';
+                else if (doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes') docType = 'transcripts';
                 else if (doc.type === 'other' || doc.type === 'charter') docType = 'other';
                 
                 // Update current doc type if different
