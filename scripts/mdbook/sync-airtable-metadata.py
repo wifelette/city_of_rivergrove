@@ -291,10 +291,40 @@ class AirtableSync:
         with open(self.cache_file, 'r') as f:
             return json.load(f)
     
-    def save_cache(self, data: Dict):
-        """Save cache file."""
+    def validate_cache_data(self, data: Dict) -> bool:
+        """Validate cache data before saving to prevent partial overwrites."""
+        min_expected_docs = 40  # Should have at least 40 documents
+        total_records = len(data.get('documents', {}))
+        
+        if total_records < min_expected_docs:
+            print(f"  ⚠️  WARNING: Cache validation failed!")
+            print(f"     Cache has only {total_records} documents, expected at least {min_expected_docs}")
+            print(f"     This might indicate a partial or failed sync")
+            
+            # Check if we have an existing cache with more data
+            if self.cache_file.exists():
+                existing_cache = self.load_cache()
+                existing_count = len(existing_cache.get('documents', {}))
+                if existing_count > total_records:
+                    print(f"     Existing cache has {existing_count} documents - preventing overwrite")
+                    print(f"     Use --force flag to override this protection")
+                    return False
+            
+            # Allow saving if this is a new cache or explicitly forced
+            print(f"     Proceeding with caution...")
+            
+        return True
+    
+    def save_cache(self, data: Dict, force_save: bool = False):
+        """Save cache file with validation."""
         # Ensure directory exists
         self.cache_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Validate before saving unless forced
+        if not force_save and not self.validate_cache_data(data):
+            print("  ❌ Cache save aborted due to validation failure")
+            print("     Run with --force to override validation")
+            return False
         
         # Update metadata
         data['metadata']['last_updated'] = datetime.now().isoformat()
@@ -302,6 +332,8 @@ class AirtableSync:
         
         with open(self.cache_file, 'w') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+        
+        return True
     
     def full_sync(self, force: bool = False):
         """Perform full sync of all documents."""
@@ -388,8 +420,11 @@ class AirtableSync:
                     'title': local_doc['title']
                 })
         
-        # Save cache
-        self.save_cache(cache_data)
+        # Save cache (pass force flag to override validation if explicitly requested)
+        save_success = self.save_cache(cache_data, force_save=force)
+        
+        if save_success:
+            print(f"  ✓ Cache saved with {len(cache_data['documents'])} documents")
         
         # Report results
         self.report_sync_results(
@@ -440,8 +475,11 @@ class AirtableSync:
             cache['metadata']['incremental_updates'] = \
                 cache['metadata']['incremental_updates'][-50:]
             
-            self.save_cache(cache)
-            print("  ✓ Cache updated")
+            # Save with validation (incremental updates should not reduce total count)
+            if self.save_cache(cache):
+                print("  ✓ Cache updated")
+            else:
+                print("  ⚠️  Cache update failed validation")
             
         elif create_if_missing:
             print(f"  ⚠️  Not found in Airtable")
@@ -457,8 +495,10 @@ class AirtableSync:
                 'created_at': datetime.now().isoformat()
             }
             
-            self.save_cache(cache)
-            print("  ✓ Provisional entry created")
+            if self.save_cache(cache):
+                print("  ✓ Provisional entry created")
+            else:
+                print("  ⚠️  Failed to save provisional entry")
             
         else:
             print(f"  ❌ Not found in Airtable and --create-if-missing not set")
