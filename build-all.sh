@@ -130,6 +130,15 @@ if [ "$SKIP_AIRTABLE" = false ]; then
     else
         echo "  ⏭️  Skipped (script not found)"
     fi
+    
+    # Also sync meetings metadata
+    echo "☁️  Syncing meetings metadata..."
+    if [ -f "scripts/mdbook/sync-meetings-metadata.py" ]; then
+        python3 scripts/mdbook/sync-meetings-metadata.py
+        echo "  ✅ Meetings metadata synced"
+    else
+        echo "  ⏭️  Meetings metadata sync skipped (script not found)"
+    fi
 else
     echo "⏭️  Step 8: Skipping Airtable sync (--quick mode)"
 fi
