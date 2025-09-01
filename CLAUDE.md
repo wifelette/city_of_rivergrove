@@ -81,10 +81,12 @@ Please read these files for context on this project and how to work with Leah:
 
 - If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
 - This means form fields (see `docs/styles/form-fields.md`) and other custom formatting will disappear
-- To see the REAL appearance with all formatting:
-  1. After any changes while `mdbook serve` is running
-  2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`
-  3. This restores form field styling and other custom formatting
+- **RECOMMENDED SOLUTION**: Use `./mdbook-serve-enhanced.sh` instead of `mdbook serve`
+  - This starts both the server AND a watcher that automatically runs postprocessors
+  - Form fields and custom formatting will be preserved automatically
+- **Manual alternative**: After any changes while `mdbook serve` is running:
+  1. Run: `python3 scripts/postprocessing/custom-list-processor.py`
+  2. This restores form field styling and other custom formatting
 - Alternatively, use the build scripts above which include postprocessing
 
 ### Step 8: Update Issue #3
@@ -108,8 +110,8 @@ The build system automatically validates `{{filled:}}` form field syntax at mult
 - **Dev Server**: Validates on every file save, blocks processing if errors found
 
 If you encounter form field errors:
-1. Check for unclosed tags: `{{filled:text` should be `{{filled:text}}`
-2. Ensure colon after "filled": `{{filled:text}}` not `{{filledtext}}`
+1. Check for unclosed tags: `\{\{filled:text` should be `\{\{filled:text\}\}`
+2. Ensure colon after "filled": `\{\{filled:text\}\}` not `\{\{filledtext\}\}`
 3. Run manual validation: `python3 scripts/validation/validate-form-fields.py [file]`
 4. Use `--fix` flag to auto-fix simple issues: `python3 scripts/validation/validate-form-fields.py --fix`
 

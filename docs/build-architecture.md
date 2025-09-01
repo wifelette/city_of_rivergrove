@@ -179,8 +179,13 @@ Documents can include images, diagrams, and visual content. See **[styles/inline
 ### Issue: Cross-references not working
 **Solution:** Ensure `add-cross-references.py` is called in build script and runs after auto-link converter
 
-### Issue: Form fields disappearing
-**Solution:** Run `custom-list-processor.py` after any mdBook rebuild
+### Issue: Form fields disappearing during mdBook serve
+**Problem:** mdBook's auto-rebuild bypasses our custom processors
+**Solutions:**
+1. **Automatic (Recommended):** Use `mdbook-serve-enhanced.sh` instead of `mdbook serve`
+   - Starts both mdbook server and postprocess watcher
+   - Automatically runs processors when mdBook rebuilds
+2. **Manual:** Run `custom-list-processor.py` after any mdBook rebuild
 
 ### Issue: Tooltips feel sluggish
 **Solution:** Adjust CSS transition timing in `custom-list-processor.py`
@@ -199,6 +204,32 @@ When adding a new processing step:
    - `build-one.sh` - Add to single-file processing if applicable
    - `dev-server.sh` - Add to the `process_file_change()` function
 4. Update this documentation
+
+## Development Server Options
+
+### Standard mdBook serve
+```bash
+mdbook serve --port 3000
+```
+Note: Auto-rebuild will bypass custom processors, causing form fields and formatting to disappear.
+
+### Enhanced serve with auto-processing (Recommended)
+```bash
+./mdbook-serve-enhanced.sh
+```
+- Starts mdbook server on port 3000
+- Runs postprocess watcher in background
+- Automatically applies custom formatting after rebuilds
+- Shows status messages when processing
+
+### Postprocess Watcher (standalone)
+```bash
+python3 scripts/mdbook/mdbook-postprocess-watcher.py
+```
+- Monitors book/ directory for HTML changes
+- Detects mdBook rebuilds using file hashes
+- Runs all postprocessors automatically
+- Can run alongside existing mdbook serve
 
 ## Testing Changes
 
