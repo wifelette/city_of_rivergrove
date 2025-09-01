@@ -4,39 +4,46 @@
 
 Please read these files for context on this project and how to work with Leah:
 
-1. **Project guides**: Read these guides for the Rivergrove ordinance digitization project:
+1. **Main project guides**:
    - `docs/digitization-guide.md` - Project overview and links to all guides
    - `docs/claude-code-guide.md` - Repository management workflow (most relevant for Claude Code)
    - `docs/mdbook-guide.md` - mdBook site generation and technical details
+   - `docs/build-architecture.md` - Complete build system documentation, script dependencies, and processing order
 
-2. **Build system architecture**: Read `docs/build-architecture.md` for understanding the processing pipeline:
+2. **Style and formatting guides**:
+   - `docs/styles/naming-conventions.md` - File naming standards
+   - `docs/styles/form-fields.md` - Form field syntax and validation
+   - `docs/styles/signature-formatting.md` - Signature block standards
+   - `docs/markdown-conventions.md` - Cross-references and formatting patterns
 
-   - Script dependencies and order
-   - How cross-references work
-   - Common issues and solutions
+3. **Technical documentation**:
+   - `scripts/SCRIPTS-GUIDE.md` - All script documentation
+   - `docs/airtable-integration.md` - Airtable sync and metadata
+   - `docs/metadata-architecture.md` - Metadata system overview
 
-3. **General working preferences**: Read `/Users/leahsilber/Github/daily_tasks/CLAUDE.md` for Leah's general preferences when working with Claude Code, including:
-   - Communication style preferences
-   - How to handle errors and issues
-   - General productivity tips
+4. **General working preferences**:
+   - `/Users/leahsilber/Github/daily_tasks/CLAUDE.md` - Leah's general preferences when working with Claude Code
 
 ## COMPLETE PROCESSING WORKFLOW
 
 **When Leah says "process [document name]", follow ALL these steps:**
 
-### Step 1: Find Document in Public Metadata
+### Step 1: Find Document in Airtable
 
-- Use MCP tool to search: `daily-tasks:council_public_metadata_list` with search parameter
+- Use MCP tool to search existing records first
 - Try multiple search formats: document number (e.g., "52"), full reference (e.g., "Ordinance 52"), or topic keywords
 - The record will show document type, year, number, topic, and processing status
-- Use this information to locate the .md file in the appropriate folder (source-documents/Resolutions/, source-documents/Ordinances/, source-documents/Interpretations/)
-- No need to read the full document just to get basic metadata
+- Use this information to locate the .md file in the appropriate folder:
+  - `source-documents/Ordinances/`
+  - `source-documents/Resolutions/`
+  - `source-documents/Interpretations/`
+  - `source-documents/Meetings/[YYYY]/[YYYY-MM-DD]/`
 
-### Step 2: Run Standardization Script
+### Step 2: Run Standardization Script (if needed)
 
 - Run `python3 scripts/preprocessing/standardize-single.py [path/to/file.md]` to standardize headers and signatures
 - Example: `python3 scripts/preprocessing/standardize-single.py source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
-- This only processes the single file you're working on (much faster than processing all files)
+- This standardizes headers and signature formatting for the single file
 
 ### Step 3: Check and Fix Naming EVERYWHERE
 
@@ -70,24 +77,22 @@ Please read these files for context on this project and how to work with Leah:
 
 **Option A - Single file (faster):**
 
-- Run `./build-one.sh [path/to/file.md]` to sync just this file and rebuild
+- Run `./build-one.sh [path/to/file.md]` to sync and rebuild just this file
 - Example: `./build-one.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
-**Option B - Full sync (if multiple files changed):**
+**Option B - Full rebuild (if multiple files changed):**
 
-- Run `./build-all.sh` to sync ALL files to src/ folders and rebuild
+- Run `./build-all.sh` to sync ALL files and rebuild entire site
 
-**IMPORTANT - mdBook serve limitations:**
+**IMPORTANT - Development server:**
 
-- If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors
-- This means form fields (see `docs/styles/form-fields.md`) and other custom formatting will disappear
-- **RECOMMENDED SOLUTION**: Use `./mdbook-serve-enhanced.sh` instead of `mdbook serve`
-  - This starts both the server AND a watcher that automatically runs postprocessors
-  - Form fields and custom formatting will be preserved automatically
-- **Manual alternative**: After any changes while `mdbook serve` is running:
-  1. Run: `python3 scripts/postprocessing/custom-list-processor.py`
-  2. This restores form field styling and other custom formatting
-- Alternatively, use the build scripts above which include postprocessing
+- **Use `./dev-server.sh` for development** - provides hot-reload with all processing
+- If using plain `mdbook serve`, it auto-rebuilds BUT does NOT run our postprocessors
+- This means form fields and other custom formatting will disappear
+- To restore formatting after mdBook auto-rebuild:
+  - Run: `python3 scripts/postprocessing/custom-list-processor.py`
+  - This restores form field styling and other custom formatting
+- The build scripts (`./build-one.sh`, `./build-all.sh`) always include full processing
 
 ### Step 8: Update Issue #3
 

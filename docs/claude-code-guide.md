@@ -20,6 +20,22 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
 - PDFs must have identical names to their .md counterparts
 - Files are organized by document type in their respective folders
 
+**Meeting Documents Organization**:
+```
+source-documents/Meetings/
+├── 2024/
+│   ├── 2024-12-09/
+│   │   ├── 2024-12-09-Agenda.md
+│   │   ├── 2024-12-09-Minutes.md
+│   │   └── 2024-12-09-Transcript.md
+│   └── 2024-02-12/
+│       └── 2024-02-12-Transcript.md
+└── 2018/
+    └── 2018-04-11/
+        └── 2018-04-11-Agenda.md
+```
+Each meeting has its own folder containing all related documents
+
 ## When Digitizing Documents
 
 ### 1. Check and Fix Naming EVERYWHERE
@@ -35,8 +51,8 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
 
 ### 2. Run Standardization Scripts
 
-- Run `python3 scripts/preprocessing/standardize-headers.py` to ensure consistent header formatting
-- Run `python3 scripts/preprocessing/fix-signatures.py` to standardize signature blocks
+- Run `python3 scripts/preprocessing/standardize-single.py [path/to/file.md]` to standardize headers and signatures
+- This combines header formatting and signature block standardization in one script
 
 ### 3. Add PDF
 
@@ -62,8 +78,13 @@ After pushing, always provide the GitHub web URLs for Airtable:
 - Run `./build-one.sh [path/to/file.md]`
 - Example: `./build-one.sh source-documents/Resolutions/2024-Res-#300-Fee-Schedule-Modification.md`
 
-**Option B - Full sync (if multiple files changed):**
+**Option B - Full rebuild (if multiple files changed):**
 - Run `./build-all.sh` to sync ALL files to src/ folders and rebuild
+- Use `./build-all.sh --quick` to skip Airtable sync for faster local testing
+
+**For development with hot-reload:**
+- Run `./dev-server.sh` to start a development server that watches source files
+- Automatically rebuilds when you save changes to source documents
 
 **Note**: The build scripts automatically update `src/SUMMARY.md`
 

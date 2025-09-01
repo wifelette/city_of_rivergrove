@@ -72,7 +72,7 @@ Development server with true hot-reload from source edits.
 
 ### Unified Title Resolver (`scripts/utils/title_resolver.py`)
 
-**Status**: ✅ Partially Implemented (only in generate-summary-with-airtable.py)
+**Status**: ⚠️ Partially Implemented (see [Issue #22](https://github.com/wifelette/city_of_rivergrove/issues/22) for rollout status)
 
 The title resolver provides a single source of truth for document titles across all scripts, implementing a clear hierarchy:
 
@@ -82,12 +82,18 @@ The title resolver provides a single source of truth for document titles across 
 4. **First H1 heading** - First # heading in document
 5. **Filename extraction** (lowest priority) - Topic extracted from filename
 
-**Implementation Status**:
-- ✅ Integrated in `generate-summary-with-airtable.py` (sidebar generation)
-- ❌ TODO: `sync-ordinances.py` (still uses own logic)
-- ❌ TODO: `sync-resolutions.py` (still uses own logic)
-- ❌ TODO: `sync-interpretations.py` (still uses own logic)
-- ❌ TODO: Other scripts that extract titles
+**Current Implementation**:
+- ✅ **Completed**: `generate-summary-with-airtable.py` (commit: eea45b9)
+- ⏳ **In Progress**: Migration of remaining scripts tracked in Issue #22
+
+**Scripts Pending Migration** (High Priority):
+- `scripts/preprocessing/sync-ordinances.py`
+- `scripts/preprocessing/sync-resolutions.py`
+- `scripts/preprocessing/sync-interpretations.py`
+
+**Scripts Pending Migration** (Medium Priority):
+- `scripts/mdbook/generate-summary.py` (non-Airtable version)
+- `scripts/utilities/identify-missing-metadata.py`
 
 **Usage**:
 ```python
@@ -97,6 +103,8 @@ resolver = TitleResolver()
 title, source = resolver.resolve_title(filepath)
 # source tells you where the title came from for debugging
 ```
+
+**Note**: Until all scripts are migrated, some title inconsistencies may occur. Check Issue #22 for latest status.
 
 ## Script Categories & Dependencies
 
@@ -182,10 +190,10 @@ Documents can include images, diagrams, and visual content. See **[styles/inline
 ### Issue: Form fields disappearing during mdBook serve
 **Problem:** mdBook's auto-rebuild bypasses our custom processors
 **Solutions:**
-1. **Automatic (Recommended):** Use `mdbook-serve-enhanced.sh` instead of `mdbook serve`
+1. **Automatic (Recommended):** Use `./mdbook-serve-enhanced.sh` instead of `mdbook serve`
    - Starts both mdbook server and postprocess watcher
    - Automatically runs processors when mdBook rebuilds
-2. **Manual:** Run `custom-list-processor.py` after any mdBook rebuild
+2. **Manual:** Run `python3 scripts/postprocessing/custom-list-processor.py` after any mdBook rebuild
 
 ### Issue: Tooltips feel sluggish
 **Solution:** Adjust CSS transition timing in `custom-list-processor.py`
@@ -213,7 +221,7 @@ mdbook serve --port 3000
 ```
 Note: Auto-rebuild will bypass custom processors, causing form fields and formatting to disappear.
 
-### Enhanced serve with auto-processing (Recommended)
+### Enhanced serve with auto-processing
 ```bash
 ./mdbook-serve-enhanced.sh
 ```
@@ -221,6 +229,8 @@ Note: Auto-rebuild will bypass custom processors, causing form fields and format
 - Runs postprocess watcher in background
 - Automatically applies custom formatting after rebuilds
 - Shows status messages when processing
+
+**Note**: For most development work, use `./dev-server.sh` instead, which provides true hot-reload from source document edits.
 
 ### Postprocess Watcher (standalone)
 ```bash

@@ -6,13 +6,13 @@ Quick reference for starting new Claude sessions on the Rivergrove digitization 
 
 ```
 Hello! We're working on the City of Rivergrove digitization project. Please start by reviewing:
-1. CLAUDE.md - workflow and conventions
+1. CLAUDE.md - complete workflow and conventions
 2. docs/claude-code-guide.md - repository management workflow
 3. docs/mdbook-guide.md - mdBook site and build information
 4. docs/build-architecture.md - build system and script dependencies
 5. docs/styles/ - formatting standards (naming, signatures, form fields, images)
-6. scripts/SCRIPTS_GUIDE.md - more on script dependencies
-7. scripts/metadata-architecture.md
+6. scripts/SCRIPTS-GUIDE.md - complete script documentation
+7. docs/metadata-architecture.md - metadata system overview
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
@@ -22,8 +22,9 @@ Key Reminders:
 - NEVER add manual markdown links for cross-references (e.g., [Ordinance #52](../))
 - Keep document references as plain text - the build system handles linking
 - Use ./build-one.sh for single file rebuilds
-- Use ./build-all.sh for full rebuilds
-- Use ./dev-server.sh for development (auto-processes on save)
+- Use ./build-all.sh for full rebuilds (add --quick to skip Airtable sync)
+- Use ./dev-server.sh for development (hot-reload with full processing)
+- Use python3 scripts/preprocessing/standardize-single.py for header/signature fixes
 ```
 
 ## Claude Desktop Startup
