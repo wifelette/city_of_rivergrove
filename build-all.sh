@@ -103,25 +103,9 @@ else
 fi
 echo ""
 
-# STEP 7: Generate SUMMARY.md
-echo "📋 Step 7: Generating table of contents..."
-if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
-    python3 scripts/mdbook/generate-summary-with-airtable.py
-else
-    python3 scripts/mdbook/generate-summary.py
-fi
-echo "  ✅ Table of contents updated"
-echo ""
-
-# STEP 8: Generate relationships
-echo "🔗 Step 8: Generating document relationships..."
-python3 scripts/mdbook/generate-relationships.py
-echo "  ✅ Relationships updated"
-echo ""
-
-# STEP 9: Sync Airtable metadata (optional)
+# STEP 7: Sync Airtable metadata (optional, but do it FIRST)
 if [ "$SKIP_AIRTABLE" = false ]; then
-    echo "☁️  Step 9: Syncing Airtable metadata..."
+    echo "☁️  Step 7: Syncing Airtable metadata..."
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
         # Copy metadata to src directory
@@ -133,8 +117,24 @@ if [ "$SKIP_AIRTABLE" = false ]; then
         echo "  ⏭️  Skipped (script not found)"
     fi
 else
-    echo "⏭️  Step 9: Skipping Airtable sync (--quick mode)"
+    echo "⏭️  Step 7: Skipping Airtable sync (--quick mode)"
 fi
+echo ""
+
+# STEP 8: Generate SUMMARY.md (AFTER Airtable sync)
+echo "📋 Step 8: Generating table of contents..."
+if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
+    python3 scripts/mdbook/generate-summary-with-airtable.py
+else
+    python3 scripts/mdbook/generate-summary.py
+fi
+echo "  ✅ Table of contents updated"
+echo ""
+
+# STEP 9: Generate relationships
+echo "🔗 Step 9: Generating document relationships..."
+python3 scripts/mdbook/generate-relationships.py
+echo "  ✅ Relationships updated"
 echo ""
 
 # STEP 10: Build mdBook
