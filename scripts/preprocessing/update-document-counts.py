@@ -14,16 +14,25 @@ def count_documents():
         'ordinances': 0,
         'resolutions': 0, 
         'interpretations': 0,
-        'transcripts': 0,
+        'meetings': 0,  # Combined count for all meeting documents
         'other': 0
     }
     
-    for category in counts.keys():
+    # Count standard document types
+    for category in ['ordinances', 'resolutions', 'interpretations', 'other']:
         dir_path = src_dir / category
         if dir_path.exists():
             # Count .md files, excluding SUMMARY.md
             md_files = [f for f in dir_path.glob("*.md") if f.name != "SUMMARY.md"]
             counts[category] = len(md_files)
+    
+    # Count all meeting-related documents (agendas, minutes, transcripts)
+    meeting_dirs = ['agendas', 'minutes', 'transcripts']
+    for dir_name in meeting_dirs:
+        dir_path = src_dir / dir_name
+        if dir_path.exists():
+            md_files = [f for f in dir_path.glob("*.md") if f.name != "SUMMARY.md"]
+            counts['meetings'] += len(md_files)
     
     return counts
 
@@ -51,9 +60,9 @@ def update_introduction_counts(counts):
          f'<p class="doc-count">{counts["interpretations"]} documents</p>', 
          'Interpretations'),
          
-        (r'<p class="doc-count">\d+ transcripts</p>', 
-         f'<p class="doc-count">{counts["transcripts"]} transcripts</p>', 
-         'Transcripts'),
+        (r'<p class="doc-count">\d+ \w+</p>',  # Match "X agendas" or "X documents"
+         f'<p class="doc-count">{counts["meetings"]} documents</p>', 
+         'Meeting Records'),
          
         (r'<p class="doc-count">\d+ document</p>', 
          f'<p class="doc-count">{counts["other"]} document</p>', 
@@ -68,7 +77,7 @@ def update_introduction_counts(counts):
         ('ordinances', counts['ordinances'], 'documents'),
         ('resolutions', counts['resolutions'], 'documents'), 
         ('interpretations', counts['interpretations'], 'documents'),
-        ('transcripts', counts['transcripts'], 'transcripts'),
+        ('meetings', counts['meetings'], 'documents'),  # Changed to meetings
         ('other', counts['other'], 'document' if counts['other'] == 1 else 'documents')
     ]
     
@@ -81,8 +90,12 @@ def update_introduction_counts(counts):
             pattern = r'(<h3><a href="resolutions/[^"]*">Resolutions</a></h3>.*?<p class="doc-count">)\d+( documents</p>)'
         elif section_type == 'interpretations':
             pattern = r'(<h3><a href="interpretations/[^"]*">Planning Interpretations</a></h3>.*?<p class="doc-count">)\d+( documents</p>)'
-        elif section_type == 'transcripts':
-            pattern = r'(<h3><a href="transcripts/[^"]*">Meeting Records</a></h3>.*?<p class="doc-count">)\d+( transcripts</p>)'
+        elif section_type == 'meetings':
+            # Replace with "X documents" format
+            pattern = r'(<h3><a href="(?:agendas|transcripts)/[^"]*">Meeting Records</a></h3>.*?<p class="doc-count">)\d+ \w+(</p>)'
+            replacement = f'\\g<1>{count} {unit}\\g<2>'
+            updated_content = re.sub(pattern, replacement, updated_content, flags=re.DOTALL)
+            continue  # Skip the default replacement below
         elif section_type == 'other':
             pattern = r'(<h3><a href="other/[^"]*">Other Documents</a></h3>.*?<p class="doc-count">)\d+( documents?</p>)'
         
@@ -107,7 +120,7 @@ def main():
     print(f"   • Ordinances: {counts['ordinances']}")
     print(f"   • Resolutions: {counts['resolutions']}")  
     print(f"   • Interpretations: {counts['interpretations']}")
-    print(f"   • Transcripts: {counts['transcripts']}")
+    print(f"   • Meeting Records: {counts['meetings']}")
     print(f"   • Other: {counts['other']}")
     
     # Update the file
