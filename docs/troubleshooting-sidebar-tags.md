@@ -3,6 +3,17 @@
 ## Problem
 Special state tags ([SUPERSEDED], [NEVER PASSED], [REPEALED]) repeatedly disappear from the sidebar even after being fixed.
 
+## Critical Build Order Dependencies
+
+**IMPORTANT**: The build order is critical and must be:
+1. Generate relationships.json (creates list of local documents)
+2. Copy relationships.json to book/ directory
+3. Sync Airtable metadata (matches Airtable records to local documents)
+4. Generate SUMMARY.md (uses Airtable metadata for tags and titles)
+5. Build mdBook
+
+If these steps are out of order, the tags won't appear!
+
 ## Root Causes Discovered
 
 ### 1. Dev Server Uses --quick Flag (MAIN ISSUE)
@@ -47,7 +58,17 @@ python3 scripts/mdbook/sync-airtable-metadata.py --force
 python3 scripts/mdbook/generate-summary-with-airtable.py
 ```
 
-### 4. Special State Stored as Array in Airtable
+### 4. Path Mismatch for relationships.json
+**Problem**: generate-relationships.py creates `src/relationships.json` but sync-airtable-metadata.py looks for `book/relationships.json`.
+
+**Impact**: 
+- Airtable sync finds 0 local documents
+- Can't match Airtable records to files
+- Creates empty metadata file
+
+**Fix**: Copy relationships.json to book/ directory after generation
+
+### 5. Special State Stored as Array in Airtable
 **Problem**: Airtable returns special_state as an array `["Superseded"]` but code was treating it as a string.
 
 **Fix**: Handle both formats in generate-summary-with-airtable.py:
