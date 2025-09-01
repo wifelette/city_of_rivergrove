@@ -155,6 +155,17 @@ def build_relationships():
     relationships = {}
     all_documents = {}
     
+    # Load meetings metadata to filter meeting documents
+    meetings_metadata = {}
+    meetings_metadata_file = Path('book/meetings-metadata.json')
+    if meetings_metadata_file.exists():
+        try:
+            with open(meetings_metadata_file, 'r') as f:
+                data = json.load(f)
+                meetings_metadata = data.get('meetings', {})
+        except:
+            pass
+    
     # Process all markdown files from src directory
     for dir_name in ['ordinances', 'resolutions', 'interpretations', 'other', 'transcripts', 'agendas', 'minutes']:
         dir_path = Path('src') / dir_name
@@ -162,6 +173,13 @@ def build_relationships():
             continue
         
         for md_file in dir_path.glob('*.md'):
+            # For meeting documents, only include if they have metadata
+            if dir_name in ['transcripts', 'agendas', 'minutes']:
+                file_key = md_file.stem.lower()
+                if file_key not in meetings_metadata:
+                    print(f"  Skipping {md_file.name} - no metadata entry")
+                    continue
+            
             doc_info = parse_document_id(md_file)
             if not doc_info:
                 continue

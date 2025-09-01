@@ -437,12 +437,13 @@ def generate_summary():
     if agendas_dir.exists():
         agendas = []
         for md_file in sorted(agendas_dir.glob("*.md")):
-            # Check if in metadata
-            file_key = md_file.stem
-            if file_key in meetings_metadata:
-                display = meetings_metadata[file_key].get('display_name', md_file.stem)
-            else:
-                display = md_file.stem.replace('-', ' ').replace('_', ' ')
+            # Only include files that have metadata
+            file_key = md_file.stem.lower()
+            if file_key not in meetings_metadata:
+                print(f"  Skipping {md_file.name} - no meetings metadata")
+                continue
+            
+            display = meetings_metadata[file_key].get('display_name', md_file.stem)
             agendas.append({
                 'display': display,
                 'filename': md_file.name
@@ -461,12 +462,13 @@ def generate_summary():
     if minutes_dir.exists():
         minutes = []
         for md_file in sorted(minutes_dir.glob("*.md")):
-            # Check if in metadata
-            file_key = md_file.stem
-            if file_key in meetings_metadata:
-                display = meetings_metadata[file_key].get('display_name', md_file.stem)
-            else:
-                display = md_file.stem.replace('-', ' ').replace('_', ' ')
+            # Only include files that have metadata
+            file_key = md_file.stem.lower()
+            if file_key not in meetings_metadata:
+                print(f"  Skipping {md_file.name} - no meetings metadata")
+                continue
+            
+            display = meetings_metadata[file_key].get('display_name', md_file.stem)
             minutes.append({
                 'display': display,
                 'filename': md_file.name
@@ -485,11 +487,15 @@ def generate_summary():
     if trans_dir.exists():
         transcripts = []
         for md_file in sorted(trans_dir.glob("*.md")):
-            name = md_file.stem
-            # Clean up the name for display
-            clean_name = name.replace('-', ' ').replace('_', ' ')
+            # Only include files that have metadata
+            file_key = md_file.stem.lower()
+            if file_key not in meetings_metadata:
+                print(f"  Skipping {md_file.name} - no meetings metadata")
+                continue
+            
+            display = meetings_metadata[file_key].get('display_name', md_file.stem)
             transcripts.append({
-                'name': clean_name,
+                'name': display,
                 'filename': md_file.name
             })
         
