@@ -49,36 +49,41 @@ class MeetingsSync:
                 if isinstance(meeting_date, list) and len(meeting_date) > 0:
                     meeting_date = meeting_date[0]
                 
-                # Try to extract actual date from URL if available (to handle UTC shifts)
+                # Try to extract key from URL if available (most reliable)
                 md_url = fields.get('mdURL', '')
                 if md_url and '/' in md_url:
                     # Extract filename from URL
                     filename = md_url.split('/')[-1]
-                    # Try to extract date from filename (e.g., "2024-12-09-Transcript.md")
-                    import re
-                    date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
-                    if date_match:
-                        actual_date = date_match.group(1)
-                        # Use the actual date from filename for the key
-                        key = f"{actual_date}-{doc_type.capitalize()}"
+                    # Remove .md extension to get the key
+                    if filename.endswith('.md'):
+                        key = filename[:-3]  # Remove .md extension
                     else:
-                        # Fall back to meeting_date
-                        if meeting_date and doc_type:
-                            key = f"{meeting_date}-{doc_type.capitalize()}"
-                        else:
-                            key = fields.get('display_name', 'unknown')
+                        key = filename
                 else:
-                    # Generate a key based on date and type
-                    # Use YYYY-MM-DD format to match standard naming convention
+                    # Fall back to generating key from meeting_date and doc_type
+                    # This is more reliable than display_name which may have wrong dates
                     if meeting_date and doc_type:
-                        # Capitalize doc_type to match filename convention
+                        # Generate a key based on date and type
                         key = f"{meeting_date}-{doc_type.capitalize()}"
                     else:
-                        key = fields.get('display_name', 'unknown')
+                        # Last resort: try to use display_name
+                        display_name = fields.get('display_name')
+                        if isinstance(display_name, str) and '-' in display_name:
+                            # e.g., "2018-05-14 - Agenda" -> "2018-05-14-Agenda"
+                            key = display_name.replace(' - ', '-').replace(' ', '')
+                        else:
+                            key = 'unknown'
+                
+                # Handle display_name that might be a dict with error
+                display_name = fields.get('display_name')
+                if isinstance(display_name, dict):
+                    # Skip records with errors in display_name
+                    print(f"  ⚠️  Skipping record with error in display_name: {display_name}")
+                    continue
                 
                 meetings[key] = {
                     'airtable_id': record.get('id'),
-                    'display_name': fields.get('display_name'),
+                    'display_name': display_name,
                     'short_title': fields.get('short_title'),
                     'meeting_doc_type': doc_type,
                     'meeting_date': meeting_date,
