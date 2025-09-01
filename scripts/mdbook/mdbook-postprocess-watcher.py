@@ -86,7 +86,7 @@ class MdBookWatcher:
     
     def run_postprocessors(self):
         """Run all post-processing scripts."""
-        print("🎨 Running post-processors to restore custom formatting...")
+        print("🎨 Running post-processors to restore custom formatting...", flush=True)
         
         for script in self.postprocessors:
             if Path(script).exists():
@@ -99,13 +99,13 @@ class MdBookWatcher:
                         timeout=30
                     )
                     if result.returncode != 0 and self.verbose:
-                        print(f"  ⚠️  {script} had issues: {result.stderr}")
+                        print(f"  ⚠️  {script} had issues: {result.stderr}", flush=True)
                 except subprocess.TimeoutExpired:
-                    print(f"  ⚠️  {script} timed out")
+                    print(f"  ⚠️  {script} timed out", flush=True)
                 except Exception as e:
-                    print(f"  ❌ Error running {script}: {e}")
+                    print(f"  ❌ Error running {script}: {e}", flush=True)
         
-        print("✅ Post-processing complete - custom formatting restored")
+        print("✅ Post-processing complete - custom formatting restored", flush=True)
     
     def watch(self, check_interval=0.1):
         """
@@ -117,12 +117,12 @@ class MdBookWatcher:
         3. When no changes for threshold time, consider rebuild complete
         4. Run post-processors once after rebuild completes
         """
-        print("👁️  Watching for mdBook rebuilds...")
-        print(f"   • Monitoring: {self.book_dir}")
-        print(f"   • Post-processors will run automatically after rebuilds")
+        print("👁️  Watching for mdBook rebuilds...", flush=True)
+        print(f"   • Monitoring: {self.book_dir}", flush=True)
+        print(f"   • Post-processors will run automatically after rebuilds", flush=True)
         if not self.verbose:
-            print("   • Run with --verbose for detailed logging")
-        print()
+            print("   • Run with --verbose for detailed logging", flush=True)
+        print(flush=True)
         
         last_change_time = None
         
@@ -145,9 +145,9 @@ class MdBookWatcher:
                         self.rebuild_in_progress = False
                         self.last_rebuild = time.time()
                         
-                        print(f"\n🔄 mdBook rebuild detected at {datetime.now().strftime('%H:%M:%S')}")
+                        print(f"\n🔄 mdBook rebuild detected at {datetime.now().strftime('%H:%M:%S')}", flush=True)
                         self.run_postprocessors()
-                        print()
+                        print(flush=True)
                 
                 time.sleep(check_interval)
                 
