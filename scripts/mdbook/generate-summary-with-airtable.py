@@ -6,8 +6,13 @@ This enhanced version uses Airtable metadata for better titles and information.
 
 import re
 import json
+import sys
 from pathlib import Path
 from datetime import datetime
+
+# Add the scripts directory to the path so we can import utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.title_resolver import TitleResolver
 
 def load_airtable_metadata():
     """Load Airtable metadata from cache file."""
@@ -168,6 +173,9 @@ def generate_summary():
     airtable_data = load_airtable_metadata()
     print(f"Loaded {len(airtable_data)} Airtable metadata records")
     
+    # Initialize title resolver with our metadata
+    title_resolver = TitleResolver()
+    
     # Start with the introduction
     summary = ["# Summary\n"]
     summary.append("[Introduction](./introduction.md)\n")
@@ -186,17 +194,10 @@ def generate_summary():
             doc_key = get_document_key(md_file)
             airtable_info = airtable_data.get(doc_key, {})
             
-            # Get title from Airtable or fallback to filename
-            if airtable_info.get('short_title'):
-                title = airtable_info['short_title']
-            elif airtable_info.get('display_name'):
-                # Extract just the title part from display name
-                display = airtable_info['display_name']
-                title = re.sub(r'^(Ordinance|Resolution|Interpretation)\s+#?\d+\s*-?\s*', '', display)
-            elif "Charter" in name or "charter" in name:
-                title = "City Charter"
-            else:
-                title = name.replace('-', ' ').replace('_', ' ')
+            # Use unified title resolver
+            title, title_source = title_resolver.resolve_title(md_file)
+            if title_source in ['filename', 'content_pattern']:
+                print(f"  Note: Using {title_source} for {md_file.name}")
             
             others.append({
                 'filename': md_file.name,
@@ -225,20 +226,13 @@ def generate_summary():
             doc_key = get_document_key(md_file)
             airtable_info = airtable_data.get(doc_key, {})
             
-            # Use Airtable data if available - prioritize short_title
+            # Use unified title resolver
+            title, title_source = title_resolver.resolve_title(md_file)
+            doc['full_title'] = title
+            if title_source in ['filename', 'content_pattern']:
+                print(f"  Note: Using {title_source} for {md_file.name}")
+            
             if airtable_info:
-                if airtable_info.get('short_title'):
-                    # Use the exact short_title from Airtable
-                    doc['full_title'] = airtable_info['short_title']
-                elif airtable_info.get('display_name'):
-                    # Extract title from display name as fallback
-                    display = airtable_info['display_name']
-                    title_part = re.sub(r'^Ordinance\s+#?\d+[-\w]*\s*-?\s*', '', display)
-                    title_part = re.sub(r'\s*\(\d{4}\)$', '', title_part)  # Remove year
-                    doc['full_title'] = title_part.strip() if title_part else extract_title_from_file(md_file)
-                else:
-                    # Fall back to extracting from file
-                    doc['full_title'] = extract_title_from_file(md_file)
                 
                 # Use Airtable year if available
                 if airtable_info.get('year'):
@@ -310,20 +304,13 @@ def generate_summary():
             doc_key = get_document_key(md_file)
             airtable_info = airtable_data.get(doc_key, {})
             
-            # Use Airtable data if available - prioritize short_title
+            # Use unified title resolver
+            title, title_source = title_resolver.resolve_title(md_file)
+            doc['full_title'] = title
+            if title_source in ['filename', 'content_pattern']:
+                print(f"  Note: Using {title_source} for {md_file.name}")
+            
             if airtable_info:
-                if airtable_info.get('short_title'):
-                    # Use the exact short_title from Airtable
-                    doc['full_title'] = airtable_info['short_title']
-                elif airtable_info.get('display_name'):
-                    # Extract title from display name as fallback
-                    display = airtable_info['display_name']
-                    title_part = re.sub(r'^Resolution\s+#?\d+[-\w]*\s*-?\s*', '', display)
-                    title_part = re.sub(r'\s*\(\d{4}\)$', '', title_part)  # Remove year
-                    doc['full_title'] = title_part.strip() if title_part else extract_title_from_file(md_file)
-                else:
-                    # Fall back to extracting from file
-                    doc['full_title'] = extract_title_from_file(md_file)
                 
                 # Use Airtable year if available
                 if airtable_info.get('year'):
@@ -341,7 +328,6 @@ def generate_summary():
                 doc['special_state'] = airtable_info.get('special_state')
             else:
                 # Mark as missing Airtable data
-                doc['full_title'] = f"[NO AIRTABLE DATA] {extract_title_from_file(md_file)}"
                 doc['status'] = 'Missing Airtable Data'
                 doc['special_state'] = None
                 print(f"  WARNING: No Airtable data for {doc_key}")
@@ -410,15 +396,10 @@ def generate_summary():
             doc_key = get_document_key(md_file)
             airtable_info = airtable_data.get(doc_key, {})
             
-            # Use Airtable title if available
-            if airtable_info.get('short_title'):
-                title = airtable_info['short_title']
-            elif airtable_info.get('display_name'):
-                # Extract title from display name
-                display = airtable_info['display_name']
-                title = re.sub(r'^PC Interpretation\s*-?\s*', '', display)
-            else:
-                title = rest
+            # Use unified title resolver
+            title, title_source = title_resolver.resolve_title(md_file)
+            if title_source in ['filename', 'content_pattern']:
+                print(f"  Note: Using {title_source} for {md_file.name}")
             
             interpretations.append({
                 'date': date_str,
