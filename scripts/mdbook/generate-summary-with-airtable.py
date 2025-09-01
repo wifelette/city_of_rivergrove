@@ -459,7 +459,7 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- [Agendas]()\n")
+            summary.append("- Agendas\n")
             for doc in agendas:
                 summary.append(f"  - [{doc['display']}](./agendas/{doc['filename']})\n")
     
@@ -490,7 +490,7 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- [Minutes]()\n")
+            summary.append("- Minutes\n")
             for doc in minutes:
                 summary.append(f"  - [{doc['display']}](./minutes/{doc['filename']})\n")
     
@@ -521,7 +521,7 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- [Transcripts]()\n")
+            summary.append("- Transcripts\n")
             for doc in transcripts:
                 summary.append(f"  - [{doc['name']}](./transcripts/{doc['filename']})\n")
     
