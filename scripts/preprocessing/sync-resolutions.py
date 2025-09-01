@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Sync resolutions from the main Resolutions directory to src/resolutions for mdBook
+
+TODO: Update to use unified title resolver (scripts/utils/title_resolver.py)
+      See Issue #22 for tracking this work
 """
 
 import os

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Sync ordinances from the main Ordinances directory to src/ordinances for mdBook
+
+TODO: Update to use unified title resolver (scripts/utils/title_resolver.py)
+      See Issue #22 for tracking this work
 """
 
 import os

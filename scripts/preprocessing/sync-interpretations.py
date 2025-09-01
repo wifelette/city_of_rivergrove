@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Sync interpretations from the main Interpretations directory to src/interpretations for mdBook
+
+TODO: Update to use unified title resolver (scripts/utils/title_resolver.py)
+      See Issue #22 for tracking this work
 """
 
 import os

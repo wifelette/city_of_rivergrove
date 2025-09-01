@@ -68,6 +68,36 @@ Development server with true hot-reload from source edits.
 - Applies postprocessors to maintain custom formatting
 - Replaces both `mdbook serve` and old serve scripts
 
+## Title Resolution System
+
+### Unified Title Resolver (`scripts/utils/title_resolver.py`)
+
+**Status**: ✅ Partially Implemented (only in generate-summary-with-airtable.py)
+
+The title resolver provides a single source of truth for document titles across all scripts, implementing a clear hierarchy:
+
+1. **Airtable short_title** (highest priority) - Human-curated short titles
+2. **Airtable display_name** (extracted) - Falls back to display name with prefix removed
+3. **Document front matter** - YAML front matter title field
+4. **First H1 heading** - First # heading in document
+5. **Filename extraction** (lowest priority) - Topic extracted from filename
+
+**Implementation Status**:
+- ✅ Integrated in `generate-summary-with-airtable.py` (sidebar generation)
+- ❌ TODO: `sync-ordinances.py` (still uses own logic)
+- ❌ TODO: `sync-resolutions.py` (still uses own logic)
+- ❌ TODO: `sync-interpretations.py` (still uses own logic)
+- ❌ TODO: Other scripts that extract titles
+
+**Usage**:
+```python
+from utils.title_resolver import TitleResolver
+
+resolver = TitleResolver()
+title, source = resolver.resolve_title(filepath)
+# source tells you where the title came from for debugging
+```
+
 ## Script Categories & Dependencies
 
 ### Preprocessing Scripts (`scripts/preprocessing/`)
