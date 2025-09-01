@@ -17,14 +17,6 @@ Hello! We're working on the City of Rivergrove digitization project. Please star
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 
 Today I'll be working on: [specify which ordinances/resolutions/interpretations]
-
-Key Reminders:
-- NEVER add manual markdown links for cross-references (e.g., [Ordinance #52](../))
-- Keep document references as plain text - the build system handles linking
-- Use ./build-one.sh for single file rebuilds
-- Use ./build-all.sh for full rebuilds (add --quick to skip Airtable sync)
-- Use ./dev-server.sh for development (hot-reload with full processing)
-- Use python3 scripts/preprocessing/standardize-single.py for header/signature fixes
 ```
 
 ## Claude Desktop Startup
