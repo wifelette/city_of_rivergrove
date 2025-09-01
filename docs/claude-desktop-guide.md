@@ -128,10 +128,20 @@ When digitizing meeting agendas or minutes:
 
 **Meetings record:**
 
-- Date (required)
+- Date (required - see Meeting Time Entry below for proper format)
 - Set `Meeting Type` to `Regular` as default, unless I say otherwise; ask if it ought be changed if the contents make you think it wasn't a regular meeting
 - Set inventory booleans: `Agenda?: true` for agendas, `Minutes?: true` for minutes, etc.
 - Links to Meeting Records record(s)
+
+**Meeting Time Entry:**
+- **Default time**: All Rivergrove meetings are scheduled for 7:00 PM unless explicitly stated otherwise
+- **Format**: Use `YYYY-MM-DDTHH:MM:00` in Pacific Time (24-hour format)
+- **Standard entry**: For a typical meeting on June 12, 2017: `2017-06-12T19:00:00`
+- **Important distinction**: 
+  - Use 7:00 PM (19:00) as the scheduled meeting time, even if minutes show a different call-to-order time
+  - Example: Minutes may say "called to order at 7:03 p.m." but still use `2017-06-12T19:00:00`
+  - Only use a different time if the meeting was explicitly scheduled for a different time (e.g., "special meeting at 5:00 PM")
+- **Why this matters**: If time is omitted, Airtable may default to noon/midnight depending on timezone settings, causing sorting issues
 
 **Meeting Records record:**
 
