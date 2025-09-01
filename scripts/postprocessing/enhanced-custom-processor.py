@@ -199,6 +199,71 @@ class DocumentProcessor:
         
         return soup
     
+    def process_document_notes(self, soup):
+        """Process document notes sections with special styling"""
+        
+        # Find all h2 elements that might be note sections
+        note_headers = [
+            'Document Notes',
+            'Digitization Notes', 
+            'Source Document Notes',
+            'Historical Notes',
+            'Handwritten notations',
+            'Handwritten Notations'
+        ]
+        
+        # Process h2 elements - need to collect them first to avoid modifying during iteration
+        h2_elements = list(soup.find_all('h2'))
+        
+        for h2 in h2_elements:
+            # Skip if already processed (inside document-note div)
+            if h2.parent and 'document-note' in h2.parent.get('class', []):
+                continue
+                
+            header_text = h2.get_text().strip()
+            
+            # Check if this is a notes section (partial match allowed)
+            is_notes_section = False
+            for note_header in note_headers:
+                if note_header.lower() in header_text.lower() or \
+                   ('handwritten' in header_text.lower() and 'notation' in header_text.lower()):
+                    is_notes_section = True
+                    break
+            
+            if is_notes_section:
+                # Create a new div with document-note class
+                note_div = soup.new_tag('div', attrs={'class': 'document-note'})
+                
+                # Create a new h2 with standardized text
+                new_h2 = soup.new_tag('h2')
+                new_h2.string = 'Document Notes'
+                note_div.append(new_h2)
+                
+                # Collect all following siblings until the next h2 or end
+                current = h2.next_sibling
+                elements_to_move = []
+                
+                while current:
+                    next_sibling = current.next_sibling
+                    
+                    # Stop at next h2 or hr
+                    if hasattr(current, 'name'):
+                        if current.name == 'h2' or current.name == 'hr':
+                            break
+                        elif current.name:  # Only collect actual elements, not text nodes
+                            elements_to_move.append(current.extract())
+                    
+                    current = next_sibling
+                
+                # Move all collected elements into the note div
+                for elem in elements_to_move:
+                    note_div.append(elem)
+                
+                # Replace the original h2 with the note div
+                h2.replace_with(note_div)
+        
+        return soup
+    
     def process_form_fields(self, soup):
         """Process form field markers for blank and filled fields"""
         
@@ -444,6 +509,9 @@ class DocumentProcessor:
         
         # Process form fields (blank and filled)
         soup = self.process_form_fields(soup)
+        
+        # Process document notes sections
+        soup = self.process_document_notes(soup)
         
         # Add custom CSS
         soup = self.add_custom_css(soup)

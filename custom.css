@@ -1172,9 +1172,14 @@ table + .table-footnotes {
     margin-bottom: 0;
 }
 
-/* Remove the need for --- separator before notes */
-.document-note + hr,
-hr + .document-note {
+/* Hide only the hr separator when it appears right before document notes */
+/* This selector targets the hr element that comes immediately before .document-note */
+.document-note {
+    /* Keep document-note visible */
+}
+
+/* Hide hr when followed by document-note - using adjacent sibling */
+hr:has(+ .document-note) {
     display: none;
 }
 

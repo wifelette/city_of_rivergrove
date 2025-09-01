@@ -2,8 +2,15 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-31T18:52:43.825523",
-    "last_updated": "2025-08-31T18:52:43.827074",
-    "total_records": 41
+    "last_updated": "2025-09-01T15:27:39.270434",
+    "total_records": 42,
+    "last_partial_update": "2025-09-01T15:27:39.270399",
+    "incremental_updates": [
+      {
+        "filename": "1993-Ord-#57-93-Manufactured-Homes.md",
+        "updated_at": "2025-09-01T15:27:39.270400"
+      }
+    ]
   },
   "documents": {
     "2004-10-11-RE-5.080-setbacks": {
@@ -669,6 +676,22 @@
       "digitized": true,
       "passed_date": "2000-10-16",
       "last_updated": "2025-08-30T04:44:14.000Z"
+    },
+    "1993-Ord-#57-93-Manufactured-Homes": {
+      "airtable_id": "recTox5pYu6fxJWMp",
+      "display_name": "Ordinance #57-93",
+      "short_title": "Manufactured Homes",
+      "type": "ordinance",
+      "year": 1993,
+      "doc_number": "57-93",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1993-Ord-%2357-Manufactured-Homes.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1993-Ord-%2357-Manufactured-Homes.pdf",
+      "filename": "1993-Ord-%2357-Manufactured-Homes.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1993-12-13",
+      "last_updated": "2025-08-30T19:38:45.000Z"
     }
   }
 }

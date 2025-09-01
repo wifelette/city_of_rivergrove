@@ -98,6 +98,45 @@ See **[styles/naming-conventions.md](styles/naming-conventions.md)** for complet
 
 See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
 
+## Document Notes
+
+### When to Use
+
+Document notes provide supplementary information about digitization, source documents, or historical context:
+
+- **Digitization notes**: Explaining changes made during digitization (e.g., ALL CAPS conversion)
+- **Source document notes**: Describing artifacts, missing pages, or peculiarities in the original
+- **Historical notes**: Providing context about document versions or amendments
+- **Handwritten notations**: Documenting stamps, handwritten notes, or other markings
+
+### Markdown Pattern
+
+Simply create a section with one of these headers (case-insensitive):
+
+```markdown
+## Document Notes
+The source document for this Ordinance is in ALL CAPITAL LETTERS...
+
+## Digitization Notes  
+Content about digitization process...
+
+## Source Document Notes
+Pages 3-5 of the original document contained unrelated material...
+
+## Handwritten notations
+Return to: Executive Department...
+```
+
+### Styling Applied
+
+- White card background with subtle shadow
+- Gray top accent bar (eliminates need for `---` separator)
+- 📝 Note icon
+- Header automatically standardized to "DOCUMENT NOTES"
+- Professional, non-alarming appearance
+
+See **[styles/document-notes.md](styles/document-notes.md)** for complete documentation.
+
 ## Tables
 
 ### Complex Tables
