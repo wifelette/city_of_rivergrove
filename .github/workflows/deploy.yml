@@ -35,6 +35,9 @@ jobs:
           pip install beautifulsoup4 python-dotenv requests pyairtable watchdog
       
       - name: Build mdBook with processing
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: appnsWognX10X9TDL
         run: |
           chmod +x build-all.sh
           ./build-all.sh
