@@ -459,9 +459,9 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- Agendas\n")
+            # Add all agendas directly without subsection
             for doc in agendas:
-                summary.append(f"  - [{doc['display']}](./agendas/{doc['filename']})\n")
+                summary.append(f"- [{doc['display']}](./agendas/{doc['filename']})\n")
     
     # Process Minutes
     minutes_dir = src_dir / "minutes"
@@ -490,9 +490,9 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- Minutes\n")
+            # Add all minutes directly without subsection
             for doc in minutes:
-                summary.append(f"  - [{doc['display']}](./minutes/{doc['filename']})\n")
+                summary.append(f"- [{doc['display']}](./minutes/{doc['filename']})\n")
     
     # Process Transcripts
     trans_dir = src_dir / "transcripts"
@@ -521,9 +521,9 @@ def generate_summary():
             if not meetings_added:
                 summary.append("\n---\n\n# Council Meetings\n")
                 meetings_added = True
-            summary.append("- Transcripts\n")
+            # Add all transcripts directly without subsection
             for doc in transcripts:
-                summary.append(f"  - [{doc['name']}](./transcripts/{doc['filename']})\n")
+                summary.append(f"- [{doc['name']}](./transcripts/{doc['filename']})\n")
     
     # Write the SUMMARY.md file
     summary_file = src_dir / "SUMMARY.md"
