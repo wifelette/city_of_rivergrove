@@ -107,7 +107,12 @@ echo ""
 if [ "$SKIP_AIRTABLE" = false ]; then
     echo "☁️  Step 7: Syncing Airtable metadata..."
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
-        python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
+        # Force sync in CI environment (GitHub Actions)
+        if [ -n "$CI" ]; then
+            python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --force
+        else
+            python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
+        fi
         # Copy metadata to src directory
         if [ -f "book/airtable-metadata.json" ]; then
             cp book/airtable-metadata.json src/
