@@ -60,7 +60,7 @@ class StandaloneNavigation {
             if (doc.type === 'ordinance') counts.ordinances++;
             else if (doc.type === 'resolution') counts.resolutions++;
             else if (doc.type === 'interpretation') counts.interpretations++;
-            else if (doc.type === 'transcript' || doc.type === 'meeting') counts.transcripts++;
+            else if (doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes') counts.transcripts++;
             else if (doc.type === 'other' || doc.type === 'charter') counts.other++;
         });
         
@@ -456,7 +456,7 @@ class StandaloneNavigation {
                 if (type === 'ordinances') return doc.type === 'ordinance';
                 if (type === 'resolutions') return doc.type === 'resolution';
                 if (type === 'interpretations') return doc.type === 'interpretation';
-                if (type === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
+                if (type === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes';
                 if (type === 'other') return doc.type === 'other' || doc.type === 'charter';
                 return false;
             });
@@ -520,7 +520,7 @@ class StandaloneNavigation {
                 if (this.currentDocType === 'ordinances') return doc.type === 'ordinance';
                 if (this.currentDocType === 'resolutions') return doc.type === 'resolution';
                 if (this.currentDocType === 'interpretations') return doc.type === 'interpretation';
-                if (this.currentDocType === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting';
+                if (this.currentDocType === 'transcripts') return doc.type === 'transcript' || doc.type === 'meeting' || doc.type === 'agenda' || doc.type === 'minutes';
                 if (this.currentDocType === 'other') return doc.type === 'other' || doc.type === 'charter';
                 return false;
             })
@@ -833,6 +833,12 @@ class StandaloneNavigation {
             path = `${basePath}/resolutions/${doc.file.replace('.md', '.html').replace('#', '')}`;
         } else if (doc.type === 'interpretation') {
             path = `${basePath}/interpretations/${doc.file.replace('.md', '.html')}`;
+        } else if (doc.type === 'agenda') {
+            path = `${basePath}/agendas/${doc.file.replace('.md', '.html')}`;
+        } else if (doc.type === 'transcript' || doc.type === 'meeting') {
+            path = `${basePath}/transcripts/${doc.file.replace('.md', '.html')}`;
+        } else if (doc.type === 'minutes') {
+            path = `${basePath}/minutes/${doc.file.replace('.md', '.html')}`;
         } else if (doc.type === 'other' || doc.type === 'charter') {
             path = `${basePath}/other/${doc.file.replace('.md', '.html')}`;
         }
