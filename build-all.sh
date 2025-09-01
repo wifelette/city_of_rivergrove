@@ -106,6 +106,9 @@ echo ""
 # STEP 7: Generate relationships (MUST be first for Airtable sync to work)
 echo "🔗 Step 7: Generating document relationships..."
 python3 scripts/mdbook/generate-relationships.py
+# Copy to book directory for Airtable sync (which looks for book/relationships.json)
+mkdir -p book
+cp src/relationships.json book/relationships.json 2>/dev/null || true
 echo "  ✅ Relationships updated"
 echo ""
 
