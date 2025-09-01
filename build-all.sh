@@ -103,9 +103,15 @@ else
 fi
 echo ""
 
-# STEP 7: Sync Airtable metadata (optional, but do it FIRST)
+# STEP 7: Generate relationships (MUST be first for Airtable sync to work)
+echo "🔗 Step 7: Generating document relationships..."
+python3 scripts/mdbook/generate-relationships.py
+echo "  ✅ Relationships updated"
+echo ""
+
+# STEP 8: Sync Airtable metadata (needs relationships.json)
 if [ "$SKIP_AIRTABLE" = false ]; then
-    echo "☁️  Step 7: Syncing Airtable metadata..."
+    echo "☁️  Step 8: Syncing Airtable metadata..."
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         # Force sync in CI environment (GitHub Actions)
         if [ -n "$CI" ]; then
@@ -122,24 +128,18 @@ if [ "$SKIP_AIRTABLE" = false ]; then
         echo "  ⏭️  Skipped (script not found)"
     fi
 else
-    echo "⏭️  Step 7: Skipping Airtable sync (--quick mode)"
+    echo "⏭️  Step 8: Skipping Airtable sync (--quick mode)"
 fi
 echo ""
 
-# STEP 8: Generate SUMMARY.md (AFTER Airtable sync)
-echo "📋 Step 8: Generating table of contents..."
+# STEP 9: Generate SUMMARY.md (AFTER relationships AND Airtable sync)
+echo "📋 Step 9: Generating table of contents..."
 if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
     python3 scripts/mdbook/generate-summary-with-airtable.py
 else
     python3 scripts/mdbook/generate-summary.py
 fi
 echo "  ✅ Table of contents updated"
-echo ""
-
-# STEP 9: Generate relationships
-echo "🔗 Step 9: Generating document relationships..."
-python3 scripts/mdbook/generate-relationships.py
-echo "  ✅ Relationships updated"
 echo ""
 
 # STEP 10: Build mdBook
