@@ -189,9 +189,10 @@ echo -e "${GREEN}✅ Update complete!${NC}"
 echo ""
 echo "📖 View at: http://localhost:3000"
 
-# Quick check if mdbook serve is running
+# Check if mdbook serve is running
 if pgrep -f "mdbook serve" > /dev/null; then
-    echo -e "${YELLOW}Note: mdbook serve is running - you may need to refresh your browser${NC}"
+    echo -e "${GREEN}✓ Server is running - refresh your browser to see changes${NC}"
 else
+    echo -e "${YELLOW}⚠️  Server is not running!${NC}"
     echo "   Run ./dev-server.sh to start the development server"
 fi

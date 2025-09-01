@@ -37,9 +37,11 @@ for arg in "$@"; do
     esac
 done
 
-# Check if mdbook serve is running and kill it
+# Check if mdbook serve is running and track it
+SERVER_WAS_RUNNING=false
 if pgrep -f "mdbook serve" > /dev/null; then
     echo "⚠️  Detected mdbook serve running - stopping it to prevent conflicts..."
+    SERVER_WAS_RUNNING=true
     pkill -f "mdbook serve"
     sleep 1
 fi
@@ -172,8 +174,21 @@ echo ""
 echo "======================================"
 echo "✅ Build complete!"
 echo ""
-echo "📖 View your site at: http://localhost:3000"
-echo "   Run ./dev-server.sh to start the development server"
+
+# Restart server if it was running before
+if [ "$SERVER_WAS_RUNNING" = true ]; then
+    echo "🔄 Restarting development server..."
+    ./dev-server.sh > /dev/null 2>&1 &
+    sleep 2
+    if pgrep -f "mdbook serve" > /dev/null; then
+        echo "✅ Server restarted at http://localhost:3000"
+    else
+        echo "❌ Failed to restart server. Run './dev-server.sh' manually."
+    fi
+else
+    echo "📖 View your site at: http://localhost:3000"
+    echo "   Run ./dev-server.sh to start the development server"
+fi
 echo ""
 
 # Check if any source files were edited in /src
