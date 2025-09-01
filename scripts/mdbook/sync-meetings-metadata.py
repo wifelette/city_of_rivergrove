@@ -49,13 +49,32 @@ class MeetingsSync:
                 if isinstance(meeting_date, list) and len(meeting_date) > 0:
                     meeting_date = meeting_date[0]
                 
-                # Generate a key based on date and type
-                # Use YYYY-MM-DD format to match standard naming convention
-                if meeting_date and doc_type:
-                    # Capitalize doc_type to match filename convention
-                    key = f"{meeting_date}-{doc_type.capitalize()}"
+                # Try to extract actual date from URL if available (to handle UTC shifts)
+                md_url = fields.get('mdURL', '')
+                if md_url and '/' in md_url:
+                    # Extract filename from URL
+                    filename = md_url.split('/')[-1]
+                    # Try to extract date from filename (e.g., "2024-12-09-Transcript.md")
+                    import re
+                    date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
+                    if date_match:
+                        actual_date = date_match.group(1)
+                        # Use the actual date from filename for the key
+                        key = f"{actual_date}-{doc_type.capitalize()}"
+                    else:
+                        # Fall back to meeting_date
+                        if meeting_date and doc_type:
+                            key = f"{meeting_date}-{doc_type.capitalize()}"
+                        else:
+                            key = fields.get('display_name', 'unknown')
                 else:
-                    key = fields.get('display_name', 'unknown')
+                    # Generate a key based on date and type
+                    # Use YYYY-MM-DD format to match standard naming convention
+                    if meeting_date and doc_type:
+                        # Capitalize doc_type to match filename convention
+                        key = f"{meeting_date}-{doc_type.capitalize()}"
+                    else:
+                        key = fields.get('display_name', 'unknown')
                 
                 meetings[key] = {
                     'airtable_id': record.get('id'),

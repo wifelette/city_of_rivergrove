@@ -175,8 +175,10 @@ def build_relationships():
         for md_file in dir_path.glob('*.md'):
             # For meeting documents, only include if they have metadata
             if dir_name in ['transcripts', 'agendas', 'minutes']:
-                file_key = md_file.stem.lower()
-                if file_key not in meetings_metadata:
+                # Try both exact match and lowercase for backwards compatibility
+                file_key = md_file.stem
+                file_key_lower = md_file.stem.lower()
+                if file_key not in meetings_metadata and file_key_lower not in meetings_metadata:
                     print(f"  Skipping {md_file.name} - no metadata entry")
                     continue
             

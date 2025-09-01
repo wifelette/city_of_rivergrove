@@ -12,6 +12,7 @@ Hello! We're working on the City of Rivergrove digitization project. Please star
 4. docs/build-architecture.md - build system and script dependencies
 5. docs/styles/ - formatting standards (naming, signatures, form fields, images)
 6. scripts/SCRIPTS_GUIDE.md - more on script dependencies
+7. scripts/metadata-architecture.md
 
 Check git status to see if there are any uncommitted changes, and if so, commit and push them. Then check GitHub Issue #3 to see which documents are pending processing.
 

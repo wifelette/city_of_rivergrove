@@ -1,18 +1,18 @@
-# ORDINANCE NO. 72-2002
+ORDINANCE NO. 72-2002
 
 **AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
-Approved by the Planning Commission of the City of Rivergrove on **10/7/02**
+Approved by the Planning Commission of the City of Rivergrove on {{filled:10/7/02}}\*\*
 
-Submitted to the Rivergrove City Council on **10/14/02**
+Submitted to the Rivergrove City Council on {{filled:10/14/02}}
 
-Adopted by the Rivergrove City Council on **10/14/02**
+Adopted by the Rivergrove City Council on {{filled:10/14/02}}
 
 [Signature], Larry Barrett, Mayor  
-**Date**: 10-14-02                                            
+**Date**: {{filled:10-14-02}}
 
 [Signature], Mike Collmeyer, City Recorder  
-**Date**: 10/14/02                                            
+**Date**: {{filled:10/14/02}}
 
 ---
 

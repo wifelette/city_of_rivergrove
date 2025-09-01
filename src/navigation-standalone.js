@@ -417,27 +417,32 @@ class StandaloneNavigation {
         search.placeholder = `Search ${typeLabels[type] || type}...`;
         
         // Update view controls visibility
+        const viewControls = document.querySelector('.view-controls');
         const viewButtons = document.querySelector('.view-buttons');
-        if (type === 'interpretations') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="bydate">By Date</button>
-                <button class="view-btn" data-view="bysection">By Code Section</button>
-            `;
-        } else if (type === 'transcripts') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="bydate">By Date</button>
-                <button class="view-btn" data-view="bymeeting">By Meeting</button>
-            `;
-        } else if (type === 'other') {
-            viewButtons.innerHTML = `
-                <button class="view-btn active" data-view="chronological">Chronological</button>
-            `;
+        
+        if (type === 'transcripts') {
+            // Hide view controls entirely for meetings
+            if (viewControls) viewControls.style.display = 'none';
         } else {
-            viewButtons.innerHTML = `
-                <button class="view-btn" data-view="numerical">Numerical</button>
-                <button class="view-btn active" data-view="chronological">Chronological</button>
-                <button class="view-btn" data-view="topical">Topical</button>
-            `;
+            // Show view controls for other document types
+            if (viewControls) viewControls.style.display = '';
+            
+            if (type === 'interpretations') {
+                viewButtons.innerHTML = `
+                    <button class="view-btn active" data-view="bydate">By Date</button>
+                    <button class="view-btn" data-view="bysection">By Code Section</button>
+                `;
+            } else if (type === 'other') {
+                viewButtons.innerHTML = `
+                    <button class="view-btn active" data-view="chronological">Chronological</button>
+                `;
+            } else {
+                viewButtons.innerHTML = `
+                    <button class="view-btn" data-view="numerical">Numerical</button>
+                    <button class="view-btn active" data-view="chronological">Chronological</button>
+                    <button class="view-btn" data-view="topical">Topical</button>
+                `;
+            }
         }
         
         // Re-bind view button events
@@ -525,6 +530,12 @@ class StandaloneNavigation {
                 return false;
             })
             .map(([key, doc]) => ({ ...doc, docKey: key }));
+        
+        // Special handling for meeting documents
+        if (this.currentDocType === 'transcripts') {
+            this.renderMeetingDocuments(container, docs);
+            return;
+        }
         
         // Minimum threshold for grouping
         const MIN_DOCS_FOR_GROUPING = 10;
@@ -941,6 +952,105 @@ class StandaloneNavigation {
                 }
             });
         });
+    }
+    
+    renderMeetingDocuments(container, docs) {
+        // Group meeting documents by date
+        const meetingsByDate = {};
+        
+        docs.forEach(doc => {
+            // Extract date from document
+            const date = doc.date || doc.year || 'Unknown';
+            if (!meetingsByDate[date]) {
+                meetingsByDate[date] = [];
+            }
+            meetingsByDate[date].push(doc);
+        });
+        
+        // Sort dates based on current order
+        const dates = Object.keys(meetingsByDate).sort((a, b) => {
+            if (this.currentOrder === 'asc') {
+                return a.localeCompare(b);
+            } else {
+                return b.localeCompare(a);
+            }
+        });
+        
+        container.innerHTML = '';
+        
+        // Render each date group
+        dates.forEach(date => {
+            const group = document.createElement('div');
+            group.className = 'doc-group';
+            
+            // Create group header with formatted date
+            const header = document.createElement('div');
+            header.className = 'group-header';
+            
+            // Format the date nicely (e.g., "February 12, 2024")
+            let formattedDate = date;
+            if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                const dateObj = new Date(date + 'T12:00:00');
+                formattedDate = dateObj.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            }
+            
+            header.innerHTML = `
+                <span class="group-title">${formattedDate}</span>
+                <span class="group-count">${meetingsByDate[date].length}</span>
+            `;
+            group.appendChild(header);
+            
+            // Create items container
+            const items = document.createElement('div');
+            items.className = 'group-items';
+            
+            // Sort documents within date group alphabetically by type
+            const sortedDocs = meetingsByDate[date].sort((a, b) => {
+                // Order: Agenda, Minutes, Transcript
+                const typeOrder = { 'agenda': 1, 'minutes': 2, 'transcript': 3, 'meeting': 3 };
+                const orderA = typeOrder[a.type] || 99;
+                const orderB = typeOrder[b.type] || 99;
+                return orderA - orderB;
+            });
+            
+            // Render each document without showing individual dates
+            sortedDocs.forEach(doc => {
+                const item = document.createElement('div');
+                item.className = 'doc-item';
+                item.dataset.docId = doc.docKey;
+                
+                // Get the document type label
+                const typeLabel = {
+                    'agenda': 'Agenda',
+                    'minutes': 'Minutes',
+                    'transcript': 'Transcript',
+                    'meeting': 'Meeting'
+                }[doc.type] || doc.type;
+                
+                // Simple display without date
+                item.innerHTML = `<span class="meeting-type">${typeLabel}</span>`;
+                
+                // Add click handler
+                item.addEventListener('click', () => {
+                    this.navigateToDocument(doc);
+                });
+                
+                items.appendChild(item);
+            });
+            
+            group.appendChild(items);
+            container.appendChild(group);
+        });
+        
+        // Update counts
+        const totalCountEl = document.querySelector('.total-count');
+        const visibleCountEl = document.querySelector('.visible-count');
+        if (totalCountEl) totalCountEl.textContent = docs.length;
+        if (visibleCountEl) visibleCountEl.textContent = docs.length;
     }
     
     detectCurrentDocument() {

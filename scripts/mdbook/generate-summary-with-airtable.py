@@ -438,12 +438,18 @@ def generate_summary():
         agendas = []
         for md_file in sorted(agendas_dir.glob("*.md")):
             # Only include files that have metadata
-            file_key = md_file.stem.lower()
-            if file_key not in meetings_metadata:
+            # Try both exact match and lowercase for backwards compatibility
+            file_key = md_file.stem
+            file_key_lower = md_file.stem.lower()
+            if file_key in meetings_metadata:
+                key_to_use = file_key
+            elif file_key_lower in meetings_metadata:
+                key_to_use = file_key_lower
+            else:
                 print(f"  Skipping {md_file.name} - no meetings metadata")
                 continue
             
-            display = meetings_metadata[file_key].get('display_name', md_file.stem)
+            display = meetings_metadata[key_to_use].get('display_name', md_file.stem)
             agendas.append({
                 'display': display,
                 'filename': md_file.name
@@ -463,12 +469,18 @@ def generate_summary():
         minutes = []
         for md_file in sorted(minutes_dir.glob("*.md")):
             # Only include files that have metadata
-            file_key = md_file.stem.lower()
-            if file_key not in meetings_metadata:
+            # Try both exact match and lowercase for backwards compatibility
+            file_key = md_file.stem
+            file_key_lower = md_file.stem.lower()
+            if file_key in meetings_metadata:
+                key_to_use = file_key
+            elif file_key_lower in meetings_metadata:
+                key_to_use = file_key_lower
+            else:
                 print(f"  Skipping {md_file.name} - no meetings metadata")
                 continue
             
-            display = meetings_metadata[file_key].get('display_name', md_file.stem)
+            display = meetings_metadata[key_to_use].get('display_name', md_file.stem)
             minutes.append({
                 'display': display,
                 'filename': md_file.name
@@ -488,12 +500,18 @@ def generate_summary():
         transcripts = []
         for md_file in sorted(trans_dir.glob("*.md")):
             # Only include files that have metadata
-            file_key = md_file.stem.lower()
-            if file_key not in meetings_metadata:
+            # Try both exact match and lowercase for backwards compatibility
+            file_key = md_file.stem
+            file_key_lower = md_file.stem.lower()
+            if file_key in meetings_metadata:
+                key_to_use = file_key
+            elif file_key_lower in meetings_metadata:
+                key_to_use = file_key_lower
+            else:
                 print(f"  Skipping {md_file.name} - no meetings metadata")
                 continue
             
-            display = meetings_metadata[file_key].get('display_name', md_file.stem)
+            display = meetings_metadata[key_to_use].get('display_name', md_file.stem)
             transcripts.append({
                 'name': display,
                 'filename': md_file.name
