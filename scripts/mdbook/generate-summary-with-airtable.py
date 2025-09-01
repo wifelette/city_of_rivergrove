@@ -277,10 +277,20 @@ def generate_summary():
                 
                 # Add special state indicator if needed
                 status_indicator = ""
-                if doc.get('special_state') == 'Repealed':
-                    status_indicator = " [REPEALED]"
-                elif doc.get('special_state') == 'Superseded':
-                    status_indicator = " [SUPERSEDED]"
+                special_state = doc.get('special_state')
+                # Handle both array and string formats
+                if special_state:
+                    if isinstance(special_state, list):
+                        state = special_state[0] if special_state else None
+                    else:
+                        state = special_state
+                    
+                    if state == 'Repealed':
+                        status_indicator = " [REPEALED]"
+                    elif state == 'Superseded':
+                        status_indicator = " [SUPERSEDED]"
+                    elif state == 'Never Passed':
+                        status_indicator = " [NEVER PASSED]"
                 
                 if clean_num:
                     display = f"{clean_num} - {title} ({year}){status_indicator}"
@@ -328,10 +338,12 @@ def generate_summary():
                     doc['display_number'] = doc_num  # Store for display formatting
                 
                 doc['status'] = airtable_info.get('status', 'Unknown')
+                doc['special_state'] = airtable_info.get('special_state')
             else:
                 # Mark as missing Airtable data
                 doc['full_title'] = f"[NO AIRTABLE DATA] {extract_title_from_file(md_file)}"
                 doc['status'] = 'Missing Airtable Data'
+                doc['special_state'] = None
                 print(f"  WARNING: No Airtable data for {doc_key}")
             
             resolutions.append(doc)
@@ -352,10 +364,27 @@ def generate_summary():
                 else:
                     num = ""
                 
+                # Add special state indicator if needed
+                status_indicator = ""
+                special_state = doc.get('special_state')
+                # Handle both array and string formats
+                if special_state:
+                    if isinstance(special_state, list):
+                        state = special_state[0] if special_state else None
+                    else:
+                        state = special_state
+                    
+                    if state == 'Repealed':
+                        status_indicator = " [REPEALED]"
+                    elif state == 'Superseded':
+                        status_indicator = " [SUPERSEDED]"
+                    elif state == 'Never Passed':
+                        status_indicator = " [NEVER PASSED]"
+                
                 if num:
-                    display = f"{num} - {title} ({year})"
+                    display = f"{num} - {title} ({year}){status_indicator}"
                 else:
-                    display = f"{title} ({year})"
+                    display = f"{title} ({year}){status_indicator}"
                 
                 summary.append(f"- [{display}](./resolutions/{doc['filename']})\n")
     
