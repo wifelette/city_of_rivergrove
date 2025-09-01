@@ -134,7 +134,7 @@ process_file_change() {
 
 # Initial build
 echo "📚 Running initial build..."
-./build-all.sh --quick >/dev/null 2>&1
+./build-all.sh >/dev/null 2>&1
 echo -e "${GREEN}✅ Initial build complete${NC}"
 echo ""
 

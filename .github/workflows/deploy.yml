@@ -36,8 +36,8 @@ jobs:
       
       - name: Build mdBook with processing
         run: |
-          chmod +x scripts/build/update-mdbook.sh
-          ./scripts/build/update-mdbook.sh
+          chmod +x build-all.sh
+          ./build-all.sh
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
