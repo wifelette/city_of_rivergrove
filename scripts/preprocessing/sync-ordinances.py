@@ -115,6 +115,13 @@ def process_form_fields(content):
         
         line = re.sub(r'\{\{table-footnote:\s*([^}]+)\}\}', replace_table_footnote, line)
         
+        # Convert {{page:X}} to styled page reference
+        def replace_page_ref(match):
+            page_num = match.group(1).strip()
+            return f'[page {page_num}]'
+        
+        line = re.sub(r'\{\{page:\s*([^}]+)\}\}', replace_page_ref, line)
+        
         processed_lines.append(line)
     
     return '\n'.join(processed_lines)

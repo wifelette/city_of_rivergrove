@@ -239,18 +239,31 @@ class DocumentProcessor:
                 new_h2.string = 'Document Notes'
                 note_div.append(new_h2)
                 
-                # Collect all following siblings until the next h2 or end
+                # Collect all following siblings until we find an h2 that's NOT a note type
                 current = h2.next_sibling
                 elements_to_move = []
+                
+                # List of headers that are note type labels (not section breaks)
+                note_type_headers = ['handwritten note', 'stamp', 'digitization note', 
+                                   'editor note', 'historical note', 'source note']
                 
                 while current:
                     next_sibling = current.next_sibling
                     
-                    # Stop at next h2 or hr
+                    # Check if this is an h2
                     if hasattr(current, 'name'):
-                        if current.name == 'h2' or current.name == 'hr':
+                        if current.name == 'h2':
+                            # Check if it's a note type header (should be included)
+                            h2_text = current.get_text().strip().lower().rstrip(':')
+                            is_note_type = any(note_type in h2_text for note_type in note_type_headers)
+                            
+                            if not is_note_type:
+                                # This is a different section, stop here
+                                break
+                        elif current.name == 'hr':
                             break
-                        elif current.name:  # Only collect actual elements, not text nodes
+                        
+                        if current.name:  # Collect the element
                             elements_to_move.append(current.extract())
                     
                     current = next_sibling
@@ -259,8 +272,187 @@ class DocumentProcessor:
                 for elem in elements_to_move:
                     note_div.append(elem)
                 
+                # Process H3 headers within the note div as note type labels
+                import re
+                for h3 in note_div.find_all('h3'):
+                    # Get the header text and check for page reference
+                    h3_text = h3.get_text().strip()
+                    page_ref = None
+                    
+                    # Check if the header itself contains a page reference
+                    page_match = re.search(r'\[page (\d+)\]', h3_text)
+                    if page_match:
+                        page_ref = page_match.group(1)
+                        # Remove the page reference from the label text
+                        label_text = re.sub(r'\s*\[page \d+\]\s*', '', h3_text).strip().rstrip(':')
+                    else:
+                        label_text = h3_text.rstrip(':')
+                    
+                    # Create a new structure with label
+                    note_item = soup.new_tag('div', attrs={'class': 'note-item'})
+                    
+                    # Create content div for following content
+                    content_div = soup.new_tag('div', attrs={'class': 'note-content'})
+                    
+                    # Collect content between this h3 and the next h3/h2 or end
+                    current = h3.next_sibling
+                    
+                    while current and (not hasattr(current, 'name') or (current.name != 'h3' and current.name != 'h2')):
+                        next_sib = current.next_sibling
+                        if hasattr(current, 'name') and current.name:
+                            content_div.append(current.extract())
+                        current = next_sib
+                    
+                    # Create the label span with page reference if found
+                    label_span = soup.new_tag('span', attrs={'class': 'note-type-label'})
+                    if page_ref:
+                        # Add the label text as a text node
+                        label_span.append(label_text)
+                        # Add separator
+                        separator = soup.new_tag('span', attrs={'class': 'label-separator'})
+                        separator.string = ' · '
+                        label_span.append(separator)
+                        # Add page reference
+                        page_span = soup.new_tag('span', attrs={'class': 'label-page-ref'})
+                        page_span.string = f'PAGE {page_ref}'
+                        label_span.append(page_span)
+                    else:
+                        label_span.string = label_text
+                    
+                    note_item.append(label_span)
+                    note_item.append(content_div)
+                    
+                    # Replace the h3 with the note item
+                    h3.replace_with(note_item)
+                
+                # Process paragraphs to wrap page references in spans
+                import re
+                for p in note_div.find_all('p'):
+                    # Get the current HTML content of the paragraph
+                    p_html = str(p)
+                    
+                    # Skip if already processed (has note-item class)
+                    if p.parent and 'note-item' in p.parent.get('class', []):
+                        continue
+                        
+                    # Check if this paragraph starts with a bold label (e.g., **Handwritten Notes:**)
+                    if '<strong>' in p_html and '</strong>:' in p_html:
+                        # Extract the label and content - handle both inline and multi-line
+                        # Match pattern: <p><strong>Label</strong>:\nContent</p>
+                        label_match = re.match(r'^<p><strong>([^<]+)</strong>:\s*(.*?)</p>$', p_html, re.DOTALL)
+                        if label_match:
+                            label_text = label_match.group(1)
+                            content_text = label_match.group(2)
+                            
+                            # Create a new structure with label and content
+                            new_p = soup.new_tag('div', attrs={'class': 'note-item'})
+                            
+                            # Create the label span
+                            label_span = soup.new_tag('span', attrs={'class': 'note-type-label'})
+                            label_span.string = label_text
+                            new_p.append(label_span)
+                            
+                            # Create the content div
+                            content_div = soup.new_tag('div', attrs={'class': 'note-content'})
+                            # Parse the content HTML to preserve any formatting
+                            content_soup = BeautifulSoup(content_text, 'html.parser')
+                            for elem in content_soup:
+                                if hasattr(elem, 'name'):
+                                    content_div.append(elem)
+                                else:
+                                    content_div.append(str(elem))
+                            new_p.append(content_div)
+                            
+                            # Replace the original paragraph
+                            p.replace_with(new_p)
+                            p = new_p  # Update reference for page ref processing below
+                    
+                    # Process page references (skip if already processed)
+                    if hasattr(p, 'find_all'):
+                        p_html = str(p)
+                        new_p_html = p_html  # Default to no change
+                        # Only wrap if not already wrapped
+                        if 'page-ref' not in p_html:
+                            # Replace [page X] patterns with wrapped versions
+                            new_p_html = re.sub(
+                                r'(\[page \d+\])',
+                                r'<span class="page-ref">\1</span>',
+                                p_html
+                            )
+                        # If we made changes, replace the element
+                        if new_p_html != p_html:
+                            if p.name == 'div':
+                                new_p = BeautifulSoup(new_p_html, 'html.parser').div
+                            else:
+                                new_p = BeautifulSoup(new_p_html, 'html.parser').p
+                            if new_p:
+                                p.replace_with(new_p)
+                
                 # Replace the original h2 with the note div
                 h2.replace_with(note_div)
+        
+        # Also process any existing document-note divs to add page-ref spans and style labels
+        import re
+        for note_div in soup.find_all('div', class_='document-note'):
+            for p in note_div.find_all('p'):
+                # Get the current HTML content of the paragraph
+                p_html = str(p)
+                
+                # Skip if already processed (has note-item class)
+                if 'note-item' in p.parent.get('class', []):
+                    continue
+                    
+                # Check if this paragraph starts with a bold label (e.g., **Handwritten Notes:**)
+                if '<strong>' in p_html and '</strong>' in p_html:
+                    # Extract the label and content - handle both inline and multi-line
+                    label_match = re.search(r'<strong>([^<]+)</strong>:\s*(.*)', p_html, re.DOTALL)
+                    if label_match:
+                        label_text = label_match.group(1)
+                        content_text = label_match.group(2)
+                        
+                        # Create a new structure with label and content
+                        new_p = soup.new_tag('div', attrs={'class': 'note-item'})
+                        
+                        # Create the label span
+                        label_span = soup.new_tag('span', attrs={'class': 'note-type-label'})
+                        label_span.string = label_text
+                        new_p.append(label_span)
+                        
+                        # Create the content div
+                        content_div = soup.new_tag('div', attrs={'class': 'note-content'})
+                        # Parse the content HTML to preserve any formatting
+                        content_soup = BeautifulSoup(content_text, 'html.parser')
+                        for elem in content_soup:
+                            if hasattr(elem, 'name'):
+                                content_div.append(elem)
+                            else:
+                                content_div.append(str(elem))
+                        new_p.append(content_div)
+                        
+                        # Replace the original paragraph
+                        p.replace_with(new_p)
+                        p = new_p  # Update reference for page ref processing below
+                
+                # Process page references (skip if already processed)
+                if hasattr(p, 'find_all'):
+                    p_html = str(p)
+                    new_p_html = p_html  # Default to no change
+                    # Only wrap if not already wrapped
+                    if 'page-ref' not in p_html:
+                        # Replace [page X] patterns with wrapped versions
+                        new_p_html = re.sub(
+                            r'(\[page \d+\])',
+                            r'<span class="page-ref">\1</span>',
+                            p_html
+                        )
+                    # If we made changes, replace the element
+                    if new_p_html != p_html:
+                        if p.name == 'div':
+                            new_p = BeautifulSoup(new_p_html, 'html.parser').div
+                        else:
+                            new_p = BeautifulSoup(new_p_html, 'html.parser').p
+                        if new_p:
+                            p.replace_with(new_p)
         
         return soup
     
@@ -298,15 +490,113 @@ class DocumentProcessor:
     def add_custom_css(self, soup):
         """Add custom CSS for special formatting"""
         
-        # Check if we've already added our custom CSS
-        if soup.find('style', id='enhanced-formatting-styles'):
-            return soup
+        # Remove old style tag if it exists (to update with new CSS)
+        old_style = soup.find('style', id='enhanced-formatting-styles')
+        if old_style:
+            old_style.decompose()
         
         head = soup.find('head')
         if head:
             style = soup.new_tag('style', id='enhanced-formatting-styles')
             style.string = """
             /* Enhanced formatting for special document types */
+            
+            /* Document Notes styling */
+            .document-note {
+                margin: 30px 0;
+                padding: 20px 20px 20px 50px;
+                background: white;
+                border: 1px solid #e9ecef;
+                border-radius: 6px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+                position: relative;
+            }
+            
+            .document-note::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: #6c757d;
+                border-radius: 6px 6px 0 0;
+            }
+            
+            .document-note::after {
+                content: "📝";
+                position: absolute;
+                left: 18px;
+                top: 20px;
+                font-size: 18px;
+                opacity: 0.7;
+            }
+            
+            .document-note h2 {
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 1.1em;
+                color: #495057;
+                border: none;
+                padding: 0;
+            }
+            
+            .document-note p {
+                margin: 8px 0;
+                line-height: 1.6;
+                color: #212529;
+            }
+            
+            /* Style for page references in document notes */
+            .document-note p:has(strong) {
+                position: relative;
+            }
+            
+            /* Target text in brackets that looks like page references */
+            .page-ref {
+                color: #6c757d;
+                font-size: 0.9em;
+            }
+            
+            /* Note type labels (e.g., Handwritten text, Stamp) */
+            .note-item {
+                margin: 12px 0;
+            }
+            
+            .note-type-label {
+                display: inline-block;
+                padding: 3px 8px;
+                margin-bottom: 6px;
+                background: #f3f4f6;
+                color: #374151;
+                border: 1px solid #d1d5db;
+                border-radius: 4px;
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            
+            .label-separator {
+                color: #9ca3af;
+                margin: 0 2px;
+                font-weight: 400;
+            }
+            
+            .label-page-ref {
+                color: #6b7280;
+                font-weight: 500;
+            }
+            
+            .note-content {
+                margin-left: 0;
+                line-height: 1.6;
+            }
+            
+            .note-content br {
+                display: block;
+                margin: 4px 0;
+            }
             
             /* WHEREAS Clauses */
             .whereas-clause {

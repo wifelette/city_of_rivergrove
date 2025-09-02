@@ -123,9 +123,10 @@ process_file_change() {
     # Apply postprocessors after mdBook rebuilds
     echo "  Applying custom formatting..."
     python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
-    if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
-        python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
-    fi
+    
+    # Always run enhanced processor for Document Notes and other styling
+    echo "  Applying enhanced styling..."
+    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
     
     echo -e "${GREEN}  ✓ Processing complete${NC}"
     

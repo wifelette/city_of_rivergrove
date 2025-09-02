@@ -58,12 +58,6 @@ ABSTAINED <span class="form-field-filled" data-tooltip="Field filled in on sourc
 
 # INTERGOVERNMENTAL AGREEMENT FOR SEWERAGE SERVICES
 
-## COPY
-
-**RETENTION**  
-**EXP/COMPL DATE**  
-**DESTROY**
-
 THIS AGREEMENT is made and entered into as of the <span class="form-field-filled" data-tooltip="Field filled in on source doc">17th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">December</span>, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego, both municipal corporations of the State of Oregon.
 
 The purpose of this agreement is to provide for the collection, transport, and treatment of sanitary sewage generated within Rivergrove.
@@ -178,31 +172,47 @@ In the event a court of competent jurisdiction shall deem any portion or part of
 
 IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority of lawful actions by the Lake Oswego City Council and Rivergrove City Council.
 
-**CITY OF LAKE OSWEGO**  
-By: [Signature] **Alice L. Schlenker, Mayor**  
+**CITY OF LAKE OSWEGO**
+
+By: [Signature]  
+**Alice L. Schlenker, Mayor**  
 As per City Council Resolution No. <span class="form-field-filled" data-tooltip="Field filled in on source doc">96-62</span>, <span class="form-field-filled" data-tooltip="Field filled in on source doc">December 17, 1996</span>
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">Dec 18, 1996</span>
 
-**ATTEST:**
-[Signature] **Kristi Hitchcock, City Recorder**
+**ATTEST:**  
+[Signature]  
+**Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
-[Signature] **Jeffrey G. Condit, City Attorney**
+[Signature]  
+**Jeffrey G. Condit, City Attorney**
 
 **CITY OF RIVERGROVE**
-By: [Signature], **Sue Salch, Mayor**
+
+By: [Signature]  
+**Sue Salch, Mayor**  
 As per City Council vote at its meeting of: <span class="form-field-filled" data-tooltip="Field filled in on source doc">November 18, 1996</span>
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">11/25/96</span>
 
-**ATTEST:**
-[Signature] **Jami K Morrison, City Recorder**
+**ATTEST:**  
+[Signature]  
+**Jami K Morrison, City Recorder**
 
-**APPROVED AS TO FORM:**
-
-<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+**APPROVED AS TO FORM:**  
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>  
 **City of Rivergrove Legal Counsel**
 
+## Document Notes
 
+### Stamp [page 3]
 
+COPY
 
+### Stamp [page 3]
+
+SERIES: <span class="form-field-filled" data-tooltip="Field filled in on source doc">16135</span>  
+TITLE: <span class="form-field-filled" data-tooltip="Field filled in on source doc">INTERGOV AGMTS-SIGN</span>  
+RETENTION: <span class="form-field-filled" data-tooltip="Field filled in on source doc">P</span>  
+EXP/COMPL DATE: <span class="form-field-filled" data-tooltip="Field filled in on source doc">1/2027</span>  
+DESTROY: <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>

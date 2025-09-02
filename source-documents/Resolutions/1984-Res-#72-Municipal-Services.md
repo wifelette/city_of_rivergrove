@@ -33,13 +33,18 @@ Attest:
 [Signature]
 Virginia [Illegible], Recorder
 
-## Handwritten notations, floating form fields, document footer artifacts and stamps
+## Document Notes
 
-**Return to:** Executive Department  
+### Stamp {{page:1}}
+
+**Return to:**  
+Executive Department  
 Intergovernmental Relations Division  
 ATTN: Dolores Streeter  
 155 Cottage St. NE  
 Salem, OR 97310
+
+### Footnotes {{page:1}}
 
 IRD:05/15/84  
 DS:nl:0026f

@@ -3,7 +3,7 @@
 **AN ORDINANCE ADOPTING AMENDMENTS TO THE RIVERGROVE LAND DEVELOPMENT ORDINANCE AND THE RIVERGROVE COMPREHENSIVE PLAN IN ORDER TO COMPLY WITH THE REQUIREMENTS OF METRO'S URBAN GROWTH MANAGEMENT FUNCTIONAL PLAN.**
 
 **Planning Commission Public Hearings:** {{filled:8/10/2000, 9/7/2000, 9/11/2000, 9/28/2000}}  
-**City Council Public Hearings:** {{filled:10/16/2000}}
+**City Council Public Hearings:** {{filled:10/16/2000}}  
 **Adopted by Rivergrove City Council:** {{filled:10/16/2000}}
 
 [Signature], Larry Barrett, Mayor  

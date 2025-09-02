@@ -2,13 +2,41 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-31T18:52:43.825523",
-    "last_updated": "2025-09-01T15:27:39.270434",
-    "total_records": 42,
-    "last_partial_update": "2025-09-01T15:27:39.270399",
+    "last_updated": "2025-09-02T12:06:47.969923",
+    "total_records": 44,
+    "last_partial_update": "2025-09-02T12:06:47.969889",
     "incremental_updates": [
       {
         "filename": "1993-Ord-#57-93-Manufactured-Homes.md",
         "updated_at": "2025-09-01T15:27:39.270400"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-01T15:38:44.496419"
+      },
+      {
+        "filename": "1978-Ord-#28-Parks.md",
+        "updated_at": "2025-09-01T19:19:47.951009"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-01T19:27:08.412761"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-02T11:51:41.845343"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-02T11:55:18.605838"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-02T12:01:54.325770"
+      },
+      {
+        "filename": "1976-Res-#22-PC.md",
+        "updated_at": "2025-09-02T12:06:47.969891"
       }
     ]
   },
@@ -692,6 +720,38 @@
       "digitized": true,
       "passed_date": "1993-12-13",
       "last_updated": "2025-08-30T19:38:45.000Z"
+    },
+    "1976-Res-#22-PC": {
+      "airtable_id": "recKfty2vMMlx2UNB",
+      "display_name": "Resolution #22",
+      "short_title": "Citizen Involvement",
+      "type": "resolution",
+      "year": 1976,
+      "doc_number": "22",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Resolutions/1976-Res-%2322-PC.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Resolutions/1976-Res-%2322-PC.pdf",
+      "filename": "1976-Res-%2322-PC.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1976-03-01",
+      "last_updated": "2025-08-30T19:38:43.000Z"
+    },
+    "1978-Ord-#28-Parks": {
+      "airtable_id": "recMmlIoICdhUugWY",
+      "display_name": "Ordinance #28",
+      "short_title": "Park Council",
+      "type": "ordinance",
+      "year": 1978,
+      "doc_number": "28",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1978-Ord-%2328-Parks.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1978-Ord-%2328-Parks.pdf",
+      "filename": "1978-Ord-%2328-Parks.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1978-06-12",
+      "last_updated": "2025-08-30T19:38:44.000Z"
     }
   }
 }

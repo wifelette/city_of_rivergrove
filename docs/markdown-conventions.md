@@ -111,21 +111,22 @@ Document notes provide supplementary information about digitization, source docu
 
 ### Markdown Pattern
 
-Simply create a section with one of these headers (case-insensitive):
+Simply create a section with the header `## Document Notes`:
 
 ```markdown
 ## Document Notes
+
+### Handwritten text {{page:1}}
+I certify this to be a true copy. Rosalie Morrison, City Recorder
+
+### Stamp {{page:3}}
+COPY
+
+### Digitization note
 The source document for this Ordinance is in ALL CAPITAL LETTERS...
-
-## Digitization Notes  
-Content about digitization process...
-
-## Source Document Notes
-Pages 3-5 of the original document contained unrelated material...
-
-## Handwritten notations
-Return to: Executive Department...
 ```
+
+Use H3 headers for different note types, with optional `{{page:X}}` notation for page references.
 
 ### Styling Applied
 

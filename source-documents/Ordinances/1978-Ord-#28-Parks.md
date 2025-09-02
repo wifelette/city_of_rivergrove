@@ -26,4 +26,6 @@ Rosalie Morrison, City Recorder
 
 ---
 
-**NOTE**: A version of this Ordinance, stipulating 7 members of the council, was reviewed (first reading) on April 10, 1978, and then the version above replaced it and was executed.
+## Document Notes
+
+A version of this Ordinance, stipulating 7 members of the council, was reviewed (first reading) on April 10, 1978, and then the version above replaced it and was executed. A copy of that version exists in the source documents, and includes a handwritten note as such at the very bottom.

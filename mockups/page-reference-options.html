@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Reference Formatting Options</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5f5f5;
+        }
+        .option {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #e1e1e1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .document-note {
+            margin: 30px 0;
+            padding: 20px 20px 20px 50px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .document-note::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #6c757d;
+            border-radius: 6px 6px 0 0;
+        }
+        .document-note::after {
+            content: "📝";
+            position: absolute;
+            left: 18px;
+            top: 20px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        .document-note h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #495057;
+            border: none;
+            padding: 0;
+        }
+        .document-note p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .page-ref {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .inline-page {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .note-type {
+            font-weight: 600;
+            color: #495057;
+        }
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Page Reference Formatting Options for Document Notes</h1>
+
+    <div class="option">
+        <h2>Option 1: Bold labels with inline page references</h2>
+        <div class="document-note">
+            <h2>Document Notes</h2>
+            <p><strong>Handwritten text</strong> (page 1): "I certify this to be a true copy. Rosalie Morrison, City Recorder, March 9, 1976"</p>
+            <p><strong>Stamp</strong> (page 1): City of Rivergrove, P.O. Box 110, Lake Oswego 97034</p>
+            <p><strong>Stamp</strong> (page 2): Department of Land Conservation and Development (LCDC), Received: MAR 11 1976, SALEM</p>
+        </div>
+        <p><strong>Markdown:</strong></p>
+        <code>**Handwritten text** (page 1): "I certify this to be a true copy..."</code>
+    </div>
+
+    <div class="option">
+        <h2>Option 2: Page references at the end</h2>
+        <div class="document-note">
+            <h2>Document Notes</h2>
+            <p><strong>Handwritten text:</strong> "I certify this to be a true copy. Rosalie Morrison, City Recorder, March 9, 1976" <span class="page-ref">[page 1]</span></p>
+            <p><strong>Stamp:</strong> City of Rivergrove, P.O. Box 110, Lake Oswego 97034 <span class="page-ref">[page 1]</span></p>
+            <p><strong>Stamp:</strong> Department of Land Conservation and Development (LCDC), Received: MAR 11 1976, SALEM <span class="page-ref">[page 2]</span></p>
+        </div>
+        <p><strong>Markdown:</strong></p>
+        <code>**Handwritten text:** "I certify this to be a true copy..." [page 1]</code>
+    </div>
+
+    <div class="option">
+        <h2>Option 3: Em-dash separator</h2>
+        <div class="document-note">
+            <h2>Document Notes</h2>
+            <p><strong>Handwritten text</strong> — page 1: "I certify this to be a true copy. Rosalie Morrison, City Recorder, March 9, 1976"</p>
+            <p><strong>Stamp</strong> — page 1: City of Rivergrove, P.O. Box 110, Lake Oswego 97034</p>
+            <p><strong>Stamp</strong> — page 2: Department of Land Conservation and Development (LCDC), Received: MAR 11 1976, SALEM</p>
+        </div>
+        <p><strong>Markdown:</strong></p>
+        <code>**Handwritten text** — page 1: "I certify this to be a true copy..."</code>
+    </div>
+
+    <div class="option">
+        <h2>Option 4: Grouped by page</h2>
+        <div class="document-note">
+            <h2>Document Notes</h2>
+            <p><strong>Page 1:</strong></p>
+            <p style="margin-left: 20px;">• Handwritten text: "I certify this to be a true copy. Rosalie Morrison, City Recorder, March 9, 1976"</p>
+            <p style="margin-left: 20px;">• Stamp: City of Rivergrove, P.O. Box 110, Lake Oswego 97034</p>
+            <p><strong>Page 2:</strong></p>
+            <p style="margin-left: 20px;">• Stamp: Department of Land Conservation and Development (LCDC), Received: MAR 11 1976, SALEM</p>
+        </div>
+        <p><strong>Markdown:</strong></p>
+        <code>**Page 1:**<br>• Handwritten text: "I certify..."<br>• Stamp: City of Rivergrove...</code>
+    </div>
+
+    <div class="option">
+        <h2>Option 5: Subtle italic page references</h2>
+        <div class="document-note">
+            <h2>Document Notes</h2>
+            <p><strong>Handwritten text</strong> <span class="inline-page">(p. 1)</span>: "I certify this to be a true copy. Rosalie Morrison, City Recorder, March 9, 1976"</p>
+            <p><strong>Stamp</strong> <span class="inline-page">(p. 1)</span>: City of Rivergrove, P.O. Box 110, Lake Oswego 97034</p>
+            <p><strong>Stamp</strong> <span class="inline-page">(p. 2)</span>: Department of Land Conservation and Development (LCDC), Received: MAR 11 1976, SALEM</p>
+        </div>
+        <p><strong>Markdown:</strong></p>
+        <code>**Handwritten text** *(p. 1)*: "I certify this to be a true copy..."</code>
+    </div>
+
+</body>
+</html>

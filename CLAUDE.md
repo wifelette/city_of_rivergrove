@@ -106,6 +106,29 @@ Please read these files for context on this project and how to work with Leah:
   - You encountered and resolved specific issues that might be helpful for future reference
   - The changes involved something beyond standard processing
 
+## Document Notes
+
+**IMPORTANT**: Use proper markdown syntax for Document Notes sections!
+
+- Create a section with `## Document Notes` at the end of documents
+- Use H3 headers (`###`) for different note types (Stamp, Handwritten text, etc.)
+- Include page references directly in H3 headers: `### Stamp {{page:3}}`
+- The build system automatically styles these with badges and proper formatting
+- See `docs/styles/document-notes.md` for complete syntax guide
+
+Example:
+```markdown
+## Document Notes
+
+### Stamp {{page:3}}
+COPY
+
+### Handwritten text {{page:2}}
+I certify this to be a true copy.
+Rosalie Morrison
+City Recorder
+```
+
 ## Form Field Validation
 
 The build system automatically validates `{{filled:}}` form field syntax at multiple levels:

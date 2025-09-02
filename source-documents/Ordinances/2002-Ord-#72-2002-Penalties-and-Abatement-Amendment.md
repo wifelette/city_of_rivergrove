@@ -2,7 +2,7 @@ ORDINANCE NO. 72-2002
 
 **AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
-Approved by the Planning Commission of the City of Rivergrove on {{filled:10/7/02}}\*\*
+Approved by the Planning Commission of the City of Rivergrove on {{filled:10/7/02}}
 
 Submitted to the Rivergrove City Council on {{filled:10/14/02}}
 

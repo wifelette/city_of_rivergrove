@@ -58,12 +58,6 @@ ABSTAINED {{filled:0}}
 
 # INTERGOVERNMENTAL AGREEMENT FOR SEWERAGE SERVICES
 
-## COPY
-
-**RETENTION**  
-**EXP/COMPL DATE**  
-**DESTROY**
-
 THIS AGREEMENT is made and entered into as of the {{filled:17th}} day of {{filled:December}}, 1996, between the City of Rivergrove, hereinafter referred to as "Rivergrove", and the City of Lake Oswego, hereinafter referred to as "Lake Oswego, both municipal corporations of the State of Oregon.
 
 The purpose of this agreement is to provide for the collection, transport, and treatment of sanitary sewage generated within Rivergrove.
@@ -178,31 +172,47 @@ In the event a court of competent jurisdiction shall deem any portion or part of
 
 IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority of lawful actions by the Lake Oswego City Council and Rivergrove City Council.
 
-**CITY OF LAKE OSWEGO**  
-By: [Signature] **Alice L. Schlenker, Mayor**  
+**CITY OF LAKE OSWEGO**
+
+By: [Signature]  
+**Alice L. Schlenker, Mayor**  
 As per City Council Resolution No. {{filled:96-62}}, {{filled:December 17, 1996}}
 **Dated:** {{filled:Dec 18, 1996}}
 
-**ATTEST:**
-[Signature] **Kristi Hitchcock, City Recorder**
+**ATTEST:**  
+[Signature]  
+**Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
-[Signature] **Jeffrey G. Condit, City Attorney**
+[Signature]  
+**Jeffrey G. Condit, City Attorney**
 
 **CITY OF RIVERGROVE**
-By: [Signature], **Sue Salch, Mayor**
+
+By: [Signature]  
+**Sue Salch, Mayor**  
 As per City Council vote at its meeting of: {{filled:November 18, 1996}}
 **Dated:** {{filled:11/25/96}}
 
-**ATTEST:**
-[Signature] **Jami K Morrison, City Recorder**
+**ATTEST:**  
+[Signature]  
+**Jami K Morrison, City Recorder**
 
-**APPROVED AS TO FORM:**
-
-{{filled:}}
+**APPROVED AS TO FORM:**  
+{{filled:}}  
 **City of Rivergrove Legal Counsel**
 
+## Document Notes
 
+### Stamp {{page:3}}
 
+COPY
 
+### Stamp {{page:3}}
+
+SERIES: {{filled:16135}}  
+TITLE: {{filled:INTERGOV AGMTS-SIGN}}  
+RETENTION: {{filled:P}}  
+EXP/COMPL DATE: {{filled:1/2027}}  
+DESTROY: {{filled:}}
