@@ -215,7 +215,7 @@ See **[styles/inline-images.md](styles/inline-images.md)** for handling images, 
 **Key Points**:
 
 - Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
-- Images should be stored in `book/images/[document-type]/`
+- Images should be stored in `images/[document-type]/` at the repository root (not in `src/` which is gitignored)
 - Screenshots and diagrams should be saved as PNG files
 - If an image or complex table is found and would be useful to include, point it out to Leah so she can extract it (or do it for her) and save it where it needs to go
 

@@ -118,7 +118,7 @@ These modify markdown files BEFORE mdBook processes them:
 | `sync-resolutions.py` | Copy resolutions to /src, remove #, apply form fields | Source files in source-documents/Resolutions | Step 1 |
 | `footnote-preprocessor.py` | Convert footnote syntax | Files in /src | Step 3 |
 | `auto-link-converter.py` | Convert URLs/emails to markdown links | Files in /src | Step 4 |
-| `image-processor.py` | Process inline image syntax | Files with {{image:}} tags | During sync |
+| ~~`image-processor.py`~~ | ~~Process inline image syntax~~ | ~~Not currently used~~ | ~~Image processing is handled by sync scripts~~ |
 
 ### Validation Scripts (`scripts/validation/`)
 
@@ -161,9 +161,10 @@ Form fields are processed at multiple stages. See **[styles/form-fields.md](styl
 Documents can include images, diagrams, and visual content. See **[styles/inline-images.md](styles/inline-images.md)** for complete syntax and usage guide.
 
 **Processing:**
-- The `{{image:}}` syntax is processed during document sync
-- Images are stored in `book/images/[document-type]/` directories
-- The `image-processor.py` script handles conversion to proper HTML
+- The `{{image:}}` syntax is processed during document sync by the sync scripts
+- Images are stored in the root `images/[document-type]/` directories (not in `src/` which is gitignored)
+- Build scripts copy `images/` to `book/images/` during deployment
+- The sync scripts convert `{{image:}}` tags to proper HTML figure elements
 
 ## Cross-Reference System
 

@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 """
-Image processor that converts {{image:}} tags to proper markdown/HTML
-for inline images in legal documents.
+DEPRECATED: Image processing is now handled directly by the sync scripts
+(sync-ordinances.py, sync-resolutions.py, etc.)
 
-Syntax:
-{{image:filename|alt=text|caption=text}}
+This standalone script is kept for reference but is not used in the build pipeline.
 
-This will:
-1. Look for the image in src/images/{document-type}/ directory
-2. Convert to proper HTML with figure/figcaption tags
-3. Apply consistent styling
+Original purpose: Convert {{image:}} tags to proper markdown/HTML for inline images.
+Images are stored in the root images/{document-type}/ directories.
 """
 
 import re
