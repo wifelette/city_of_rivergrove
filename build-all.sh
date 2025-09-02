@@ -160,15 +160,21 @@ mdbook build
 echo "  ✅ mdBook built"
 echo ""
 
-# STEP 11: Copy data files to book directory
-echo "📂 Step 11: Copying data files..."
+# STEP 11: Copy images and data files to book directory
+echo "📂 Step 11: Copying images and data files..."
+# Copy all images to the book directory
+if [ -d "images" ]; then
+    echo "  • Copying images directory..."
+    cp -r images book/
+fi
+# Copy data files
 if [ -f "src/relationships.json" ]; then
     cp src/relationships.json book/
 fi
 if [ -f "src/airtable-metadata.json" ]; then
     cp src/airtable-metadata.json book/
 fi
-echo "  ✅ Data files copied"
+echo "  ✅ Images and data files copied"
 echo ""
 
 # STEP 12: Apply custom formatting (MUST be after mdBook build)

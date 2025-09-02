@@ -172,6 +172,11 @@ echo ""
 echo "📚 Step 5: Rebuilding mdBook..."
 mdbook build >/dev/null 2>&1
 echo -e "  ${GREEN}✓ Built${NC}"
+
+# Copy images to book directory
+if [ -d "images" ]; then
+    cp -r images book/ 2>/dev/null
+fi
 echo ""
 
 # Apply postprocessing
