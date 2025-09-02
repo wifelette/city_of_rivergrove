@@ -27,13 +27,17 @@ Use the special `{{image:}}` tag in your markdown files:
 ## File Organization
 
 ### Directory Structure
+
+Images are stored in the root `images/` directory (NOT in `src/images/` since `src/` is auto-generated):
+
 ```
-src/
-└── images/
-    ├── ordinances/
-    ├── resolutions/
-    └── interpretations/
+images/                    # Root-level directory for all images
+├── ordinances/
+├── resolutions/
+└── interpretations/
 ```
+
+**Important**: The build process automatically copies these images to `book/images/` during build, and the sync scripts reference them as `../images/[type]/[filename]` in the generated HTML.
 
 ### Naming Convention
 
@@ -64,10 +68,11 @@ Method One: Calculate slope as rise over run...
 
 1. Save your image as a PNG file
 2. Name it following the convention: `[document-name]-[descriptor].png`
-3. Place it in the appropriate subdirectory:
-   - Ordinances: `src/images/ordinances/`
-   - Resolutions: `src/images/resolutions/`
-   - Interpretations: `src/images/interpretations/`
+3. Place it in the appropriate subdirectory in the root `images/` folder:
+   - Ordinances: `images/ordinances/`
+   - Resolutions: `images/resolutions/`
+   - Interpretations: `images/interpretations/`
+4. Add the image to git: `git add images/[type]/[filename].png`
 
 ### Step 3: Update mdBook
 
