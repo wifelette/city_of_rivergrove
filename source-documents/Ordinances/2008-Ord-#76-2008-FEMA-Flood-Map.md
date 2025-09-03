@@ -5,7 +5,7 @@
 Submitted to the Rivergrove City Council on {{filled:6-9-08}}
 
 Adopted by the Rivergrove City Council on {{filled:6-9-08}}
-
+Are
 [Signature], Hafez Darae, Mayor  
 **Date**: {{filled:6-9-08}}
 
