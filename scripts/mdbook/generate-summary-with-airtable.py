@@ -438,14 +438,24 @@ def generate_summary():
         agendas = []
         for md_file in sorted(agendas_dir.glob("*.md")):
             # Only include files that have metadata
-            # Try both exact match and lowercase for backwards compatibility
+            # Try exact match, lowercase, and case-insensitive for backwards compatibility
             file_key = md_file.stem
             file_key_lower = md_file.stem.lower()
+            
+            # Check for matching key in meetings_metadata
+            key_to_use = None
             if file_key in meetings_metadata:
                 key_to_use = file_key
             elif file_key_lower in meetings_metadata:
                 key_to_use = file_key_lower
             else:
+                # Try case-insensitive search through all keys
+                for meta_key in meetings_metadata.keys():
+                    if meta_key.lower() == file_key_lower:
+                        key_to_use = meta_key
+                        break
+            
+            if not key_to_use:
                 print(f"  Skipping {md_file.name} - no meetings metadata")
                 continue
             
