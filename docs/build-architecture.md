@@ -40,6 +40,7 @@ graph TD
 3. **Both link processors MUST come before mdBook build** - Links must be in markdown, not HTML
 4. **Post-processors MUST run after mdBook** - They modify generated HTML
 5. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
+6. **mdBook additional files MUST be at root** - Files referenced in `book.toml` as `additional-css` or `additional-js` must exist at repository root (not in `/src`), or mdBook build will fail with "No such file or directory"
 
 ## Main Build Scripts
 
