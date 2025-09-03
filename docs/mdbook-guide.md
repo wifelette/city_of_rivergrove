@@ -163,6 +163,19 @@ The enhanced navigation system is fully operational with:
 - The `book/` directory is generated and can be safely regenerated
 - Monitor [Issue #10](https://github.com/wifelette/city_of_rivergrove/issues/10) for navigation updates
 
+## Meeting Documents
+
+Meeting documents (Agendas, Minutes, Transcripts) have special handling:
+
+- **File Organization**: Must be in `source-documents/Meetings/YYYY/YYYY-MM-DD/` directories
+- **Naming Convention**: Files must be named `YYYY-MM-DD-Type.md` (e.g., `2018-12-10-Minutes.md`)
+- **Metadata Matching**: The system matches documents by **date** from the filename, not mdURL
+- **Navigation Display**: Meeting documents appear in the navigation only if:
+  1. The .md file exists in source-documents
+  2. The file has been synced to src/ 
+  3. relationships.json has been regenerated
+- **Metadata Fields**: The "Recording Type" field in Airtable determines the document type (Agenda, Minutes, Transcript)
+
 ## mdBook Serve Limitations
 
 **IMPORTANT**: If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors.
