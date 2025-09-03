@@ -57,8 +57,18 @@ city_of_rivergrove/
 │   └── utilities/
 │       └── watch-and-sync.py   # Auto file watcher (use with caution)
 ├── book.toml           # mdBook configuration
-└── custom.css          # Custom styling
+├── custom.css          # Custom styling (must be at root for mdBook)
+└── navigation-standalone.js  # Navigation enhancements (must be at root for mdBook)
 ```
+
+### Critical File Locations
+
+**IMPORTANT**: mdBook requires certain files at specific locations:
+
+- Files referenced in `book.toml` as `additional-css` or `additional-js` MUST be at the **root level**, not in `src/`
+- During build, these root files are copied to both `src/` and `book/`
+- The actual source of truth for `custom.css` is the root-level file
+- If mdBook fails with "No such file or directory", check that required files exist at root
 
 ## Local Development
 
