@@ -369,6 +369,24 @@
       "title": "TABLE OF CONTENTS",
       "file": "1974-City-Charter.md"
     },
+    "transcript-2024-12-09": {
+      "type": "transcript",
+      "id": null,
+      "date": "2024-12-09",
+      "year": null,
+      "section": null,
+      "title": "2024-12-09-Transcript",
+      "file": "2024-12-09-Transcript.md"
+    },
+    "transcript-2024-02-12": {
+      "type": "transcript",
+      "id": null,
+      "date": "2024-02-12",
+      "year": null,
+      "section": null,
+      "title": "2024-02-12-Transcript",
+      "file": "2024-02-12-Transcript.md"
+    },
     "agenda-2018-05-14": {
       "type": "agenda",
       "id": null,
@@ -386,20 +404,56 @@
       "section": null,
       "title": "Agenda",
       "file": "2018-04-11-Agenda.md"
+    },
+    "minutes-2018-12-10": {
+      "type": "minutes",
+      "id": null,
+      "date": "2018-12-10",
+      "year": null,
+      "section": null,
+      "title": "Call to Order and Roll Call",
+      "file": "2018-12-10-Minutes.md"
+    },
+    "minutes-2017-06-12": {
+      "type": "minutes",
+      "id": null,
+      "date": "2017-06-12",
+      "year": null,
+      "section": null,
+      "title": "June 12, 2017",
+      "file": "2017-06-12-Minutes.md"
+    },
+    "minutes-2018-08-13": {
+      "type": "minutes",
+      "id": null,
+      "date": "2018-08-13",
+      "year": null,
+      "section": null,
+      "title": "Call to Order and Roll Call",
+      "file": "2018-08-13-Minutes.md"
+    },
+    "minutes-2017-11-13": {
+      "type": "minutes",
+      "id": null,
+      "date": "2017-11-13",
+      "year": null,
+      "section": null,
+      "title": "November 13, 2017",
+      "file": "2017-11-13-Minutes.md"
     }
   },
   "relationships": {
     "ordinance-73-2003A-Conditional-Use-Provisions": {
       "references": [
-        "54-89",
         "59-97A",
-        "73-2003A"
+        "73-2003A",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
+        "6.236",
         "6.300",
-        "5.050",
-        "6.236"
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -412,16 +466,16 @@
     },
     "ordinance-68-2000-Metro-Compliance": {
       "references": [
-        "54-89",
-        "68-2000"
+        "68-2000",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "1.0",
-        "6.080",
         "5.075",
-        "6.060",
+        "6.080",
         "5.095",
+        "1.0",
+        "6.060",
         "2.0"
       ],
       "amends": [],
@@ -448,8 +502,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-89-2018-Tree-Cutting-Amendment": {
@@ -471,11 +531,11 @@
     },
     "ordinance-76-2008-FEMA-Flood-Map": {
       "references": [
-        "76-2008",
-        "62-98",
-        "54-89",
         "52",
-        "70-2001"
+        "54-89",
+        "70-2001",
+        "76-2008",
+        "62-98"
       ],
       "resolutions": [],
       "interpretations": [
@@ -518,21 +578,27 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-59-97A-Land-Development-Amendment": {
       "references": [
-        "59-97A",
-        "54-89"
+        "54-89",
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
-        "3.020",
-        "5.050",
         "2.040",
-        "5.010"
+        "5.010",
+        "3.020",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -544,13 +610,13 @@
     },
     "ordinance-71-2002-Gates": {
       "references": [
-        "54-89",
-        "71-2002"
+        "71-2002",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.135",
-        "5.130"
+        "5.130",
+        "6.135"
       ],
       "amends": [],
       "related": [
@@ -563,13 +629,13 @@
     },
     "ordinance-88-2017-Docks": {
       "references": [
-        "70-2001",
-        "88-2017"
+        "88-2017",
+        "70-2001"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.060",
-        "5.050"
+        "5.050",
+        "5.060"
       ],
       "amends": [],
       "related": [
@@ -580,8 +646,8 @@
     "ordinance-74-2004-Tree-Cutting-Amendment": {
       "references": [
         "74-2004",
-        "54-89",
-        "70-2001"
+        "70-2001",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
@@ -597,9 +663,9 @@
     },
     "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
       "references": [
+        "54-89",
         "72-2002",
-        "59-97A",
-        "54-89"
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
@@ -616,119 +682,119 @@
     },
     "ordinance-54-89C-Land-Development": {
       "references": [
-        "54-89",
-        "52"
+        "52",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.140",
-        "6.210",
-        "6.230",
-        "6.170",
-        "5.110",
-        "6.130",
-        "6.233",
-        "6.226",
-        "3.050",
-        "9.010",
-        "3.040",
-        "3.060",
-        "6.090",
-        "8.10",
-        "6.050",
-        "8.020",
-        "8.140",
-        "5.050",
-        "2.010",
-        "6.221",
-        "8.190",
-        "2.030",
-        "6.224",
-        "4.120",
-        "3.070",
-        "6.232",
-        "6.030",
-        "9.030",
-        "1.030",
-        "4.040",
-        "6.190",
         "6.120",
-        "6.225",
-        "6.227",
-        "6.223",
-        "4.030",
-        "5.120",
-        "9.020",
-        "6.100",
-        "5.010",
-        "5.030",
-        "3.090",
-        "2.080",
-        "5.080",
-        "6.040",
-        "8.030",
-        "6.060",
-        "6.180",
-        "6.228",
-        "5.100",
-        "8.120",
-        "6.231",
-        "6.110",
-        "2.040",
-        "5.070",
-        "8.070",
-        "1.020",
-        "4.050",
-        "4.010",
-        "4.100",
-        "6.229",
-        "8.150",
-        "8.200",
-        "6.222",
-        "6.150",
-        "6.010",
-        "2.090",
-        "8.040",
-        "8.110",
-        "5.060",
-        "4.020",
-        "4.060",
-        "8.130",
-        "6.236",
-        "5.020",
-        "4.090",
-        "4.070",
-        "3.080",
-        "6.080",
+        "3.060",
         "6.220",
-        "8.180",
+        "6.030",
+        "1.030",
+        "2.070",
+        "6.180",
+        "5.080",
+        "6.190",
+        "3.010",
+        "2.040",
+        "2.090",
+        "5.010",
+        "2.010",
+        "4.080",
+        "6.150",
+        "6.225",
+        "8.140",
+        "6.090",
+        "8.110",
+        "8.190",
         "8.090",
-        "5.090",
-        "4.110",
-        "6.235",
-        "8.170",
-        "8.160",
-        "3.030",
+        "5.100",
+        "6.160",
+        "6.222",
+        "6.110",
+        "6.080",
+        "8.120",
         "2.060",
+        "3.020",
+        "1.050",
+        "8.170",
+        "6.060",
+        "8.150",
+        "8.070",
+        "6.040",
+        "5.060",
+        "4.110",
+        "3.080",
+        "8.030",
+        "4.020",
+        "9.030",
+        "6.070",
+        "4.100",
+        "8.160",
+        "2.030",
+        "4.120",
+        "1.020",
+        "4.090",
+        "4.010",
+        "5.050",
+        "6.020",
+        "6.236",
+        "3.030",
+        "8.080",
+        "4.050",
+        "8.180",
+        "2.080",
+        "6.221",
+        "5.110",
+        "6.233",
         "8.060",
         "6.200",
-        "3.010",
-        "8.100",
-        "8.050",
-        "2.020",
-        "8.080",
+        "4.040",
+        "5.090",
+        "6.130",
         "6.234",
-        "1.010",
-        "4.080",
-        "1.040",
-        "2.070",
-        "6.020",
+        "8.100",
+        "6.224",
+        "6.229",
+        "8.130",
+        "2.020",
+        "3.050",
+        "4.030",
+        "9.010",
         "2.050",
-        "1.050",
-        "6.070",
-        "3.020",
-        "6.160",
-        "8.210"
+        "1.040",
+        "4.060",
+        "9.020",
+        "6.235",
+        "6.100",
+        "6.010",
+        "5.120",
+        "8.050",
+        "6.232",
+        "3.040",
+        "8.10",
+        "3.070",
+        "5.020",
+        "5.030",
+        "6.170",
+        "6.050",
+        "8.210",
+        "6.231",
+        "8.020",
+        "8.200",
+        "6.210",
+        "1.010",
+        "6.227",
+        "3.090",
+        "6.228",
+        "4.070",
+        "6.140",
+        "6.223",
+        "6.226",
+        "5.070",
+        "8.040",
+        "6.230"
       ],
       "amends": [],
       "related": [
@@ -754,21 +820,27 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-62-98-Flood-and-Land-Development-Amendment": {
       "references": [
+        "52",
         "54-89",
-        "62-98",
-        "52"
+        "62-98"
       ],
       "resolutions": [],
       "interpretations": [
         "5.24",
-        "5.050",
-        "5.055"
+        "5.055",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -822,22 +894,28 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-52-Flood": {
       "references": [],
       "resolutions": [],
       "interpretations": [
+        "4.1",
         "5.3",
-        "3.2",
-        "4.4",
-        "5.1",
         "4.3",
+        "5.1",
         "5.0",
         "5.2",
-        "4.1"
+        "4.4",
+        "3.2"
       ],
       "amends": [],
       "related": [
@@ -852,8 +930,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "6.226",
-        "5.060"
+        "5.060",
+        "6.226"
       ],
       "amends": [],
       "related": [
@@ -879,8 +957,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-65-99-Sewer-Services": {
@@ -924,8 +1008,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-256-Planning-Development-Fees": {
@@ -959,8 +1049,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-300-Fee-Schedule-Modification": {
@@ -993,8 +1089,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-265-2019": {
@@ -1027,8 +1129,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-259-Planning-Development-Fees": {
@@ -1051,8 +1159,8 @@
     },
     "interpretation-2001-05-07": {
       "references": [
-        "69-2000",
-        "52"
+        "52",
+        "69-2000"
       ],
       "resolutions": [],
       "interpretations": [
@@ -1083,16 +1191,22 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-1997-07-07": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "2.040"
+        "2.040",
+        "3.090"
       ],
       "amends": [],
       "related": [
@@ -1118,17 +1232,23 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-1997-09-08": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "9.030",
+        "4.050",
         "3.090",
-        "4.050"
+        "9.030"
       ],
       "amends": [],
       "related": [
@@ -1154,18 +1274,24 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-2005-04-04": {
       "references": [],
       "resolutions": [],
       "interpretations": [
+        "6.050",
         "3.0920",
         "4.020",
-        "3.090",
-        "6.050"
+        "3.090"
       ],
       "amends": [],
       "related": [
@@ -1191,16 +1317,22 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-2004-10-11": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "5.080",
-        "3.090"
+        "3.090",
+        "5.080"
       ],
       "amends": [],
       "related": [
@@ -1214,10 +1346,10 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "5.080",
         "41.060",
         "3.090",
-        "1.040"
+        "1.040",
+        "5.080"
       ],
       "amends": [],
       "related": [
@@ -1243,16 +1375,22 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-1997-11-03": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "9.030",
-        "3.090"
+        "3.090",
+        "9.030"
       ],
       "amends": [],
       "related": [
@@ -1278,8 +1416,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-2002-09-05": {
@@ -1288,8 +1432,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.010"
+        "5.010",
+        "3.090"
       ],
       "amends": [],
       "related": [
@@ -1315,18 +1459,24 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-1998-06-01": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "5.080",
         "41.060",
         "3.090",
-        "1.040"
+        "1.040",
+        "5.080"
       ],
       "amends": [],
       "related": [
@@ -1352,8 +1502,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-2002-08-05": {
@@ -1362,8 +1518,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "5.010"
+        "5.010",
+        "3.090"
       ],
       "amends": [],
       "related": [
@@ -1389,16 +1545,22 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-2008-02-04": {
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "5.075",
-        "3.090"
+        "3.090",
+        "5.075"
       ],
       "amends": [],
       "related": [
@@ -1424,17 +1586,23 @@
         "interpretation-2002-08-05",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "interpretation-1998-03-02": {
       "references": [],
       "resolutions": [],
       "interpretations": [
+        "3.090",
         "9.030",
-        "5.080",
-        "3.090"
+        "5.080"
       ],
       "amends": [],
       "related": [
@@ -1460,8 +1628,180 @@
         "interpretation-2002-08-05",
         "interpretation-2008-02-04",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
+      ]
+    },
+    "transcript-2024-12-09": {
+      "references": [],
+      "resolutions": [],
+      "interpretations": [
+        "3.070"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
+      ]
+    },
+    "minutes-2018-12-10": {
+      "references": [
+        "89-2018"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.100"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
+      ]
+    },
+    "minutes-2018-08-13": {
+      "references": [
+        "80-2011"
+      ],
+      "resolutions": [],
+      "interpretations": [],
+      "amends": [],
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2017-11-13"
+      ]
+    },
+    "minutes-2017-11-13": {
+      "references": [
+        "91-2017",
+        "70-2001"
+      ],
+      "resolutions": [],
+      "interpretations": [
+        "5.050",
+        "5.060"
+      ],
+      "amends": [],
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13"
       ]
     },
     "resolution-22-PC": {
@@ -1506,8 +1846,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-72-Municipal-Services": {
@@ -1534,8 +1880,14 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "other-1974-City-Charter": {
@@ -1562,8 +1914,48 @@
         "interpretation-2002-08-05",
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
         "agenda-2018-05-14",
-        "agenda-2018-04-11"
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
+      ]
+    },
+    "transcript-2024-02-12": {
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "agenda-2018-05-14": {
@@ -1591,7 +1983,13 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
-        "agenda-2018-04-11"
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "agenda-2018-04-11": {
@@ -1619,7 +2017,47 @@
         "interpretation-2008-02-04",
         "interpretation-1998-03-02",
         "other-1974-City-Charter",
-        "agenda-2018-05-14"
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "minutes-2018-12-10",
+        "minutes-2017-06-12",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
+      ]
+    },
+    "minutes-2017-06-12": {
+      "related": [
+        "ordinance-68-2000-Metro-Compliance",
+        "ordinance-81-2011-Sign",
+        "ordinance-57-93-Manufactured-Homes",
+        "ordinance-54-89C-Land-Development",
+        "ordinance-70-2001-WQRA",
+        "ordinance-61-98-Land-Development-Amendment",
+        "ordinance-69-2000-Title-3-Compliance",
+        "resolution-256-Planning-Development-Fees",
+        "resolution-300-Fee-Schedule-Modification",
+        "resolution-72-Municipal-Services",
+        "resolution-265-2019",
+        "interpretation-2001-05-07",
+        "interpretation-1997-07-07",
+        "interpretation-1997-09-08",
+        "interpretation-2005-04-04",
+        "interpretation-1998-07-06",
+        "interpretation-1997-11-03",
+        "interpretation-2002-09-05",
+        "interpretation-1998-06-01",
+        "interpretation-2002-08-05",
+        "interpretation-2008-02-04",
+        "interpretation-1998-03-02",
+        "other-1974-City-Charter",
+        "transcript-2024-12-09",
+        "transcript-2024-02-12",
+        "agenda-2018-05-14",
+        "agenda-2018-04-11",
+        "minutes-2018-12-10",
+        "minutes-2018-08-13",
+        "minutes-2017-11-13"
       ]
     },
     "ordinance-16-Parks": {
@@ -1668,8 +2106,14 @@
       "interpretation-2008-02-04",
       "interpretation-1998-03-02",
       "other-1974-City-Charter",
+      "transcript-2024-12-09",
+      "transcript-2024-02-12",
       "agenda-2018-05-14",
-      "agenda-2018-04-11"
+      "agenda-2018-04-11",
+      "minutes-2018-12-10",
+      "minutes-2017-06-12",
+      "minutes-2018-08-13",
+      "minutes-2017-11-13"
     ],
     "parks_recreation": [
       "ordinance-16-Parks",
@@ -1694,7 +2138,7 @@
   },
   "metadata": {
     "generated": "1756707961.773776",
-    "total_documents": 43,
-    "total_relationships": 43
+    "total_documents": 49,
+    "total_relationships": 49
   }
 }
