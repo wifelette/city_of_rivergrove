@@ -13,7 +13,7 @@ def sync_meetings():
     """
     Sync all meeting documents from source to appropriate src directories.
     
-    Source structure: source-documents/Meetings/YYYY/YYYY-MM-DD/YYYY-MM-DD-Type.md
+    Source structure: source-documents/Meetings/YYYY/YYYY-MM/YYYY-MM-DD-Type.md
     Target structure: 
         - src/transcripts/YYYY-MM-DD-Transcript.md
         - src/agendas/YYYY-MM-DD-Agenda.md  

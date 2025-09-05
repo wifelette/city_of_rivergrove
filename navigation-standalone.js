@@ -17,7 +17,7 @@ class StandaloneNavigation {
         this.airtableMetadata = {};
         this.currentView = 'chronological';
         this.currentOrder = 'asc';
-        this.currentDocType = 'ordinances';
+        this.currentDocType = null;  // Will be detected from URL
         this.currentDocId = null;
         
         this.init();
@@ -31,6 +31,9 @@ class StandaloneNavigation {
         
         // Load data
         await this.loadRelationships();
+        
+        // Detect current document type BEFORE creating UI
+        this.detectInitialDocumentType();
         
         // Create our navigation UI
         this.createNavigationUI();
@@ -179,6 +182,9 @@ class StandaloneNavigation {
                 console.log('StandaloneNavigation: Airtable metadata not available, using default names');
                 this.airtableMetadata = {};
             }
+            
+            // Also parse DOM to fill in any missing meeting documents
+            this.parseDocumentsFromDOM();
         } catch (error) {
             console.error('StandaloneNavigation: Failed to load relationships.json:', error);
             // Fallback: parse from current page structure if needed
@@ -190,8 +196,59 @@ class StandaloneNavigation {
         // Fallback method to extract document info from page if relationships.json fails
         console.log('StandaloneNavigation: Parsing documents from DOM as fallback...');
         
-        // This would parse the SUMMARY.md structure if needed
-        // For now, we'll rely on relationships.json being present
+        // Parse meeting documents from mdBook's sidebar
+        const sidebarLinks = document.querySelectorAll('.sidebar .chapter-item a');
+        let addedCount = 0;
+        
+        sidebarLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const text = link.textContent.trim();
+            
+            // Check if this is a meeting document
+            if (href && (href.includes('/agendas/') || href.includes('/minutes/') || href.includes('/transcripts/'))) {
+                // Extract document key from path
+                const pathParts = href.split('/');
+                const filename = pathParts[pathParts.length - 1].replace('.html', '');
+                
+                // Determine document type
+                let docType = 'meeting';
+                if (href.includes('/agendas/')) docType = 'agenda';
+                else if (href.includes('/minutes/')) docType = 'minutes';
+                else if (href.includes('/transcripts/')) docType = 'transcript';
+                
+                // Extract date from filename (format: YYYY-MM-DD-Type)
+                const dateMatch = filename.match(/(\d{4})-(\d{2})-(\d{2})/);
+                let year = null;
+                let date = null;
+                let documentKey = filename;  // Default to filename
+                
+                if (dateMatch) {
+                    year = parseInt(dateMatch[1]);
+                    date = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+                    // Generate the key format used in relationships.json
+                    documentKey = `${docType}-${date}`;
+                }
+                
+                // Skip if we already have this document (check both key formats)
+                if (this.documents[documentKey] || this.documents[filename]) return;
+                
+                // Add to documents using the correct key format
+                this.documents[documentKey] = {
+                    type: docType,
+                    title: text,
+                    year: year,
+                    date: date,
+                    path: href,
+                    fromDOM: true  // Mark as parsed from DOM
+                };
+                
+                addedCount++;
+            }
+        });
+        
+        if (addedCount > 0) {
+            console.log(`StandaloneNavigation: Added ${addedCount} meeting documents from DOM`);
+        }
     }
     
     createNavigationUI() {
@@ -216,32 +273,32 @@ class StandaloneNavigation {
                     <!-- Context Switcher Dropdown -->
                     <div class="context-switcher">
                         <button class="context-dropdown" aria-label="Switch document type">
-                            <span class="context-icon">📋</span>
-                            <span class="context-label">Ordinances</span>
+                            <span class="context-icon">${this.getIconForType(this.currentDocType)}</span>
+                            <span class="context-label">${this.getLabelForType(this.currentDocType)}</span>
                             <span class="dropdown-arrow">▼</span>
                         </button>
                         <div class="context-menu" style="display: none;">
-                            <div class="context-item active" data-type="ordinances" data-icon="📋">
+                            <div class="context-item ${this.currentDocType === 'ordinances' ? 'active' : ''}" data-type="ordinances" data-icon="📋">
                                 <span class="context-icon">📋</span>
                                 Ordinances
                                 <span class="context-count" id="count-ordinances">0</span>
                             </div>
-                            <div class="context-item" data-type="resolutions" data-icon="📄">
+                            <div class="context-item ${this.currentDocType === 'resolutions' ? 'active' : ''}" data-type="resolutions" data-icon="📄">
                                 <span class="context-icon">📄</span>
                                 Resolutions
                                 <span class="context-count" id="count-resolutions">0</span>
                             </div>
-                            <div class="context-item" data-type="interpretations" data-icon="📝">
+                            <div class="context-item ${this.currentDocType === 'interpretations' ? 'active' : ''}" data-type="interpretations" data-icon="📝">
                                 <span class="context-icon">📝</span>
                                 Interpretations
                                 <span class="context-count" id="count-interpretations">0</span>
                             </div>
-                            <div class="context-item" data-type="transcripts" data-icon="🎙️">
+                            <div class="context-item ${this.currentDocType === 'transcripts' ? 'active' : ''}" data-type="transcripts" data-icon="🎙️">
                                 <span class="context-icon">🎙️</span>
                                 Meeting Records
                                 <span class="context-count" id="count-transcripts">0</span>
                             </div>
-                            <div class="context-item" data-type="other" data-icon="📚">
+                            <div class="context-item ${this.currentDocType === 'other' ? 'active' : ''}" data-type="other" data-icon="📚">
                                 <span class="context-icon">📚</span>
                                 Other Documents
                                 <span class="context-count" id="count-other">0</span>
@@ -261,9 +318,9 @@ class StandaloneNavigation {
                         </div>
                     </div>
                     
-                    <input type="text" class="nav-search" placeholder="Search ordinances..." />
+                    <input type="text" class="nav-search" placeholder="Search ${this.currentDocType === 'transcripts' ? 'meetings' : this.currentDocType === 'resolutions' ? 'resolutions' : this.currentDocType === 'interpretations' ? 'interpretations' : 'ordinances'}..." />
                     
-                    <div class="view-controls">
+                    <div class="view-controls" ${this.currentDocType === 'transcripts' ? 'style="display: none;"' : ''}>
                         <div class="control-label">View</div>
                         <div class="view-buttons">
                             <button class="view-btn" data-view="numerical">Numerical</button>
@@ -307,6 +364,14 @@ class StandaloneNavigation {
         
         // Initial render
         this.renderDocuments();
+        
+        // Hide view controls if we start in Meeting Records
+        if (this.currentDocType === 'transcripts') {
+            const viewControls = document.querySelector('.view-controls');
+            if (viewControls) {
+                viewControls.style.display = 'none';
+            }
+        }
     }
     
     bindEvents() {
@@ -421,27 +486,33 @@ class StandaloneNavigation {
         const viewButtons = document.querySelector('.view-buttons');
         
         if (type === 'transcripts') {
-            // Hide view controls entirely for meetings
-            if (viewControls) viewControls.style.display = 'none';
+            // Hide view controls entirely for meetings - they don't apply
+            if (viewControls) {
+                viewControls.style.display = 'none';
+            }
         } else {
             // Show view controls for other document types
-            if (viewControls) viewControls.style.display = '';
+            if (viewControls) {
+                viewControls.style.display = '';
+            }
             
-            if (type === 'interpretations') {
-                viewButtons.innerHTML = `
-                    <button class="view-btn active" data-view="bydate">By Date</button>
-                    <button class="view-btn" data-view="bysection">By Code Section</button>
-                `;
-            } else if (type === 'other') {
-                viewButtons.innerHTML = `
-                    <button class="view-btn active" data-view="chronological">Chronological</button>
-                `;
-            } else {
-                viewButtons.innerHTML = `
-                    <button class="view-btn" data-view="numerical">Numerical</button>
-                    <button class="view-btn active" data-view="chronological">Chronological</button>
-                    <button class="view-btn" data-view="topical">Topical</button>
-                `;
+            if (viewButtons) {
+                if (type === 'interpretations') {
+                    viewButtons.innerHTML = `
+                        <button class="view-btn active" data-view="bydate">By Date</button>
+                        <button class="view-btn" data-view="bysection">By Code Section</button>
+                    `;
+                } else if (type === 'other') {
+                    viewButtons.innerHTML = `
+                        <button class="view-btn active" data-view="chronological">Chronological</button>
+                    `;
+                } else {
+                    viewButtons.innerHTML = `
+                        <button class="view-btn" data-view="numerical">Numerical</button>
+                        <button class="view-btn active" data-view="chronological">Chronological</button>
+                        <button class="view-btn" data-view="topical">Topical</button>
+                    `;
+                }
             }
         }
         
@@ -575,6 +646,19 @@ class StandaloneNavigation {
         const visibleCountEl = document.querySelector('.visible-count');
         if (totalCountEl) totalCountEl.textContent = docs.length;
         if (visibleCountEl) visibleCountEl.textContent = docs.length;
+        
+        // Re-bind order button events (they may not exist if not yet created)
+        setTimeout(() => {
+            document.querySelectorAll('.order-btn').forEach(btn => {
+                // Remove old listeners by cloning
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                // Add new listener
+                newBtn.addEventListener('click', (e) => {
+                    this.switchOrder(e.target.dataset.order);
+                });
+            });
+        }, 0);
     }
     
     sortDocumentsForView(docs) {
@@ -767,14 +851,14 @@ class StandaloneNavigation {
                 // For resolutions, prefer short_title if available, otherwise just the number
                 if (airtableData.short_title) {
                     // Use doc number + short title for a clean display
-                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> <span class="doc-title">${airtableData.short_title}</span>`;
                 } else if (airtableData.doc_number) {
                     // Fall back to just the number
                     displayText = `<span class="doc-number">#${airtableData.doc_number}</span>`;
                 }
             } else if (doc.type === 'ordinance' && airtableData.short_title) {
                 // For ordinances with short_title, use it
-                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> <span class="doc-title">${airtableData.short_title}</span>`;
             }
             
             display = `${displayText} ${specialStateBadge}`;
@@ -791,7 +875,7 @@ class StandaloneNavigation {
                 const match = doc.id.match(/^(\d+(?:-\d+[A-Z]?)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
                     display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
@@ -800,7 +884,7 @@ class StandaloneNavigation {
                 const match = doc.id.match(/^(\d+(?:-\d+)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
                     display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
@@ -833,6 +917,17 @@ class StandaloneNavigation {
     }
     
     navigateToDocument(doc) {
+        // If document already has a path property (from DOM parsing), use it
+        if (doc.path) {
+            // The path might be relative (like ../agendas/file.html)
+            // Convert to absolute by resolving relative to current location
+            const a = document.createElement('a');
+            a.href = doc.path;
+            window.location.href = a.href;
+            return;
+        }
+        
+        // Otherwise construct the path from the file property
         // Detect GitHub Pages base path
         const basePath = window.location.pathname.includes('/city_of_rivergrove/') ? '/city_of_rivergrove' : '';
         
@@ -870,6 +965,8 @@ class StandaloneNavigation {
     setActiveDocument(docId) {
         this.currentDocId = docId;
         
+        console.log('StandaloneNavigation: Setting active document:', docId);
+        
         // Update active state in UI
         const items = document.querySelectorAll('.doc-item');
         
@@ -877,6 +974,19 @@ class StandaloneNavigation {
             const itemId = item.dataset.docId;
             const isActive = itemId === docId;
             item.classList.toggle('active', isActive);
+            
+            // If this is the active item and it's in a meeting container, expand it
+            if (isActive && item.closest('.meeting-container')) {
+                const meetingContainer = item.closest('.meeting-container');
+                const meetingRow = meetingContainer.querySelector('.meeting-row');
+                const docList = meetingContainer.querySelector('.document-list');
+                
+                if (meetingContainer && meetingRow && docList) {
+                    meetingContainer.classList.add('expanded');
+                    meetingRow.classList.add('expanded');
+                    docList.style.display = 'block';
+                }
+            }
         });
     }
     
@@ -955,20 +1065,55 @@ class StandaloneNavigation {
     }
     
     renderMeetingDocuments(container, docs) {
-        // Group meeting documents by date
-        const meetingsByDate = {};
+        // Load expanded state from localStorage
+        const expandedState = JSON.parse(localStorage.getItem('navExpandedState') || '{}');
+        
+        // Group meeting documents by year, then by month
+        const meetingsByYear = {};
         
         docs.forEach(doc => {
             // Extract date from document
             const date = doc.date || doc.year || 'Unknown';
-            if (!meetingsByDate[date]) {
-                meetingsByDate[date] = [];
+            
+            // Parse date to get year and month
+            let year = 'Unknown';
+            let monthKey = 'Unknown';
+            let formattedMonth = 'Unknown';
+            
+            if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                const [yearStr, monthStr, dayStr] = date.split('-');
+                year = yearStr;
+                monthKey = `${yearStr}-${monthStr}`;
+                const dateObj = new Date(date + 'T12:00:00');
+                formattedMonth = dateObj.toLocaleDateString('en-US', { month: 'long' });
             }
-            meetingsByDate[date].push(doc);
+            
+            // Initialize year group if needed
+            if (!meetingsByYear[year]) {
+                meetingsByYear[year] = {};
+            }
+            
+            // Initialize month group if needed
+            if (!meetingsByYear[year][monthKey]) {
+                meetingsByYear[year][monthKey] = {
+                    label: formattedMonth,
+                    meetings: {}
+                };
+            }
+            
+            // Initialize meeting date if needed
+            if (!meetingsByYear[year][monthKey].meetings[date]) {
+                meetingsByYear[year][monthKey].meetings[date] = {
+                    date: date,
+                    documents: []
+                };
+            }
+            
+            meetingsByYear[year][monthKey].meetings[date].documents.push(doc);
         });
         
-        // Sort dates based on current order
-        const dates = Object.keys(meetingsByDate).sort((a, b) => {
+        // Sort years based on current order
+        const years = Object.keys(meetingsByYear).sort((a, b) => {
             if (this.currentOrder === 'asc') {
                 return a.localeCompare(b);
             } else {
@@ -978,72 +1123,310 @@ class StandaloneNavigation {
         
         container.innerHTML = '';
         
-        // Render each date group
-        dates.forEach(date => {
-            const group = document.createElement('div');
-            group.className = 'doc-group';
-            
-            // Create group header with formatted date
-            const header = document.createElement('div');
-            header.className = 'group-header';
-            
-            // Format the date nicely (e.g., "February 12, 2024")
-            let formattedDate = date;
-            if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
-                const dateObj = new Date(date + 'T12:00:00');
-                formattedDate = dateObj.toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+        // Track which year/month should be expanded based on active document
+        let activeYearKey = null;
+        let activeMonthKey = null;
+        
+        // First pass: find active document's year and month
+        if (this.currentDocId) {
+            years.forEach(yearKey => {
+                Object.keys(meetingsByYear[yearKey]).forEach(monthKey => {
+                    Object.values(meetingsByYear[yearKey][monthKey].meetings).forEach(meeting => {
+                        meeting.documents.forEach(doc => {
+                            if (doc.docKey === this.currentDocId) {
+                                activeYearKey = yearKey;
+                                activeMonthKey = monthKey;
+                            }
+                        });
+                    });
                 });
+            });
+        }
+        
+        // Render each year group
+        years.forEach(yearKey => {
+            const yearData = meetingsByYear[yearKey];
+            const yearGroup = document.createElement('div');
+            yearGroup.className = 'year-group';
+            
+            // Count total meetings and documents for this year
+            let totalMeetings = 0;
+            let totalDocs = 0;
+            Object.values(yearData).forEach(monthData => {
+                const meetingDates = Object.keys(monthData.meetings);
+                totalMeetings += meetingDates.length;
+                meetingDates.forEach(date => {
+                    totalDocs += monthData.meetings[date].documents.length;
+                });
+            });
+            
+            // Check if this year should be expanded (from saved state or if it contains active document)
+            const yearExpanded = yearKey === activeYearKey || expandedState[`year-${yearKey}`];
+            if (!yearExpanded) {
+                yearGroup.classList.add('collapsed');
             }
             
-            header.innerHTML = `
-                <span class="group-title">${formattedDate}</span>
-                <span class="group-count">${meetingsByDate[date].length}</span>
+            // Create year header
+            const yearHeader = document.createElement('div');
+            yearHeader.className = 'year-header';
+            yearHeader.innerHTML = `
+                <span class="year-arrow">${yearExpanded ? '▼' : '▶'}</span>
+                <span class="year-label">${yearKey}</span>
+                <span class="year-count">${totalMeetings} ${totalMeetings === 1 ? 'meeting' : 'meetings'}</span>
             `;
-            group.appendChild(header);
+            yearGroup.appendChild(yearHeader);
             
-            // Create items container
-            const items = document.createElement('div');
-            items.className = 'group-items';
+            // Create year content container
+            const yearContent = document.createElement('div');
+            yearContent.className = 'year-content';
+            yearContent.style.display = yearExpanded ? 'block' : 'none';
             
-            // Sort documents within date group alphabetically by type
-            const sortedDocs = meetingsByDate[date].sort((a, b) => {
-                // Order: Agenda, Minutes, Transcript
-                const typeOrder = { 'agenda': 1, 'minutes': 2, 'transcript': 3, 'meeting': 3 };
-                const orderA = typeOrder[a.type] || 99;
-                const orderB = typeOrder[b.type] || 99;
-                return orderA - orderB;
+            // Sort months within year
+            const months = Object.keys(yearData).sort((a, b) => {
+                if (this.currentOrder === 'asc') {
+                    return a.localeCompare(b);
+                } else {
+                    return b.localeCompare(a);
+                }
             });
             
-            // Render each document without showing individual dates
-            sortedDocs.forEach(doc => {
-                const item = document.createElement('div');
-                item.className = 'doc-item';
-                item.dataset.docId = doc.docKey;
+            // Render each month within the year
+            months.forEach(monthKey => {
+                const monthData = yearData[monthKey];
+                const monthGroup = document.createElement('div');
+                monthGroup.className = 'month-group';
                 
-                // Get the document type label
-                const typeLabel = {
-                    'agenda': 'Agenda',
-                    'minutes': 'Minutes',
-                    'transcript': 'Transcript',
-                    'meeting': 'Meeting'
-                }[doc.type] || doc.type;
+                // Count meetings and documents for this month
+                const meetingDates = Object.keys(monthData.meetings);
+                const monthDocs = meetingDates.reduce((sum, date) => {
+                    return sum + monthData.meetings[date].documents.length;
+                }, 0);
                 
-                // Simple display without date
-                item.innerHTML = `<span class="meeting-type">${typeLabel}</span>`;
+                // Check if this month should be expanded (from saved state or if it contains active document)
+                const monthExpanded = (monthKey === activeMonthKey && yearExpanded) || expandedState[`month-${monthKey}`];
+                if (!monthExpanded) {
+                    monthGroup.classList.add('collapsed');
+                }
                 
-                // Add click handler
-                item.addEventListener('click', () => {
-                    this.navigateToDocument(doc);
+                // Create month header
+                const monthHeader = document.createElement('div');
+                monthHeader.className = 'month-header';
+                monthHeader.innerHTML = `
+                    <span class="month-arrow">${monthExpanded ? '▼' : '▶'}</span>
+                    <span class="month-label">${monthData.label}</span>
+                    <span class="month-count">${meetingDates.length} ${meetingDates.length === 1 ? 'meeting' : 'meetings'}</span>
+                `;
+                monthGroup.appendChild(monthHeader);
+                
+                // Create month content container
+                const monthContent = document.createElement('div');
+                monthContent.className = 'month-content';
+                monthContent.style.display = monthExpanded ? 'block' : 'none';
+                
+                // Sort meeting dates within month
+                const sortedDates = meetingDates.sort((a, b) => {
+                    if (this.currentOrder === 'asc') {
+                        return a.localeCompare(b);
+                    } else {
+                        return b.localeCompare(a);
+                    }
                 });
                 
-                items.appendChild(item);
+                // Render each meeting within the month
+                sortedDates.forEach(date => {
+                    const meetingData = monthData.meetings[date];
+                    const meetingContainer = document.createElement('div');
+                    meetingContainer.className = 'meeting-container';
+                    
+                    // Create meeting row
+                    const meetingRow = document.createElement('div');
+                    meetingRow.className = 'meeting-row';
+                    meetingRow.dataset.date = date;
+                    
+                    // Format the meeting date
+                    let meetingDateText = date;
+                    let meetingType = '';
+                    
+                    if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                        const dateObj = new Date(date + 'T12:00:00');
+                        const day = dateObj.getDate();
+                        meetingDateText = `${monthData.label} ${day}`;
+                    }
+                    
+                    // Sort documents by type
+                    const sortedDocs = meetingData.documents.sort((a, b) => {
+                        const typeOrder = { 'agenda': 1, 'minutes': 2, 'transcript': 3, 'video': 4 };
+                        const orderA = typeOrder[a.type] || 99;
+                        const orderB = typeOrder[b.type] || 99;
+                        return orderA - orderB;
+                    });
+                    
+                    // Create badges for document types
+                    const badges = sortedDocs.map(doc => {
+                        const badgeClass = {
+                            'agenda': 'badge-agenda',
+                            'minutes': 'badge-minutes',
+                            'transcript': 'badge-transcript',
+                            'video': 'badge-video'
+                        }[doc.type] || '';
+                        
+                        const badgeText = {
+                            'agenda': 'AGENDA',
+                            'minutes': 'MINUTES',
+                            'transcript': 'TRANSCRIPT',
+                            'video': 'VIDEO'
+                        }[doc.type] || doc.type.toUpperCase();
+                        
+                        return `<span class="doc-badge ${badgeClass}">${badgeText}</span>`;
+                    }).join('');
+                    
+                    meetingRow.innerHTML = `
+                        <div class="meeting-header">
+                            <span class="expand-arrow">▶</span>
+                            <div class="meeting-info">
+                                <span class="meeting-date">${meetingDateText}${meetingType ? ' - ' + meetingType : ''}</span>
+                                <div class="doc-badges">${badges}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Create document list (hidden by default)
+                    const docList = document.createElement('div');
+                    docList.className = 'document-list';
+                    docList.style.display = 'none';
+                    
+                    // Add each document to the list
+                    let hasActiveDocument = false;
+                    sortedDocs.forEach(doc => {
+                        const docItem = document.createElement('div');
+                        docItem.className = 'doc-item';
+                        docItem.dataset.docId = doc.docKey;
+                        
+                        // Check if this is the currently active document
+                        if (this.currentDocId === doc.docKey) {
+                            docItem.classList.add('active');
+                            hasActiveDocument = true;
+                            
+                            // Expand the meeting
+                            meetingContainer.classList.add('expanded');
+                            meetingRow.classList.add('expanded');
+                            docList.style.display = 'block';
+                            
+                            // Expand the parent month
+                            monthGroup.classList.remove('collapsed');
+                            monthContent.style.display = 'block';
+                            monthHeader.querySelector('.month-arrow').textContent = '▼';
+                            
+                            // Expand the parent year
+                            yearGroup.classList.remove('collapsed');
+                            yearContent.style.display = 'block';
+                            yearHeader.querySelector('.year-arrow').textContent = '▼';
+                        }
+                        
+                        const docIcon = {
+                            'agenda': '📋',
+                            'minutes': '📝',
+                            'transcript': '📄',
+                            'video': '🎥'
+                        }[doc.type] || '📄';
+                        
+                        const docName = {
+                            'agenda': 'Agenda',
+                            'minutes': 'Minutes',
+                            'transcript': 'Transcript',
+                            'video': 'Video Recording'
+                        }[doc.type] || doc.type;
+                        
+                        docItem.innerHTML = `
+                            <span class="doc-icon">${docIcon}</span>
+                            <span class="doc-name">${docName}</span>
+                        `;
+                        
+                        // Add click handler for document
+                        docItem.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            this.navigateToDocument(doc);
+                        });
+                        
+                        docList.appendChild(docItem);
+                    });
+                    
+                    // Add click handler for expanding/collapsing meeting
+                    meetingRow.addEventListener('click', () => {
+                        const isExpanded = meetingContainer.classList.contains('expanded');
+                        
+                        // Collapse all other meetings in this month
+                        monthContent.querySelectorAll('.meeting-container.expanded').forEach(mc => {
+                            if (mc !== meetingContainer) {
+                                mc.classList.remove('expanded');
+                                mc.querySelector('.meeting-row').classList.remove('expanded');
+                                mc.querySelector('.document-list').style.display = 'none';
+                            }
+                        });
+                        
+                        // Toggle this meeting
+                        if (isExpanded) {
+                            meetingContainer.classList.remove('expanded');
+                            meetingRow.classList.remove('expanded');
+                            docList.style.display = 'none';
+                        } else {
+                            meetingContainer.classList.add('expanded');
+                            meetingRow.classList.add('expanded');
+                            docList.style.display = 'block';
+                        }
+                    });
+                    
+                    meetingContainer.appendChild(meetingRow);
+                    meetingContainer.appendChild(docList);
+                    monthContent.appendChild(meetingContainer);
+                });
+                
+                // Add click handler for expanding/collapsing month
+                monthHeader.addEventListener('click', () => {
+                    const isExpanded = !monthGroup.classList.contains('collapsed');
+                    
+                    if (isExpanded) {
+                        monthGroup.classList.add('collapsed');
+                        monthContent.style.display = 'none';
+                        monthHeader.querySelector('.month-arrow').textContent = '▶';
+                    } else {
+                        monthGroup.classList.remove('collapsed');
+                        monthContent.style.display = 'block';
+                        monthHeader.querySelector('.month-arrow').textContent = '▼';
+                    }
+                    
+                    // Save expanded state
+                    const expandedState = JSON.parse(localStorage.getItem('navExpandedState') || '{}');
+                    expandedState[`month-${monthKey}`] = !isExpanded;
+                    localStorage.setItem('navExpandedState', JSON.stringify(expandedState));
+                });
+                
+                monthGroup.appendChild(monthContent);
+                yearContent.appendChild(monthGroup);
             });
             
-            group.appendChild(items);
-            container.appendChild(group);
+            // Add click handler for expanding/collapsing year
+            yearHeader.addEventListener('click', () => {
+                const isExpanded = !yearGroup.classList.contains('collapsed');
+                
+                if (isExpanded) {
+                    yearGroup.classList.add('collapsed');
+                    yearContent.style.display = 'none';
+                    yearHeader.querySelector('.year-arrow').textContent = '▶';
+                } else {
+                    yearGroup.classList.remove('collapsed');
+                    yearContent.style.display = 'block';
+                    yearHeader.querySelector('.year-arrow').textContent = '▼';
+                }
+                
+                // Save expanded state
+                const expandedState = JSON.parse(localStorage.getItem('navExpandedState') || '{}');
+                expandedState[`year-${yearKey}`] = !isExpanded;
+                localStorage.setItem('navExpandedState', JSON.stringify(expandedState));
+            });
+            
+            yearGroup.appendChild(yearContent);
+            container.appendChild(yearGroup);
         });
         
         // Update counts
@@ -1053,14 +1436,66 @@ class StandaloneNavigation {
         if (visibleCountEl) visibleCountEl.textContent = docs.length;
     }
     
+    getIconForType(type) {
+        const icons = {
+            'ordinances': '📋',
+            'resolutions': '📄',
+            'interpretations': '📝',
+            'transcripts': '🎙️',
+            'other': '📚'
+        };
+        return icons[type] || '📋';
+    }
+    
+    getLabelForType(type) {
+        const labels = {
+            'ordinances': 'Ordinances',
+            'resolutions': 'Resolutions',
+            'interpretations': 'Interpretations',
+            'transcripts': 'Meeting Records',
+            'other': 'Other Documents'
+        };
+        return labels[type] || 'Ordinances';
+    }
+    
+    detectInitialDocumentType() {
+        // Quick detection of document type from URL without full processing
+        const path = window.location.pathname;
+        
+        if (path.includes('/transcripts/') || path.includes('/minutes/') || 
+            path.includes('/agendas/') || path.includes('/meetings/')) {
+            this.currentDocType = 'transcripts';
+        } else if (path.includes('/resolutions/')) {
+            this.currentDocType = 'resolutions';
+        } else if (path.includes('/interpretations/')) {
+            this.currentDocType = 'interpretations';
+        } else if (path.includes('/other/')) {
+            this.currentDocType = 'other';
+        } else {
+            // Default to ordinances
+            this.currentDocType = 'ordinances';
+        }
+        
+        console.log('StandaloneNavigation: Initial document type detected:', this.currentDocType);
+    }
+    
     detectCurrentDocument() {
         // Detect which document we're currently viewing based on URL
         const path = window.location.pathname;
         
         // Find matching document
         for (const [id, doc] of Object.entries(this.documents)) {
-            const docPath = doc.file.replace('.md', '.html').replace('#', '');
-            if (path.includes(docPath)) {
+            // Handle both file-based and path-based documents
+            let docPath = '';
+            if (doc.file) {
+                docPath = doc.file.replace('.md', '.html').replace('#', '');
+            } else if (doc.path) {
+                // Extract just the filename part from the path
+                const parts = doc.path.split('/');
+                docPath = parts[parts.length - 1];
+            }
+            
+            if (docPath && path.includes(docPath)) {
                 // Determine document type and update context switcher
                 let docType = 'ordinances';
                 if (doc.type === 'resolution') docType = 'resolutions';
@@ -1108,10 +1543,12 @@ class StandaloneNavigation {
                     
                     // Must set active AFTER re-rendering
                     setTimeout(() => {
+                        this.currentDocId = id;
                         this.setActiveDocument(id);
                     }, 10);
                 } else {
                     // No re-render needed, just set active
+                    this.currentDocId = id;
                     this.setActiveDocument(id);
                 }
                 
@@ -1655,6 +2092,280 @@ class StandaloneNavigation {
                 background: #f3f4f6;
                 color: #374151;
                 border: 1px solid #d1d5db;
+            }
+            
+            /* Meeting navigation styles */
+            .year-group {
+                margin-bottom: 16px;
+            }
+            
+            .year-header {
+                display: flex;
+                align-items: center;
+                padding: 8px 12px;
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 6px;
+                margin-bottom: 4px;
+                cursor: pointer;
+                user-select: none;
+                transition: all 0.15s ease;
+                font-weight: 500;
+            }
+            
+            .year-group:not(.collapsed) .year-header {
+                background: #eff6ff;
+                border-color: #dbeafe;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                margin-bottom: 0;
+            }
+            
+            .year-header:hover {
+                background: #f9fafb;
+            }
+            
+            .year-arrow {
+                color: #6b7280;
+                font-size: 10px;
+                margin-right: 8px;
+                transition: transform 0.2s ease;
+                flex-shrink: 0;
+            }
+            
+            .year-label {
+                flex: 1;
+                font-size: 14px;
+                font-weight: 600;
+                color: #111827;
+            }
+            
+            .year-count {
+                padding: 2px 8px;
+                border-radius: 10px;
+                font-size: 11px;
+                font-weight: 500;
+                background: #f3f4f6;
+                color: #6b7280;
+            }
+            
+            .year-content {
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-top: none;
+                border-radius: 0 0 6px 6px;
+                padding: 8px;
+                margin-top: -1px;
+            }
+            
+            .year-group:not(.collapsed) .year-content {
+                background: #fafbfc;
+            }
+            
+            .month-group {
+                margin-bottom: 8px;
+            }
+            
+            .month-arrow {
+                color: #9ca3af;
+                font-size: 10px;
+                margin-right: 8px;
+                transition: transform 0.2s ease;
+                flex-shrink: 0;
+            }
+            
+            .month-label {
+                flex: 1;
+                font-weight: 500;
+                color: #374151;
+                font-size: 13px;
+            }
+            
+            .month-count {
+                padding: 2px 8px;
+                border-radius: 10px;
+                font-size: 10px;
+                font-weight: 500;
+                background: #f3f4f6;
+                color: #6b7280;
+            }
+            
+            .month-content {
+                margin-left: 8px;
+            }
+            
+            .month-header {
+                display: flex;
+                align-items: center;
+                padding: 6px 10px;
+                background: transparent;
+                border-radius: 4px;
+                margin-bottom: 4px;
+                cursor: pointer;
+                user-select: none;
+                transition: all 0.15s ease;
+            }
+            
+            .month-header:hover {
+                background: #f9fafb;
+            }
+            
+            .month-stats {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+            }
+            
+            .stat-badge {
+                padding: 2px 7px;
+                border-radius: 10px;
+                font-size: 10px;
+                font-weight: 500;
+                background: #e5e7eb;
+                color: #6b7280;
+            }
+            
+            .meeting-container {
+                margin-bottom: 4px;
+            }
+            
+            .meeting-row {
+                padding: 6px 8px;
+                margin-left: 20px;
+                margin-right: 4px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.15s ease;
+                font-size: 12px;
+                color: #374151;
+                background: transparent;
+            }
+            
+            .meeting-row:hover {
+                background: #f0f9ff;
+                transform: translateX(2px);
+            }
+            
+            .meeting-row.expanded {
+                background: #f9fafb;
+                border-radius: 5px 5px 0 0;
+            }
+            
+            .meeting-header {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .expand-arrow {
+                color: #6b7280;
+                font-size: 10px;
+                transition: transform 0.2s ease;
+                flex-shrink: 0;
+            }
+            
+            .meeting-row.expanded .expand-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .meeting-info {
+                flex: 1;
+            }
+            
+            .meeting-date {
+                font-weight: 500;
+                color: #4b5563;
+                display: block;
+                margin-bottom: 4px;
+            }
+            
+            /* Document list in expanded meeting */
+            .document-list {
+                margin-left: 38px;
+                background: white;
+                border-left: 2px solid #e5e7eb;
+                border-radius: 0 0 5px 5px;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .document-list .doc-item {
+                padding: 8px 12px;
+                font-size: 12px;
+                color: #4b5563;
+                cursor: pointer;
+                transition: all 0.15s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                border-bottom: 1px solid #f3f4f6;
+                border-radius: 0;
+                margin: 0;
+            }
+            
+            .document-list .doc-item:last-child {
+                border-bottom: none;
+            }
+            
+            .document-list .doc-item:hover:not(.active) {
+                background: #f0f9ff;
+                padding-left: 16px;
+            }
+            
+            .document-list .doc-item.active {
+                background: #007AFF;
+                color: white;
+                font-weight: 500;
+                border-radius: 0;
+            }
+            
+            .document-list .doc-item.active .doc-icon,
+            .document-list .doc-item.active .doc-name {
+                color: white;
+            }
+            
+            .doc-icon {
+                font-size: 14px;
+                flex-shrink: 0;
+            }
+            
+            .doc-name {
+                flex: 1;
+            }
+            
+            /* Meeting document badges - styled like special state badges */
+            .doc-badge {
+                display: inline-block;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-size: 10px;
+                font-weight: 600;
+                text-transform: uppercase;
+                vertical-align: middle;
+            }
+            
+            .badge-agenda {
+                background: #dbeafe;
+                color: #1e40af;
+                border: 1px solid #93c5fd;
+            }
+            
+            .badge-minutes {
+                background: #dcfce7;
+                color: #166534;
+                border: 1px solid #86efac;
+            }
+            
+            .badge-transcript {
+                background: #f3e8ff;
+                color: #6b21a8;
+                border: 1px solid #d8b4fe;
+            }
+            
+            .badge-video {
+                background: #fee2e2;
+                color: #991b1b;
+                border: 1px solid #fca5a5;
             }
             
             

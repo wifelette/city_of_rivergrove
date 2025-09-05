@@ -116,6 +116,8 @@ process_file_change() {
     echo "  Updating indexes..."
     python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
     python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
+    # Copy relationships to book directory for navigation to use
+    cp src/relationships.json book/relationships.json 2>/dev/null || true
     
     # Wait a moment for mdBook to detect and rebuild
     sleep 2

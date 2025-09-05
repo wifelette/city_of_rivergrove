@@ -139,6 +139,8 @@ echo -e "${GREEN}✓${NC}"
 
 echo -n "  • Relationships... "
 python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
+# Copy to book directory for navigation to use
+cp src/relationships.json book/relationships.json 2>/dev/null || true
 echo -e "${GREEN}✓${NC}"
 
 # Check if this is a meeting document

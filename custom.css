@@ -817,7 +817,8 @@ blockquote {
     font-weight: 500;
 }
 
-/* Grouped views */
+/* Grouped views - DISABLED: Now handled in navigation-standalone.js */
+/* 
 .decade-header,
 .topic-header,
 .group-header {
@@ -839,6 +840,7 @@ blockquote {
     margin: 0;
     padding: 0;
 }
+*/
 
 /* Topic groups */
 .topic-group {

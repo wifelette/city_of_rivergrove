@@ -9,22 +9,33 @@ Meeting documents (Agendas, Minutes, and Transcripts) have a specialized navigat
 ### 1. No View Options
 Unlike Ordinances, Resolutions, and Interpretations which offer multiple view options (Numerical, Chronological, Topical), meeting documents have no view selection controls. The view controls are completely hidden when viewing meeting documents.
 
-### 2. Date-Based Grouping
-Meeting documents are always organized by meeting date. Each meeting date becomes a group header (e.g., "February 12, 2024") with all documents from that meeting listed beneath it.
+### 2. Nested Year/Month/Date Grouping
+Meeting documents are organized in a three-level hierarchy:
+- **Years** are expandable/collapsible sections with light backgrounds
+- **Months** within each year are also expandable (e.g., "June 2017")
+- **Individual documents** are shown with type badges (AGENDA, MINUTES, TRANSCRIPT)
 
-### 3. Document Type Ordering
-Within each meeting date group, documents are displayed in a consistent order:
-1. Agenda (if available)
-2. Minutes (if available)  
-3. Transcript (if available)
+### 3. Document Type Badges
+Each document displays with a styled badge indicating its type:
+- **AGENDA** - Light blue badge
+- **MINUTES** - Light green badge  
+- **TRANSCRIPT** - Light purple badge
 
-### 4. No Individual Dates
-Since documents are already grouped by meeting date, individual document items only show their type (Agenda, Minutes, Transcript) without repeating the date.
+Documents are displayed in chronological order within each month.
 
-### 5. Sort Controls
-The main sort arrows (↑↓) remain available and control the ordering of the date groups:
-- Ascending (↑): Oldest meetings first
-- Descending (↓): Newest meetings first
+### 4. Expandable Navigation
+The navigation uses an accordion pattern:
+- Click year headers to expand/collapse all months in that year
+- Click month headers to expand/collapse documents in that month
+- The system remembers your expanded/collapsed state using localStorage
+- The current document's year and month auto-expand on page load
+
+### 5. Visual Design
+- Year headers have light gray backgrounds with borders
+- Year content is contained in bordered boxes for visual cohesion
+- Month headers are more subtle with lighter backgrounds
+- Selected documents are highlighted with a blue background
+- Smooth transitions for expand/collapse animations
 
 ## Implementation Details
 
@@ -44,9 +55,10 @@ The main sort arrows (↑↓) remain available and control the ordering of the d
 
 3. **Custom Rendering Method**
    - `renderMeetingDocuments(container, docs)` handles the special display logic
-   - Groups documents by date
-   - Formats dates in readable format (e.g., "February 12, 2024")
-   - Sorts documents within each group by type
+   - Groups documents by year, then by month
+   - Formats dates in readable format (e.g., "June 2017")
+   - Implements expandable/collapsible sections with chevron icons
+   - Persists expanded state in localStorage
 
 ### Data Structure
 
@@ -79,12 +91,32 @@ From the user's perspective:
 5. Click any document to view it
 6. Use sort arrows to reverse chronological order if desired
 
+## Folder Structure
+
+Meeting documents are organized in folders by year and month:
+```
+source-documents/Meetings/
+├── 2017/
+│   ├── 2017-06/
+│   │   ├── 2017-06-12-Agenda.md
+│   │   └── 2017-06-12-Minutes.md
+│   └── 2017-11/
+│       └── 2017-11-13-Minutes.md
+├── 2018/
+│   ├── 2018-04/
+│   │   └── 2018-04-11-Agenda.md
+│   └── 2018-05/
+│       └── 2018-05-14-Agenda.md
+```
+
+Folders are named `YYYY-MM` format while files retain the full `YYYY-MM-DD` date.
+
 ## Future Considerations
 
 - Consider adding meeting type filters (Regular, Special, Emergency)
-- Could add year grouping for better organization as archive grows
 - Might add search highlighting specific to meeting content
 - Could integrate meeting video links when available
+- Could add meeting attendance information
 
 ## Related Documentation
 
