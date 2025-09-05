@@ -167,6 +167,11 @@ if [ -d "images" ]; then
     echo "  • Copying images directory..."
     cp -r images book/
 fi
+# Copy navigation JavaScript
+if [ -f "navigation-standalone.js" ]; then
+    echo "  • Copying navigation JavaScript..."
+    cp navigation-standalone.js book/
+fi
 # Copy data files
 if [ -f "src/relationships.json" ]; then
     cp src/relationships.json book/

@@ -122,6 +122,12 @@ process_file_change() {
     # Wait a moment for mdBook to detect and rebuild
     sleep 2
     
+    # Copy navigation if it was updated
+    if [[ "$file" == "navigation-standalone.js" ]]; then
+        echo "  Copying navigation to book directory..."
+        cp navigation-standalone.js book/ 2>/dev/null
+    fi
+    
     # Apply postprocessors after mdBook rebuilds
     echo "  Applying custom formatting..."
     python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
