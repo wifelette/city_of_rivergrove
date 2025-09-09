@@ -1,0 +1,75 @@
+{
+  "files": [
+    {
+      "path": "/Users/leahsilber/Github/city_of_rivergrove/css/variables.css",
+      "size": 8836,
+      "rules": 7,
+      "selectors": 8,
+      "declarations": 211,
+      "important": 0,
+      "mediaQueries": 1,
+      "maxSpecificity": [
+        0,
+        0,
+        0
+      ],
+      "maxNesting": 1
+    },
+    {
+      "path": "/Users/leahsilber/Github/city_of_rivergrove/fonts/fonts.css",
+      "size": 3719,
+      "rules": 0,
+      "selectors": 0,
+      "declarations": 44,
+      "important": 0,
+      "mediaQueries": 0,
+      "maxSpecificity": [
+        0,
+        0,
+        0
+      ],
+      "maxNesting": 0
+    }
+  ],
+  "totals": {
+    "files": 2,
+    "rules": 0,
+    "selectors": 95,
+    "declarations": 0,
+    "importantCount": 8,
+    "mediaQueries": 2,
+    "uniqueProperties": {},
+    "fileSize": 12555,
+    "duplicateSelectors": 0,
+    "highSpecificitySelectors": 0,
+    "deeplyNestedSelectors": 0
+  },
+  "issues": {
+    "important": [],
+    "highSpecificity": [],
+    "deepNesting": [],
+    "duplicates": [],
+    "vendorPrefixes": [
+      {
+        "file": "general.css",
+        "property": "-webkit-text-size-adjust"
+      },
+      {
+        "file": "sidebar-resize.css",
+        "property": "-webkit-user-select"
+      },
+      {
+        "file": "sidebar-resize.css",
+        "property": "-moz-user-select"
+      },
+      {
+        "file": "sidebar-resize.css",
+        "property": "-ms-user-select"
+      },
+      {
+        "file": "rivergrove-typography.css",
+        "property": "-webkit-text-size-adjust"
+      }
+    ]
+  }
+}

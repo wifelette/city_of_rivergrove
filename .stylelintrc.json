@@ -1,0 +1,50 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "declaration-no-important": [true, {
+      "severity": "warning",
+      "message": "Avoid using !important - refactor for better specificity"
+    }],
+    "selector-max-id": [0, {
+      "message": "Avoid ID selectors for styling - use classes instead"
+    }],
+    "selector-max-compound-selectors": [3, {
+      "message": "Selector too complex - maximum 3 compound selectors"
+    }],
+    "selector-max-specificity": ["0,3,0", {
+      "message": "Selector specificity too high - keep it simple"
+    }],
+    "max-nesting-depth": [3, {
+      "message": "Too much nesting - maximum 3 levels"
+    }],
+    "color-hex-length": "long",
+    "color-hex-case": "lower",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "order/properties-alphabetical-order": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "shorthand-property-no-redundant-values": true,
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global"]
+    }],
+    "comment-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "selector-class-pattern": null,
+    "import-notation": null,
+    "media-feature-range-notation": null
+  },
+  "ignoreFiles": [
+    "book/**/*.css",
+    "node_modules/**/*.css",
+    "FontAwesome/**/*.css",
+    "fonts/**/*.css",
+    "highlight.css",
+    "tomorrow-night.css",
+    "ayu-highlight.css"
+  ]
+}

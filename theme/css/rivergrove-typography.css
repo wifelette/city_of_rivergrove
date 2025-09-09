@@ -1,0 +1,164 @@
+/* 
+ * Rivergrove Typography
+ * Essential typography styles from mdBook general.css without conflicts
+ */
+
+/* Base typography */
+html {
+    font-family: "Open Sans", sans-serif;
+    color: var(--fg);
+    background-color: var(--bg);
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+code {
+    font-family: var(--mono-font) !important;
+    font-size: var(--code-font-size);
+    direction: ltr !important;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 { 
+    font-weight: 600; 
+}
+
+h1 { 
+    font-size: 2em; 
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+}
+
+h2, h3 { 
+    margin-block-start: 2.5em; 
+}
+
+h4, h5 { 
+    margin-block-start: 2em; 
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+    font-size: unset;
+}
+
+/* Content typography */
+.content p { line-height: 1.45em; }
+.content ol { line-height: 1.45em; }
+.content ul { line-height: 1.45em; }
+.content a { text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.content img, .content video { max-width: 100%; }
+
+/* Header links */
+.content .header:link,
+.content .header:visited {
+    color: var(--fg);
+}
+
+.content .header:link,
+.content .header:visited:hover {
+    text-decoration: none;
+}
+
+/* Tables */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 3px 20px;
+    border: 1px solid var(--table-border-color);
+}
+
+table thead {
+    background: var(--table-header-bg);
+}
+
+table thead td,
+table thead th {
+    font-weight: 700;
+    border: none;
+}
+
+table thead th {
+    padding: 3px 20px;
+}
+
+table thead tr {
+    border: 1px solid var(--table-header-bg);
+}
+
+table tbody tr:nth-child(2n) {
+    background: var(--table-alternate-bg);
+}
+
+/* Utility classes */
+.left { float: left; }
+.right { float: right; }
+.boring { opacity: 0.6; }
+.hide-boring .boring { display: none; }
+.hidden { display: none !important; }
+
+/* Code blocks */
+pre {
+    position: relative;
+}
+
+pre > .buttons {
+    position: absolute;
+    z-index: 100;
+    right: 0px;
+    top: 2px;
+    margin-right: 10px;
+    display: flex;
+    gap: 2px;
+}
+
+pre > .buttons button {
+    padding: 2px 5px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    cursor: pointer;
+}
+
+pre > .buttons button:hover {
+    background: var(--theme-hover);
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 20px 0;
+    padding: 0 20px;
+    color: var(--fg);
+    background-color: var(--quote-bg);
+    border-block-start: .1em solid var(--quote-border);
+    border-block-end: .1em solid var(--quote-border);
+    border-inline-start: .4em solid var(--quote-border);
+    border-inline-end: .1em solid var(--quote-border);
+}
+
+blockquote :first-child { margin-block-start: 0; }
+blockquote :last-child { margin-block-end: 0; }
+
+/* Lists */
+:not(.footnote-definition) + .footnote-definition,
+.footnote-definition + :not(.footnote-definition) {
+    margin-block-start: 2em;
+}
+
+.footnote-definition {
+    font-size: 0.9em;
+    margin: 0.5em 0;
+}
+
+.footnote-definition p {
+    display: inline;
+}

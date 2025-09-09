@@ -1,5 +1,33 @@
 {
+  "name": "city-of-rivergrove",
+  "version": "1.0.0",
+  "description": "City of Rivergrove Document Management System",
+  "scripts": {
+    "test:visual": "playwright test --config=tests/visual/playwright.config.js",
+    "test:visual:update": "playwright test --config=tests/visual/playwright.config.js --update-snapshots",
+    "test:visual:ui": "playwright test --config=tests/visual/playwright.config.js --ui",
+    "lint:css": "stylelint '**/*.css' --ignore-path .gitignore",
+    "lint:css:fix": "stylelint '**/*.css' --ignore-path .gitignore --fix",
+    "metrics:css": "node scripts/testing/css-metrics.js",
+    "test": "npm run lint:css && npm run test:visual",
+    "serve": "./dev-server.sh",
+    "build": "./build-all.sh"
+  },
   "dependencies": {
     "dotenv": "^17.2.1"
-  }
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
+    "css-tree": "^2.3.1",
+    "specificity": "^1.0.0",
+    "chalk": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wifelette/city_of_rivergrove.git"
+  },
+  "private": true
 }
