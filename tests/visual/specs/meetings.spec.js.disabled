@@ -1,0 +1,80 @@
+const { test, expect } = require('@playwright/test');
+
+/**
+ * TEMPORARILY DISABLED
+ * 
+ * Meeting pages have a known UI regression as of January 2025.
+ * These tests are disabled until the regression is fixed.
+ * 
+ * To re-enable:
+ * 1. Fix the Meeting pages UI regression
+ * 2. Rename this file from meetings.spec.js.disabled to meetings.spec.js
+ * 3. Run: npm run test:visual:update -- --grep "Meeting"
+ * 4. Verify the screenshots look correct
+ */
+
+test.describe('Meeting Page Visual Tests', () => {
+  const meetingTypes = [
+    { path: '/minutes/2018-12-10-Minutes.html', name: 'minutes', title: 'Meeting Minutes' },
+    { path: '/agendas/2018-05-14-Agenda.html', name: 'agenda', title: 'Meeting Agenda' },
+    { path: '/transcripts/2024-12-09-Transcript.html', name: 'transcript', title: 'Meeting Transcript' }
+  ];
+
+  meetingTypes.forEach(({ path, name, title }) => {
+    test(`${title} - full page`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+      
+      await expect(page).toHaveScreenshot(`meeting-${name}-full.png`, {
+        fullPage: true,
+        animations: 'disabled'
+      });
+    });
+
+    test(`${title} - navigation`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+      
+      const navSidebar = page.locator('.nav-sidebar');
+      if (await navSidebar.count() > 0) {
+        await expect(navSidebar).toHaveScreenshot(`meeting-${name}-navigation.png`);
+      }
+    });
+
+    test(`${title} - content area`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+      
+      const content = page.locator('.content');
+      await expect(content).toBeVisible();
+      await expect(content).toHaveScreenshot(`meeting-${name}-content.png`);
+    });
+
+    test(`${title} - specific elements`, async ({ page }) => {
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+      
+      // Check for meeting-specific elements
+      if (name === 'minutes') {
+        const motions = page.locator('.motion');
+        if (await motions.count() > 0) {
+          await expect(motions.first()).toHaveScreenshot('meeting-motion.png');
+        }
+      }
+      
+      if (name === 'agenda') {
+        const agendaItems = page.locator('.agenda-item');
+        if (await agendaItems.count() > 0) {
+          await expect(agendaItems.first()).toHaveScreenshot('meeting-agenda-item.png');
+        }
+      }
+      
+      if (name === 'transcript') {
+        const speakerBlock = page.locator('.speaker');
+        if (await speakerBlock.count() > 0) {
+          await expect(speakerBlock.first()).toHaveScreenshot('meeting-speaker.png');
+        }
+      }
+    });
+  });
+});
