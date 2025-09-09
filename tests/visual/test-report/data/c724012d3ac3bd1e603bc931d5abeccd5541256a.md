@@ -1,0 +1,184 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - button "Switch document type" [ref=e6] [cursor=pointer]:
+        - generic [ref=e7] [cursor=pointer]: 📝
+        - generic [ref=e8] [cursor=pointer]: Interpretations
+        - generic [ref=e9] [cursor=pointer]: ▼
+      - generic [ref=e11]:
+        - button "↑" [ref=e12] [cursor=pointer]
+        - button "↓" [ref=e13] [cursor=pointer]
+      - textbox "Search ordinances..." [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16]: View
+        - generic [ref=e17]:
+          - button "Numerical" [ref=e18] [cursor=pointer]
+          - button "Chronological" [ref=e19] [cursor=pointer]
+          - button "Topical" [ref=e20] [cursor=pointer]
+    - generic [ref=e22]:
+      - generic [ref=e23] [cursor=pointer]:
+        - generic [ref=e24] [cursor=pointer]: ▼
+        - generic [ref=e25] [cursor=pointer]: 2000s
+        - generic [ref=e26] [cursor=pointer]: "12"
+      - generic [ref=e27]:
+        - generic [ref=e28] [cursor=pointer]: Interpretation of 5.2-4
+        - generic [ref=e29] [cursor=pointer]: Interpretation of 2.040
+        - generic [ref=e30] [cursor=pointer]: "Interpretation of 9.030 #1"
+        - generic [ref=e31] [cursor=pointer]: Interpretation of 4.020
+        - generic [ref=e32] [cursor=pointer]: "Interpretation of 5.080 #4"
+        - generic [ref=e33] [cursor=pointer]: "Interpretation of 5.080 #3"
+        - generic [ref=e34] [cursor=pointer]: "Interpretation of 9.030 #2"
+        - generic [ref=e35] [cursor=pointer]: "Interpretation of 5.010 #2"
+        - generic [ref=e36] [cursor=pointer]: "Interpretation of 5.080 #2"
+        - generic [ref=e37] [cursor=pointer]: "Interpretation of 5.010 #1"
+        - generic [ref=e38] [cursor=pointer]: Interpretation of ORD 68-2000
+        - generic [ref=e39] [cursor=pointer]: "Interpretation of 5.080 #1"
+    - generic [ref=e40]:
+      - generic [ref=e41]: "12"
+      - text: of
+      - generic [ref=e42]: "12"
+      - text: documents
+  - generic [ref=e44]:
+    - generic [ref=e45]:
+      - button "Switch document type" [ref=e47] [cursor=pointer]:
+        - generic [ref=e48] [cursor=pointer]: 📝
+        - generic [ref=e49] [cursor=pointer]: Interpretations
+        - generic [ref=e50] [cursor=pointer]: ▼
+      - generic [ref=e52]:
+        - button "↑" [ref=e53] [cursor=pointer]
+        - button "↓" [ref=e54] [cursor=pointer]
+      - textbox "Search ordinances..." [ref=e55]
+      - generic [ref=e56]:
+        - generic [ref=e57]: View
+        - generic [ref=e58]:
+          - button "Numerical" [ref=e59] [cursor=pointer]
+          - button "Chronological" [ref=e60] [cursor=pointer]
+          - button "Topical" [ref=e61] [cursor=pointer]
+    - generic [ref=e63]:
+      - generic [ref=e64] [cursor=pointer]:
+        - generic [ref=e65] [cursor=pointer]: ▼
+        - generic [ref=e66] [cursor=pointer]: 2000s
+        - generic [ref=e67] [cursor=pointer]: "12"
+      - generic [ref=e68]:
+        - generic [ref=e69] [cursor=pointer]: Interpretation of 5.2-4
+        - generic [ref=e70] [cursor=pointer]: Interpretation of 2.040
+        - generic [ref=e71] [cursor=pointer]: "Interpretation of 9.030 #1"
+        - generic [ref=e72] [cursor=pointer]: Interpretation of 4.020
+        - generic [ref=e73] [cursor=pointer]: "Interpretation of 5.080 #4"
+        - generic [ref=e74] [cursor=pointer]: "Interpretation of 5.080 #3"
+        - generic [ref=e75] [cursor=pointer]: "Interpretation of 9.030 #2"
+        - generic [ref=e76] [cursor=pointer]: "Interpretation of 5.010 #2"
+        - generic [ref=e77] [cursor=pointer]: "Interpretation of 5.080 #2"
+        - generic [ref=e78] [cursor=pointer]: "Interpretation of 5.010 #1"
+        - generic [ref=e79] [cursor=pointer]: Interpretation of ORD 68-2000
+        - generic [ref=e80] [cursor=pointer]: "Interpretation of 5.080 #1"
+    - generic [ref=e81]:
+      - generic [ref=e82]: "12"
+      - text: of
+      - generic [ref=e83]: "12"
+      - text: documents
+  - generic [ref=e85]:
+    - generic [ref=e86]:
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - text: 
+          - button "Change theme" [ref=e90] [cursor=pointer]:
+            - generic [ref=e91] [cursor=pointer]: 
+          - text: ✓
+          - button "Toggle Searchbar" [ref=e92] [cursor=pointer]:
+            - generic [ref=e93] [cursor=pointer]: 
+        - generic [ref=e94]:
+          - link "Print this book" [ref=e95]:
+            - /url: ../print.html
+            - generic [ref=e96] [cursor=pointer]: 
+          - link "Git repository" [ref=e97]:
+            - /url: https://github.com/wifelette/city_of_rivergrove
+            - generic [ref=e98] [cursor=pointer]: 
+      - text: 
+      - generic [ref=e99]:
+        - main [ref=e100]:
+          - heading "An Interpretation of the Planning Commission" [level=1] [ref=e101]:
+            - link "An Interpretation of the Planning Commission" [ref=e102]:
+              - /url: "#an-interpretation-of-the-planning-commission"
+          - heading "(May 7, 2001)" [level=2] [ref=e103]:
+            - link "(May 7, 2001)" [ref=e104]:
+              - /url: "#may-7-2001"
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - text: "Section 5.2-4, Balanced Cut and Fill Standards, was added to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) by"
+              - link "Ordinance 62-98" [ref=e107]:
+                - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
+              - text: ". It reads, in part, as follows:"
+          - paragraph [ref=e108]:
+            - strong [ref=e109]: “5.2-4 Balanced Cut and Fill Standards
+          - paragraph [ref=e110]: "(i) All development, excavation and fill in the areas of special flood hazard (i.e., the flood plain) shall conform to the following balanced cut and fill standards:"
+          - paragraph [ref=e111]: "*****"
+          - paragraph [ref=e112]: (iii) Any excavation below bankful stage shall not count toward compensation for fill since these areas would be full of water in the winter and not available to hold storm water;
+          - paragraph [ref=e113]: "***** “"
+          - list [ref=e114]:
+            - listitem [ref=e115]:
+              - paragraph [ref=e116]:
+                - text: The term “bankful” is not defined in
+                - link "Ordinance 62-98" [ref=e117]:
+                  - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
+                - text: "or in Ordinance # 52. The term “bankful” is not defined anywhere in the Rivergrove Land Development Ordinance."
+            - listitem [ref=e118]:
+              - paragraph [ref=e119]:
+                - link "Ordinance 69-2000" [ref=e120]:
+                  - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
+                - text: ", which has been recommended by the Planning Commission to the City Council for adoption, has a balanced cut and fill standard which reads, in part, as follows:"
+          - paragraph [ref=e121]:
+            - strong [ref=e122]: “Section IV. Water Quality Resource Areas
+          - paragraph [ref=e123]: "*****"
+          - paragraph [ref=e124]:
+            - strong [ref=e125]: G. Development Standards
+            - text: "All development, excavation and fill in the floodplain shall conform to the following standards:"
+          - paragraph [ref=e126]: "*****"
+          - paragraph [ref=e127]:
+            - strong [ref=e128]: "3."
+            - text: Any excavation below the 10 year flood elevation for the property shall not count toward compensating for fill.
+          - paragraph [ref=e129]: "***** “"
+          - list [ref=e130]:
+            - listitem [ref=e131]:
+              - paragraph [ref=e132]:
+                - text: While
+                - link "Ordinance No. 69-2000" [ref=e133]:
+                  - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
+                - text: has not yet been adopted by the City Council, the Planning Commission wishes to currently interpret the term “bankful” in Section 5.2-4(1)(iii) consistently with the way balanced cut and fill requirements will be implemented by Section IV.G.3. of
+                - link "Ordinance 69-2000" [ref=e134]:
+                  - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
+                - text: "above with respect to the limitations placed upon excavation below a certain level not counting toward compensating for fill in the floodplain. Note: When [Ordinance 69-2000 is adopted, the balanced cut and fill standards in Section 5.2-4(1)(iii) of Ordinance # 52 will be replaced by the balanced cut and fill requirements in Section IV.G.3. of"
+                - link "Ordinance No. 69-2000" [ref=e135]:
+                  - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
+                - text: .]
+            - listitem [ref=e136]:
+              - paragraph [ref=e137]: The Planning Commission applied this interpretation on March 5, 2001, to its evaluation of the Development Permit Application for Land Division (18-Lot Subdivision) (Stark’s Landing Incorporated) (5050 SW Childs Road – Consolidated Application).
+            - listitem [ref=e138]:
+              - paragraph [ref=e139]:
+                - text: "In accordance with RLDO Section 3.090, this interpretation is hereby made in writing and will be available with copies of the applicable ordinance (Section 5.2-4, Balanced Cut and Fill Standards, as added to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) by"
+                - link "Ordinance 62-98" [ref=e140]:
+                  - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
+                - text: ).
+          - heading "INTERPRETATION" [level=2] [ref=e141]:
+            - link "INTERPRETATION" [ref=e142]:
+              - /url: "#interpretation"
+          - paragraph [ref=e143]:
+            - strong [ref=e144]: "Section 5.2-4(1)(iii) of Ordinance # 52"
+          - paragraph [ref=e145]: "The Planning Commission hereby interprets Section 5.2-4(1)(iii) of Ordinance # 52 as follows:"
+          - paragraph [ref=e146]:
+            - emphasis [ref=e147]:
+              - text: "The bankful stage referred to in Section 5.2-4(1)(iii) of Ordinance # 52 shall be equal to the 10-year flood elevation for the property as that phrase is used in Section IV.G.3. of"
+              - link "Ordinance No. 69-2000" [ref=e148]:
+                - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
+              - text: .
+          - paragraph [ref=e149]:
+            - text: To be Filed with
+            - link "Ordinance 62-98" [ref=e150]:
+              - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
+            - text: in the Rivergrove Land Development Ordinance
+        - navigation "Page navigation":  
+    - text:  
+```

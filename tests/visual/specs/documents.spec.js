@@ -27,10 +27,14 @@ test.describe('Document Page Visual Tests', () => {
       await page.goto(path);
       await page.waitForLoadState('networkidle');
       
-      // Check if custom navigation exists
+      // Check if custom navigation exists (skip if not present)
       const navSidebar = page.locator('.nav-sidebar');
-      if (await navSidebar.count() > 0) {
+      const count = await navSidebar.count();
+      if (count > 0) {
         await expect(navSidebar).toHaveScreenshot(`${name}-navigation.png`);
+      } else {
+        // Skip test if navigation doesn't exist
+        test.skip();
       }
     });
 
