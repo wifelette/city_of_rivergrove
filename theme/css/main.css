@@ -1,0 +1,24 @@
+/*
+ * City of Rivergrove Documentation Site - Main CSS Entry Point
+ * Modular CSS Architecture - Phase 2 Implementation
+ */
+
+/* Base Layer - Variables and foundational styles */
+@import url('./base/variables.css');
+
+/* Layout Layer - Page structure and mdBook overrides */
+@import url('./layout/mdbook-overrides.css');
+@import url('./layout/page-structure.css');
+
+/* Components Layer - Reusable UI components */
+@import url('./components/cards.css');
+@import url('./components/footnotes.css');
+@import url('./components/tables.css');
+
+/* Documents Layer - Document-specific styling */
+@import url('./documents/document-notes.css');
+
+/* Note: Navigation styles remain in main custom.css temporarily 
+ * due to complexity of different sidebar systems for different document types.
+ * This will be addressed in Phase 4 (Component Migration).
+ */

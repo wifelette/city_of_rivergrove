@@ -1,0 +1,34 @@
+/*
+ * Page Structure and Layout
+ * General page layout, spacing, and structural elements
+ */
+
+/* Reduce spacing after horizontal rules when followed by headers */
+hr {
+    margin-bottom: 1.5rem;
+}
+
+hr + h1,
+hr + h2,
+hr + h3,
+hr + h4,
+hr + h5,
+hr + h6 {
+    margin-top: 0;
+}
+
+/* Also reduce the default top margin for headers in general */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+}
+
+/* Regular tables (not in blockquotes) keep their default styling */
+table {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* Optional: Make blockquotes slightly lighter to reduce the blue tint */
+blockquote {
+    /* Existing blockquote styles maintained by mdBook */
+}

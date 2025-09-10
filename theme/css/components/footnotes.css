@@ -1,0 +1,26 @@
+/*
+ * Footnotes Component
+ * Styling for document footnotes and references
+ */
+
+/* Footnotes Styling */
+.footnotes {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: var(--border-width-thin) solid var(--color-border);
+    max-width: 100%;
+}
+
+.footnotes p {
+    margin: 0.5em 0;
+    line-height: var(--line-height-normal);
+}
+
+/* Style for footnote references in tables */
+table sup {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-light);
+    font-weight: var(--font-weight-semibold);
+}

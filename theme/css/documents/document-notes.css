@@ -1,0 +1,80 @@
+/*
+ * Document Notes Component
+ * Special styling for digitization notes and document metadata
+ */
+
+.document-note {
+    margin: 30px 0;
+    padding: var(--space-padding-lg) var(--space-padding-lg) var(--space-padding-lg) 50px;
+    background: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border-light);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Top accent bar for visual separation */
+.document-note::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-width-thick);
+    background: var(--color-primary);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+}
+
+/* Note icon */
+.document-note::after {
+    content: "📝";
+    position: absolute;
+    left: 18px;
+    top: var(--space-padding-lg);
+    font-size: 18px;
+}
+
+/* Note heading - always shows as "Document Notes" */
+.document-note h2 {
+    margin: 0 0 var(--space-margin-sm) 0;
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Note content */
+.document-note p {
+    margin: 0 0 var(--space-margin-sm) 0;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: var(--line-height-loose);
+}
+
+.document-note p:last-child {
+    margin-bottom: 0;
+}
+
+/* Hide only the hr separator when it appears right before document notes */
+/* This selector targets the hr element that comes immediately before .document-note */
+.document-note {
+    /* Keep document-note visible */
+}
+
+/* Hide hr when followed by document-note - using adjacent sibling */
+hr:has(+ .document-note) {
+    display: none;
+}
+
+/* Print styles for document notes */
+@media print {
+    .document-note {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .document-note::after {
+        content: none; /* Hide emoji in print */
+    }
+}

@@ -1,0 +1,63 @@
+/* 
+ * mdBook Override Styles
+ * Handles mdBook's default behavior that conflicts with our custom navigation
+ */
+
+/* IMMEDIATELY hide mdBook's sidebar to prevent flicker */
+#sidebar, 
+.sidebar {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    opacity: 0 !important;
+}
+
+/* Hide the redundant title in mdBook's header */
+.menu-title {
+    display: none !important;
+}
+
+/* Hide the hamburger menu icon - we don't use mdBook's sidebar */
+#sidebar-toggle,
+.sidebar-toggle {
+    display: none !important;
+}
+
+/* Set page wrapper margins immediately to prevent layout shift */
+.page-wrapper {
+    margin-left: var(--space-layout-md) !important;
+    margin-right: var(--space-layout-sm) !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Prevent any slide animations */
+.page-wrapper,
+#content,
+.content,
+.chapter,
+main {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Hide mdBook's default navigation arrows */
+.nav-chapters {
+    display: none !important;
+}
+
+/* Also hide the navigation arrows that appear on hover */
+.nav-wrapper .nav-chapters {
+    display: none !important;
+}
+
+/* Hide both left and right navigation buttons */
+.chapter .nav-wrapper {
+    display: none !important;
+}
+
+/* Alternative: if the above doesn't work, target them specifically */
+.previous, .next {
+    display: none !important;
+}

@@ -1,85 +1,13 @@
 /* Custom CSS for City of Rivergrove Documents */
 
-/* IMMEDIATELY hide mdBook's sidebar to prevent flicker */
-#sidebar, 
-.sidebar {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    opacity: 0 !important;
-}
+/* Import Modular CSS Architecture */
+@import url('./theme/css/main.css');
 
-/* Hide the redundant title in mdBook's header */
-.menu-title {
-    display: none !important;
-}
-
-/* Hide the hamburger menu icon - we don't use mdBook's sidebar */
-#sidebar-toggle,
-.sidebar-toggle {
-    display: none !important;
-}
-
-/* Set page wrapper margins immediately to prevent layout shift */
-.page-wrapper {
-    margin-left: 300px !important;
-    margin-right: 280px !important;
-    transition: none !important;
-    animation: none !important;
-}
-
-/* Prevent any slide animations */
-.page-wrapper,
-#content,
-.content,
-.chapter,
-main {
-    transform: none !important;
-    animation: none !important;
-    transition: none !important;
-}
-
-/* Hide mdBook's default navigation arrows */
-.nav-chapters {
-    display: none !important;
-}
-
-/* Also hide the navigation arrows that appear on hover */
-.nav-wrapper .nav-chapters {
-    display: none !important;
-}
-
-/* Hide both left and right navigation buttons */
-.chapter .nav-wrapper {
-    display: none !important;
-}
-
-/* Alternative: if the above doesn't work, target them specifically */
-.previous, .next {
-    display: none !important;
-}
-
-/* Footnotes Styling */
-.footnotes {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 1em;
-    padding-top: 1em;
-    border-top: 1px solid #e5e7eb;
-    max-width: 100%;
-}
-
-.footnotes p {
-    margin: 0.5em 0;
-    line-height: 1.4;
-}
-
-/* Style for footnote references in tables */
-table sup {
-    font-size: 0.75em;
-    color: #3b82f6;
-    font-weight: 600;
-}
+/* =======================================================
+ * NAVIGATION AND SIDEBAR STYLES
+ * Complex navigation styles for different document types
+ * TODO: Phase 4 - Split into separate navigation modules
+ * ======================================================= */
 
 /* Simple Landing Page Cards */
 .simple-cards {
@@ -90,15 +18,15 @@ table sup {
 }
 
 .simple-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 20px;
-    transition: box-shadow 0.2s, transform 0.2s;
+    background: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-padding-lg);
+    transition: box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .simple-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
@@ -108,37 +36,39 @@ table sup {
 }
 
 .simple-card h3 a {
-    color: #1f2937;
+    color: var(--color-nav-dark);
     text-decoration: none;
 }
 
 .simple-card h3 a:hover {
-    color: #0969da;
+    color: var(--color-primary);
     text-decoration: underline;
 }
 
 .simple-card p {
     margin: 5px 0;
-    color: #6b7280;
+    color: var(--color-text-muted);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: var(--line-height-relaxed);
 }
 
 .simple-card .doc-count {
-    margin-top: 10px;
+    margin-top: var(--space-margin-sm);
     font-size: 12px;
-    font-weight: 600;
-    color: #0969da;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
 }
 
-.doc-card {
-    background: white;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 24px;
-    text-decoration: none !important;
-    color: inherit !important;
-    transition: all 0.3s ease;
+/* NOTE: This .doc-card definition should be removed - already in components/cards.css */
+a.doc-card,
+html .doc-card {
+    background: var(--color-bg-primary);
+    border: var(--border-width-medium) solid var(--color-border);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-padding-xl);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-slow) ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,17 +85,17 @@ table sup {
     left: 0;
     right: 0;
     height: 4px;
-    transition: height 0.3s ease;
+    transition: height var(--transition-slow) ease;
 }
 
-.ordinances-card::before { background: #3b82f6; }
-.resolutions-card::before { background: #10b981; }
-.interpretations-card::before { background: #f59e0b; }
-.transcripts-card::before { background: #8b5cf6; }
+.ordinances-card::before { background: var(--color-primary-light); }
+.resolutions-card::before { background: var(--color-secondary-light); }
+.interpretations-card::before { background: var(--color-warning-light); }
+.transcripts-card::before { background: var(--color-purple); }
 
 .doc-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-lg);
     border-color: transparent;
 }
 
@@ -180,27 +110,27 @@ table sup {
 }
 
 .doc-card h2 {
-    margin: 0 0 8px 0;
+    margin: 0 0 var(--space-margin-sm) 0;
     font-size: 20px;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-nav-dark);
 }
 
 .card-description {
-    color: #6b7280;
+    color: var(--color-text-muted);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: var(--line-height-relaxed);
     margin: 0 0 auto 0;
 }
 
 .card-stats {
-    margin-top: 16px;
+    margin-top: var(--space-margin-md);
     padding: 6px 12px;
-    background: #f3f4f6;
+    background: var(--color-bg-neutral);
     border-radius: 20px;
     font-size: 12px;
-    font-weight: 500;
-    color: #4b5563;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-gray);
 }
 
 /* Reduce spacing after horizontal rules when followed by headers */
@@ -224,33 +154,33 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Improve table contrast in blockquotes */
 blockquote table {
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border-gray);
 }
 
 blockquote table thead {
-    background-color: #f5f5f5;
-    border-bottom: 2px solid #ddd;
+    background-color: var(--color-bg-gray);
+    border-bottom: var(--border-width-medium) solid var(--color-border-gray);
 }
 
 blockquote table thead th {
-    background-color: #f5f5f5;
-    color: #333;
-    font-weight: 600;
-    border: 1px solid #ddd;
+    background-color: var(--color-bg-gray);
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    border: var(--border-width-thin) solid var(--color-border-gray);
 }
 
 blockquote table tbody tr {
-    background-color: white;
+    background-color: var(--color-bg-primary);
 }
 
 blockquote table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--color-bg-subtle);
 }
 
 blockquote table td {
-    border: 1px solid #ddd;
-    color: #333;
+    border: var(--border-width-thin) solid var(--color-border-gray);
+    color: var(--color-text);
 }
 
 /* Ensure text in blockquote tables is readable */
@@ -337,13 +267,14 @@ blockquote {
     padding: 4px;
 }
 
-.dropdown-item {
+a.dropdown-item,
+html .dropdown-item {
     display: block;
-    padding: 8px 12px;
-    color: #374151;
-    text-decoration: none !important;
+    padding: var(--space-padding-sm) 12px;
+    color: var(--color-text-medium);
+    text-decoration: none;
     font-size: 13px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     transition: background 0.15s;
 }
 
@@ -501,49 +432,45 @@ blockquote {
     color: #1f2937;
 }
 
-/* Override mdBook sidebar styling */
-.sidebar {
-    background: #fefefe !important;
-    border-right: 1px solid #e5e7eb !important;
+/* Override mdBook sidebar styling with higher specificity instead of !important */
+html .sidebar,
+.chapter .sidebar {
+    background: var(--color-bg-lighter);
+    border-right: var(--border-width-thin) solid var(--color-border);
 }
 
-.sidebar-scrollbox {
-    padding-bottom: 80px !important; /* More space for floating stats to prevent bounce */
-    overflow-y: auto !important;
+html .sidebar-scrollbox,
+.chapter .sidebar-scrollbox {
+    padding-bottom: 80px; /* More space for floating stats to prevent bounce */
+    overflow-y: auto;
     /* Don't restrict max-height - let mdBook handle it */
 }
 
-/* Override mdBook sidebar styling */
-.sidebar {
-    background: #fefefe !important;
-    border-right: 1px solid #e5e7eb !important;
+/* Sidebar Resize Handle - Higher specificity instead of !important */
+html #sidebar-resize-handle,
+html .sidebar-resize-handle {
+    width: 5px;
+    cursor: col-resize;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-/* Sidebar Resize Handle - Invisible until hover */
-#sidebar-resize-handle,
-.sidebar-resize-handle {
-    width: 5px !important;
-    cursor: col-resize !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+/* Hide the ugly default indicator with higher specificity */
+html .sidebar-resize-indicator {
+    display: none;
 }
 
-/* Hide the ugly default indicator */
-.sidebar-resize-indicator {
-    display: none !important;
+/* Visual feedback ONLY on hover - higher specificity */
+html #sidebar-resize-handle:hover,
+html .sidebar-resize-handle:hover {
+    background: rgba(100, 100, 100, 0.1);
 }
 
-/* Visual feedback ONLY on hover */
-#sidebar-resize-handle:hover,
-.sidebar-resize-handle:hover {
-    background: rgba(100, 100, 100, 0.1) !important;
-}
-
-/* Active state while dragging */
-.sidebar-resizing #sidebar-resize-handle,
-.sidebar-resizing .sidebar-resize-handle {
-    background: rgba(100, 100, 100, 0.2) !important;
+/* Active state while dragging - higher specificity */
+html .sidebar-resizing #sidebar-resize-handle,
+html .sidebar-resizing .sidebar-resize-handle {
+    background: rgba(100, 100, 100, 0.2);
 }
 
 /* Optional: Add a very subtle visual line on hover */
@@ -560,46 +487,46 @@ blockquote {
     border-radius: 1px;
 }
 
-/* Document list styling */
-.chapter li.chapter-item {
-    padding: 0 !important;
-    margin-bottom: 2px !important;
-    background: transparent !important;
-    border: none !important;
-    list-style: none !important;
+/* Document list styling - higher specificity */
+html .chapter li.chapter-item {
+    padding: 0;
+    margin-bottom: 2px;
+    background: transparent;
+    border: none;
+    list-style: none;
 }
 
-/* Remove ONLY sidebar numbering - be very specific */
-.sidebar .sidebar-scrollbox ol.chapter {
-    list-style-type: none !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+/* Remove ONLY sidebar numbering - higher specificity instead of !important */
+html .sidebar .sidebar-scrollbox ol.chapter {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
 }
 
-.sidebar .sidebar-scrollbox ol.chapter li {
-    list-style-type: none !important;
-    list-style: none !important;
+html .sidebar .sidebar-scrollbox ol.chapter li {
+    list-style-type: none;
+    list-style: none;
 }
 
-/* Target the actual list items directly */
-.sidebar ol {
-    list-style-type: none !important;
-    list-style: none !important;
+/* Target the actual list items directly - higher specificity */
+html .sidebar ol {
+    list-style-type: none;
+    list-style: none;
 }
 
-.sidebar li {
-    list-style-type: none !important;
-    list-style: none !important;
+html .sidebar li {
+    list-style-type: none;
+    list-style: none;
 }
 
-/* Remove numbers from nested lists too */
-.sidebar ol ol {
-    list-style-type: none !important;
+/* Remove numbers from nested lists too - higher specificity */
+html .sidebar ol ol {
+    list-style-type: none;
 }
 
-/* Force removal with universal selector within sidebar */
-.sidebar * {
-    list-style-type: none !important;
+/* Force removal with universal selector within sidebar - higher specificity */
+html .sidebar * {
+    list-style-type: none;
 }
 
 /* But preserve the main content area lists */
@@ -611,62 +538,65 @@ blockquote {
     list-style-type: disc;
 }
 
-.chapter li.chapter-item a.doc-link {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 8px 10px !important;
-    font-size: 12px !important;
+/* Navigation links - higher specificity instead of !important */
+html .chapter li.chapter-item a.doc-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-margin-sm);
+    padding: var(--space-padding-sm) var(--space-margin-sm);
+    font-size: 12px;
     cursor: pointer;
-    border-radius: 4px !important;
+    border-radius: var(--border-radius-sm);
     transition: background-color 0.15s ease, transform 0.15s ease;
-    border: 1px solid transparent !important;
+    border: var(--border-width-thin) solid transparent;
     position: relative;
     background: transparent;
-    line-height: 1.5 !important;
-    text-decoration: none !important;
-    color: inherit !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+    line-height: var(--line-height-relaxed);
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Fix mdBook section headers (Ordinances, Resolutions, etc) */
-.chapter > li.spacer {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 0 !important;
+/* Fix mdBook section headers - higher specificity instead of !important */
+html .chapter > li.spacer {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
 }
 
-.chapter > li.part-title {
-    background: #f1f3f4 !important;
-    font-weight: 600 !important;
-    font-size: 11px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 10px 0 5px 0 !important;
-    padding: 6px 10px !important;
-    color: #666 !important;
-    cursor: default !important;
-    border: none !important;
+/* Section headers - higher specificity instead of !important */
+html .chapter > li.part-title {
+    background: var(--color-bg-cool);
+    font-weight: var(--font-weight-semibold);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: var(--space-margin-sm) 0 5px 0;
+    padding: 6px var(--space-margin-sm);
+    color: var(--color-text-light);
+    cursor: default;
+    border: none;
 }
 
-/* Hide empty anchor tags that create space */
-.chapter li > a:empty {
-    display: none !important;
+/* Hide empty anchor tags that create space - higher specificity */
+html .chapter li > a:empty {
+    display: none;
 }
 
-/* Hide separator lines between sections */
-.chapter > li.affix {
-    display: none !important;
+/* Hide separator lines between sections - higher specificity */
+html .chapter > li.affix {
+    display: none;
 }
 
-.chapter li a {
-    color: #333 !important;
-    text-decoration: none !important;
-    display: block !important;
-    font-size: 12px !important;
+/* General chapter links - higher specificity instead of !important */
+html .chapter li a {
+    color: var(--color-text);
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
 }
 
 /* Format the ordinance number to stand out */
@@ -678,52 +608,54 @@ blockquote {
     font-size: 12px;
 }
 
-/* Style the ordinance number differently */
-.chapter a:not(.toggle) {
-    color: #333 !important;
+/* Style the ordinance number differently - higher specificity */
+html .chapter a:not(.toggle) {
+    color: var(--color-text);
 }
 
-.chapter li:not(.selected):not(.active) a.doc-link:hover {
-    background: #f8f9fa !important;
-    border-color: #e9ecef !important;
+/* Hover states - higher specificity instead of !important */
+html .chapter li:not(.selected):not(.active) a.doc-link:hover {
+    background: var(--color-bg-light);
+    border-color: var(--color-border-light);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.chapter li.part-title:hover {
-    background: #f1f3f4 !important;
-    transform: none !important;
-    box-shadow: none !important;
+/* Part title hover - higher specificity */
+html .chapter li.part-title:hover {
+    background: var(--color-bg-cool);
+    transform: none;
+    box-shadow: none;
 }
 
-/* Aggressively override mdBook's default active styling */
-.sidebar .chapter li > a.active:not(.doc-link),
-.sidebar .chapter li.chapter-item > a.active:not(.doc-link) {
-    background: transparent !important;
-    color: inherit !important;
-    border: none !important;
-    border-left: none !important;
+/* Override mdBook's default active styling - higher specificity */
+html .sidebar .chapter li > a.active:not(.doc-link),
+html .sidebar .chapter li.chapter-item > a.active:not(.doc-link) {
+    background: transparent;
+    color: inherit;
+    border: none;
+    border-left: none;
 }
 
-/* Hide mdBook's default active state completely during transitions */
-.sidebar-transitioning .chapter li > a.active:not(.selected):not(.doc-link) {
-    background: transparent !important;
-    border: none !important;
-    transition: none !important;
+/* Hide mdBook's default active state during transitions - higher specificity */
+html .sidebar-transitioning .chapter li > a.active:not(.selected):not(.doc-link) {
+    background: transparent;
+    border: none;
+    transition: none;
 }
 
-/* Prevent any visual changes during transition */
-.sidebar-transitioning * {
-    transition: none !important;
+/* Prevent any visual changes during transition - higher specificity */
+html .sidebar-transitioning * {
+    transition: none;
 }
 
-/* When sidebar is under custom control, prevent any mdBook styling */
-.chapter.custom-controlled li > a.active:not(.doc-link):not(.selected) {
-    background: transparent !important;
-    color: inherit !important;
-    border: none !important;
-    border-left: none !important;
-    transition: none !important;
+/* Custom controlled sidebar - higher specificity instead of !important */
+html .chapter.custom-controlled li > a.active:not(.doc-link):not(.selected) {
+    background: transparent;
+    color: inherit;
+    border: none;
+    border-left: none;
+    transition: none;
 }
 
 /* Selected/active state for sidebar items - our custom classes */
@@ -735,51 +667,53 @@ blockquote {
 /* Use higher specificity to override any mdBook styles */
 .sidebar .chapter.custom-controlled li.selected,
 .sidebar .chapter.custom-controlled li.active,
-.sidebar .chapter li.selected,
-.sidebar .chapter li.active {
-    background: #e7f1ff !important;
-    margin-left: -10px !important;
-    margin-right: -10px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    border-left: 3px solid #0969da !important;
+/* Selected/active state styling - higher specificity instead of !important */
+html .sidebar .chapter li.selected,
+html .sidebar .chapter li.active {
+    background: var(--color-bg-blue-200);
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: var(--space-padding-sm);
+    padding-right: var(--space-padding-sm);
+    border-left: var(--border-width-thick) solid var(--color-primary);
 }
 
-.sidebar .chapter.custom-controlled li.selected > a.doc-link,
-.sidebar .chapter.custom-controlled li.active > a.doc-link,
-.sidebar .chapter.custom-controlled li a.doc-link.selected,
-.sidebar .chapter.custom-controlled li a.doc-link.active,
-.sidebar .chapter li.selected > a.doc-link,
-.sidebar .chapter li.active > a.doc-link,
-.sidebar .chapter li a.doc-link.selected,
-.sidebar .chapter li a.doc-link.active {
-    background: transparent !important;
-    padding-left: 7px !important;
-    box-shadow: none !important;
-    font-weight: 500 !important;
+/* Selected doc-links styling - higher specificity instead of !important */
+html .sidebar .chapter.custom-controlled li.selected > a.doc-link,
+html .sidebar .chapter.custom-controlled li.active > a.doc-link,
+html .sidebar .chapter.custom-controlled li a.doc-link.selected,
+html .sidebar .chapter.custom-controlled li a.doc-link.active,
+html .sidebar .chapter li.selected > a.doc-link,
+html .sidebar .chapter li.active > a.doc-link,
+html .sidebar .chapter li a.doc-link.selected,
+html .sidebar .chapter li a.doc-link.active {
+    background: transparent;
+    padding-left: 7px;
+    box-shadow: none;
+    font-weight: var(--font-weight-medium);
 }
 
-/* Hover state for selected items */
-.chapter li.selected > a:hover,
-.chapter li.active > a:hover,
-.chapter li.selected a.doc-link:hover,
-.chapter li.active a.doc-link:hover {
-    background: #dae9ff !important;
-    transform: none !important;
+/* Hover state for selected items - higher specificity */
+html .chapter li.selected > a:hover,
+html .chapter li.active > a:hover,
+html .chapter li.selected a.doc-link:hover,
+html .chapter li.active a.doc-link:hover {
+    background: var(--color-bg-blue-300);
+    transform: none;
 }
 
-/* Hover for non-selected items */
-.chapter li:not(.selected):not(.active) a:hover {
-    background: #f8f9fa !important;
-    border-color: #e9ecef !important;
+/* Hover for non-selected items - higher specificity */
+html .chapter li:not(.selected):not(.active) a:hover {
+    background: var(--color-bg-light);
+    border-color: var(--color-border-light);
 }
 
-/* Selected state for grouped items */
-.chapter li.grouped-item.selected > a,
-.chapter li.grouped-item.active > a {
-    margin-left: 0 !important;
-    padding-left: 7px !important;
-    margin-right: 0 !important;
+/* Selected state for grouped items - higher specificity */
+html .chapter li.grouped-item.selected > a,
+html .chapter li.grouped-item.active > a {
+    margin-left: 0;
+    padding-left: 7px;
+    margin-right: 0;
 }
 
 .doc-link {
@@ -842,22 +776,22 @@ blockquote {
 }
 */
 
-/* Topic groups */
-.topic-group {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+/* Topic groups - higher specificity */
+html .topic-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Grouped items under headers */
-.chapter-item.grouped-item {
-    margin-left: 10px !important;
-    margin-bottom: 2px !important;
+/* Grouped items under headers - higher specificity */
+html .chapter-item.grouped-item {
+    margin-left: var(--space-margin-sm);
+    margin-bottom: 2px;
 }
 
-.chapter-item.grouped-item a.doc-link {
-    padding-left: 10px !important;
-    font-size: 12px !important;
+html .chapter-item.grouped-item a.doc-link {
+    padding-left: var(--space-margin-sm);
+    font-size: 12px;
 }
 
 /* Right Panel */
@@ -1079,8 +1013,8 @@ blockquote {
         width: 250px;
     }
     
-    .content {
-        margin-right: 250px !important;
+    html .content {
+        margin-right: 250px;
     }
 }
 
@@ -1089,8 +1023,8 @@ blockquote {
         transform: translateX(100%);
     }
     
-    .content {
-        margin-right: 0 !important;
+    html .content {
+        margin-right: 0;
     }
 }
 

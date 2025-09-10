@@ -1,0 +1,41 @@
+/*
+ * Table Component
+ * Enhanced table styling, especially for tables in blockquotes
+ */
+
+/* Improve table contrast in blockquotes */
+blockquote table {
+    background-color: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border-gray);
+}
+
+blockquote table thead {
+    background-color: var(--color-bg-gray);
+    border-bottom: var(--border-width-medium) solid var(--color-border-gray);
+}
+
+blockquote table thead th {
+    background-color: var(--color-bg-gray);
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    border: var(--border-width-thin) solid var(--color-border-gray);
+}
+
+blockquote table tbody tr {
+    background-color: var(--color-bg-primary);
+}
+
+blockquote table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-subtle);
+}
+
+blockquote table td {
+    border: var(--border-width-thin) solid var(--color-border-gray);
+    color: var(--color-text);
+}
+
+/* Ensure text in blockquote tables is readable */
+blockquote table th,
+blockquote table td {
+    padding: var(--space-padding-sm) 12px;
+}

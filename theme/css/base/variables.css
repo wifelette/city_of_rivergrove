@@ -1,0 +1,181 @@
+/* CSS Custom Properties for City of Rivergrove Documentation Site
+ * Phase 1: Extracted from /custom.css to establish consistent design tokens
+ */
+
+:root {
+  /* ========== COLORS ========== */
+  
+  /* Primary Brand Colors */
+  --color-primary: #0969da;        /* Primary blue (10 uses) */
+  --color-primary-light: #3b82f6;  /* Lighter blue variant */
+  --color-primary-dark: #0550ae;   /* Darker blue variant */
+  --color-primary-hover: #2563eb;  /* Blue hover state */
+  
+  /* Secondary Colors */
+  --color-secondary: #059669;      /* Green accent */
+  --color-secondary-light: #10b981; /* Light green */
+  --color-secondary-dark: #065f46; /* Dark green */
+  
+  /* Warning/Alert Colors */
+  --color-warning: #d97706;        /* Orange warning */
+  --color-warning-light: #f59e0b;  /* Light orange */
+  --color-warning-dark: #92400e;   /* Dark orange */
+  
+  /* Purple/Violet Colors */
+  --color-purple: #8b5cf6;         /* Purple accent */
+  --color-purple-light: #9333ea;   /* Light purple */
+  --color-purple-dark: #6b21a8;    /* Dark purple */
+  --color-violet: #7c3aed;         /* Violet variant */
+  --color-violet-dark: #5f3dc4;    /* Dark violet */
+  
+  /* Text Colors */
+  --color-text: #333;              /* Primary text (8 uses) */
+  --color-text-light: #666;        /* Secondary text (6 uses) */
+  --color-text-muted: #6b7280;     /* Muted text (5 uses) */
+  --color-text-dark: #111827;      /* Very dark text */
+  --color-text-medium: #374151;    /* Medium gray text */
+  --color-text-gray: #4b5563;      /* Gray text */
+  --color-text-secondary: #6c757d; /* Bootstrap-style secondary */
+  --color-text-tertiary: #495057;  /* Bootstrap-style tertiary */
+  --color-text-subtle: #9ca3af;    /* Subtle gray text */
+  --color-text-placeholder: #999;  /* Form placeholder text */
+  
+  /* Background Colors */
+  --color-bg-primary: #ffffff;     /* Pure white background */
+  --color-bg-light: #f8f9fa;       /* Light gray background (8 uses) */
+  --color-bg-lighter: #fefefe;     /* Almost white background */
+  --color-bg-gray: #f5f5f5;        /* Light gray background */
+  --color-bg-subtle: #f9f9f9;      /* Subtle background */
+  --color-bg-muted: #f7f9fa;       /* Muted background */
+  --color-bg-neutral: #f3f4f6;     /* Neutral background (3 uses) */
+  --color-bg-cool: #f1f3f4;        /* Cool background (3 uses) */
+  --color-bg-slate: #f9fafb;       /* Slate background */
+  
+  /* Blue Backgrounds */
+  --color-bg-blue-50: #eff6ff;     /* Very light blue background */
+  --color-bg-blue-100: #dbeafe;    /* Light blue background */
+  --color-bg-blue-200: #e7f1ff;    /* Blue tint background */
+  --color-bg-blue-300: #dae9ff;    /* Medium blue background */
+  --color-bg-blue-400: #f0f3ff;    /* Pale blue background */
+  
+  /* Green Backgrounds */
+  --color-bg-green-50: #d1fae5;    /* Light green background */
+  
+  /* Purple/Violet Backgrounds */
+  --color-bg-purple-50: #ede9fe;   /* Light purple background */
+  
+  /* Yellow Backgrounds */
+  --color-bg-yellow-50: #fef3c7;   /* Light yellow background */
+  
+  /* Border Colors */
+  --color-border: #e5e7eb;         /* Primary border (8 uses) */
+  --color-border-light: #e9ecef;   /* Light border (6 uses) */
+  --color-border-medium: #dee2e6;  /* Medium border (4 uses) */
+  --color-border-gray: #ddd;       /* Gray border (4 uses) */
+  --color-border-muted: #d1d5db;   /* Muted border (3 uses) */
+  --color-border-subtle: #adb5bd;  /* Subtle border */
+  
+  /* Special Colors */
+  --color-link: #5e9cce;           /* Custom link color */
+  --color-nav-dark: #1f2937;       /* Dark navigation background */
+  
+  /* ========== SPACING ========== */
+  
+  /* Base spacing unit (typically 4px or 8px) */
+  --space-base: 4px;
+  
+  /* Spacing scale */
+  --space-xs: 2px;                 /* Extra small spacing */
+  --space-sm: 4px;                 /* Small spacing */
+  --space-md: 8px;                 /* Medium spacing */
+  --space-lg: 12px;                /* Large spacing */
+  --space-xl: 16px;                /* Extra large spacing */
+  --space-2xl: 20px;               /* 2X large spacing */
+  --space-3xl: 24px;               /* 3X large spacing */
+  --space-4xl: 32px;               /* 4X large spacing */
+  
+  /* Common spacing values found in the CSS */
+  --space-padding-sm: 8px;         /* Small padding */
+  --space-padding-md: 16px;        /* Medium padding */
+  --space-padding-lg: 20px;        /* Large padding */
+  --space-padding-xl: 24px;        /* Extra large padding */
+  --space-padding-2xl: 32px;       /* 2X large padding */
+  
+  /* Margin values */
+  --space-margin-sm: 8px;          /* Small margin */
+  --space-margin-md: 16px;         /* Medium margin */
+  --space-margin-lg: 24px;         /* Large margin */
+  --space-margin-xl: 32px;         /* Extra large margin */
+  
+  /* Layout spacing */
+  --space-layout-sm: 280px;        /* Small layout spacing (sidebar) */
+  --space-layout-md: 300px;        /* Medium layout spacing */
+  --space-gap-sm: 10px;            /* Small gap */
+  --space-gap-md: 20px;            /* Medium gap */
+  --space-gap-lg: 30px;            /* Large gap */
+  
+  /* ========== TYPOGRAPHY ========== */
+  
+  /* Font sizes */
+  --font-size-xs: 0.75em;          /* Extra small text */
+  --font-size-sm: 0.85em;          /* Small text */
+  --font-size-md: 1em;             /* Base text size */
+  --font-size-lg: 1.125em;         /* Large text */
+  --font-size-xl: 1.25em;          /* Extra large text */
+  
+  /* Line heights */
+  --line-height-tight: 1.2;        /* Tight line height */
+  --line-height-normal: 1.4;       /* Normal line height */
+  --line-height-relaxed: 1.5;      /* Relaxed line height */
+  --line-height-loose: 1.6;        /* Loose line height */
+  
+  /* Font weights */
+  --font-weight-normal: 400;       /* Normal font weight */
+  --font-weight-medium: 500;       /* Medium font weight */
+  --font-weight-semibold: 600;     /* Semi-bold font weight */
+  --font-weight-bold: 700;         /* Bold font weight */
+  
+  /* ========== BORDERS AND RADIUS ========== */
+  
+  /* Border radius */
+  --border-radius-sm: 4px;         /* Small border radius */
+  --border-radius-md: 6px;         /* Medium border radius */
+  --border-radius-lg: 8px;         /* Large border radius */
+  --border-radius-xl: 12px;        /* Extra large border radius */
+  
+  /* Border widths */
+  --border-width-thin: 1px;        /* Thin border */
+  --border-width-medium: 2px;      /* Medium border */
+  --border-width-thick: 3px;       /* Thick border */
+  
+  /* ========== SHADOWS ========== */
+  
+  /* Box shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);              /* Small shadow */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);            /* Medium shadow */
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);          /* Large shadow */
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);          /* Extra large shadow */
+  
+  /* ========== TRANSITIONS ========== */
+  
+  /* Transition durations */
+  --transition-fast: 0.15s;        /* Fast transition */
+  --transition-normal: 0.2s;       /* Normal transition */
+  --transition-slow: 0.3s;         /* Slow transition */
+  
+  /* Transition easings */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);      /* Smooth ease in-out */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);           /* Ease out */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);            /* Ease in */
+  
+  /* ========== Z-INDEX SCALE ========== */
+  
+  --z-dropdown: 1000;              /* Dropdown menus */
+  --z-sticky: 1020;                /* Sticky elements */
+  --z-fixed: 1030;                 /* Fixed elements */
+  --z-modal-backdrop: 1040;        /* Modal backdrops */
+  --z-modal: 1050;                 /* Modals */
+  --z-popover: 1060;               /* Popovers */
+  --z-tooltip: 1070;               /* Tooltips */
+  --z-toast: 1080;                 /* Toast notifications */
+}

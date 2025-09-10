@@ -1,0 +1,127 @@
+/*
+ * Card Components
+ * Reusable card styles for landing pages, document cards, etc.
+ */
+
+/* Simple Landing Page Cards */
+.simple-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-gap-md);
+    margin: var(--space-gap-lg) 0;
+}
+
+.simple-card {
+    background: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-padding-lg);
+    transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+.simple-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.simple-card h3 {
+    margin: 0 0 var(--space-margin-sm) 0;
+    font-size: 18px;
+}
+
+.simple-card h3 a {
+    color: var(--color-nav-dark);
+    text-decoration: none;
+}
+
+.simple-card h3 a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.simple-card p {
+    margin: 5px 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: var(--line-height-relaxed);
+}
+
+.simple-card .doc-count {
+    margin-top: var(--space-margin-sm);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}
+
+/* Document Cards */
+.doc-card {
+    background: var(--color-bg-primary);
+    border: var(--border-width-medium) solid var(--color-border);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-padding-xl);
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: all var(--transition-slow) ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transition: height var(--transition-slow) ease;
+}
+
+.ordinances-card::before { background: var(--color-primary-light); }
+.resolutions-card::before { background: var(--color-secondary-light); }
+.interpretations-card::before { background: var(--color-warning-light); }
+.transcripts-card::before { background: var(--color-purple); }
+
+.doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.doc-card:hover::before {
+    height: 8px;
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-margin-md);
+    opacity: 0.9;
+}
+
+.doc-card h2 {
+    margin: 0 0 var(--space-margin-sm) 0;
+    font-size: 20px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-nav-dark);
+}
+
+.card-description {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 auto 0;
+}
+
+.card-stats {
+    margin-top: var(--space-margin-md);
+    padding: 6px 12px;
+    background: var(--color-bg-neutral);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-gray);
+}
