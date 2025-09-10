@@ -28,7 +28,7 @@
     transform: translateX(-50%);
     background: var(--color-nav-dark);
     color: var(--color-bg-primary);
-    padding: var(--space-padding-xs) var(--space-padding-sm);
+    padding: 6px 12px;
     border-radius: var(--border-radius-sm);
     font-size: 12px;
     white-space: nowrap;
@@ -87,7 +87,7 @@
     transform: translateX(-50%);
     background: var(--color-nav-dark);
     color: var(--color-bg-primary);
-    padding: var(--space-padding-xs) var(--space-padding-sm);
+    padding: 6px 12px;
     border-radius: var(--border-radius-sm);
     font-size: 12px;
     white-space: nowrap;
