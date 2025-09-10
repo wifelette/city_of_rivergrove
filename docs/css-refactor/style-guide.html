@@ -225,12 +225,12 @@
                 <li><a href="#document-components">📄 Document Components</a></li>
                 <li><a href="#form-fields">📝 Form Fields <span class="toc-new">NEW</span></a></li>
                 <li><a href="#document-notes">📝 Document Notes <span class="toc-new">NEW</span></a></li>
+                <li><a href="#enhanced-lists">📋 Enhanced Lists <span class="toc-new">NEW</span></a></li>
                 <li><a href="#code-examples">💻 Code Examples</a></li>
                 <li><a href="#architecture">🏗️ Architecture</a></li>
                 <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
                     <strong>Coming Soon:</strong>
                 </li>
-                <li><a href="#enhanced-lists">Enhanced Lists <span class="toc-new">NEW</span></a></li>
                 <li><a href="#signatures">Signatures <span class="toc-new">NEW</span></a></li>
                 <li><a href="#navigation">Navigation <span class="toc-new">NEW</span></a></li>
             </ul>
@@ -588,6 +588,85 @@ March 9, 1976</div>
                 <li>Page references in H3 headers use <code>{{page:n}}</code> syntax</li>
                 <li>The postprocessor automatically adds styling classes</li>
                 <li>Multiple note items are stacked with proper spacing</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Enhanced Lists Section -->
+    <div class="style-section" id="enhanced-lists">
+        <h2>📝 Enhanced Lists</h2>
+        <p style="color: #666; margin-bottom: 20px;">Special list formatting for legal documents including letter lists, definition items, and custom numbering.</p>
+        
+        <div class="example-container">
+            <div class="example-title">Letter Lists (a, b, c)</div>
+            <div class="letter-item">
+                <span class="letter-marker">(a)</span>
+                <div class="letter-content">The City Council shall meet at least once per month</div>
+            </div>
+            <div class="letter-item">
+                <span class="letter-marker">(b)</span>
+                <div class="letter-content">Special meetings may be called by the Mayor or any three Council members</div>
+            </div>
+            <div class="letter-item">
+                <span class="letter-marker">(c)</span>
+                <div class="letter-content">All meetings shall comply with Oregon Public Meeting Law</div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Definition Items (Section Markers)</div>
+            <div class="definition-item">
+                <span class="definition-term">Section 1.</span>
+                <span class="definition-separator">—</span>
+                <span class="definition-text">Purpose and Intent. This ordinance establishes regulations for the protection of trees within the City of Rivergrove.</span>
+            </div>
+            <div class="definition-item">
+                <span class="definition-term">Section 2.</span>
+                <span class="definition-separator">—</span>
+                <span class="definition-text">Definitions. For the purposes of this ordinance, the following definitions shall apply.</span>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Custom Numbered Lists</div>
+            <ol class="custom-numbered-list" style="counter-reset: item 4">
+                <li><span class="custom-list-marker">5.</span>Public parks and recreation areas</li>
+                <li><span class="custom-list-marker">6.</span>Street construction, maintenance and lighting</li>
+                <li><span class="custom-list-marker">7.</span>Planning, zoning and subdivision control</li>
+            </ol>
+            <p style="margin-top: 15px; color: #666;">Note: Lists can start at any number using custom counter-reset</p>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Roman Numeral Lists</div>
+            <ol class="custom-numbered-list roman-numerals" style="list-style-type: none;">
+                <li><span class="custom-list-marker">i.</span>Initial review by Planning Commission</li>
+                <li><span class="custom-list-marker">ii.</span>Public hearing and comment period</li>
+                <li><span class="custom-list-marker">iii.</span>Final determination by City Council</li>
+            </ol>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">WHEREAS Clauses</div>
+            <div class="whereas-clause">
+                <span class="whereas-marker">WHEREAS,</span> the City of Rivergrove has authority under ORS Chapter 221 to enact ordinances for the governance of the City; and
+            </div>
+            <div class="whereas-clause">
+                <span class="whereas-marker">WHEREAS,</span> the City Council finds it necessary and appropriate to regulate certain activities to protect the public health, safety, and welfare; and
+            </div>
+            <div class="whereas-clause">
+                <span class="whereas-marker">WHEREAS,</span> these regulations have been reviewed and approved by the City Attorney;
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Processing Notes</div>
+            <ul>
+                <li>Letter lists are created by the postprocessor from <code>(a)</code> patterns</li>
+                <li>Definition items are detected from <code>Section X.</code> patterns</li>
+                <li>Custom numbering preserves original document numbering</li>
+                <li>WHEREAS clauses get special emphasis styling</li>
+                <li>All enhanced lists maintain semantic HTML structure</li>
             </ul>
         </div>
     </div>
