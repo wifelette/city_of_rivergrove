@@ -1,0 +1,442 @@
+/*
+ * Navigation Component Styles
+ * Handles sidebar navigation for all document types
+ * Phase 4: Extracted from custom.css
+ */
+
+/* ========================================
+ * NAVIGATION SIDEBAR BASE
+ * ======================================== */
+
+/* Override mdBook sidebar styling with higher specificity */
+html .sidebar,
+.chapter .sidebar {
+    background: var(--color-bg-lighter);
+    border-right: var(--border-width-thin) solid var(--color-border);
+}
+
+html .sidebar-scrollbox,
+.chapter .sidebar-scrollbox {
+    padding-bottom: 80px; /* More space for floating stats to prevent bounce */
+    overflow-y: auto;
+}
+
+/* Sidebar Resize Handle */
+html #sidebar-resize-handle,
+html .sidebar-resize-handle {
+    width: 5px;
+    cursor: col-resize;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Hide the ugly default indicator */
+html .sidebar-resize-indicator {
+    display: none;
+}
+
+/* Visual feedback ONLY on hover */
+html #sidebar-resize-handle:hover,
+html .sidebar-resize-handle:hover {
+    background: rgba(100, 100, 100, 0.1);
+}
+
+/* Active state while dragging */
+html .sidebar-resizing #sidebar-resize-handle,
+html .sidebar-resizing .sidebar-resize-handle {
+    background: rgba(100, 100, 100, 0.2);
+}
+
+/* Add a very subtle visual line on hover */
+#sidebar-resize-handle:hover::before,
+.sidebar-resize-handle:hover::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 30px;
+    background: rgba(100, 100, 100, 0.3);
+    border-radius: 1px;
+}
+
+/* ========================================
+ * SIDEBAR LIST STRUCTURE
+ * ======================================== */
+
+/* Remove sidebar numbering */
+html .sidebar .sidebar-scrollbox ol.chapter {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+html .sidebar .sidebar-scrollbox ol.chapter li {
+    list-style-type: none;
+    list-style: none;
+}
+
+html .sidebar ol {
+    list-style-type: none;
+    list-style: none;
+}
+
+html .sidebar li {
+    list-style-type: none;
+    list-style: none;
+}
+
+html .sidebar ol ol {
+    list-style-type: none;
+}
+
+html .sidebar * {
+    list-style-type: none;
+}
+
+/* Preserve the main content area lists */
+.content ol {
+    list-style-type: decimal;
+}
+
+.content ul {
+    list-style-type: disc;
+}
+
+/* ========================================
+ * NAVIGATION CONTROLS
+ * ======================================== */
+
+/* Navigation header container */
+.nav-header {
+    padding: var(--space-padding-md);
+    background: var(--color-bg-light);
+    border-bottom: var(--border-width-thin) solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-margin-sm);
+}
+
+/* View toggle buttons */
+.nav-view-toggle {
+    display: flex;
+    gap: 2px;
+    background: #e5e7eb;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.nav-btn {
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #6b7280;
+    flex: 1;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+.nav-btn.active {
+    background: #0969da;
+    color: white;
+    border-color: #0969da;
+}
+
+.nav-btn.active:hover {
+    background: #0550ae;
+}
+
+/* Document count stats */
+.nav-stats {
+    font-size: 10px;
+    color: #6b7280;
+    text-align: center;
+    padding: 8px 12px;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 101;
+    margin-top: auto;
+}
+
+.nav-stats #docCount {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ========================================
+ * DOCUMENT LIST ITEMS
+ * ======================================== */
+
+/* Document list styling */
+html .chapter li.chapter-item {
+    padding: 0;
+    margin-bottom: 2px;
+    background: transparent;
+    border: none;
+    list-style: none;
+}
+
+/* Navigation links */
+html .chapter li.chapter-item a.doc-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-margin-sm);
+    padding: var(--space-padding-sm) var(--space-margin-sm);
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    border: var(--border-width-thin) solid transparent;
+    position: relative;
+    background: transparent;
+    line-height: var(--line-height-relaxed);
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* General chapter links */
+html .chapter li a {
+    color: var(--color-text);
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+}
+
+/* Format the ordinance number to stand out */
+.chapter li a::before {
+    content: '';
+}
+
+.chapter a[href*="ordinances"] {
+    font-size: 12px;
+}
+
+/* Style the ordinance number differently */
+html .chapter a:not(.toggle) {
+    color: var(--color-text);
+}
+
+/* ========================================
+ * SECTION HEADERS
+ * ======================================== */
+
+/* Fix mdBook section headers */
+html .chapter > li.spacer {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}
+
+/* Section headers */
+html .chapter > li.part-title {
+    background: var(--color-bg-cool);
+    font-weight: var(--font-weight-semibold);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: var(--space-margin-sm) 0 5px 0;
+    padding: 6px var(--space-margin-sm);
+    color: var(--color-text-light);
+    cursor: default;
+    border: none;
+}
+
+/* Hide empty anchor tags that create space */
+html .chapter li > a:empty {
+    display: none;
+}
+
+/* Hide separator lines between sections */
+html .chapter > li.affix {
+    display: none;
+}
+
+/* ========================================
+ * HOVER & ACTIVE STATES
+ * ======================================== */
+
+/* Hover states */
+html .chapter li:not(.selected):not(.active) a.doc-link:hover {
+    background: var(--color-bg-light);
+    border-color: var(--color-border-light);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Part title hover */
+html .chapter li.part-title:hover {
+    background: var(--color-bg-cool);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Override mdBook's default active styling */
+html .sidebar .chapter li > a.active:not(.doc-link),
+html .sidebar .chapter li.chapter-item > a.active:not(.doc-link) {
+    background: transparent;
+    color: inherit;
+    border: none;
+    border-left: none;
+}
+
+/* Hide mdBook's default active state during transitions */
+html .sidebar-transitioning .chapter li > a.active:not(.selected):not(.doc-link) {
+    background: transparent;
+    border: none;
+    transition: none;
+}
+
+/* Prevent any visual changes during transition */
+html .sidebar-transitioning * {
+    transition: none;
+}
+
+/* Custom controlled sidebar */
+html .chapter.custom-controlled li > a.active:not(.doc-link):not(.selected) {
+    background: transparent;
+    color: inherit;
+    border: none;
+    border-left: none;
+    transition: none;
+}
+
+/* ========================================
+ * SELECTED/ACTIVE DOCUMENT STATES
+ * ======================================== */
+
+/* Selected/active state for sidebar items */
+.sidebar .chapter li.selected,
+.sidebar .chapter li.active {
+    position: relative;
+}
+
+/* Use higher specificity for selected state */
+.sidebar .chapter.custom-controlled li.selected,
+.sidebar .chapter.custom-controlled li.active,
+html .sidebar .chapter li.selected,
+html .sidebar .chapter li.active {
+    background: var(--color-bg-blue-200);
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: var(--space-padding-sm);
+    padding-right: var(--space-padding-sm);
+    border-left: var(--border-width-thick) solid var(--color-primary);
+}
+
+/* Selected doc-links styling */
+html .sidebar .chapter.custom-controlled li.selected > a.doc-link,
+html .sidebar .chapter.custom-controlled li.active > a.doc-link,
+html .sidebar .chapter.custom-controlled li a.doc-link.selected,
+html .sidebar .chapter.custom-controlled li a.doc-link.active,
+html .sidebar .chapter li.selected > a.doc-link,
+html .sidebar .chapter li.active > a.doc-link,
+html .sidebar .chapter li a.doc-link.selected,
+html .sidebar .chapter li a.doc-link.active {
+    background: transparent;
+    padding-left: 7px;
+    box-shadow: none;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Hover state for selected items */
+html .chapter li.selected > a:hover,
+html .chapter li.active > a:hover,
+html .chapter li.selected a.doc-link:hover,
+html .chapter li.active a.doc-link:hover {
+    background: var(--color-bg-blue-300);
+    transform: none;
+}
+
+/* Hover for non-selected items */
+html .chapter li:not(.selected):not(.active) a:hover {
+    background: var(--color-bg-light);
+    border-color: var(--color-border-light);
+}
+
+/* Selected state for grouped items */
+html .chapter li.grouped-item.selected > a,
+html .chapter li.grouped-item.active > a {
+    margin-left: 0;
+    padding-left: 7px;
+    margin-right: 0;
+}
+
+/* ========================================
+ * DOCUMENT LINK COMPONENTS
+ * ======================================== */
+
+.doc-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.doc-link:hover {
+    background: #f8f9fa;
+    text-decoration: none;
+}
+
+.doc-number {
+    font-weight: 600;
+    color: #0969da;
+    min-width: 60px;
+    font-size: 11px;
+}
+
+.doc-title {
+    flex: 1;
+    font-size: 13px;
+}
+
+.doc-year {
+    color: #9ca3af;
+    font-size: 10px;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+/* ========================================
+ * GROUPED VIEWS (TOPIC/DECADE)
+ * ======================================== */
+
+/* Topic groups */
+html .topic-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Grouped items under headers */
+html .chapter-item.grouped-item {
+    margin-left: var(--space-margin-sm);
+    margin-bottom: 2px;
+}
+
+html .chapter-item.grouped-item a.doc-link {
+    padding-left: var(--space-margin-sm);
+    font-size: 12px;
+}

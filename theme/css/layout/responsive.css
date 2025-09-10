@@ -1,0 +1,222 @@
+/*
+ * Responsive Design Styles
+ * Media queries and responsive adjustments
+ * Phase 4: Extracted from custom.css
+ */
+
+/* ========================================
+ * TABLET BREAKPOINT (1200px)
+ * ======================================== */
+
+@media (max-width: 1200px) {
+    /* Right panel adjustments */
+    .right-panel {
+        width: 250px;
+    }
+    
+    .relationship-items {
+        max-height: 200px;
+    }
+}
+
+/* ========================================
+ * MOBILE BREAKPOINT (768px)
+ * ======================================== */
+
+@media (max-width: 768px) {
+    /* Right panel - always collapsed on mobile */
+    .right-panel {
+        transform: translateX(100%);
+    }
+    
+    .right-panel.collapsed {
+        transform: translateX(100%);
+    }
+    
+    /* Navigation adjustments */
+    .nav-header {
+        padding: var(--space-padding-sm);
+    }
+    
+    .nav-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-margin-sm);
+    }
+    
+    .nav-view-toggle {
+        width: 100%;
+    }
+    
+    /* Document cards responsive */
+    .simple-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Form controls */
+    .nav-section-selector {
+        width: 100%;
+    }
+    
+    .sort-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ========================================
+ * SMALL MOBILE BREAKPOINT (480px)
+ * ======================================== */
+
+@media (max-width: 480px) {
+    /* Further reduce padding on very small screens */
+    .nav-header {
+        padding: var(--space-padding-xs);
+    }
+    
+    /* Stack all controls vertically */
+    .nav-view {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Full width buttons */
+    .nav-btn {
+        width: 100%;
+    }
+    
+    /* Smaller text for space efficiency */
+    .doc-title {
+        font-size: 12px;
+    }
+    
+    .doc-number {
+        font-size: 10px;
+        min-width: 50px;
+    }
+}
+
+/* ========================================
+ * PRINT STYLES
+ * ======================================== */
+
+@media print {
+    /* Hide navigation elements */
+    .sidebar,
+    .nav-header,
+    .nav-controls,
+    .nav-stats,
+    .right-panel,
+    #sidebar-resize-handle,
+    .sidebar-resize-handle {
+        display: none;
+    }
+    
+    /* Document notes print styling */
+    .document-note {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .document-note::after {
+        content: none; /* Hide emoji in print */
+    }
+    
+    /* Ensure content takes full width */
+    .content {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Page break control */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    table, blockquote, pre {
+        page-break-inside: avoid;
+    }
+    
+    /* Remove backgrounds and shadows */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* Ensure links are visible */
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    /* High contrast for printing */
+    body {
+        color: #000;
+        background: #fff;
+    }
+}
+
+/* ========================================
+ * HIGH DPI DISPLAYS
+ * ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Thinner borders for retina displays */
+    .nav-btn,
+    .section-dropdown-btn,
+    .doc-link {
+        border-width: 0.5px;
+    }
+}
+
+/* ========================================
+ * LANDSCAPE ORIENTATION
+ * ======================================== */
+
+@media (orientation: landscape) and (max-height: 600px) {
+    /* Reduce vertical spacing in landscape mode */
+    .nav-header {
+        padding: var(--space-padding-xs) var(--space-padding-sm);
+    }
+    
+    .nav-stats {
+        padding: 4px 8px;
+    }
+    
+    /* Smaller controls */
+    .nav-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
+/* ========================================
+ * DARK MODE SUPPORT
+ * ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* This section can be expanded when dark mode is implemented */
+    /* Currently placeholder for future dark mode support */
+}
+
+/* ========================================
+ * REDUCED MOTION
+ * ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    /* Remove all transitions and animations */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    /* Remove transform effects */
+    .doc-link:hover,
+    .nav-btn:hover,
+    .btn:hover {
+        transform: none;
+    }
+}

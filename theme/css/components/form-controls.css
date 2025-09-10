@@ -1,0 +1,300 @@
+/*
+ * Form Controls Component
+ * Buttons, dropdowns, toggles and form elements
+ * Phase 4: Extracted from custom.css
+ */
+
+/* ========================================
+ * SECTION SELECTOR DROPDOWN
+ * ======================================== */
+
+.nav-section-selector {
+    position: relative;
+    flex: 1;
+}
+
+.section-dropdown-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #374151;
+    font-weight: 500;
+}
+
+.section-dropdown-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.section-dropdown-btn .dropdown-arrow {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.nav-section-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+}
+
+.nav-section-dropdown.active {
+    display: block;
+}
+
+.section-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #374151;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.section-option:last-child {
+    border-bottom: none;
+}
+
+.section-option:hover {
+    background: #f9fafb;
+}
+
+.section-option.selected {
+    background: #eff6ff;
+    color: #0969da;
+    font-weight: 500;
+}
+
+/* ========================================
+ * SORT TOGGLE BUTTONS
+ * ======================================== */
+
+.sort-toggle {
+    display: inline-flex;
+    gap: 2px;
+    background: #e5e7eb;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.sort-toggle-btn {
+    width: 32px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #9ca3af;
+    padding: 0;
+    line-height: 1;
+}
+
+.sort-toggle-btn span {
+    display: block;
+    line-height: 1;
+}
+
+.sort-toggle-btn:hover {
+    color: #374151;
+}
+
+.sort-toggle-btn.active {
+    background: white;
+    color: #111827;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+/* ========================================
+ * SEARCH INPUT
+ * ======================================== */
+
+.nav-search {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.nav-search-input {
+    width: 100%;
+    padding: 8px 32px 8px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    transition: all 0.2s;
+}
+
+.nav-search-input:focus {
+    outline: none;
+    border-color: #0969da;
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+.nav-search-input::placeholder {
+    color: #9ca3af;
+}
+
+.nav-search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 14px;
+    line-height: 1;
+    display: none;
+}
+
+.nav-search-clear:hover {
+    color: #6b7280;
+}
+
+.nav-search-input:not(:placeholder-shown) ~ .nav-search-clear {
+    display: block;
+}
+
+/* ========================================
+ * VIEW MODE CONTROLS
+ * ======================================== */
+
+.nav-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-view {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-view label {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* ========================================
+ * GENERAL BUTTON STYLES
+ * ======================================== */
+
+.btn {
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--color-bg-light);
+    color: var(--color-text);
+    border: var(--border-width-thin) solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: var(--color-bg-lighter);
+    border-color: var(--color-border-dark);
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.btn-large {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+/* ========================================
+ * TOGGLE SWITCHES
+ * ======================================== */
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--color-primary);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+}

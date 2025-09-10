@@ -125,3 +125,56 @@
     font-weight: var(--font-weight-medium);
     color: var(--color-text-gray);
 }
+
+/* ========================================
+ * SIMPLE LANDING PAGE CARDS
+ * ======================================== */
+
+.simple-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.simple-card {
+    background: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-padding-lg);
+    transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+.simple-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.simple-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.simple-card h3 a {
+    color: var(--color-nav-dark);
+    text-decoration: none;
+}
+
+.simple-card h3 a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.simple-card p {
+    margin: 5px 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: var(--line-height-relaxed);
+}
+
+.simple-card .doc-count {
+    margin-top: var(--space-margin-sm);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}

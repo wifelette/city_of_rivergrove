@@ -39,3 +39,28 @@ blockquote table th,
 blockquote table td {
     padding: var(--space-padding-sm) 12px;
 }
+
+/* ========================================
+ * TABLE FOOTNOTES
+ * ======================================== */
+
+.table-footnotes {
+    margin-top: 0.5em;
+    padding: 0.75em;
+    background-color: #f8f9fa;
+    border-left: 3px solid #dee2e6;
+    font-size: 0.9em;
+    color: #495057;
+    border-radius: 4px;
+}
+
+/* Ensure footnotes are visually separated from tables */
+table + .table-footnotes {
+    margin-top: 1em;
+}
+
+/* Style for the footnote numbers and text */
+.table-footnotes p {
+    margin: 0.25em 0;
+    line-height: 1.5;
+}

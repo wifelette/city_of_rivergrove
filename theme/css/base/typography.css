@@ -1,0 +1,68 @@
+/*
+ * Typography Styles
+ * Base typography and heading styles
+ * Phase 4: Extracted from custom.css
+ */
+
+/* ========================================
+ * HEADING STYLES
+ * ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--color-nav-dark);
+    margin-top: 1.5rem;
+}
+
+/* Reduce spacing after horizontal rules when followed by headers */
+hr {
+    margin-bottom: 1.5rem;
+}
+
+hr + h1,
+hr + h2,
+hr + h3,
+hr + h4,
+hr + h5,
+hr + h6 {
+    margin-top: 0;
+}
+
+/* ========================================
+ * BLOCKQUOTE STYLES
+ * ======================================== */
+
+blockquote {
+    background-color: #f7f9fa;
+    border-left-color: #4a5568;
+}
+
+/* ========================================
+ * TABLE SPACING
+ * ======================================== */
+
+/* Regular tables (not in blockquotes) keep their default styling */
+table {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* ========================================
+ * SPECIAL FORMATTING
+ * ======================================== */
+
+/* Section references */
+.section-ref {
+    padding: 4px 8px;
+    background: #f0f3ff;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #5f3dc4;
+    font-family: monospace;
+}
+
+/* Hide hr when followed by document-note */
+hr:has(+ .document-note) {
+    display: none;
+}
