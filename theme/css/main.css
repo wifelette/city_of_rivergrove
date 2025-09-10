@@ -23,6 +23,7 @@
 
 /* Documents Layer - Document-specific styling */
 @import url('./documents/document-notes.css');
+@import url('./documents/enhanced-elements.css');
 
 /* Phase 5 Update: Form fields and custom list styles extracted from 
  * postprocessing scripts into modular CSS components.
