@@ -224,12 +224,12 @@
                 <li><a href="#tables">📊 Tables</a></li>
                 <li><a href="#document-components">📄 Document Components</a></li>
                 <li><a href="#form-fields">📝 Form Fields <span class="toc-new">NEW</span></a></li>
+                <li><a href="#document-notes">📝 Document Notes <span class="toc-new">NEW</span></a></li>
                 <li><a href="#code-examples">💻 Code Examples</a></li>
                 <li><a href="#architecture">🏗️ Architecture</a></li>
                 <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
                     <strong>Coming Soon:</strong>
                 </li>
-                <li><a href="#document-notes">Document Notes</a></li>
                 <li><a href="#enhanced-lists">Enhanced Lists <span class="toc-new">NEW</span></a></li>
                 <li><a href="#signatures">Signatures <span class="toc-new">NEW</span></a></li>
                 <li><a href="#navigation">Navigation <span class="toc-new">NEW</span></a></li>
@@ -496,6 +496,99 @@
                 <span class="relationship-count" style="background: #9333ea">2 Interpretations</span>
                 <span class="relationship-count" style="background: #059669">8 Related</span>
             </div>
+        </div>
+    </div>
+
+    <!-- Document Notes Section -->
+    <div class="style-section" id="document-notes">
+        <h2>📝 Document Notes</h2>
+        <p style="color: #666; margin-bottom: 20px;">Special formatting for document metadata, stamps, handwritten notes, and other annotations found on original documents.</p>
+        
+        <div class="example-container">
+            <div class="example-title">Complete Document Notes Section</div>
+            <div class="document-note">
+                <h2>Document Notes</h2>
+                <div class="note-item">
+                    <span class="note-type-label">Stamp<span class="label-separator"> · </span><span class="label-page-ref">PAGE 1</span></span>
+                    <div class="note-content">
+                        <p><strong>Return to:</strong><br>
+                        Executive Department<br>
+                        Intergovernmental Relations Division<br>
+                        ATTN: Dolores Streeter<br>
+                        155 Cottage St. NE<br>
+                        Salem, OR 97310</p>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <span class="note-type-label">Handwritten Notes<span class="label-separator"> · </span><span class="label-page-ref">PAGE 2</span></span>
+                    <div class="note-content">
+                        <p>I certify this to be a true copy.<br>
+                        Rosalie Morrison<br>
+                        City Recorder<br>
+                        March 9, 1976</p>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <span class="note-type-label">Footnotes<span class="label-separator"> · </span><span class="label-page-ref">PAGE 3</span></span>
+                    <div class="note-content">
+                        <ul>
+                            <li>* City Council, County Board of Commissioners</li>
+                            <li>** The Citizen Advisory Committee in Goal 1</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Markdown Syntax</div>
+            <div class="code-snippet">## Document Notes
+
+### Stamp {{page:1}}
+**Return to:**  
+Executive Department  
+Intergovernmental Relations Division  
+ATTN: Dolores Streeter  
+155 Cottage St. NE  
+Salem, OR 97310
+
+### Handwritten Notes {{page:2}}
+I certify this to be a true copy.
+Rosalie Morrison
+City Recorder
+March 9, 1976</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Note Type Labels</div>
+            <p>Common note types with automatic badge styling:</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <span class="note-type-label">Stamp</span>
+                <span class="note-type-label">Handwritten Notes</span>
+                <span class="note-type-label">Footnotes</span>
+                <span class="note-type-label">Typewritten Notes</span>
+                <span class="note-type-label">Marginalia</span>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Page References</div>
+            <p>Page references are automatically styled when using the <code>{{page:n}}</code> syntax:</p>
+            <div style="margin-top: 15px;">
+                <span class="note-type-label">Document Stamp<span class="label-separator"> · </span><span class="label-page-ref">PAGE 1</span></span><br><br>
+                <span class="note-type-label">Handwritten Addition<span class="label-separator"> · </span><span class="label-page-ref">PAGES 2-3</span></span>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Processing Notes</div>
+            <ul>
+                <li>The <code>## Document Notes</code> heading triggers automatic wrapper div creation</li>
+                <li>H3 headers within Document Notes become note type labels</li>
+                <li>Page references in H3 headers use <code>{{page:n}}</code> syntax</li>
+                <li>The postprocessor automatically adds styling classes</li>
+                <li>Multiple note items are stacked with proper spacing</li>
+            </ul>
         </div>
     </div>
 
