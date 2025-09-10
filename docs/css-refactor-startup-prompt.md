@@ -1,8 +1,14 @@
 # CSS Refactor Project - Startup Prompt for New Session
 
+## Project Background
+
+The City of Rivergrove documentation site is a digitization project converting physical ordinances, resolutions, and meeting records into a searchable mdBook site. The CSS was written incrementally over time without any architectural planning - each feature was added reactively, creating layers of hacks and overrides. We now have 128 `!important` declarations fighting against mdBook's defaults, making the site fragile and hard to maintain.
+
+This refactor aims to create a proper CSS architecture with modular components, eliminating technical debt while preserving all functionality.
+
 ## Initial Context Setting
 
-I'm continuing a CSS architecture refactor for the City of Rivergrove documentation site. The previous session set up all testing infrastructure and created a comprehensive plan. I need to pick up where we left off and begin the actual refactoring work.
+I'm continuing a CSS architecture refactor that has complete testing infrastructure ready. The previous session did all the setup work - now we need to do the actual refactoring.
 
 ## Branch and Environment
 
@@ -15,6 +21,18 @@ git checkout css-architecture-refactor
 ```
 
 ## Essential Documents to Read First (in order)
+
+### Project Context
+1. **`CLAUDE.md`** - READ FIRST
+   - Overall project instructions
+   - Leah's working preferences
+   - Document processing workflow
+   
+2. **`docs/digitization-guide.md`** - Project overview
+   - What this site is (City document digitization)
+   - Why CSS complexity grew (multiple document types, processing steps)
+
+### CSS Refactor Specific
 
 1. **`docs/css-refactor-handoff.md`** - START HERE
    - Complete project context
@@ -73,13 +91,28 @@ npm run lint:css
 
 ## Key Context You Need
 
-1. **The Problem**: We have 128 `!important` declarations because we're fighting mdBook's default styles instead of using proper theming. Files are scattered with no architecture.
+### Why This Mess Exists
+The CSS grew organically without planning:
+- Started with basic mdBook theme
+- Added feature after feature reactively
+- Each problem solved with quick fixes and `!important`
+- No architectural thinking or refactoring
+- Result: 128 `!important` declarations, scattered files, fragile system
 
-2. **The Solution**: Modular CSS architecture with proper mdBook theme integration, eliminating overrides in favor of clean theming.
+### The Bigger Picture
+This is a civic documentation project making city records accessible:
+- **Ordinances**: Laws and regulations
+- **Resolutions**: Council decisions  
+- **Interpretations**: Planning commission rulings
+- **Meeting Records**: Minutes, agendas, transcripts
 
-3. **Safety Net**: Visual regression tests ensure nothing breaks while refactoring. Run tests frequently!
+Each document type needed custom styling, leading to complexity.
 
-4. **Meeting Pages**: Don't waste time on Meeting pages - they have a known regression unrelated to CSS. Focus on working pages.
+### Technical Context
+1. **The Problem**: We're fighting mdBook's default styles with overrides instead of using proper theming
+2. **The Solution**: Modular CSS architecture with clean mdBook theme integration
+3. **Safety Net**: Visual regression tests ensure nothing breaks (90 tests ready!)
+4. **Meeting Pages**: Have a known regression unrelated to CSS - skip them
 
 ## Recommended First Actions
 
@@ -138,4 +171,25 @@ npm run metrics:css          # Track !important reduction
 
 ---
 
-*Use this prompt to start a new Claude session and continue the CSS refactor project with full context.*
+## Copy This to Start New Session:
+
+I need to continue a CSS refactor for the City of Rivergrove documentation site. This is a civic digitization project that grew without architectural planning - CSS was added piece by piece reactively, resulting in 128 `!important` declarations and a fragile system of overrides fighting mdBook's defaults.
+
+Please first read these documents on the `css-architecture-refactor` branch:
+1. `CLAUDE.md` - Project instructions and working preferences
+2. `docs/css-refactor-startup-prompt.md` - Complete refactor context
+3. `docs/css-refactor-handoff.md` - Current status and what's built
+
+The previous session set up complete testing infrastructure (visual regression, linting, metrics). Everything is ready to begin Phase 1: extracting CSS variables.
+
+Key context:
+- The CSS mess exists because features were added incrementally without planning
+- We have 90 visual regression tests as a safety net
+- Meeting pages have a known regression (unrelated to CSS) - skip them
+- Goal: Transform 128 !important hacks into clean, modular CSS architecture
+
+Please help me start Phase 1 of the actual refactoring work.
+
+---
+
+*This prompt ensures full context for continuing the CSS refactor project.*
