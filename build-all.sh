@@ -167,6 +167,11 @@ if [ -d "images" ]; then
     echo "  • Copying images directory..."
     cp -r images book/
 fi
+# Copy theme directory for CSS modules
+if [ -d "theme" ]; then
+    echo "  • Copying theme directory..."
+    cp -r theme book/
+fi
 # Copy navigation JavaScript
 if [ -f "navigation-standalone.js" ]; then
     echo "  • Copying navigation JavaScript..."

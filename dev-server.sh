@@ -128,6 +128,12 @@ process_file_change() {
         cp navigation-standalone.js book/ 2>/dev/null
     fi
     
+    # Copy theme files if CSS was updated
+    if [[ "$file" == *.css ]] || [[ "$file" == theme/* ]]; then
+        echo "  Copying theme to book directory..."
+        cp -r theme book/ 2>/dev/null || true
+    fi
+    
     # Apply postprocessors after mdBook rebuilds
     echo "  Applying custom formatting..."
     python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
