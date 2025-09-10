@@ -61,3 +61,93 @@ main {
 .previous, .next {
     display: none !important;
 }
+
+/* ========================================
+ * CUSTOM LIST OVERRIDES
+ * Override mdBook's default list numbering for legal documents
+ * ======================================== */
+
+/* Lists with custom markers */
+.custom-list-marker {
+    font-weight: var(--font-weight-semibold);
+    margin-right: 0.5em;
+}
+
+/* Definition items */
+.definition-item {
+    margin: 1em 0;
+}
+
+.definition-marker {
+    font-weight: var(--font-weight-semibold);
+    margin-right: 0.5em;
+}
+
+/* Roman numeral lists */
+.roman-list {
+    list-style: none;
+    padding-left: var(--space-padding-xxl);
+}
+
+.roman-list li {
+    margin: 0.5em 0;
+}
+
+.roman-marker {
+    font-weight: normal;
+    margin-right: 0.5em;
+}
+
+/* Lists with roman numerals in parentheses - override mdBook numbering */
+.roman-parenthetical-list {
+    list-style: none;
+    counter-reset: none;
+    padding-left: var(--space-padding-xxl);
+}
+
+.roman-parenthetical-list > li {
+    list-style: none;
+    position: relative;
+}
+
+.roman-parenthetical-list > li::before {
+    content: none;
+}
+
+/* Special numbered lists (e.g., starting at 1.4) */
+.special-start-list {
+    list-style: none;
+    padding-left: var(--space-padding-xxl);
+    counter-reset: none;
+}
+
+.special-start-list li {
+    margin: 0.5em 0;
+    position: relative;
+    list-style: none;
+}
+
+.special-start-list li::before {
+    content: none;
+}
+
+.special-list-number {
+    font-weight: var(--font-weight-semibold);
+    margin-right: 0.5em;
+    display: inline-block;
+    min-width: 2em;
+}
+
+/* Disable mdBook's automatic numbering for custom lists */
+ol:has(.custom-list-marker) {
+    list-style: none;
+    counter-reset: none;
+}
+
+ol:has(.custom-list-marker) li::before {
+    content: none;
+}
+
+ol.special-start-list li::before {
+    content: none;
+}

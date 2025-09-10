@@ -224,6 +224,14 @@ def add_custom_css(html_content):
     """Add custom CSS for our special list styles"""
     soup = BeautifulSoup(html_content, 'html.parser')
     
+    # CSS is now in modular files - no need to inject inline styles
+    # Styles are loaded via theme/css/main.css imports:
+    # - documents/form-fields.css
+    # - documents/custom-lists.css
+    return str(soup)
+    
+    # DEPRECATED: Inline styles moved to modular CSS architecture
+    """
     # Check if we've already added our custom CSS
     if soup.find('style', id='custom-list-styles'):
         return str(soup)
@@ -232,7 +240,7 @@ def add_custom_css(html_content):
     head = soup.find('head')
     if head:
         style = soup.new_tag('style', id='custom-list-styles')
-        style.string = """
+        style.string = \"\"\"
         /* Custom list styles for legal documents */
         .custom-list-marker {
             font-weight: bold;

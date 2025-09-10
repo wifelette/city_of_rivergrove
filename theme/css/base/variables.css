@@ -54,9 +54,12 @@
   /* Blue Backgrounds */
   --color-bg-blue-50: #eff6ff;     /* Very light blue background */
   --color-bg-blue-100: #dbeafe;    /* Light blue background */
-  --color-bg-blue-200: #e7f1ff;    /* Blue tint background */
-  --color-bg-blue-300: #dae9ff;    /* Medium blue background */
+  --color-bg-blue-200: #e3f2fd;    /* Form field blue background */
+  --color-bg-blue-300: #bbdefb;    /* Form field hover blue */
   --color-bg-blue-400: #f0f3ff;    /* Pale blue background */
+  
+  /* Primary color variants */
+  --color-primary-dark: #0d47a1;   /* Darker blue for borders */
   
   /* Green Backgrounds */
   --color-bg-green-50: #d1fae5;    /* Light green background */

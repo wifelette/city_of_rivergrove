@@ -19,10 +19,11 @@
 @import url('./components/navigation.css');
 @import url('./components/relationships-panel.css');
 @import url('./components/form-controls.css');
+@import url('./components/form-fields.css');
 
 /* Documents Layer - Document-specific styling */
 @import url('./documents/document-notes.css');
 
-/* Phase 4 Complete: Navigation and form components successfully extracted 
- * from custom.css into modular component files.
+/* Phase 5 Update: Form fields and custom list styles extracted from 
+ * postprocessing scripts into modular CSS components.
  */
