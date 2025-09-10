@@ -153,13 +153,15 @@ def process_definition_lists(html_content):
     """Convert definition-style paragraphs to structured lists"""
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # Look for patterns like "Term. Definition" or "Term: Definition"
+    # Look for patterns like "Section 1. Definition" or specific resolution sections
     for p in soup.find_all('p'):
         text = p.get_text()
         
-        # Check for definition pattern
-        match = re.match(r'^([^.]+)\.\s+(.+)$', text)
-        if match and len(match.group(1)) < 50:  # Term shouldn't be too long
+        # Only match specific patterns that are actual section definitions
+        # - "Section N." at the start
+        # - Single lowercase letter like "a." at the start  
+        match = re.match(r'^(Section \d+|[a-z])\.\s+(.+)$', text)
+        if match:
             term = match.group(1)
             definition = match.group(2)
             

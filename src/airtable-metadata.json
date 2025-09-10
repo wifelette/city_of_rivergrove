@@ -2,9 +2,9 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-31T18:52:43.825523",
-    "last_updated": "2025-09-02T12:06:47.969923",
-    "total_records": 44,
-    "last_partial_update": "2025-09-02T12:06:47.969889",
+    "last_updated": "2025-09-10T13:50:30.854043",
+    "total_records": 45,
+    "last_partial_update": "2025-09-10T13:50:30.853997",
     "incremental_updates": [
       {
         "filename": "1993-Ord-#57-93-Manufactured-Homes.md",
@@ -37,6 +37,10 @@
       {
         "filename": "1976-Res-#22-PC.md",
         "updated_at": "2025-09-02T12:06:47.969891"
+      },
+      {
+        "filename": "2001-Ord-#70-2001-WQRA.md",
+        "updated_at": "2025-09-10T13:50:30.853999"
       }
     ]
   },
@@ -752,6 +756,22 @@
       "digitized": true,
       "passed_date": "1978-06-12",
       "last_updated": "2025-08-30T19:38:44.000Z"
+    },
+    "2001-Ord-#70-2001-WQRA": {
+      "airtable_id": "recR0KFvHsPOxusuk",
+      "display_name": "Ordinance #70-2001",
+      "short_title": "Water Quality",
+      "type": "ordinance",
+      "year": 2001,
+      "doc_number": "70-2001",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/2001-Ord-%2370-2001-WQRA.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/2001-Ord-%2370-2001-WQRA.pdf",
+      "filename": "2001-Ord-%2370-2001-WQRA.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "2001-12-10",
+      "last_updated": "2025-08-30T19:38:45.000Z"
     }
   }
 }
