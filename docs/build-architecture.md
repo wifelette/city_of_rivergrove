@@ -42,6 +42,7 @@ graph TD
 5. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
 6. **mdBook additional files MUST be at root** - Files referenced in `book.toml` as `additional-css` or `additional-js` must exist at repository root (not in `/src`), or mdBook build will fail with "No such file or directory"
 7. **Navigation JavaScript must be copied to book/** - The `navigation-standalone.js` file must be copied to the `book/` directory during builds to prevent reverting to old versions
+8. **Theme CSS MUST be copied AFTER mdBook build** - mdBook cleans the book/ directory on build, so theme/ must be copied afterward. See [CSS Architecture and Build Order](css-architecture-and-build-order.md) for details
 
 ## Main Build Scripts
 

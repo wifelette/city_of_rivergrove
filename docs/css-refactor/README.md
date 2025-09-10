@@ -20,6 +20,7 @@ This directory contains all documentation related to the CSS architecture refact
 4. **[Phase 5 Complete](CSS-REFACTOR-PHASE-5-COMPLETE.md)** - Testing & documentation
 
 ### 🔧 Technical Documentation
+- **[CSS Architecture and Build Order](../css-architecture-and-build-order.md)** - CRITICAL: How CSS files are managed
 - **[CSS Testing Guide](README-CSS-TESTING.md)** - Visual regression testing setup
 - **[Refactor Handoff](../css-refactor-handoff.md)** - Project handoff documentation
 - **[Refactor Status](CSS-REFACTOR-STATUS.md)** - Current status tracking
@@ -85,9 +86,11 @@ theme/css/
 ## Build Integration
 
 ### Critical Requirements
+- **NEVER edit CSS files in book/** - they are auto-generated!
 - Theme directory must be copied AFTER mdBook builds
 - Postprocessors handle asset copying via `copy_assets()`
-- See [POSTPROCESSING-CSS-MIGRATION.md](POSTPROCESSING-CSS-MIGRATION.md) for details
+- See [CSS Architecture and Build Order](../css-architecture-and-build-order.md) for critical details
+- See [POSTPROCESSING-CSS-MIGRATION.md](POSTPROCESSING-CSS-MIGRATION.md) for migration details
 
 ## Tools & Scripts
 

@@ -4,5 +4,36 @@
   },
   "markdownlint.customRules": [
     ".markdownlint/rules/form-fields.js"
-  ]
+  ],
+  
+  // IMPORTANT: Don't edit files in book/ - they're auto-generated!
+  "files.watcherExclude": {
+    "book/**": true
+  },
+  
+  // Exclude book from search by default (it's generated)
+  "search.exclude": {
+    "book/**": true
+  },
+  
+  // Color code the book directory differently (if supported by theme)
+  "material-icon-theme.folders.associations": {
+    "book": "dist"
+  },
+  
+  // Add warning comment to CSS files in book/
+  "files.associations": {
+    "book/**/*.css": "css"
+  },
+  
+  // Make it harder to accidentally save in book/
+  "files.readonlyInclude": {
+    "book/**/*.css": true
+  },
+  
+  // Format on save for consistency
+  "editor.formatOnSave": true,
+  "[css]": {
+    "editor.formatOnSave": true
+  }
 }

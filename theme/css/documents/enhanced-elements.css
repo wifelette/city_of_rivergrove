@@ -6,7 +6,7 @@
 /* Letter-based lists (a), (b), (c) */
 .letter-item {
     margin: var(--space-padding-sm) 0;
-    padding-left: var(--space-padding-xxl);
+    padding-left: 40px;
     position: relative;
 }
 
@@ -65,7 +65,7 @@
 
 .custom-numbered-list li {
     margin: var(--space-padding-sm) 0;
-    padding-left: var(--space-padding-xxl);
+    padding-left: 40px;
     position: relative;
 }
 
@@ -79,13 +79,14 @@
 /* WHEREAS clauses (often in resolutions) */
 .whereas-clause {
     margin: var(--space-padding-xl) 0;
-    padding-left: var(--space-padding-xxl);
+    padding-left: 0;
     position: relative;
 }
 
 .whereas-marker {
     font-weight: var(--font-weight-bold);
     color: var(--color-nav-dark);
+    margin-right: 0.5em;
 }
 
 /* Section quotes */
@@ -158,7 +159,7 @@
 @media (max-width: 768px) {
     .letter-item,
     .custom-numbered-list li {
-        padding-left: var(--space-padding-xl);
+        padding-left: 30px;
     }
     
     .definition-item {

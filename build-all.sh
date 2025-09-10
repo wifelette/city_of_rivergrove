@@ -161,6 +161,8 @@ echo "  ✅ mdBook built"
 echo ""
 
 # STEP 11: Copy images and data files to book directory
+# CRITICAL: This MUST happen AFTER mdbook build, as mdbook cleans the book/ directory!
+# The theme/ directory contains our modular CSS architecture and must be copied here.
 echo "📂 Step 11: Copying images and data files..."
 # Copy all images to the book directory
 if [ -d "images" ]; then
@@ -186,6 +188,11 @@ if [ -f "src/airtable-metadata.json" ]; then
 fi
 echo "  ✅ Images and data files copied"
 echo ""
+
+# Add warnings to generated CSS files
+if [ -f "scripts/build/add-readonly-warnings.sh" ]; then
+    ./scripts/build/add-readonly-warnings.sh >/dev/null 2>&1
+fi
 
 # STEP 12: Apply custom formatting (MUST be after mdBook build)
 echo "🎨 Step 12: Applying custom formatting..."
