@@ -33,6 +33,7 @@ docs/
 ├── css-refactor/           # This directory
 │   ├── README.md          # You are here
 │   ├── style-guide.html   # Interactive style guide
+│   ├── POSTPROCESSING-CSS-MIGRATION.md # Build integration guide
 │   ├── Phase reports      # Completion documentation
 │   └── Technical guides   # Testing and setup
 ├── css-component-guide.md # Component documentation
@@ -67,11 +68,12 @@ theme/css/
 ## Key Achievements
 
 ### Metrics
-- **custom.css reduction**: 1131 → 183 lines (84% reduction)
+- **custom.css reduction**: 1131 → 20 lines (98% reduction)
 - **!important eliminated**: 128 → 0 (100% elimination)
-- **Modular files created**: 13 components
+- **Modular files created**: 15 components
 - **CSS variables**: 51+ design tokens
 - **Test stability**: 90/105 passing (85.7%)
+- **Inline CSS removed**: 560+ lines from Python processors
 
 ### Documentation
 - ✅ Complete component documentation
@@ -79,6 +81,13 @@ theme/css/
 - ✅ Architecture patterns
 - ✅ Validation tools
 - ✅ Migration guides
+
+## Build Integration
+
+### Critical Requirements
+- Theme directory must be copied AFTER mdBook builds
+- Postprocessors handle asset copying via `copy_assets()`
+- See [POSTPROCESSING-CSS-MIGRATION.md](POSTPROCESSING-CSS-MIGRATION.md) for details
 
 ## Tools & Scripts
 

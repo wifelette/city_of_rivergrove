@@ -335,12 +335,16 @@ def copy_assets():
     import shutil
     book_dir = Path("book")
     
-    # Copy theme directory if it exists
-    if Path("theme").exists() and not (book_dir / "theme").exists():
+    # Always remove and recopy theme directory
+    if (book_dir / "theme").exists():
+        shutil.rmtree(book_dir / "theme")
+    if Path("theme").exists():
         shutil.copytree("theme", book_dir / "theme")
     
-    # Copy images directory if it exists
-    if Path("images").exists() and not (book_dir / "images").exists():
+    # Always remove and recopy images directory  
+    if (book_dir / "images").exists():
+        shutil.rmtree(book_dir / "images")
+    if Path("images").exists():
         shutil.copytree("images", book_dir / "images")
 
 def main():

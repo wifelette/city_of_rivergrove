@@ -488,17 +488,30 @@ class DocumentProcessor:
         return soup
     
     def add_custom_css(self, soup):
-        """Add custom CSS for special formatting"""
+        """CSS is now in modular files - no need to inject inline styles"""
+        # Styles are loaded via theme/css/main.css imports:
+        # - documents/document-notes.css
+        # - components/form-fields.css  
+        # - layout/mdbook-overrides.css
         
-        # Remove old style tag if it exists (to update with new CSS)
+        # Remove any old inline styles
         old_style = soup.find('style', id='enhanced-formatting-styles')
         if old_style:
             old_style.decompose()
         
-        head = soup.find('head')
-        if head:
-            style = soup.new_tag('style', id='enhanced-formatting-styles')
-            style.string = """
+        return soup
+    
+    
+    # DEPRECATED CODE REMOVED - CSS now in modular files
+    # All styles moved to:
+    # - theme/css/documents/document-notes.css
+    # - theme/css/components/form-fields.css
+    # - theme/css/layout/mdbook-overrides.css
+    
+    """
+    # Old code kept for reference only:
+    style = soup.new_tag('style', id='enhanced-formatting-styles')
+    style.string = '''
             /* Enhanced formatting for special document types */
             
             /* Document Notes styling */
@@ -757,10 +770,9 @@ class DocumentProcessor:
                     page-break-inside: avoid;
                 }
             }
-            """
-            head.append(style)
-        
-        return soup
+    '''  # End of CSS string
+    # head.append(style)  # Commented out - CSS now in modular files
+    """
     
     def process_html_file(self, filepath):
         """Process a single HTML file with all enhancements"""
