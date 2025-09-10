@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City of Rivergrove - CSS Style Guide</title>
-    <link rel="stylesheet" href="theme/css/main.css">
+    <link rel="stylesheet" href="../../theme/css/main.css">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -123,16 +123,124 @@
             flex-wrap: wrap;
             align-items: center;
         }
+        
+        /* Table of Contents Styles */
+        .toc-container {
+            position: sticky;
+            top: 20px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        
+        .toc-container h3 {
+            margin-top: 0;
+            color: #0969da;
+            font-size: 16px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        
+        .toc-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .toc-list a:hover {
+            background: #f0f0f0;
+            color: #0969da;
+        }
+        
+        .toc-list .toc-new {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        
+        .main-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .content-area {
+            min-width: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="style-header">
         <h1>City of Rivergrove CSS Style Guide</h1>
-        <p>Interactive guide to the modular CSS architecture - Phase 5 Documentation</p>
+        <p>Interactive guide to the modular CSS architecture and design system</p>
     </div>
 
+    <div class="main-container">
+        <!-- Table of Contents -->
+        <aside class="toc-container">
+            <h3>📚 Contents</h3>
+            <ul class="toc-list">
+                <li><a href="#colors">🎨 Color Palette</a></li>
+                <li><a href="#typography">📝 Typography</a></li>
+                <li><a href="#spacing">📐 Spacing System</a></li>
+                <li><a href="#buttons">🔘 Buttons & Controls</a></li>
+                <li><a href="#cards">🎴 Card Components</a></li>
+                <li><a href="#tables">📊 Tables</a></li>
+                <li><a href="#document-components">📄 Document Components</a></li>
+                <li><a href="#code-examples">💻 Code Examples</a></li>
+                <li><a href="#architecture">🏗️ Architecture</a></li>
+                <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
+                    <strong>Coming Soon:</strong>
+                </li>
+                <li><a href="#form-fields">Form Fields <span class="toc-new">NEW</span></a></li>
+                <li><a href="#document-notes">Document Notes <span class="toc-new">NEW</span></a></li>
+                <li><a href="#enhanced-lists">Enhanced Lists <span class="toc-new">NEW</span></a></li>
+                <li><a href="#signatures">Signatures <span class="toc-new">NEW</span></a></li>
+                <li><a href="#navigation">Navigation <span class="toc-new">NEW</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="content-area">
+    
     <!-- Color Palette Section -->
-    <div class="style-section">
+    <div class="style-section" id="colors">
         <h2>🎨 Color Palette</h2>
         
         <div class="example-title">Primary Colors</div>
@@ -201,7 +309,7 @@
     </div>
 
     <!-- Typography Section -->
-    <div class="style-section">
+    <div class="style-section" id="typography">
         <h2>📝 Typography</h2>
         
         <div class="example-container">
@@ -225,7 +333,7 @@
     </div>
 
     <!-- Spacing Section -->
-    <div class="style-section">
+    <div class="style-section" id="spacing">
         <h2>📐 Spacing System</h2>
         
         <div class="example-container">
@@ -242,7 +350,7 @@
     </div>
 
     <!-- Buttons Section -->
-    <div class="style-section">
+    <div class="style-section" id="buttons">
         <h2>🔘 Buttons & Controls</h2>
         
         <div class="example-container">
@@ -282,7 +390,7 @@
     </div>
 
     <!-- Cards Section -->
-    <div class="style-section">
+    <div class="style-section" id="cards">
         <h2>🎴 Card Components</h2>
         
         <div class="example-container">
@@ -321,7 +429,7 @@
     </div>
 
     <!-- Tables Section -->
-    <div class="style-section">
+    <div class="style-section" id="tables">
         <h2>📊 Tables</h2>
         
         <div class="example-container">
@@ -359,7 +467,7 @@
     </div>
 
     <!-- Document Components Section -->
-    <div class="style-section">
+    <div class="style-section" id="document-components">
         <h2>📄 Document Components</h2>
         
         <div class="example-container">
@@ -392,7 +500,7 @@
     </div>
 
     <!-- Code Examples Section -->
-    <div class="style-section">
+    <div class="style-section" id="code-examples">
         <h2>💻 Code Examples</h2>
         
         <div class="example-container">
@@ -430,8 +538,57 @@
         </div>
     </div>
 
+    <!-- Form Fields Section -->
+    <div class="style-section" id="form-fields">
+        <h2>📝 Form Fields</h2>
+        <p style="color: #666; margin-bottom: 20px;">Form fields represent fillable areas in documents. They can be either filled (with blue background) or empty (with underline).</p>
+        
+        <div class="example-container">
+            <div class="example-title">Filled Form Fields</div>
+            <p>This document was approved by <span class="form-field-filled" data-tooltip="Field filled in on source doc">Mayor Susan Johnson</span> on <span class="form-field-filled">January 15, 2025</span>.</p>
+            <div class="code-snippet">Markdown: {{filled:Mayor Susan Johnson}} on {{filled:January 15, 2025}}</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Empty Form Fields (Different Sizes)</div>
+            <p>
+                Short: <span class="form-field-empty form-field-short" data-tooltip="This field was blank on the original document"></span><br>
+                Medium: <span class="form-field-empty form-field-medium" data-tooltip="This field was blank on the original document"></span><br>
+                Long: <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>
+            </p>
+            <div class="code-snippet">Markdown:
+Short: {{empty:short}}
+Medium: {{empty:medium}}  
+Long: {{empty:long}}</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Form Fields in Context</div>
+            <h3>Resolution <span class="form-field-filled">#301</span> - <span class="form-field-filled">Fee Schedule Update</span></h3>
+            <table style="margin-top: 15px;">
+                <tr>
+                    <td>Department:</td>
+                    <td><span class="form-field-filled">Planning & Development</span></td>
+                </tr>
+                <tr>
+                    <td>Effective Date:</td>
+                    <td><span class="form-field-empty form-field-medium"></span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Hover States & Tooltips</div>
+            <p>Both filled and empty fields show tooltips on hover. Try hovering over the fields above to see the tooltip behavior.</p>
+            <ul>
+                <li><strong>Filled fields:</strong> "Field filled in on source doc"</li>
+                <li><strong>Empty fields:</strong> "This field was blank on the original document"</li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Architecture Section -->
-    <div class="style-section">
+    <div class="style-section" id="architecture">
         <h2>🏗️ Architecture Overview</h2>
         
         <div class="example-container">
@@ -444,20 +601,23 @@
         </div>
 
         <div class="example-container">
-            <div class="example-title">Key Metrics</div>
+            <div class="example-title">CSS Design Principles</div>
             <ul>
-                <li><strong>Total CSS Files:</strong> 13 modular components</li>
-                <li><strong>CSS Variables:</strong> 51+ design tokens</li>
-                <li><strong>!important Usage:</strong> 0 (eliminated)</li>
-                <li><strong>custom.css Reduction:</strong> 84% (1131 → 183 lines)</li>
-                <li><strong>Test Coverage:</strong> 90/105 visual tests passing</li>
+                <li><strong>Modular Architecture:</strong> Component-based organization</li>
+                <li><strong>CSS Variables:</strong> Consistent design tokens throughout</li>
+                <li><strong>No !important:</strong> Clean specificity hierarchy</li>
+                <li><strong>Semantic Classes:</strong> Meaningful, descriptive naming</li>
+                <li><strong>Responsive First:</strong> Mobile-friendly by default</li>
             </ul>
         </div>
     </div>
 
+        </div> <!-- end content-area -->
+    </div> <!-- end main-container -->
+    
     <div class="style-header" style="margin-top: 40px; text-align: center">
-        <p style="color: #666; margin: 0">City of Rivergrove CSS Architecture</p>
-        <p style="color: #999; margin: 5px 0">Phase 5: Testing & Documentation</p>
+        <p style="color: #666; margin: 0">City of Rivergrove CSS Style Guide</p>
+        <p style="color: #999; margin: 5px 0">Version 1.0 - January 2025</p>
     </div>
 </body>
 </html>

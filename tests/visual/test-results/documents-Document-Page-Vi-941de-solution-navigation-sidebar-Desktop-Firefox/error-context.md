@@ -126,137 +126,144 @@
     - generic [ref=e126]:
       - generic [ref=e128]:
         - generic [ref=e129]:
-          - text: 
-          - button "Change theme" [ref=e130] [cursor=pointer]:
-            - generic [ref=e131] [cursor=pointer]: 
+          - generic [ref=e131] [cursor=pointer]: 
+          - button "Change theme" [ref=e132] [cursor=pointer]:
+            - generic [ref=e133] [cursor=pointer]: 
           - text: ✓
-          - button "Toggle Searchbar" [ref=e132] [cursor=pointer]:
-            - generic [ref=e133] [cursor=pointer]: 
-        - generic [ref=e134]:
-          - link "Print this book" [ref=e135] [cursor=pointer]:
+          - button "Toggle Searchbar" [ref=e134] [cursor=pointer]:
+            - generic [ref=e135] [cursor=pointer]: 
+        - heading "City of Rivergrove Documents" [level=1] [ref=e136] [cursor=pointer]
+        - generic [ref=e137]:
+          - link "Print this book" [ref=e138] [cursor=pointer]:
             - /url: ../print.html
-            - generic [ref=e136] [cursor=pointer]: 
-          - link "Git repository" [ref=e137] [cursor=pointer]:
+            - generic [ref=e139] [cursor=pointer]: 
+          - link "Git repository" [ref=e140] [cursor=pointer]:
             - /url: https://github.com/wifelette/city_of_rivergrove
-            - generic [ref=e138] [cursor=pointer]: 
+            - generic [ref=e141] [cursor=pointer]: 
       - text: 
-      - generic [ref=e139]:
-        - main [ref=e140]:
-          - heading "Resolution NO. 300 – 2024" [level=1] [ref=e141]:
-            - link "Resolution NO. 300 – 2024" [ref=e142] [cursor=pointer]:
+      - generic [ref=e142]:
+        - main [ref=e143]:
+          - heading "Resolution NO. 300 – 2024" [level=1] [ref=e144]:
+            - link "Resolution NO. 300 – 2024" [ref=e145] [cursor=pointer]:
               - /url: "#resolution-no-300--2024"
-          - paragraph [ref=e143]:
+          - paragraph [ref=e146]:
             - text: A resolution modifying the fee schedule of
-            - link "resolution 259-2018" [ref=e144] [cursor=pointer]:
+            - link "resolution 259-2018" [ref=e147] [cursor=pointer]:
               - /url: ../resolutions/2018-Res-259-Planning-Development-Fees.html
             - text: . This resolution changes exhibit 1 of
-            - link "resolution 259-2018" [ref=e145] [cursor=pointer]:
+            - link "resolution 259-2018" [ref=e148] [cursor=pointer]:
               - /url: ../resolutions/2018-Res-259-Planning-Development-Fees.html
             - text: . All fees listed on this resolution shall take effect April 9th, 2024.
-          - heading "Exhibit 1" [level=2] [ref=e146]:
-            - link "Exhibit 1" [ref=e147] [cursor=pointer]:
+          - heading "Exhibit 1" [level=2] [ref=e149]:
+            - link "Exhibit 1" [ref=e150] [cursor=pointer]:
               - /url: "#exhibit-1"
-          - paragraph [ref=e148]:
+          - paragraph [ref=e151]:
             - text: (replaces exhibit 1 in
-            - link "resolution 259-2018" [ref=e149] [cursor=pointer]:
+            - link "resolution 259-2018" [ref=e152] [cursor=pointer]:
               - /url: ../resolutions/2018-Res-259-Planning-Development-Fees.html
             - text: "- previous fees are listed in red)"
-          - heading "Fees" [level=3] [ref=e150]:
-            - link "Fees" [ref=e151] [cursor=pointer]:
+          - heading "Fees" [level=3] [ref=e153]:
+            - link "Fees" [ref=e154] [cursor=pointer]:
               - /url: "#fees"
-          - table [ref=e153]:
-            - rowgroup [ref=e154]:
-              - row "Fee Type Previous Fee New Fee" [ref=e155]:
-                - cell "Fee Type" [ref=e156]
-                - cell "Previous Fee" [ref=e157]
-                - cell "New Fee" [ref=e158]
-            - rowgroup [ref=e159]:
-              - row "Pre-Application Consultation Fee (up to 1 hour) $0 $500 (over 1 hour will be billed at actual cost)" [ref=e160]:
-                - cell "Pre-Application Consultation Fee (up to 1 hour)" [ref=e161]
-                - cell "$0" [ref=e162]
-                - cell "$500 (over 1 hour will be billed at actual cost)" [ref=e163]
-              - row "Building Structure permit review $25 $400 + actual cost" [ref=e164]:
-                - cell "Building Structure permit review" [ref=e165]
-                - cell "$25" [ref=e166]
-                - cell "$400 + actual cost" [ref=e167]
-              - row "Area Accessory Development Permit $65 $500 + actual cost" [ref=e168]:
-                - cell "Area Accessory Development Permit" [ref=e169]
-                - cell "$65" [ref=e170]
-                - cell "$500 + actual cost" [ref=e171]
-              - row "Variance Permit $0 $400 + actual cost" [ref=e172]:
-                - cell "Variance Permit" [ref=e173]
-                - cell "$0" [ref=e174]
-                - cell "$400 + actual cost" [ref=e175]
-              - row "Partition $0 $500 + actual cost" [ref=e176]:
-                - cell "Partition" [ref=e177]
-                - cell "$0" [ref=e178]
-                - cell "$500 + actual cost" [ref=e179]
-              - row "Sub-Development $0 $2,000 + actual cost" [ref=e180]:
-                - cell "Sub-Development" [ref=e181]
-                - cell "$0" [ref=e182]
-                - cell "$2,000 + actual cost" [ref=e183]
-              - row "Tree Cutting Permit (all types) $20/$30 $75 (per tree) + actual cost" [ref=e184]:
-                - cell "Tree Cutting Permit (all types)" [ref=e185]
-                - cell "$20/$30" [ref=e186]
-                - cell "$75 (per tree) + actual cost" [ref=e187]
-              - row "Inspections of Approved Conditions $0 $250 per inspection + actual cost" [ref=e188]:
-                - cell "Inspections of Approved Conditions" [ref=e189]
-                - cell "$0" [ref=e190]
-                - cell "$250 per inspection + actual cost" [ref=e191]
-              - row "Appeal of Type 1 Decision $250 $250" [ref=e192]:
-                - cell "Appeal of Type 1 Decision" [ref=e193]
-                - cell "$250" [ref=e194]
-                - cell "$250" [ref=e195]
-              - row "Appeal of Type II, III, IV Decision $0 $250 + Actual Cost" [ref=e196]:
-                - cell "Appeal of Type II, III, IV Decision" [ref=e197]
-                - cell "$0" [ref=e198]
-                - cell "$250 + Actual Cost" [ref=e199]
-              - row "System Development Fee $500 $500 per residential unit – Ordinance 82-2011" [ref=e200]:
-                - cell "System Development Fee" [ref=e201]
-                - cell "$500" [ref=e202]
-                - cell "$500 per residential unit – Ordinance 82-2011" [ref=e203]
-          - heading "Deposit Amounts (to cover “actual cost” portion of fee)" [level=3] [ref=e204]:
-            - link "Deposit Amounts (to cover “actual cost” portion of fee)" [ref=e205] [cursor=pointer]:
+          - table [ref=e156]:
+            - rowgroup [ref=e157]:
+              - row "Fee Type Previous Fee New Fee" [ref=e158]:
+                - cell "Fee Type" [ref=e159]
+                - cell "Previous Fee" [ref=e160]
+                - cell "New Fee" [ref=e161]
+            - rowgroup [ref=e162]:
+              - row "Pre-Application Consultation Fee (up to 1 hour) $0 $500 (over 1 hour will be billed at actual cost)" [ref=e163]:
+                - cell "Pre-Application Consultation Fee (up to 1 hour)" [ref=e164]
+                - cell "$0" [ref=e165]
+                - cell "$500 (over 1 hour will be billed at actual cost)" [ref=e166]
+              - row "Building Structure permit review $25 $400 + actual cost" [ref=e167]:
+                - cell "Building Structure permit review" [ref=e168]
+                - cell "$25" [ref=e169]
+                - cell "$400 + actual cost" [ref=e170]
+              - row "Area Accessory Development Permit $65 $500 + actual cost" [ref=e171]:
+                - cell "Area Accessory Development Permit" [ref=e172]
+                - cell "$65" [ref=e173]
+                - cell "$500 + actual cost" [ref=e174]
+              - row "Variance Permit $0 $400 + actual cost" [ref=e175]:
+                - cell "Variance Permit" [ref=e176]
+                - cell "$0" [ref=e177]
+                - cell "$400 + actual cost" [ref=e178]
+              - row "Partition $0 $500 + actual cost" [ref=e179]:
+                - cell "Partition" [ref=e180]
+                - cell "$0" [ref=e181]
+                - cell "$500 + actual cost" [ref=e182]
+              - row "Sub-Development $0 $2,000 + actual cost" [ref=e183]:
+                - cell "Sub-Development" [ref=e184]
+                - cell "$0" [ref=e185]
+                - cell "$2,000 + actual cost" [ref=e186]
+              - row "Tree Cutting Permit (all types) $20/$30 $75 (per tree) + actual cost" [ref=e187]:
+                - cell "Tree Cutting Permit (all types)" [ref=e188]
+                - cell "$20/$30" [ref=e189]
+                - cell "$75 (per tree) + actual cost" [ref=e190]
+              - row "Inspections of Approved Conditions $0 $250 per inspection + actual cost" [ref=e191]:
+                - cell "Inspections of Approved Conditions" [ref=e192]
+                - cell "$0" [ref=e193]
+                - cell "$250 per inspection + actual cost" [ref=e194]
+              - row "Appeal of Type 1 Decision $250 $250" [ref=e195]:
+                - cell "Appeal of Type 1 Decision" [ref=e196]
+                - cell "$250" [ref=e197]
+                - cell "$250" [ref=e198]
+              - row "Appeal of Type II, III, IV Decision $0 $250 + Actual Cost" [ref=e199]:
+                - cell "Appeal of Type II, III, IV Decision" [ref=e200]
+                - cell "$0" [ref=e201]
+                - cell "$250 + Actual Cost" [ref=e202]
+              - row "System Development Fee $500 $500 per residential unit – Ordinance 82-2011" [ref=e203]:
+                - cell "System Development Fee" [ref=e204]
+                - cell "$500" [ref=e205]
+                - cell "$500 per residential unit – Ordinance 82-2011" [ref=e206]
+          - heading "Deposit Amounts (to cover “actual cost” portion of fee)" [level=3] [ref=e207]:
+            - link "Deposit Amounts (to cover “actual cost” portion of fee)" [ref=e208] [cursor=pointer]:
               - /url: "#deposit-amounts-to-cover-actual-cost-portion-of-fee"
-          - table [ref=e207]:
-            - rowgroup [ref=e208]:
-              - row "Review Type Previous Deposit New Deposit" [ref=e209]:
-                - cell "Review Type" [ref=e210]
-                - cell "Previous Deposit" [ref=e211]
-                - cell "New Deposit" [ref=e212]
-            - rowgroup [ref=e213]:
-              - row "Type III Review for a dock $300 $2,500" [ref=e214]:
-                - cell "Type III Review for a dock" [ref=e215]
-                - cell "$300" [ref=e216]
-                - cell "$2,500" [ref=e217]
-              - row "Type III Review $1,000 $2,500" [ref=e218]:
-                - cell "Type III Review" [ref=e219]
-                - cell "$1,000" [ref=e220]
-                - cell "$2,500" [ref=e221]
-              - row "Type II Review $500 $1,500" [ref=e222]:
-                - cell "Type II Review" [ref=e223]
-                - cell "$500" [ref=e224]
-                - cell "$1,500" [ref=e225]
-              - row "Type I Review $400 $1,000" [ref=e226]:
-                - cell "Type I Review" [ref=e227]
-                - cell "$400" [ref=e228]
-                - cell "$1,000" [ref=e229]
-              - row "Partition $2,000 $2,500" [ref=e230]:
-                - cell "Partition" [ref=e231]
-                - cell "$2,000" [ref=e232]
-                - cell "$2,500" [ref=e233]
-              - row "Sub-Division $5,000 $5,000" [ref=e234]:
-                - cell "Sub-Division" [ref=e235]
-                - cell "$5,000" [ref=e236]
-                - cell "$5,000" [ref=e237]
-          - paragraph [ref=e238]:
-            - strong [ref=e239]: Actual Cost may include the City of Rivergrove Engineer, Planner, Attorney, City Manager, City Arborist, and other related fees.
-          - paragraph [ref=e240]: Where the City’s actual cost of review of the land use application does not amount to the total deposit, a refund to the applicant of any remaining balance of the deposit shall be issued within sixty (60) days of issuance of the land use decision.
-          - separator [ref=e241]
-          - paragraph [ref=e242]:
-            - strong [ref=e243]: Passed at the April 8, 2024 City of Rivergrove Meeting (4-1 vote)
+          - table [ref=e210]:
+            - rowgroup [ref=e211]:
+              - row "Review Type Previous Deposit New Deposit" [ref=e212]:
+                - cell "Review Type" [ref=e213]
+                - cell "Previous Deposit" [ref=e214]
+                - cell "New Deposit" [ref=e215]
+            - rowgroup [ref=e216]:
+              - row "Type III Review for a dock $300 $2,500" [ref=e217]:
+                - cell "Type III Review for a dock" [ref=e218]
+                - cell "$300" [ref=e219]
+                - cell "$2,500" [ref=e220]
+              - row "Type III Review $1,000 $2,500" [ref=e221]:
+                - cell "Type III Review" [ref=e222]
+                - cell "$1,000" [ref=e223]
+                - cell "$2,500" [ref=e224]
+              - row "Type II Review $500 $1,500" [ref=e225]:
+                - cell "Type II Review" [ref=e226]
+                - cell "$500" [ref=e227]
+                - cell "$1,500" [ref=e228]
+              - row "Type I Review $400 $1,000" [ref=e229]:
+                - cell "Type I Review" [ref=e230]
+                - cell "$400" [ref=e231]
+                - cell "$1,000" [ref=e232]
+              - row "Partition $2,000 $2,500" [ref=e233]:
+                - cell "Partition" [ref=e234]
+                - cell "$2,000" [ref=e235]
+                - cell "$2,500" [ref=e236]
+              - row "Sub-Division $5,000 $5,000" [ref=e237]:
+                - cell "Sub-Division" [ref=e238]
+                - cell "$5,000" [ref=e239]
+                - cell "$5,000" [ref=e240]
+          - paragraph [ref=e241]:
+            - strong [ref=e242]: Actual Cost may include the City of Rivergrove Engineer, Planner, Attorney, City Manager, City Arborist, and other related fees.
+          - paragraph [ref=e243]: Where the City’s actual cost of review of the land use application does not amount to the total deposit, a refund to the applicant of any remaining balance of the deposit shall be issued within sixty (60) days of issuance of the land use decision.
+          - separator [ref=e244]
+          - paragraph [ref=e245]:
+            - strong [ref=e246]: Passed at the April 8, 2024 City of Rivergrove Meeting (4-1 vote)
         - text:  
-    - navigation "Page navigation":  
-  - heading "Document Relationships" [level=3] [ref=e246]
-  - heading "Document Relationships" [level=3] [ref=e250]
+    - navigation "Page navigation":
+      - link "Previous chapter" [ref=e247] [cursor=pointer]:
+        - /url: ../resolutions/2019-Res-265-2019.html
+        - generic [ref=e248] [cursor=pointer]: 
+      - link "Next chapter" [ref=e249] [cursor=pointer]:
+        - /url: ../resolutions/2019-Res-41425-Public-Records.html
+        - generic [ref=e250] [cursor=pointer]: 
+  - heading "Document Relationships" [level=3] [ref=e253]
+  - heading "Document Relationships" [level=3] [ref=e257]
 ```

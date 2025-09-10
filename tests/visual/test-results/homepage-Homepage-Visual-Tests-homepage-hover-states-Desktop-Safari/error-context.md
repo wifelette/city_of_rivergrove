@@ -1,0 +1,89 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - heading "City of Rivergrove Documents" [level=1] [ref=e7] [cursor=pointer]
+      - generic [ref=e8]:
+        - link "Print this book" [ref=e9]:
+          - /url: print.html
+          - generic [ref=e10] [cursor=pointer]: 
+        - link "Git repository" [ref=e11]:
+          - /url: https://github.com/wifelette/city_of_rivergrove
+          - generic [ref=e12] [cursor=pointer]: 
+    - text: 
+    - generic [ref=e13]:
+      - main [ref=e14]:
+        - heading "City of Rivergrove Documents" [level=1] [ref=e15]:
+          - link "City of Rivergrove Documents" [ref=e16]:
+            - /url: "#city-of-rivergrove-documents"
+        - paragraph [ref=e17]: Welcome to the official digital repository of City of Rivergrove municipal documents.
+        - heading "Browse Documents by Type" [level=2] [ref=e18]:
+          - link "Browse Documents by Type" [ref=e19]:
+            - /url: "#browse-documents-by-type"
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - heading "Ordinances" [level=3] [ref=e22]:
+              - link:
+                - /url: "#ordinances"
+              - link "Ordinances" [ref=e23]:
+                - /url: ordinances/1974-Ord-16-Parks.html
+            - paragraph [ref=e24]: Local laws enacted by the City Council
+            - paragraph [ref=e25]: 21 documents
+          - generic [ref=e26]:
+            - heading "Resolutions" [level=3] [ref=e27]:
+              - link:
+                - /url: "#resolutions"
+              - link "Resolutions" [ref=e28]:
+                - /url: resolutions/1976-Res-22-PC.html
+            - paragraph [ref=e29]: Formal decisions and opinions by the City Council
+            - paragraph [ref=e30]: 7 documents
+          - generic [ref=e31]:
+            - heading "Planning Interpretations" [level=3] [ref=e32]:
+              - link:
+                - /url: "#planning-interpretations"
+              - link "Planning Interpretations" [ref=e33]:
+                - /url: interpretations/1997-07-07-RE-2.040h-permitting-adus.html
+            - paragraph [ref=e34]: Official interpretations of land use codes
+            - paragraph [ref=e35]: 12 documents
+          - generic [ref=e36]:
+            - heading "Meeting Records" [level=3] [ref=e37]:
+              - link:
+                - /url: "#meeting-records"
+              - link "Meeting Records" [ref=e38]:
+                - /url: agendas/2018-05-14-Agenda.html
+            - paragraph [ref=e39]: Council meeting agendas, transcripts and minutes
+            - paragraph [ref=e40]: 9 documents
+          - generic [ref=e41]:
+            - heading "Other Documents" [level=3] [ref=e42]:
+              - link:
+                - /url: "#other-documents"
+              - link "Other Documents" [ref=e43]:
+                - /url: other/1974-City-Charter.html
+            - paragraph [ref=e44]: City Charter, Comprehensive Plan, and other foundational documents
+            - paragraph [ref=e45]: 1 document
+        - heading "Quick Search" [level=2] [ref=e46]:
+          - link "Quick Search" [ref=e47]:
+            - /url: "#quick-search"
+        - paragraph [ref=e48]:
+          - text: Use the search box in the sidebar or press
+          - code [ref=e49]: /
+          - text: to search across all documents.
+        - heading "Document Status" [level=2] [ref=e50]:
+          - link "Document Status" [ref=e51]:
+            - /url: "#document-status"
+        - paragraph [ref=e52]: This is an ongoing digitization project. Documents are being added regularly as they are processed from the city’s archives. Each document has been carefully transcribed from original sources to ensure accuracy and searchability.
+        - heading "Contact" [level=2] [ref=e53]:
+          - link "Contact" [ref=e54]:
+            - /url: "#contact"
+        - paragraph [ref=e55]: For questions about specific documents or to report any issues, please reach out to Leah. If you are more tech savy, Pull Requests and Issues are welcome in the public repo!
+        - separator [ref=e56]
+        - paragraph [ref=e57]:
+          - emphasis [ref=e58]: This repository is maintained as part of Rivergrove Council Member Leah Silber’s personal commitment to transparency and public access to government records.
+      - text: 
+  - navigation "Page navigation":
+    - link "Next chapter" [ref=e59]:
+      - /url: other/1974-City-Charter.html
+      - generic [ref=e60]: 
+```

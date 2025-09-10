@@ -84,107 +84,114 @@
     - generic [ref=e86]:
       - generic [ref=e88]:
         - generic [ref=e89]:
-          - text: 
-          - button "Change theme" [ref=e90] [cursor=pointer]:
-            - generic [ref=e91] [cursor=pointer]: 
+          - generic [ref=e91] [cursor=pointer]: 
+          - button "Change theme" [ref=e92] [cursor=pointer]:
+            - generic [ref=e93] [cursor=pointer]: 
           - text: ✓
-          - button "Toggle Searchbar" [ref=e92] [cursor=pointer]:
-            - generic [ref=e93] [cursor=pointer]: 
-        - generic [ref=e94]:
-          - link "Print this book" [ref=e95] [cursor=pointer]:
+          - button "Toggle Searchbar" [ref=e94] [cursor=pointer]:
+            - generic [ref=e95] [cursor=pointer]: 
+        - heading "City of Rivergrove Documents" [level=1] [ref=e96] [cursor=pointer]
+        - generic [ref=e97]:
+          - link "Print this book" [ref=e98] [cursor=pointer]:
             - /url: ../print.html
-            - generic [ref=e96] [cursor=pointer]: 
-          - link "Git repository" [ref=e97] [cursor=pointer]:
+            - generic [ref=e99] [cursor=pointer]: 
+          - link "Git repository" [ref=e100] [cursor=pointer]:
             - /url: https://github.com/wifelette/city_of_rivergrove
-            - generic [ref=e98] [cursor=pointer]: 
+            - generic [ref=e101] [cursor=pointer]: 
       - text: 
-      - generic [ref=e99]:
-        - main [ref=e100]:
-          - heading "An Interpretation of the Planning Commission" [level=1] [ref=e101]:
-            - link "An Interpretation of the Planning Commission" [ref=e102] [cursor=pointer]:
+      - generic [ref=e102]:
+        - main [ref=e103]:
+          - heading "An Interpretation of the Planning Commission" [level=1] [ref=e104]:
+            - link "An Interpretation of the Planning Commission" [ref=e105] [cursor=pointer]:
               - /url: "#an-interpretation-of-the-planning-commission"
-          - heading "(May 7, 2001)" [level=2] [ref=e103]:
-            - link "(May 7, 2001)" [ref=e104] [cursor=pointer]:
+          - heading "(May 7, 2001)" [level=2] [ref=e106]:
+            - link "(May 7, 2001)" [ref=e107] [cursor=pointer]:
               - /url: "#may-7-2001"
-          - list [ref=e105]:
-            - listitem [ref=e106]:
+          - list [ref=e108]:
+            - listitem [ref=e109]:
               - text: "Section 5.2-4, Balanced Cut and Fill Standards, was added to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) by"
-              - link "Ordinance 62-98" [ref=e107] [cursor=pointer]:
+              - link "Ordinance 62-98" [ref=e110] [cursor=pointer]:
                 - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
               - text: ". It reads, in part, as follows:"
-          - paragraph [ref=e108]:
-            - strong [ref=e109]: “5.2-4 Balanced Cut and Fill Standards
-          - paragraph [ref=e110]: "(i) All development, excavation and fill in the areas of special flood hazard (i.e., the flood plain) shall conform to the following balanced cut and fill standards:"
-          - paragraph [ref=e111]: "*****"
-          - paragraph [ref=e112]: (iii) Any excavation below bankful stage shall not count toward compensation for fill since these areas would be full of water in the winter and not available to hold storm water;
-          - paragraph [ref=e113]: "***** “"
-          - list [ref=e114]:
-            - listitem [ref=e115]:
-              - paragraph [ref=e116]:
-                - text: The term “bankful” is not defined in
-                - link "Ordinance 62-98" [ref=e117] [cursor=pointer]:
-                  - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
-                - text: "or in Ordinance # 52. The term “bankful” is not defined anywhere in the Rivergrove Land Development Ordinance."
+          - paragraph [ref=e111]:
+            - strong [ref=e112]: “5.2-4 Balanced Cut and Fill Standards
+          - paragraph [ref=e113]: "(i) All development, excavation and fill in the areas of special flood hazard (i.e., the flood plain) shall conform to the following balanced cut and fill standards:"
+          - paragraph [ref=e114]: "*****"
+          - paragraph [ref=e115]: (iii) Any excavation below bankful stage shall not count toward compensation for fill since these areas would be full of water in the winter and not available to hold storm water;
+          - paragraph [ref=e116]: "***** “"
+          - list [ref=e117]:
             - listitem [ref=e118]:
               - paragraph [ref=e119]:
-                - link "Ordinance 69-2000" [ref=e120] [cursor=pointer]:
+                - text: The term “bankful” is not defined in
+                - link "Ordinance 62-98" [ref=e120] [cursor=pointer]:
+                  - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
+                - text: "or in Ordinance # 52. The term “bankful” is not defined anywhere in the Rivergrove Land Development Ordinance."
+            - listitem [ref=e121]:
+              - paragraph [ref=e122]:
+                - link "Ordinance 69-2000" [ref=e123] [cursor=pointer]:
                   - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
                 - text: ", which has been recommended by the Planning Commission to the City Council for adoption, has a balanced cut and fill standard which reads, in part, as follows:"
-          - paragraph [ref=e121]:
-            - strong [ref=e122]: “Section IV. Water Quality Resource Areas
-          - paragraph [ref=e123]: "*****"
           - paragraph [ref=e124]:
-            - strong [ref=e125]: G. Development Standards
-            - text: "All development, excavation and fill in the floodplain shall conform to the following standards:"
+            - strong [ref=e125]: “Section IV. Water Quality Resource Areas
           - paragraph [ref=e126]: "*****"
           - paragraph [ref=e127]:
-            - strong [ref=e128]: "3."
+            - strong [ref=e128]: G. Development Standards
+            - text: "All development, excavation and fill in the floodplain shall conform to the following standards:"
+          - paragraph [ref=e129]: "*****"
+          - paragraph [ref=e130]:
+            - strong [ref=e131]: "3."
             - text: Any excavation below the 10 year flood elevation for the property shall not count toward compensating for fill.
-          - paragraph [ref=e129]: "***** “"
-          - list [ref=e130]:
-            - listitem [ref=e131]:
-              - paragraph [ref=e132]:
+          - paragraph [ref=e132]: "***** “"
+          - list [ref=e133]:
+            - listitem [ref=e134]:
+              - paragraph [ref=e135]:
                 - text: While
-                - link "Ordinance No. 69-2000" [ref=e133] [cursor=pointer]:
+                - link "Ordinance No. 69-2000" [ref=e136] [cursor=pointer]:
                   - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
                 - text: has not yet been adopted by the City Council, the Planning Commission wishes to currently interpret the term “bankful” in Section 5.2-4(1)(iii) consistently with the way balanced cut and fill requirements will be implemented by Section IV.G.3. of
-                - link "Ordinance 69-2000" [ref=e134] [cursor=pointer]:
+                - link "Ordinance 69-2000" [ref=e137] [cursor=pointer]:
                   - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
                 - text: "above with respect to the limitations placed upon excavation below a certain level not counting toward compensating for fill in the floodplain. Note: When [Ordinance 69-2000 is adopted, the balanced cut and fill standards in Section 5.2-4(1)(iii) of Ordinance # 52 will be replaced by the balanced cut and fill requirements in Section IV.G.3. of"
-                - link "Ordinance No. 69-2000" [ref=e135] [cursor=pointer]:
+                - link "Ordinance No. 69-2000" [ref=e138] [cursor=pointer]:
                   - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
                 - text: .]
-            - listitem [ref=e136]:
-              - paragraph [ref=e137]: The Planning Commission applied this interpretation on March 5, 2001, to its evaluation of the Development Permit Application for Land Division (18-Lot Subdivision) (Stark’s Landing Incorporated) (5050 SW Childs Road – Consolidated Application).
-            - listitem [ref=e138]:
-              - paragraph [ref=e139]:
+            - listitem [ref=e139]:
+              - paragraph [ref=e140]: The Planning Commission applied this interpretation on March 5, 2001, to its evaluation of the Development Permit Application for Land Division (18-Lot Subdivision) (Stark’s Landing Incorporated) (5050 SW Childs Road – Consolidated Application).
+            - listitem [ref=e141]:
+              - paragraph [ref=e142]:
                 - text: "In accordance with RLDO Section 3.090, this interpretation is hereby made in writing and will be available with copies of the applicable ordinance (Section 5.2-4, Balanced Cut and Fill Standards, as added to the Rivergrove Flood Damage Prevention Ordinance (Ordinance # 52) by"
-                - link "Ordinance 62-98" [ref=e140] [cursor=pointer]:
+                - link "Ordinance 62-98" [ref=e143] [cursor=pointer]:
                   - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
                 - text: ).
-          - heading "INTERPRETATION" [level=2] [ref=e141]:
-            - link "INTERPRETATION" [ref=e142] [cursor=pointer]:
+          - heading "INTERPRETATION" [level=2] [ref=e144]:
+            - link "INTERPRETATION" [ref=e145] [cursor=pointer]:
               - /url: "#interpretation"
-          - paragraph [ref=e143]:
-            - strong [ref=e144]: "Section 5.2-4(1)(iii) of Ordinance # 52"
-          - paragraph [ref=e145]: "The Planning Commission hereby interprets Section 5.2-4(1)(iii) of Ordinance # 52 as follows:"
           - paragraph [ref=e146]:
-            - emphasis [ref=e147]:
+            - strong [ref=e147]: "Section 5.2-4(1)(iii) of Ordinance # 52"
+          - paragraph [ref=e148]: "The Planning Commission hereby interprets Section 5.2-4(1)(iii) of Ordinance # 52 as follows:"
+          - paragraph [ref=e149]:
+            - emphasis [ref=e150]:
               - text: "The bankful stage referred to in Section 5.2-4(1)(iii) of Ordinance # 52 shall be equal to the 10-year flood elevation for the property as that phrase is used in Section IV.G.3. of"
-              - link "Ordinance No. 69-2000" [ref=e148] [cursor=pointer]:
+              - link "Ordinance No. 69-2000" [ref=e151] [cursor=pointer]:
                 - /url: ../ordinances/2000-Ord-69-2000-Title-3-Compliance.html
               - text: .
-          - paragraph [ref=e149]:
+          - paragraph [ref=e152]:
             - text: To be Filed with
-            - link "Ordinance 62-98" [ref=e150] [cursor=pointer]:
+            - link "Ordinance 62-98" [ref=e153] [cursor=pointer]:
               - /url: ../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.html
             - text: in the Rivergrove Land Development Ordinance
         - text:  
-    - navigation "Page navigation":  
-  - generic [ref=e151]:
-    - heading "Document Relationships" [level=3] [ref=e153]
-    - generic [ref=e154]:
-      - heading "📝 Interpretations" [level=4] [ref=e156]
-      - heading "📋 Related Ordinances" [level=4] [ref=e158]
-  - heading "Document Relationships" [level=3] [ref=e161]
+    - navigation "Page navigation":
+      - link "Previous chapter" [ref=e154] [cursor=pointer]:
+        - /url: ../interpretations/1998-07-06-RE-5.080-setback-orientation.html
+        - generic [ref=e155] [cursor=pointer]: 
+      - link "Next chapter" [ref=e156] [cursor=pointer]:
+        - /url: ../interpretations/2002-08-05-RE-lots-partially-in-floodplain.html
+        - generic [ref=e157] [cursor=pointer]: 
+  - generic [ref=e158]:
+    - heading "Document Relationships" [level=3] [ref=e160]
+    - generic [ref=e161]:
+      - heading "📝 Interpretations" [level=4] [ref=e163]
+      - heading "📋 Related Ordinances" [level=4] [ref=e165]
+  - heading "Document Relationships" [level=3] [ref=e168]
 ```

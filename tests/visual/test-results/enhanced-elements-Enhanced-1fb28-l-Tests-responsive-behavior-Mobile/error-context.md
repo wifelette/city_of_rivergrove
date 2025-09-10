@@ -1,0 +1,300 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - button "Switch document type" [ref=e6] [cursor=pointer]:
+        - generic [ref=e7] [cursor=pointer]: 📄
+        - generic [ref=e8] [cursor=pointer]: Resolutions
+        - generic [ref=e9] [cursor=pointer]: ▼
+      - generic [ref=e11]:
+        - button "↑" [ref=e12] [cursor=pointer]
+        - button "↓" [ref=e13] [cursor=pointer]
+      - textbox "Search ordinances..." [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16]: View
+        - generic [ref=e17]:
+          - button "Numerical" [ref=e18] [cursor=pointer]
+          - button "Chronological" [ref=e19] [cursor=pointer]
+          - button "Topical" [ref=e20] [cursor=pointer]
+    - generic [ref=e21]:
+      - generic [ref=e23] [cursor=pointer]:
+        - generic [ref=e24] [cursor=pointer]: "#22"
+        - text: "-"
+        - generic [ref=e25] [cursor=pointer]: Citizen Involvement
+        - generic [ref=e26] [cursor=pointer]: "1976"
+      - generic [ref=e28] [cursor=pointer]:
+        - generic [ref=e29] [cursor=pointer]: "#72"
+        - text: "-"
+        - generic [ref=e30] [cursor=pointer]: Municipal Services
+        - generic [ref=e31] [cursor=pointer]: "1984"
+      - generic [ref=e33] [cursor=pointer]:
+        - generic [ref=e34] [cursor=pointer]: "#256-2018"
+        - text: "-"
+        - generic [ref=e35] [cursor=pointer]: Development Fees
+        - generic [ref=e36] [cursor=pointer]: Superseded
+        - generic [ref=e37] [cursor=pointer]: "2018"
+      - generic [ref=e39] [cursor=pointer]:
+        - generic [ref=e40] [cursor=pointer]: "#259-2018"
+        - text: "-"
+        - generic [ref=e41] [cursor=pointer]: Development Fees
+        - generic [ref=e42] [cursor=pointer]: Superseded
+        - generic [ref=e43] [cursor=pointer]: "2018"
+      - generic [ref=e45] [cursor=pointer]:
+        - generic [ref=e46] [cursor=pointer]: "#41425"
+        - text: "-"
+        - generic [ref=e47] [cursor=pointer]: Public Records
+        - generic [ref=e48] [cursor=pointer]: "2025"
+      - generic [ref=e50] [cursor=pointer]:
+        - generic [ref=e51] [cursor=pointer]: "#265-2019"
+        - text: "-"
+        - generic [ref=e52] [cursor=pointer]: Admin Rules
+        - generic [ref=e53] [cursor=pointer]: Never Passed
+        - generic [ref=e54] [cursor=pointer]: "2020"
+      - generic [ref=e56] [cursor=pointer]:
+        - generic [ref=e57] [cursor=pointer]: "#300-2024"
+        - text: "-"
+        - generic [ref=e58] [cursor=pointer]: Development Fees
+        - generic [ref=e59] [cursor=pointer]: "2024"
+    - generic [ref=e60]:
+      - generic [ref=e61]: "7"
+      - text: of
+      - generic [ref=e62]: "7"
+      - text: documents
+  - generic [ref=e64]:
+    - generic [ref=e65]:
+      - button "Switch document type" [ref=e67] [cursor=pointer]:
+        - generic [ref=e68] [cursor=pointer]: 📄
+        - generic [ref=e69] [cursor=pointer]: Resolutions
+        - generic [ref=e70] [cursor=pointer]: ▼
+      - generic [ref=e72]:
+        - button "↑" [ref=e73] [cursor=pointer]
+        - button "↓" [ref=e74] [cursor=pointer]
+      - textbox "Search ordinances..." [ref=e75]
+      - generic [ref=e76]:
+        - generic [ref=e77]: View
+        - generic [ref=e78]:
+          - button "Numerical" [ref=e79] [cursor=pointer]
+          - button "Chronological" [ref=e80] [cursor=pointer]
+          - button "Topical" [ref=e81] [cursor=pointer]
+    - generic [ref=e82]:
+      - generic [ref=e84] [cursor=pointer]:
+        - generic [ref=e85] [cursor=pointer]: "#22"
+        - text: "-"
+        - generic [ref=e86] [cursor=pointer]: Citizen Involvement
+        - generic [ref=e87] [cursor=pointer]: "1976"
+      - generic [ref=e89] [cursor=pointer]:
+        - generic [ref=e90] [cursor=pointer]: "#72"
+        - text: "-"
+        - generic [ref=e91] [cursor=pointer]: Municipal Services
+        - generic [ref=e92] [cursor=pointer]: "1984"
+      - generic [ref=e94] [cursor=pointer]:
+        - generic [ref=e95] [cursor=pointer]: "#256-2018"
+        - text: "-"
+        - generic [ref=e96] [cursor=pointer]: Development Fees
+        - generic [ref=e97] [cursor=pointer]: Superseded
+        - generic [ref=e98] [cursor=pointer]: "2018"
+      - generic [ref=e100] [cursor=pointer]:
+        - generic [ref=e101] [cursor=pointer]: "#259-2018"
+        - text: "-"
+        - generic [ref=e102] [cursor=pointer]: Development Fees
+        - generic [ref=e103] [cursor=pointer]: Superseded
+        - generic [ref=e104] [cursor=pointer]: "2018"
+      - generic [ref=e106] [cursor=pointer]:
+        - generic [ref=e107] [cursor=pointer]: "#41425"
+        - text: "-"
+        - generic [ref=e108] [cursor=pointer]: Public Records
+        - generic [ref=e109] [cursor=pointer]: "2025"
+      - generic [ref=e111] [cursor=pointer]:
+        - generic [ref=e112] [cursor=pointer]: "#265-2019"
+        - text: "-"
+        - generic [ref=e113] [cursor=pointer]: Admin Rules
+        - generic [ref=e114] [cursor=pointer]: Never Passed
+        - generic [ref=e115] [cursor=pointer]: "2020"
+      - generic [ref=e117] [cursor=pointer]:
+        - generic [ref=e118] [cursor=pointer]: "#300-2024"
+        - text: "-"
+        - generic [ref=e119] [cursor=pointer]: Development Fees
+        - generic [ref=e120] [cursor=pointer]: "2024"
+    - generic [ref=e121]:
+      - generic [ref=e122]: "7"
+      - text: of
+      - generic [ref=e123]: "7"
+      - text: documents
+  - generic [ref=e125]:
+    - generic [ref=e126]:
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e131] [cursor=pointer]: 
+          - button "Change theme" [ref=e132] [cursor=pointer]:
+            - generic [ref=e133] [cursor=pointer]: 
+          - text: ✓
+          - button "Toggle Searchbar" [ref=e134] [cursor=pointer]:
+            - generic [ref=e135] [cursor=pointer]: 
+        - heading "City of Rivergrove Documents" [level=1] [ref=e136] [cursor=pointer]
+        - generic [ref=e137]:
+          - link "Print this book" [ref=e138]:
+            - /url: ../print.html
+            - generic [ref=e139] [cursor=pointer]: 
+          - link "Git repository" [ref=e140]:
+            - /url: https://github.com/wifelette/city_of_rivergrove
+            - generic [ref=e141] [cursor=pointer]: 
+      - text: 
+      - generic [ref=e142]:
+        - main [ref=e143]:
+          - heading "RESOLUTION 41425" [level=1] [ref=e144]:
+            - link "RESOLUTION 41425" [ref=e145]:
+              - /url: "#resolution-41425"
+          - heading "A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS" [level=2] [ref=e146]:
+            - link "A RESOLUTION OF THE CITY OF RIVERGROVE AMENDING ITS PUBLIC RECORDS POLICY, INCLUDING FEES AND FORMS" [ref=e147]:
+              - /url: "#a-resolution-of-the-city-of-rivergrove-amending-its-public-records-policy-including-fees-and-forms"
+          - paragraph [ref=e148]:
+            - strong [ref=e149]: WHEREAS,
+            - text: the City is a custodian of the public record and citizens of the City are entitled to open access to public records;
+          - paragraph [ref=e150]:
+            - strong [ref=e151]: WHEREAS,
+            - text: the City recognizes the right of every person to inspect any nonexempt public record of the City;
+          - paragraph [ref=e152]:
+            - strong [ref=e153]: WHEREAS,
+            - text: the City recognizes the importance of maintaining orderly files to facilitate public access in an efficient manner;
+          - paragraph [ref=e154]:
+            - strong [ref=e155]: WHEREAS,
+            - text: the City recognizes the need to establish reasonable fees and charges for labor and material costs incurred in making public documents available;
+          - paragraph [ref=e156]:
+            - strong [ref=e157]: WHEREAS,
+            - text: the City has no tax base and limited resources to ensure that it meets all of its obligations regarding maintaining public records and ensuring they remain available to all citizens; and
+          - paragraph [ref=e158]:
+            - strong [ref=e159]: WHEREAS,
+            - text: the City believes it is appropriate to have the requestor pay an appropriate amount to ensure that the City recovers its costs in making its records available to the citizens of Rivergrove; and
+          - paragraph [ref=e160]:
+            - strong [ref=e161]: WHEREAS,
+            - text: the City of Rivergrove previously adopted Resolution 261-2019 setting forth a Public Records Policy, setting forth fees and forms, and
+          - paragraph [ref=e162]:
+            - strong [ref=e163]: WHEREAS,
+            - text: the City wishes to amend its Public Record Policy in light of recent developments in the law and to better accomplish the purposes for which the policy was adopted,
+          - paragraph [ref=e164]:
+            - strong [ref=e165]: "NOW, THEREFORE, THE CITY OF RIVERGROVE RESOLVES AS FOLLOWS:"
+          - paragraph [ref=e166]:
+            - strong [ref=e167]: Section 1.
+            - text: "Resolution 261-2019: A Resolution Establishing a Public Records Policy – is hereby repealed."
+          - paragraph [ref=e168]:
+            - strong [ref=e169]: Section 2.
+            - text: "The City hereby adopts a public records request policy as follows:"
+          - paragraph [ref=e170]:
+            - text: a.
+            - strong [ref=e171]: Applicability
+            - text: ": This policy applies to all public record requests in the City of Rivergrove and governs the actions of staff and consultants working for the City."
+          - paragraph [ref=e172]:
+            - text: b.
+            - strong [ref=e173]: Preservation.
+            - text: The City hereby adopts the record retention schedule promulgated by the Oregon Secretary of State in OAR Division 166-200.
+          - paragraph [ref=e174]:
+            - strong [ref=e175]: Section 3. Public Record Requests.
+          - paragraph [ref=e176]:
+            - text: a.
+            - strong [ref=e177]: Document Requests.
+            - text: Document requests must be shall be made on the form attached to this ordinance and shall include the information as provided on that form, most particularly, a complete and detailed description of the materials requested to the extent known by the requester. Where known to the requester, the request shall include information such as the departmental file number, year of creation and any other pertinent information that may assist City staff in locating the requested documents. Multiple document requests from the same person filed within 72 hours of each other will be consolidated and treated as one request.
+          - paragraph [ref=e178]:
+            - text: b.
+            - strong [ref=e179]: Creation of Documents.
+            - text: The City will not author or prepare any new documents in response to a records request.
+          - paragraph [ref=e180]:
+            - text: c.
+            - strong [ref=e181]: Document Inspection.
+            - text: Any person has the right to personally inspect any document retained by the City, but the right to inspect documents does not include the right to rummage through file cabinets or file folders or the right to disassemble or change the order of materials in files or document binders. Inspection of public documents shall occur during normal business hours. A City staff member shall be present while any original public records are being inspected to insure protection of the documents. Any request shall occur at a time mutually convenient to the requestor and the affected staff person. Original documents shall not be taken out of the custody of the City except through special arrangement with City staff, which shall assure that the document(s) will be returned in the original condition and order.
+          - paragraph [ref=e182]:
+            - text: d.
+            - strong [ref=e183]: Request Response Time.
+            - text: The City shall provide an initial written response acknowledging a public records response within five business days of receipt. If possible, the City shall acknowledge whether it has any responsive documents in that written acknowledgment. The City shall endeavor to complete its response to all public documents requests as soon as practical and without unreasonable delay or within fifteen (15) business days. Reasons for such a delay may include where staff needs to consult with the City Attorney’s office to obtain legal advice prior to releasing documents or where multiple public records requests are filed in proximity to each other. This will be necessary when the City is presented with a physically extensive or legally complex document request.
+          - paragraph [ref=e184]:
+            - text: e.
+            - strong [ref=e185]: Cost Estimate.
+            - text: After acknowledgment of receipt of a request, and if the request exceeds the minimum amount of time to respond, the City Manager shall first prepare an estimated cost bill reflecting the full, actual cost of City staff time, contractor costs, and materials required to complete the request, including time required for retrieval, copying, preparation, assisting the requester, separating exempt from non-exempt materials as provided by ORS 192.496 through 192.502, organization of the results and, if requested, delivery of the search results.
+          - paragraph [ref=e186]:
+            - text: f.
+            - strong [ref=e187]: Labor Costs.
+            - text: The cost bill estimate for staff time will be based on the staff person’s regular hourly wage rate multiplied by the time estimated to respond to the request. The current percentage for compensation for City benefits received by the staff person will be added. There will be no charge for the first half hour of staff time required to respond to a documents request. The staff people who respond to public records request shall be those with the lowest hourly wage that are qualified to respond to the request. To the extent the City chooses to use a contractor to complete the request, the City will charge the contractor’s actual cost.
+          - paragraph [ref=e188]:
+            - text: g.
+            - strong [ref=e189]: Materials Costs.
+            - text: If the request entails less than one-half (1/2) hour of staff time, then copying charges shall be included at the rate of fifty (.50) cents per page if twenty (20) or fewer copies are made; twenty-five (.25) cents per page if twenty-one (21) to fifty (50) copies are made; and fifteen (.15) cents per page if the project entails more than fifty (50) copies. Charges for large-scale documents are actual cost+ 15%. If the documents are removed from City custody for copying at a commercial copy shop, the requester shall be responsible for the actual cost of the commercial copying, including any transportation costs. If delivery of the copied material is requested, mailing or delivering costs shall be included in the estimated cost bill. If the request requires retrieval of documents stored offsite at the City’s document storage facility, then the actual cost of the retrieval fee charged by the storage facility will be charged to retrieve the document(s).
+          - paragraph [ref=e190]:
+            - text: h.
+            - strong [ref=e191]: Fee Collection.
+            - text: If the estimated cost bill is twenty-five ($25.00) dollars or more, the City shall require a deposit in the full amount of the estimate before expending any additional City resources toward responding to the document request. The City shall proceed to fulfill the request only upon receipt of the deposit. If the actual cost of completing the request exceeds the estimate, the City will not release the search results until the City’s full actual costs, calculated in accordance with this policy are received in full. If the actual cost of responding to the request is less than the estimated cost bill, then the balance of the deposit will be refunded promptly. If the estimated cost bill is less than twenty-five ($25.00) dollars, the City shall proceed to fulfill the request and shall present a cost bill for the City’s full actual expenses, calculated in accordance with this policy and payable in full upon receipt of the requested documents. The affected department will not release the requested documents result until the cost bill has been paid in full. To the extent a requesting party has outstanding charges for previous document requests that have not been paid, the City shall not release the requested documents until all outstanding debts have been paid.
+          - paragraph [ref=e192]:
+            - text: i.
+            - strong [ref=e193]: Waiver or Reduction of Fees.
+            - text: Copies of public records may be furnished without cost, or at a reduced cost, if the City Manager determines that a waiver or reduction of fees is in the public interest because making the record available primarily benefits the general public.
+          - list [ref=e194]:
+            - listitem [ref=e195]:
+              - paragraph [ref=e196]: A person requesting a waiver or reduction of fees shall file a written request that includes his/her name and address, the purpose for which the documents are sought, the nature of the information and whether he/she can demonstrate the ability to disseminate the information to the public or otherwise benefit the general public with the information. The City Manager will review the request and may also consider the requestor’s ability to pay and any financial hardship on the City that would arise from granting a waiver or reduction.
+            - listitem [ref=e197]:
+              - paragraph [ref=e198]: Any requestor disabled within the meaning of the Americans With Disabilities Act may also apply for a waiver or reduction of fees for any of the cost of complying with the request that were due to the requestor’s disability.
+            - listitem [ref=e199]:
+              - paragraph [ref=e200]: Copies of routine materials requested by the news media will be made available without charge. Any request that requires more than one half (1/2) hour of staff time will be charged according to this policy.
+            - listitem [ref=e201]:
+              - paragraph [ref=e202]: Copies of routine materials, personal to the requestor, will be furnished without charge, except for policy reports. Any request that requires more than one-half (1/2) hour of staff time will be charged according to this policy.
+            - listitem [ref=e203]:
+              - paragraph [ref=e204]: Copies of routine materials requested by any Rivergrove public official or advisory committee member will be furnished without charge if the request relates to information needed in the requestor’s official capacity.
+          - paragraph [ref=e205]:
+            - strong [ref=e206]: Section 4.
+          - list [ref=e207]:
+            - listitem [ref=e208]:
+              - paragraph [ref=e209]: "The City of Rivergrove hereby adopts the attached Forms to be used by the citizens of Rivergrove and the City of Rivergrove in providing public records:"
+              - paragraph [ref=e210]: 1.1 Instructions for Requesting Public Records.
+              - paragraph [ref=e211]: 1.2 Public Records Request form.
+              - paragraph [ref=e212]: 1.3 Response to Public Records Request.
+          - paragraph [ref=e213]:
+            - strong [ref=e214]: Section 5.
+          - paragraph [ref=e215]: The City of Rivergrove hereby adopts the Fee Schedule for Responding to Public Records Requests attached to this resolution for responding to public records requests.
+          - separator [ref=e216]
+          - paragraph [ref=e217]:
+            - strong [ref=e218]:
+              - text: Approved and adopted at the City Council meeting on the
+              - text: day of April , 2025
+          - paragraph [ref=e219]:
+            - text: Yeas
+            - text: Nays
+          - paragraph [ref=e220]: Chris Barhyte, Mayor of Rivergrove
+          - paragraph [ref=e221]:
+            - text: "[Signature], Attested on this 13th day of May, 2019,"
+            - strong [ref=e222]: Approved a to legal sufficiency
+          - paragraph [ref=e223]: Analeis Wiedlich, City Manager/ City Recorder
+          - paragraph [ref=e224]: Bill Kabeiseman, City Attorney
+          - separator [ref=e225]
+          - heading "CITY OF RIVERGROVE INSTRUCTIONS FOR REQUESTING PUBLIC RECORDS" [level=2] [ref=e226]:
+            - link "CITY OF RIVERGROVE INSTRUCTIONS FOR REQUESTING PUBLIC RECORDS" [ref=e227]:
+              - /url: "#city-of-rivergrove-instructions-for-requesting-public-records"
+          - paragraph [ref=e228]: Requests must be in writing using the form provided. (Please note, the City will not create a new document in response to a records request.) All requests received within a 72-hour period will be treated as a single request.
+          - paragraph [ref=e229]:
+            - strong [ref=e230]: "Submit request to the Rivergrove City Recorder through any of the following methods:"
+          - paragraph [ref=e231]:
+            - strong [ref=e232]: "Regular mail:"
+            - text: Rivergrove City Recorder
+            - text: P.O. Box 1104
+            - text: Lake Oswego, OR, 97034
+          - paragraph [ref=e233]:
+            - strong [ref=e234]: "Email:"
+            - link "manager@cityofrivergrove.com" [ref=e235]:
+              - /url: mailto:manager@cityofrivergrove.com
+          - paragraph [ref=e236]:
+            - strong [ref=e237]: "Web form:"
+            - link "https://www.cityofrivergrove.org/records-request" [ref=e238]:
+              - /url: https://www.cityofrivergrove.org/records-request
+          - paragraph [ref=e239]: 1.4 The City shall acknowledge all requests within five (5) business days of receipt. The City shall endeavor to complete its response to all requests within fifteen (15) business days of receipt unless excused pursuant to ORS 192.329(6).
+          - paragraph [ref=e240]: 1.5 If inspection of documents is preferred over copies, such inspection shall occur during normal business hours. An acceptable inspection time and place will be arranged between the requestor and the staff person. Space will be provided for one person to inspect records per request.
+          - paragraph [ref=e241]: 1.6 The City will submit a cost estimate to the requestor to provide the requested documents, including transportation, copying charges, research time (if required), and separating exempt from non-exempt materials. There is no research cost for the first½ hour of staff time. Requestor must confirm to the City to proceed with the request following receipt of the cost estimate.
+          - paragraph [ref=e242]: 1.7 If the estimated cost is $25.00 or more, the City shall require a deposit in the full amount of the estimate before fulfilling the request. If the actual cost exceeds the deposit, the City will not release the documents until the fee is received in full. The City shall not release any records to a person who has an outstanding debt to the City related to previous document requests.
+          - paragraph [ref=e243]: 1.8 If the estimated cost is less than $25.00, the City will fulfill the request and present the requestor with an invoice to be paid before release of the documents.
+          - paragraph [ref=e244]: 1.9 If the record requested is in storage offsite at the City’s document storage facility, a fee is charged for its retrieval.
+        - navigation "Page navigation" [ref=e245]:
+          - link "Previous chapter" [ref=e246]:
+            - /url: ../resolutions/2024-Res-300-Fee-Schedule-Modification.html
+            - generic [ref=e247]: 
+          - link "Next chapter" [ref=e248]:
+            - /url: ../interpretations/1997-07-07-RE-2.040h-permitting-adus.html
+            - generic [ref=e249]: 
+    - text:  
+```
