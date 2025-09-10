@@ -98,107 +98,162 @@ def process_special_numbered_lists(html_content):
                     li = soup.new_tag('li')
                     # Don't set value attribute to avoid browser numbering
                     
-                    # Add the content with the number as a prefix
+                    # Add custom number as span
                     num_span = soup.new_tag('span', attrs={'class': 'special-list-number'})
-                    num_span.string = item['full_num'] + ' '
+                    num_span.string = item['full_num']
                     li.append(num_span)
-                    
-                    # Add the rest of the content
-                    content_span = soup.new_tag('span')
-                    content_span.string = item['content']
-                    li.append(content_span)
+                    li.append(' ' + item['content'])
                     ol.append(li)
                 
-                # Replace the first paragraph with our new list
+                # Replace all the paragraphs with the single list
                 list_items[0]['element'].replace_with(ol)
-                
-                # Remove the remaining paragraphs that were part of the list
                 for item in list_items[1:]:
-                    item['element'].extract()
-    
-    return str(soup)
-
-def process_letter_lists(html_content):
-    """
-    Simplified processor for letter/number lists:
-    1. Remove any special divs from list items (they should be plain)
-    2. Bold the markers for clarity
-    3. Don't add blockquote-like styling
-    """
-    soup = BeautifulSoup(html_content, 'html.parser')
-    
-    # First, remove any definition-item or letter-item divs that are inside list items
-    # These should NEVER have special styling when already in a list
-    for li in soup.find_all('li'):
-        for div in li.find_all('div', class_=['definition-item', 'letter-item']):
-            # Extract just the text content and replace the div
-            text_content = div.get_text()
-            div.replace_with(text_content)
-    
-    # Process list items to bold their markers (but no other styling)
-    for li in soup.find_all('li'):
-        text = li.get_text().strip()
-        # Match various marker patterns: (a), (1), (i), etc.
-        match = re.match(r'^(\([a-z0-9ivx]+\))\s+(.+)$', text, re.IGNORECASE)
-        if match:
-            marker = match.group(1)
-            content = match.group(2)
-            
-            # Clear and rebuild with bold marker only
-            li.clear()
-            strong = soup.new_tag('strong')
-            strong.string = marker
-            li.append(strong)
-            li.append(' ' + content)
-    
-    # For standalone paragraphs with markers - just make the marker bold
-    # No special divs or backgrounds
-    for p in soup.find_all('p'):
-        # Skip if inside a list or blockquote
-        if p.find_parent(['li', 'ul', 'ol', 'blockquote']):
-            continue
-            
-        text = p.get_text().strip()
-        # Check for markers at start of paragraph
-        match = re.match(r'^(\([a-z0-9ivx]+\))\s+(.+)$', text, re.IGNORECASE)
-        if match:
-            marker = match.group(1)
-            content = match.group(2)
-            
-            # Just make the marker bold, no special divs
-            p.clear()
-            strong = soup.new_tag('strong')
-            strong.string = marker
-            p.append(strong)
-            p.append(' ' + content)
+                    item['element'].decompose()
     
     return str(soup)
 
 def process_roman_lists(html_content):
-    """Convert (i), (ii) style lists to custom HTML"""
+    """Convert roman numeral lists in preformatted blocks to proper lists"""
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # Look for indented roman numerals in code blocks or preformatted text
-    for pre in soup.find_all(['pre', 'code']):
+    # Process lists in <pre> blocks
+    for pre in soup.find_all('pre'):
         text = pre.get_text()
+        lines = text.split('\n')
         
-        # Check if this contains roman numeral lists
-        if re.search(r'\([ivx]+\)', text, re.IGNORECASE):
+        # Check if this looks like a roman numeral list
+        roman_pattern = r'^\s*\(([ivx]+)\)\s+(.+)$'
+        list_items = []
+        
+        for line in lines:
+            match = re.match(roman_pattern, line.strip(), re.IGNORECASE)
+            if match:
+                list_items.append({
+                    'numeral': match.group(1),
+                    'text': match.group(2)
+                })
+        
+        # If we found roman numeral items, convert to a list
+        if list_items:
+            ol = soup.new_tag('ol', attrs={'class': 'roman-list'})
+            for item in list_items:
+                li = soup.new_tag('li')
+                # Add the roman numeral as a span
+                roman_span = soup.new_tag('span', attrs={'class': 'roman-marker'})
+                roman_span.string = f"({item['numeral']})"
+                li.append(roman_span)
+                li.append(' ' + item['text'])
+                ol.append(li)
+            
+            pre.replace_with(ol)
+    
+    return str(soup)
+
+def process_definition_lists(html_content):
+    """Convert definition-style paragraphs to structured lists"""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Look for patterns like "Term. Definition" or "Term: Definition"
+    for p in soup.find_all('p'):
+        text = p.get_text()
+        
+        # Check for definition pattern
+        match = re.match(r'^([^.]+)\.\s+(.+)$', text)
+        if match and len(match.group(1)) < 50:  # Term shouldn't be too long
+            term = match.group(1)
+            definition = match.group(2)
+            
+            # Create a definition-style div
+            div = soup.new_tag('div', attrs={'class': 'definition-item'})
+            term_span = soup.new_tag('span', attrs={'class': 'definition-marker'})
+            term_span.string = term + '.'
+            div.append(term_span)
+            div.append(' ' + definition)
+            
+            p.replace_with(div)
+    
+    return str(soup)
+
+def process_parenthetical_lists_in_paragraphs(html_content):
+    """Process lists with items like (a), (b), (c) that appear in paragraphs"""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Pattern for alphabetical lists
+    alpha_pattern = r'\([a-z]\)'
+    
+    for p in soup.find_all('p'):
+        text = p.get_text()
+        
+        # Check if paragraph contains multiple parenthetical items
+        if re.search(alpha_pattern, text, re.IGNORECASE):
+            # Try to split into list items
+            # This is complex as items might be inline or on separate lines
             lines = text.split('\n')
             
-            # Create a custom list
-            ol = soup.new_tag('ol', attrs={'class': 'roman-list'})
-            
+            list_items = []
             for line in lines:
-                # Match indented roman numerals
-                match = re.match(r'^(\s*)\(([ivx]+)\)\s+(.+)$', line, re.IGNORECASE)
+                # Match items that start with (a), (b), etc.
+                match = re.match(r'^\s*(\([a-z]\))\s+(.+)$', line.strip(), re.IGNORECASE)
                 if match:
+                    list_items.append({
+                        'marker': match.group(1),
+                        'content': match.group(2)
+                    })
+            
+            # If we found multiple items, convert to a list
+            if len(list_items) > 1:
+                ol = soup.new_tag('ol', attrs={'class': 'alpha-list'})
+                for item in list_items:
                     li = soup.new_tag('li')
-                    marker_span = soup.new_tag('span', attrs={'class': 'roman-marker'})
-                    marker_span.string = f"({match.group(2)})"
+                    marker_span = soup.new_tag('span', attrs={'class': 'custom-list-marker'})
+                    marker_span.string = item['marker']
                     li.append(marker_span)
-                    li.append(' ' + match.group(3))
+                    li.append(' ' + item['content'])
                     ol.append(li)
+                
+                p.replace_with(ol)
+    
+    return str(soup)
+
+def process_mixed_roman_lists(html_content):
+    """Process lists in <pre> blocks that have roman numerals"""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Process all <pre> blocks
+    for pre in soup.find_all('pre'):
+        lines = pre.get_text().split('\n')
+        
+        # Check if this contains roman numerals
+        has_roman = False
+        list_items = []
+        
+        for line in lines:
+            # Match lines that start with (i), (ii), etc. or i., ii., etc.
+            match = re.match(r'^\s*(?:\(([ivx]+)\)|([ivx]+)\.)\s+(.+)$', line, re.IGNORECASE)
+            if match:
+                has_roman = True
+                numeral = match.group(1) if match.group(1) else match.group(2)
+                text = match.group(3)
+                list_items.append({
+                    'numeral': numeral,
+                    'text': text,
+                    'format': 'paren' if match.group(1) else 'dot'
+                })
+            elif line.strip() and list_items:
+                # This might be a continuation of the previous item
+                list_items[-1]['text'] += ' ' + line.strip()
+        
+        # If we found roman numerals, convert to a proper list
+        if has_roman and list_items:
+            ol = soup.new_tag('ol', attrs={'class': 'roman-list'})
+            for item in list_items:
+                li = soup.new_tag('li')
+                marker = f"({item['numeral']})" if item['format'] == 'paren' else f"{item['numeral']}."
+                marker_span = soup.new_tag('span', attrs={'class': 'roman-marker'})
+                marker_span.string = marker
+                li.append(marker_span)
+                li.append(' ' + item['text'])
+                ol.append(li)
             
             if ol.contents:
                 pre.replace_with(ol)
@@ -226,310 +281,9 @@ def add_custom_css(html_content):
     
     # CSS is now in modular files - no need to inject inline styles
     # Styles are loaded via theme/css/main.css imports:
-    # - documents/form-fields.css
-    # - documents/custom-lists.css
-    return str(soup)
-    
-    # DEPRECATED: Inline styles moved to modular CSS architecture
-    """
-    # Check if we've already added our custom CSS
-    if soup.find('style', id='custom-list-styles'):
-        return str(soup)
-    
-    # Add custom CSS to head
-    head = soup.find('head')
-    if head:
-        style = soup.new_tag('style', id='custom-list-styles')
-        style.string = \"\"\"
-        /* Custom list styles for legal documents */
-        .custom-list-marker {
-            font-weight: bold;
-            margin-right: 0.5em;
-        }
-        
-        .definition-item {
-            margin: 1em 0;
-        }
-        
-        .definition-marker {
-            font-weight: bold;
-            margin-right: 0.5em;
-        }
-        
-        .roman-list {
-            list-style: none;
-            padding-left: 2em;
-        }
-        
-        .roman-list li {
-            margin: 0.5em 0;
-        }
-        
-        .roman-marker {
-            font-weight: normal;
-            margin-right: 0.5em;
-        }
-        
-        /* Roman numeral lists that shouldn't show automatic numbering */
-        .roman-parenthetical-list {
-            list-style: none !important;
-            counter-reset: none !important;
-            padding-left: 2em;
-        }
-        
-        .roman-parenthetical-list > li {
-            list-style: none !important;
-            position: relative;
-        }
-        
-        .roman-parenthetical-list > li::before {
-            content: none !important;
-        }
-        
-        /* Special list that starts at non-standard number (e.g., 1.4) */
-        .special-start-list {
-            list-style: none !important;
-            padding-left: 2em;
-            counter-reset: none !important;
-        }
-        
-        .special-start-list li {
-            margin: 0.5em 0;
-            position: relative;
-            list-style: none !important;
-        }
-        
-        .special-start-list li::before {
-            content: none !important;
-        }
-        
-        .special-list-number {
-            font-weight: bold;
-            margin-right: 0.5em;
-            display: inline-block;
-            min-width: 2em;
-        }
-        
-        /* Override mdBook's list styling for our custom lists */
-        ol:has(.custom-list-marker) {
-            list-style: none;
-            counter-reset: none;
-        }
-        
-        ol:has(.custom-list-marker) li::before {
-            content: none;
-        }
-        
-        ol.special-start-list li::before {
-            content: none;
-        }
-        
-        /* Form field styles for legal documents */
-        .form-field-empty {
-            display: inline-block;
-            border-bottom: 1px solid #999;
-            margin: 0 2px;
-            cursor: default;
-            vertical-align: baseline;
-            height: 1em;
-            position: relative;
-        }
-        
-        .form-field-empty:hover {
-            background-color: #f0f0f0;
-            border-bottom-color: #666;
-        }
-        
-        /* Add a visual indicator for blank fields */
-        .form-field-empty::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease-in;
-            transition-delay: 0.5s;
-            margin-top: 4px;
-            z-index: 100000;
-        }
-        
-        .form-field-empty:hover::after {
-            opacity: 1;
-        }
-        
-        .form-field-short {
-            min-width: 60px;
-        }
-        
-        .form-field-medium {
-            min-width: 120px;
-        }
-        
-        .form-field-long {
-            min-width: 200px;
-        }
-        
-        .form-field-filled {
-            display: inline-block;
-            padding: 2px 4px 4px 4px;
-            background-color: #e3f2fd;
-            border-bottom: 2px solid #1976d2;
-            color: #000;
-            font-weight: 600;
-            cursor: default !important;
-            position: relative;
-            margin: 0 3px;
-            vertical-align: baseline;
-            line-height: 1.4;
-        }
-        
-        /* Ensure tooltips appear above other elements */
-        .form-field-filled:hover,
-        .form-field-empty:hover {
-            z-index: 1000;
-        }
-        
-        /* Force no help cursor for form fields and remove any title tooltips */
-        .form-field-filled,
-        .form-field-filled:hover,
-        .form-field-empty,
-        .form-field-empty:hover {
-            cursor: default !important;
-        }
-        
-        /* Hide any native browser tooltips */
-        .form-field-filled[title],
-        .form-field-empty[title] {
-            cursor: default !important;
-        }
-        
-        .form-field-filled[title]:hover::before,
-        .form-field-empty[title]:hover::before {
-            content: '' !important;
-        }
-        
-        .form-field-filled:hover {
-            background-color: #bbdefb;
-            border-bottom-color: #0d47a1;
-        }
-        
-        /* CSS tooltip for filled fields */
-        .form-field-filled::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s ease-in-out;
-            transition-delay: 0.2s;
-            margin-top: 4px;
-            z-index: 100000;
-        }
-        
-        .form-field-filled:hover::after {
-            opacity: 1;
-            transition-delay: 0.3s;
-        }
-        
-        /* Special positioning for tooltips in headings to avoid clipping */
-        h1 .form-field-filled::after,
-        h2 .form-field-filled::after,
-        h3 .form-field-filled::after {
-            top: 100%;
-            bottom: auto;
-            margin-top: 8px;
-            margin-bottom: 0;
-            font-weight: normal;
-            font-size: 12px;
-        }
-        
-        /* Same for empty field tooltips in headings */
-        h1 .form-field-empty::after,
-        h2 .form-field-empty::after,
-        h3 .form-field-empty::after {
-            font-weight: normal;
-            font-size: 12px;
-        }
-        
-        /* Special styling for form fields in headings */
-        h1 .form-field-filled, 
-        h2 .form-field-filled, 
-        h3 .form-field-filled {
-            font-size: inherit;
-            font-weight: inherit;
-            vertical-align: baseline;
-        }
-        
-        h1 .form-field-empty, 
-        h2 .form-field-empty, 
-        h3 .form-field-empty {
-            vertical-align: baseline;
-            height: 0.8em;
-            margin-bottom: -0.1em;
-        }
-        
-        /* Document figure styles for inline images */
-        .document-figure {
-            margin: 2em auto;
-            text-align: center;
-            max-width: 100%;
-            page-break-inside: avoid;
-        }
-        
-        .document-figure img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            padding: 10px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .document-figure figcaption {
-            margin-top: 1em;
-            font-style: italic;
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        
-        /* Responsive image sizing */
-        @media screen and (min-width: 768px) {
-            .document-figure {
-                max-width: 80%;
-            }
-        }
-        
-        @media print {
-            .document-figure {
-                page-break-inside: avoid;
-                max-width: 100%;
-            }
-            
-            .document-figure img {
-                max-width: 100%;
-                box-shadow: none;
-            }
-        }
-        """
-        head.append(style)
-    
+    # - components/form-fields.css
+    # - layout/mdbook-overrides.css (custom lists)
+    # - base/typography.css (document figures)
     return str(soup)
 
 def process_form_fields(html_content):
@@ -539,42 +293,55 @@ def process_form_fields(html_content):
     
     def replace_blank(match):
         size = match.group(1) if match.group(1) else 'medium'
-        size_class = f'form-field-{size}'
-        return f'<span class="form-field-empty {size_class}" data-tooltip="Field left blank in source doc"></span>'
+        return f'<span class="form-field-empty form-field-{size}" data-tooltip="This field was blank on the original document"></span>'
     
-    # Replace all blank markers
+    # Replace all blank markers with styled spans
     html_content = re.sub(blank_pattern, replace_blank, html_content)
     
-    # Pattern to match <!--FILLED: content--> markers (if manually added)
-    filled_pattern = r'<!--FILLED:\s*([^>]+?)-->'
+    # Pattern to match {{filled:text}} format
+    filled_pattern = r'\{\{filled:([^}]+)\}\}'
     
     def replace_filled(match):
-        content = match.group(1)
-        return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{content}</span>'
+        text = match.group(1)
+        return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{text}</span>'
     
-    # Replace all filled markers
+    # Replace all filled markers with styled spans
     html_content = re.sub(filled_pattern, replace_filled, html_content)
     
     return html_content
 
 def process_html_file(filepath):
-    """Process a single HTML file"""
+    """Process a single HTML file with all our custom transformations"""
+    # Read the file
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # Apply all processors
-    content = process_special_numbered_lists(content)  # Process special lists first
+    # Apply all processing functions
+    content = process_form_fields(content)
     content = process_numbered_lists(content)
-    content = process_letter_lists(content)
     content = process_roman_lists(content)
-    content = process_form_fields(content)  # Process form fields
+    content = process_parenthetical_lists_in_paragraphs(content)
+    content = process_definition_lists(content)
+    content = process_special_numbered_lists(content)
+    content = process_mixed_roman_lists(content)
     content = add_custom_css(content)
     
-    # Write back
+    # Write the processed content back
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
+
+def copy_assets():
+    """Copy theme and images to book directory"""
+    import shutil
+    book_dir = Path("book")
     
-    print(f"  ✓ Processed {filepath.name}")
+    # Copy theme directory if it exists
+    if Path("theme").exists() and not (book_dir / "theme").exists():
+        shutil.copytree("theme", book_dir / "theme")
+    
+    # Copy images directory if it exists
+    if Path("images").exists() and not (book_dir / "images").exists():
+        shutil.copytree("images", book_dir / "images")
 
 def main():
     """Process all HTML files in the book directory"""
@@ -583,6 +350,9 @@ def main():
     if not book_dir.exists():
         print("Error: book directory not found")
         sys.exit(1)
+    
+    # Copy assets first
+    copy_assets()
     
     # Process all HTML files
     html_files = list(book_dir.glob("**/*.html"))

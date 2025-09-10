@@ -1587,12 +1587,15 @@ class StandaloneNavigation {
             }
         });
         
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['style', 'class']
-        });
+        // Only observe if document.body exists
+        if (document.body) {
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
+        }
     }
     
     reapplyStyles() {
