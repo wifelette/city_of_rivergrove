@@ -44,7 +44,54 @@
     letter-spacing: 0.5px;
 }
 
-/* Note content */
+/* Individual note items */
+.note-item {
+    margin: var(--space-padding-md) 0;
+    padding: var(--space-padding-sm) 0;
+    border-bottom: var(--border-width-thin) solid var(--color-border-lighter);
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+/* Note type labels (Stamp, Handwritten text, etc.) */
+.note-type-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-margin-xs);
+}
+
+/* Page reference in labels */
+.label-page-ref {
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+/* Separator between label parts */
+.label-separator {
+    margin: 0 var(--space-margin-xs);
+    color: var(--color-text-light);
+}
+
+/* Note content area */
+.note-content {
+    margin-top: var(--space-margin-xs);
+    padding-left: var(--space-padding-md);
+}
+
+.note-content p {
+    margin: var(--space-margin-xs) 0;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* Note content - maintain existing style */
 .document-note p {
     margin: 0 0 var(--space-margin-sm) 0;
     color: var(--color-text-secondary);

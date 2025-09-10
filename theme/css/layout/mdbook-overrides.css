@@ -151,3 +151,13 @@ ol:has(.custom-list-marker) li::before {
 ol.special-start-list li::before {
     content: none;
 }
+
+/* Alphabetical lists (a), (b), (c) */
+.alpha-list {
+    list-style-type: lower-alpha;
+    padding-left: 2em;
+}
+
+.alpha-list li {
+    margin: 0.5em 0;
+}
