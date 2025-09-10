@@ -65,8 +65,18 @@ python3 scripts/preprocessing/sync-other.py
 echo "  ✅ All documents synced"
 echo ""
 
-# STEP 2: Validate form field syntax
-echo "🔍 Step 2: Validating form field syntax..."
+# STEP 2: Validate no HTML in source files
+echo "🚫 Step 2: Checking for HTML in markdown files..."
+python3 scripts/validation/validate-no-html.py source-documents --quiet || {
+    echo "  ❌ HTML found in source files!"
+    echo "  Run 'python3 scripts/validation/validate-no-html.py' for details"
+    exit 1
+}
+echo "  ✅ No HTML in source files"
+echo ""
+
+# STEP 3: Validate form field syntax
+echo "🔍 Step 3: Validating form field syntax..."
 python3 scripts/validation/validate-form-fields.py --quiet || {
     echo "  ❌ Form field validation failed!"
     echo "  Run 'python3 scripts/validation/validate-form-fields.py' for details"
@@ -75,26 +85,26 @@ python3 scripts/validation/validate-form-fields.py --quiet || {
 echo "  ✅ Form fields validated"
 echo ""
 
-# STEP 3: Process footnotes
-echo "📝 Step 3: Processing footnotes..."
+# STEP 4: Process footnotes
+echo "📝 Step 4: Processing footnotes..."
 python3 scripts/preprocessing/footnote-preprocessor.py
 echo "  ✅ Footnotes processed"
 echo ""
 
-# STEP 4: Convert URLs and emails (MUST be before cross-references)
-echo "🔗 Step 4: Converting URLs and emails to links..."
+# STEP 5: Convert URLs and emails (MUST be before cross-references)
+echo "🔗 Step 5: Converting URLs and emails to links..."
 python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
 echo "  ✅ Links converted"
 echo ""
 
-# STEP 5: Add cross-references (MUST be after auto-link)
-echo "🔗 Step 5: Adding cross-references between documents..."
+# STEP 6: Add cross-references (MUST be after auto-link)
+echo "🔗 Step 6: Adding cross-references between documents..."
 python3 scripts/mdbook/add-cross-references.py
 echo "  ✅ Cross-references added"
 echo ""
 
-# STEP 6: Update document counts
-echo "📊 Step 6: Updating document counts..."
+# STEP 7: Update document counts
+echo "📊 Step 7: Updating document counts..."
 if [ -f "scripts/preprocessing/update-document-counts.py" ]; then
     python3 scripts/preprocessing/update-document-counts.py
     echo "  ✅ Document counts updated"
@@ -103,8 +113,8 @@ else
 fi
 echo ""
 
-# STEP 7: Generate relationships (MUST be first for Airtable sync to work)
-echo "🔗 Step 7: Generating document relationships..."
+# STEP 8: Generate relationships (MUST be first for Airtable sync to work)
+echo "🔗 Step 8: Generating document relationships..."
 python3 scripts/mdbook/generate-relationships.py
 # Copy to book directory for Airtable sync (which looks for book/relationships.json)
 mkdir -p book
@@ -112,9 +122,9 @@ cp src/relationships.json book/relationships.json 2>/dev/null || true
 echo "  ✅ Relationships updated"
 echo ""
 
-# STEP 8: Sync Airtable metadata (needs relationships.json)
+# STEP 9: Sync Airtable metadata (needs relationships.json)
 if [ "$SKIP_AIRTABLE" = false ]; then
-    echo "☁️  Step 8: Syncing Airtable metadata..."
+    echo "☁️  Step 9: Syncing Airtable metadata..."
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         # Force sync in CI environment (GitHub Actions)
         if [ -n "$CI" ]; then
@@ -140,12 +150,12 @@ if [ "$SKIP_AIRTABLE" = false ]; then
         echo "  ⏭️  Meetings metadata sync skipped (script not found)"
     fi
 else
-    echo "⏭️  Step 8: Skipping Airtable sync (--quick mode)"
+    echo "⏭️  Step 9: Skipping Airtable sync (--quick mode)"
 fi
 echo ""
 
-# STEP 9: Generate SUMMARY.md (AFTER relationships AND Airtable sync)
-echo "📋 Step 9: Generating table of contents..."
+# STEP 10: Generate SUMMARY.md (AFTER relationships AND Airtable sync)
+echo "📋 Step 10: Generating table of contents..."
 if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
     python3 scripts/mdbook/generate-summary-with-airtable.py
 else
@@ -154,16 +164,16 @@ fi
 echo "  ✅ Table of contents updated"
 echo ""
 
-# STEP 10: Build mdBook
-echo "📚 Step 10: Building mdBook..."
+# STEP 11: Build mdBook
+echo "📚 Step 11: Building mdBook..."
 mdbook build
 echo "  ✅ mdBook built"
 echo ""
 
-# STEP 11: Copy images and data files to book directory
+# STEP 12: Copy images and data files to book directory
 # CRITICAL: This MUST happen AFTER mdbook build, as mdbook cleans the book/ directory!
 # The theme/ directory contains our modular CSS architecture and must be copied here.
-echo "📂 Step 11: Copying images and data files..."
+echo "📂 Step 12: Copying images and data files..."
 # Copy all images to the book directory
 if [ -d "images" ]; then
     echo "  • Copying images directory..."
@@ -194,19 +204,19 @@ if [ -f "scripts/build/add-readonly-warnings.sh" ]; then
     ./scripts/build/add-readonly-warnings.sh >/dev/null 2>&1
 fi
 
-# STEP 12: Apply custom formatting (MUST be after mdBook build)
-echo "🎨 Step 12: Applying custom formatting..."
+# STEP 13: Apply custom formatting (MUST be after mdBook build)
+echo "🎨 Step 13: Applying custom formatting..."
 python3 scripts/postprocessing/custom-list-processor.py
 echo "  ✅ Custom formatting applied"
 echo ""
 
-# STEP 13: Apply enhanced formatting (if available)
+# STEP 14: Apply enhanced formatting (if available)
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
-    echo "✨ Step 13: Applying enhanced document formatting..."
+    echo "✨ Step 14: Applying enhanced document formatting..."
     python3 scripts/postprocessing/enhanced-custom-processor.py
     echo "  ✅ Enhanced formatting applied"
 else
-    echo "⏭️  Step 13: Enhanced formatting not available"
+    echo "⏭️  Step 14: Enhanced formatting not available"
 fi
 echo ""
 
