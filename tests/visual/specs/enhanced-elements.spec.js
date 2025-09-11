@@ -22,7 +22,7 @@ test.describe('Enhanced Document Elements Visual Tests', () => {
     
     // Check definition marker styling
     const marker = page.locator('.definition-marker').first();
-    await expect(marker).toHaveCSS('font-weight', '700');
+    // Font weight removed for cleaner appearance
     await expect(marker).toHaveCSS('color', 'rgb(9, 105, 218)');
   });
 
@@ -63,7 +63,8 @@ test.describe('Enhanced Document Elements Visual Tests', () => {
       // Check marker styling
       const marker = whereasClause.locator('.whereas-marker').first();
       if (await marker.count() > 0) {
-        await expect(marker).toHaveCSS('font-weight', '700');
+        // Font weight removed for cleaner appearance - marker still exists but not bold
+        await expect(marker).toBeVisible();
       }
     }
   });

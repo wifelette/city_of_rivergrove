@@ -178,9 +178,8 @@ When base flood elevation data has not been provided in accordance with Section 
 
 (1) Where base flood elevation data is provided through the Flood Insurance Study or required as in Section 4.3-2, obtain and record the actual elevation (in relation to mean sea level) of the lowest floor (including basement) of all new or substantially improved structures, and whether or not the structure contains a basement.
 (2) For all new or substantially improved floodproofed structures:
-
-  (i) verify and record the actual elevation (in relation to mean sea level), and
-  (ii) maintain the floodproofing certifications required in Section 4.1(3).
+(i) verify and record the actual elevation (in relation to mean sea level), and
+(ii) maintain the floodproofing certifications required in Section 4.1(3).
 (3) Maintain for public inspection all records pertaining to the provisions of this ordinance.
 
 #### 4.3-4 Alteration of Watercourses
@@ -200,17 +199,17 @@ Make interpretations where needed, as to exact location of the boundaries of the
 (2) The <span class="form-field-filled" data-tooltip="Field filled in on source doc">City Counci</span> shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
 (3) Those aggrieved by the decision of the <span class="form-field-filled" data-tooltip="Field filled in on source doc">City Council</span> or any taxpayer, may appeal such decision to the <span class="form-field-filled" data-tooltip="Field filled in on source doc">Land Use Board of Appeals</span>, as provided in State law.
 (4) In passing upon such applications, the <span class="form-field-filled" data-tooltip="Field filled in on source doc">City Counci</span> shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
-  (i) the danger that materials may be swept onto other lands to the injury of others;
-  (ii) the danger to life and property due to flooding or erosion damage;
-  (iii) the susceptibility of the proposed facility and its contents to flood damage and the effect of such damage on the individual owner;
-  (iv) the importance of the services provide by the proposed facility to the community;
-  (v) the necessity to the facility of a waterfront location, where applicable;
-  (vi) the availability of alternative locations for the proposed use which are not subject to flooding or erosion damage;
-  (vii) the compatibility of the proposed use with existing and anticipated development;
-  (viii) the relationship of the proposed use to the comprehensive plan and flood plain management program for that area;
-  (ix) the safety of access to the property in times of flood for ordinary and emergency vehicles;
-  (x) the expected heights, velocity, duration, rate of rise, and sediment transport of the flood waters and the effects of wave action, if applicable, expected at the site; and,
-  (xi) the costs of providing governmental services during and after flood conditions, including maintenance and repair of public utilities and facilities such as sewer, gas, electrical, and water systems, and streets and bridges.
+(i) the danger that materials may be swept onto other lands to the injury of others;
+(ii) the danger to life and property due to flooding or erosion damage;
+(iii) the susceptibility of the proposed facility and its contents to flood damage and the effect of such damage on the individual owner;
+(iv) the importance of the services provide by the proposed facility to the community;
+(v) the necessity to the facility of a waterfront location, where applicable;
+(vi) the availability of alternative locations for the proposed use which are not subject to flooding or erosion damage;
+(vii) the compatibility of the proposed use with existing and anticipated development;
+(viii) the relationship of the proposed use to the comprehensive plan and flood plain management program for that area;
+(ix) the safety of access to the property in times of flood for ordinary and emergency vehicles;
+(x) the expected heights, velocity, duration, rate of rise, and sediment transport of the flood waters and the effects of wave action, if applicable, expected at the site; and,
+(xi) the costs of providing governmental services during and after flood conditions, including maintenance and repair of public utilities and facilities such as sewer, gas, electrical, and water systems, and streets and bridges.
 
 (5) Upon consideration of the factors of Section 4.4-1(4) and the purposes of this ordinance, the <span class="form-field-filled" data-tooltip="Field filled in on source doc">City Council</span> may attach such conditions to the granting of variances as it deems necessary to further the purposes of this ordinance.
 (6) The <span class="form-field-filled" data-tooltip="Field filled in on source doc">City Recorder</span> shall maintain the records of all appeal actions and report any variances to the Federal Insurance Administration upon request.
@@ -218,23 +217,15 @@ Make interpretations where needed, as to exact location of the boundaries of the
 #### 4.4-2 Conditions for Variances
 
 (1) Generally, the only condition under which a variance from the elevation standard may be issued is for new construction and substantial improvements to be erected on a lot of one-half acre or less in size contiguous to and surrounded by lots with existing structures constructed below the base flood level, providing items (i-xi) in Section 4.4-1(4) have been fully considered. As the lot size increases the technical justification required for issuing the variance increases.
-
 (2) Variances may be issued for the reconstruction, rehabilitation, or restoration of structures listed on the National Register of Historic Places or the State Inventory of Historic Places, without regard to the procedures set forth in this section.
-
 (3) Variances shall not be issued within a designated floodway if any increase in flood levels during the base flood discharge would result.
-
 (4) Variances shall only be issued upon a determination that the variance is the minimum necessary, considering the flood hazard, to afford relief.
-
 (5) Variances shall only be issued upon:
-
-  (i) a showing of good and sufficient cause;
-  (ii) a determination that failure to grant the variance would result in exceptional hardship to the applicant;
-  (iii) a determination that the granting of a variance will not result in increased flood heights, additional threats to public safety, extraordinary public expense, create nuisances, cause fraud on or victimization of the public as identified in Section 4.1-4(4), or conflict with existing local laws or ordinances.
-
+(i) a showing of good and sufficient cause;
+(ii) a determination that failure to grant the variance would result in exceptional hardship to the applicant;
+(iii) a determination that the granting of a variance will not result in increased flood heights, additional threats to public safety, extraordinary public expense, create nuisances, cause fraud on or victimization of the public as identified in Section 4.1-4(4), or conflict with existing local laws or ordinances.
 (6) Variances as interpreted in the National Flood Insurance Program are based on the general zoning law principle that they pertain to a physical piece of property; they are not personal in nature and do not pertain to the structure, its inhabitants, economic or financial circumstances. They primarily address small lots in densely populated residential neighborhoods. As such, variances from the flood elevations should be quite rare.
-
 (7) Variances may be issued for nonresidential buildings in very limited circumstances to allow a lesser degree of floodproofing than watertight or dry-floodproofing, where it can be determined that such action will have low damage potential, complies with all other variance criteria except 4.4-2(1), and otherwise complies with Sections 5.1-1 and 5.1-2 of the GENERAL STANDARDS.
-
 (8) Any applicant to whom a variance is granted shall be given written notice that the structure will be permitted to be built with a lowest floor elevation below the base flood elevation and that the cost of flood insurance will be commensurate with the increased risk resulting from the reduced lowest floor elevation.
 
 ---
@@ -283,10 +274,9 @@ In all areas of special flood hazards where base flood elevation data has been p
 
 (1) New construction and substantial improvement of any residential structure shall have the lowest floor, including basement, elevated to or above base flood elevation.
 (2) Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of floodwaters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
-
-  (i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
-  (ii) The bottom of all openings shall be no higher than one foot above grade.
-  (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
+(i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
+(ii) The bottom of all openings shall be no higher than one foot above grade.
+(iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
 
 #### 5.2-2 Nonresidential Construction
 
@@ -307,5 +297,4 @@ All manufactured homes to be placed or substantially improved within Zones A1-30
 Located within areas of special flood hazard established in Section 3.2 are areas designated as floodways. Since the floodway is an extremely hazardous area due to the velocity of flood waters which carry debris, potential projectiles, and erosion potential, the following provisions apply:
 
 (1) Prohibit encroachments, including fill, new construction, substantial improvements, and other development unless certification by a registered professional engineer or architect is provided demonstrating that encroachments shall not result in any increase in flood levels during the occurrence of the base flood discharge.
-
 (2) If Section 5.3(1) is satisfied, all new construction and substantial improvements shall comply with all applicable flood hazard reduction provisions of Section 5.0, PROVISIONS FOR FLOOD HAZARD REDUCTION.

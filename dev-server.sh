@@ -142,6 +142,11 @@ process_file_change() {
     echo "  Applying enhanced styling..."
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
     
+    # Quick style health check (suppress output unless there's an issue)
+    if ! python3 scripts/validation/check-styles-health.py >/dev/null 2>&1; then
+        echo -e "${YELLOW}  ⚠️  Style health check failed - run './scripts/fix-styles.sh'${NC}"
+    fi
+    
     echo -e "${GREEN}  ✓ Processing complete${NC}"
     
     PROCESSING=false

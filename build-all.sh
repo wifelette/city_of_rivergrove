@@ -220,6 +220,19 @@ else
 fi
 echo ""
 
+# STEP 15: Validate CSS health
+if [ -f "scripts/validation/check-styles-health.py" ]; then
+    echo "🔍 Step 15: Checking CSS and HTML health..."
+    if python3 scripts/validation/check-styles-health.py > /dev/null 2>&1; then
+        echo "  ✅ Style checks passed"
+    else
+        echo "  ⚠️  Style issues detected - run './scripts/fix-styles.sh' if needed"
+    fi
+else
+    echo "⏭️  Step 15: Style health check not available"
+fi
+echo ""
+
 # Done!
 echo "======================================"
 echo "✅ Build complete!"

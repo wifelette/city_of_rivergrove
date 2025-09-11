@@ -13,7 +13,6 @@
 .letter-marker {
     position: absolute;
     left: 0;
-    font-weight: var(--font-weight-semibold);
     color: var(--color-text-muted);
 }
 
@@ -23,10 +22,14 @@
 
 /* Definition lists with terms and definitions */
 .definition-item {
-    margin: var(--space-padding-lg) 0;
-    padding: var(--space-padding-md);
-    background: linear-gradient(to right, var(--color-bg-light) 0%, transparent 100%);
-    border-left: 3px solid var(--color-primary);
+    margin: var(--space-padding-md) 0;
+    padding-left: var(--space-padding-sm);
+}
+
+.definition-marker {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-right: 0.3em;
 }
 
 .definition-term {
@@ -72,7 +75,6 @@
 .custom-numbered-list .custom-list-marker {
     position: absolute;
     left: 0;
-    font-weight: var(--font-weight-bold);
     color: var(--color-primary);
 }
 
@@ -84,7 +86,6 @@
 }
 
 .whereas-marker {
-    font-weight: var(--font-weight-bold);
     color: var(--color-nav-dark);
     margin-right: 0.5em;
 }

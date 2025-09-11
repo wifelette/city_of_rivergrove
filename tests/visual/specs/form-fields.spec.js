@@ -72,6 +72,6 @@ test.describe('Form Field Visual Tests', () => {
     // Verify CSS properties are applied
     await expect(filledField).toHaveCSS('background-color', 'rgb(227, 242, 253)'); // #e3f2fd
     await expect(filledField).toHaveCSS('border-bottom', '2px solid rgb(25, 118, 210)'); // #1976d2
-    await expect(filledField).toHaveCSS('font-weight', '600');
+    // Font weight removed for cleaner appearance
   });
 });

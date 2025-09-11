@@ -64,7 +64,6 @@
     background-color: var(--color-bg-blue-200);
     border-bottom: 2px solid var(--color-primary);
     color: var(--color-text);
-    font-weight: var(--font-weight-semibold);
     cursor: default;
     position: relative;
     margin: 0 3px;
