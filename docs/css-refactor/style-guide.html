@@ -779,15 +779,26 @@ Rosalie Morrison, City Recorder</div>
         </div>
 
         <div class="example-container">
-            <div class="example-title">Signature Lines (Empty)</div>
-            <p>Mayor: <span class="signature-line" style="width: 300px"></span></p>
-            <div class="signature-title">Mayor</div>
+            <div class="example-title">Signature Lines (Empty Form Fields)</div>
+            <p>[Signature]<br>
+            <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, Mayor</p>
             
-            <p style="margin-top: 30px">City Recorder: <span class="signature-line" style="width: 250px"></span></p>
-            <div class="signature-title">City Recorder</div>
+            <p style="margin-top: 20px"><strong>Attest:</strong></p>
+            <p>[Signature]<br>
+            <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, City Recorder</p>
             
-            <p style="margin-top: 30px">Date: <span class="signature-line" style="width: 150px"></span></p>
-            <div class="signature-date">Date of Signing</div>
+            <p style="margin-top: 20px">Date: <span class="form-field-empty form-field-medium" data-tooltip="This field was blank on the original document"></span></p>
+            
+            <div class="code-snippet">Markdown:
+[Signature]
+{{empty:long}}, Mayor
+
+Attest:
+
+[Signature]
+{{empty:long}}, City Recorder
+
+Date: {{empty:medium}}</div>
         </div>
 
         <div class="example-container">
@@ -827,13 +838,15 @@ Attest:
         </div>
 
         <div class="example-container">
-            <div class="example-title">CSS Classes</div>
+            <div class="example-title">CSS Classes & Markdown Syntax</div>
             <ul>
-                <li><code>.signature-block</code> - Container for signature sections</li>
-                <li><code>.signature-line</code> - Empty line for signatures</li>
-                <li><code>.signature-title</code> - Title/role below signature</li>
-                <li><code>.signature-date</code> - Date styling</li>
-                <li><code>.attestation-block</code> - Special block for attestations/certifications</li>
+                <li><code>.signature-block</code> - Container for signature sections (adds spacing and borders)</li>
+                <li><code>.attestation-block</code> - Special block for attestations/certifications with accent border</li>
+                <li><code>[Signature]</code> - Markdown notation for signature placeholder</li>
+                <li><code>{{empty:long}}</code> - Empty form field for names (with tooltip)</li>
+                <li><code>{{filled:Name}}</code> - Filled form field for names (with tooltip)</li>
+                <li><code>.signature-title</code> - Role/title styling (if needed separately)</li>
+                <li><code>.signature-date</code> - Date styling (if needed separately)</li>
             </ul>
         </div>
     </div>
