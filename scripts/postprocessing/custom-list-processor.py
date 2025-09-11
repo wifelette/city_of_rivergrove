@@ -63,12 +63,54 @@ def process_numbered_lists(html_content):
                     marker_span.string = item['marker']
                     li.append(marker_span)
                     
-                    # Process the text content, preserving line breaks and structure
+                    # Process the text content, looking for roman numerals
                     text_lines = item['text'].split('\n')
-                    for i, text_line in enumerate(text_lines):
-                        if i > 0:
-                            li.append(soup.new_tag('br'))
-                        li.append(' ' + text_line if i == 0 else text_line)
+                    
+                    # Check if this item contains roman numeral sublists
+                    has_roman_numerals = False
+                    roman_items = []
+                    regular_text = []
+                    
+                    for text_line in text_lines:
+                        # Check for roman numeral pattern
+                        roman_match = re.match(r'^\s*\(([ivx]+)\)\s+(.+)$', text_line.strip(), re.IGNORECASE)
+                        if roman_match:
+                            has_roman_numerals = True
+                            roman_items.append({
+                                'numeral': roman_match.group(1),
+                                'text': roman_match.group(2)
+                            })
+                        elif not has_roman_numerals:
+                            # This is regular text before any roman numerals
+                            regular_text.append(text_line)
+                        elif roman_items:
+                            # Continuation of the last roman numeral item
+                            roman_items[-1]['text'] += ' ' + text_line.strip()
+                    
+                    # Add the regular text first
+                    if regular_text:
+                        li.append(' ' + regular_text[0])
+                        for text_line in regular_text[1:]:
+                            if text_line.strip():
+                                li.append(' ' + text_line)
+                    
+                    # If we have roman numerals, create a nested structure
+                    if has_roman_numerals and roman_items:
+                        sublist = soup.new_tag('div', attrs={'class': 'roman-sublist'})
+                        for roman_item in roman_items:
+                            item_div = soup.new_tag('div', attrs={'class': 'roman-sublist-item'})
+                            marker = soup.new_tag('span', attrs={'class': 'roman-marker'})
+                            marker.string = f"({roman_item['numeral']})"
+                            item_div.append(marker)
+                            item_div.append(' ' + roman_item['text'])
+                            sublist.append(item_div)
+                        li.append(sublist)
+                    elif not regular_text and not has_roman_numerals:
+                        # No special formatting needed, just add the text
+                        for i, text_line in enumerate(text_lines):
+                            if i > 0:
+                                li.append(soup.new_tag('br'))
+                            li.append(' ' + text_line if i == 0 else text_line)
                     
                     ol.append(li)
                 

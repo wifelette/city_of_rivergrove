@@ -140,12 +140,45 @@ main {
 
 /* Disable mdBook's automatic numbering for custom lists */
 ol:has(.custom-list-marker) {
-    list-style: none;
+    list-style: none !important;
     counter-reset: none;
+    padding-left: 2em;
+}
+
+ol:has(.custom-list-marker) > li {
+    list-style: none !important;
+    position: relative;
 }
 
 ol:has(.custom-list-marker) li::before {
-    content: none;
+    content: none !important;
+}
+
+/* Style for custom list markers */
+ol .custom-list-marker {
+    position: absolute;
+    left: -2em;
+    font-weight: bold;
+}
+
+/* Style for roman numeral sublists within numbered items */
+.roman-sublist {
+    margin-top: 0.5em;
+    margin-left: 2em;
+    display: block;
+}
+
+.roman-sublist-item {
+    display: block;
+    margin: 0.25em 0;
+    position: relative;
+    padding-left: 2em;
+}
+
+.roman-sublist-item .roman-marker {
+    position: absolute;
+    left: 0;
+    font-weight: normal;
 }
 
 ol.special-start-list li::before {
