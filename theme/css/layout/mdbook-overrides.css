@@ -183,6 +183,22 @@ ol.custom-numbered-list .custom-list-marker {
     font-weight: normal;
 }
 
+/* Unordered lists that contain only roman numerals - remove bullets */
+ul.roman-list-no-bullets {
+    list-style: none;
+    padding-left: 2em;
+}
+
+ul.roman-list-no-bullets > li {
+    list-style: none;
+    position: relative;
+    margin: 0.5em 0;
+}
+
+ul.roman-list-no-bullets > li::before {
+    content: none;
+}
+
 ol.special-start-list li::before {
     content: none;
 }

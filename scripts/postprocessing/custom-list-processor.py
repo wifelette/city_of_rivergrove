@@ -343,6 +343,22 @@ def process_mixed_roman_lists(html_content):
         if has_roman:
             ol['class'] = ol.get('class', []) + ['roman-parenthetical-list']
     
+    # Look for unordered lists that contain only roman numeral items
+    for ul in soup.find_all('ul'):
+        all_roman = True
+        has_items = False
+        for li in ul.find_all('li', recursive=False):
+            has_items = True
+            text = li.get_text(strip=True)
+            # Check if this item starts with a roman numeral in parentheses
+            if not re.match(r'^\([ivx]+\)', text, re.IGNORECASE):
+                all_roman = False
+                break
+        
+        # If all items are roman numerals, convert to a special list without bullets
+        if has_items and all_roman:
+            ul['class'] = ul.get('class', []) + ['roman-list-no-bullets']
+    
     return str(soup)
 
 def add_custom_css(html_content):
