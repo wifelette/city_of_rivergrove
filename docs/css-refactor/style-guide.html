@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City of Rivergrove - CSS Style Guide</title>
     <link rel="stylesheet" href="../../theme/css/main.css">
+    <!-- Google Font for signature styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -761,41 +763,41 @@ Long: {{empty:long}}</div>
         <div class="example-container">
             <div class="example-title">Standard Signature Block</div>
             <div class="signature-block">
-                <p>[Signature]<br>
+                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
                 <span style="font-weight: 600">John C. Miller</span>, Mayor</p>
                 
                 <p style="margin-top: 20px"><strong>Attest:</strong></p>
-                <p>[Signature]<br>
+                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
                 <span style="font-weight: 600">Rosalie Morrison</span>, City Recorder</p>
             </div>
             <div class="code-snippet">Markdown:
-[Signature]
+{{signature}}
 John C. Miller, Mayor
 
 Attest:
 
-[Signature]
+{{signature}}
 Rosalie Morrison, City Recorder</div>
         </div>
 
         <div class="example-container">
             <div class="example-title">Signature Lines (Empty Form Fields)</div>
-            <p>[Signature]<br>
+            <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
             <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, Mayor</p>
             
             <p style="margin-top: 20px"><strong>Attest:</strong></p>
-            <p>[Signature]<br>
+            <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
             <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, City Recorder</p>
             
             <p style="margin-top: 20px">Date: <span class="form-field-empty form-field-medium" data-tooltip="This field was blank on the original document"></span></p>
             
             <div class="code-snippet">Markdown:
-[Signature]
+{{signature}}
 {{empty:long}}, Mayor
 
 Attest:
 
-[Signature]
+{{signature}}
 {{empty:long}}, City Recorder
 
 Date: {{empty:medium}}</div>
@@ -806,7 +808,7 @@ Date: {{empty:medium}}</div>
             <div class="attestation-block">
                 <p><strong>I hereby certify that this is a true and correct copy of Resolution #301</strong> as adopted by the City Council of Rivergrove on January 15, 2025.</p>
                 
-                <p style="margin-top: 20px">[Signature]<br>
+                <p style="margin-top: 20px"><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
                 Virginia Morrison, City Recorder<br>
                 <span style="color: var(--color-text-light); font-size: 0.95em">Date: January 16, 2025</span></p>
             </div>
@@ -818,22 +820,22 @@ Date: {{empty:medium}}</div>
             <p><strong>ADOPTED</strong> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">8th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">March</span>, 1976.</p>
             
             <div style="margin-top: 30px">
-                <p>[Signature]<br>
+                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
                 <span class="form-field-filled" data-tooltip="Field filled in on source doc">John C. Miller</span>, Mayor</p>
                 
                 <p style="margin-top: 20px"><strong>Attest:</strong></p>
-                <p>[Signature]<br>
+                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
                 <span class="form-field-filled" data-tooltip="Field filled in on source doc">Rosalie Morrison</span>, City Recorder</p>
             </div>
             <div class="code-snippet">Markdown:
 **ADOPTED** this {{filled:8th}} day of {{filled:March}}, 1976.
 
-[Signature]
+{{signature}}
 {{filled:John C. Miller}}, Mayor
 
 Attest:
 
-[Signature]
+{{signature}}
 {{filled:Rosalie Morrison}}, City Recorder</div>
         </div>
 
@@ -842,7 +844,7 @@ Attest:
             <ul>
                 <li><code>.signature-block</code> - Container for signature sections (adds spacing and borders)</li>
                 <li><code>.attestation-block</code> - Special block for attestations/certifications with accent border</li>
-                <li><code>[Signature]</code> - Markdown notation for signature placeholder</li>
+                <li><code>{{signature}}</code> - Markdown notation for signature placeholder (renders as cursive text)</li>
                 <li><code>{{empty:long}}</code> - Empty form field for names (with tooltip)</li>
                 <li><code>{{filled:Name}}</code> - Filled form field for names (with tooltip)</li>
                 <li><code>.signature-title</code> - Role/title styling (if needed separately)</li>

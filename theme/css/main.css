@@ -3,6 +3,9 @@
  * Modular CSS Architecture - Phase 4 Implementation
  */
 
+/* Google Fonts for signature styling */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
 /* Base Layer - Variables and foundational styles */
 @import url('./base/variables.css');
 @import url('./base/typography.css');

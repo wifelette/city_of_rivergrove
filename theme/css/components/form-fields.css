@@ -194,3 +194,54 @@ h3 .form-field-empty {
     font-size: 0.95em;
     margin-top: var(--space-padding-xs);
 }
+
+/* Signature mark - represents {{signature}} in documents */
+.signature-mark {
+    display: inline-block;
+    font-family: 'Dancing Script', 'Brush Script MT', 'Lucida Handwriting', cursive, serif;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #4a7ba7;
+    opacity: 0.75;
+    padding: 0 8px;
+    position: relative;
+    cursor: help;
+}
+
+.signature-mark::after {
+    content: 'Signature present in original';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-family: var(--font-family-text);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    margin-bottom: 5px;
+    z-index: 1000;
+}
+
+.signature-mark:hover::after {
+    opacity: 1;
+}
+
+/* Print styles for signature mark */
+@media print {
+    .signature-mark {
+        font-family: serif !important;
+        font-style: italic !important;
+        color: #333 !important;
+        opacity: 1 !important;
+    }
+    
+    .signature-mark::after {
+        display: none;
+    }
+}

@@ -71,7 +71,7 @@ def standardize_ordinance_headers(content, filename):
 def fix_signatures(content):
     """
     Fix signature formatting in a document.
-    Converts various formats to standardized: [Signature], Name, Title
+    Converts various formats to standardized: {{signature}}, Name, Title
     BUT: Excludes WHEREAS clauses and other non-signature patterns
     """
     
@@ -122,28 +122,28 @@ def fix_signatures(content):
             
             if is_likely_signature:
                 if date_part:
-                    fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
+                    fixed_lines.append(f"{{signature}}, {potential_name}, {potential_title}  ")
                     fixed_lines.append(date_part.strip() + "  ")
                 else:
                     # Check if next line has the date
                     if i + 1 < len(lines) and '**Date**:' in lines[i + 1]:
-                        fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
+                        fixed_lines.append(f"{{signature}}, {potential_name}, {potential_title}  ")
                         fixed_lines.append(lines[i + 1].strip() + "  ")
                         i += 1
                     else:
-                        fixed_lines.append(f"[Signature], {potential_name}, {potential_title}  ")
+                        fixed_lines.append(f"{{signature}}, {potential_name}, {potential_title}  ")
             else:
                 # Not a signature, keep original
                 fixed_lines.append(line)
             i += 1
             continue
         
-        # Pattern 2: [Signature] followed by bold name
-        match = re.match(r'^\[Signature\][,:]?\s*\*\*([^*]+)\*\*,?\s*(.+?)$', line)
+        # Pattern 2: [Signature] or {{signature}} followed by bold name
+        match = re.match(r'^(?:\[Signature\]|\{\{signature\}\})[,:]?\s*\*\*([^*]+)\*\*,?\s*(.+?)$', line)
         if match:
             name = match.group(1).strip()
             title = match.group(2).strip()
-            fixed_lines.append(f"[Signature], {name}, {title}  ")
+            fixed_lines.append(f"{{signature}}, {name}, {title}  ")
             
             # Check for date on next line
             if i + 1 < len(lines) and '**Date**:' in lines[i + 1]:
@@ -153,11 +153,18 @@ def fix_signatures(content):
             continue
         
         # Pattern 3: Already correct format - ensure trailing spaces
-        if re.match(r'^\[Signature\],\s*.+,\s*.+', line):
+        # Support both [Signature] and {{signature}} formats
+        if re.match(r'^(?:\[Signature\]|\{\{signature\}\}),\s*.+,\s*.+', line):
+            # Convert [Signature] to {{signature}} if needed
+            if line.startswith('[Signature]'):
+                line = line.replace('[Signature]', '{{signature}}', 1)
             if not line.endswith('  '):
                 line = line.rstrip() + '  '
             fixed_lines.append(line)
-        # Pattern 4: Date line - ensure trailing spaces
+        # Pattern 4: Convert standalone [Signature] to {{signature}}
+        elif line.strip() == '[Signature]':
+            fixed_lines.append('{{signature}}  ')
+        # Pattern 5: Date line - ensure trailing spaces
         elif '**Date**:' in line or '**Date:**' in line:
             if not line.endswith('  '):
                 line = line.rstrip() + '  '

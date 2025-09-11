@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Representation Options</title>
+    
+    <!-- Google Fonts for refined cursive options -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Kalam:wght@400&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .example {
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .example h3 {
+            margin-top: 0;
+            color: #0969da;
+        }
+        
+        /* Option 1: Simple text (current) */
+        .signature-text {
+            font-style: italic;
+            color: #666;
+        }
+        
+        /* Option 2: Badge style */
+        .signature-badge {
+            display: inline-block;
+            background: #e8f2ff;
+            color: #0969da;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #b8d4f1;
+        }
+        
+        /* Option 3: Visual placeholder with cursive */
+        .signature-visual {
+            display: inline-block;
+            font-family: 'Brush Script MT', cursive;
+            color: #2563eb;
+            font-size: 1.3em;
+            border-bottom: 1px solid #2563eb;
+            padding: 0 10px;
+            opacity: 0.7;
+        }
+        
+        /* Option 4: Icon + text */
+        .signature-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .signature-icon::before {
+            content: "✍️";
+            font-size: 1.1em;
+        }
+        
+        /* Option 5: Underlined placeholder */
+        .signature-line {
+            display: inline-block;
+            min-width: 150px;
+            border-bottom: 1px solid #999;
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            font-style: italic;
+            padding-bottom: 2px;
+        }
+        
+        /* Option 6: Styled like form fields */
+        .signature-form-style {
+            display: inline-block;
+            background: linear-gradient(to bottom, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            padding: 2px 8px;
+            color: #0369a1;
+            font-size: 0.9em;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .signature-form-style::after {
+            content: "Signature present in original";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 4px;
+        }
+        
+        .signature-form-style:hover::after {
+            opacity: 1;
+        }
+        
+        .context {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        /* Refined signature styles for Option 3 preference */
+        .signature-refined {
+            display: inline-block;
+            font-family: 'Dancing Script', 'Brush Script MT', cursive;
+            font-size: 1.4em;
+            font-weight: 500;
+            color: #4a7ba7;
+            opacity: 0.75;
+            padding: 0 8px;
+            position: relative;
+            cursor: help;
+            aria-label: "Signature";
+        }
+        
+        .signature-refined::after {
+            content: 'Signature present in original';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 5px;
+        }
+        
+        .signature-refined:hover::after {
+            opacity: 1;
+        }
+        
+        /* Print styles for refined signature */
+        @media print {
+            .signature-refined {
+                font-family: serif !important;
+                font-style: italic !important;
+                color: #333 !important;
+                opacity: 1 !important;
+            }
+        }
+        
+        .final-choice {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .final-choice h3 {
+            color: #d97706;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signature Representation Options</h1>
+    <p>Testing different ways to visually represent <code>{{signature}}</code> in documents:</p>
+    
+    <div class="example">
+        <h3>Option 1: Simple Text (Current)</h3>
+        <div class="context">
+            <p><span class="signature-text">[Signature]</span><br>
+            John C. Miller, Mayor</p>
+        </div>
+        <p><strong>Pros:</strong> Simple, clear, no confusion<br>
+        <strong>Cons:</strong> Not visually distinct</p>
+    </div>
+    
+    <div class="example">
+        <h3>Option 2: Badge Style</h3>
+        <div class="context">
+            <p><span class="signature-badge">Signature</span><br>
+            John C. Miller, Mayor</p>
+        </div>
+        <p><strong>Pros:</strong> Visually distinct, consistent with form fields<br>
+        <strong>Cons:</strong> Might be too prominent</p>
+    </div>
+    
+    <div class="example">
+        <h3>Option 3: Cursive Visual</h3>
+        <div class="context">
+            <p><span class="signature-visual">Signature</span><br>
+            John C. Miller, Mayor</p>
+        </div>
+        <p><strong>Pros:</strong> Looks like an actual signature<br>
+        <strong>Cons:</strong> Might be confusing, font dependency</p>
+    </div>
+    
+    <div class="example">
+        <h3>Option 4: Icon + Text</h3>
+        <div class="context">
+            <p><span class="signature-icon">Signature</span><br>
+            John C. Miller, Mayor</p>
+        </div>
+        <p><strong>Pros:</strong> Clear with visual indicator<br>
+        <strong>Cons:</strong> Emoji might not print well</p>
+    </div>
+    
+    <div class="example">
+        <h3>Option 5: Underlined Placeholder</h3>
+        <div class="context">
+            <p><span class="signature-line">Signature</span><br>
+            John C. Miller, Mayor</p>
+        </div>
+        <p><strong>Pros:</strong> Traditional legal document style<br>
+        <strong>Cons:</strong> Might look like a blank field</p>
+    </div>
+    
+    <div class="example">
+        <h3>Option 6: Form Field Style (with tooltip)</h3>
+        <div class="context">
+            <p><span class="signature-form-style">Signature</span><br>
+            John C. Miller, Mayor</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666">
+                (Hover over "Signature" to see tooltip)
+            </p>
+        </div>
+        <p><strong>Pros:</strong> Consistent with other form fields, has tooltip<br>
+        <strong>Cons:</strong> Might imply it was a form field</p>
+    </div>
+    
+    <div class="example">
+        <h3>In Context: Full Document Example</h3>
+        <div class="context">
+            <p><strong>ADOPTED</strong> this 8th day of March, 1976.</p>
+            
+            <p style="margin-top: 20px">
+                <span class="signature-badge">Signature</span><br>
+                John C. Miller, Mayor
+            </p>
+            
+            <p style="margin-top: 20px">
+                <strong>Attest:</strong>
+            </p>
+            
+            <p>
+                <span class="signature-badge">Signature</span><br>
+                Rosalie Morrison, City Recorder
+            </p>
+        </div>
+    </div>
+    
+    <hr style="margin: 40px 0">
+    
+    <h2>Initial Recommendation</h2>
+    <p>I'd suggest <strong>Option 2 (Badge Style)</strong> or <strong>Option 6 (Form Field Style)</strong> because they:</p>
+    <ul>
+        <li>Are visually distinct from regular text</li>
+        <li>Follow the existing pattern of styled inline elements</li>
+        <li>Work well in both screen and print contexts</li>
+        <li>Are accessible and clear in meaning</li>
+    </ul>
+    
+    <p>The syntax would change from <code>[Signature]</code> to <code>{{signature}}</code> to match our other inline elements.</p>
+    
+    <hr style="margin: 40px 0">
+    
+    <h2>Refined Options Based on Preference for Option 3</h2>
+    <p>Since you liked Option 3 (cursive visual), here are refined versions with better implementation:</p>
+    
+    <div class="example">
+        <h3>Refined Option 3A: Dancing Script with Tooltip</h3>
+        <div class="context">
+            <p><span class="signature-refined">Signature</span><br>
+            John C. Miller, Mayor</p>
+            
+            <p style="margin-top: 20px"><strong>Attest:</strong></p>
+            <p><span class="signature-refined">Signature</span><br>
+            Rosalie Morrison, City Recorder</p>
+            
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666">
+                (Hover over "Signature" to see tooltip)
+            </p>
+        </div>
+        <p><strong>Improvements over original Option 3:</strong></p>
+        <ul>
+            <li>Google Font (Dancing Script) ensures consistency</li>
+            <li>Muted blue-gray color (#4a7ba7) - clearly not real ink</li>
+            <li>75% opacity for subtlety</li>
+            <li>Tooltip on hover explains what it represents</li>
+            <li>Accessibility attributes (aria-label)</li>
+            <li>Print-friendly fallback</li>
+        </ul>
+    </div>
+    
+    <div class="final-choice">
+        <h3>✅ Final Choice: Option A + Tooltip</h3>
+        <p><strong>Implementation details:</strong></p>
+        <ul>
+            <li><strong>Markdown syntax:</strong> <code>{{signature}}</code></li>
+            <li><strong>CSS class:</strong> <code>.signature-mark</code></li>
+            <li><strong>Font:</strong> Dancing Script (Google Font) with fallbacks</li>
+            <li><strong>Color:</strong> #4a7ba7 at 75% opacity</li>
+            <li><strong>Interaction:</strong> Tooltip on hover</li>
+            <li><strong>Accessibility:</strong> aria-label="Signature"</li>
+        </ul>
+        
+        <div class="context" style="margin-top: 20px">
+            <p><strong>Final rendering example:</strong></p>
+            <p style="margin-top: 15px">
+                <span class="signature-refined">Signature</span><br>
+                John C. Miller, Mayor
+            </p>
+        </div>
+    </div>
+</body>
+</html>

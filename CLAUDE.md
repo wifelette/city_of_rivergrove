@@ -5,24 +5,29 @@
 Please read these files for context on this project and how to work with Leah:
 
 1. **Main project guides**:
+
    - `docs/digitization-guide.md` - Project overview and links to all guides
    - `docs/claude-code-guide.md` - Repository management workflow (most relevant for Claude Code)
    - `docs/mdbook-guide.md` - mdBook site generation and technical details
    - `docs/build-architecture.md` - Complete build system documentation, script dependencies, and processing order
 
 2. **Style and formatting guides**:
+
    - `docs/styles/naming-conventions.md` - File naming standards
    - `docs/styles/form-fields.md` - Form field syntax and validation
    - `docs/styles/signature-formatting.md` - Signature block standards
    - `docs/markdown-conventions.md` - Cross-references and formatting patterns
 
 3. **Technical documentation**:
+
    - `scripts/SCRIPTS-GUIDE.md` - All script documentation
    - `docs/airtable-integration.md` - Airtable sync and metadata
    - `docs/metadata-architecture.md` - Metadata system overview
 
 4. **General working preferences**:
    - `/Users/leahsilber/Github/daily_tasks/CLAUDE.md` - Leah's general preferences when working with Claude Code
+
+If you are instructed to review this file or any others, but skip any files or sections, or cannot access any of them, let Leah know right away so she has an accurate understanding of your context for each interaction.
 
 ## COMPLETE PROCESSING WORKFLOW
 
@@ -105,6 +110,7 @@ Please read these files for context on this project and how to work with Leah:
 **Quick fix:** Run `./scripts/fix-styles.sh` - it handles everything automatically
 
 **Manual steps (if needed):**
+
 1. Run both postprocessors to restore HTML structure:
    ```bash
    python3 scripts/postprocessing/custom-list-processor.py
@@ -116,6 +122,7 @@ Please read these files for context on this project and how to work with Leah:
 ### Testing for style issues:
 
 Run `python3 scripts/validation/check-styles-health.py` to check:
+
 - CSS import path is correct
 - Theme directory structure exists
 - HTML has proper custom classes
@@ -152,13 +159,16 @@ This test runs automatically in build-all.sh and dev-server.sh
 - See `docs/styles/document-notes.md` for complete syntax guide
 
 Example:
+
 ```markdown
 ## Document Notes
 
 ### Stamp {{page:3}}
+
 COPY
 
 ### Handwritten text {{page:2}}
+
 I certify this to be a true copy.
 Rosalie Morrison
 City Recorder
@@ -173,6 +183,7 @@ The build system automatically validates `{{filled:}}` form field syntax at mult
 - **Dev Server**: Validates on every file save, blocks processing if errors found
 
 If you encounter form field errors:
+
 1. Check for unclosed tags: `\{\{filled:text` should be `\{\{filled:text\}\}`
 2. Ensure colon after "filled": `\{\{filled:text\}\}` not `\{\{filledtext\}\}`
 3. Run manual validation: `python3 scripts/validation/validate-form-fields.py [file]`

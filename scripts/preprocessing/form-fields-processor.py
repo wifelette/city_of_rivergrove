@@ -40,6 +40,7 @@ def process_filled_fields(content):
     Syntax:
     - {{filled:}} -> [BLANK] (empty field)
     - {{filled:text}} -> [FILLED:text] (filled field)
+    - {{signature}} -> [SIGNATURE] (signature mark)
     """
     # First handle empty filled fields (blank fields using new syntax)
     content = re.sub(r'\{\{filled:\s*\}\}', '<!--BLANK-->', content)
@@ -47,6 +48,9 @@ def process_filled_fields(content):
     # Then handle filled fields with content
     pattern = r'\{\{filled:([^}]+)\}\}'
     content = re.sub(pattern, r'<!--FILLED:\1-->', content)
+    
+    # Handle signature markers
+    content = re.sub(r'\{\{signature\}\}', '<!--SIGNATURE-->', content)
     
     return content
 
