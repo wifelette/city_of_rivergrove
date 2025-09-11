@@ -219,7 +219,8 @@ h3 .form-field-empty {
     padding: 4px 10px;
     border-radius: 4px;
     font-size: 0.65rem;
-    font-family: var(--font-family-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: normal !important;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
