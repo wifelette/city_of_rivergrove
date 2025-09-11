@@ -226,9 +226,10 @@ Make interpretations where needed, as to exact location of the boundaries of the
 (4) Variances shall only be issued upon a determination that the variance is the minimum necessary, considering the flood hazard, to afford relief.
 
 (5) Variances shall only be issued upon:
-(i) a showing of good and sufficient cause;
-(ii) a determination that failure to grant the variance would result in exceptional hardship to the applicant;
-(iii) a determination that the granting of a variance will not result in increased flood heights, additional threats to public safety, extraordinary public expense, create nuisances, cause fraud on or victimization of the public as identified in Section 4.1-4(4), or conflict with existing local laws or ordinances.
+
+  (i) a showing of good and sufficient cause;
+  (ii) a determination that failure to grant the variance would result in exceptional hardship to the applicant;
+  (iii) a determination that the granting of a variance will not result in increased flood heights, additional threats to public safety, extraordinary public expense, create nuisances, cause fraud on or victimization of the public as identified in Section 4.1-4(4), or conflict with existing local laws or ordinances.
 
 (6) Variances as interpreted in the National Flood Insurance Program are based on the general zoning law principle that they pertain to a physical piece of property; they are not personal in nature and do not pertain to the structure, its inhabitants, economic or financial circumstances. They primarily address small lots in densely populated residential neighborhoods. As such, variances from the flood elevations should be quite rare.
 

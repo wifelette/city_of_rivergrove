@@ -181,7 +181,7 @@ def process_special_numbered_lists(html_content):
     return str(soup)
 
 def process_roman_lists(html_content):
-    """Convert roman numeral lists in preformatted blocks to proper lists"""
+    """Convert roman numeral lists in preformatted blocks and paragraphs to proper lists"""
     soup = BeautifulSoup(html_content, 'html.parser')
     
     # Process lists in <pre> blocks
@@ -214,6 +214,37 @@ def process_roman_lists(html_content):
                 ol.append(li)
             
             pre.replace_with(ol)
+    
+    # Also process <p> tags that contain multiple roman numerals
+    for p in soup.find_all('p'):
+        text = p.get_text()
+        # Check if this paragraph contains multiple roman numerals
+        if '\n' in text and re.search(r'\([ivx]+\)', text, re.IGNORECASE):
+            lines = text.split('\n')
+            list_items = []
+            
+            for line in lines:
+                # Match lines that start with (i), (ii), etc.
+                match = re.match(r'^\s*\(([ivx]+)\)\s+(.+)$', line.strip(), re.IGNORECASE)
+                if match:
+                    list_items.append({
+                        'numeral': match.group(1),
+                        'text': match.group(2)
+                    })
+                elif line.strip() and list_items:
+                    # Continuation of previous item
+                    list_items[-1]['text'] += ' ' + line.strip()
+            
+            # If we found at least 2 roman numeral items, create a list
+            if len(list_items) >= 2:
+                ul = soup.new_tag('ul', attrs={'class': 'roman-list-no-bullets'})
+                for item in list_items:
+                    li = soup.new_tag('li')
+                    li.string = f"({item['numeral']}) {item['text']}"
+                    ul.append(li)
+                
+                # Replace the paragraph with the list
+                p.replace_with(ul)
     
     return str(soup)
 
