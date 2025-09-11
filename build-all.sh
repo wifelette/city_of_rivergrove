@@ -37,14 +37,17 @@ for arg in "$@"; do
     esac
 done
 
+# Source server management utilities
+source scripts/utils/server-management.sh
+
 # Check if mdbook serve is running and track it
 SERVER_WAS_RUNNING=false
 if pgrep -f "mdbook serve" > /dev/null; then
-    echo "⚠️  Detected mdbook serve running - stopping it to prevent conflicts..."
     SERVER_WAS_RUNNING=true
-    pkill -f "mdbook serve"
-    sleep 1
 fi
+
+# Stop any existing servers to prevent conflicts during build
+stop_all_mdbook_servers
 
 echo "🚀 City of Rivergrove - Complete Build"
 echo "======================================"
@@ -284,12 +287,17 @@ echo ""
 # Restart server if it was running before
 if [ "$SERVER_WAS_RUNNING" = true ]; then
     echo "🔄 Restarting development server..."
-    ./dev-server.sh > /dev/null 2>&1 &
-    sleep 2
-    if pgrep -f "mdbook serve" > /dev/null; then
+    # Try to start the server
+    mdbook serve --port 3000 > /dev/null 2>&1 &
+    
+    # Wait for it to start properly
+    if wait_for_server_start 3000 5; then
         echo "✅ Server restarted at http://localhost:3000"
+        echo ""
+        echo "💡 For hot-reload development, run: ./dev-server.sh"
     else
-        echo "❌ Failed to restart server. Run './dev-server.sh' manually."
+        echo "❌ Failed to restart server automatically."
+        echo "   Run './dev-server.sh' manually for full functionality."
     fi
 else
     echo "📖 View your site at: http://localhost:3000"

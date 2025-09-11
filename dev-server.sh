@@ -5,24 +5,15 @@
 
 set -e  # Exit on any error
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# Source server management utilities
+source scripts/utils/server-management.sh
 
 echo -e "${BLUE}🚀 City of Rivergrove - Smart Development Server${NC}"
 echo "=========================================="
 echo ""
 
-# Check if mdbook serve is already running
-if pgrep -f "mdbook serve" > /dev/null; then
-    echo -e "${YELLOW}⚠️  mdbook serve is already running${NC}"
-    echo "   Stopping it to start our enhanced server..."
-    pkill -f "mdbook serve"
-    sleep 1
-fi
+# Stop any existing servers
+stop_all_mdbook_servers
 
 # Track if we're currently processing to avoid loops
 PROCESSING=false
@@ -177,18 +168,22 @@ echo "📚 Running initial build..."
 echo -e "${GREEN}✅ Initial build complete${NC}"
 echo ""
 
-# Start mdbook serve in background
+# Start mdbook serve in background with proper checks
 echo "🌐 Starting development server..."
-mdbook serve --port 3000 &
+mdbook serve --port 3000 > /dev/null 2>&1 &
 MDBOOK_PID=$!
 
-# Give it a moment to start
-sleep 2
-
-echo ""
-echo "=========================================="
-echo -e "${GREEN}✅ Server running at http://localhost:3000${NC}"
-echo "=========================================="
+# Wait for server to actually start
+if wait_for_server_start 3000 10; then
+    echo ""
+    echo "=========================================="
+    echo -e "${GREEN}✅ Server running at http://localhost:3000${NC}"
+    echo "=========================================="
+else
+    echo -e "${RED}❌ Failed to start development server${NC}"
+    echo "Check for errors in the build process"
+    exit 1
+fi
 echo ""
 echo "📁 Watching for changes in source-documents/..."
 echo "   • Edit files in source-documents/"
