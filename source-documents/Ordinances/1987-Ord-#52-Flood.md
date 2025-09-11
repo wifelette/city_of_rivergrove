@@ -200,18 +200,17 @@ Make interpretations where needed, as to exact location of the boundaries of the
 (2) The {{filled:City Counci}} shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
 (3) Those aggrieved by the decision of the {{filled:City Council}} or any taxpayer, may appeal such decision to the {{filled:Land Use Board of Appeals}}, as provided in State law.
 (4) In passing upon such applications, the {{filled:City Counci}} shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
-
-   (i) the danger that materials may be swept onto other lands to the injury of others;
-   (ii) the danger to life and property due to flooding or erosion damage;
-   (iii) the susceptibility of the proposed facility and its contents to flood damage and the effect of such damage on the individual owner;
-   (iv) the importance of the services provide by the proposed facility to the community;
-   (v) the necessity to the facility of a waterfront location, where applicable;
-   (vi) the availability of alternative locations for the proposed use which are not subject to flooding or erosion damage;
-   (vii) the compatibility of the proposed use with existing and anticipated development;
-   (viii) the relationship of the proposed use to the comprehensive plan and flood plain management program for that area;
-   (ix) the safety of access to the property in times of flood for ordinary and emergency vehicles;
-   (x) the expected heights, velocity, duration, rate of rise, and sediment transport of the flood waters and the effects of wave action, if applicable, expected at the site; and,
-   (xi) the costs of providing governmental services during and after flood conditions, including maintenance and repair of public utilities and facilities such as sewer, gas, electrical, and water systems, and streets and bridges.
+  (i) the danger that materials may be swept onto other lands to the injury of others;
+  (ii) the danger to life and property due to flooding or erosion damage;
+  (iii) the susceptibility of the proposed facility and its contents to flood damage and the effect of such damage on the individual owner;
+  (iv) the importance of the services provide by the proposed facility to the community;
+  (v) the necessity to the facility of a waterfront location, where applicable;
+  (vi) the availability of alternative locations for the proposed use which are not subject to flooding or erosion damage;
+  (vii) the compatibility of the proposed use with existing and anticipated development;
+  (viii) the relationship of the proposed use to the comprehensive plan and flood plain management program for that area;
+  (ix) the safety of access to the property in times of flood for ordinary and emergency vehicles;
+  (x) the expected heights, velocity, duration, rate of rise, and sediment transport of the flood waters and the effects of wave action, if applicable, expected at the site; and,
+  (xi) the costs of providing governmental services during and after flood conditions, including maintenance and repair of public utilities and facilities such as sewer, gas, electrical, and water systems, and streets and bridges.
 
 (5) Upon consideration of the factors of Section 4.4-1(4) and the purposes of this ordinance, the {{filled:City Council}} may attach such conditions to the granting of variances as it deems necessary to further the purposes of this ordinance.
 (6) The {{filled:City Recorder}} shall maintain the records of all appeal actions and report any variances to the Federal Insurance Administration upon request.
@@ -283,10 +282,9 @@ In all areas of special flood hazards where base flood elevation data has been p
 
 (1) New construction and substantial improvement of any residential structure shall have the lowest floor, including basement, elevated to or above base flood elevation.
 (2) Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of floodwaters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
-
-   (i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
-   (ii) The bottom of all openings shall be no higher than one foot above grade.
-   (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
+   - (i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
+   - (ii) The bottom of all openings shall be no higher than one foot above grade.
+   - (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
 
 #### 5.2-2 Nonresidential Construction
 

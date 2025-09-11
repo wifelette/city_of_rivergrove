@@ -2,9 +2,9 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-08-31T18:52:43.825523",
-    "last_updated": "2025-09-10T13:50:30.854043",
-    "total_records": 45,
-    "last_partial_update": "2025-09-10T13:50:30.853997",
+    "last_updated": "2025-09-10T17:01:54.718853",
+    "total_records": 46,
+    "last_partial_update": "2025-09-10T17:01:54.718821",
     "incremental_updates": [
       {
         "filename": "1993-Ord-#57-93-Manufactured-Homes.md",
@@ -41,6 +41,18 @@
       {
         "filename": "2001-Ord-#70-2001-WQRA.md",
         "updated_at": "2025-09-10T13:50:30.853999"
+      },
+      {
+        "filename": "1987-Ord-#52-Flood.md",
+        "updated_at": "2025-09-10T16:56:12.908324"
+      },
+      {
+        "filename": "1987-Ord-#52-Flood.md",
+        "updated_at": "2025-09-10T17:00:27.148423"
+      },
+      {
+        "filename": "1987-Ord-#52-Flood.md",
+        "updated_at": "2025-09-10T17:01:54.718823"
       }
     ]
   },
@@ -772,6 +784,22 @@
       "digitized": true,
       "passed_date": "2001-12-10",
       "last_updated": "2025-08-30T19:38:45.000Z"
+    },
+    "1987-Ord-#52-Flood": {
+      "airtable_id": "recjCPcL4npLqUFWo",
+      "display_name": "Ordinance #52",
+      "short_title": "Flood Prevention",
+      "type": "ordinance",
+      "year": 1987,
+      "doc_number": "52",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.pdf",
+      "filename": "1987-Ord-%2352-Flood.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1987-09-21",
+      "last_updated": "2025-08-30T19:38:49.000Z"
     }
   }
 }

@@ -20,19 +20,38 @@ def process_numbered_lists(html_content):
         
         # Check if this paragraph contains multiple numbered items
         if re.search(r'\(\d+\)', text):
-            # Split by line breaks or semicolons
+            # Split by line breaks
             lines = text.split('\n')
             
-            # Check if we have multiple numbered items
+            # Process lines to group numbered items with their content
             numbered_items = []
+            current_item = None
+            
             for line in lines:
-                match = re.match(r'^(\((\d+)\))\s+(.+)$', line.strip())
+                line_stripped = line.strip()
+                if not line_stripped:
+                    continue
+                    
+                # Check if this is a new numbered item
+                match = re.match(r'^(\((\d+)\))\s+(.+)$', line_stripped)
                 if match:
-                    numbered_items.append({
+                    # Save previous item if exists
+                    if current_item:
+                        numbered_items.append(current_item)
+                    # Start new item
+                    current_item = {
                         'marker': match.group(1),
                         'number': match.group(2),
                         'text': match.group(3)
-                    })
+                    }
+                elif current_item:
+                    # This is a continuation of the current item
+                    # Add to the current item's text
+                    current_item['text'] += '\n' + line_stripped
+            
+            # Don't forget the last item
+            if current_item:
+                numbered_items.append(current_item)
             
             # If we found multiple items, convert to ordered list
             if len(numbered_items) > 1:
@@ -43,7 +62,14 @@ def process_numbered_lists(html_content):
                     marker_span = soup.new_tag('span', attrs={'class': 'custom-list-marker'})
                     marker_span.string = item['marker']
                     li.append(marker_span)
-                    li.append(' ' + item['text'])
+                    
+                    # Process the text content, preserving line breaks and structure
+                    text_lines = item['text'].split('\n')
+                    for i, text_line in enumerate(text_lines):
+                        if i > 0:
+                            li.append(soup.new_tag('br'))
+                        li.append(' ' + text_line if i == 0 else text_line)
+                    
                     ol.append(li)
                 
                 # Replace the paragraph with the list
