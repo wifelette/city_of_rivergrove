@@ -138,27 +138,29 @@ main {
     min-width: 2em;
 }
 
-/* Disable mdBook's automatic numbering for custom lists */
-ol:has(.custom-list-marker) {
-    list-style: none !important;
-    counter-reset: none;
+/* Custom numbered lists with explicit markers */
+ol.custom-numbered-list {
+    list-style: none;
     padding-left: 2em;
+    counter-reset: none;
 }
 
-ol:has(.custom-list-marker) > li {
-    list-style: none !important;
+ol.custom-numbered-list > li {
+    list-style: none;
     position: relative;
+    margin: 0.5em 0;
 }
 
-ol:has(.custom-list-marker) li::before {
-    content: none !important;
+ol.custom-numbered-list > li::before {
+    content: none;
 }
 
-/* Style for custom list markers */
-ol .custom-list-marker {
+ol.custom-numbered-list .custom-list-marker {
     position: absolute;
     left: -2em;
     font-weight: bold;
+    display: inline-block;
+    min-width: 2em;
 }
 
 /* Style for roman numeral sublists within numbered items */

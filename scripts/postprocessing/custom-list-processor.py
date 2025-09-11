@@ -55,7 +55,7 @@ def process_numbered_lists(html_content):
             
             # If we found multiple items, convert to ordered list
             if len(numbered_items) > 1:
-                ol = soup.new_tag('ol')
+                ol = soup.new_tag('ol', attrs={'class': 'custom-numbered-list'})
                 for item in numbered_items:
                     li = soup.new_tag('li')
                     # Keep the original marker in a span for styling
