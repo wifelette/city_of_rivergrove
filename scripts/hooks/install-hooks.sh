@@ -19,47 +19,32 @@ if [ ! -d "$HOOKS_DIR" ]; then
     exit 1
 fi
 
-# Install pre-commit hook
-if [ -f "scripts/hooks/pre-commit-check-book-edits.sh" ]; then
-    # Create or append to pre-commit hook
-    if [ -f "$HOOKS_DIR/pre-commit" ]; then
-        # Check if our hook is already installed
-        if grep -q "check-book-edits" "$HOOKS_DIR/pre-commit"; then
-            echo -e "${YELLOW}⚠️  Pre-commit hook already installed${NC}"
-        else
-            # Append our check to existing pre-commit
-            echo "" >> "$HOOKS_DIR/pre-commit"
-            echo "# Check for book/ directory edits" >> "$HOOKS_DIR/pre-commit"
-            echo "./scripts/hooks/pre-commit-check-book-edits.sh || exit 1" >> "$HOOKS_DIR/pre-commit"
-            echo -e "${GREEN}✅ Added book/ check to existing pre-commit hook${NC}"
-        fi
-    else
-        # Create new pre-commit hook
-        cat > "$HOOKS_DIR/pre-commit" << 'EOF'
-#!/bin/bash
-# Git pre-commit hook for City of Rivergrove
-
-# Check for book/ directory edits
-./scripts/hooks/pre-commit-check-book-edits.sh || exit 1
-
-exit 0
-EOF
-        echo -e "${GREEN}✅ Created pre-commit hook${NC}"
-    fi
-    
-    # Make hook executable
+# Install our comprehensive pre-commit hook
+if [ -f "scripts/hooks/pre-commit" ]; then
+    echo "Installing comprehensive pre-commit hook..."
+    cp scripts/hooks/pre-commit "$HOOKS_DIR/pre-commit"
     chmod +x "$HOOKS_DIR/pre-commit"
-    chmod +x "scripts/hooks/pre-commit-check-book-edits.sh"
+    echo -e "${GREEN}✅ Pre-commit hook installed${NC}"
+    
+    # Also ensure the old book check script is executable if it exists
+    if [ -f "scripts/hooks/pre-commit-check-book-edits.sh" ]; then
+        chmod +x "scripts/hooks/pre-commit-check-book-edits.sh"
+    fi
 else
-    echo "⚠️  Warning: pre-commit-check-book-edits.sh not found"
+    echo "⚠️  Warning: scripts/hooks/pre-commit not found"
 fi
 
 echo ""
 echo "Git hooks installed successfully!"
 echo ""
 echo "The pre-commit hook will:"
+echo "  • Prevent direct edits to /src files (except SUMMARY.md, etc.)"
 echo "  • Prevent committing files from book/ directory"
-echo "  • Show helpful error messages if you try to commit generated files"
+echo "  • Show helpful guidance to edit source-documents/ instead"
+echo "  • Run validation checks before commits"
 echo ""
 echo "To bypass the hook in an emergency (not recommended):"
 echo "  git commit --no-verify"
+echo ""
+echo "To uninstall:"
+echo "  rm .git/hooks/pre-commit"

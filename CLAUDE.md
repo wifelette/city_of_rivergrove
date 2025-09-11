@@ -93,6 +93,20 @@ If you are instructed to review this file or any others, but skip any files or s
 
 **ALWAYS use `./dev-server.sh` for development!** This prevents the "disappearing styles" issue.
 
+### Testing and Validation
+
+**Test the CSS pipeline:**
+```bash
+./scripts/validation/test-css-pipeline.sh
+```
+
+**Check for direct /src edits (runs automatically in build-all.sh):**
+```bash
+./scripts/validation/check-src-modifications.sh
+```
+
+**For troubleshooting:** See `docs/BUILD-TROUBLESHOOTING.md`
+
 ### Why styles disappear:
 
 1. **Plain `mdbook serve`** only runs mdBook's standard processing when files change
