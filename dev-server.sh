@@ -119,8 +119,9 @@ process_file_change() {
     # Copy relationships to book directory for navigation to use
     cp src/relationships.json book/relationships.json 2>/dev/null || true
     
-    # Wait a moment for mdBook to detect and rebuild
-    sleep 2
+    # Wait for mdBook to detect changes and start rebuilding
+    # Increased from 2 to 3 seconds to ensure mdBook has time to start
+    sleep 3
     
     # Copy navigation if it was updated
     if [[ "$file" == "navigation-standalone.js" ]]; then
@@ -132,6 +133,24 @@ process_file_change() {
     if [[ "$file" == *.css ]] || [[ "$file" == theme/* ]]; then
         echo "  Copying theme to book directory..."
         cp -r theme book/ 2>/dev/null || true
+        
+        # Verify CSS was copied correctly
+        if [ ! -f "book/theme/css/main.css" ]; then
+            echo -e "${RED}  ✗ CSS copy failed! Retrying...${NC}"
+            sleep 1
+            cp -r theme book/
+        fi
+    fi
+    
+    # Ensure mdBook has finished rebuilding before postprocessing
+    # Check if index.html exists and is recent (modified in last 5 seconds)
+    if [ -f "book/index.html" ]; then
+        # Wait a bit more if the file was just created
+        local age=$(( $(date +%s) - $(stat -f %m book/index.html 2>/dev/null || echo 0) ))
+        if [ $age -le 1 ]; then
+            echo "  Waiting for mdBook to complete..."
+            sleep 1
+        fi
     fi
     
     # Apply postprocessors after mdBook rebuilds

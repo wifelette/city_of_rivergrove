@@ -50,6 +50,17 @@ echo "🚀 City of Rivergrove - Complete Build"
 echo "======================================"
 echo ""
 
+# Check for direct /src modifications before starting
+if [ -f "scripts/validation/check-src-modifications.sh" ]; then
+    ./scripts/validation/check-src-modifications.sh || {
+        echo ""
+        echo "⚠️  Build aborted due to direct /src modifications"
+        echo "   Please resolve the issues above and try again"
+        exit 1
+    }
+    echo ""
+fi
+
 # STEP 1: Sync all documents from source to /src
 echo "📁 Step 1: Syncing documents to /src..."
 echo "  • Ordinances..."
@@ -179,10 +190,22 @@ if [ -d "images" ]; then
     echo "  • Copying images directory..."
     cp -r images book/
 fi
-# Copy theme directory for CSS modules
+# Copy theme directory for CSS modules (CRITICAL for styles to work)
 if [ -d "theme" ]; then
     echo "  • Copying theme directory..."
     cp -r theme book/
+    
+    # Verify critical CSS file was copied
+    if [ ! -f "book/theme/css/main.css" ]; then
+        echo "  ⚠️  WARNING: CSS not copied correctly, retrying..."
+        rm -rf book/theme 2>/dev/null || true
+        cp -r theme book/
+        if [ ! -f "book/theme/css/main.css" ]; then
+            echo "  ❌ ERROR: Failed to copy CSS files!"
+            echo "     Manual fix: cp -r theme book/"
+            exit 1
+        fi
+    fi
 fi
 # Copy navigation JavaScript
 if [ -f "navigation-standalone.js" ]; then
