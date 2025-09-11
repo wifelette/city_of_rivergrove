@@ -1,0 +1,109 @@
+name: CSS Validation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'custom.css'
+      - 'theme/**'
+      - 'scripts/**'
+      - '.github/workflows/css-validation.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'custom.css'
+      - 'theme/**'
+      - 'scripts/**'
+
+jobs:
+  validate-css:
+    name: Validate CSS Pipeline
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install mdBook
+      run: |
+        curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.35/mdbook-v0.4.35-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+        sudo mv mdbook /usr/local/bin/
+    
+    - name: Install Python dependencies
+      run: |
+        pip install beautifulsoup4
+    
+    - name: Check custom.css import path
+      run: |
+        echo "Checking custom.css import path..."
+        if ! grep -q "@import url('./theme/css/main.css')" custom.css; then
+          echo "❌ ERROR: custom.css has incorrect import path!"
+          echo ""
+          echo "Found:"
+          grep "@import" custom.css || echo "No import found"
+          echo ""
+          echo "Expected:"
+          echo "  @import url('./theme/css/main.css');"
+          echo ""
+          echo "This MUST be fixed - CSS will not load in production!"
+          exit 1
+        fi
+        echo "✅ custom.css import path is correct"
+    
+    - name: Verify theme structure
+      run: |
+        echo "Checking theme directory structure..."
+        if [ ! -d "theme/css" ]; then
+          echo "❌ ERROR: theme/css directory not found!"
+          exit 1
+        fi
+        if [ ! -f "theme/css/main.css" ]; then
+          echo "❌ ERROR: theme/css/main.css not found!"
+          exit 1
+        fi
+        echo "✅ Theme structure is correct"
+    
+    - name: Run CSS pipeline tests
+      run: |
+        # Make scripts executable
+        chmod +x scripts/validation/test-css-pipeline.sh
+        chmod +x scripts/fix-styles.sh
+        
+        # Run the comprehensive test suite
+        ./scripts/validation/test-css-pipeline.sh
+    
+    - name: Test mdBook build
+      run: |
+        echo "Testing mdBook build process..."
+        mdbook build
+        
+        # Verify custom.css was copied correctly
+        if [ ! -f "book/custom.css" ]; then
+          echo "❌ ERROR: book/custom.css not created!"
+          exit 1
+        fi
+        
+        # Verify import path is preserved
+        if ! grep -q "@import url('./theme/css/main.css')" book/custom.css; then
+          echo "❌ ERROR: Import path corrupted during build!"
+          exit 1
+        fi
+        
+        echo "✅ mdBook build successful"
+    
+    - name: Test theme copying
+      run: |
+        echo "Testing theme copy process..."
+        cp -r theme book/
+        
+        if [ ! -f "book/theme/css/main.css" ]; then
+          echo "❌ ERROR: Theme files not copied correctly!"
+          exit 1
+        fi
+        
+        echo "✅ Theme copying works correctly"

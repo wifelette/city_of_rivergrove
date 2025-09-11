@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pre-commit hook to prevent direct /src modifications
+# Pre-commit hook to prevent direct /src modifications and CSS path issues
 # Install by running: ./scripts/hooks/install-hooks.sh
 
 # Colors for output
@@ -7,6 +7,30 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+
+# CRITICAL: Check custom.css import path if file is being committed
+if git diff --cached --name-only | grep -q "^custom.css$"; then
+    if ! grep -q "@import url('./theme/css/main.css')" custom.css; then
+        echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        echo -e "${RED}⚠️  Commit blocked: Incorrect CSS import path in custom.css${NC}"
+        echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        echo ""
+        echo "The custom.css file has an incorrect import path."
+        echo ""
+        echo "Current import:"
+        grep "@import" custom.css | head -1
+        echo ""
+        echo "Required import:"
+        echo "  @import url('./theme/css/main.css');"
+        echo ""
+        echo -e "${YELLOW}To fix:${NC}"
+        echo "  sed -i '' \"s|./theme/main.css|./theme/css/main.css|g\" custom.css"
+        echo "  git add custom.css"
+        echo ""
+        echo "This path is CRITICAL - if wrong, CSS won't load in production!"
+        exit 1
+    fi
+fi
 
 # Check if any /src files are being committed (except allowed files)
 ALLOWED_FILES="src/SUMMARY.md src/introduction.md src/relationships.json src/airtable-metadata.json"

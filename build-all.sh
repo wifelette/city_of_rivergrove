@@ -50,6 +50,26 @@ echo "🚀 City of Rivergrove - Complete Build"
 echo "======================================"
 echo ""
 
+# CRITICAL: Verify custom.css has correct import path
+echo "🔍 Validating custom.css import path..."
+if ! grep -q "@import url('./theme/css/main.css')" custom.css 2>/dev/null; then
+    echo "  ❌ ERROR: custom.css has incorrect import path!"
+    echo ""
+    echo "  Current import:"
+    grep "@import" custom.css | head -1 || echo "    (no import found)"
+    echo ""
+    echo "  Required import:"
+    echo "    @import url('./theme/css/main.css');"
+    echo ""
+    echo "  To fix:"
+    echo "    sed -i '' \"s|./theme/main.css|./theme/css/main.css|g\" custom.css"
+    echo ""
+    echo "  This is CRITICAL - CSS will not load without the correct path!"
+    exit 1
+fi
+echo "  ✅ custom.css import path is correct"
+echo ""
+
 # Check for direct /src modifications before starting
 if [ -f "scripts/validation/check-src-modifications.sh" ]; then
     ./scripts/validation/check-src-modifications.sh || {
