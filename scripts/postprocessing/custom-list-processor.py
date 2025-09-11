@@ -18,21 +18,24 @@ def process_numbered_lists(html_content):
     for p in soup.find_all('p'):
         text = p.get_text()
         
-        # Check if this paragraph contains multiple numbered items
-        if re.search(r'\(\d+\)', text):
+        # Check if this paragraph contains numbered items
+        # But skip if there's only one numbered item (not a list)
+        num_matches = len(re.findall(r'\(\d+\)', text))
+        if num_matches >= 2:
             # Split by line breaks
             lines = text.split('\n')
             
             # Process lines to group numbered items with their content
             numbered_items = []
             current_item = None
+            prefix_lines = []  # Lines that appear before any numbered items
             
             for line in lines:
                 line_stripped = line.strip()
                 if not line_stripped:
                     continue
                     
-                # Check if this is a new numbered item
+                # Check if this line starts with a numbered item
                 match = re.match(r'^(\((\d+)\))\s+(.+)$', line_stripped)
                 if match:
                     # Save previous item if exists
@@ -46,14 +49,16 @@ def process_numbered_lists(html_content):
                     }
                 elif current_item:
                     # This is a continuation of the current item
-                    # Add to the current item's text
                     current_item['text'] += '\n' + line_stripped
+                elif not numbered_items:
+                    # This is text before any numbered items
+                    prefix_lines.append(line_stripped)
             
             # Don't forget the last item
             if current_item:
                 numbered_items.append(current_item)
             
-            # If we found multiple items, convert to ordered list
+            # If we found multiple items, convert to ordered list but preserve prefix text
             if len(numbered_items) > 1:
                 ol = soup.new_tag('ol', attrs={'class': 'custom-numbered-list'})
                 for item in numbered_items:
@@ -114,8 +119,38 @@ def process_numbered_lists(html_content):
                     
                     ol.append(li)
                 
-                # Replace the paragraph with the list
-                p.replace_with(ol)
+                # If there was text before the numbered items, we need to preserve it
+                if prefix_lines:
+                    # We need to preserve the HTML formatting (bold tags, etc.)
+                    # Get the original innerHTML of the paragraph
+                    original_inner = ''.join(str(child) for child in p.children)
+                    
+                    # Find where the first numbered item starts in the original HTML
+                    first_item_text = f"({numbered_items[0]['number']}) {numbered_items[0]['text'].split(chr(10))[0]}"
+                    split_point = original_inner.find(first_item_text)
+                    
+                    if split_point > 0:
+                        # Split the original HTML
+                        prefix_html = original_inner[:split_point].rstrip()
+                        
+                        # Create a container div
+                        container = soup.new_tag('div')
+                        
+                        # Create a new paragraph with the prefix HTML
+                        prefix_p = soup.new_tag('p')
+                        prefix_soup = BeautifulSoup(prefix_html, 'html.parser')
+                        for child in list(prefix_soup.children):
+                            prefix_p.append(child)
+                        
+                        container.append(prefix_p)
+                        container.append(ol)
+                        p.replace_with(container)
+                    else:
+                        # Couldn't find split point, just replace with list
+                        p.replace_with(ol)
+                else:
+                    # No prefix text, just replace with the list
+                    p.replace_with(ol)
     
     return str(soup)
 
