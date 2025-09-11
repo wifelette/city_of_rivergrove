@@ -25,12 +25,12 @@ and
 
 Approved by the City of {{filled:RIVERGROVE}} this {{filled:9th}} day of {{filled:July}} 1984.
 
-[Signature]
+{{signature}}
 [Illegible], Mayor
 
 Attest:
 
-[Signature]
+{{signature}}
 Virginia [Illegible], Recorder
 
 ## Document Notes

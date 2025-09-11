@@ -19,7 +19,7 @@ def process_form_fields(content):
     Converts:
     - {{filled:}} -> <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
     - {{filled:text}} -> <span class="form-field-filled" data-tooltip="Field filled in on source doc">text</span>
-    - {{signature}} -> <span class="signature-mark" aria-label="Signature" title="Signature present in original document">Signature</span>
+    - {{signature}} -> <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>
     
     Special handling for headings to avoid breaking mdBook anchor generation.
     """
@@ -76,9 +76,9 @@ def process_form_fields(content):
         
         line = re.sub(r'\{\{page:\s*([^}]+)\}\}', replace_page_ref, line)
         
-        # Convert {{signature}} to styled signature mark
+        # Convert {{signature}} to styled signature mark with line break
         line = re.sub(r'\{\{signature\}\}', 
-                     '<span class="signature-mark" aria-label="Signature" title="Signature present in original document">Signature</span>', 
+                     '<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>', 
                      line)
         
         processed_lines.append(line)

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tooltip Test</title>
+    <link rel="stylesheet" href="book/theme/css/base/variables.css">
+    <style>
+        :root {
+            --color-nav-dark: #1f2937;
+            --color-bg-primary: #ffffff;
+        }
+    </style>
+    <style>
+        body {
+            padding: 50px;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+        }
+        
+        /* Direct copy of form field styles */
+        .form-field-filled {
+            display: inline-block;
+            padding: 2px 8px 4px 8px;
+            background-color: #bbdefb;
+            border-bottom: 2px solid #0969da;
+            color: #333;
+            cursor: default;
+            position: relative;
+            margin: 0 3px;
+            vertical-align: baseline;
+            line-height: 1.4;
+        }
+        
+        .form-field-filled::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 1.4;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .form-field-filled:hover::after {
+            opacity: 1 !important;
+            transition-delay: 0.3s;
+        }
+        
+        /* Direct copy of signature styles */
+        .signature-mark {
+            display: inline-block;
+            font-family: 'Dancing Script', 'Brush Script MT', 'Lucida Handwriting', cursive, serif;
+            font-size: 1.4em;
+            font-weight: 500;
+            color: #4a7ba7;
+            opacity: 0.75;
+            padding: 0 8px;
+            position: relative;
+            cursor: default;
+        }
+        
+        .signature-mark::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 1.4;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .signature-mark:hover::after {
+            opacity: 1 !important;
+            transition-delay: 0.3s;
+        }
+        
+        /* Test sections */
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        ul { font-size: 16px; }
+        p { font-size: 16px; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Tooltip Comparison Test</h1>
+    
+    <div class="test-section">
+        <h2>In a list (like Resolution 72)</h2>
+        <ul>
+            <li><span class="form-field-filled" data-tooltip="Field filled in on source doc">Police protection;</span></li>
+            <li><span class="form-field-filled" data-tooltip="Field filled in on source doc">Street construction, maintenance & lighting;</span></li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>In a paragraph (like Resolution 72)</h2>
+        <p><span class="signature-mark" data-tooltip="Signature present in original document">Signature</span><br/>
+        [Illegible], Mayor</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Side by side in same paragraph</h2>
+        <p>
+            Form field: <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span>
+            vs 
+            Signature: <span class="signature-mark" data-tooltip="Signature present in original document">Signature</span>
+        </p>
+    </div>
+</body>
+</html>

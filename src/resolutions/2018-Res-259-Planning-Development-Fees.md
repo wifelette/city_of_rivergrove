@@ -30,7 +30,7 @@
 
 **Section 4:** All appellants appealing a Type II, II, or IV Planning Commission decision shall enter into an Agreement to Meet Costs of Appeal and submit a deposit of $250 based upon the fee schedule in Exhibit 1 before the City will consider the appeal. Where the City's actual cost of review of the appeal does not amount to the total deposit, a refund to the appellant of any remaining balance of the deposit shall be issued within sixty (60) days of the issuance of the appeal decision. Appellant will nonetheless be required to pay the full cost of the City's processing of the appeal.
 
-**Section 5:** [Resolution 256-2018](../resolutions/2018-Res-256-Planning-Development-Fees.md) dated June 11, 2018 is hereby superseded.
+**Section 5:** Resolution 256-2018 dated June 11, 2018 is hereby superseded.
 
 Approved and adopted at a regular meeting of the City Council held on the 10th day of December, 2018.
 
@@ -67,15 +67,9 @@ Attested on this 10th day of December 2018:
 | **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
 | **Appeal of Type II, III, and IV Decisions**<br>(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
-
-<div class="footnotes">
-
 ¹ **Basic building permit.** Plus the actual cost of hearings officer, notification and specialized services the city may require. Other building permits, like subdivision building permits may be more expensive based on actual costs.
 
 ² **Based on ORS 227.175 (10) (iii)(b).**
-
-</div>
-
 
 The actual costs are those costs incurred by the City in reviewing the aforesaid application for compliance with the applicable approval criteria, development and design standards. Such costs shall include the actual costs of City's land use planners, engineers and attorneys incurred in reviewing that application, including any appeal to any City authority, whether filed by applicant or others.
 
@@ -113,7 +107,7 @@ This Agreement to Meet Costs of Development Review ("Agreement") is entered into
 
 **WHEREAS**, the parties are uncertain about the total costs of land use planners, engineers or attorneys necessary to review and process the Applicant's Application;
 
-**WHEREAS**, ORS 227.175 authorizes City to charge Applicant for the actual cost of processing Applicant's Application and the City has elected to do so under [Ordinance #54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and [Resolution 256](../resolutions/2018-Res-256-Planning-Development-Fees.md)- 2018 (amending the fee schedule); and
+**WHEREAS**, ORS 227.175 authorizes City to charge Applicant for the actual cost of processing Applicant's Application and the City has elected to do so under Ordinance #54-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
 
 **WHEREAS**, if actual costs are less than the deposit, a refund will be given, if actual costs exceed the deposit, Applicant is responsible for paying the actual costs.
 
@@ -123,7 +117,7 @@ This Agreement to Meet Costs of Development Review ("Agreement") is entered into
 
 a. Such costs shall include the actual costs of City's land use planners, engineers and attorneys incurred in reviewing that Application including an appeal to the City authority filed by Applicant.
 
-b. Prior to the City undertaking review of any land use application, the Applicant shall submit a deposit as required by [Resolution 256](../resolutions/2018-Res-256-Planning-Development-Fees.md)- 2018 in the following amounts:
+b. Prior to the City undertaking review of any land use application, the Applicant shall submit a deposit as required by Resolution 256- 2018 in the following amounts:
 
 ### Deposit Amounts:
 
@@ -190,7 +184,7 @@ This Agreement to Meet Costs of Appeal ("Agreement") is entered into on the last
 
 **WHEREAS**, the parties are uncertain about the total costs of land use planners, engineers or attorneys necessary to review and process the Appeal;
 
-**WHEREAS**, ORS 227.175 authorizes City to charge Appellants for the actual cost of processing Appeals and the City has elected to do so under [Ordinance #54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and [Resolution 256](../resolutions/2018-Res-256-Planning-Development-Fees.md)- 2018 (amending the fee schedule); and
+**WHEREAS**, ORS 227.175 authorizes City to charge Appellants for the actual cost of processing Appeals and the City has elected to do so under Ordinance #54-89 Section 9.030 (the City's right to charge for fees incurred by the City for legal services, engineering services, planning services, etc), Resolution 200-2005 (a fee schedule), and Resolution 256- 2018 (amending the fee schedule); and
 
 **WHEREAS**, if actual costs are less than the deposit, a refund will be given.
 

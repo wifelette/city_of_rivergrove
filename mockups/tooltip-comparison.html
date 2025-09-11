@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Style Comparison</title>
+    <style>
+        :root {
+            --color-nav-dark: #1a1f36;
+            --color-bg-primary: white;
+            --border-radius-sm: 4px;
+            --transition-normal: all 0.2s ease;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .example-section {
+            border: 1px solid #e5e7eb;
+            padding: 30px;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .example-section h2 {
+            margin-top: 0;
+            color: #0969da;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+        
+        .demo-area {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        /* Current Form Field Tooltip Style */
+        .tooltip-current {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 4px;
+            cursor: help;
+            position: relative;
+        }
+        
+        .tooltip-current::after {
+            content: "Field left blank in source doc";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1f36;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            transition-delay: 0.2s;
+            margin-top: 4px;
+            z-index: 100000;
+        }
+        
+        .tooltip-current:hover::after {
+            opacity: 1;
+        }
+        
+        /* New Signature Tooltip Style */
+        .tooltip-new {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 4px;
+            cursor: help;
+            position: relative;
+        }
+        
+        .tooltip-new::after {
+            content: "Signature present in original";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 5px;
+            z-index: 1000;
+        }
+        
+        .tooltip-new:hover::after {
+            opacity: 1;
+        }
+        
+        /* Unified Style Proposal */
+        .tooltip-unified {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 4px;
+            cursor: help;
+            position: relative;
+        }
+        
+        .tooltip-unified::after {
+            content: "Example tooltip text";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            margin-bottom: 6px;
+            z-index: 10000;
+        }
+        
+        .tooltip-unified:hover::after {
+            opacity: 1;
+        }
+        
+        .specs {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .specs h3 {
+            margin-top: 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+        
+        .specs dl {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 8px;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .specs dt {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .specs dd {
+            margin: 0;
+            font-family: monospace;
+            color: #333;
+        }
+        
+        .recommendation {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .recommendation h2 {
+            margin-top: 0;
+            color: #d97706;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tooltip Style Comparison</h1>
+    <p>Comparing the current form field tooltip style with the new signature tooltip style.</p>
+    
+    <div class="comparison">
+        <div class="example-section">
+            <h2>Current: Form Field Tooltips</h2>
+            <div class="demo-area">
+                <span class="tooltip-current">Hover for tooltip</span>
+            </div>
+            <div class="specs">
+                <h3>Specifications</h3>
+                <dl>
+                    <dt>Background:</dt>
+                    <dd>#1a1f36 (nav-dark)</dd>
+                    <dt>Text color:</dt>
+                    <dd>white</dd>
+                    <dt>Padding:</dt>
+                    <dd>6px 12px</dd>
+                    <dt>Font size:</dt>
+                    <dd>12px</dd>
+                    <dt>Position:</dt>
+                    <dd>Below (top: 100%)</dd>
+                    <dt>Delay:</dt>
+                    <dd>0.2s</dd>
+                    <dt>Z-index:</dt>
+                    <dd>100000</dd>
+                </dl>
+            </div>
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+                <li>Darker, heavier appearance</li>
+                <li>More padding/larger</li>
+                <li>Appears below the element</li>
+                <li>Very high z-index (might be overkill)</li>
+            </ul>
+        </div>
+        
+        <div class="example-section">
+            <h2>New: Signature Tooltips</h2>
+            <div class="demo-area">
+                <span class="tooltip-new">Hover for tooltip</span>
+            </div>
+            <div class="specs">
+                <h3>Specifications</h3>
+                <dl>
+                    <dt>Background:</dt>
+                    <dd>#333 (neutral gray)</dd>
+                    <dt>Text color:</dt>
+                    <dd>white</dd>
+                    <dt>Padding:</dt>
+                    <dd>4px 10px</dd>
+                    <dt>Font size:</dt>
+                    <dd>0.65rem (~10.4px)</dd>
+                    <dt>Position:</dt>
+                    <dd>Above (bottom: 100%)</dd>
+                    <dt>Delay:</dt>
+                    <dd>None</dd>
+                    <dt>Z-index:</dt>
+                    <dd>1000</dd>
+                </dl>
+            </div>
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+                <li>Lighter gray, less aggressive</li>
+                <li>Smaller, more subtle</li>
+                <li>Appears above the element</li>
+                <li>No delay (immediate on hover)</li>
+                <li>More reasonable z-index</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="recommendation">
+        <h2>🎯 Recommendation: Adopt Modified "New" Style</h2>
+        <p>I agree with your assessment - the new style is less aggressive and more refined. Here's my proposed unified style:</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <span class="tooltip-unified">Unified tooltip style</span>
+            <p style="color: #666; font-size: 14px; margin-top: 10px">(Hover to see the proposed style)</p>
+        </div>
+        
+        <h3>Proposed Standard:</h3>
+        <ul>
+            <li><strong>Background:</strong> <code>#333</code> (neutral, not too dark)</li>
+            <li><strong>Text:</strong> <code>white</code></li>
+            <li><strong>Padding:</strong> <code>5px 10px</code> (compact but readable)</li>
+            <li><strong>Font size:</strong> <code>0.75rem</code> (12px, slightly larger than signature for better readability)</li>
+            <li><strong>Position:</strong> <code>Above</code> (less likely to be cut off)</li>
+            <li><strong>Border radius:</strong> <code>4px</code> (consistent with our border-radius-sm)</li>
+            <li><strong>Z-index:</strong> <code>10000</code> (high enough but not excessive)</li>
+            <li><strong>Transition:</strong> <code>opacity 0.2s ease</code></li>
+            <li><strong>No delay</strong> for better responsiveness</li>
+        </ul>
+        
+        <h3>Benefits of this approach:</h3>
+        <ul>
+            <li>✅ Less visually aggressive than the dark navy</li>
+            <li>✅ Consistent positioning (always above)</li>
+            <li>✅ Better accessibility with slightly larger text</li>
+            <li>✅ Immediate feedback (no delay)</li>
+            <li>✅ Reasonable z-index that won't cause stacking issues</li>
+        </ul>
+    </div>
+    
+    <div class="example-section" style="margin-top: 40px;">
+        <h2>Should we add a Tooltips section to the Style Guide?</h2>
+        <p><strong>Yes, I think we should!</strong> Here's why:</p>
+        <ul>
+            <li><strong>Consistency:</strong> Having documented standards ensures all tooltips look and behave the same</li>
+            <li><strong>Reusability:</strong> Developers can easily apply the pattern to new features</li>
+            <li><strong>Accessibility:</strong> We can document ARIA attributes and keyboard considerations</li>
+            <li><strong>Not overkill:</strong> Tooltips are a common UI pattern we use in multiple places</li>
+        </ul>
+        
+        <h3>Suggested Style Guide Section:</h3>
+        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;">
+## Tooltips
+
+Tooltips provide contextual information on hover. Used for:
+- Form fields (explaining blank/filled status)
+- Signatures (indicating presence in original)
+- Help text for complex features
+
+### Standard Implementation
+- Position: Above element (bottom: 100%)
+- Background: #333
+- Text: white, 0.75rem
+- Padding: 5px 10px
+- Appears on hover with 0.2s transition
+
+### Accessibility
+- Use `aria-label` or `title` as fallback
+- Ensure contrast ratio meets WCAG standards
+- Consider touch devices (tooltips don't work well)
+
+### CSS Utility Class
+`.tooltip` - Apply to any element needing a tooltip
+Use `data-tooltip="text"` for dynamic content
+        </pre>
+    </div>
+</body>
+</html>

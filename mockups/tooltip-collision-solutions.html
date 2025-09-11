@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Collision Problem & Solutions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        
+        .problem-section, .solution-section {
+            border: 2px solid #e5e7eb;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .problem-section {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .solution-section {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: #0969da;
+        }
+        
+        .problem-section h2 {
+            color: #dc2626;
+        }
+        
+        .solution-section h2 {
+            color: #059669;
+        }
+        
+        /* PROBLEM: Basic tooltip that collides */
+        .tooltip-basic {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            cursor: help;
+            position: relative;
+            margin: 0 3px;
+        }
+        
+        .tooltip-basic::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 5px;
+            z-index: 1000;
+        }
+        
+        .tooltip-basic:hover::after {
+            opacity: 1;
+        }
+        
+        /* SOLUTION 1: Smart positioning */
+        .tooltip-smart {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            cursor: help;
+            position: relative;
+            margin: 0 3px;
+        }
+        
+        .tooltip-smart::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 5px;
+            z-index: 1000;
+        }
+        
+        /* Alternate sides for adjacent tooltips */
+        .tooltip-smart:hover::after {
+            opacity: 1;
+        }
+        
+        .tooltip-smart.alt-position::after {
+            bottom: auto;
+            top: 100%;
+            margin-bottom: 0;
+            margin-top: 5px;
+        }
+        
+        /* SOLUTION 2: Single active tooltip */
+        .tooltip-single {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            cursor: help;
+            position: relative;
+            margin: 0 3px;
+        }
+        
+        .tooltip-single::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s;
+            margin-bottom: 5px;
+            z-index: 10000;
+        }
+        
+        .tooltip-single:hover::after {
+            opacity: 1;
+            z-index: 10001; /* Ensure hovered tooltip is on top */
+        }
+        
+        /* SOLUTION 3: Offset positioning */
+        .tooltip-offset {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            cursor: help;
+            position: relative;
+            margin: 0 3px;
+        }
+        
+        .tooltip-offset::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            margin-bottom: 5px;
+        }
+        
+        .tooltip-offset:hover::after {
+            opacity: 1;
+            z-index: 10000;
+        }
+        
+        /* Stagger heights for adjacent elements */
+        .tooltip-offset:nth-child(odd):hover::after {
+            margin-bottom: 5px;
+        }
+        
+        .tooltip-offset:nth-child(even):hover::after {
+            margin-bottom: 25px;
+        }
+        
+        /* SOLUTION 4: Combined approach */
+        .tooltip-final {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            border-radius: 3px;
+            cursor: help;
+            position: relative;
+            margin: 0 3px;
+        }
+        
+        .tooltip-final::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .tooltip-final:hover::after {
+            opacity: 1;
+            z-index: 999999;
+        }
+        
+        /* For dense areas, use a slight delay */
+        .tooltip-final.dense-area::after {
+            transition: opacity 0.15s ease-in-out 0.3s;
+        }
+        
+        .demo-form {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .recommendation {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .recommendation h2 {
+            color: #d97706;
+            margin-top: 0;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tooltip Collision Problem & Solutions</h1>
+    <p>When multiple tooltips are close together (like in signature blocks or dense forms), they can overlap and become unreadable.</p>
+    
+    <div class="problem-section">
+        <h2>❌ The Problem: Tooltip Collisions</h2>
+        <p>Here's what happens with multiple form fields close together:</p>
+        
+        <div class="demo-form">
+            <p>
+                <strong>Resolution #</strong><span class="tooltip-basic" data-tooltip="Field filled in on source doc">301</span> - 
+                <span class="tooltip-basic" data-tooltip="Field filled in on source doc">Fee Schedule Update</span>
+            </p>
+            <p>
+                <strong>Date:</strong> <span class="tooltip-basic" data-tooltip="Field filled in on source doc">January 15</span>, 
+                <span class="tooltip-basic" data-tooltip="Field filled in on source doc">2025</span>
+            </p>
+            <p>
+                <strong>Approved by:</strong> <span class="tooltip-basic" data-tooltip="Field filled in on source doc">Mayor Johnson</span>, 
+                <span class="tooltip-basic" data-tooltip="Field filled in on source doc">City Manager Smith</span>, 
+                <span class="tooltip-basic" data-tooltip="Field filled in on source doc">Council President Davis</span>
+            </p>
+        </div>
+        
+        <p><strong>Try hovering over adjacent fields</strong> - the tooltips overlap and cut each other off!</p>
+        
+        <h3>Why the delay "fixed" it:</h3>
+        <ul>
+            <li>0.5s delay meant users rarely triggered multiple tooltips</li>
+            <li>But this made the UI feel sluggish</li>
+            <li>Didn't actually solve the problem, just made it less likely</li>
+        </ul>
+    </div>
+    
+    <div class="solution-section">
+        <h2>✅ Solution 1: Smart Positioning</h2>
+        <p>Alternate tooltip positions for adjacent elements:</p>
+        
+        <div class="demo-form">
+            <p>
+                <strong>Resolution #</strong><span class="tooltip-smart" data-tooltip="Field filled in on source doc">301</span> - 
+                <span class="tooltip-smart alt-position" data-tooltip="Field filled in on source doc">Fee Schedule Update</span>
+            </p>
+            <p>
+                <strong>Date:</strong> <span class="tooltip-smart" data-tooltip="Field filled in on source doc">January 15</span>, 
+                <span class="tooltip-smart alt-position" data-tooltip="Field filled in on source doc">2025</span>
+            </p>
+        </div>
+        
+        <p><strong>Pros:</strong> No collisions | <strong>Cons:</strong> Inconsistent positioning might be confusing</p>
+    </div>
+    
+    <div class="solution-section">
+        <h2>✅ Solution 2: Higher Z-Index on Hover</h2>
+        <p>Ensure the currently hovered tooltip is always on top:</p>
+        
+        <div class="demo-form">
+            <p>
+                <strong>Approved by:</strong> 
+                <span class="tooltip-single" data-tooltip="Field filled in on source doc">Mayor Johnson</span>, 
+                <span class="tooltip-single" data-tooltip="Field filled in on source doc">City Manager Smith</span>, 
+                <span class="tooltip-single" data-tooltip="Field filled in on source doc">Council President Davis</span>
+            </p>
+        </div>
+        
+        <p><strong>Pros:</strong> Simple to implement | <strong>Cons:</strong> Tooltips still overlap, just one is on top</p>
+    </div>
+    
+    <div class="solution-section">
+        <h2>✅ Solution 3: Staggered Heights</h2>
+        <p>Offset tooltip heights for adjacent elements:</p>
+        
+        <div class="demo-form">
+            <p>
+                <strong>Form fields:</strong> 
+                <span class="tooltip-offset" data-tooltip="Field filled in on source doc">Field 1</span>
+                <span class="tooltip-offset" data-tooltip="Field filled in on source doc">Field 2</span>
+                <span class="tooltip-offset" data-tooltip="Field filled in on source doc">Field 3</span>
+                <span class="tooltip-offset" data-tooltip="Field filled in on source doc">Field 4</span>
+            </p>
+        </div>
+        
+        <p><strong>Pros:</strong> Prevents overlap | <strong>Cons:</strong> Can look chaotic with many fields</p>
+    </div>
+    
+    <div class="solution-section">
+        <h2>✅ Solution 4: Combined Best Practices</h2>
+        <p>The approach I recommend:</p>
+        
+        <div class="demo-form">
+            <h3>Standard spacing (works fine):</h3>
+            <p>
+                <strong>Document:</strong> <span class="tooltip-final" data-tooltip="Field filled in on source doc">Ordinance #52</span> 
+                regarding <span class="tooltip-final" data-tooltip="Field filled in on source doc">Flood Control</span>
+            </p>
+            
+            <h3>Dense areas (slight delay added):</h3>
+            <p>
+                <strong>Approved by:</strong> 
+                <span class="tooltip-final dense-area" data-tooltip="Field filled in on source doc">Mayor</span>, 
+                <span class="tooltip-final dense-area" data-tooltip="Field filled in on source doc">Manager</span>, 
+                <span class="tooltip-final dense-area" data-tooltip="Field filled in on source doc">Council</span>, 
+                <span class="tooltip-final dense-area" data-tooltip="Field filled in on source doc">Attorney</span>
+            </p>
+        </div>
+        
+        <p><strong>Features:</strong></p>
+        <ul>
+            <li>High z-index ensures active tooltip is on top</li>
+            <li>Slightly more spacing (8px instead of 5px)</li>
+            <li>Quick transition (0.15s) for responsiveness</li>
+            <li>Optional 0.3s delay for dense areas only</li>
+            <li>Subtle shadow for better visibility</li>
+        </ul>
+    </div>
+    
+    <div class="recommendation">
+        <h2>🎯 Recommended Approach</h2>
+        
+        <h3>Two-tier system:</h3>
+        <ol>
+            <li><strong>Default tooltip</strong> (<code>.tooltip</code>)
+                <ul>
+                    <li>No delay for good UX</li>
+                    <li>High z-index (999999) when active</li>
+                    <li>Slightly more margin for breathing room</li>
+                </ul>
+            </li>
+            <li><strong>Dense area tooltip</strong> (<code>.tooltip.dense-area</code>)
+                <ul>
+                    <li>Small 0.3s delay (not 0.5s like before)</li>
+                    <li>Only for signature blocks and dense forms</li>
+                    <li>Same styling otherwise</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h3>Implementation:</h3>
+        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;">
+/* Base tooltip */
+.tooltip::after {
+    /* ... standard styles ... */
+    z-index: 10000;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    z-index: 999999; /* Ensure active tooltip wins */
+}
+
+/* For dense areas only */
+.tooltip.dense-area::after {
+    transition: opacity 0.15s ease-in-out 0.3s;
+}</pre>
+        
+        <h3>When to use <code>.dense-area</code>:</h3>
+        <ul>
+            <li>Signature blocks with multiple signatures close together</li>
+            <li>Forms with many adjacent filled fields</li>
+            <li>Tables with tooltips on every cell</li>
+        </ul>
+        
+        <p><strong>This gives us the best of both worlds:</strong> Responsive tooltips in most cases, with collision mitigation where needed.</p>
+    </div>
+</body>
+</html>

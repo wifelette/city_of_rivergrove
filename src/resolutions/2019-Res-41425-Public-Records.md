@@ -104,10 +104,10 @@ P.O. Box 1104
 Lake Oswego, OR, 97034
 
 **Email:**  
-[manager@cityofrivergrove.com](mailto:manager@cityofrivergrove.com)
+manager@cityofrivergrove.com
 
 **Web form:**  
-[https://www.cityofrivergrove.org/records-request](https://www.cityofrivergrove.org/records-request)
+https://www.cityofrivergrove.org/records-request
 
 1.4 The City shall acknowledge all requests within five (5) business days of receipt. The City shall endeavor to complete its response to all requests within fifteen (15) business days of receipt unless excused pursuant to ORS 192.329(6).
 
