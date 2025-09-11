@@ -25,24 +25,35 @@ Check for direct /src modifications:
 - Page appears unstyled
 - CSS works initially then disappears
 
-**Root Cause:** 
-mdBook cleans the `book/` directory on every build, removing manually copied files.
+**Root Causes:** 
+1. mdBook cleans the `book/` directory on every build, removing manually copied files
+2. The source `custom.css` file has incorrect import path (`./theme/main.css` instead of `./theme/css/main.css`)
 
 **Solutions:**
 
-1. **Quick Fix:**
+1. **Check source custom.css has correct import:**
+   ```bash
+   grep "@import" custom.css
+   # Should show: @import url('./theme/css/main.css');
+   # NOT: @import url('./theme/main.css');
+   ```
+
+2. **Quick Fix:**
    ```bash
    ./scripts/fix-styles.sh
    ```
 
-2. **Proper Development:**
+3. **Proper Development:**
    ```bash
    # Use dev-server.sh instead of mdbook serve
    ./dev-server.sh
    ```
 
-3. **Manual Fix:**
+4. **Manual Fix:**
    ```bash
+   # Fix source custom.css if needed
+   sed -i '' "s|./theme/main.css|./theme/css/main.css|g" custom.css
+   
    # Copy theme directory
    cp -r theme book/
    

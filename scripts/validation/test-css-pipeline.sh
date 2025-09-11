@@ -45,6 +45,8 @@ run_test "theme directory exists" "[ -d theme ]"
 run_test "theme/css directory exists" "[ -d theme/css ]"
 run_test "main.css exists" "[ -f theme/css/main.css ]"
 run_test "CSS modules exist" "[ -f theme/css/base/variables.css ]"
+# CRITICAL: Check that the SOURCE custom.css has the correct import path
+run_test "source custom.css has correct path" "grep -q \"@import url('./theme/css/main.css')\" custom.css"
 echo ""
 
 # Test 2: Test mdBook build and theme copy

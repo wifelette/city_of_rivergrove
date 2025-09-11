@@ -1,7 +1,7 @@
 /* Custom CSS for City of Rivergrove Documents */
 
 /* Import Modular CSS Architecture */
-@import url('./theme/main.css');
+@import url('./theme/css/main.css');
 
 /* =======================================================
  * MINIMAL REMAINING STYLES
