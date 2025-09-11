@@ -27,7 +27,6 @@ The Legislature of the State of <span class="form-field-filled" data-tooltip="Fi
 #### 1.2 FINDINGS OF FACT
 
 (1) The flood hazard areas of <span class="form-field-filled" data-tooltip="Field filled in on source doc">Rivergrove</span> are subject to periodic inundation which results in loss of life and property, health, and safety hazards, disruption of commerce and governmental services, extraordinary public expenditures for flood protection and relief, and impairment of the tax base, all of which adversely affect the public health, safety, and general welfare.
-
 (2) These flood losses are caused by the cumulative effect of obstructions in areas of special flood hazards which increase flood heights and velocities, and when inadequately anchored, damage uses in other areas. Uses that are inadequately floodproofed, elevated, or otherwise protected from flood damage also contribute to the flood loss.
 
 #### 1.3 STATEMENT OF PURPOSE
@@ -179,8 +178,9 @@ When base flood elevation data has not been provided in accordance with Section 
 
 (1) Where base flood elevation data is provided through the Flood Insurance Study or required as in Section 4.3-2, obtain and record the actual elevation (in relation to mean sea level) of the lowest floor (including basement) of all new or substantially improved structures, and whether or not the structure contains a basement.
 (2) For all new or substantially improved floodproofed structures:
-(i) verify and record the actual elevation (in relation to mean sea level), and
-(ii) maintain the floodproofing certifications required in Section 4.1(3).
+
+  (i) verify and record the actual elevation (in relation to mean sea level), and
+  (ii) maintain the floodproofing certifications required in Section 4.1(3).
 (3) Maintain for public inspection all records pertaining to the provisions of this ordinance.
 
 #### 4.3-4 Alteration of Watercourses

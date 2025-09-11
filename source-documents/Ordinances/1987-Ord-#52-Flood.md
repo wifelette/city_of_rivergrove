@@ -27,7 +27,6 @@ The Legislature of the State of {{filled:Oregon}} has delegated the responsibili
 #### 1.2 FINDINGS OF FACT
 
 (1) The flood hazard areas of {{filled:Rivergrove}} are subject to periodic inundation which results in loss of life and property, health, and safety hazards, disruption of commerce and governmental services, extraordinary public expenditures for flood protection and relief, and impairment of the tax base, all of which adversely affect the public health, safety, and general welfare.
-
 (2) These flood losses are caused by the cumulative effect of obstructions in areas of special flood hazards which increase flood heights and velocities, and when inadequately anchored, damage uses in other areas. Uses that are inadequately floodproofed, elevated, or otherwise protected from flood damage also contribute to the flood loss.
 
 #### 1.3 STATEMENT OF PURPOSE
