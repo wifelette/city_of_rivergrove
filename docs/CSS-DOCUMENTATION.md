@@ -4,10 +4,11 @@
 
 All CSS documentation is now properly organized:
 
-### Main Documentation (`docs/`)
-- **[css-component-guide.md](css-component-guide.md)** - Component reference guide
-- **[css-architecture-patterns.md](css-architecture-patterns.md)** - Architecture patterns & best practices
-- **[css-architecture-audit.md](css-architecture-audit.md)** - Original audit and 8-week plan
+### Main Documentation (`docs/css-refactor/`)
+- **[css-component-guide.md](css-refactor/css-component-guide.md)** - Component reference guide
+- **[css-architecture-patterns.md](css-refactor/css-architecture-patterns.md)** - Architecture patterns & best practices
+- **[css-architecture-audit.md](css-refactor/css-architecture-audit.md)** - Original audit and 8-week plan
+- **[css-architecture-and-build-order.md](css-refactor/css-architecture-and-build-order.md)** - CSS build process and troubleshooting
 
 ### CSS Refactor Project (`docs/css-refactor/`)
 - **[README.md](css-refactor/README.md)** - CSS refactor documentation index
@@ -26,8 +27,9 @@ All CSS documentation is now properly organized:
 
 ### For Developers
 1. **Interactive Style Guide**: Open `docs/css-refactor/style-guide.html` in browser
-2. **Component Reference**: See `docs/css-component-guide.md`
-3. **Best Practices**: Read `docs/css-architecture-patterns.md`
+2. **Component Reference**: See `docs/css-refactor/css-component-guide.md`
+3. **Best Practices**: Read `docs/css-refactor/css-architecture-patterns.md`
+4. **Build Process**: Read `docs/css-refactor/css-architecture-and-build-order.md`
 
 ### For Content Editors
 1. **Content Formatting**: See `docs/styles/STYLE-GUIDE.md`

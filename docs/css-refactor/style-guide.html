@@ -227,12 +227,14 @@
                 <li><a href="#enhanced-lists">📋 Enhanced Lists <span class="toc-new">NEW</span></a></li>
                 <li><a href="#code-examples">💻 Code Examples</a></li>
                 <li><a href="#form-fields">📝 Form Fields <span class="toc-new">NEW</span></a></li>
+                <li><a href="#signatures">✍️ Signature Blocks <span class="toc-new">NEW</span></a></li>
+                <li><a href="#enhanced-tables">📊 Enhanced Tables <span class="toc-new">NEW</span></a></li>
                 <li><a href="#architecture">🏗️ Architecture</a></li>
                 <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
                     <strong>Coming Soon:</strong>
                 </li>
-                <li><a href="#signatures">Signatures <span class="toc-new">NEW</span></a></li>
-                <li><a href="#navigation">Navigation <span class="toc-new">NEW</span></a></li>
+                <li><a href="#navigation">Navigation Sidebar</a></li>
+                <li><a href="#relationships">Relationships Panel</a></li>
             </ul>
         </aside>
 
@@ -747,6 +749,263 @@ Long: {{empty:long}}</div>
             <ul>
                 <li><strong>Filled fields:</strong> "Field filled in on source doc"</li>
                 <li><strong>Empty fields:</strong> "This field was blank on the original document"</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Signature Blocks Section -->
+    <div class="style-section" id="signatures">
+        <h2>✍️ Signature Blocks</h2>
+        <p style="color: #666; margin-bottom: 20px;">Signature blocks appear throughout legal documents (beginning, middle, or end) and include signature lines, attestations, titles, and dates. The focus is on proper line formatting and spacing.</p>
+        
+        <div class="example-container">
+            <div class="example-title">Standard Signature Block</div>
+            <div class="signature-block">
+                <p>[Signature]<br>
+                <span style="font-weight: 600">John C. Miller</span>, Mayor</p>
+                
+                <p style="margin-top: 20px"><strong>Attest:</strong></p>
+                <p>[Signature]<br>
+                <span style="font-weight: 600">Rosalie Morrison</span>, City Recorder</p>
+            </div>
+            <div class="code-snippet">Markdown:
+[Signature]
+John C. Miller, Mayor
+
+Attest:
+
+[Signature]
+Rosalie Morrison, City Recorder</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Signature Lines (Empty)</div>
+            <p>Mayor: <span class="signature-line" style="width: 300px"></span></p>
+            <div class="signature-title">Mayor</div>
+            
+            <p style="margin-top: 30px">City Recorder: <span class="signature-line" style="width: 250px"></span></p>
+            <div class="signature-title">City Recorder</div>
+            
+            <p style="margin-top: 30px">Date: <span class="signature-line" style="width: 150px"></span></p>
+            <div class="signature-date">Date of Signing</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Attestation Block</div>
+            <div class="attestation-block">
+                <p><strong>I hereby certify that this is a true and correct copy of Resolution #301</strong> as adopted by the City Council of Rivergrove on January 15, 2025.</p>
+                
+                <p style="margin-top: 20px">[Signature]<br>
+                Virginia Morrison, City Recorder<br>
+                <span style="color: var(--color-text-light); font-size: 0.95em">Date: January 16, 2025</span></p>
+            </div>
+            <div class="code-snippet">HTML: Uses .attestation-block class for special styling</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Combined with Form Fields</div>
+            <p><strong>ADOPTED</strong> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">8th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">March</span>, 1976.</p>
+            
+            <div style="margin-top: 30px">
+                <p>[Signature]<br>
+                <span class="form-field-filled" data-tooltip="Field filled in on source doc">John C. Miller</span>, Mayor</p>
+                
+                <p style="margin-top: 20px"><strong>Attest:</strong></p>
+                <p>[Signature]<br>
+                <span class="form-field-filled" data-tooltip="Field filled in on source doc">Rosalie Morrison</span>, City Recorder</p>
+            </div>
+            <div class="code-snippet">Markdown:
+**ADOPTED** this {{filled:8th}} day of {{filled:March}}, 1976.
+
+[Signature]
+{{filled:John C. Miller}}, Mayor
+
+Attest:
+
+[Signature]
+{{filled:Rosalie Morrison}}, City Recorder</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">CSS Classes</div>
+            <ul>
+                <li><code>.signature-block</code> - Container for signature sections</li>
+                <li><code>.signature-line</code> - Empty line for signatures</li>
+                <li><code>.signature-title</code> - Title/role below signature</li>
+                <li><code>.signature-date</code> - Date styling</li>
+                <li><code>.attestation-block</code> - Special block for attestations/certifications</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Enhanced Tables Section -->
+    <div class="style-section" id="enhanced-tables">
+        <h2>📊 Enhanced Tables</h2>
+        <p style="color: #666; margin-bottom: 20px;">Enhanced table styles for fee schedules, data tables, and formatted content. Includes support for footnotes and responsive behavior.</p>
+        
+        <div class="example-container">
+            <div class="example-title">Fee Schedule Table</div>
+            <div class="fee-schedule-table">
+                <table class="formatted-table">
+                    <thead>
+                        <tr>
+                            <th>Fee Type</th>
+                            <th>Previous Fee</th>
+                            <th>New Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pre-Application Consultation Fee</td>
+                            <td>$0</td>
+                            <td>$500<sup>1</sup></td>
+                        </tr>
+                        <tr>
+                            <td>Building Structure permit review</td>
+                            <td>$25</td>
+                            <td>$400 + actual cost</td>
+                        </tr>
+                        <tr>
+                            <td>Variance Permit</td>
+                            <td>$0</td>
+                            <td>$400 + actual cost</td>
+                        </tr>
+                        <tr>
+                            <td>Tree Cutting Permit (all types)</td>
+                            <td>$20/$30</td>
+                            <td>$75 (per tree) + actual cost</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-footnotes">
+                    <p><sup>1</sup> Over 1 hour will be billed at actual cost</p>
+                </div>
+            </div>
+            <div class="code-snippet">Markdown:
+| Fee Type | Previous Fee | New Fee |
+|----------|--------------|---------|
+| Pre-Application Consultation Fee | $0 | $500¹ |
+| Building Structure permit review | $25 | $400 + actual cost |
+
+¹ Over 1 hour will be billed at actual cost</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Standard Formatted Table</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Contact</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Planning & Development</td>
+                        <td>John Smith</td>
+                        <td>(503) 555-0101</td>
+                        <td>planning@rivergrove.gov</td>
+                    </tr>
+                    <tr>
+                        <td>Public Works</td>
+                        <td>Jane Doe</td>
+                        <td>(503) 555-0102</td>
+                        <td>publicworks@rivergrove.gov</td>
+                    </tr>
+                    <tr>
+                        <td>City Recorder</td>
+                        <td>Virginia Morrison</td>
+                        <td>(503) 555-0103</td>
+                        <td>recorder@rivergrove.gov</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Table in Blockquote</div>
+            <blockquote>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Zone</th>
+                            <th>Min Lot Size</th>
+                            <th>Max Height</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R-1</td>
+                            <td>7,500 sq ft</td>
+                            <td>35 ft</td>
+                        </tr>
+                        <tr>
+                            <td>R-2</td>
+                            <td>5,000 sq ft</td>
+                            <td>35 ft</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </blockquote>
+            <p style="margin-top: 15px; color: #666">Tables in blockquotes have enhanced contrast for better readability</p>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Table with Footnotes</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Residential</th>
+                        <th>Commercial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Water<sup>1</sup></td>
+                        <td>$45/month</td>
+                        <td>$125/month<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Sewer</td>
+                        <td>$35/month</td>
+                        <td>$95/month</td>
+                    </tr>
+                    <tr>
+                        <td>Storm Water</td>
+                        <td>$15/month</td>
+                        <td>$45/month</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-footnotes">
+                <p><sup>1</sup> Includes first 1,000 gallons</p>
+                <p><sup>2</sup> Base rate for first 5,000 gallons</p>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">CSS Classes</div>
+            <ul>
+                <li><code>.formatted-table</code> - Main table styling with hover effects</li>
+                <li><code>.fee-schedule-table</code> - Container for fee schedule tables with gradient background</li>
+                <li><code>.table-footnotes</code> - Footnote container below tables</li>
+                <li><code>.has-footnote</code> - Cell containing footnote reference</li>
+                <li>Blockquote tables - Automatic enhanced contrast</li>
+            </ul>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Features</div>
+            <ul>
+                <li>Alternating row colors for better readability</li>
+                <li>Hover effects on rows</li>
+                <li>Responsive design (tables scroll horizontally on mobile)</li>
+                <li>Enhanced contrast in blockquotes</li>
+                <li>Integrated footnote styling</li>
+                <li>Print-friendly formatting</li>
             </ul>
         </div>
     </div>
