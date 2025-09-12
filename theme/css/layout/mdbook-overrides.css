@@ -195,8 +195,57 @@ ul.roman-list-no-bullets > li::before {
     content: none;
 }
 
+/* Unordered lists that contain alpha markers (a), (b), etc. - remove bullets */
+ul.alpha-list-no-bullets {
+    list-style: none;
+    padding-left: 2em;
+}
+
+ul.alpha-list-no-bullets > li {
+    list-style: none;
+    position: relative;
+    margin: 0.5em 0;
+}
+
+ul.alpha-list-no-bullets > li::before {
+    content: none;
+}
+
+/* Style the alpha markers in blue */
+ul.alpha-list-no-bullets .list-marker-alpha {
+    color: var(--color-primary, #0969da);
+    font-weight: normal;
+}
+
+/* Unordered lists that contain numeric markers (1), (2), etc. - remove bullets */
+ul.numeric-list-no-bullets {
+    list-style: none;
+    padding-left: 2em;
+}
+
+ul.numeric-list-no-bullets > li {
+    list-style: none;
+    position: relative;
+    margin: 0.5em 0;
+}
+
+ul.numeric-list-no-bullets > li::before {
+    content: none;
+}
+
+/* Style the numeric markers in blue */
+ul.numeric-list-no-bullets .list-marker-numeric {
+    color: var(--color-primary, #0969da);
+    font-weight: normal;
+}
+
 ol.special-start-list li::before {
     content: none;
+}
+
+/* Style all ordered list markers in blue */
+ol li::marker {
+    color: var(--color-primary, #0969da);
 }
 
 /* Alphabetical lists (a), (b), (c) */
