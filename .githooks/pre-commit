@@ -1,13 +1,8 @@
 #!/bin/bash
 # Pre-commit hook to check for problematic patterns
 
-# Check if any running mdbook serve processes (not via dev-server.sh)
-if pgrep -f "mdbook serve" | while read pid; do
-    # Check if this process is NOT a child of dev-server.sh
-    if ! pgrep -P $pid -f "dev-server" > /dev/null 2>&1; then
-        return 0  # Found a direct mdbook serve
-    fi
-    done; then
+# Check if any running mdbook serve processes
+if pgrep -f "mdbook serve" > /dev/null 2>&1; then
     echo "❌ ERROR: Direct 'mdbook serve' process detected!"
     echo ""
     echo "Please stop 'mdbook serve' and use './dev-server.sh' instead."
