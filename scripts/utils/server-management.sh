@@ -43,7 +43,7 @@ stop_all_mdbook_servers() {
         if [ "$quiet" != "true" ]; then
             echo -e "${GREEN}✓ No existing mdbook servers found${NC}"
         fi
-        return 1
+        return 0  # Return success - no servers is a valid state
     fi
 }
 

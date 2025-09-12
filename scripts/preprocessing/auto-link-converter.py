@@ -85,6 +85,11 @@ def process_file(file_path):
     """Process a single file to convert URLs and emails to links."""
     path = Path(file_path)
     
+    # Skip SUMMARY.md to avoid breaking mdBook's parser
+    if path.name == 'SUMMARY.md':
+        print(f"⚠️  Skipping SUMMARY.md (would break mdBook parser)")
+        return False
+    
     if not path.exists():
         print(f"Error: File not found: {file_path}")
         return False
