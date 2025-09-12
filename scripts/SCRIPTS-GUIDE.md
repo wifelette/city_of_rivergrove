@@ -20,12 +20,20 @@ The three main scripts are in the repository root:
 - `build-one.sh` - Smart single-file update
 - `dev-server.sh` - Development server with hot-reload
 
-### scripts/build/ (DEPRECATED)
-Old scripts with deprecation warnings - do not use:
-- `update-mdbook.sh` - ❌ Use `./build-all.sh` instead
-- `update-single.sh` - ❌ Use `./build-one.sh` instead  
-- `serve.sh` - ❌ Use `./dev-server.sh` instead
-- Others - ❌ All replaced by the three main scripts
+### scripts/build/
+Build and compilation scripts:
+- `compile-css.py` - ✅ Compiles modular CSS from theme/css/ into custom.css
+- Old deprecated scripts (do not use):
+  - `update-mdbook.sh` - ❌ Use `./build-all.sh` instead
+  - `update-single.sh` - ❌ Use `./build-one.sh` instead  
+  - `serve.sh` - ❌ Use `./dev-server.sh` instead
+
+### scripts/safeguards/
+Safeguards against common build errors:
+- `mdbook-wrapper.sh` - Intercepts mdbook serve and redirects to dev-server.sh
+- `mdbook-path-override.sh` - PATH override with clear warnings
+- `envrc-template` - Directory-specific command overrides
+- `enable-safeguards.sh` - Sets up all safeguards
 
 ### preprocessing/
 Scripts that modify source markdown BEFORE mdBook builds:
@@ -42,6 +50,8 @@ Scripts that modify source markdown BEFORE mdBook builds:
 ### validation/
 Scripts that ensure document syntax is correct:
 - `validate-form-fields.py` - Check {{filled:}} tag syntax, detect unclosed tags
+- `check-styles-health.py` - Verify CSS is working correctly
+- `check-src-modifications.sh` - Detect manual edits to /src files
 
 ### postprocessing/
 Scripts that enhance HTML AFTER mdBook builds:

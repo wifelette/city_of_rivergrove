@@ -91,64 +91,47 @@ If you are instructed to review this file or any others, but skip any files or s
 
 ## CRITICAL: CSS and Development Server Usage
 
-**ALWAYS use `./dev-server.sh` for development!** This prevents the "disappearing styles" issue.
+**ALWAYS use `./dev-server.sh` for development!**
 
-### Testing and Validation
+### Why This is Critical
 
-**Test the CSS pipeline:**
+We have safeguards in place to prevent using `mdbook serve` directly:
+- `./mdbook` wrapper automatically redirects to dev-server.sh
+- Git hooks prevent commits if mdbook serve is running
+- See `docs/safeguards-guide.md` for complete details
+
+### CSS System Overview
+
+**CSS is now compiled from modular files:**
+- Source CSS modules are in `theme/css/` (organized by component)
+- `scripts/build/compile-css.py` compiles them into `custom.css`
+- The compiled CSS persists through mdBook rebuilds
+- See `docs/css-refactor/css-compilation-guide.md` for details
+
+### If styles disappear:
+
+**Quick fix:**
 ```bash
-./scripts/validation/test-css-pipeline.sh
+./scripts/fix-styles.sh
 ```
 
-**Check for direct /src edits (runs automatically in build-all.sh):**
-```bash
-./scripts/validation/check-src-modifications.sh
-```
-
-**For troubleshooting:** See `docs/BUILD-TROUBLESHOOTING.md`
-
-### Why styles disappear:
-
-1. **Plain `mdbook serve`** only runs mdBook's standard processing when files change
-2. Our custom styles require **two postprocessors** that add special HTML classes and structure
-3. When mdBook auto-rebuilds, it wipes out these custom modifications
-4. The CSS files exist but the HTML no longer has the right structure
-
-### Correct workflow:
-
-- **Always use:** `./dev-server.sh` - it automatically runs postprocessors after every change
-- **Never use:** Plain `mdbook serve` for development
-
-### If styles disappear (recovery):
-
-**Quick fix:** Run `./scripts/fix-styles.sh` - it handles everything automatically
-
-**Manual steps (if needed):**
-
-1. Run both postprocessors to restore HTML structure:
-   ```bash
-   python3 scripts/postprocessing/custom-list-processor.py
-   python3 scripts/postprocessing/enhanced-custom-processor.py
-   ```
-2. Ensure theme directory is copied: `cp -r theme/css book/theme`
-3. Check import path in `book/custom.css` is: `@import url('./theme/main.css');`
-
-### Testing for style issues:
-
-Run `python3 scripts/validation/check-styles-health.py` to check:
-
-- CSS import path is correct
-- Theme directory structure exists
-- HTML has proper custom classes
-- Correct server (dev-server.sh) is running
-
-This test runs automatically in build-all.sh and dev-server.sh
+This runs CSS compilation and postprocessors automatically.
 
 ### When editing CSS:
 
-1. Edit files in `theme/css/` (source location)
-2. Copy to book: `cp -r theme/css book/theme`
-3. Postprocessors must run to apply the HTML structure that uses the CSS
+1. **Edit source files** in `theme/css/` (never edit custom.css directly)
+2. **CSS compiles automatically** when using dev-server.sh
+3. **Manual compilation** if needed: `python3 scripts/build/compile-css.py`
+
+### Testing for issues:
+
+```bash
+# Check for direct /src edits
+./scripts/validation/check-src-modifications.sh
+
+# Verify CSS health
+python3 scripts/validation/check-styles-health.py
+```
 
 ### Step 8: Update Issue #3
 

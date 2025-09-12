@@ -42,7 +42,7 @@ graph TD
 5. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
 6. **mdBook additional files MUST be at root** - Files referenced in `book.toml` as `additional-css` or `additional-js` must exist at repository root (not in `/src`), or mdBook build will fail with "No such file or directory"
 7. **Navigation JavaScript must be copied to book/** - The `navigation-standalone.js` file must be copied to the `book/` directory during builds to prevent reverting to old versions
-8. **Theme CSS MUST be copied AFTER mdBook build** - mdBook cleans the book/ directory on build, so theme/ must be copied afterward. See [CSS Architecture and Build Order](css-architecture-and-build-order.md) for details
+8. **CSS is compiled BEFORE mdBook build** - CSS modules from theme/css/ are compiled into custom.css which mdBook handles natively. See [CSS Compilation Guide](css-refactor/css-compilation-guide.md) for details
 
 ## Main Build Scripts
 
@@ -50,7 +50,7 @@ graph TD
 
 #### `./build-all.sh [--quick]`
 Complete rebuild with all processing steps in correct order.
-- Automatically stops any running mdbook serve to prevent conflicts
+- Automatically stops any running mdbook servers to prevent conflicts
 - Runs all preprocessing, processing, and postprocessing steps
 - Use `--quick` flag to skip Airtable sync for faster local testing
 - Detects and warns if files in /src were manually edited
@@ -69,7 +69,8 @@ Development server with true hot-reload from source edits.
 - Watches `source-documents/` for changes (where you actually edit)
 - Automatically runs full processing pipeline on save
 - Applies postprocessors to maintain custom formatting
-- Replaces both `mdbook serve` and old serve scripts
+- Replaces direct `mdbook serve` usage (which breaks CSS and formatting)
+- Compiles CSS and runs all postprocessors automatically
 
 ## Title Resolution System
 
@@ -194,10 +195,10 @@ Documents can include images, diagrams, and visual content. See **[styles/inline
 ### Issue: Form fields disappearing during mdBook serve
 **Problem:** mdBook's auto-rebuild bypasses our custom processors
 **Solutions:**
-1. **Automatic (Recommended):** Use `./mdbook-serve-enhanced.sh` instead of `mdbook serve`
-   - Starts both mdbook server and postprocess watcher
-   - Automatically runs processors when mdBook rebuilds
-2. **Manual:** Run `python3 scripts/postprocessing/custom-list-processor.py` after any mdBook rebuild
+1. **Required:** Use `./dev-server.sh` instead of `mdbook serve`
+   - Compiles CSS and runs all processors automatically
+   - Safeguards prevent accidental mdbook serve usage
+2. **If styles are missing:** Run `./scripts/fix-styles.sh`
 
 ### Issue: Tooltips feel sluggish
 **Solution:** Adjust CSS transition timing in `custom-list-processor.py`
@@ -219,20 +220,19 @@ When adding a new processing step:
 
 ## Development Server Options
 
-### Standard mdBook serve
+### Development Server (Required)
 ```bash
-mdbook serve --port 3000
+./dev-server.sh
 ```
-Note: Auto-rebuild will bypass custom processors, causing form fields and formatting to disappear.
+- Compiles CSS from modular files
+- Starts mdbook server on port 3000  
+- Runs all postprocessors automatically
+- Watches for changes and rebuilds correctly
 
-### Enhanced serve with auto-processing
-```bash
-./mdbook-serve-enhanced.sh
-```
-- Starts mdbook server on port 3000
-- Runs postprocess watcher in background
-- Automatically applies custom formatting after rebuilds
-- Shows status messages when processing
+**WARNING**: Never use `mdbook serve` directly! We have safeguards to prevent this:
+- `./mdbook` wrapper redirects to dev-server.sh
+- Git hooks block commits if mdbook serve is running
+- See [Safeguards Guide](safeguards-guide.md) for details
 
 **Note**: For most development work, use `./dev-server.sh` instead, which provides true hot-reload from source document edits.
 
@@ -243,7 +243,7 @@ python3 scripts/mdbook/mdbook-postprocess-watcher.py
 - Monitors book/ directory for HTML changes
 - Detects mdBook rebuilds using file hashes
 - Runs all postprocessors automatically
-- Can run alongside existing mdbook serve
+- Automatically stops any conflicting servers
 
 ## Testing Changes
 

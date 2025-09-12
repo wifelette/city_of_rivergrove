@@ -57,7 +57,7 @@ city_of_rivergrove/
 │   └── utilities/
 │       └── watch-and-sync.py   # Auto file watcher (use with caution)
 ├── book.toml           # mdBook configuration
-├── custom.css          # Custom styling (must be at root for mdBook)
+├── custom.css          # Compiled CSS (auto-generated from theme/css/)
 └── navigation-standalone.js  # Navigation enhancements (must be at root for mdBook)
 ```
 
@@ -66,16 +66,17 @@ city_of_rivergrove/
 **IMPORTANT**: mdBook requires certain files at specific locations:
 
 - Files referenced in `book.toml` as `additional-css` or `additional-js` MUST be at the **root level**, not in `src/`
-- During build, these root files are copied to both `src/` and `book/`
-- The actual source of truth for `custom.css` is the root-level file
+- The `custom.css` file is **auto-generated** from `theme/css/` modules by `scripts/build/compile-css.py`
+- Never edit `custom.css` directly - edit source files in `theme/css/` instead
 - If mdBook fails with "No such file or directory", check that required files exist at root
 
 ## Local Development
 
-1. **Start mdBook server**:
+1. **Start development server**:
    ```bash
-   mdbook serve
+   ./dev-server.sh
    ```
+   ⚠️ **NEVER use `mdbook serve` directly** - it breaks CSS and formatting!
 
 2. **Edit files** in `source-documents/` directories (Ordinances/, Resolutions/, etc.)
 
@@ -176,15 +177,29 @@ Meeting documents (Agendas, Minutes, Transcripts) have special handling:
   3. relationships.json has been regenerated
 - **Metadata Fields**: The "Recording Type" field in Airtable determines the document type (Agenda, Minutes, Transcript)
 
-## mdBook Serve Limitations
+## Development Server
 
-**IMPORTANT**: If `mdbook serve` is running, it auto-rebuilds when files change BUT does NOT run our postprocessors.
+**CRITICAL**: Never use `mdbook serve` directly! Use `./dev-server.sh` instead.
 
-This means form fields (blue filled fields, blank underlines) and other custom formatting will disappear.
+### Why dev-server.sh is Required
 
-**To see the REAL appearance with all formatting:**
-1. After any changes while `mdbook serve` is running
-2. Manually run: `python3 scripts/postprocessing/custom-list-processor.py`
-3. This restores form field styling and other custom formatting
+The `./dev-server.sh` script:
+- Compiles CSS from modular files
+- Runs all postprocessors automatically  
+- Maintains form fields and custom formatting
+- Watches for changes and rebuilds correctly
 
-Alternatively, use the build scripts which include postprocessing.
+### What Happens with Plain mdbook serve
+
+If you accidentally use `mdbook serve`:
+- CSS will disappear on first rebuild
+- Form fields lose their styling
+- Custom list formatting breaks
+- Document notes lose their formatting
+
+### Safeguards in Place
+
+We have multiple safeguards to prevent this mistake:
+- `./mdbook` wrapper redirects to dev-server.sh
+- Git hooks prevent commits with mdbook serve running
+- See [Safeguards Guide](safeguards-guide.md) for details
