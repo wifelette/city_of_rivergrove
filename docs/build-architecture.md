@@ -38,11 +38,12 @@ graph TD
 1. **Form field validation MUST run early** - Catches syntax errors before they propagate through pipeline
 2. **Cross-references MUST come after auto-link converter** - Prevents conflicts with URL detection
 3. **Both link processors MUST come before mdBook build** - Links must be in markdown, not HTML
-4. **Post-processors MUST run after mdBook** - They modify generated HTML
-5. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
-6. **mdBook additional files MUST be at root** - Files referenced in `book.toml` as `additional-css` or `additional-js` must exist at repository root (not in `/src`), or mdBook build will fail with "No such file or directory"
-7. **Navigation JavaScript must be copied to book/** - The `navigation-standalone.js` file must be copied to the `book/` directory during builds to prevent reverting to old versions
-8. **CSS is compiled BEFORE mdBook build** - CSS modules from theme/css/ are compiled into custom.css which mdBook handles natively. See [CSS Compilation Guide](css-refactor/css-compilation-guide.md) for details
+4. **SUMMARY.md MUST be excluded from link processors** - Auto-link-converter and cross-reference scripts must skip SUMMARY.md to prevent mdBook parsing errors from nested markdown links
+5. **Post-processors MUST run after mdBook** - They modify generated HTML
+6. **Custom list processor MUST run before enhanced processor** - Enhanced processor depends on custom list classes
+7. **mdBook additional files MUST be at root** - Files referenced in `book.toml` as `additional-css` or `additional-js` must exist at repository root (not in `/src`), or mdBook build will fail with "No such file or directory"
+8. **Navigation JavaScript must be copied to book/** - The `navigation-standalone.js` file must be copied to the `book/` directory during builds to prevent reverting to old versions
+9. **CSS is compiled BEFORE mdBook build** - CSS modules from theme/css/ are compiled into custom.css which mdBook handles natively. See [CSS Compilation Guide](css-refactor/css-compilation-guide.md) for details
 
 ## Main Build Scripts
 
