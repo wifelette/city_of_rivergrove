@@ -56,6 +56,8 @@ The digitization project involves three main workflows, each documented separate
 ### Technical Documentation
 - [Build Architecture](build-architecture.md) - Complete build system documentation
 - [Scripts Guide](../scripts/SCRIPTS-GUIDE.md) - All script documentation
+- [CSS Compilation](css-refactor/css-compilation-guide.md) - CSS build system
+- [Safeguards Guide](safeguards-guide.md) - Preventing common build errors
 - [Startup Prompts](startup-prompts.md) - Quick reference for starting new Claude sessions
 
 ## Session Startup

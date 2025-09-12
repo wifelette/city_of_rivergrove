@@ -120,17 +120,10 @@ process_file_change() {
         cp navigation-standalone.js book/ 2>/dev/null
     fi
     
-    # Copy theme files if CSS was updated
+    # Recompile CSS if CSS was updated
     if [[ "$file" == *.css ]] || [[ "$file" == theme/* ]]; then
-        echo "  Copying theme to book directory..."
-        cp -r theme book/ 2>/dev/null || true
-        
-        # Verify CSS was copied correctly
-        if [ ! -f "book/theme/css/main.css" ]; then
-            echo -e "${RED}  ✗ CSS copy failed! Retrying...${NC}"
-            sleep 1
-            cp -r theme book/
-        fi
+        echo "  Recompiling CSS..."
+        python3 scripts/build/compile-css.py >/dev/null 2>&1
     fi
     
     # Ensure mdBook has finished rebuilding before postprocessing

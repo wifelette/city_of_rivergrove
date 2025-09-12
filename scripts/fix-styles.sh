@@ -6,20 +6,10 @@ set -e
 
 echo "🔧 Fixing CSS styles..."
 
-# 1. Copy theme directory to book (maintaining structure)
-echo "  Copying theme files..."
-rm -rf book/theme 2>/dev/null || true
-cp -r theme book/
-
-# 2. Verify CSS import path is correct (should be './theme/css/main.css')
-echo "  Verifying CSS import path..."
-# Fix any incorrect paths back to the correct one
-sed -i '' 's|@import url('\''./theme/main.css'\'')|@import url('\''./theme/css/main.css'\'')|g' book/custom.css 2>/dev/null || true
-sed -i '' 's|@import url("./theme/main.css")|@import url("./theme/css/main.css")|g' book/custom.css 2>/dev/null || true
-
-# Verify the CSS file exists
-if [ ! -f "book/theme/css/main.css" ]; then
-    echo "  ❌ ERROR: CSS file not found at book/theme/css/main.css"
+# 1. Compile CSS from modular files
+echo "  Compiling CSS..."
+if ! python3 scripts/build/compile-css.py; then
+    echo "  ❌ ERROR: CSS compilation failed"
     exit 1
 fi
 

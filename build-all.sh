@@ -53,24 +53,14 @@ echo "🚀 City of Rivergrove - Complete Build"
 echo "======================================"
 echo ""
 
-# CRITICAL: Verify custom.css has correct import path
-echo "🔍 Validating custom.css import path..."
-if ! grep -q "@import url('./theme/css/main.css')" custom.css 2>/dev/null; then
-    echo "  ❌ ERROR: custom.css has incorrect import path!"
-    echo ""
-    echo "  Current import:"
-    grep "@import" custom.css | head -1 || echo "    (no import found)"
-    echo ""
-    echo "  Required import:"
-    echo "    @import url('./theme/css/main.css');"
-    echo ""
-    echo "  To fix:"
-    echo "    sed -i '' \"s|./theme/main.css|./theme/css/main.css|g\" custom.css"
-    echo ""
-    echo "  This is CRITICAL - CSS will not load without the correct path!"
+# Compile CSS from modular files
+echo "🎨 Compiling CSS from modular components..."
+if python3 scripts/build/compile-css.py; then
+    echo "  ✅ CSS compiled successfully"
+else
+    echo "  ❌ ERROR: CSS compilation failed!"
     exit 1
 fi
-echo "  ✅ custom.css import path is correct"
 echo ""
 
 # Check for direct /src modifications before starting
@@ -213,23 +203,8 @@ if [ -d "images" ]; then
     echo "  • Copying images directory..."
     cp -r images book/
 fi
-# Copy theme directory for CSS modules (CRITICAL for styles to work)
-if [ -d "theme" ]; then
-    echo "  • Copying theme directory..."
-    cp -r theme book/
-    
-    # Verify critical CSS file was copied
-    if [ ! -f "book/theme/css/main.css" ]; then
-        echo "  ⚠️  WARNING: CSS not copied correctly, retrying..."
-        rm -rf book/theme 2>/dev/null || true
-        cp -r theme book/
-        if [ ! -f "book/theme/css/main.css" ]; then
-            echo "  ❌ ERROR: Failed to copy CSS files!"
-            echo "     Manual fix: cp -r theme book/"
-            exit 1
-        fi
-    fi
-fi
+# CSS is now compiled into custom.css which mdBook handles automatically
+# No need to copy theme directory anymore
 # Copy navigation JavaScript
 if [ -f "navigation-standalone.js" ]; then
     echo "  • Copying navigation JavaScript..."

@@ -1,0 +1,22 @@
+# Directory-specific environment configuration
+# This file is loaded by direnv or can be sourced manually
+
+# Override mdbook command in this directory
+mdbook() {
+    if [ "$1" = "serve" ]; then
+        echo "❌ Direct 'mdbook serve' is disabled in this project!"
+        echo "✅ Use: ./dev-server.sh"
+        echo ""
+        echo "Starting dev-server.sh..."
+        ./dev-server.sh
+    else
+        command mdbook "$@"
+    fi
+}
+
+# Export the function so it's available in subshells
+export -f mdbook
+
+echo "📚 City of Rivergrove build environment loaded"
+echo "   • 'mdbook serve' → redirects to ./dev-server.sh"
+echo "   • 'mdbook build' → works normally"
