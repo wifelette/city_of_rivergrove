@@ -189,7 +189,7 @@ echo ""
 
 # Apply postprocessing
 echo "🎨 Step 6: Applying custom formatting..."
-python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
+python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
 fi

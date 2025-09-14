@@ -66,11 +66,19 @@ class TitleResolver:
                     return title
         return None
     
+    def strip_markdown_links(self, text: str) -> str:
+        """Remove markdown links from text, keeping only the link text."""
+        # Replace [text](url) with just text
+        text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+        return text
+    
     def extract_title_from_h1(self, content: str) -> Optional[str]:
         """Extract title from first H1 heading."""
         h1_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
         if h1_match:
             title = h1_match.group(1).strip()
+            # Strip any markdown links from the title
+            title = self.strip_markdown_links(title)
             # Clean up common prefixes
             title = re.sub(r'^(Ordinance|Resolution)\s+#?\d+[-\w]*\s*-?\s*', '', title)
             return title

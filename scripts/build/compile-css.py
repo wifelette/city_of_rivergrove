@@ -41,6 +41,7 @@ def compile_css():
         "components/cards.css",
         "components/footnotes.css",
         "components/tables.css",
+        "components/lists.css",  # NEW - unified list styles
         "components/navigation.css",
         "components/relationships-panel.css",
         "components/form-controls.css",
@@ -117,12 +118,21 @@ def compile_css():
     
     print(f"✅ Compiled CSS written to {output_file}")
     
-    # Also ensure it's copied to book/ if book exists
-    book_css = repo_root / "book" / "custom.css"
+    # Also ensure it's copied to book/theme/css/ where mdBook expects it
     if (repo_root / "book").exists():
+        # Copy to book root for backwards compatibility
+        book_css = repo_root / "book" / "custom.css"
         with open(book_css, 'w', encoding='utf-8') as f:
             f.write(output_content)
-        print(f"✅ Also copied to {book_css}")
+        print(f"✅ Copied to {book_css}")
+        
+        # Copy to book/theme/css/ where mdBook actually looks for custom.css
+        book_theme_css_dir = repo_root / "book" / "theme" / "css"
+        book_theme_css_dir.mkdir(parents=True, exist_ok=True)
+        book_theme_css = book_theme_css_dir / "custom.css"
+        with open(book_theme_css, 'w', encoding='utf-8') as f:
+            f.write(output_content)
+        print(f"✅ Copied to {book_theme_css} (mdBook location)")
     
     return True
 

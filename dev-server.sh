@@ -3,7 +3,8 @@
 # Automatically syncs, processes, and rebuilds when you edit source files
 # Usage: ./dev-server.sh
 
-set -e  # Exit on any error
+# Don't use set -e here since we want to handle errors ourselves
+# set -e would exit before we can check specific error types
 
 # Source server management utilities
 source scripts/utils/server-management.sh
@@ -92,6 +93,9 @@ process_file_change() {
     
     # Run processing pipeline on the synced file
     if [ -n "$dest_file" ] && [ -f "$dest_file" ]; then
+        echo "  Standardizing list formats..."
+        python3 scripts/preprocessing/standardize-list-format.py >/dev/null 2>&1 || true
+        
         echo "  Processing footnotes..."
         python3 scripts/preprocessing/footnote-preprocessor.py "$dest_file" >/dev/null 2>&1 || true
         
@@ -138,10 +142,10 @@ process_file_change() {
     fi
     
     # Apply postprocessors after mdBook rebuilds
-    echo "  Applying custom formatting..."
-    python3 scripts/postprocessing/custom-list-processor.py >/dev/null 2>&1
+    echo "  Applying unified list processing..."
+    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
     
-    # Always run enhanced processor for Document Notes and other styling
+    # Apply enhanced processor for tables, WHEREAS, etc (NO list processing)
     echo "  Applying enhanced styling..."
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
     
@@ -157,8 +161,29 @@ process_file_change() {
 
 # Initial build
 echo "📚 Running initial build..."
-./build-all.sh >/dev/null 2>&1
-echo -e "${GREEN}✅ Initial build complete${NC}"
+# Capture build output to check for specific errors
+BUILD_OUTPUT=$(./build-all.sh 2>&1)
+BUILD_EXIT_CODE=$?
+
+if [ $BUILD_EXIT_CODE -ne 0 ]; then
+    # Check if it's just the SUMMARY.md parsing warning
+    if echo "$BUILD_OUTPUT" | grep -q "Summary parsing failed\|failed to parse SUMMARY.md"; then
+        echo -e "${YELLOW}⚠️  Build has SUMMARY.md warnings (non-critical), continuing...${NC}"
+        echo "   (Run './build-all.sh' to see full output)"
+    elif echo "$BUILD_OUTPUT" | grep -q "Direct /src modifications detected"; then
+        echo -e "${RED}❌ Build failed: Direct /src modifications detected${NC}"
+        echo "   Run 'git checkout -- src/' then try again"
+        exit 1
+    else
+        echo -e "${RED}❌ Build failed with errors:${NC}"
+        echo "$BUILD_OUTPUT" | tail -20
+        echo ""
+        echo "Fix the errors above and try again"
+        exit 1
+    fi
+else
+    echo -e "${GREEN}✅ Initial build complete${NC}"
+fi
 echo ""
 
 # Start mdbook serve in background with proper checks
@@ -232,6 +257,7 @@ cleanup() {
     echo "🛑 Shutting down..."
     kill $MDBOOK_PID 2>/dev/null || true
     kill $SOURCE_WATCHER_PID 2>/dev/null || true
+    kill $POSTPROCESS_WATCHER_PID 2>/dev/null || true
     echo -e "${GREEN}✅ Server stopped${NC}"
     exit 0
 }
@@ -243,5 +269,10 @@ trap cleanup INT TERM
 watch_source_documents &
 SOURCE_WATCHER_PID=$!
 
+# Start the postprocess watcher to handle mdBook rebuilds
+# TEMPORARILY DISABLED - causing rebuild loops
+# scripts/utils/mdbook-postprocess-watcher.sh &
+# POSTPROCESS_WATCHER_PID=$!
+
 # Wait for processes to exit
-wait $MDBOOK_PID $SOURCE_WATCHER_PID
+wait $MDBOOK_PID $SOURCE_WATCHER_PID $POSTPROCESS_WATCHER_PID

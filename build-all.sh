@@ -69,9 +69,9 @@ if [ -f "scripts/validation/check-src-modifications.sh" ]; then
         echo ""
         echo "⚠️  Build aborted due to direct /src modifications"
         echo "   Please resolve the issues above and try again"
-        exit 1
+        echo ""
+        exit 101
     }
-    echo ""
 fi
 
 # STEP 1: Sync all documents from source to /src
@@ -107,6 +107,12 @@ python3 scripts/validation/validate-form-fields.py --quiet || {
     exit 1
 }
 echo "  ✅ Form fields validated"
+echo ""
+
+# STEP 3.5: Standardize list formats (NEW - must be before other preprocessing)
+echo "📋 Step 3.5: Standardizing list formats..."
+python3 scripts/preprocessing/standardize-list-format.py
+echo "  ✅ List formats standardized"
 echo ""
 
 # STEP 4: Process footnotes
@@ -225,10 +231,10 @@ if [ -f "scripts/build/add-readonly-warnings.sh" ]; then
     ./scripts/build/add-readonly-warnings.sh >/dev/null 2>&1
 fi
 
-# STEP 13: Apply custom formatting (MUST be after mdBook build)
-echo "🎨 Step 13: Applying custom formatting..."
-python3 scripts/postprocessing/custom-list-processor.py
-echo "  ✅ Custom formatting applied"
+# STEP 13: Apply unified list processing (MUST be after mdBook build)
+echo "🎨 Step 13: Applying unified list processing..."
+python3 scripts/postprocessing/unified-list-processor.py
+echo "  ✅ List processing and Document Notes formatting applied"
 echo ""
 
 # STEP 14: Apply enhanced formatting (if available)
