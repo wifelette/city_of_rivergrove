@@ -59,28 +59,30 @@ If automatic processing fails, you can manually wrap footnotes:
 
 ## Lists
 
-### Numbered Lists
+See **[Lists Style Guide](lists.md)** for comprehensive documentation of all list formatting patterns including:
+- Standard numbered and bulleted lists
+- Parenthetical lists: (a), (b), (c) and (1), (2), (3)
+- Roman numeral lists: (i), (ii), (iii)
+- Nested and complex hierarchical lists
+- Lists in special contexts (tables, blockquotes, document notes)
+- Technical implementation details
+
+### Quick Reference
+
+#### Standard Numbered Lists
 ```markdown
 1. First item
 2. Second item
-   - Sub-item with dash
-   - Another sub-item
 3. Third item
 ```
 
-### Letter Lists (in legal text)
+#### Parenthetical Lists (Legal Documents)
 ```markdown
-**a.** First item  
-**b.** Second item  
-**c.** Third item  
+(a) First item
+(b) Second item
+(c) Third item
 ```
-
-### Roman Numerals (preserve as written)
-```markdown
-- (i) First item
-- (ii) Second item
-- (iii) Third item
-```
+*Note: These render without bullets, with blue markers*
 
 ## Tables
 

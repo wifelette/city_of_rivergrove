@@ -55,12 +55,15 @@ The current style guide documents core design tokens and basic components well b
 - Stamp/handwritten text formatting
 - Proper H3 header syntax with page refs
 
-### 3. Enhanced Lists
-**CSS Classes:** `letter-item`, `definition-item`, `custom-numbered-list`
-- Letter lists: (a), (b), (c) style
-- Definition items: Section markers in resolutions
-- Custom numbered lists: Roman numerals, custom starts
-- Nested numbering patterns
+### 3. ✅ Enhanced Lists [COMPLETED]
+**Documentation:** See `/docs/styles/lists.md` for comprehensive guide
+**CSS Classes:** `alpha-list`, `numeric-list`, `roman-list`, `list-marker-*`
+- Letter lists: (a), (b), (c) style ✓
+- Numeric parenthetical lists: (1), (2), (3) style ✓
+- Roman numeral lists: (i), (ii), (iii) style ✓
+- Nested and complex hierarchical patterns ✓
+- Lists in special contexts (tables, document notes) ✓
+- Unified list processor implementation ✓
 
 ### 4. WHEREAS Clauses
 **CSS Classes:** `whereas-clause`, `whereas-marker`

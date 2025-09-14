@@ -119,6 +119,109 @@
             overflow-x: auto;
         }
         
+        /* Color code display */
+        .color-code {
+            display: inline-flex;
+            align-items: center;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        /* Color code in dark backgrounds (code blocks) */
+        .code-snippet .color-code,
+        pre .color-code {
+            background: rgba(255, 255, 255, 0.1);
+            color: #d4d4d4;
+        }
+        
+        .color-swatch-inline {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            margin-right: 4px;
+            border: 1px solid rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        
+        /* Swatch in dark backgrounds */
+        .code-snippet .color-swatch-inline,
+        pre .color-swatch-inline {
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        /* Enhanced Lists styles */
+        .alpha-list, .numeric-list, .roman-list {
+            list-style: none;
+            list-style-type: none;
+            padding-left: 2em;
+        }
+        
+        .alpha-list li, .numeric-list li, .roman-list li {
+            margin-bottom: 0.5em;
+        }
+        
+        .list-marker-alpha, .list-marker-numeric, .list-marker-roman {
+            color: #0969da;
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        /* Documentation links - button style */
+        .doc-link {
+            display: inline-block;
+            color: #0969da;
+            text-decoration: none;
+            background: #f0f9ff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid #e1f0ff;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .doc-link:hover {
+            background: #e1f0ff;
+            border-color: #0969da;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(9, 105, 218, 0.1);
+        }
+        
+        /* Documentation callout boxes */
+        .info-box {
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .principle-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0969da;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note-box {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
         .button-grid {
             display: flex;
             gap: 10px;
@@ -183,6 +286,17 @@
             font-weight: 600;
         }
         
+        .toc-sub {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .toc-sub li {
+            font-size: 14px;
+            padding: 3px 0;
+        }
+        
         .main-container {
             display: grid;
             grid-template-columns: 250px 1fr;
@@ -226,11 +340,16 @@
                 <li><a href="#tables">📊 Tables</a></li>
                 <li><a href="#document-components">📄 Document Components</a></li>
                 <li><a href="#document-notes">📝 Document Notes <span class="toc-new">NEW</span></a></li>
-                <li><a href="#enhanced-lists">📋 Enhanced Lists <span class="toc-new">NEW</span></a></li>
+                <li><a href="#enhanced-lists">📋 Enhanced Lists <span class="toc-new">NEW</span></a>
+                    <ul class="toc-sub">
+                        <li><a href="lists-style-guide.html">📖 Detailed Lists Guide</a></li>
+                    </ul>
+                </li>
                 <li><a href="#code-examples">💻 Code Examples</a></li>
                 <li><a href="#form-fields">📝 Form Fields <span class="toc-new">NEW</span></a></li>
                 <li><a href="#signatures">✍️ Signature Blocks <span class="toc-new">NEW</span></a></li>
                 <li><a href="#enhanced-tables">📊 Enhanced Tables <span class="toc-new">NEW</span></a></li>
+                <li><a href="#style-guide-conventions">📚 Style Guide Conventions <span class="toc-new">NEW</span></a></li>
                 <li><a href="#architecture">🏗️ Architecture</a></li>
                 <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
                     <strong>Coming Soon:</strong>
@@ -591,55 +710,56 @@ March 9, 1976</div>
     <!-- Enhanced Lists Section -->
     <div class="style-section" id="enhanced-lists">
         <h2>📝 Enhanced Lists</h2>
-        <p style="color: #666; margin-bottom: 20px;">Special list formatting for legal documents including letter lists, definition items, and custom numbering.</p>
+        <p style="color: #666; margin-bottom: 20px;">Special list formatting for legal documents with parenthetical markers. All list markers display in blue (#0969da) without bullets.</p>
+        <p style="margin-bottom: 20px; text-align: right;"><a href="lists-style-guide.html" class="doc-link">📖 View Complete Lists Style Guide</a></p>
         
         <div class="example-container">
-            <div class="example-title">Letter Lists (a, b, c)</div>
-            <div class="letter-item">
-                <span class="letter-marker">(a)</span>
-                <div class="letter-content">The City Council shall meet at least once per month</div>
-            </div>
-            <div class="letter-item">
-                <span class="letter-marker">(b)</span>
-                <div class="letter-content">Special meetings may be called by the Mayor or any three Council members</div>
-            </div>
-            <div class="letter-item">
-                <span class="letter-marker">(c)</span>
-                <div class="letter-content">All meetings shall comply with Oregon Public Meeting Law</div>
-            </div>
+            <div class="example-title">Alpha Parenthetical Lists (a, b, c)</div>
+            <ul class="alpha-list">
+                <li><span class="list-marker-alpha">(a)</span> The City Council shall meet at least once per month</li>
+                <li><span class="list-marker-alpha">(b)</span> Special meetings may be called by the Mayor or any three Council members</li>
+                <li><span class="list-marker-alpha">(c)</span> All meetings shall comply with Oregon Public Meeting Law</li>
+            </ul>
+            <p style="margin-top: 10px; color: #666; font-size: 14px;">CSS Class: <code>.alpha-list</code> | Marker: <code>.list-marker-alpha</code></p>
         </div>
 
         <div class="example-container">
-            <div class="example-title">Definition Items (Section Markers)</div>
-            <div class="definition-item">
-                <span class="definition-term">Section 1.</span>
-                <span class="definition-separator">—</span>
-                <span class="definition-text">Purpose and Intent. This ordinance establishes regulations for the protection of trees within the City of Rivergrove.</span>
-            </div>
-            <div class="definition-item">
-                <span class="definition-term">Section 2.</span>
-                <span class="definition-separator">—</span>
-                <span class="definition-text">Definitions. For the purposes of this ordinance, the following definitions shall apply.</span>
-            </div>
+            <div class="example-title">Numeric Parenthetical Lists (1, 2, 3)</div>
+            <ul class="numeric-list">
+                <li><span class="list-marker-numeric">(1)</span> First numbered requirement or condition</li>
+                <li><span class="list-marker-numeric">(2)</span> Second numbered requirement or condition</li>
+                <li><span class="list-marker-numeric">(3)</span> Third numbered requirement or condition</li>
+            </ul>
+            <p style="margin-top: 10px; color: #666; font-size: 14px;">CSS Class: <code>.numeric-list</code> | Marker: <code>.list-marker-numeric</code></p>
         </div>
 
         <div class="example-container">
-            <div class="example-title">Custom Numbered Lists</div>
-            <ol class="custom-numbered-list" style="counter-reset: item 4">
-                <li><span class="custom-list-marker">5.</span>Public parks and recreation areas</li>
-                <li><span class="custom-list-marker">6.</span>Street construction, maintenance and lighting</li>
-                <li><span class="custom-list-marker">7.</span>Planning, zoning and subdivision control</li>
-            </ol>
-            <p style="margin-top: 15px; color: #666;">Note: Lists can start at any number using custom counter-reset</p>
+            <div class="example-title">Roman Numeral Lists (i, ii, iii)</div>
+            <ul class="roman-list">
+                <li><span class="list-marker-roman">(i)</span> Initial review by Planning Commission</li>
+                <li><span class="list-marker-roman">(ii)</span> Public hearing and comment period</li>
+                <li><span class="list-marker-roman">(iii)</span> Final determination by City Council</li>
+            </ul>
+            <p style="margin-top: 10px; color: #666; font-size: 14px;">CSS Class: <code>.roman-list</code> | Marker: <code>.list-marker-roman</code></p>
         </div>
 
         <div class="example-container">
-            <div class="example-title">Roman Numeral Lists</div>
-            <ol class="custom-numbered-list roman-numerals" style="list-style-type: none;">
-                <li><span class="custom-list-marker">i.</span>Initial review by Planning Commission</li>
-                <li><span class="custom-list-marker">ii.</span>Public hearing and comment period</li>
-                <li><span class="custom-list-marker">iii.</span>Final determination by City Council</li>
-            </ol>
+            <div class="example-title">Nested Lists</div>
+            <ul class="alpha-list">
+                <li><span class="list-marker-alpha">(a)</span> Parent alpha item with nested content
+                    <ul class="numeric-list" style="margin-top: 10px;">
+                        <li><span class="list-marker-numeric">(1)</span> First nested numeric item</li>
+                        <li><span class="list-marker-numeric">(2)</span> Second nested numeric item</li>
+                    </ul>
+                </li>
+                <li><span class="list-marker-alpha">(b)</span> Second parent alpha item
+                    <ul class="numeric-list" style="margin-top: 10px;">
+                        <li><span class="list-marker-numeric">(1)</span> Another nested item</li>
+                        <li><span class="list-marker-numeric">(2)</span> Another nested item</li>
+                    </ul>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; color: #666; font-size: 14px;">Nesting preserves visual hierarchy through indentation</p>
         </div>
 
         <div class="example-container">
@@ -656,13 +776,13 @@ March 9, 1976</div>
         </div>
 
         <div class="example-container">
-            <div class="example-title">Processing Notes</div>
+            <div class="example-title">Processing Implementation</div>
             <ul>
-                <li>Letter lists are created by the postprocessor from <code>(a)</code> patterns</li>
-                <li>Definition items are detected from <code>Section X.</code> patterns</li>
-                <li>Custom numbering preserves original document numbering</li>
-                <li>WHEREAS clauses get special emphasis styling</li>
-                <li>All enhanced lists maintain semantic HTML structure</li>
+                <li><strong>Preprocessor:</strong> <code>standardize-list-format.py</code> normalizes certain patterns</li>
+                <li><strong>mdBook:</strong> Converts markdown to HTML</li>
+                <li><strong>Postprocessor:</strong> <code>unified-list-processor.py</code> adds CSS classes and styling</li>
+                <li><strong>Key feature:</strong> No bullets display on parenthetical lists (enforced by CSS)</li>
+                <li><strong>Marker color:</strong> All markers display in blue (#0969da)</li>
             </ul>
         </div>
     </div>
@@ -1025,6 +1145,104 @@ Attest:
         </div>
     </div>
 
+    <!-- Style Guide Conventions Section -->
+    <div class="style-section" id="style-guide-conventions">
+        <h2>📚 Style Guide Conventions</h2>
+        <p style="color: #666; margin-bottom: 20px;">Special formatting used in this style guide for clarity and emphasis. These styles are for documentation purposes only and don't appear in the production site.</p>
+        
+        <div class="example-container">
+            <div class="example-title">Callout Boxes</div>
+            <p>We use colored callout boxes to highlight different types of information:</p>
+            
+            <div style="margin: 15px 0; padding: 15px; background: #f9fafb; border-radius: 4px;">
+                <strong style="display: block; margin-bottom: 10px;">Quick guide:</strong>
+                <div style="display: grid; gap: 8px;">
+                    <div style="display: flex; align-items: center;">
+                        <span style="width: 14px; height: 14px; background: #f0fdf4; border: 2px solid #059669; border-radius: 2px; margin-right: 8px; display: inline-block;"></span>
+                        <strong>Green</strong> = "Here's something helpful!"
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span style="width: 14px; height: 14px; background: #fef2f2; border: 2px solid #dc2626; border-radius: 2px; margin-right: 8px; display: inline-block;"></span>
+                        <strong>Red</strong> = "Don't do this!"
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span style="width: 14px; height: 14px; background: #f0f9ff; border: 2px solid #0969da; border-radius: 2px; margin-right: 8px; display: inline-block;"></span>
+                        <strong>Blue</strong> = "This is a core principle"
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span style="width: 14px; height: 14px; background: #fefce8; border: 2px solid #eab308; border-radius: 2px; margin-right: 8px; display: inline-block;"></span>
+                        <strong>Yellow</strong> = "Be careful here"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <strong>Info Box (Green):</strong> Used for helpful supplementary information, tips, common usage patterns, and "good to know" context. These are positive, actionable insights that enhance understanding.
+            </div>
+            
+            <div class="warning-box">
+                <strong>Warning Box (Red):</strong> Used for critical warnings, important restrictions, things that must NOT be done, and potential issues to avoid. These require immediate attention to prevent problems.
+            </div>
+            
+            <div class="principle-box">
+                <strong>Principle Box (Blue):</strong> Used for foundational rules, key design principles, and architectural decisions that guide the entire implementation. These are the "why" behind our choices.
+            </div>
+            
+            <div class="note-box">
+                <strong>Note Box (Yellow):</strong> Used for important caveats, exceptions, edge cases, and "watch out for" situations that aren't quite warnings but need attention. Think of these as "proceed with caution" notices.
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Color Code Display</div>
+            <p>Hex color codes are automatically enhanced with visual swatches throughout the documentation:</p>
+            
+            <p style="margin: 20px 0;">When you see a color like #0969da or #059669 or #dc2626 in the text, it automatically displays with a small color preview. This makes it easy to see what color is being referenced without having to look it up.</p>
+            
+            <p>This feature works for:</p>
+            <ul>
+                <li>6-digit hex codes: #0969da</li>
+                <li>3-digit hex codes: #fff</li>
+                <li>Any valid hex color mentioned in documentation</li>
+            </ul>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Code Snippets</div>
+            <p>Different types of code are displayed with appropriate formatting:</p>
+            
+            <div style="margin: 20px 0;">
+                <strong>Dark theme code blocks:</strong> Used for CSS, JavaScript, and HTML code
+                <div class="code-snippet">/* CSS Example */
+.my-class {
+    color: var(--color-primary);
+    padding: var(--space-padding-md);
+}</div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <strong>Inline code:</strong> Used for short references like <code>class="example"</code> or <code>#0969da</code>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Visual Indicators</div>
+            <ul>
+                <li><span style="background: #059669; color: white; font-size: 10px; padding: 2px 6px; border-radius: 3px; font-weight: 600;">NEW</span> - Indicates recently added features or sections</li>
+                <li><strong>Bold text</strong> - Used for emphasis and important terms</li>
+                <li><em>Italic text</em> - Used for subtle emphasis or examples</li>
+                <li>📊 Emojis - Used as visual markers for different sections and concepts</li>
+            </ul>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Usage Guidelines</div>
+            <div class="principle-box">
+                These conventions are designed to make the documentation clearer and easier to scan. Use them consistently to maintain a professional and helpful style guide.
+            </div>
+        </div>
+    </div>
+
     <!-- Architecture Section -->
     <div class="style-section" id="architecture">
         <h2>🏗️ Architecture Overview</h2>
@@ -1057,5 +1275,99 @@ Attest:
         <p style="color: #666; margin: 0">City of Rivergrove CSS Style Guide</p>
         <p style="color: #999; margin: 5px 0">Version 1.0 - January 2025</p>
     </div>
+
+    <script>
+        // Automatically detect and enhance hex color codes
+        function enhanceColorCodes() {
+            // Find all text nodes that might contain color codes
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: function(node) {
+                        // Skip script and style tags
+                        if (node.parentElement.tagName === 'SCRIPT' || 
+                            node.parentElement.tagName === 'STYLE' ||
+                            node.parentElement.classList.contains('color-code')) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+                        
+                        // Skip if we're inside a code block (they'll be styled differently via CSS)
+                        let parent = node.parentElement;
+                        while (parent) {
+                            if (parent.classList && (parent.classList.contains('code-snippet') || 
+                                parent.tagName === 'PRE' || 
+                                parent.tagName === 'CODE')) {
+                                // Still process it but mark for special handling
+                                if (/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/.test(node.nodeValue)) {
+                                    return NodeFilter.FILTER_ACCEPT;
+                                }
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                            parent = parent.parentElement;
+                        }
+                        
+                        // Check if text contains hex color pattern
+                        if (/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/.test(node.nodeValue)) {
+                            return NodeFilter.FILTER_ACCEPT;
+                        }
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                }
+            );
+
+            const nodesToReplace = [];
+            let node;
+            while (node = walker.nextNode()) {
+                nodesToReplace.push(node);
+            }
+
+            // Replace color codes with enhanced versions
+            nodesToReplace.forEach(textNode => {
+                const text = textNode.nodeValue;
+                const colorRegex = /(#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b)/g;
+                
+                if (colorRegex.test(text)) {
+                    const span = document.createElement('span');
+                    let lastIndex = 0;
+                    let match;
+                    
+                    colorRegex.lastIndex = 0; // Reset regex
+                    while ((match = colorRegex.exec(text)) !== null) {
+                        // Add text before the color code
+                        if (match.index > lastIndex) {
+                            span.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+                        }
+                        
+                        // Create color code element
+                        const colorCode = match[1];
+                        const colorSpan = document.createElement('span');
+                        colorSpan.className = 'color-code';
+                        
+                        const swatch = document.createElement('span');
+                        swatch.className = 'color-swatch-inline';
+                        swatch.style.backgroundColor = colorCode;
+                        
+                        colorSpan.appendChild(swatch);
+                        colorSpan.appendChild(document.createTextNode(colorCode));
+                        span.appendChild(colorSpan);
+                        
+                        lastIndex = match.index + match[0].length;
+                    }
+                    
+                    // Add remaining text
+                    if (lastIndex < text.length) {
+                        span.appendChild(document.createTextNode(text.substring(lastIndex)));
+                    }
+                    
+                    // Replace the text node with our enhanced version
+                    textNode.parentNode.replaceChild(span, textNode);
+                }
+            });
+        }
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', enhanceColorCodes);
+    </script>
 </body>
 </html>

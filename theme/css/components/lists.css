@@ -1,0 +1,244 @@
+/* 
+ * List Styles
+ * Unified styling for all list types in legal documents
+ * 
+ * This is the SINGLE SOURCE OF TRUTH for list styling.
+ * All list-related CSS should be here, not scattered across files.
+ */
+
+/* ========================================
+ * STANDARD ORDERED LISTS
+ * Regular numbered lists: 1., 2., 3.
+ * ======================================== */
+
+/* Make standard ordered list markers blue */
+ol li::marker {
+    color: var(--color-primary, #0969da);
+}
+
+/* ========================================
+ * MANUAL NOTATION LISTS
+ * Lists with (a), (b) or (1), (2) notation
+ * ======================================== */
+
+/* Hide bullets for lists with manual notation */
+.alpha-list,
+.numeric-list,
+.roman-list {
+    list-style: none;
+    list-style-type: none;
+    padding-left: 2em;
+}
+
+/* Ensure list items have proper spacing and no bullets */
+.alpha-list li,
+.numeric-list li,
+.roman-list li {
+    list-style: none;
+    list-style-type: none;
+    margin: 0.5em 0;
+    position: relative;
+}
+
+/* Extra specificity to override any mdBook defaults */
+.content ul.alpha-list,
+.content ul.numeric-list,
+.content ul.roman-list,
+#content ul.alpha-list,
+#content ul.numeric-list,
+#content ul.roman-list,
+.page ul.alpha-list,
+.page ul.numeric-list,
+.page ul.roman-list {
+    list-style: none;
+    list-style-type: none;
+}
+
+.content ul.alpha-list > li,
+.content ul.numeric-list > li,
+.content ul.roman-list > li,
+#content ul.alpha-list > li,
+#content ul.numeric-list > li,
+#content ul.roman-list > li,
+.page ul.alpha-list > li,
+.page ul.numeric-list > li,
+.page ul.roman-list > li {
+    list-style: none;
+    list-style-type: none;
+}
+
+/* Remove any pseudo-element bullets */
+.alpha-list li::before,
+.numeric-list li::before,
+.roman-list li::before {
+    content: none;
+}
+
+/* ========================================
+ * LIST MARKERS
+ * Styled spans for (a), (1), (i) markers
+ * ======================================== */
+
+/* Base marker styling - applies to all manual markers */
+.list-marker-alpha,
+.list-marker-numeric,
+.list-marker-roman {
+    color: var(--color-primary, #0969da);
+    font-weight: bold;
+    margin-right: 0.5em;
+    display: inline-block;
+    min-width: 2em;
+}
+
+/* Alpha markers might need slightly different spacing */
+.list-marker-alpha {
+    min-width: 2.5em;
+}
+
+/* Roman numerals can be wider */
+.list-marker-roman {
+    min-width: 3em;
+}
+
+/* ========================================
+ * NESTED LISTS
+ * Proper indentation for nested structures
+ * ======================================== */
+
+/* Nested lists should indent further */
+ul ul, ul ol, ol ul, ol ol {
+    padding-left: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Nested manual notation lists */
+.alpha-list .numeric-list,
+.alpha-list .roman-list,
+.numeric-list .roman-list {
+    padding-left: 2em;
+}
+
+/* Visual indentation for complex nesting patterns */
+/* When numeric items appear in an alpha list (indicates nesting) */
+.alpha-list li .list-marker-numeric {
+    margin-left: 2em;
+}
+
+/* When roman items appear in an alpha/numeric list (double nesting) */
+.alpha-list li .list-marker-roman,
+.numeric-list li .list-marker-roman {
+    margin-left: 4em;
+}
+
+/* ========================================
+ * SPECIAL CASES
+ * Edge cases and document-specific needs
+ * ======================================== */
+
+/* Lists inside blockquotes (common in ordinances) */
+blockquote ul,
+blockquote ol {
+    margin-left: 0;
+    padding-left: 1.5em;
+}
+
+blockquote .alpha-list,
+blockquote .numeric-list,
+blockquote .roman-list {
+    padding-left: 1em;
+}
+
+/* Definition-style lists (term followed by description) */
+.definition-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.definition-list li {
+    margin: 1em 0;
+}
+
+.definition-term {
+    font-weight: bold;
+    color: var(--color-primary, #0969da);
+    display: block;
+    margin-bottom: 0.25em;
+}
+
+/* ========================================
+ * DOCUMENT NOTES LISTS
+ * Lists within Document Notes sections
+ * ======================================== */
+
+.document-notes ul,
+.document-notes ol {
+    margin-left: 1em;
+}
+
+.document-notes .alpha-list,
+.document-notes .numeric-list {
+    padding-left: 1em;
+}
+
+/* Lists inside note-content should not have extra padding */
+.note-content ul.alpha-list,
+.note-content ul.numeric-list,
+.note-content ul.roman-list {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* The list items themselves should have normal spacing */
+.note-content .alpha-list li,
+.note-content .numeric-list li,
+.note-content .roman-list li {
+    margin-left: 0;
+}
+
+/* ========================================
+ * RESPONSIVE ADJUSTMENTS
+ * Mobile-friendly list spacing
+ * ======================================== */
+
+@media (max-width: 768px) {
+    .alpha-list,
+    .numeric-list,
+    .roman-list {
+        padding-left: 1.5em;
+    }
+    
+    ul ul, ul ol, ol ul, ol ol {
+        padding-left: 1.5em;
+    }
+}
+
+/* ========================================
+ * LISTS IN TABLES
+ * Style list notation within table cells
+ * ======================================== */
+
+/* Style parenthetical markers in table cells */
+table td {
+    /* This would need JavaScript to properly wrap the markers */
+    /* For now, we'll note this as a limitation */
+}
+
+/* ========================================
+ * PRINT STYLES
+ * Optimized for PDF/print output
+ * ======================================== */
+
+@media print {
+    /* Ensure markers are visible in print */
+    .list-marker-alpha,
+    .list-marker-numeric,
+    .list-marker-roman {
+        color: #000;
+        font-weight: bold;
+    }
+    
+    ol li::marker {
+        color: #000;
+    }
+}
