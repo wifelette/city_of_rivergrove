@@ -20,9 +20,10 @@
     top: 0;
     left: 0;
     right: 0;
-    height: var(--border-width-thick);
-    background: var(--color-primary);
-    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    height: 3px;
+    background: #0969da;
+    border-radius: 4px 4px 0 0;
+    z-index: 1;
 }
 
 /* Note icon */
@@ -37,22 +38,24 @@
 /* Note heading - always shows as "Document Notes" */
 .document-note h2 {
     margin: 0 0 var(--space-margin-sm) 0;
+    padding-bottom: 12px;
     color: var(--color-text-tertiary);
     font-size: 12px;
     font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    border-bottom: var(--border-width-thin) solid var(--color-border-light);
 }
 
 /* Individual note items */
 .note-item {
     margin: var(--space-padding-md) 0;
     padding: var(--space-padding-sm) 0;
-    border-bottom: var(--border-width-thin) solid var(--color-border-lighter);
 }
 
+/* No borders between note items */
 .note-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 /* Note type labels (Stamp, Handwritten text, etc.) */

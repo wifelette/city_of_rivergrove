@@ -14,7 +14,9 @@ html {
 
 body {
     margin: 0;
-    font-size: 1rem;
+    /* mdBook sets :root font-size to 62.5%, so 1rem = 10px
+       We need 1.6rem to get back to 16px default size */
+    font-size: 1.6rem;
     overflow-x: hidden;
 }
 
@@ -136,7 +138,7 @@ pre > .buttons button:hover {
 /* Blockquotes */
 blockquote {
     margin: 20px 0;
-    padding: 0 20px;
+    padding: 15px 20px;  /* Added vertical padding for better spacing */
     color: var(--fg);
     background-color: var(--quote-bg);
     border-block-start: .1em solid var(--quote-border);
