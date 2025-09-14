@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
 Enhanced custom processor for City of Rivergrove documents.
-Handles special formatting beyond standard list processing:
+Handles special formatting (NOT lists - see unified-list-processor.py):
 - Tables with proper styling
 - WHEREAS clauses
-- Definition lists with bold terms
 - Complex nested structures
 - Document-specific formatting rules
+
+NOTE: All list processing has been moved to unified-list-processor.py
+to prevent conflicts and maintain single responsibility.
 """
 
 import re
@@ -19,7 +21,7 @@ class DocumentProcessor:
     def __init__(self):
         # Document-specific rules can be defined here
         self.document_rules = {
-            'sign': ['definitions', 'whereas', 'tables'],
+            'sign': ['whereas', 'tables'],  # 'definitions' removed - handled by unified processor
             'fee': ['tables', 'fee_schedule'],
             'wqra': ['tables', 'complex_nesting'],
             'land-development': ['nested_quotes', 'whereas'],
@@ -40,62 +42,9 @@ class DocumentProcessor:
         else:
             return 'standard'
     
-    def process_standard_lists(self, soup):
-        """Process standard numbered, letter, and roman numeral lists"""
-        
-        # Process (1), (2), (3) style lists
-        for p in soup.find_all('p'):
-            text = p.get_text()
-            
-            # Check for numbered items
-            if re.search(r'\(\d+\)', text):
-                lines = text.split('\n')
-                numbered_items = []
-                
-                for line in lines:
-                    match = re.match(r'^(\((\d+)\))\s+(.+)$', line.strip())
-                    if match:
-                        numbered_items.append({
-                            'marker': match.group(1),
-                            'number': match.group(2),
-                            'text': match.group(3)
-                        })
-                
-                if len(numbered_items) > 1:
-                    ol = soup.new_tag('ol', attrs={'class': 'custom-numbered-list'})
-                    for item in numbered_items:
-                        li = soup.new_tag('li')
-                        marker_span = soup.new_tag('span', attrs={'class': 'custom-list-marker'})
-                        marker_span.string = item['marker']
-                        li.append(marker_span)
-                        li.append(' ' + item['text'])
-                        ol.append(li)
-                    p.replace_with(ol)
-        
-        return soup
-    
-    def process_letter_lists(self, soup):
-        """Process (a), (b), (c) style lists"""
-        
-        for p in soup.find_all('p'):
-            text = p.get_text()
-            
-            # Check for letter markers
-            match = re.match(r'^(\(([a-z])\))\s+(.+)$', text.strip(), re.IGNORECASE)
-            if match:
-                div = soup.new_tag('div', attrs={'class': 'letter-item'})
-                
-                marker_span = soup.new_tag('span', attrs={'class': 'letter-marker'})
-                marker_span.string = match.group(1)
-                div.append(marker_span)
-                
-                content_span = soup.new_tag('span', attrs={'class': 'letter-content'})
-                content_span.string = ' ' + match.group(3)
-                div.append(content_span)
-                
-                p.replace_with(div)
-        
-        return soup
+    # LIST PROCESSING REMOVED - See unified-list-processor.py
+    # All list processing (numbered, letter, roman) has been moved to
+    # the unified list processor to prevent conflicts and duplication
     
     def process_whereas_clauses(self, soup):
         """Style WHEREAS clauses specially"""
@@ -115,37 +64,9 @@ class DocumentProcessor:
         
         return soup
     
-    def process_definition_lists(self, soup):
-        """Process definition lists with bold terms"""
-        
-        # Look for patterns like **Term**—Definition
-        for p in soup.find_all('p'):
-            html = str(p)
-            
-            # Pattern for definition lists
-            if '**' in html and '—' in html:
-                # Extract the term and definition
-                pattern = r'\*\*([^*]+)\*\*—(.+)'
-                match = re.search(pattern, html)
-                
-                if match:
-                    div = soup.new_tag('div', attrs={'class': 'definition-item'})
-                    
-                    term_span = soup.new_tag('span', attrs={'class': 'definition-term'})
-                    term_span.string = match.group(1)
-                    div.append(term_span)
-                    
-                    separator_span = soup.new_tag('span', attrs={'class': 'definition-separator'})
-                    separator_span.string = '—'
-                    div.append(separator_span)
-                    
-                    def_span = soup.new_tag('span', attrs={'class': 'definition-text'})
-                    def_span.string = match.group(2)
-                    div.append(def_span)
-                    
-                    p.replace_with(div)
-        
-        return soup
+    # DEFINITION LIST PROCESSING REMOVED - Handled by unified-list-processor.py
+    # Definition lists are a form of list and should be handled consistently
+    # by the unified list processor
     
     def enhance_tables(self, soup):
         """Enhance table formatting and add responsive wrappers"""
@@ -785,9 +706,8 @@ class DocumentProcessor:
         # Identify document type
         doc_type = self.identify_document_type(filepath)
         
-        # Apply standard processing
-        soup = self.process_standard_lists(soup)
-        soup = self.process_letter_lists(soup)
+        # LIST PROCESSING REMOVED - handled by unified-list-processor.py
+        # No longer calling process_standard_lists or process_letter_lists
         
         # Apply document-specific processing
         if doc_type in self.document_rules:
@@ -796,8 +716,7 @@ class DocumentProcessor:
             if 'whereas' in rules:
                 soup = self.process_whereas_clauses(soup)
             
-            if 'definitions' in rules:
-                soup = self.process_definition_lists(soup)
+            # DEFINITION LISTS REMOVED - handled by unified-list-processor.py
             
             if 'tables' in rules or 'fee_schedule' in rules:
                 soup = self.enhance_tables(soup)
