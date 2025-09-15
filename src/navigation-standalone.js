@@ -774,7 +774,7 @@ class StandaloneNavigation {
                 }
             } else if (doc.type === 'ordinance' && airtableData.short_title) {
                 // For ordinances with short_title, use it
-                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                displayText = `<span class="doc-number">#${airtableData.doc_number}</span> <span class="doc-title">${airtableData.short_title}</span>`;
             }
             
             display = `${displayText} ${specialStateBadge}`;
@@ -791,7 +791,7 @@ class StandaloneNavigation {
                 const match = doc.id.match(/^(\d+(?:-\d+[A-Z]?)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
                     display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
@@ -800,7 +800,7 @@ class StandaloneNavigation {
                 const match = doc.id.match(/^(\d+(?:-\d+)?)-(.+)/);
                 if (match) {
                     const [, num, topic] = match;
-                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> - <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
+                    display = `<div class="doc-item-main"><span class="doc-number">#${num}</span> <span class="doc-title">${this.truncateTitle(topic)}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 } else {
                     display = `<div class="doc-item-main"><span class="doc-title">${doc.id}</span><span class="doc-year-tag">${doc.year}</span></div>`;
                 }
