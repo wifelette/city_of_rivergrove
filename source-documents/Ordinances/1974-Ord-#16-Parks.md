@@ -18,10 +18,10 @@ THE CITY OF RIVERGROVE DOES ORDAIN AS FOLLOWS:
 
 Passed unanimously on first reading of the ordinance in full by title at a meeting of the Rivergrove City Council on the {{filled:12th}} day of {{filled:August}}, 1974, and filed with the City Recorder on the {{filled:12th}} day of {{filled:August}}, 1974.
 
-[Signature]
+{{signature}}  
 John Nelson, Mayor
 
 **ATTEST:**
 
-[Signature]
+{{signature}}  
 Rosalie Morrison, City Recorder

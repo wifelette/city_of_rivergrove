@@ -16,7 +16,7 @@ and
 
 **WHEREAS**, city officials recognize the desirability of assisting the state officer responsible for determining the eligibility of cities to receive such funds in accordance with ORS 221.760, now, therefore,
 
-**BE IT RESOLVED**, that the City of {{filled:RIVERGROVE}} hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:
+{signature}, BE IT RESOLVED, that the City of {{filled:RIVERGROVE}} hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:  
 
 - {{filled:Police protection;}}
 - {{filled:Street construction, maintenance & lighting;}}

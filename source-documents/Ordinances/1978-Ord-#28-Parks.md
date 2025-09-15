@@ -16,12 +16,12 @@
 
 **ADOPTED** by the Rivergrove City Council this {{filled:12}} day of {{filled:June, 1978}}
 
-[Signature]
+{{signature}}  
 John Nelson, Mayor
 
 **ATTEST:**
 
-[Signature]
+{{signature}}  
 Rosalie Morrison, City Recorder
 
 ---

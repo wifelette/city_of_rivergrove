@@ -48,10 +48,10 @@ YEAS {{filled:5}}
 NAYS {{filled:0}}
 ABSTAINED {{filled:0}}
 
-[Signature], Mayor, Larry Barrett  
+{{signature}}, Mayor, Larry Barrett  
 **Date:** {{filled:12-13-99}}
 
-[Signature], City Recorder, Mike Collmeyer  
+{{signature}}, City Recorder, Mike Collmeyer  
 **Adopted:** {{filled:12/13/99}}
 
 ---
@@ -174,29 +174,29 @@ IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority 
 
 **CITY OF LAKE OSWEGO**
 
-By: [Signature]  
+By: {{signature}}
 **Alice L. Schlenker, Mayor**  
 As per City Council Resolution No. {{filled:96-62}}, {{filled:December 17, 1996}}
 **Dated:** {{filled:Dec 18, 1996}}
 
 **ATTEST:**  
-[Signature]  
+{{signature}}  
 **Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
-[Signature]  
+{{signature}}  
 **Jeffrey G. Condit, City Attorney**
 
 **CITY OF RIVERGROVE**
 
-By: [Signature]  
+By: {{signature}}
 **Sue Salch, Mayor**  
 As per City Council vote at its meeting of: {{filled:November 18, 1996}}
 **Dated:** {{filled:11/25/96}}
 
 **ATTEST:**  
-[Signature]  
+{{signature}}  
 **Jami K Morrison, City Recorder**
 
 **APPROVED AS TO FORM:**  

@@ -6,11 +6,11 @@
 **City Council Public Hearings:** {{filled:10/16/2000}}  
 **Adopted by Rivergrove City Council:** {{filled:10/16/2000}}
 
-[Signature], Larry Barrett, Mayor  
-**Date**: {{filled:10-16-00}}
+{{signature}}, Larry Barrett, Mayor  
+**Date**: {{filled:10-16-00}}  
 
-[Signature], Mike Collmeyer, City Recorder  
-**Date**: {{filled:10/16/2000}}
+{{signature}}, Mike Collmeyer, City Recorder  
+**Date**: {{filled:10/16/2000}}  
 
 Adopted
 

@@ -10,11 +10,11 @@ Submitted to the Rivergrove City Council on {{filled:5/12/03}}
 
 Adopted by the Rivergrove City Council on {{filled:5/12/03}}
 
-[Signature], Larry Barrett, Mayor  
-**Date**: {{filled:5/12/03}}
+{{signature}}, Larry Barrett, Mayor  
+**Date**: {{filled:5/12/03}}  
 
-[Signature], Mike Collmeyer, City Recorder  
-**Date**: {{filled:5/12/03}}
+{{signature}}, Mike Collmeyer, City Recorder  
+**Date**: {{filled:5/12/03}}  
 
 ---
 

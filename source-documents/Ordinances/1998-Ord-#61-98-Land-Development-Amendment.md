@@ -8,10 +8,10 @@ Submitted to the Rivergrove City Council on {{filled:April 13, 1998}}
 
 Adopted by the Rivergrove City Council on {{filled:April 13, 1998}}
 
-[Signature], Larry Barrett, Mayor  
+{{signature}}, Larry Barrett, Mayor  
 **Date:** {{filled:4-13-98}}
 
-[Signature], Mike Collmeyer, City Recorder  
+{{signature}}, Mike Collmeyer, City Recorder  
 **Date:** {{filled:4/13/98}}
 
 ---

@@ -34,15 +34,15 @@
 
 Approved and adopted at a regular meeting of the City Council held on the 10th day of December, 2018.
 
-[Signature], HEATHER KIBBEY, Mayor
+{{signature}}, HEATHER KIBBEY, Mayor  
 
 Attested on this 10th day of December 2018:
 
-[Signature], Leanne Moll, City Manager/City Recorder
+{{signature}}, Leanne Moll, City Manager/City Recorder  
 
 **Approved as to legal sufficiency:**
 
-[Signature], City Attorney
+{{signature}}, City Attorney
 
 ---
 

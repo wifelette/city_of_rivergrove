@@ -6,11 +6,11 @@ Submitted to the Rivergrove City Council on {{filled:6-9-08}}
 
 Adopted by the Rivergrove City Council on {{filled:6-9-08}}
 Are
-[Signature], Hafez Darae, Mayor  
-**Date**: {{filled:6-9-08}}
+{{signature}}, Hafez Darae, Mayor  
+**Date**: {{filled:6-9-08}}  
 
-[Signature], Sheri Richards, City Recorder  
-**Date**: {{filled:6-9-08}}
+{{signature}}, Sheri Richards, City Recorder  
+**Date**: {{filled:6-9-08}}  
 
 ---
 

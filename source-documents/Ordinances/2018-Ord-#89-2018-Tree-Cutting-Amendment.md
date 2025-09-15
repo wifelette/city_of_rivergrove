@@ -8,12 +8,12 @@
 
 **Adopted by Rivergrove City Council:** **December 10, 2018**
 
-[Signature], **Mayor Heather Kibbey**  
+{signature}, Mayor Heather Kibbey,   
 **Date:** **December 12, 2018**
 
 **Attest:**
 
-[Signature], **Leanne Moll, City Manager/ City Recorder**  
+{signature}, Leanne Moll, City Manager/ City Recorder,   
 **Date:** **December 12, 2018**
 
 ---

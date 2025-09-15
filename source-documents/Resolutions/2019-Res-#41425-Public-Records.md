@@ -82,7 +82,7 @@ The City of Rivergrove hereby adopts the Fee Schedule for Responding to Public R
 {{filled:}}  
 Chris Barhyte, Mayor of Rivergrove
 
-[Signature], Attested on this 13th day of May, 2019, **Approved a to legal sufficiency**
+{{signature}}, Attested on this 13th day of May, 2019, **Approved a to legal sufficiency**  
 
 {{filled:}}
 Analeis Wiedlich, City Manager/ City Recorder
