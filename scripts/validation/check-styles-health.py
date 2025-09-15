@@ -18,52 +18,56 @@ YELLOW = '\033[1;33m'
 BLUE = '\033[0;34m'
 NC = '\033[0m'  # No Color
 
-def check_css_import_path():
-    """Check that custom.css has the correct import path"""
+def check_css_compiled():
+    """Check that custom.css exists and is compiled"""
     custom_css = Path('book/custom.css')
     if not custom_css.exists():
         return False, "book/custom.css not found"
-    
-    content = custom_css.read_text()
-    if '@import url(\'./theme/main.css\')' in content or '@import url("./theme/main.css")' in content:
-        return True, "CSS import path is correct"
-    elif '@import url(\'./theme/css/main.css\')' in content:
-        return False, "CSS import path is WRONG: points to ./theme/css/main.css instead of ./theme/main.css"
-    else:
-        return False, "CSS import statement not found or malformed"
 
-def check_theme_directory():
-    """Check that theme directory exists in book with correct structure"""
-    theme_dir = Path('book/theme')
+    content = custom_css.read_text()
+    # Check for the compiled CSS header
+    if '/* COMPILED CSS - DO NOT EDIT DIRECTLY */' in content:
+        # Check file size to ensure it has content
+        size = custom_css.stat().st_size
+        if size > 10000:  # Should be at least 10KB
+            return True, f"CSS compiled correctly ({size:,} bytes)"
+        else:
+            return False, f"CSS file too small ({size} bytes) - may not be fully compiled"
+    else:
+        return False, "CSS not properly compiled - run compile-css.py"
+
+def check_source_css_modules():
+    """Check that source CSS modules exist in theme/css/"""
+    theme_dir = Path('theme/css')
     if not theme_dir.exists():
-        return False, "book/theme directory not found"
-    
+        return False, "theme/css directory not found"
+
     required_dirs = ['base', 'components', 'documents', 'layout']
     missing = []
     for dir_name in required_dirs:
         if not (theme_dir / dir_name).exists():
             missing.append(dir_name)
-    
+
     if missing:
-        return False, f"Missing subdirectories in book/theme: {', '.join(missing)}"
-    
-    # Check for key CSS files
+        return False, f"Missing CSS module directories: {', '.join(missing)}"
+
+    # Check for key CSS files in source
     key_files = [
         'main.css',
         'components/form-fields.css',
         'documents/document-notes.css',
         'documents/enhanced-elements.css'
     ]
-    
+
     missing_files = []
     for file_path in key_files:
         if not (theme_dir / file_path).exists():
             missing_files.append(file_path)
-    
+
     if missing_files:
-        return False, f"Missing CSS files: {', '.join(missing_files)}"
-    
-    return True, "Theme directory structure is correct"
+        return False, f"Missing CSS source files: {', '.join(missing_files)}"
+
+    return True, "CSS source modules are correct"
 
 def check_html_structure(sample_files=None):
     """Check that HTML files have the expected custom classes"""
@@ -114,36 +118,59 @@ def check_html_structure(sample_files=None):
     return True, "HTML structure looks correct"
 
 def check_server_running():
-    """Check if mdbook serve is running and warn about using dev-server.sh"""
+    """Check if mdbook serve is running (informational only)"""
     try:
-        result = subprocess.run(['pgrep', '-f', 'mdbook serve'], 
+        result = subprocess.run(['pgrep', '-f', 'mdbook serve'],
                               capture_output=True, text=True)
         if result.returncode == 0:
-            # mdbook is running, check if it's via dev-server
+            # mdbook is running - just report it
             ps_result = subprocess.run(['ps', '-p', result.stdout.strip(), '-o', 'command='],
                                       capture_output=True, text=True)
-            if 'dev-server' not in ps_result.stdout:
-                return False, "Plain 'mdbook serve' is running - use ./dev-server.sh instead!"
-            return True, "dev-server.sh is running correctly"
+            if '--port 3000' in ps_result.stdout:
+                return True, "Development server running on port 3000"
+            return True, "mdbook server is running"
         return None, "No mdbook server running"
     except:
         return None, "Could not check server status"
 
-def run_checks(verbose=False):
+def run_checks(verbose=False, show_details=False):
     """Run all style health checks"""
+    if not show_details:
+        # Quiet mode for dev-server - just return status
+        all_passed = True
+        checks = [
+            ("Compiled CSS", check_css_compiled),
+            ("CSS Source Modules", check_source_css_modules),
+            ("HTML Structure", check_html_structure),
+            ("Server Check", check_server_running)
+        ]
+
+        for check_name, check_func in checks:
+            passed, message = check_func()
+            if passed is False:
+                all_passed = False
+                if verbose:
+                    print(f"  {RED}✗{NC} {check_name}: {message}")
+
+        if not all_passed:
+            print(f"{YELLOW}  ⚠️  Style health check failed - run './scripts/fix-styles.sh'{NC}")
+            return 1
+        return 0
+
+    # Detailed mode when run directly
     print(f"{BLUE}🔍 Checking CSS and HTML health...{NC}\n")
-    
+
     all_passed = True
     checks = [
-        ("CSS Import Path", check_css_import_path),
-        ("Theme Directory", check_theme_directory),
+        ("Compiled CSS", check_css_compiled),
+        ("CSS Source Modules", check_source_css_modules),
         ("HTML Structure", check_html_structure),
         ("Server Check", check_server_running)
     ]
-    
+
     for check_name, check_func in checks:
         passed, message = check_func()
-        
+
         if passed is None:
             # Skip/info status
             if verbose:
@@ -153,9 +180,9 @@ def run_checks(verbose=False):
         else:
             print(f"  {RED}✗{NC} {check_name}: {message}")
             all_passed = False
-    
+
     print()
-    
+
     if not all_passed:
         print(f"{YELLOW}⚠️  Style issues detected!{NC}")
         print(f"\nTo fix, run: {GREEN}./scripts/fix-styles.sh{NC}")
@@ -174,13 +201,14 @@ def main():
                        help='Automatically run fix-styles.sh if issues found')
     args = parser.parse_args()
     
-    exit_code = run_checks(verbose=args.verbose)
-    
+    # When run directly, show details
+    exit_code = run_checks(verbose=args.verbose, show_details=True)
+
     if exit_code != 0 and args.fix:
         print(f"\n{BLUE}Running fix-styles.sh...{NC}")
         subprocess.run(['./scripts/fix-styles.sh'])
         print(f"\n{BLUE}Re-checking...{NC}")
-        exit_code = run_checks(verbose=args.verbose)
+        exit_code = run_checks(verbose=args.verbose, show_details=True)
     
     sys.exit(exit_code)
 

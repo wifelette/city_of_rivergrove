@@ -3,8 +3,8 @@
 ## Executive Summary
 Date: 2025-09-14
 Total CSS Classes in Production: 152
-Classes Documented in Style Guide: ~60-70 (estimated)
-Coverage: ~45%
+Classes Documented in Style Guide: ~106 (estimated)
+Coverage: ~70%
 
 ## CSS Classes by Category
 
@@ -57,57 +57,57 @@ Coverage: ~45%
 - `.footnotes` - ✅ Documented
 - `.footnote-definition` - ✅ Documented
 
-### ❌ Missing from Style Guide
-
 #### Navigation Components (Priority 2)
-- `.sidebar` - ❌ Not documented
-- `.sidebar-scrollbox` - ❌ Not documented
-- `.sidebar-resize-handle` - ❌ Not documented
-- `.sidebar-resize-indicator` - ❌ Not documented
-- `.sidebar-resizing` - ❌ Not documented
-- `.sidebar-transitioning` - ❌ Not documented
-- `.sidebar-toggle` - ❌ Not documented
-- `.nav-wrapper` - ❌ Not documented
-- `.nav-header` - ❌ Not documented
-- `.nav-stats` - ❌ Not documented
-- `.nav-controls` - ❌ Not documented
-- `.nav-search` - ❌ Not documented
-- `.nav-search-input` - ❌ Not documented
-- `.nav-search-clear` - ❌ Not documented
-- `.nav-view` - ❌ Not documented
-- `.nav-view-toggle` - ❌ Not documented
-- `.nav-btn` - ❌ Not documented
-- `.nav-chapters` - ❌ Not documented
-- `.nav-section-selector` - ❌ Not documented
-- `.nav-section-dropdown` - ❌ Not documented
-- `.section-dropdown-btn` - ❌ Not documented
-- `.section-option` - ❌ Not documented
+- `.sidebar` - ✅ Documented
+- `.sidebar-scrollbox` - ✅ Documented
+- `.sidebar-resize-handle` - ✅ Documented
+- `.sidebar-resize-indicator` - ✅ Documented
+- `.sidebar-resizing` - ✅ Documented
+- `.sidebar-transitioning` - ✅ Documented
+- `.sidebar-toggle` - ✅ Documented
+- `.nav-wrapper` - ✅ Documented
+- `.nav-header` - ✅ Documented
+- `.nav-stats` - ✅ Documented
+- `.nav-controls` - ✅ Documented
+- `.nav-search` - ✅ Documented
+- `.nav-search-input` - ✅ Documented
+- `.nav-search-clear` - ✅ Documented
+- `.nav-view` - ✅ Documented
+- `.nav-view-toggle` - ✅ Documented
+- `.nav-btn` - ✅ Documented
+- `.nav-chapters` - ✅ Documented
+- `.nav-section-selector` - ✅ Documented
+- `.nav-section-dropdown` - ✅ Documented
+- `.section-dropdown-btn` - ✅ Documented
+- `.section-option` - ✅ Documented
 
 #### Relationships Panel (Priority 2)
-- `.right-panel` - ❌ Not documented
-- `.right-panel-header` - ❌ Not documented
-- `.right-panel-content` - ❌ Not documented
-- `.panel-placeholder` - ❌ Not documented
-- `.panel-toggle` - ❌ Not documented
-- `.relationship-section` - ❌ Not documented
-- `.relationship-items` - ❌ Not documented
-- `.relationship-item` - ❌ Not documented
-- `.relationship-count` - ❌ Not documented
-- `.references` - ❌ Not documented
-- `.amendments` - ❌ Not documented
-- `.interpretations` - ❌ Not documented
-- `.related` - ❌ Not documented
-- `.rel-doc-type` - ❌ Not documented
-- `.rel-doc-number` - ❌ Not documented
-- `.rel-doc-title` - ❌ Not documented
+- `.right-panel` - ✅ Documented
+- `.right-panel-header` - ✅ Documented
+- `.right-panel-content` - ✅ Documented
+- `.panel-placeholder` - ✅ Documented
+- `.panel-toggle` - ✅ Documented
+- `.relationship-section` - ✅ Documented
+- `.relationship-items` - ✅ Documented
+- `.relationship-item` - ✅ Documented
+- `.relationship-count` - ✅ Documented
+- `.references` - ✅ Documented
+- `.amendments` - ✅ Documented
+- `.interpretations` - ✅ Documented
+- `.related` - ✅ Documented
+- `.rel-doc-type` - ✅ Documented
+- `.rel-doc-number` - ✅ Documented
+- `.rel-doc-title` - ✅ Documented
 
 #### Signature Blocks (Priority 2)
-- `.signature-block` - ❌ Not documented
-- `.signature-line` - ❌ Not documented
-- `.signature-title` - ❌ Not documented
-- `.signature-date` - ❌ Not documented
-- `.signature-mark` - ❌ Not documented (has tooltip issue #25)
-- `.attestation-block` - ❌ Not documented
+- `.signature-block` - ✅ Documented
+- `.signature-line` - ✅ Documented
+- `.signature-title` - ✅ Documented
+- `.signature-date` - ✅ Documented
+- `.signature-mark` - ✅ Documented (tooltip issue #25 FIXED)
+- `.attestation-block` - ✅ Documented
+
+### ❌ Missing from Style Guide
 
 #### Interactive Controls (Priority 3)
 - `.toggle` - ❌ Not documented

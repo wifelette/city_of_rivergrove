@@ -1,12 +1,22 @@
 {
-  "timestamp": "2025-08-31T23:16:43.635697",
+  "timestamp": "2025-09-14T19:53:20.735420",
   "summary": {
     "matched": 41,
-    "missing_in_airtable": 2,
+    "missing_in_airtable": 8,
     "missing_locally": 0
   },
   "details": {
     "missing_in_airtable": [
+      {
+        "file": "2024-12-09-Transcript.md",
+        "type": "transcript",
+        "title": "2024-12-09-Transcript"
+      },
+      {
+        "file": "2024-02-12-Transcript.md",
+        "type": "transcript",
+        "title": "2024-02-12-Transcript"
+      },
       {
         "file": "2018-05-14-Agenda.md",
         "type": "agenda",
@@ -16,6 +26,26 @@
         "file": "2018-04-11-Agenda.md",
         "type": "agenda",
         "title": "Agenda"
+      },
+      {
+        "file": "2018-12-10-Minutes.md",
+        "type": "minutes",
+        "title": "Call to Order and Roll Call"
+      },
+      {
+        "file": "2017-06-12-Minutes.md",
+        "type": "minutes",
+        "title": "June 12, 2017"
+      },
+      {
+        "file": "2018-08-13-Minutes.md",
+        "type": "minutes",
+        "title": "Call to Order and Roll Call"
+      },
+      {
+        "file": "2017-11-13-Minutes.md",
+        "type": "minutes",
+        "title": "November 13, 2017"
       }
     ],
     "missing_locally": [],
