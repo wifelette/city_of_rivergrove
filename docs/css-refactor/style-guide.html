@@ -1579,8 +1579,13 @@ Attest:
                         }
                         
                         // Check if text contains hex color pattern
-                        if (/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/.test(node.nodeValue)) {
-                            return NodeFilter.FILTER_ACCEPT;
+                        // But exclude document references like "Ordinance #301"
+                        const text = node.nodeValue;
+                        if (/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/.test(text)) {
+                            // Check if it's preceded by Ordinance, Resolution, or Interpretation
+                            if (!/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)\s+#[0-9a-fA-F]{3}\b/.test(text)) {
+                                return NodeFilter.FILTER_ACCEPT;
+                            }
                         }
                         return NodeFilter.FILTER_REJECT;
                     }
@@ -1596,8 +1601,13 @@ Attest:
             // Replace color codes with enhanced versions
             nodesToReplace.forEach(textNode => {
                 const text = textNode.nodeValue;
+                // Skip if this is a document reference
+                if (/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)\s+#[0-9a-fA-F]{3}\b/.test(text)) {
+                    return;
+                }
+
                 const colorRegex = /(#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b)/g;
-                
+
                 if (colorRegex.test(text)) {
                     const span = document.createElement('span');
                     let lastIndex = 0;
