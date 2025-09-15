@@ -211,8 +211,8 @@ h3 .form-field-empty {
     font-family: 'Dancing Script', 'Brush Script MT', 'Lucida Handwriting', cursive, serif;
     font-size: 1.4em;
     font-weight: 500;
-    color: #4a7ba7;
-    opacity: 0.75;
+    /* Use rgba for color instead of opacity to avoid affecting child elements */
+    color: rgba(74, 123, 167, 0.75); /* #4a7ba7 with 0.75 opacity */
     padding: 0 8px;
     position: relative;
     cursor: default;  /* Match form fields cursor */
@@ -229,7 +229,7 @@ h3 .form-field-empty {
     color: var(--color-bg-primary);
     padding: 6px 12px;
     border-radius: var(--border-radius-sm);
-    /* Explicit font reset to prevent inheritance from signature-mark */
+    /* Reset font inheritance from Dancing Script */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 12px;
     font-weight: normal;

@@ -8,6 +8,15 @@
     <!-- Google Font for signature styling -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
     <style>
+        /* Explicitly prevent any auto-injected panels on this documentation page */
+        .right-panel,
+        .sidebar,
+        .nav-wrapper,
+        .panel-toggle,
+        .sidebar-toggle {
+            display: none;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
@@ -354,8 +363,8 @@
                 <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
                     <strong>Coming Soon:</strong>
                 </li>
-                <li><a href="#navigation">Navigation Sidebar</a></li>
-                <li><a href="#relationships">Relationships Panel</a></li>
+                <li><a href="#navigation">🧭 Navigation Sidebar <span class="toc-new">NEW</span></a></li>
+                <li><a href="#relationships">🔗 Relationships Panel <span class="toc-new">NEW</span></a></li>
             </ul>
         </aside>
 
@@ -883,11 +892,11 @@ Long: {{empty:long}}</div>
         <div class="example-container">
             <div class="example-title">Standard Signature Block</div>
             <div class="signature-block">
-                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+                <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
                 <span style="font-weight: 600">John C. Miller</span>, Mayor</p>
-                
+
                 <p style="margin-top: 20px"><strong>Attest:</strong></p>
-                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+                <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
                 <span style="font-weight: 600">Rosalie Morrison</span>, City Recorder</p>
             </div>
             <div class="code-snippet">Markdown:
@@ -902,11 +911,11 @@ Rosalie Morrison, City Recorder</div>
 
         <div class="example-container">
             <div class="example-title">Signature Lines (Empty Form Fields)</div>
-            <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+            <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
             <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, Mayor</p>
-            
+
             <p style="margin-top: 20px"><strong>Attest:</strong></p>
-            <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+            <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
             <span class="form-field-empty form-field-long" data-tooltip="This field was blank on the original document"></span>, City Recorder</p>
             
             <p style="margin-top: 20px">Date: <span class="form-field-empty form-field-medium" data-tooltip="This field was blank on the original document"></span></p>
@@ -928,7 +937,7 @@ Date: {{empty:medium}}</div>
             <div class="attestation-block">
                 <p><strong>I hereby certify that this is a true and correct copy of Resolution #301</strong> as adopted by the City Council of Rivergrove on January 15, 2025.</p>
                 
-                <p style="margin-top: 20px"><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+                <p style="margin-top: 20px"><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
                 Virginia Morrison, City Recorder<br>
                 <span style="color: var(--color-text-light); font-size: 0.95em">Date: January 16, 2025</span></p>
             </div>
@@ -940,11 +949,11 @@ Date: {{empty:medium}}</div>
             <p><strong>ADOPTED</strong> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">8th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">March</span>, 1976.</p>
             
             <div style="margin-top: 30px">
-                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+                <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
                 <span class="form-field-filled" data-tooltip="Field filled in on source doc">John C. Miller</span>, Mayor</p>
-                
+
                 <p style="margin-top: 20px"><strong>Attest:</strong></p>
-                <p><span class="signature-mark" aria-label="Signature" title="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: #4a7ba7; opacity: 0.75;">Signature</span><br>
+                <p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document" style="font-family: 'Dancing Script', cursive; font-size: 1.4em; color: rgba(74, 123, 167, 0.75);">Signature</span><br>
                 <span class="form-field-filled" data-tooltip="Field filled in on source doc">Rosalie Morrison</span>, City Recorder</p>
             </div>
             <div class="code-snippet">Markdown:
@@ -1239,6 +1248,268 @@ Attest:
             <div class="example-title">Usage Guidelines</div>
             <div class="principle-box">
                 These conventions are designed to make the documentation clearer and easier to scan. Use them consistently to maintain a professional and helpful style guide.
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Sidebar Section -->
+    <div class="style-section" id="navigation">
+        <h2>🧭 Navigation Sidebar</h2>
+        <p style="color: #666; margin-bottom: 20px;">The navigation sidebar provides organized access to all documents with multiple view options, search, and filtering capabilities.</p>
+        <div class="info-box" style="background: #fff3cd; border-left-color: #ffc107;">
+            <strong>Note:</strong> The examples below are static mockups for documentation purposes. They use demo class names to avoid conflicts with the actual navigation system.
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Sidebar Structure</div>
+            <div style="background: #f5f5f5; padding: 20px; border-radius: 4px;">
+                <div class="demo-nav-wrapper" style="width: 280px; background: white; border: 1px solid #e5e7eb; border-radius: 4px; position: relative; display: block;">
+                    <div class="demo-nav-header" style="padding: 15px; border-bottom: 1px solid #e5e7eb;">
+                        <h3 style="margin: 0 0 10px 0; color: #0969da;">Ordinances</h3>
+                        <div class="demo-nav-stats" style="display: flex; gap: 15px; font-size: 13px; color: #666;">
+                            <span>📄 125 documents</span>
+                            <span>📅 1974-2024</span>
+                        </div>
+                    </div>
+                    <div class="demo-nav-controls" style="padding: 15px; background: #fafafa;">
+                        <div class="demo-nav-search" style="position: relative; margin-bottom: 10px;">
+                            <input type="text" class="demo-search-input" placeholder="Search ordinances..." style="width: 100%; padding: 8px 30px 8px 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <button class="demo-search-clear" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #999;">✕</button>
+                        </div>
+                        <div class="demo-view-toggle" style="display: flex; gap: 5px;">
+                            <button class="demo-btn active" style="flex: 1; padding: 6px; background: #0969da; color: white; border: none; border-radius: 3px;">List</button>
+                            <button class="demo-btn" style="flex: 1; padding: 6px; background: white; border: 1px solid #ddd; border-radius: 3px;">Decade</button>
+                            <button class="demo-btn" style="flex: 1; padding: 6px; background: white; border: 1px solid #ddd; border-radius: 3px;">Topic</button>
+                        </div>
+                    </div>
+                    <div class="demo-scrollbox" style="max-height: 300px; overflow-y: auto; padding: 15px;">
+                        <div class="demo-chapters">
+                            <div class="demo-chapter-item" style="padding: 8px; margin-bottom: 4px; border-radius: 3px; cursor: pointer;">
+                                <span style="color: #0969da;">#125</span> - Accessory Dwelling Units (2024)
+                            </div>
+                            <div class="demo-chapter-item demo-current" style="padding: 8px; margin-bottom: 4px; background: #e6f2ff; border-radius: 3px;">
+                                <span style="color: #0969da;">#124</span> - Zoning Updates (2024)
+                            </div>
+                            <div class="demo-chapter-item" style="padding: 8px; margin-bottom: 4px; border-radius: 3px; cursor: pointer;">
+                                <span style="color: #0969da;">#123</span> - Fee Schedule (2023)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-snippet">CSS Classes:
+.nav-wrapper         - Main navigation container
+.nav-header         - Section header with title and stats
+.nav-stats          - Document count and date range
+.nav-controls       - Search and view toggle area
+.nav-search         - Search input container
+.nav-view-toggle    - View mode buttons
+.sidebar-scrollbox  - Scrollable content area
+.chapter-item       - Individual document item
+.current-document   - Highlights active document</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">View Modes</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 4px;">
+                    <h4 style="margin: 0 0 10px 0; color: #666;">List View</h4>
+                    <div style="font-size: 13px; line-height: 1.8;">
+                        #125 - ADU Updates<br>
+                        #124 - Zoning<br>
+                        #123 - Fees
+                    </div>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 4px;">
+                    <h4 style="margin: 0 0 10px 0; color: #666;">Decade View</h4>
+                    <div style="font-size: 13px; line-height: 1.8;">
+                        <strong>2020s (45)</strong><br>
+                        <strong>2010s (32)</strong><br>
+                        <strong>2000s (28)</strong>
+                    </div>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 4px;">
+                    <h4 style="margin: 0 0 10px 0; color: #666;">Topic View</h4>
+                    <div style="font-size: 13px; line-height: 1.8;">
+                        <strong>Zoning (23)</strong><br>
+                        <strong>Fees (18)</strong><br>
+                        <strong>Parks (12)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Sidebar Resize Handle</div>
+            <div style="background: #f5f5f5; padding: 20px; border-radius: 4px; position: relative;">
+                <div style="display: flex; align-items: stretch; height: 100px;">
+                    <div style="width: 200px; background: white; border: 1px solid #ddd; padding: 15px;">
+                        Sidebar Content
+                    </div>
+                    <div class="sidebar-resize-handle" style="width: 4px; background: #e5e7eb; cursor: ew-resize; position: relative;">
+                        <div class="sidebar-resize-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2px; height: 30px; background: #999; border-radius: 1px;"></div>
+                    </div>
+                    <div style="flex: 1; padding: 15px;">
+                        Main Content Area
+                    </div>
+                </div>
+            </div>
+            <div class="code-snippet">CSS Classes:
+.sidebar-resize-handle     - Draggable resize area
+.sidebar-resize-indicator  - Visual indicator
+.sidebar-resizing         - Applied during resize
+.sidebar-transitioning    - Smooth transitions</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Section Selector Dropdown</div>
+            <div class="nav-section-selector" style="position: relative; display: inline-block;">
+                <button class="section-dropdown-btn" style="padding: 8px 30px 8px 12px; background: white; border: 1px solid #ddd; border-radius: 4px; position: relative;">
+                    Ordinances
+                    <span class="dropdown-arrow" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">▼</span>
+                </button>
+                <div class="section-dropdown" style="position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="section-option" style="padding: 8px 12px; cursor: pointer;">Ordinances</div>
+                    <div class="section-option" style="padding: 8px 12px; cursor: pointer; background: #f5f5f5;">Resolutions</div>
+                    <div class="section-option" style="padding: 8px 12px; cursor: pointer;">Interpretations</div>
+                    <div class="section-option" style="padding: 8px 12px; cursor: pointer;">Meeting Materials</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Mobile Navigation Toggle</div>
+            <button class="sidebar-toggle" style="position: fixed; top: 10px; left: 10px; z-index: 1000; padding: 8px 12px; background: #0969da; color: white; border: none; border-radius: 4px;">
+                ☰ Menu
+            </button>
+            <div class="code-snippet">CSS Classes:
+.sidebar-toggle     - Mobile menu button
+.sidebar.collapsed  - Hidden state on mobile
+.sidebar.active     - Visible state on mobile</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Navigation CSS Classes</div>
+            <ul>
+                <li><code>.sidebar</code> - Main sidebar container</li>
+                <li><code>.nav-wrapper</code> - Navigation content wrapper</li>
+                <li><code>.nav-header</code> - Section header with title</li>
+                <li><code>.nav-stats</code> - Document statistics</li>
+                <li><code>.nav-controls</code> - Search and filter controls</li>
+                <li><code>.nav-search-input</code> - Search text field</li>
+                <li><code>.nav-view-toggle</code> - View mode switcher</li>
+                <li><code>.nav-btn</code> - Navigation buttons</li>
+                <li><code>.chapter-item</code> - Document list items</li>
+                <li><code>.current-document</code> - Active document highlight</li>
+                <li><code>.topic-group</code> - Topic grouping container</li>
+                <li><code>.hide-boring</code> - Filter for hiding less important items</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Relationships Panel Section -->
+    <div class="style-section" id="relationships">
+        <h2>🔗 Relationships Panel</h2>
+        <p style="color: #666; margin-bottom: 20px;">The right panel displays document relationships including references, amendments, and interpretations.</p>
+        <div class="info-box" style="background: #fff3cd; border-left-color: #ffc107;">
+            <strong>Note:</strong> The examples below are static mockups showing example data. The actual panel appears only on document pages with real relationship data.
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Relationships Panel Structure</div>
+            <div style="background: #f5f5f5; padding: 20px; border-radius: 4px;">
+                <div class="demo-panel" style="width: 320px; background: white; border: 1px solid #e5e7eb; border-radius: 4px; position: relative; display: block;">
+                    <div class="demo-panel-header" style="padding: 15px; border-bottom: 1px solid #e5e7eb; background: #fafafa;">
+                        <h3 style="margin: 0; color: #333; font-size: 16px;">Document Relationships</h3>
+                    </div>
+                    <div class="demo-panel-content" style="padding: 15px;">
+                        <div class="relationship-section">
+                            <h4 style="margin: 0 0 10px 0; color: #666; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                                📑 References
+                                <span class="relationship-count" style="background: #e5e7eb; color: #666; padding: 2px 6px; border-radius: 10px; font-size: 11px;">3</span>
+                            </h4>
+                            <div class="relationship-items" style="margin-left: 20px;">
+                                <div class="relationship-item" style="margin-bottom: 8px; font-size: 13px;">
+                                    <span class="rel-doc-type" style="color: #0969da; font-weight: 500;">Ord</span>
+                                    <span class="rel-doc-number" style="color: #0969da;">#70</span> -
+                                    <span class="rel-doc-title">Water Quality</span>
+                                </div>
+                                <div class="relationship-item" style="margin-bottom: 8px; font-size: 13px;">
+                                    <span class="rel-doc-type" style="color: #0969da; font-weight: 500;">Res</span>
+                                    <span class="rel-doc-number" style="color: #0969da;">#259</span> -
+                                    <span class="rel-doc-title">Fee Schedule</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relationship-section" style="margin-top: 20px;">
+                            <h4 style="margin: 0 0 10px 0; color: #666; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                                ✏️ Amendments
+                                <span class="relationship-count" style="background: #e5e7eb; color: #666; padding: 2px 6px; border-radius: 10px; font-size: 11px;">1</span>
+                            </h4>
+                            <div class="relationship-items" style="margin-left: 20px;">
+                                <div class="relationship-item" style="margin-bottom: 8px; font-size: 13px;">
+                                    <span class="rel-doc-type" style="color: #059669; font-weight: 500;">Ord</span>
+                                    <span class="rel-doc-number" style="color: #059669;">#125</span> -
+                                    <span class="rel-doc-title">ADU Updates</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relationship-section" style="margin-top: 20px;">
+                            <h4 style="margin: 0 0 10px 0; color: #666; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                                📝 Interpretations
+                                <span class="relationship-count" style="background: #e5e7eb; color: #666; padding: 2px 6px; border-radius: 10px; font-size: 11px;">2</span>
+                            </h4>
+                            <div class="relationship-items" style="margin-left: 20px;">
+                                <div class="relationship-item" style="margin-bottom: 8px; font-size: 13px;">
+                                    <span class="rel-doc-type" style="color: #dc2626; font-weight: 500;">Int</span>
+                                    <span style="color: #666;">2023-05-15</span> -
+                                    <span class="rel-doc-title">RE: Setback Requirements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-snippet">CSS Classes:
+.right-panel              - Main panel container
+.right-panel-header       - Panel header
+.right-panel-content      - Panel content area
+.relationship-section     - Section container
+.relationship-count       - Badge with count
+.relationship-items       - Items container
+.relationship-item        - Individual relationship
+.rel-doc-type            - Document type label
+.rel-doc-number          - Document number
+.rel-doc-title           - Document title</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Panel Toggle Button</div>
+            <button class="panel-toggle" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); padding: 10px 6px; background: #0969da; color: white; border: none; border-radius: 4px 0 0 4px;">
+                ◀
+            </button>
+            <div class="code-snippet">CSS Classes:
+.panel-toggle         - Toggle button
+.panel-placeholder    - Empty state message</div>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Relationship Types & Colors</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div style="padding: 10px; background: #f0f9ff; border-left: 3px solid #0969da; border-radius: 3px;">
+                    <strong style="color: #0969da;">References</strong><br>
+                    <span style="font-size: 12px; color: #666;">Documents this one cites</span>
+                </div>
+                <div style="padding: 10px; background: #f0fdf4; border-left: 3px solid #059669; border-radius: 3px;">
+                    <strong style="color: #059669;">Amendments</strong><br>
+                    <span style="font-size: 12px; color: #666;">Later changes to this doc</span>
+                </div>
+                <div style="padding: 10px; background: #fef2f2; border-left: 3px solid #dc2626; border-radius: 3px;">
+                    <strong style="color: #dc2626;">Interpretations</strong><br>
+                    <span style="font-size: 12px; color: #666;">Official clarifications</span>
+                </div>
             </div>
         </div>
     </div>
