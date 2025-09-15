@@ -106,9 +106,11 @@ def add_cross_references(content, doc_map, current_file):
         
         if reference in doc_map:
             link_path = doc_map[reference]
-            
-            # Don't link to self
-            if current_file.name in link_path:
+
+            # Don't link to self - check if the link path points to the current file
+            # Extract just the filename from the link path for comparison
+            link_filename = link_path.split('/')[-1]  # Get filename from path like ../ordinances/file.md
+            if link_filename == current_file.name:
                 return full_match
             
             # Check if already in a link or heading

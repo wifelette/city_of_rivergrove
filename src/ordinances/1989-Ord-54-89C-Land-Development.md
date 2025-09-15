@@ -7,7 +7,7 @@ Adopted March, 1989
 City of Rivergrove  
 P.O. Box 1104  
 Lake Oswego, OR 97035  
-503. 639-6919
+(503) 639-6919
 
 ---
 
@@ -629,13 +629,13 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 
 (b) Consideration shall be given also to the following:
 
-1. harmony in scale, bulk, coverage and density;
+(1) harmony in scale, bulk, coverage and density;
 
-2. the availability of public facilities and utilities; and
+(2) the availability of public facilities and utilities; and
 
-3. the generation of traffic and the capacity of surrounding streets.
+(3) the generation of traffic and the capacity of surrounding streets.
 
-4. other relevant impacts of the development
+(4) other relevant impacts of the development
 
 ## Hardship Relief
 
@@ -645,21 +645,21 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 
 (b) The criteria are:
 
-1. The hardship is not the result of any act or omission of the applicant;
+(1) The hardship is not the result of any act or omission of the applicant;
 
-2. The grant of relief will not result in a land use not otherwise permissible;
+(2) The grant of relief will not result in a land use not otherwise permissible;
 
-3. Grant of the relief will not violate the Plan;
+(3) Grant of the relief will not violate the Plan;
 
-4. The relief sought will not be materially detrimental to the public welfare;
+(4) The relief sought will not be materially detrimental to the public welfare;
 
-5. The development will be on a parcel of land that in conjunction with adjacent land in the same ownership is not otherwise reasonably capable of economic use;
+(5) The development will be on a parcel of land that in conjunction with adjacent land in the same ownership is not otherwise reasonably capable of economic use;
 
-6. Or materially injurious to the property in the vicinity;
+(6) Or materially injurious to the property in the vicinity;
 
-7. The development will be the same as development permitted under this ordinance and City standards to the greatest extent possible while permitting some economic use of the land;
+(7) The development will be the same as development permitted under this ordinance and City standards to the greatest extent possible while permitting some economic use of the land;
 
-8. Special circumstances or conditions exist that do not apply to other property in the vicinity.
+(8) Special circumstances or conditions exist that do not apply to other property in the vicinity.
 
 ### Section 6.070. Authority to Grant Hardship Relief Under Type I Procedure. 
 The Council may grant hardship relief under a Type I procedure if the request involves only the expansion or reduction by no more than 20 percent of one or more quantifiable provisions of yard or area standards of the Development Standards Document or comparable deviation from such additional standards set by the Commission. The decision shall be based on the criteria in Section 6.060.
@@ -824,9 +824,9 @@ In making its recommendation, the Commission shall:
 
 (b) After confirming, amending or denying the recommendations of the Commission, the Council may:
 
-1. Enact or defeat an ordinance on all or part of the proposal;
+(1) Enact or defeat an ordinance on all or part of the proposal;
 
-2. Refer some or all of the proposal back to the Commission for further consideration.
+(2) Refer some or all of the proposal back to the Commission for further consideration.
 
 If such referral is later returned, no further hearing is required provided the proposal is processed under the City's procedure for the enactment of ordinances.
 
@@ -865,9 +865,9 @@ The Planning Commission may require changes in a proposed project to ensure that
 ### Section 6.235. Annexation Criteria. 
 A proposal to annex territory to the city shall be conducted under the Type IV procedure with supplements or modifications required to comply with state law. When an annexation proposal has been initiated and the (planning director) has determined the territory is eligible for annexation it shall be referred to the planning commission. The commission shall base its recommendation on whether the following criteria have been met:
 
-1. The proposal conforms to the comprehensive plan or substantial changes in conditions have occurred which render the comprehensive plan inapplicable to the annexation.
+(1) The proposal conforms to the comprehensive plan or substantial changes in conditions have occurred which render the comprehensive plan inapplicable to the annexation.
 
-2. The inclusion of the territory within the city would be consistent with the purpose served by the city.
+(2) The inclusion of the territory within the city would be consistent with the purpose served by the city.
 
 Although the city council shall make affirmative findings on the two criteria if it proceeds with the annexation, proceedings may be terminated by the council at any time.
 
@@ -1025,13 +1025,13 @@ Unless otherwise required by this ordinance, review of a decision on appeal shal
 
 (a) The reviewing body may hear the matter de novo; or it may admit additional testimony or evidence not previously admitted if such evidence or testimony could not reasonably have been presented at the earlier hearing. In deciding whether to admit such testimony or evidence the reviewing body shall consider all of the following:
 
-1. Prejudice to a party;
+(1) Prejudice to a party;
 
-2. Convenience or availability of the evidence at the time of the initial hearing;
+(2) Convenience or availability of the evidence at the time of the initial hearing;
 
-3. Surprise to other parties;
+(3) Surprise to other parties;
 
-4. The nature and relevancy of the testimony or evidence.
+(4) The nature and relevancy of the testimony or evidence.
 
 (b) "De novo hearing" shall mean a hearing by the review body as if the action had not been previously heard and as if no decision had been rendered, except that all testimony, evidence and other material from the prior hearing shall be included in the record of the review.
 

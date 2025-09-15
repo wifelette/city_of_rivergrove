@@ -2,13 +2,17 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-09-15T08:59:52.232003",
-    "last_updated": "2025-09-15T12:13:07.856970",
-    "total_records": 42,
-    "last_partial_update": "2025-09-15T12:13:07.856771",
+    "last_updated": "2025-09-15T12:17:40.037183",
+    "total_records": 43,
+    "last_partial_update": "2025-09-15T12:17:40.037132",
     "incremental_updates": [
       {
         "filename": "1974-Ord-#16-Parks.md",
         "updated_at": "2025-09-15T12:13:07.856780"
+      },
+      {
+        "filename": "1987-Ord-#52-Flood.md",
+        "updated_at": "2025-09-15T12:17:40.037134"
       }
     ]
   },
@@ -691,6 +695,22 @@
       "special_state": null,
       "digitized": true,
       "passed_date": "1974-08-12",
+      "last_updated": "2025-08-30T19:38:49.000Z"
+    },
+    "1987-Ord-#52-Flood": {
+      "airtable_id": "recjCPcL4npLqUFWo",
+      "display_name": "Ordinance #52",
+      "short_title": "Flood Prevention",
+      "type": "ordinance",
+      "year": 1987,
+      "doc_number": "52",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.pdf",
+      "filename": "1987-Ord-%2352-Flood.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1987-09-21",
       "last_updated": "2025-08-30T19:38:49.000Z"
     }
   }
