@@ -6,11 +6,13 @@
 
 **Adopted by Rivergrove City Council:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">September 21, 1987</span>
 
-[Signature], Mayor Neil McFarlane
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+Mayor Neil McFarlane
 
 **ATTEST:**
 
-[Signature], City Recorder Vivian Scheans
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+City Recorder Vivian Scheans
 
 ---
 

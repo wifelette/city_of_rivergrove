@@ -16,12 +16,12 @@
 
 **ADOPTED** by the Rivergrove City Council this <span class="form-field-filled" data-tooltip="Field filled in on source doc">12</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">June, 1978</span>
 
-[Signature]
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
 John Nelson, Mayor
 
 **ATTEST:**
 
-[Signature]
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
 Rosalie Morrison, City Recorder
 
 ---

@@ -11,10 +11,10 @@ Re-Submitted to the Rivergrove City Council on <span class="form-field-filled" d
 Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">May 10, 2004</span>.
 
 [Unsigned], Larry Barrett, Mayor  
-**Date**: <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+**Date**: <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>  
 
 [Unsigned], Mike Collmeyer, City Recorder  
-**Date**: <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
+**Date**: <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>  
 
 ---
 

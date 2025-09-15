@@ -6,11 +6,11 @@ Submitted to the Rivergrove City Council on <span class="form-field-filled" data
 
 Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 Are
-[Signature], Hafez Darae, Mayor  
-**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Hafez Darae, Mayor  
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>  
 
-[Signature], Sheri Richards, City Recorder  
-**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Sheri Richards, City Recorder  
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>  
 
 ---
 

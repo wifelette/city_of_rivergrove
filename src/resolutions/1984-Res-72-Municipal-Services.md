@@ -16,7 +16,7 @@ and
 
 **WHEREAS**, city officials recognize the desirability of assisting the state officer responsible for determining the eligibility of cities to receive such funds in accordance with ORS 221.760, now, therefore,
 
-**BE IT RESOLVED**, that the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:
+{signature}, BE IT RESOLVED, that the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> hereby certifies that it provides the following four or more municipal services enumerated in Section 1, ORS 221.760:  
 
 - <span class="form-field-filled" data-tooltip="Field filled in on source doc">Police protection;</span>
 - <span class="form-field-filled" data-tooltip="Field filled in on source doc">Street construction, maintenance & lighting;</span>
@@ -25,12 +25,12 @@ and
 
 Approved by the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">9th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">July</span> 1984.
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>
 [Illegible], Mayor
 
 Attest:
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>
 Virginia [Illegible], Recorder
 
 ## Document Notes

@@ -6,10 +6,10 @@ Submitted to the Rivergrove City Council on <span class="form-field-filled" data
 
 Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">October 12, 1998</span>
 
-[Signature], Larry Barrett, Mayor  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Larry Barrett, Mayor  
 **Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10-12-98</span>
 
-[Signature], Mike Collmeyer, City Recorder  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Mike Collmeyer, City Recorder  
 **Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/12/98</span>
 
 ---

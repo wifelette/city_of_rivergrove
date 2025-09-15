@@ -63,9 +63,9 @@ The City of Rivergrove shall request Clackamas County revoke a placement permit 
 
 **THEREFORE** let it now be ordained that Ordinance #57-93 is passed at a regularly scheduled meeting of the Rivergrove City Council, the 13th day of December 1993.
 
-[Signature], Steven Miller, Mayor  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Steven Miller, Mayor  
 
-[Signature], Susan Grayston-Miller, City Recorder  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Susan Grayston-Miller, City Recorder  
 
 ---
 

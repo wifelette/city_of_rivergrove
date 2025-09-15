@@ -48,10 +48,10 @@ YEAS <span class="form-field-filled" data-tooltip="Field filled in on source doc
 NAYS <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
 ABSTAINED <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
 
-[Signature], Mayor, Larry Barrett  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Mayor, Larry Barrett  
 **Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12-13-99</span>
 
-[Signature], City Recorder, Mike Collmeyer  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, City Recorder, Mike Collmeyer  
 **Adopted:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12/13/99</span>
 
 ---
@@ -174,29 +174,29 @@ IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority 
 
 **CITY OF LAKE OSWEGO**
 
-By: [Signature]  
+By: <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
 **Alice L. Schlenker, Mayor**  
 As per City Council Resolution No. <span class="form-field-filled" data-tooltip="Field filled in on source doc">96-62</span>, <span class="form-field-filled" data-tooltip="Field filled in on source doc">December 17, 1996</span>
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">Dec 18, 1996</span>
 
 **ATTEST:**  
-[Signature]  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
 **Kristi Hitchcock, City Recorder**
 
 **APPROVED AS TO FORM:**
 
-[Signature]  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
 **Jeffrey G. Condit, City Attorney**
 
 **CITY OF RIVERGROVE**
 
-By: [Signature]  
+By: <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
 **Sue Salch, Mayor**  
 As per City Council vote at its meeting of: <span class="form-field-filled" data-tooltip="Field filled in on source doc">November 18, 1996</span>
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">11/25/96</span>
 
 **ATTEST:**  
-[Signature]  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
 **Jami K Morrison, City Recorder**
 
 **APPROVED AS TO FORM:**  

@@ -6,11 +6,11 @@
 **City Council Public Hearings:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>  
 **Adopted by Rivergrove City Council:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>
 
-[Signature], Larry Barrett, Mayor  
-**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10-16-00</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Larry Barrett, Mayor  
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10-16-00</span>  
 
-[Signature], Mike Collmeyer, City Recorder  
-**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Mike Collmeyer, City Recorder  
+**Date**: <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/16/2000</span>  
 
 Adopted
 
