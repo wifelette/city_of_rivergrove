@@ -209,16 +209,26 @@ def fix_file_nesting(filepath: Path):
         # Check for roman numerals that need indentation
         elif re.match(r'^\([ivxlcdm]+\)', stripped, re.IGNORECASE):
             if in_numbered_list and not line.startswith('   '):
-                # Add 3 spaces of indentation
-                fixed_lines.append('   ' + stripped + '\n')
+                # Convert to markdown list with styled span
+                match = re.match(r'^(\([ivxlcdm]+\))\s*(.*)', stripped, re.IGNORECASE)
+                if match:
+                    marker, content = match.groups()
+                    fixed_lines.append(f'   - <span class="list-marker-roman">{marker}</span> {content}\n')
+                else:
+                    fixed_lines.append('   ' + stripped + '\n')
             else:
                 fixed_lines.append(line)
 
         # Check for lettered items that need indentation
         elif re.match(r'^\([a-z]\)', stripped, re.IGNORECASE):
             if in_numbered_list and not line.startswith('   '):
-                # Add 3 spaces of indentation
-                fixed_lines.append('   ' + stripped + '\n')
+                # Convert to markdown list with styled span
+                match = re.match(r'^(\([a-z]\))\s*(.*)', stripped, re.IGNORECASE)
+                if match:
+                    marker, content = match.groups()
+                    fixed_lines.append(f'   - <span class="list-marker-alpha">{marker}</span> {content}\n')
+                else:
+                    fixed_lines.append('   ' + stripped + '\n')
             else:
                 fixed_lines.append(line)
 

@@ -178,8 +178,8 @@ When base flood elevation data has not been provided in accordance with Section 
 
 (1) Where base flood elevation data is provided through the Flood Insurance Study or required as in Section 4.3-2, obtain and record the actual elevation (in relation to mean sea level) of the lowest floor (including basement) of all new or substantially improved structures, and whether or not the structure contains a basement.
 (2) For all new or substantially improved floodproofed structures:
-   (i) verify and record the actual elevation (in relation to mean sea level), and
-   (ii) maintain the floodproofing certifications required in Section 4.1(3).
+   - <span class="list-marker-roman">(i)</span> verify and record the actual elevation (in relation to mean sea level), and
+   - <span class="list-marker-roman">(ii)</span> maintain the floodproofing certifications required in Section 4.1(3).
 (3) Maintain for public inspection all records pertaining to the provisions of this ordinance.
 
 #### 4.3-4 Alteration of Watercourses
@@ -274,9 +274,9 @@ In all areas of special flood hazards where base flood elevation data has been p
 
 (1) New construction and substantial improvement of any residential structure shall have the lowest floor, including basement, elevated to or above base flood elevation.
 (2) Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of floodwaters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
-   (i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
-   (ii) The bottom of all openings shall be no higher than one foot above grade.
-   (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
+   - <span class="list-marker-roman">(i)</span> A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
+   - <span class="list-marker-roman">(ii)</span> The bottom of all openings shall be no higher than one foot above grade.
+   - <span class="list-marker-roman">(iii)</span> Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
 
 #### 5.2-2 Nonresidential Construction
 
