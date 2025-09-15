@@ -287,7 +287,7 @@ def generate_summary():
                         status_indicator = " [NEVER PASSED]"
                 
                 if clean_num:
-                    display = f"{clean_num} - {title} ({year}){status_indicator}"
+                    display = f"{clean_num} {title} ({year}){status_indicator}"
                 else:
                     display = f"{title} ({year}){status_indicator}"
                 
@@ -368,7 +368,7 @@ def generate_summary():
                         status_indicator = " [NEVER PASSED]"
                 
                 if num:
-                    display = f"{num} - {title} ({year}){status_indicator}"
+                    display = f"{num} {title} ({year}){status_indicator}"
                 else:
                     display = f"{title} ({year}){status_indicator}"
                 
