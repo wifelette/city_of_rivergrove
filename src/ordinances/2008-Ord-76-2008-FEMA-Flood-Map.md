@@ -1,6 +1,6 @@
 # ORDINANCE NO. 76-2008
 
-## AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md) AND [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) AND DECLARING AN EMERGENCY
+## AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND ORDINANCE NO. 52 AND ORDINANCE NO. 70-2001 AND DECLARING AN EMERGENCY
 
 Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">6-9-08</span>
 
@@ -16,7 +16,7 @@ Are
 
 # ORDINANCE NO. 76-2008
 
-## AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md) AND [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) AND DECLARING AN EMERGENCY
+## AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND ORDINANCE NO. 52 AND ORDINANCE NO. 70-2001 AND DECLARING AN EMERGENCY
 
 **WHEREAS**, The legislature of the state of Oregon has delegated the responsibility to local government units to adopt regulations designed to promote public health, safety and general welfare, and
 
@@ -34,19 +34,19 @@ Are
 
 **NOW THEREFORE**; The City of Rivergrove ordains as follows:
 
-### Section 1: Section 3.2 of [Ordinance No. 52](../ordinances/1987-Ord-52-Flood.md) is amended to read as follows:
+### Section 1: Section 3.2 of Ordinance No. 52 is amended to read as follows:
 
 > #### 3.2 BASIS FOR ESTABLISHING THE AREAS OF SPECIAL FLOOD HAZARD
 >
 > The area of special flood hazard identified by the Federal Insurance Administration in a scientific and engineering report entitled "Flood Insurance Study Clackamas County, Oregon and Incorporated Areas Volume 1 of 3 effective June 17, 2008 FIS Number 41005CV001A," with accompanying Flood Insurance Maps is hereby adopted by reference and declared to be a part of this ordinance. The Flood Insurance Study is on file at the City Recorder's office.
 
-### Section 2: Attachment C to [Ordinance No. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) (the Rivergrove Land Development Ordinance) is amended to read as follows:
+### Section 2: Attachment C to Ordinance No. 54-89 (the Rivergrove Land Development Ordinance) is amended to read as follows:
 
 > ### Section 5.020 Flood Hazard District.
 >
 > All land development within the 100 year flood boundary as identified in the Flood Insurance Rate Map (FIRM) Panel 0013D Map Number 41005C0013D effective date June 17, 2008 shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. The FIRM shall be available to public inspection by contacting the City Recorder at 503 624-8498 during regular business hours. All development within the 100 year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove ([Ord. #52](../ordinances/1987-Ord-52-Flood.md) and [Ord. #70-2001](../ordinances/2001-Ord-70-2001-WQRA.md)) in addition to the provisions of this ordinance.
 
-### Section 3: Section XIV of [Ordinance No. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) is amended as follows:
+### Section 3: Section XIV of Ordinance No. 70-2001 is amended as follows:
 
 > ### Section XIV Definitions
 >

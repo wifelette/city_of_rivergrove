@@ -33,7 +33,7 @@
       "date": null,
       "year": "2018",
       "section": null,
-      "title": "AN ORDINANCE AMENDING [ORDINANCE NO. 74-2004](../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE",
+      "title": "AN ORDINANCE AMENDING ORDINANCE NO. 74-2004, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE",
       "file": "2018-Ord-89-2018-Tree-Cutting-Amendment.md"
     },
     "ordinance-76-2008-FEMA-Flood-Map": {
@@ -42,7 +42,7 @@
       "date": null,
       "year": "2008",
       "section": null,
-      "title": "AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND [ORDINANCE NO. 52](../ordinances/1987-Ord-52-Flood.md) AND [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) AND DECLARING AN EMERGENCY",
+      "title": "AN ORDINANCE AMENDING THE RIVERGROVE LAND DEVELOPMENT ORDINANCE, AND ORDINANCE NO. 52 AND ORDINANCE NO. 70-2001 AND DECLARING AN EMERGENCY",
       "file": "2008-Ord-76-2008-FEMA-Flood-Map.md"
     },
     "ordinance-81-2011-Sign": {
@@ -87,7 +87,7 @@
       "date": null,
       "year": "2017",
       "section": null,
-      "title": "AN ORDINANCE THAT AMENDS [ORDINANCE NO. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) TO ALLOW DOCKS AS A CONDITIONAL USE AND AMENDS RLDO TO CLARIFY DOCKS ARE A PERMITTED USE IN THE R ZONE",
+      "title": "AN ORDINANCE THAT AMENDS ORDINANCE NO. 70-2001 TO ALLOW DOCKS AS A CONDITIONAL USE AND AMENDS RLDO TO CLARIFY DOCKS ARE A PERMITTED USE IN THE R ZONE",
       "file": "2017-Ord-88-2017-Docks.md"
     },
     "ordinance-74-2004-Tree-Cutting-Amendment": {
@@ -96,7 +96,7 @@
       "date": null,
       "year": "2004",
       "section": null,
-      "title": "AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE",
+      "title": "AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE",
       "file": "2004-Ord-74-2004-Tree-Cutting-Amendment.md"
     },
     "ordinance-72-2002-Penalties-and-Abatement-Amendment": {
@@ -132,7 +132,7 @@
       "date": null,
       "year": "1978",
       "section": null,
-      "title": "AN ORDINANCE AMENDING THE CITY OF RIVERGROVE PARK ADVISORY COUNCIL [ORDINANCE NO. 16](../ordinances/1974-Ord-16-Parks.md) BY SUBSTITUTING THE NEW PART 2 THEREOF, as follows:",
+      "title": "AN ORDINANCE AMENDING THE CITY OF RIVERGROVE PARK ADVISORY COUNCIL ORDINANCE NO. 16 BY SUBSTITUTING THE NEW PART 2 THEREOF, as follows:",
       "file": "1978-Ord-28-Parks.md"
     },
     "ordinance-70-2001-WQRA": {
@@ -445,15 +445,15 @@
   "relationships": {
     "ordinance-73-2003A-Conditional-Use-Provisions": {
       "references": [
-        "59-97A",
+        "73-2003A",
         "54-89",
-        "73-2003A"
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.050",
         "6.236",
-        "6.300"
+        "6.300",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -466,16 +466,16 @@
     },
     "ordinance-68-2000-Metro-Compliance": {
       "references": [
-        "54-89",
-        "68-2000"
+        "68-2000",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
         "6.060",
-        "5.095",
         "1.0",
-        "2.0",
         "5.075",
+        "5.095",
+        "2.0",
         "6.080"
       ],
       "amends": [],
@@ -514,16 +514,20 @@
     },
     "ordinance-89-2018-Tree-Cutting-Amendment": {
       "references": [
-        "74-2004",
-        "89-2018"
+        "89-2018",
+        "74-2004"
       ],
       "resolutions": [],
       "interpretations": [
         "5.100"
       ],
-      "amends": [],
+      "amends": [
+        "74-2004"
+      ],
       "related": [
+        "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-59-97A-Land-Development-Amendment",
+        "ordinance-88-2017-Docks",
         "ordinance-74-2004-Tree-Cutting-Amendment",
         "resolution-259-Planning-Development-Fees",
         "interpretation-2004-10-11"
@@ -532,8 +536,8 @@
     "ordinance-76-2008-FEMA-Flood-Map": {
       "references": [
         "52",
-        "62-98",
         "70-2001",
+        "62-98",
         "54-89",
         "76-2008"
       ],
@@ -544,8 +548,12 @@
       ],
       "amends": [],
       "related": [
+        "ordinance-89-2018-Tree-Cutting-Amendment",
+        "ordinance-59-97A-Land-Development-Amendment",
         "ordinance-88-2017-Docks",
-        "ordinance-52-Flood"
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "resolution-259-Planning-Development-Fees",
+        "interpretation-2004-10-11"
       ]
     },
     "ordinance-57-93-Manufactured-Homes": {
@@ -590,19 +598,21 @@
     },
     "ordinance-59-97A-Land-Development-Amendment": {
       "references": [
-        "59-97A",
-        "54-89"
+        "54-89",
+        "59-97A"
       ],
       "resolutions": [],
       "interpretations": [
         "5.010",
-        "2.040",
         "3.020",
-        "5.050"
+        "5.050",
+        "2.040"
       ],
       "amends": [],
       "related": [
         "ordinance-89-2018-Tree-Cutting-Amendment",
+        "ordinance-76-2008-FEMA-Flood-Map",
+        "ordinance-88-2017-Docks",
         "ordinance-74-2004-Tree-Cutting-Amendment",
         "resolution-259-Planning-Development-Fees",
         "interpretation-2004-10-11"
@@ -615,8 +625,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.130",
-        "6.135"
+        "6.135",
+        "5.130"
       ],
       "amends": [],
       "related": [
@@ -629,25 +639,31 @@
     },
     "ordinance-88-2017-Docks": {
       "references": [
-        "88-2017",
-        "70-2001"
+        "70-2001",
+        "88-2017"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.050",
-        "5.060"
+        "5.060",
+        "5.050"
       ],
-      "amends": [],
+      "amends": [
+        "70-2001"
+      ],
       "related": [
+        "ordinance-89-2018-Tree-Cutting-Amendment",
         "ordinance-76-2008-FEMA-Flood-Map",
-        "ordinance-52-Flood"
+        "ordinance-59-97A-Land-Development-Amendment",
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "resolution-259-Planning-Development-Fees",
+        "interpretation-2004-10-11"
       ]
     },
     "ordinance-74-2004-Tree-Cutting-Amendment": {
       "references": [
-        "74-2004",
+        "70-2001",
         "54-89",
-        "70-2001"
+        "74-2004"
       ],
       "resolutions": [],
       "interpretations": [
@@ -656,7 +672,9 @@
       "amends": [],
       "related": [
         "ordinance-89-2018-Tree-Cutting-Amendment",
+        "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-59-97A-Land-Development-Amendment",
+        "ordinance-88-2017-Docks",
         "resolution-259-Planning-Development-Fees",
         "interpretation-2004-10-11"
       ]
@@ -687,114 +705,114 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "8.170",
-        "5.090",
-        "4.120",
-        "6.222",
-        "8.200",
-        "6.190",
-        "2.040",
-        "8.160",
-        "6.233",
-        "6.090",
-        "4.020",
-        "5.060",
-        "5.100",
-        "8.040",
-        "6.226",
-        "6.170",
-        "3.090",
-        "6.110",
-        "3.010",
-        "6.080",
-        "3.040",
-        "3.020",
-        "4.010",
-        "6.050",
-        "1.040",
-        "5.030",
-        "6.100",
-        "6.030",
-        "6.229",
-        "8.190",
-        "4.030",
-        "6.210",
-        "8.130",
-        "4.110",
-        "6.200",
-        "6.225",
-        "6.234",
-        "3.070",
-        "2.020",
-        "6.160",
-        "2.080",
+        "6.070",
         "6.228",
-        "5.050",
-        "4.060",
-        "6.060",
-        "3.030",
-        "8.020",
-        "1.020",
-        "5.020",
-        "2.090",
-        "3.080",
-        "2.050",
-        "4.080",
-        "6.235",
+        "6.229",
         "6.180",
         "4.090",
-        "6.231",
-        "8.110",
-        "6.232",
-        "4.050",
-        "6.221",
-        "6.224",
-        "6.020",
-        "8.10",
-        "6.150",
-        "6.040",
-        "8.140",
-        "6.010",
-        "8.100",
-        "1.030",
-        "8.210",
-        "1.010",
-        "5.070",
-        "8.030",
-        "5.120",
-        "8.120",
-        "5.010",
-        "8.090",
-        "8.180",
-        "3.060",
-        "4.100",
-        "2.060",
-        "6.130",
-        "6.230",
-        "2.070",
-        "8.080",
-        "8.060",
-        "6.223",
-        "6.236",
-        "8.150",
+        "8.130",
         "9.010",
-        "8.070",
-        "3.050",
-        "9.030",
-        "5.080",
-        "6.220",
-        "6.140",
+        "6.221",
+        "8.210",
+        "3.040",
+        "6.030",
+        "2.070",
+        "3.030",
+        "5.050",
+        "5.030",
+        "6.090",
+        "5.060",
+        "8.030",
+        "5.090",
+        "4.080",
+        "1.020",
+        "6.235",
+        "6.150",
+        "6.080",
+        "3.020",
+        "6.190",
+        "4.030",
+        "8.170",
+        "3.070",
+        "8.100",
+        "6.130",
+        "8.120",
+        "4.100",
+        "6.200",
+        "6.230",
+        "8.110",
+        "6.210",
+        "6.234",
+        "3.080",
+        "8.150",
         "5.110",
-        "4.040",
-        "6.070",
-        "1.050",
-        "9.020",
-        "2.010",
-        "6.227",
-        "8.050",
-        "4.070",
+        "5.010",
+        "3.050",
+        "3.010",
         "2.030",
-        "6.120"
+        "3.090",
+        "6.160",
+        "2.080",
+        "6.060",
+        "6.232",
+        "6.223",
+        "4.010",
+        "6.231",
+        "8.190",
+        "8.10",
+        "3.060",
+        "9.020",
+        "6.227",
+        "5.120",
+        "8.060",
+        "6.224",
+        "6.220",
+        "5.100",
+        "2.040",
+        "6.233",
+        "6.226",
+        "2.090",
+        "4.110",
+        "4.120",
+        "6.120",
+        "8.020",
+        "8.050",
+        "1.050",
+        "5.020",
+        "2.010",
+        "2.050",
+        "6.020",
+        "2.060",
+        "9.030",
+        "6.225",
+        "4.040",
+        "4.070",
+        "6.170",
+        "8.180",
+        "8.160",
+        "6.100",
+        "4.050",
+        "6.010",
+        "1.030",
+        "1.040",
+        "6.110",
+        "1.010",
+        "6.236",
+        "8.090",
+        "4.060",
+        "5.080",
+        "6.050",
+        "8.200",
+        "8.040",
+        "8.080",
+        "8.140",
+        "6.140",
+        "6.040",
+        "4.020",
+        "8.070",
+        "5.070",
+        "6.222",
+        "2.020"
       ],
       "amends": [],
       "related": [
@@ -833,14 +851,14 @@
     "ordinance-62-98-Flood-and-Land-Development-Amendment": {
       "references": [
         "52",
-        "62-98",
-        "54-89"
+        "54-89",
+        "62-98"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.050",
         "5.24",
-        "5.055"
+        "5.055",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -909,29 +927,25 @@
       "resolutions": [],
       "interpretations": [
         "4.1",
-        "5.2",
-        "4.4",
-        "4.3",
         "5.3",
+        "4.4",
+        "5.2",
         "5.1",
         "3.2",
-        "5.0"
+        "5.0",
+        "4.3"
       ],
-      "amends": [],
-      "related": [
-        "ordinance-76-2008-FEMA-Flood-Map",
-        "ordinance-88-2017-Docks"
-      ]
+      "amends": []
     },
     "ordinance-61-98-Land-Development-Amendment": {
       "references": [
-        "54-89",
-        "61-98"
+        "61-98",
+        "54-89"
       ],
       "resolutions": [],
       "interpretations": [
-        "6.226",
-        "5.060"
+        "5.060",
+        "6.226"
       ],
       "amends": [],
       "related": [
@@ -977,8 +991,8 @@
     },
     "ordinance-69-2000-Title-3-Compliance": {
       "references": [
-        "69-2000",
-        "68-2000"
+        "68-2000",
+        "69-2000"
       ],
       "resolutions": [],
       "interpretations": [
@@ -1152,20 +1166,22 @@
       "amends": [],
       "related": [
         "ordinance-89-2018-Tree-Cutting-Amendment",
+        "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-59-97A-Land-Development-Amendment",
+        "ordinance-88-2017-Docks",
         "ordinance-74-2004-Tree-Cutting-Amendment",
         "interpretation-2004-10-11"
       ]
     },
     "interpretation-2001-05-07": {
       "references": [
-        "52",
-        "69-2000"
+        "69-2000",
+        "52"
       ],
       "resolutions": [],
       "interpretations": [
-        "5.2",
-        "3.090"
+        "3.090",
+        "5.2"
       ],
       "amends": [],
       "related": [
@@ -1247,8 +1263,8 @@
       "resolutions": [],
       "interpretations": [
         "9.030",
-        "4.050",
-        "3.090"
+        "3.090",
+        "4.050"
       ],
       "amends": [],
       "related": [
@@ -1288,10 +1304,10 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "3.090",
-        "4.020",
         "3.0920",
-        "6.050"
+        "6.050",
+        "4.020",
+        "3.090"
       ],
       "amends": [],
       "related": [
@@ -1337,7 +1353,9 @@
       "amends": [],
       "related": [
         "ordinance-89-2018-Tree-Cutting-Amendment",
+        "ordinance-76-2008-FEMA-Flood-Map",
         "ordinance-59-97A-Land-Development-Amendment",
+        "ordinance-88-2017-Docks",
         "ordinance-74-2004-Tree-Cutting-Amendment",
         "resolution-259-Planning-Development-Fees"
       ]
@@ -1347,9 +1365,9 @@
       "resolutions": [],
       "interpretations": [
         "5.080",
-        "1.040",
         "41.060",
-        "3.090"
+        "3.090",
+        "1.040"
       ],
       "amends": [],
       "related": [
@@ -1474,9 +1492,9 @@
       "resolutions": [],
       "interpretations": [
         "5.080",
-        "1.040",
         "41.060",
-        "3.090"
+        "3.090",
+        "1.040"
       ],
       "amends": [],
       "related": [
@@ -1559,8 +1577,8 @@
       "references": [],
       "resolutions": [],
       "interpretations": [
-        "5.075",
-        "3.090"
+        "3.090",
+        "5.075"
       ],
       "amends": [],
       "related": [
@@ -1767,8 +1785,8 @@
       ],
       "resolutions": [],
       "interpretations": [
-        "5.050",
-        "5.060"
+        "5.060",
+        "5.050"
       ],
       "amends": [],
       "related": [
@@ -1802,6 +1820,24 @@
         "minutes-2018-12-10",
         "minutes-2017-06-12",
         "minutes-2018-08-13"
+      ]
+    },
+    "ordinance-74-2004": {
+      "amended_by": [
+        "ordinance-89-2018-Tree-Cutting-Amendment"
+      ],
+      "referenced_by": [
+        "ordinance-74-2004-Tree-Cutting-Amendment"
+      ]
+    },
+    "ordinance-70-2001": {
+      "amended_by": [
+        "ordinance-88-2017-Docks"
+      ],
+      "referenced_by": [
+        "ordinance-74-2004-Tree-Cutting-Amendment",
+        "ordinance-70-2001-WQRA",
+        "minutes-2017-11-13"
       ]
     },
     "resolution-22-PC": {
@@ -2122,14 +2158,14 @@
     ],
     "land_development": [
       "ordinance-89-2018-Tree-Cutting-Amendment",
+      "ordinance-76-2008-FEMA-Flood-Map",
       "ordinance-59-97A-Land-Development-Amendment",
+      "ordinance-88-2017-Docks",
       "ordinance-74-2004-Tree-Cutting-Amendment",
       "resolution-259-Planning-Development-Fees",
       "interpretation-2004-10-11"
     ],
     "water_environmental": [
-      "ordinance-76-2008-FEMA-Flood-Map",
-      "ordinance-88-2017-Docks",
       "ordinance-52-Flood"
     ],
     "enforcement": [
@@ -2139,6 +2175,6 @@
   "metadata": {
     "generated": "1756707961.773776",
     "total_documents": 49,
-    "total_relationships": 49
+    "total_relationships": 51
   }
 }

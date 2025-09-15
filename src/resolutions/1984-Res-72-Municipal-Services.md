@@ -25,12 +25,12 @@ and
 
 Approved by the City of <span class="form-field-filled" data-tooltip="Field filled in on source doc">RIVERGROVE</span> this <span class="form-field-filled" data-tooltip="Field filled in on source doc">9th</span> day of <span class="form-field-filled" data-tooltip="Field filled in on source doc">July</span> 1984.
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
 [Illegible], Mayor
 
 Attest:
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
 Virginia [Illegible], Recorder
 
 ## Document Notes

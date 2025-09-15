@@ -113,11 +113,20 @@ def add_cross_references(content, doc_map, current_file):
             if link_filename == current_file.name:
                 return full_match
             
-            # Check if already in a link or heading
+            # Check if already in a link
             start_pos = match.start()
-            # Look back for [ or # (heading)
+            # Look back for [
             lookback = content[max(0, start_pos-10):start_pos]
-            if '[' in lookback or '#' in lookback[-2:]:
+            if '[' in lookback:
+                return full_match
+
+            # Check if we're in a heading line (starts with #)
+            line_start = content.rfind('\n', 0, start_pos) + 1
+            line_end = content.find('\n', start_pos)
+            if line_end == -1:
+                line_end = len(content)
+            current_line = content[line_start:line_end].strip()
+            if current_line.startswith('#'):
                 return full_match
             
             # Check if we're in a code block
