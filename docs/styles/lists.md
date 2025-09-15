@@ -233,6 +233,27 @@ This pattern is common in legal text where conditions are listed within a senten
 
 ## Edge Cases and Important Notes
 
+### Lists with Introductory Text
+
+When a paragraph contains both introductory text and list items, the introductory text is preserved as a separate paragraph:
+
+```markdown
+The term does not, however, include either:
+(1) any project for improvement of a structure
+(2) any alteration of a structure listed on the National Register
+```
+
+Output:
+- The introductory text ("The term does not, however, include either:") remains as a paragraph
+- The list items (1) and (2) are converted to a proper list below it
+- This preserves important contextual information that qualifies the list
+
+This pattern is common in legal definitions where lists are preceded by qualifying statements like:
+- "The following items are included:"
+- "This does not include:"
+- "Requirements consist of:"
+- "The term means:"
+
 ### Single Item Lists
 
 Single parenthetical references should NOT be converted to lists:

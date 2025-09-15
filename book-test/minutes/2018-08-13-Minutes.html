@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>2018-08-12 - Minutes - City of Rivergrove Documents</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">City of Rivergrove Documents</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/wifelette/city_of_rivergrove" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="rivergrove-city-council-meeting-minutes"><a class="header" href="#rivergrove-city-council-meeting-minutes">Rivergrove City Council Meeting Minutes</a></h1>
+<p>August 13, 2018</p>
+<h2 id="call-to-order-and-roll-call"><a class="header" href="#call-to-order-and-roll-call">Call to Order and Roll Call</a></h2>
+<p>The meeting was called to order at Lloyd Minor Park at 7:08 p.m.</p>
+<p><strong>Present:</strong> Mayor Heather Kibbey, Council President Arne Nyberg and Councilors Carolyn Bahrman, Brenda Ruble, and Bill Tuttle were present. City Recorder Leanne Moll declared a quorum.</p>
+<h2 id="new-business"><a class="header" href="#new-business">New Business</a></h2>
+<h3 id="1-type-iv-hearing-to-amend-ordinance-80-2011-regulating-park-and-boat-ramp-hours"><a class="header" href="#1-type-iv-hearing-to-amend-ordinance-80-2011-regulating-park-and-boat-ramp-hours">1. Type IV Hearing to amend Ordinance #80-2011, regulating park and boat ramp hours</a></h3>
+<p>Leanne Moll, City Recorder, read the hearing disclosures to the public and explained the hearing was not a land use hearing, so those testifying may not appeal to the Land Use Board of Appeals (LUBA). Ms. Moll asked if any Council member had any conflict of interest that they would like to disclose. There were no conflicts of interest reported.</p>
+<p>Mayor Kibbey opened the public hearing. She explained that if the City stops using the boat ramp as a public park, the deed will go back to Clackamas County. Mayor Kibbey also explained that the City does not have jurisdiction over what happens in the river, including the speed of boats, the use of private docks, and anything thrown onto a private dock. She continued by explaining that the City also has no jurisdiction over a noise level that is moderate and reasonable for a public park.</p>
+<p>Councilor Ruble read the following sections from the Comprehensive Plan:</p>
+<ul>
+<li><strong>Goal #5:</strong> Natural resources, Policy #14:“ The City shall make an effort to improve public access to the Tualatin River.“</li>
+<li><strong>Goal #8:</strong> Recreational needs, Policy #4: “Work with affected agencies to improve the Tualatin River and allow access to its recreational opportunities.”</li>
+<li><strong>Goal #13:</strong> Energy conservation, Policy #8: “To manage and control land and uses developed on the land, so as to maximize the conservation of all forms of energy, based upon sound economic principles.”</li>
+</ul>
+<p>Councilor Tuttle read a portion of the deed to the Stark Boat Ramp: “Should the above property not be used for a period of five consecutive years, title will revert to the grantor.”</p>
+<p><strong>Proponents:</strong></p>
+<p><strong>Daniel Nyberg, 5638 SW Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Daniel Nyberg explained he is concerned that the boat ramp has had increased usage in the past several years. When he used to play on the boat ramp to catch minnows or fish, it was private, rarely used, and was a safe place for him to play. In the past five years, Mr. D. Nyberg has noticed a huge amount of traffic at the ramp. One day, a school bus parked and used the boat ramp as a field trip. There was unreasonable noise and the lack of bathroom facilities caused a problem.</p>
+<p>He explained that before the legalization of marijuana, the ramp was used as a place to smoke weed and listen to music. This was the impetus for <a href="../ordinances/2011-Ord-80-2011-Park-Hours.html">Ordinance #80-2011</a>.</p>
+<p>Mr. D. Nyberg expressed his problems with enforcement and his frustrations that the residents are responsible for policing the activity. He said that there have been altercations with people who are not local and that social media and the internet are exacerbating the problem.</p>
+<p>Mayor Kibbey responded that she did take the boat ramp off of the River Keepers website.</p>
+<p><strong>Gordon Robinson, 19514 Marlin Avenue, Rivergrove, OR</strong></p>
+<p>Mr. Robinson began by saying that the boat ramp is a gem in the community and the City is neglecting to care for it. He explained that it is a small access way directly adjacent to private property lines on both sides. This is the only boat ramp that borders private property and is within a five-minute drive of facilities in Tigard and Tualatin. There are no facilities and the City cannot install them permanently. He complained that people leave their car on the boat ramp while they go on the river for several hours. It is a fire access, and is being blocked. Trucks with boat trailers of 30+ feet long attempt to use the ramp, and it is not safe. Mr. Robinson concluded by stating that the social media buzz is killing the park and the boat ramp.</p>
+<p>Mayor Kibbey asked Mr. Robinson if the City should install port-a-potties in the park. Mr. Robinson declined to respond.</p>
+<p><strong>Ken Marlow, 5548 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Marlow said that the people who are attending the meeting that want to keep the ramp the way it is do not live along the river or in the neighborhood. When he moved in 40+ years ago, no one knew about the ramp. He explained that he lives three houses down and there are parties going on down at the ramp that he can hear. His neighbors don’t want to move. However, at the ramp people are drinking, yelling, and causing a nuisance. Having a good time is fine, but the boat ramp needs to have a change. The hours should be between 8 AM or 9 AM and 6 PM.</p>
+<p><strong>Marcel Lahsene, 5582 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Lahsene explained that he lives next to the boat ramp and he believes the boat ramp conversation has gotten out of hand and has become inappropriate, citing a letter that claimed he and his neighbors are “delusional.” Mr. Lahsene claimed that the residents who are not adjacent to the boat ramp are misinformed about what he and his neighbors are asking for. He clarified that he does not want to close the boat ramp. He believes the boat ramp is being used in a manner inappropriate to its size, location, and facilities. The river access was deeded in 1975 and many things have changed since that deed.</p>
+<p>If Mr. Lahsene parked in front of someone else’s home, turned up his stereo, and shouted “don’t forget the oars!” he would be asked to leave. He explained that Rivergrove is a residential area. Everyone in opposition to changing the boat ramp ordinance does not see or hear the daily commotion at the ramp. He continued to explain that he does not want to take things away from his neighbors, but he believes a boat ramp is not appropriate in a residentially-zoned area.</p>
+<p><strong>Jude Gentry, 5600 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Ms. Gentry lives adjacent to the east side of the boat ramp. She noted that she submitted a letter and pictures into the public record. She is upset about the dynamic in the community and its impact on her and her neighbors. By submitting a letter and the pictures, her intent was to communicate the issues she is facing as a resident who lives next to the ramp. She believes the increased usage of the ramp and the rudeness of the people accessing the ramp have elevated. She noted that Mayor Kibbey recently experienced unbecoming behavior at the boat ramp. She also noted that some people are spreading the rumor that the residents in the vicinity of the ramp want to close the boat ramp. She explained that they simply would like to limit the hours, so the neighbors can have the dinner and evening hours to themselves. She believes the ramp should not be used as a fishing or swimming hole and that the City should limit the boat access to smaller craft.</p>
+<p>She also asked the City to consider that along with the increased activity, she has noted an increased sense of entitlement. The ramp is only 20 feet from her property and the noise is very loud. She believes that people should use other boat ramps that are nearby.</p>
+<p>Councilor Ruble asked Ms. Gentry if the pictures she takes are hidden or if she identifies herself before taking a picture. Ms. Gentry said that she is out in the open.</p>
+<p>A verbal altercation ensued between Ms. Gentry and Trevor Wilson, a resident in the audience, who claimed she was taking pictures of his son without his permission.</p>
+<p><strong>Susie Lahsene 5582 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Ms. Lahsene explained that the question of how to regulate the boat ramp raises larger issues. She asked if the boat ramp is a lawful use. Citing the Rivergrove Land Development Ordinances (RLDO), she asked if the boat ramp is permitted, conditional, or a not normal usage within the residential zone. After her review of the RLDO, she believes it is not a permitted use in the zone, but it is a conditional use. Ms. Lahsene noted that she also wanted to know exactly what procedures and criteria will be used by City Council to make their decision regarding the boat ramp. She checked with City Recorder Leanne Moll, who verified that there was no conditional use permit on file for the boat ramp. She suggested the City retain legal counsel to clarify this issue before proceeding with a decision.</p>
+<p><strong>Neutral:</strong></p>
+<p><strong>Virginia Slater, 19431 Tualamere Avenue, Rivergrove, OR</strong></p>
+<p>Ms. Slater explained that she is new to the neighborhood and moved to Rivergrove in 2015. She supports some type of middle-road regulation that would satisfy all parties. She believes that the boat ramp is not equipped to handle the large number of people currently accessing it due to the recent population growth in the Metro area. She believes the City can set reasonable expectations for how the boat ramp is used, and the hours it is used and, hopefully, Council can find a pathway that is satisfying to all parties.</p>
+<p><strong>Opponents:</strong></p>
+<p><strong>Lisa Vopel, 5655 Kenny Street, Lake Oswego, OR</strong></p>
+<p>Ms. Vopel explained that regarding the boat ramp, she wishes the regulations to stay the same. She suggested that the City could place big rocks on the curb to limit the large boat usage or parking in front of neighbors’ driveways. She explained that the drinking at the ramp needs to stop. She suggested the City post a sign that say “Residential Quiet Zone.” She also explained that there needs to be regulations that are clearly posted. She warned Rivergrove to not limit the access to water like Lake Oswego has done with Oswego Lake. She noted that she is a good citizen and will help out when she can. She closed by explaining that the boat ramp is a gem and it is wonderful to have it available for people to use. However, she opposes the people who are partying and acting inappropriately.</p>
+<p><strong>Mike Munch, 5012 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Munch explained that he lives across from Heritage Park, but he has never seen a problem with people or traffic going past his house. He uses the boat ramp and, on all occasions, the fishermen offer to help him. He explained that it is hard to get into the boat ramp in Tualatin, especially if there is a soccer game or other event at the park.</p>
+<p><strong>Chris Barhyte, 4700 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Barhyte implored Council to keep the boat ramp open. He explained that the river is clean and much cleaner that it was twenty years ago. He is concerned about eliminating boats or restricting boat usage and would like Council to define and clarify the term “boat.” He also asked if Council was considering changes to the park or the boat ramp or both.</p>
+<p>Councilor Tuttle noted that the boats that people would like to restrict are gasoline powered.</p>
+<p><strong>Analeis Weidlich, 4723 Dogwood Drive, Lake Oswego, OR</strong></p>
+<p>Ms. A. Weidlich disputed the previous comments from Mr. D. Nyberg that the ramp used to be a private boat ramp. She noted that her teenage girls attempted to use the ramp, but the neighbors to the left threatened them by telling them it was private property and that they were calling the police. They also let their dog out in an attempt at intimidating her daughters. Ms. A. Weidlich drove to the boat ramp for thirty days in a row and never saw a ruckus, or drinking, or problems. She did see a lot of boat and kayak usage. She is in favor of expanding the hours from sun-up to sun-down. She asked the City to put up better signs and implored the neighbors to call the police if they have an issue.</p>
+<p>Mr. D. Nyberg clarified his statement by explaining that the usage of the ramp was like private property, not the boat ramp itself.</p>
+<p><strong>Jim Hart, 4680 Dogwood, Rivergrove, OR</strong></p>
+<p>Mr. Hart explained that before he lived in Rivergrove, he used to float over to the boat ramp and that is how he discovered his home. He implored Council to keep the ramp open. He explained that there could be better signage to let people know that they are visiting a residential neighborhood. He asked Council to request that Clackamas County step up their patrols if there are reports of drinking or smoking. He explained that a 6 PM closure seems too early and perhaps there could be a compromise where the ramp could be open late on some nights. He continued that there needs to be enforcement of the regulations, but the neighbors should not have to enforce the regulations themselves.</p>
+<p>Mayor Kibbey noted that she tried very hard last year to get extra patrols and to have an off-duty patrol visit on the weekends, but was not successful.</p>
+<p><strong>Sydney Weidlich, 4723 Dogwood Drive, Lake Oswego, OR</strong></p>
+<p>Ms. S. Weidlich explained that she is in favor of keeping the boat ramp the way it is.</p>
+<p><strong>Kris Taylor, 15721 Terre Place, Lake Oswego, OR</strong></p>
+<p>Ms. Taylor noted that she uses the boat ramp even though she lives outside of Rivergrove and that she attended the hearing to learn more about the neighbors’ complaints. She thinks the boat ramp regulations are fine as they are, but she noted there should be a compromise with the neighbors. She offered to help with a cleanup or other needed volunteer work. Her children attend River Grove Elementary School and they love the community.</p>
+<p><strong>Pat Knight, 4800 Dogwood Drive, Rivergrove, OR.</strong></p>
+<p>Ms. Knight explained that her husband’s family has a long history in this community and the family has been on their Dogwood Drive property for 75 years. She is sad about what is happening in the community and stated that Rivergrove is a place where people work together to solve problems in a positive way. She noted that when residents visit the boat ramp, it feels like “big brother is watching.” The ramp and street are public and no one should be questioned about why they are parking on a street. She explained that as a mother and grandmother, she would be very concerned if an unknown person took a picture of a child. The Knights were driving by the boat ramp last night at 9 PM. They saw a young man parked who had a flat tire on his boat ramp. He thought that his tire had been slashed or the air had been let out. He called his father and the Knights waited with him for about 10 minutes. Ms. Knight explained that she wants the issue resolved in a positive way without closing the ramp or changing the hours. She noted that she also lives on the river and has seen it all from pot smoking to a naked man jumping off a tree to urination.</p>
+<p><strong>Roger Knight, 4800 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Mr. Knight explained that he was born and raised in this community and that he is 78 years old. He has lived on the river his whole life and has seen it all. The only problem he has had on the river was when he sprayed his best friend’s father with his water skis. He noted that prior to the boat ramp, he used to slide his boat off the bank into the water. When the boat ramp was developed, he started using it. He said that he would have to cut the blackberries down to access the ramp. He likes to take the boat his father built in 1970 out on the river 2-4 times a year. It has a 65-year old 5.5 horse power engine. He noted that he backs the boat down the ramp by hand. He wants to continue to have boat access and to leave the hours the way they are.</p>
+<p><strong>Paul Amato, 19203 Megly Rd., Rivergrove, OR</strong></p>
+<p>Mr. Amato began by explaining that his entire family has enjoyed the boat ramp. They purchased kayaks and they come regularly and sometimes park on Dogwood near the ramp, but not blocking driveways. He explained that his truck is in one of the pictures submitted into the public record, but it was parked legally at the time the picture was taken. He has never seen people making too much noise on the ramp. He would like the ramp to be opened from dawn to dusk. He works downtown and would like to get on the river before or after work. He doesn’t want the boat ramp closed so he can’t enjoy the river that is 10-15 yards from his home. He noted that if drinking and pot smoking are happening, the local authorities must be called. The neighbors should not be enforcing these issues. He would like to see better signage, including a “residential neighborhood” sign. He would also like to see the blackberries cut back and restroom facilities installed.</p>
+<p>Councilor Bahrman asked if anyone would volunteer if the City had a work day to maintain the boat ramp. Several hands in the crowd went up.</p>
+<p><strong>Darlene Foutz, 18818 Terry Avenue, Lake Oswego, OR</strong></p>
+<p>Ms. Foutz explained that she walks to the boat ramp in eight minutes and also walks her dog in the park and on the boat ramp daily. She hasn’t witnessed any of the behaviors the neighbors are complaining about. She said that the police should take care of any problems. She noted that she would help maintain the ramp.</p>
+<p><strong>Scott Mandel, 19875 Sycamore, Rivergrove, OR</strong></p>
+<p>Mr. Mandel lives near Heritage Park and bought his home in 1998. He chose to move to Rivergrove because of the river access. He explained that due to a hip replacement, he must enter his kayak in the water, so he cannot use Brown’s Ferry Park. He is a frequent ramp user and has never seen many of the behaviors the neighbors are complaining about. He also explained that the fishermen who frequent the ramp have exemplary behavior and they pull their lines in when kayaks arrive. He noted that the Tualatin River was cleaned up and saved in the 1960s by a group of fishermen, now the River Keepers organization.</p>
+<p>Mr. Mandel stated that the handmade sign on the ramp is not accurate. He has made the trip to Brown’s Ferry Park during light traffic and it easily takes 12-15 minutes. During rush hour it can take 30 minutes. He implored City Council to keep free public access to the river, as stated in the Rivergrove charter. He noted that when people are approached by a smile, they respond accordingly. He believes the residents who are treating interlopers with suspicion are the people who are not acting appropriately.</p>
+<p><strong>Gina Mandel, 19875 Sycamore, Rivergrove, OR</strong></p>
+<p>Ms. Mandel said her family moved to the area for the boat ramp and the nature trails. She explained that they cannot use Brown’s Ferry Park due to health and age. The river is a special feature of the city. A restriction or closure goes against the City’s charter. She asked if the city could create some drive-in parking spots, add trashcans, or install a port-a-potty? She said that residents need more outdoor places to appreciate, not less. The people who live on the river have floaties, why can’t someone who is using a public dock use a floaty as well? She also noted that everything is harder to reach with the highway congestion and people want to use facilities that are close by.</p>
+<p><strong>Bruce Bottini, 19288 Megly Court, Rivergrove, OR</strong></p>
+<p>Mr. Bottini said that according to the deed, the boat ramp must be used or the City will lose it. He asked how residents can use the ramp and still respect the rights of the people that are most affected?</p>
+<p>He first suggested that Council obtain legal consultation to avoid a lawsuit that will go to the Supreme Court.</p>
+<p>He wondered if the City could issue parking permits for City residents? This way, the City can keep the ramp public and limit the usage with parking permits and signage. The City could also restrict the usage by hours and limit boats to kayaks and small crafts.</p>
+<p>Mr. Bottini explained that the residents using the ramp are not the offenders; it is people coming from the outside. He encouraged Council to be creative, but also be legal.</p>
+<p><strong>Betty Ellen Lane, 4455 Cobb Way, Lake Oswego, OR.</strong></p>
+<p>Ms. Lane explained that her family uses kayaks at the ramp and her husband cuts down the encroaching branches and bushes, and hauls the debris away himself. He picks up the trash he finds on the river. She was shocked to hear about forty schoolchildren and pot smoke wafting into homes. She said there are ways to address the parking. She questioned how the City can enforce the people who don’t follow the regulations or the posted hours. She also asked how the City can we keep it open for people who are using it appropriately. She doesn’t believe access should be limited.</p>
+<p>Mayor Kibbey noted that several years ago the neighbors asked for a gate and a lock and so technically, the ramp can be locked at closing time. Mayor Kibbey explained that there shouldn’t be any after-hours usage of the ramp.</p>
+<p>Mary Lou Van Slavie, 19514 Marlin Ave, Rivergrove, Oregon, interjected that the boat ramp gate is closed and locked by neighbors who volunteer and live in the vicinity of the ramp. If there is a car parked on the street, they can’t lock people in and must wait to close the ramp.</p>
+<p>Mayor Kibbey stated that the residents near the boat ramp asked for the gate and lock, so they are responsible for closing it. The City did not want to install a gate or a lock.</p>
+<p><strong>Kevin Lane, 4455 Cobb Way, Lake Oswego, OR</strong></p>
+<p>Mr. Lane explained that he belongs to Riverkeepers and volunteers to clean up the river. He trimmed the ramp this spring, filling a trailer with debris, and paying $40 to haul it.</p>
+<p>Mayor Kibbey and Councilor Bahrman thanked him.</p>
+<p>Mr. Lane is willing to volunteer and have work parties, especially since the ramp is full of invasive species. If parking is an issue, he suggested the City put up parking signs. If Council restricts the ramp, congestion will get worse. He noted the increased traffic on Bryant near his home. He jokingly noted that he would like to hold a meeting to restrict driving on Bryant. He is frustrated that the City has taken away all signs that state the ramp is a residential area and public place. He has not witnessed the problems that the neighbors are complaining about. He boats 100 days a year. He has seen kids fishing, but all the fishermen clear out when he launches his 18’ boat. He thinks the complaints are hearsay and he would like to see some data and numbers.</p>
+<p>Mayor Kibbey explained that the City patrolled the ramp last weekend and that there were four people that used the ramp.</p>
+<p>Mr. Lahsene interjected that he believed people are not using the ramp in the extreme heat.</p>
+<p><strong>Loren Jahraus – 19221 Marlin Court, Rivergrove, OR</strong></p>
+<p>Mr. Jahraus understands the neighbors’ concerns about partying and inappropriate use. He mentioned the teen hangout at Pilkington Park near his home and that he can see teens drinking and smoking pot. He said he used to kayak from the ramp and each morning he walks his dog down to the river and relaxes. Because the ramp is now closed at 8am in the morning, he has already had river access taken away from him. He shares the concerns of the people who live near the boat ramp, but he has concerns that even normal usage will be curtailed. He doesn’t want the water to be restricted like the lake in Lake Oswego. He explained that the Oregon way is that everyone should have free access to water and that Rivergrove residents should have reasonable access to the river.</p>
+<p>He also explained that according to his home deed, he has an easement to the Stark boat ramp.</p>
+<p>Mayor Kibbey asked Mr. Jahraus what hours he would prefer. He replied that he would like to use the ramp at 7:30am and preferred the dawn to dusk hours.</p>
+<p><strong>Mike Hahn, 5100 Woodcrest, Rivergrove, OR</strong></p>
+<p>Mr. Hahn began by noting that his children are growing up in Rivergrove and that every time they came to the park, his children walked down the boat ramp. He was very concerned that the boat ramp was closed with no notice when the Mayor was out of town. He asked why there was no dialogue and why did the Councilors close the ramp without notice.</p>
+<p>Councilor Bahrman stated that she was at the July meeting. She noted that there were two reasons that Council approved the closure. The City Attorney was at the meeting and stated it was legal. Council had concerns about the upcoming weekends of heat and the continued nuisance of ramp over usage and unsafe traffic conditions There was never a consideration to close the ramp permanently. Council wanted wished only to limit the people using the ramp for a short period of time and redirect them to other ramp facilities.</p>
+<p><strong>Trevor Wilson, 5173 Woodcrest Lane, Rivergrove, OR</strong></p>
+<p>Mr. Wilson explained that the boat ramp is one of his family’s favorite places to visit. His son grew up playing in the park and learned to fish on the ramp. The residents see and know his son, Paul. When Paul is not playing baseball, he fishes. Mr. Wilson explained that he has never seen any craziness at the ramp. He has seen a lot of children having fun. His son swims and fishes at the ramp and recently found a tailgate in the river. He noted that maybe the screaming at the ramp happens because his child hooks a fish. He alleged that the neighbor to the left has been videotaping his son in his swim shorts. Mr. Wilson’s wife came down to talk to the neighbors to complain and discovered that one of the residents is hiding in the bushes to take pictures. He thinks the pictures are inappropriate. He also explained that he used the word “delusional” in his written testimony because the ramp and the park are public. Anyone who thinks the park and ramp are not public are deluded. He is concerned that the neighbors are trying to dissuade usage of the river.</p>
+<p><strong>Jennifer Gerritz, 5775 Dogwood Drive, Rivergrove, OR</strong></p>
+<p>Ms. Gerritz explained that she moved to Rivergrove because of the community and she witnessed the community coming together to build the playground in 2011. She likes to sit at the ramp and watch people fish and play. She noted that there has been a change at the ramp. Someone has not very nicely asked her children to leave the ramp. One time, she drove to the ramp with her kayaks and was threatened by a neighbor that the gate would closed on them. She explained that a community work day has been effective in the past and the City needs to do it again. She noted that there is nothing wrong with restrictions or having quiet hours. She again expressed he concerns that her daughter has been threatened by people who are recording or taking pictures.</p>
+<p>Ms. Gerritz requested that Council keep the written record open for two more days to allow her husband, Brian Gerritz, to respond and to allow others to respond to the new information presented at the meeting.</p>
+<p><strong>Rachel Shafer, 19475 Dogwood Court, Rivergrove, OR</strong></p>
+<p>Ms. Shafer said she is a boat ramp supporter and the ramp was one of the reasons her family bought their home in Rivergrove. They enjoy their home, and the boat ramp is a valuable asset to the community. She has never seen any of the problems reported by the neighbors.</p>
+<p>She stated that according to the Clackamas County sheriff, there is no record of any complaints about the boat ramp for the last five years. It is not a hotbed of criminal activity. She suggested the City install an Information kiosk with ramp and wildlife information. The City needs to cut back the overgrowth, install a gravel strip on either side of the ramp for pedestrians, and repave the ramp. The City should also mitigate minor annoyances. There should be “no parking” zones around neighbor driveways. The City should add a bathroom or port-a-potty. She would be happy to pay a parks fee to help with the upkeep of the ramp.</p>
+<p>Ms. Shafer explained that more rules and regulations infringe on the rights of other residents. She believes the City can come up with an inclusive, transparent, data-driven solution. She suggested the City implement a study of boat ramp usage and the City should appoint a task-force that includes a wide-variety of stake holders.</p>
+<p><strong>Melissa Hodge, 6263 Childs Road, Lake Oswego, OR.</strong></p>
+<p>Ms. Hodge knows what it’s like to live in a recreational area because she grew up on the Willamette River in West Linn. Her family had people camping on their dock and making fires made on the river bank. She expressed that if people are privileged enough to live on the river, they should share it. She noted that the summer is hard, but the rest of the year is quiet. She paddleboards and kayaks from the ramp, and she would love to volunteer to improve the boat ramp. She was there one morning during the open hours and a neighbor screamed at her for smoking pot. She was not smoking pot, but was able to work with the neighbor to find the source of the smoke, and it was another neighbor up the river. She noted that sounds and smells travel down the river. She implored the people who live next to the ramp to have some compassion for people who want to enjoy it. She noted that if the City improves and cleans it, people will be less likely to use it inappropriately.</p>
+<p><strong>David Shafer, 19475 Dogwood Ct., Rivergrove, OR</strong></p>
+<p>Mr. Shafer said his family has lived in Rivergrove for seven years. He decided to move to the community for the boat ramp. His daughters have visited the ramp and the river since they were toddlers. He is opposed to closing it to fishing. He believes it is wonderful that kids are on the ramp fishing and using the river. His family both walks and drives down to kayak on the river a lot. He has no doubt that there have been people that are not being respectful, but he has never personally seen garbage or disrespectful people. He would like the City to appoint a task force to study the area, so Council can make informed decisions about signage and usage. He volunteered to help and wants to make the ramp look clean and well-maintained.</p>
+<p><strong>David Rodenkirch, 5400 Dawn, Rivergrove OR</strong></p>
+<p>Mr. Rodenkirch is a kayaker who puts his kayak on wheels and walks down to the ramp nearly every day. He is a teacher and comes down during the summer and after school during the school year. His family has a connection to the park and the trees and river and notes the City is aptly named Rivergrove. He said he understands the neighbors’ concerns. He noted his family has an issue near Pilkington Park during soccer season, and his family also has to deal with noise, garbage, and parking problems. He also understands that he tends to overreact to things when they are unpleasant. The neighbors near the boat ramp need to understand that those things happen in any neighborhood. Mr. Rodenkirch is opposed to restricting the hours He would like there to be community support and people coming together to hold public clean-up days. He would also like to revert to the dawn-to-dusk hours with clear signage and would like to use social media for good.</p>
+<p><strong>Penny Jahraus, 19221 Marlin Ct, Rivergrove, OR</strong></p>
+<p>Ms. Jahraus uses the boat ramp to canoe and to have a quiet moment with nature. She is sure that is why the people who bought a home on the water purchased a home there. She brings her four-year-old niece and they watch the minnows, and she doesn’t want to lose that opportunity. Sometimes the best opportunity to commune with nature is early in the morning or late at night. She reiterated that there should be a sign about quiet hours. She would like to help organize a community clean-up. She also suggested that there could be a neighborhood watch, so it’s not just the neighbors enforcing the rules. She also noted that children should be getting out in nature.</p>
+<p><strong>Bret Freyer, 19220 Marlin Ct., Rivergrove, OR</strong></p>
+<p>Mr. Freyer thanked Council for hearing everyone and giving concerned neighbors a forum to speak. He hesitates to discredit the complaints of the neighbors. He hears 6-8 people speaking about the same problems at the ramp, and he believes them. He is also hesitant to say what the issues are because he doesn’t live near the boat ramp. He hopes that the City takes small steps towards alleviating those problems. He remembers when he attempted to use the ramp after the hours changed in 2011 and he was upset that he could not use the ramp before 8 AM, but he respected the signs.</p>
+<p><strong>Jeff Williams, 4550 Dogwood, Rivergrove, OR</strong></p>
+<p>Mr. Williams explained that he lives on the river on the other side of Dogwood. He said that he heard many ideas of how the problems can be solved, and he would like Council to continue the issue to a later date. He noted that 60% of City Council will be leaving in January. He asked that Council allow the newly elected Council, seated in January, to make any changes to the boat ramp regulations. He would prefer a dawn-to-dusk approach for people who don’t live on the river, so they can have the opportunity to appreciate the wildlife and natural beauty. He noted that his children enjoy their private dock and they are loud when they are having fun. He loves seeing the boat and kayak traffic from his backyard, and he’s never seen a larger craft on the river. He closed by saying the boat ramp is a gem and it should be kept open.</p>
+<p><strong>Sherrie Guilmette, 17913 Tualata Avenue, Lake Oswego, OR</strong></p>
+<p>Ms. Guilmette kayaks on the river often and volunteers with Riverkeepers. She has never seen litter at the boat ramp or on the surrounding river. She would like the hours to be expanded from dawn to dusk because there is more wildlife to view in the morning.</p>
+<p><strong>Brenda Hawes, 5697 Kenny, Lake Oswego, OR</strong></p>
+<p>Ms. Hawes has been threatened at the boat ramp before and people have yelled at her that they will call the Sheriff to report that she is trespassing. She knows that there is increased population which leads to increased congestion. She asked that there be clear signage and that Council extend the hours from dawn to dusk. The City should also prioritize bathroom facilities. She noted that her children had soccer practice at Lloyd Minor Park and it was problematic that there was no bathroom. She said that all parks have issues with teens smoking and drinking.</p>
+<h2 id="council-deliberates"><a class="header" href="#council-deliberates">Council Deliberates</a></h2>
+<p>Mayor Kibbey reminded Council that Brian Gerritz has asked that the record be left open for two days.</p>
+<p><strong>Motion:</strong> Mayor Kibbey <strong>moved</strong> that Council leave the record open for one week until Monday, August 20, 2018. Councilor Tuttle <strong>seconded</strong>. <strong>Motion passed 5-0</strong>.</p>
+<p><strong>Motion:</strong> Mayor Kibbey <strong>moved</strong> that the Type IV Hearing regarding the boat ramp be continued to Monday, August 27, 2018 at 7 PM in Lloyd Minor Park. Councilor Tuttle <strong>seconded</strong>. <strong>Motion passed 5-0</strong>.</p>
+<h2 id="old-business"><a class="header" href="#old-business">Old Business</a></h2>
+<h3 id="1-discuss-results-of-short-term-rental-survey"><a class="header" href="#1-discuss-results-of-short-term-rental-survey">1. Discuss results of short-term rental survey</a></h3>
+<p>Continued to September 17, 2018.</p>
+<h2 id="adjournment"><a class="header" href="#adjournment">Adjournment</a></h2>
+<p><strong>Motion:</strong> Mayor Kibbey <strong>moved</strong> to adjourn the meeting.</p>
+<p><strong>The motion passed 5-0</strong>.</p>
+<p>The meeting was adjourned at 9:11 p.m.</p>
+<p>Respectfully submitted,<br />
+Leanne Moll<br />
+City Manager/City Recorder</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../minutes/2017-11-13-Minutes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../minutes/2018-12-10-Minutes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../minutes/2017-11-13-Minutes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../minutes/2018-12-10-Minutes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../navigation-standalone.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

@@ -77,36 +77,56 @@ def convert_paragraph_lists(soup):
             if lines and len(lines) >= 2:
                 list_items = []
                 list_type = None
-                
+                intro_lines = []  # Lines before the first list item
+
                 for line in lines:
                     item_type, marker = detect_list_type(line)
                     if item_type:
                         list_items.append((line, item_type, marker))
                         if not list_type:
                             list_type = item_type
-                
+                    elif not list_items:
+                        # This is text before any list items
+                        intro_lines.append(line)
+
                 # Convert to list if we have at least 2 list items
                 if len(list_items) >= 2:
-                    # Create a new ul element
+                    # Create elements to replace the paragraph
+                    replacement_elements = []
+
+                    # If there's introductory text, keep it as a paragraph
+                    if intro_lines:
+                        intro_p = soup.new_tag('p')
+                        intro_p.string = ' '.join(intro_lines)
+                        replacement_elements.append(intro_p)
+
+                    # Create a new ul element for the list items
                     new_ul = soup.new_tag('ul')
                     new_ul['class'] = [f'{list_type}-list']
-                    
+
                     for item_text, item_type, marker in list_items:
                         li = soup.new_tag('li')
                         # Create marker span
                         marker_span = soup.new_tag('span')
                         marker_span['class'] = [f'list-marker-{item_type}']
                         marker_span.string = marker
-                        
+
                         # Get text after marker
                         remaining = item_text[len(marker):].strip()
-                        
+
                         li.append(marker_span)
                         li.append(' ' + remaining)
                         new_ul.append(li)
-                    
-                    # Replace the paragraph with the list
-                    p.replace_with(new_ul)
+
+                    replacement_elements.append(new_ul)
+
+                    # Replace the paragraph with the new elements
+                    if replacement_elements:
+                        # Insert all new elements before the paragraph
+                        for elem in reversed(replacement_elements[1:]):
+                            p.insert_after(elem)
+                        # Replace the paragraph with the first element
+                        p.replace_with(replacement_elements[0])
 
 def process_nested_lists_in_li(soup):
     """

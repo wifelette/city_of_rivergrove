@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "cache_version": "1.0",
+    "last_sync": "2025-09-02T21:55:31.610689",
+    "total_records": 8
+  },
+  "meetings": {
+    "2024-12-09-Transcript": {
+      "airtable_id": "rec6GrfX59eE2IgRs",
+      "display_name": "2024-12-08 - Transcript",
+      "short_title": "Automated Transcript",
+      "meeting_doc_type": "transcript",
+      "meeting_date": "2024-12-09",
+      "year": 2024,
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/src/transcripts/2024-12-09-Transcript.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/src/transcripts/2024-12-09-Transcript.pdf",
+      "status": "Published",
+      "last_updated": "2025-09-03T01:06:08.000Z"
+    },
+    "2024-02-12-Transcript": {
+      "airtable_id": "recPXxgwsgLbxJWRg",
+      "display_name": "2024-02-11 - Transcript",
+      "short_title": "Automated Transcript",
+      "meeting_doc_type": "transcript",
+      "meeting_date": "2024-02-12",
+      "year": 2024,
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/src/transcripts/2024-02-12-Transcript.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/src/transcripts/2024-02-12-Transcript.pdf",
+      "status": "Published",
+      "last_updated": "2025-09-03T01:06:16.000Z"
+    },
+    "2018-08-13-Minutes": {
+      "airtable_id": "recVvPRL2O8b9TIpa",
+      "display_name": "2018-08-12 - Minutes",
+      "short_title": "Council Meeting Minutes",
+      "meeting_doc_type": "minutes",
+      "meeting_date": "2018-08-13",
+      "year": 2018,
+      "md_url": "",
+      "file_url": "",
+      "status": "Draft",
+      "last_updated": "2025-09-03T01:06:37.000Z"
+    },
+    "2017-06-12-Minutes": {
+      "airtable_id": "recZ6jyoatyJsGZ0T",
+      "display_name": "2017-06-11 - Minutes",
+      "short_title": "Council Meeting Minutes",
+      "meeting_doc_type": "minutes",
+      "meeting_date": "2017-06-12",
+      "year": 2017,
+      "md_url": "",
+      "file_url": "",
+      "status": "Draft",
+      "last_updated": "2025-09-03T01:06:22.000Z"
+    },
+    "2018-12-10-Minutes": {
+      "airtable_id": "reccwlXmezssLXBcV",
+      "display_name": "2018-12-09 - Minutes",
+      "short_title": "Council Meeting Minutes",
+      "meeting_doc_type": "minutes",
+      "meeting_date": "2018-12-10",
+      "year": 2018,
+      "md_url": "",
+      "file_url": "",
+      "status": "Draft",
+      "last_updated": "2025-09-03T01:06:43.000Z"
+    },
+    "2018-05-14-Agenda": {
+      "airtable_id": "reck81FUqTeWZbhb7",
+      "display_name": "2018-05-13 - Agenda",
+      "short_title": "Council Meeting Agenda",
+      "meeting_doc_type": "agenda",
+      "meeting_date": "2018-05-14",
+      "year": 2018,
+      "md_url": "",
+      "file_url": "",
+      "status": "Published",
+      "last_updated": "2025-09-03T01:05:24.000Z"
+    },
+    "2017-11-13-Minutes": {
+      "airtable_id": "rectW5wv9NQXhb14D",
+      "display_name": "2017-11-12 - Minutes",
+      "short_title": "Council Meeting Minutes",
+      "meeting_doc_type": "minutes",
+      "meeting_date": "2017-11-13",
+      "year": 2017,
+      "md_url": "",
+      "file_url": "",
+      "status": "Published",
+      "last_updated": "2025-09-03T01:06:29.000Z"
+    },
+    "2018-04-11-Agenda": {
+      "airtable_id": "recuG6j9tvdblbQtN",
+      "display_name": "2018-04-10 - Agenda",
+      "short_title": "Council Meeting Agenda",
+      "meeting_doc_type": "agenda",
+      "meeting_date": "2018-04-11",
+      "year": 2018,
+      "md_url": "",
+      "file_url": "",
+      "status": "Published",
+      "last_updated": "2025-09-03T01:05:32.000Z"
+    }
+  }
+}

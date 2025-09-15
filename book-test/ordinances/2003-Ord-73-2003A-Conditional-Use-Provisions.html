@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>#73 Conditional Uses (2003) - City of Rivergrove Documents</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">City of Rivergrove Documents</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/wifelette/city_of_rivergrove" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ordinance-no-73-2003a"><a class="header" href="#ordinance-no-73-2003a">ORDINANCE NO. 73-2003A</a></h1>
+<p><strong>AN ORDINANCE AMENDING ATTACHMENT C TO <a href="../ordinances/1989-Ord-54-89C-Land-Development.html">ORDINANCE NO. 54-89</a>, THE CITY OF RIVERGROVE’S LAND DEVELOPMENT ORDINANCE AS AMENDED BY <a href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html">ORDINANCE NO. 59-97A</a></strong></p>
+<p><em>[Handwritten notation: “Conditional Use”]</em></p>
+<p>Approved by the Planning Commission of the City of Rivergrove on <span class="form-field-filled" data-tooltip="Field filled in on source doc">05/07/03</span></p>
+<p>Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span></p>
+<p>Adopted by the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span></p>
+<p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Larry Barrett, Mayor<br />
+<strong>Date</strong>: <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span></p>
+<p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Mike Collmeyer, City Recorder<br />
+<strong>Date</strong>: <span class="form-field-filled" data-tooltip="Field filled in on source doc">5/12/03</span></p>
+<hr />
+<h1 id="ordinance-no-73-2003a-1"><a class="header" href="#ordinance-no-73-2003a-1">ORDINANCE NO. 73-2003A</a></h1>
+<p><strong>AN ORDINANCE AMENDING ATTACHMENT C TO <a href="../ordinances/1989-Ord-54-89C-Land-Development.html">ORDINANCE NO. 54-89</a>, THE CITY OF RIVERGROVE’S LAND DEVELOPMENT ORDINANCE AS AMENDED BY <a href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html">ORDINANCE NO. 59-97A</a></strong></p>
+<h3 id="before-the-city-council-of-the-city-of-rivergrove-oregon"><a class="header" href="#before-the-city-council-of-the-city-of-rivergrove-oregon">BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON</a></h3>
+<p><strong>WHEREAS</strong>, the City of Rivergrove has adopted a Comprehensive Plan and Land Development Ordinances to guide and control the future development within the City of Rivergrove; and</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan and Land Development Ordinances are designed to ensure that the characteristics of future development, to include conditional uses, are appropriate to the needs of the area and shall be reasonably compatible with the livability and development of abutting property; and</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan and Land Development Ordinances are designed to guide and control the future development within the City of Rivergrove, to include conditional uses, in a manner that shall serve its residential character; and</p>
+<p><strong>WHEREAS</strong>, the annexation of Rivers Edge Athletic Club, which is operating under a Clackamas County conditional use permit, establishes a need for the City of Rivergrove to enact its own conditional use provisions;</p>
+<p><strong>NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS</strong>: The Rivergrove Land Development Ordinance (Attachment C to <a href="../ordinances/1989-Ord-54-89C-Land-Development.html">Ordinance #54-89</a> as amended by <a href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html">Ordinance No. 59-97A</a>) is hereby amended as follows:</p>
+<h2 id="amendments-to-the-land-development-ordinance"><a class="header" href="#amendments-to-the-land-development-ordinance">AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE</a></h2>
+<ol>
+<li>The following Section is hereby amended: Amend <strong>Section 5.050 (g)</strong>, as amended by <a href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html">Ordinance No. 59-97A</a>, to read as follows:</li>
+</ol>
+<blockquote>
+<p><strong>(g)</strong> Conditional uses, such as parks, playgrounds or community centers, churches, schools, golf courses, day or child care facilities, recreation uses, public and private clubs and use of similar nature as approved by the Commission and subject to Sections 6.300 through 6.340.</p>
+</blockquote>
+<ol start="2">
+<li>The following Sections are hereby added to and made part of <strong>ARTICLE 6 (PERMIT AND ISSUE DETERMINATIONS)</strong> of Attachment C to <a href="../ordinances/1989-Ord-54-89C-Land-Development.html">Ordinance No. 54-89</a>, The City of Rivergrove’s Land Development Ordinance (RLDO):</li>
+</ol>
+<h3 id="add-after-section-6236-the-following"><a class="header" href="#add-after-section-6236-the-following">Add after Section 6.236 the following:</a></h3>
+<blockquote>
+<h2 id="conditional-use"><a class="header" href="#conditional-use">Conditional Use</a></h2>
+<p><strong>6.300. Conditional Use.</strong> The Planning Commission may allow a conditional use, after a hearing conducted pursuant to the Type III land use procedure in the Rivergrove Land Development Ordinance provided the applicant complies with the relevant Application Requirements of this section and demonstrates that the proposed use satisfies the applicable conditions set forth in this ordinance and the Rivergrove Land Development Ordinance. For the purposes of Section 6.300 through 6.340, the Planning Commission has the responsibility and authority to determine the relevance of requirements and criteria and the applicability of conditions.</p>
+<p><strong>6.310. Application Requirements.</strong> An application for Conditional Use will be on forms provided by the City Recorder and will include the following where applicable:</p>
+<ul>
+<li>
+<p>(a) A description of the land (address, lot, block, tract, or similar description) on which the proposed development is to take place;</p>
+</li>
+<li>
+<p>(b) A list of the addresses of property within 200 feet of the affected property and mailing labels;</p>
+</li>
+<li>
+<p>(c) Narrative addressing how the application meets the relevant review criteria in 6.320 and 6.330 below;</p>
+</li>
+<li>
+<p>(d) Site plan drawn to scale and where relevant, illustrating existing and proposed:</p>
+<ul>
+<li>(1) Relationship of the site to adjoining properties, streets, alleys, structures, public utilities, and drainageways;</li>
+<li>(2) Lot line dimensions;</li>
+<li>(3) Location of structures;</li>
+<li>(4) Vehicle and pedestrian access points and accessways;</li>
+<li>(5) General location of vegetated areas;</li>
+<li>(6) Utility service areas;</li>
+<li>(7) Fences and walls;</li>
+<li>(8) Parking spaces, maneuvering, loading, and refuse areas;</li>
+<li>(9) Direction of traffic flow on the property;</li>
+<li>(10) Drainage controls;</li>
+<li>(11) Proposed modifications to existing grades.</li>
+</ul>
+</li>
+<li>
+<p>(e) If relevant, exterior lighting plan (which may be shown on the site plan) indicating location, size, height, typical design, material, color, method and strength of illumination.</p>
+</li>
+<li>
+<p>(f) If relevant, plans and elevations of structure(s) to scale indicating:</p>
+<ul>
+<li>(1) Heights of structure;</li>
+<li>(2) Entrances and exits of proposed structures;</li>
+<li>(3) Architectural drawings or sketches, including floor plans, in sufficient detail to permit computation of set back requirements;</li>
+<li>(4) Building materials to be used;</li>
+<li>(5) Specifications as to type, color, and texture of exterior surfaces of proposed structures.</li>
+</ul>
+</li>
+<li>
+<p>(g) If relevant landscape plan drawn to scale showing:</p>
+<ul>
+<li>(1) Location of existing trees and vegetation proposed to be removed or retained on the site;</li>
+<li>(2) Location and design of landscaped areas;</li>
+<li>(3) Proposed varieties and sizes of trees and plant materials;</li>
+<li>(4) Other pertinent landscape features, and irrigation systems required to maintain plant materials.</li>
+</ul>
+</li>
+<li>
+<p>(h) Vicinity map showing the site in relation to local and collector streets; plus any other features in the nearby area;</p>
+</li>
+<li>
+<p>(i) Any additional information that may be required by the Planning Commission to properly evaluate the proposed conditional use, if the need for such information is justified on the basis of special and/or unforeseen circumstances.</p>
+</li>
+<li>
+<p>(j) The Planning Commission may waive any of the requirements above where determined that the information required is unnecessary to properly evaluate the proposal. The applicant will provide a number of plans as required by the City Recorder.</p>
+</li>
+</ul>
+<p><strong>6.320. Review Criteria.</strong> Applications for a conditional use will be reviewed to assure consistency with the purposes of this ordinance, the Rivergrove Land Development Ordinance, policies of the Comprehensive Plan, and any other applicable policies and standards adopted by the City Council. In addition, the Planning Commission will consider and weigh with equal priority the following compatibility factors that are relevant to the proposal:</p>
+<ul>
+<li>(a) Basic site design (organization of uses on the site);</li>
+<li>(b) Noise attenuation;</li>
+<li>(c) Noxious odors;</li>
+<li>(d) Lighting;</li>
+<li>(e) Signage;</li>
+<li>(f) Landscaping for buffering and screening;</li>
+<li>(g) Traffic;</li>
+<li>(h) Effects on off-street parking;</li>
+<li>(i) Effects on air and water quality.</li>
+</ul>
+<p><strong>6.330. Additional Criteria.</strong> The Planning Commission may allow a conditional use, provided that the applicant provides evidence substantiating that all the requirements of the ordinance relative to the proposed use are satisfied, and demonstrates that the proposed use also satisfies the following criteria:</p>
+<ul>
+<li>
+<p>(a) The characteristics of the site are suitable for the proposed use considering size, shape, location, topography, existence of improvements and natural features;</p>
+</li>
+<li>
+<p>(b) The site and proposed development are timely, considering the adequacy of transportation systems, public facilities and services existing or planned for the area affected by the use;</p>
+</li>
+<li>
+<p>(c) The proposed use will not affect the surrounding area in a manner which adversely limits, impairs or precludes the use of surrounding properties;</p>
+</li>
+</ul>
+<p><strong>6.340. Conditions</strong></p>
+<ul>
+<li>
+<p>(a) Permits for conditional uses stipulate restrictions or conditions which may include, but are not limited to, a definite time limit to meet such conditions, provisions for a front, side or rear yard greater than the minimum set back standards, suitable landscaping, off-street parking and any other reasonable restriction, condition or safeguard that would uphold the spirit and intent of the Rivergrove Land Development Ordinance, and mitigate any adverse effect upon the neighborhood properties as set forth in the findings of the Planning Commission.</p>
+</li>
+<li>
+<p>(b) In the case of a use existing prior to the effective date of the ordinance codified in this title and classified in this title as a conditional use, any change of use, expansion of lot area or expansion of structure conform with the requirements for conditional use.</p>
+</li>
+<li>
+<p>(c) A conditional use approval expire if it is not implemented within 2 years from the date of the final written decision unless a lesser time period is specified as a condition of approval or a time extension is approved pursuant to RLDO 6.340(d). If the City’s final written decision is appealed, the approval period commences on the date of the final appellate decision. A conditional use approval is implemented when all necessary permits for development have been secured and are maintained. Approval of public roads, public schools and public parks do not expire unless an expiration date is specified as a condition of approval.</p>
+</li>
+<li>
+<p>(d) A 1-year time extension may be granted once as a Type I decision by the Planning Commission pursuant to RLDO 4.090 and subject to the following provisions:</p>
+<ul>
+<li>(1) A time extension be requested in writing, on forms provided by the City Recorder, prior to the expiration of the approval; and</li>
+<li>(2) The applicant demonstrates that:
+<ul>
+<li>(A) The conditional use is consistent with the provisions of this ordinance in effect on the date a complete application for a time extension is submitted; and</li>
+<li>(B) There is a reasonable expectancy that the necessary development permits will be secured within the 1-year extension period.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>(e) Any violation of the terms, conditions or restrictions of a conditional use permit can result in revocation of the conditional use permit.</p>
+</li>
+</ul>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ordinances/2002-Ord-72-2002-Penalties-and-Abatement-Amendment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ordinances/2002-Ord-72-2002-Penalties-and-Abatement-Amendment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../navigation-standalone.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

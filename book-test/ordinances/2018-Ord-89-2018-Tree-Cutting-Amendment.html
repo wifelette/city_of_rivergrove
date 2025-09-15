@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>#89 Tree Protection (2018) - City of Rivergrove Documents</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">City of Rivergrove Documents</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/wifelette/city_of_rivergrove" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ordinance-no-89-2018"><a class="header" href="#ordinance-no-89-2018">ORDINANCE NO. 89-2018</a></h1>
+<h2 id="an-ordinance-amending-ordinance-no-74-2004-the-city-of-rivergroves-land-development-ordinance"><a class="header" href="#an-ordinance-amending-ordinance-no-74-2004-the-city-of-rivergroves-land-development-ordinance">AN ORDINANCE AMENDING ORDINANCE NO. 74-2004, THE CITY OF RIVERGROVE’S LAND DEVELOPMENT ORDINANCE</a></h2>
+<p><strong>Planning Commission Public Hearing:</strong> <strong>October 1, 2018</strong></p>
+<p><strong>City Council Public Hearing:</strong> <strong>November 14, 2018</strong></p>
+<p><strong>Adopted by Rivergrove City Council:</strong> <strong>December 10, 2018</strong></p>
+<p>{signature}, Mayor Heather Kibbey,<br />
+<strong>Date:</strong> <strong>December 12, 2018</strong></p>
+<p><strong>Attest:</strong></p>
+<p>{signature}, Leanne Moll, City Manager/ City Recorder,<br />
+<strong>Date:</strong> <strong>December 12, 2018</strong></p>
+<hr />
+<h1 id="ordinance-no-89-2018-1"><a class="header" href="#ordinance-no-89-2018-1">ORDINANCE NO. 89-2018</a></h1>
+<p><strong>BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON</strong></p>
+<p><strong>WHEREAS</strong>, the City of Rivergrove has adopted a Comprehensive Plan and Land Development Ordinances to guide and control the future development within the City of Rivergrove: and</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan and Land Development Ordinances are designed to ensure the characteristics of future development are appropriate to the needs of the area and shall be reasonably compatible with the livability and development of abutting property;</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan and Land Development Ordinances are designed to guide and control the future development within the City of Rivergrove in a manner that will preserve the residential character of the City and shall protect and preserve, as much as possible, the natural conditions (especially the native vegetation) of the area; and</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan requires that wildlife and plant habitat considerations be integrated into the land use decision-making process; and</p>
+<p><strong>WHEREAS</strong>, the Comprehensive Plan encourages, especially in Environmentally Sensitive Areas, the preservation of existing wildlife habitat and major stands of trees to the maximum extent practical; and</p>
+<p><strong>WHEREAS</strong>, eight Policies (2, 3, 7, 8, 9, 10) of Goal # 5 - Natural Resources, Scenic, &amp; Historic Areas, Open Spaces, and Policy 6 of Goal #6 – Air Water and Land Resources of the Comprehensive Plan recognize the environmental benefit of trees within the community; and</p>
+<p><strong>WHEREAS</strong>, Policy 12 of Goal # 5 - Natural Resources, Scenic, &amp; Historic Areas, Open Spaces, of the Comprehensive Plan specifically states the City shall revise its tree cutting ordinance to include stronger language to preserve Rivergrove native trees:</p>
+<p><strong>NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS:</strong> The Rivergrove Land Development Ordinance (Attachment D to <a href="../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.html">Ordinance #74-2004</a>, as previously amended) is hereby amended as follows:</p>
+<p><strong>Section 1.</strong> Section 5.100 of the Rivergrove Land Development Ordinance (Attachment D to <a href="../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.html">Ordinance #74-2004</a>), entitled “Tree Cutting”) is hereby repealed and replaced with a new Section 5.100 entitled “Tree Cutting” that provides as follows:</p>
+<h3 id="section-5100-tree-cutting"><a class="header" href="#section-5100-tree-cutting">Section 5.100. Tree Cutting</a></h3>
+<h3 id="a-authority"><a class="header" href="#a-authority">(A) AUTHORITY</a></h3>
+<p>The regulations of this Ordinance are adopted under the City’s power to regulate to protect the public health, safety and welfare. Pursuant to Section 10 of the City Charter, the City Council confers its non-legislative functions as described herein to the Planning Commission and City Manager to administer and enforce this Ordinance. This includes the right to review permits, issue permits, issue notices of violation, levy fines, issue notices to perform work, and notices to stop work. They shall receive advice and guidance from the City Arborist, while enforcing this Ordinance as well as making findings and decisions.</p>
+<h3 id="b-definitions"><a class="header" href="#b-definitions">(B) DEFINITIONS</a></h3>
+<p><em>Note: All terms in this Definitions section are capitalized in the body of the Ordinance.</em></p>
+<ol>
+<li>
+<p><strong>“Tree”</strong> - Any standing woody, perennial plant, deciduous, evergreen, or coniferous, having a main stem or trunk a minimum of 12“ DBH (Diameter Breast Height – measured 4.5’ from the ground) or 37 ¾“ circumference at that height.
+a. Trees with multiple trunks shall have each trunk measured at the 54“ DBH standard and the sum computed as total DBH.
+b. The minimum size for Oregon White Oak, Pacific Madrone, Yew, and Pacific Dogwood trees shall be 6“ DBH or 18 7/8“ circumference at that height.</p>
+</li>
+<li>
+<p><strong>“Cutting”</strong> - Any of the following:
+a. Complete removal, such as cutting to the ground or extraction, of a tree;
+b. Taking any action foreseeably leading to the death of a tree or permanent damage to a tree’s health. Cutting includes, but is not limited to: excessive pruning, cutting, girdling, poisoning, or overwatering; trenching, excavating, or altering the grade around a tree; compacting the soil or paving within the Drip Line Area of a tree; or unauthorized relocation or transportation of a tree;
+c. cutting off more than one-third of the functional leaf and stem area of a tree in any 12-month period, or removal of tree limbs and foliage so as to cause the tree’s limb structure to be unbalanced, or sometimes called “topping.”</p>
+</li>
+<li>
+<p><strong>“Approved Tree List”</strong> – A list of trees that are approved and recommended for planting within Rivergrove. The City Council, with the guidance of the City Arborist, will prepare a list of trees approved for planting in Rivergrove.</p>
+</li>
+<li>
+<p><strong>“Certified Arborist”</strong> - An individual who has either obtained a certification as an arborist from the International Society of Arboriculture, or who is a member of the American Society of Consulting Arborists.</p>
+</li>
+<li>
+<p><strong>“City Arborist”</strong> - The person designated and contracted as such by the City Council.</p>
+</li>
+<li>
+<p><strong>“Caliper”</strong> - The caliper is the diameter of the trunk and shall be taken six inches above the ground up to and including four-inch caliper size. If the caliper at six inches above the ground exceeds four inches, then caliper should be measured at 12 inches above the ground, according to American Standard for Nursery Stock ANSI Z60.1-2004.</p>
+</li>
+<li>
+<p><strong>“Drip Line Area”</strong> - The area under the tree’s canopy as defined by an imaginary vertical line extending downward from the outermost tips of a tree’s natural length branches to the ground.</p>
+</li>
+<li>
+<p><strong>“FEMA”</strong> - The Federal Emergency Management Agency</p>
+</li>
+<li>
+<p><strong>“Flood Hazard Area”</strong> - Flood zones are geographic areas that the FEMA has defined according to varying levels of flood risk. These zones are depicted on a community’s Flood Insurance Rate Map (FIRM) or Flood Hazard Boundary Map.</p>
+</li>
+<li>
+<p><strong>“Mitigation Plan”</strong> - a plan to remediate, remedy and offset the loss/removal of trees on a property, generally by planting new trees.</p>
+</li>
+<li>
+<p><strong>“Native Tree List”</strong> - A list of trees indigenous to the Rivergrove area. A native tree is one that has not been introduced by man and occurs naturally. The City Council, with the guidance of the City Arborist, will prepare a list of native trees recommended for planting in Rivergrove.</p>
+</li>
+<li>
+<p><strong>“Noxious and Undesirable Tree List”</strong> - A list of trees that are harmful or invasive and prohibited from being planted in the City. The City Council, with the guidance of the City Arborist, will prepare a list of trees that are noxious and undesirable in Rivergrove.</p>
+</li>
+<li>
+<p><strong>“Protected Trees”</strong> - All trees that are not specifically designated and approved to be removed on private property, as part of an approved development permit. Protected trees are to be indicated on development plans submitted for approval.</p>
+</li>
+<li>
+<p><strong>“Protective Fencing”</strong> - A temporary enclosure erected around a tree to be protected at the boundary of the Tree Protection Zone. The fence serves three primary functions: 1) to keep the foliage crown, branch structure and trunk clear from direct contact and damage by equipment, materials or disturbances; 2) to preserve roots and soil in an intact and non-compacted state; and 3) to identify the Tree Protection Zone in which no soil disturbance is permitted and activities are restricted.</p>
+</li>
+<li>
+<p><strong>“Tree Protection Zone (TPZ)”</strong> - Unless otherwise specified by a Certified Arborist or City Arborist, the area inside the Protected Tree Fencing. The TPZ is a restricted activity zone where no soil disturbance is permitted, unless otherwise approved. The TPZ will normally be measured at ½ foot radius per DBH inch for any given tree.</p>
+</li>
+</ol>
+<h3 id="c-applicability"><a class="header" href="#c-applicability">(C) APPLICABILITY</a></h3>
+<ol>
+<li>
+<p>This ordinance shall apply to all trees on publicly owned lands in Rivergrove. In addition, this ordinance shall apply to all trees that are within the Water Quality Resource Area (WQRA, in RLDO #70-2001) or within Flood Hazard Areas, as designated by FEMA, as well as trees outside these areas as per D.2.b.</p>
+</li>
+<li>
+<p>Notwithstanding the above, the following trees are exempt from regulation under this Ordinance:
+a. Orchard species trees that bear fruit or nuts for human consumption.
+b. Plants that would otherwise meet the above descriptions but are typically grown as shrubs. Some typical examples are Hazelnut, Photinia, and Laurel. The first tree cut on any single lot or parcel within the City within a single calendar year, provided the owner notifies the City Manager of the intent to cut the tree, electronically or in writing. prior to the cutting. This exception does not apply to trees in the WQRA or Flood Hazard Area.
+c. Trees that are listed on the Rivergrove Noxious and Undesirable Tree List.</p>
+</li>
+</ol>
+<h3 id="d-tree-cutting-permitting"><a class="header" href="#d-tree-cutting-permitting">(D) TREE CUTTING PERMITTING</a></h3>
+<ol>
+<li>
+<p><strong>APPLICATION FOR A CUTTING PERMIT</strong>
+a. A permit is required for each tree cut (as applicable under section C) within the City of Rivergrove. Application is to be made and permit obtained from the City before the tree is cut, except for emergency tree cutting allowed in Section D.2.a below, or the first tree cut on any single lot or parcel within a single calendar year. Application for approvals must be made on the City Tree Ordinance application form. The current application forms can be found on the city website (www.CityofRivergrove.com).
+b. Any tree work (e.g. pruning, limbing, cutting, binding, staking, etc.) or removals that could result in personal injury or property damage, should be done by a licensed and insured arborist.</p>
+</li>
+<li>
+<p><strong>PERMIT TYPES</strong>
+a. <strong>Emergency Tree Cutting Permit</strong> - In emergency conditions that require prompt cutting or removal of Dangerous Trees to avoid immediate danger or hazard to persons or property, an Emergency Tree Cutting Permit may be issued by the Mayor, the President of the City Council or the Chair of the Planning Commission without formal application. If the above-mentioned individuals are unavailable, it is permissible to cut those portions of the tree(s) immediately, as necessary, to avoid any immediate danger or hazard. Within seven (7) days of any cutting, an application must be filed with the City providing information and evidence as may be reasonably required justifying the Emergency Tree Cutting. If the Planning Commission decides that the information and evidence provided by the owner does not justify the Emergency Tree Cutting, the application shall be denied and the property owner shall be subject to the penalties set forth in the Rivergrove Land Development Ordinance (RLDO) and/or this Ordinance. The Planning Commission shall also require an approved Mitigation Plan to offset the loss of any illegally cut tree(s).</p>
+<p>b. <strong>NON-Water Quality Resource Area (NON-WQRA) or Flood Hazard Area Tree Cutting Permit.</strong> This permit is for cutting any tree NOT in the WQRA or Flood Hazard Area. Any application for cutting trees beyond the limit of one tree cutting on a single lot or parcel within a calendar year shall require review and approval or denial by the Planning Commission at one of its meetings. The Planning Commission’s determination shall be made with the City Arborist’s review and opinion, if deemed necessary. A Mitigation Plan shall be required as outlined below.</p>
+<p>c. <strong>Water Quality Resource Area (WQRA) or Flood Hazard Area Tree Cutting Permit.</strong> This permit is for cutting of any tree in the WQRA or Flood Hazard Area. A permit application must be made to the City for review and approval or denial by the Planning Commission at one of its meetings. A Mitigation Plan shall be required as outlined below. Requirements in Rivergrove’s flood hazard regulations shall be followed, as well as any local, state, or federal flood or water quality regulations.</p>
+<p>d. <strong>Dead, Dying, or Dangerous Tree Cutting Permit</strong> - This permit is for cutting any tree that meets any aspect of the definitions below. A permit application must be made to the City for review.</p>
+<p><strong>“Dead”</strong> - means the tree is lifeless. Proof shall be either by a photograph of the tree provided to the City by the property owner, or a statement from a Certified Arborist. No Planning Commission review is required; City Staff shall approve the permit immediately after receipt of all required information.</p>
+<p><strong>“Dying”</strong> - means the tree has been damaged beyond repair or is in an advanced state of decline because it is diseased, infested by insects, or rotting and cannot be saved by reasonable treatment or pruning, or must be removed to prevent the spread of the infestation or disease to other trees. Determination of this condition shall be made by the Planning Commission with the City Arborist’s review and opinion, if deemed necessary.</p>
+<p><strong>“Dangerous”</strong> – means the condition or location of the tree presents a clear public safety hazard or foreseeable danger of personal injury or property damage to an existing structure or utilities, and such hazard or danger cannot reasonably be alleviated by treatment or pruning. Determination of this condition shall be made by the Planning Commission with the City Arborist’s review and opinion, if deemed necessary.</p>
+<p>For Dying and Dangerous tree cutting, the Planning Commission’s determination shall be made with the City Arborist’s review and opinion, if deemed necessary.</p>
+</li>
+</ol>
+<h3 id="e-criteria-for-issuance-of-permits"><a class="header" href="#e-criteria-for-issuance-of-permits">(E) CRITERIA FOR ISSUANCE OF PERMITS</a></h3>
+<p>A tree cutting permit may be issued by the Planning Commission and/or City Staff as required in this Ordinance. The permit may be issued in part or denied in part, or may be issued subject to the applicant complying with reasonable conditions that may be imposed in order to promote the purpose of this Ordinance. The decision shall be accompanied by findings of fact, based on evidence in the record, demonstrating that all applicable permit and Ordinance requirements are satisfied. A permit shall state the period of time (term) for which it is valid. The applicant bears the burden of showing that the granting of the permit would be consistent with the stated purposes of the Rivergrove Tree Ordinance and Land Development Ordinance (RLDO). The following criteria shall be considered by the Planning Commission and/or City Staff when granting permits:</p>
+<ol>
+<li>The necessity to remove trees in order to construct proposed improvements or otherwise utilize the applicant’s property in a reasonable manner.</li>
+<li>The topography of the land and the effect of tree removal on erosion, soil retention, stability of earth, flow of surface waters, protection of nearby trees, windbreaks, and desirable balance between shade and open space.</li>
+<li>The number of trees in the existing neighborhood, the character and property uses in the neighborhood, and the effect of tree removal upon the neighborhood characteristics, beauty, and property values.</li>
+<li>The adequacy of the Mitigation Plan submitted to the City, including a drainage plan, if appropriate.</li>
+<li>Other possible alternatives, such as tree treatment, pruning, or relocating site improvements or utilities to resolve the applicant’s request.</li>
+</ol>
+<h3 id="f-mitigation-plans"><a class="header" href="#f-mitigation-plans">(F) MITIGATION PLANS</a></h3>
+<ol>
+<li>
+<p>All applications for tree cutting permits shall include a Mitigation Plan. The number and type of trees to be planted in mitigation for tree cutting in these permits shall be determined on a case by case basis, depending on each unique site. The City Arborist shall review and comment on the Mitigation Plan before they are approved or denied by the Planning Commission.</p>
+</li>
+<li>
+<p>The Mitigation Plan must include at least the following information:
+a. The species and caliper of mitigation tree(s) are to be planted,
+b. A site map showing the location of trees to be removed, the location of trees to be planted, and any proposed development on site,
+c. A schedule with the proposed planting date,
+d. Identification of measures to be taken to keep the mitigation tree(s) alive during the first five years after planting, and
+e. A Performance Bond, warranty, or other security acceptable to the City to ensure that all mitigation trees survive for a five-year period after planting. This shall be required only if the value of the mitigation trees and their installation exceeds $500 in costs.</p>
+</li>
+<li>
+<p>Mitigation trees shall be installed on the same property as the trees that were removed. If there is not sufficient room for the mitigation trees on the same property, the Planning Commission may approve other nearby locations. Rivergrove City Parks are usually not acceptable as an alternate planting location. All mitigation trees shall be subject to the City’s Tree Planting Standards, Survivability Warranty, and Bonding requirements.</p>
+</li>
+<li>
+<p>It is highly recommended that Mitigation trees be chosen from the Native Tree list, particularly in WQRA or Flood Hazard areas. It is recommended that other areas use the Approved Tree List.</p>
+</li>
+<li>
+<p>An approved Mitigation Plan may require the retention of dead or dying trees or tree trunks located in wetlands, natural areas, stream corridors, parks or open space areas, in order to provide for wildlife habitat and natural processes, unless the tree presents a potential hazard to persons or property or conflicts with development of the property.</p>
+</li>
+<li>
+<p>The Planning Commission may accept as mitigation trees that were planted prior to the application for a tree cutting permit.</p>
+</li>
+<li>
+<p>Failure to conform to an approved Mitigation Plan within a time set by the Planning Commission and in the permit, shall incur a penalty as set forth in the RLDO.</p>
+</li>
+</ol>
+<h3 id="g-trees-and-new-construction"><a class="header" href="#g-trees-and-new-construction">(G) TREES AND NEW CONSTRUCTION</a></h3>
+<p>The following standards shall be implemented by the Planning Commission during its review and the Planning Commission shall impose conditions of approvals for improvements, subdivisions and lot development approvals:</p>
+<ol>
+<li>
+<p>Each development or lot subdivision in Rivergrove comprised of one or more lots must plant at least one tree per 35’ of frontage on any side of the property that borders a street or vehicular right of way, including driveways or other access. Planting shall be on the lot(s) and in the front yard(s). Exact tree location(s) to ensure thriving trees shall be determined in the development approval process.</p>
+</li>
+<li>
+<p>Trees required to be planted as a result of development are to be chosen from Rivergrove’s Approved Tree List, or a species and variety deemed acceptable to the Planning Commission, as advised by the City Arborist.</p>
+</li>
+<li>
+<p>Trees required to be planted as a result of development shall be subject to the City’s Tree Planting Standards, Survivability, Warranty, and Bonding requirements.</p>
+</li>
+</ol>
+<p><strong>Additional Criteria for Permit Approval of Trees to be Cut or Removed During Development or Improvements:</strong></p>
+<ol start="4">
+<li>
+<p>The Planning Commission shall allow the cutting of trees on an established lot in order to construct proposed improvements or to otherwise utilize the applicant’s property to the extent allowed by law. When an application includes any tree cutting for subdivision, single lot development, or improvements, the Planning Commission shall require a report by a Certified Arborist or a review by the City Arborist regarding the impact of the tree cutting.</p>
+</li>
+<li>
+<p>In a development that involves the creation of more than one lot, the Planning Commission shall require both a report by the developer’s Certified Arborist and a review by the City Arborist.</p>
+</li>
+<li>
+<p>The Planning Commission shall consider requiring the applicant to use an alternate site layout, alternative setbacks, or hardship relief for maximum tree preservation.</p>
+</li>
+<li>
+<p>A tree cutting permit issued for construction of an improvement or utility shall not be valid, and no trees shall be cut, until all building permits or development permits have been issued by the City, County, or any other required approving agencies (local, State, or Federal).</p>
+</li>
+<li>
+<p>All trees on any parcel or lot, other than those to be cut or pruned at the time of development, are considered Protected Trees. The City Arborist or a Certified Arborist shall designate a Tree Protection Zone and require adequate Protective Fencing before work of any kind proceeds at the site.</p>
+</li>
+</ol>
+<h3 id="h-tree-planting-standards-survivability-warranty-and-bonding"><a class="header" href="#h-tree-planting-standards-survivability-warranty-and-bonding">(H) TREE PLANTING STANDARDS, SURVIVABILITY WARRANTY, AND BONDING</a></h3>
+<ol>
+<li>
+<p>All trees planted in conjunction with this Ordinance’s requirements will be planted using the above illustration and meet the following specifications, unless otherwise approved by the Planning Commission and City Arborist.</p>
+</li>
+<li>
+<p>Trees selected for planting shall be free from injury, pests, disease, nutritional disorders or root defects, and be of good vigor, so as to assure a reasonable expectation of survivability.</p>
+</li>
+<li>
+<p>All trees planted must be 2 1/2“ Caliper according to the Ordinance Definitions, unless an appropriate exception or alternate size is granted by the Planning Commission.</p>
+</li>
+<li>
+<p>After planting trees required by this Ordinance, and following acceptance of completion by the Planning Commission, the owner shall warrant the new trees and provide for the replacement of those which did not survive for a period of no less than five (5) years.</p>
+</li>
+<li>
+<p>In the event that new trees proposed to be planted as part of a Mitigation Plan are not installed upon application for final plan approval, then a performance bond or other acceptable surety in an amount equal to one hundred and ten (110) percent of the value of the new trees and their installation shall be posted in accordance with the performance bonding requirements in the Rivergrove Land Development Ordinance.</p>
+</li>
+</ol>
+<h3 id="i-evidence-of-violation"><a class="header" href="#i-evidence-of-violation">(I) EVIDENCE OF VIOLATION</a></h3>
+<ol>
+<li>
+<p>If any tree is removed without a tree cutting permit, a violation shall be determined by measuring the stump. A stump measured at the ground that is 44“ or more in circumference shall be considered prima facie evidence of a violation.</p>
+</li>
+<li>
+<p>Removal of the stump of a tree cut without a cutting permit prior to the measurement determination above is a violation of this ordinance.</p>
+</li>
+<li>
+<p>Proof of violation on a property shall be deemed prima facie evidence that the property owner committed such violation. Prosecution of or failure to prosecute the owner shall not be deemed to relieve any other responsible individual property owner, legal entity, or collective parties.</p>
+</li>
+</ol>
+<h3 id="j-penalties"><a class="header" href="#j-penalties">(J) PENALTIES</a></h3>
+<ol>
+<li>
+<p>Cutting a tree in violation of the Ordinance, breaching the term or conditions of a permit granted under this Ordinance, or violation of any other provision of this Ordinance is an offense punishable by fine not to exceed $5,000.00 per tree. The unlawful cutting of each individual tree is a separate offense.</p>
+</li>
+<li>
+<p>The City retains the authority to require the applicant to replace any illegally removed trees according to an approved Mitigation Plan; to keep such replacement trees alive for a designated period of years and to meet any conditions as set forth by the Planning Commission. No future work, permits, or approvals for any use of the subject property shall be granted without compliance with the Mitigation Plan.</p>
+</li>
+<li>
+<p>The property owner has the burden to prove that the criteria for granting a permit are satisfied or that any cutting is allowed without a permit.</p>
+</li>
+</ol>
+<h3 id="k-relationship-to-other-regulations"><a class="header" href="#k-relationship-to-other-regulations">(K) RELATIONSHIP TO OTHER REGULATIONS</a></h3>
+<ol>
+<li><strong>Relationship to other City, Regional, State and Federal regulations:</strong>
+a. In addition to the requirements of this Ordinance and the City’s Land Development Ordinance, tree cutting and planting actions shall comply with all other City, regional, state, and federal regulations, including the Clean Water Act, Endangered Species Act, and Migratory Bird Treaty Act.
+b. Compliance with this Ordinance does not in any way imply, either directly or indirectly, compliance with any other law. Where the provisions of this Ordinance conflict with those set forth in other regulations under the City code or ordinance, the more restrictive requirement shall prevail. When both provisions are equally restrictive, the most recently adopted requirement shall prevail, except in matters affecting public safety.
+c. References in this ordinance to other City, regional, state, or federal regulations do not constitute a complete list of such regulations. These references do not imply any responsibility by the City for enforcement of regional, state or federal regulations.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ordinances/2017-Ord-88-2017-Docks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../resolutions/1976-Res-22-PC.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ordinances/2017-Ord-88-2017-Docks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../resolutions/1976-Res-22-PC.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../navigation-standalone.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

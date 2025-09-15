@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>#57 Manufactured Homes (1993) - City of Rivergrove Documents</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">City of Rivergrove Documents</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/wifelette/city_of_rivergrove" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ordinance--57-93"><a class="header" href="#ordinance--57-93">ORDINANCE # 57-93</a></h1>
+<p><strong>Siting of Manufactured Homes in the City of Rivergrove</strong></p>
+<p><strong>1.</strong> Manufactured homes are permitted on any lots in the City of Rivergrove on which a single family home would be allowed, as mandated in ORS 197.307. All land in Rivergrove is zoned, “Residential”. A manufactured home must comply with all set-backs, height restrictions, and FEMA elevation requirements which apply to conventionally built homes.</p>
+<p><strong>2. Deed Covenants or Restrictions:</strong> Nothing in these provisions shall be interpreted as superseding deed covenants or restrictions.</p>
+<p><strong>3. Construction and Safety Standards Code:</strong> All current federal (HUD), and state standards for manufactured homes shall apply to manufactured homes placed in Rivergrove.</p>
+<p><strong>4. Specific Requirements:</strong></p>
+<p><strong>A)</strong> The manufactured home shall be multi-sectional, double wide or larger, and enclose a space of not less than 1,000 square feet.</p>
+<p><strong>B)</strong> Bear an insignia of compliance with the Manufactured Housing Construction and Safety Standards Code and be:</p>
+<ul>
+<li><strong>i)</strong> A new or not previously occupied unit, or;</li>
+<li><strong>ii)</strong> Be found upon inspection to be in excellent condition and free of structural, electrical, mechanical, and plumbing defects, and in compliance with federal, state, and county codes in effect at the time; any of which must be corrected prior to placement.</li>
+</ul>
+<p><strong>C)</strong> Transportation mechanisms including wheels, axels and hitches must be removed and stored where they cannot be seen.</p>
+<p><strong>D)</strong> The manufactured home shall be placed on an excavated and back-filled foundation and enclosed at the perimeter so that not more than 12 inches of the enclosing material is exposed above grade, except in the flood plain where base flood elevation may require it to be higher. The perimeter enclosure shall be concrete or masonry material. In addition, the foundation shall include concrete strip footings placed to accommodate interior supports.</p>
+<p><strong>E)</strong> The manufactured home shall have a roof with a nominal pitch of at least three feet in height for each 12 feet in width. Eaves must extend at least six inches from the intersection of the roof and the exterior walls, and have a four inch continuous gutter.</p>
+<p><strong>F)</strong> The manufactured home shall have exterior siding and roofing which is similar to the exterior siding and roofing material commonly used in the community.</p>
+<p><strong>G)</strong> The manufactured home shall have either an attached or detached garage constructed at the same time the manufactured home is placed on the site or prior to occupancy. The garage shall be constructed of like materials as the manufactured home. An attached carport shall be allowed if more than 50 percent of homes within 300 feet do not have garages.</p>
+<p><strong>H)</strong> The manufactured home either shall be certified by the manufacturer or under the “Super Good Cents” or “Manufactured Housing Acquisition” programs, to have an exterior thermal envelope meeting the heat loss reduction level required for single family dwellings under the State Building Code.</p>
+<p><strong>5. Placement Permit</strong></p>
+<p><strong>A)</strong> Requirements: Prior to the placement of any manufactured home, the homeowner, or authorized representative shall secure from the City of Rivergrove a placement permit which states that the building and its location conform with these and other relevant standards of the Rivergrove Development Code.</p>
+<p>Each application for a placement permit shall be accompanied by:</p>
+<ol>
+<li>
+<p>A plot plan as required for all dwelling units and elevations or photographs of all sides of the home; drawings showing exterior dimensions; information illustrating the type of roofing and siding materials, foundation support system, and foundation enclosure method and materials.</p>
+</li>
+<li>
+<p>A copy of the manufacturer’s approved instructions to be used for installation purposes.</p>
+</li>
+<li>
+<p>An agreement signed by the homeowner or authorized representative pledging compliance with the terms of the placement permit.</p>
+</li>
+<li>
+<p>A completed pre-placement elevation certificate if the property is in the flood plain. A second post-placement elevation certificate must be submitted prior to occupancy.</p>
+</li>
+</ol>
+<p><strong>B)</strong> Consideration by the Rivergrove Planning Commission and City Council of the permit application will proceed in the same manner as for a single family dwelling.</p>
+<p><strong>C)</strong> Signing-off on Permit - Following receipt of the required information, the Planning Commission and the City Council shall sign and forward the placement permit to Clackamas County within ten days if all requirements have been met.</p>
+<p><strong>D)</strong> Denial and Revocation of Permit - The City of Rivergrove shall deny a placement permit which does not provide the proper information or which proposes to site a manufactured home not in conformance with the requirements of this code.</p>
+<p>The City of Rivergrove shall request Clackamas County revoke a placement permit which was issued on the basis of incorrect or misleading information. The applicant shall cease work on the placement and/or occupancy of the unit and reapply for a placement permit and pay any required fees within five working days of written notification of revocation. If either the City of Rivergrove or Clackamas County determines that it is not possible for the placement of the manufactured home itself to meet the requirements of this code, then it shall be removed from the site within fifteen working days of written notice.</p>
+<hr />
+<p><strong>WHEREAS</strong> the siting of manufactured homes on all lots zoned for single family residential is now mandated by ORS 197.307,</p>
+<p><strong>WHEREAS</strong> the City of Rivergrove wishes to be in compliance with this law,</p>
+<p><strong>WHEREAS</strong> public notice was given by posting information about this ordinance and these hearings at three places in the City of Rivergrove,</p>
+<p><strong>WHEREAS</strong> two public hearings were held on December 6, 1993 and December 13, 1993,</p>
+<p><strong>THEREFORE</strong> let it now be ordained that Ordinance #57-93 is passed at a regularly scheduled meeting of the Rivergrove City Council, the 13th day of December 1993.</p>
+<p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Steven Miller, Mayor</p>
+<p><span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Susan Grayston-Miller, City Recorder</p>
+<hr />
+<h2 id="document-notes"><a class="header" href="#document-notes">Document Notes</a></h2>
+<p>The source document for this Ordinance is in ALL CAPITAL LETTERS as was sometimes the way it was done years ago. It has been converted to standard titlecase for readability, though the ALL CAPS format remains retained in the source PDF.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ordinances/1989-Ord-54-89C-Land-Development.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ordinances/1989-Ord-54-89C-Land-Development.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../ordinances/1998-Ord-59-97A-Land-Development-Amendment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../navigation-standalone.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

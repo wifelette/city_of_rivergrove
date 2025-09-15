@@ -1,0 +1,66 @@
+/* Sidebar Resize Handle - Functional but Subtle */
+
+/* Make the resize handle visible and functional */
+#sidebar-resize-handle,
+.sidebar-resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: col-resize;
+    background: transparent;
+    transition: background 0.2s;
+    z-index: 200;
+}
+
+/* Visual feedback on hover */
+#sidebar-resize-handle:hover,
+.sidebar-resize-handle:hover {
+    background: rgba(70, 70, 70, 0.2);
+}
+
+/* Active state while dragging */
+.sidebar-resizing #sidebar-resize-handle,
+.sidebar-resizing .sidebar-resize-handle {
+    background: rgba(70, 70, 70, 0.3);
+}
+
+/* Add a subtle visual indicator */
+#sidebar-resize-handle::after,
+.sidebar-resize-handle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 30px;
+    background: rgba(70, 70, 70, 0.3);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#sidebar-resize-handle:hover::after,
+.sidebar-resize-handle:hover::after {
+    opacity: 1;
+}
+
+/* Ensure the sidebar itself is positioned correctly */
+.sidebar {
+    position: relative;
+}
+
+/* Prevent text selection while resizing */
+.sidebar-resizing {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Ensure proper cursor during resize */
+.sidebar-resizing * {
+    cursor: col-resize !important;
+}

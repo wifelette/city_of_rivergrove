@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>2018-12-09 - Minutes - City of Rivergrove Documents</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A searchable repository of all City of Rivergrove ordinances, resolutions, and interpretations">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">City of Rivergrove Documents</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/wifelette/city_of_rivergrove" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="rivergrove-city-council-meeting-minutes"><a class="header" href="#rivergrove-city-council-meeting-minutes">Rivergrove City Council Meeting Minutes</a></h1>
+<p>December 10, 2018</p>
+<h2 id="call-to-order-and-roll-call"><a class="header" href="#call-to-order-and-roll-call">Call to Order and Roll Call</a></h2>
+<p>The meeting was called to order at River Grove Elementary School at 7:01 p.m.</p>
+<p><strong>Present:</strong> Mayor Heather Kibbey, Council President Arne Nyberg, and Councilors Carolyn Bahrman, Brenda Ruble, and Bill Tuttle were present. City Attorney Bill Kabeiseman was also present. City Recorder Leanne Moll declared a quorum.</p>
+<h2 id="tualatin-valley-fire--rescue-state-of-the-fire-district-presentation"><a class="header" href="#tualatin-valley-fire--rescue-state-of-the-fire-district-presentation">Tualatin Valley Fire &amp; Rescue State of the Fire District Presentation</a></h2>
+<p>Representatives from Tualatin Valley Fire &amp; Rescue presented the State of the Fire District. Fire Station 39 on 65th Avenue will begin construction soon and is projected to be completed by December 2019.</p>
+<h2 id="unfinished-business"><a class="header" href="#unfinished-business">Unfinished Business</a></h2>
+<h3 id="1-review-of-notice-of-decision-for-a-development-permit-application-for-a-duplex-at-19232-pilkington-road"><a class="header" href="#1-review-of-notice-of-decision-for-a-development-permit-application-for-a-duplex-at-19232-pilkington-road">1. Review of Notice of Decision for a development permit application for a duplex at 19232 Pilkington Road</a></h3>
+<p>City Attorney Bill Kabeiseman presented the findings of fact and notice of decision for the duplex. Council had no further comments.</p>
+<p><strong>Motion:</strong> Councilor Tuttle <strong>moved</strong> to approve the final findings of facts for the development permit for a duplex at 19232 Pilkington Road as presented. Councilor Bahrman <strong>seconded</strong>. The <strong>motion passed 5-0</strong>.</p>
+<h3 id="2-continuation-of-the-type-iv-hearing-for-a-proposed-ordinance-regulating-tree-cutting-city-file-2018-01"><a class="header" href="#2-continuation-of-the-type-iv-hearing-for-a-proposed-ordinance-regulating-tree-cutting-city-file-2018-01">2. Continuation of the Type IV Hearing for a proposed ordinance regulating tree cutting (City File 2018-01)</a></h3>
+<p>City Attorney Bill Kabeiseman explained that the hearing was continued from the November 14, 2018 City Council meeting at the request of a resident. He noted that the proposed ordinance provides amendments to the tree cutting provision as part of the RLDO. He explained to Council and the community that the hearing was not a quasi-judicial hearing, but a legislative decision that sets laws for the community. Since this is a legislative matter, Councilors are expected to have bias on the matter. He explained, though, that Councilors must disclose any conflicts of interest. In particular, financial interests should not be affected by the decision.</p>
+<p>Mr. Kabeiseman continued to explain that the Tree Ordinance is an interesting case because almost everyone has trees on their property and those trees impact home values. Mr. Kabeiseman explained that state law has a class exemption that removes the conflict of interest concern. A Councilor may declare a conflict of interest if they’re concerned, they may benefit from the approval of the ordinance. If they are certain to receive financial gain, then they must not participate. However, Councilors who have trees on their property and are not sure if they will be affected or their trees will be affected are protected by the class exemption.</p>
+<p><strong>Dave Pierce, 5700 Childs Road, Rivergrove, Oregon.</strong></p>
+<p>Mr. Pierce spoke as a representative of the Tree Ordinance Committee. He noted that the ordinance has been revised over twelve times in the past two years. He explained that he could not incorporate all the public comments into the ordinance, but he attempted to represent the preferences of the residents who testified and provided written comments. He clarified that the Comprehensive Plan was the guiding force that prompted the revision of the ordinance. He also explained that the City had a need to provide guidance in the Water Quality Resource Area (WQRA) because of FEMA regulations. He noted that he incorporated those regulations into the ordinance while recognizing and honoring home owners’ rights.</p>
+<p>Councilor Nyberg commended Mr. Pierce for his work on the ordinance. For the purpose of the application and record-keeping, Councilor Nyberg requested that the proposed ordinance require that the City Manager be informed of any tree removal in the City.</p>
+<p><strong>Proponents:</strong></p>
+<p>None.</p>
+<p><strong>Neutral:</strong></p>
+<p><strong>Jacob McKay, 19310 Riverwood Lane, Rivergrove, Oregon.</strong></p>
+<p>Mr. McKay noted that he is an HOA president and represents 32 homes. He said that he has concerns that the ordinance was revised and was not sent back to the Planning Commission, which is the body that will be enforcing the ordinance.</p>
+<p>He also explained that he has concerns about many places in the ordinance that he considers to be unclear, including: confusion about different sizes of trees; lack of definitions; unchecked power of the City Arborist; burden placed on the Planning Commission to make significant decisions; additional expenses for homeowners; street tree mandates; performance bond requirements; and lack of representation of property owners. He explained that the ordinance holds no stake for the landowners’ property values.</p>
+<p>He concluded by stating that he believes that it would be disrespectful for Council to move forward with the ordinance without consulting or sending the ordinance back to the Planning Commission for further review.</p>
+<p>City Attorney Bill Kabeiseman asked Mr. McKay to clarify if his testimony was representing the HOA or his individual beliefs. Mr. McKay replied that he was not officially representing the HOA at the hearing.</p>
+<p><strong>Opposed:</strong></p>
+<p><strong>Mary Mann, 5215 Childs Road, Rivergrove, OR.</strong></p>
+<p>Ms. Mann began her testimony by claiming that the Planning Commission’s recommendation and comments [from the November 5, 2018 meeting] were not presented to City Council and what was discussed at the Planning Commission meeting was not disclosed to residents.</p>
+<p>She explained that the Planning Commission requested Council to maintain and slightly amend <a href="../ordinances/2001-Ord-70-2001-WQRA.html">Ordinance 70-2004</a> because the older ordinance will make the Planning Commissioner’s jobs easier and that it will save residents money on tree removal fees.</p>
+<p>Ms. Mann also shared that she believes the City needs separate ordinances for private tree care and public tree care. She thinks it is unwise to “trick” the public with difficult language and admitted that the most recent draft of the ordinance was too complicated for her. She reiterated that most residents had no comprehension of the tree ordinance’s content when she canvassed the community in September. She believes that breaking the ordinances into two separate ordinances will also make it easier to amend the issues.</p>
+<p>Ms. Mann shared other points that she would like Council to consider:</p>
+<ul>
+<li>The language that stipulates only an arborist may remove trees and not a timber worker is overreaching and should be removed.</li>
+<li>The steep fines of up to $5000 open the City up to legal issues.</li>
+<li>In Policy 12, Ms. Mann questioned who determined that native trees are more valuable than non-native trees.</li>
+</ul>
+<p>Ms. Mann urged Council to continue working on the ordinance and to clarify the City’s priorities. She asked Council to define and work on the sections that are most urgent.</p>
+<p>Ms. Mann concluded by reiterating the recommendation of the Planning Commission and requesting that Council amend <a href="../ordinances/2001-Ord-70-2001-WQRA.html">Ordinance 70-2004</a> by adjusting the language concerning the WQRA and flood hazard zones.</p>
+<p><strong>Michael Salch, 5255 Childs Road, Rivergrove, Oregon.</strong></p>
+<p>Mr. Salch stated that he believes the system is ineffective and the process the City followed to create a revised tree cutting ordinance lacked scope. He shared his concern that Council was amending a tree ordinance that amends a prior ordinance that amends a comprehensive plan that had been repealed. He explained that he believes the tree ordinance should be one, stand-alone document. He believes if the ordinance stood alone, it would save City staff and residents times.</p>
+<p>Mayor Kibbey asked Mr. Salch if the proposed ordinance was not one document.</p>
+<p>Mr. Salch noted that the proposed ordinance does not repeal, but it amends. He continued by explaining that he believes the proposed ordinance repeals a tree ordinance that was approved by a repealed comprehensive plan, thus making the proposed tree ordinance illegitimate.</p>
+<p>Mr. Salch also claimed that the revised tree cutting ordinance needs to be sent back to the Planning Commission. He stated that the City has adopted three citizen’s involvement programs: the current Comprehensive Plan acknowledges a citizen’s involvement program; DLCD statewide goals represent a second citizen’s involvement program; and Ordinance 22 (which is older) and is not included in the current Comprehensive Plan. Mr. Salch noted that based on the Comprehensive Plan, the Planning Commission is the de facto citizen’s involvement program. He claimed that the most recent draft of the proposed ordinance has not been a part of any of the three citizen’s involvement program.</p>
+<p>Mr. Salch also noted that he counted sixteen references to the City Arborist in the proposed tree cutting ordinance; however, he claimed, the City’s contract with the City Arborist expired twenty-two months ago.</p>
+<p>Mr. Salch concluded that he expected that the City could do better and explained that he believed the system should work differently than in the current process.</p>
+<p><strong>Motion:</strong> Councilor Bahrman <strong>moved</strong> to close the public record. Councilor Tuttle <strong>seconded</strong>. <strong>Moved 5-0</strong>.</p>
+<p>City Attorney Bill Kabeiseman explained that “periodic review” was a requirement, but there is no requirement from the state that the City engage in “periodic review.” In the Comprehensive Plan, it is suggested that the City update the Comprehensive Plan every ten years, but it is not required.</p>
+<p>Mr. Kabeiseman clarified the relationship between the Comprehensive Plan and the City ordinances. He explained that Mr. Salch is correct. The City creates a Comp Plan and it is approved by DLCD. Then the City creates ordinances. The expired Comprehensive Plan was repealed in 2011, but the RLDO was not repealed at the time. The old ordinances are still in effect and the older ordinances were acknowledged. In this case, the City is rewriting portions of the tree cutting ordinance. This is on the basis of the new Comprehensive Plan. This is the start or continuation of the implementation of the new Comprehensive Plan. The City is updating the ordinances “part by part,” and there is no conflict with adopting this ordinance with the current Comprehensive Plan.</p>
+<p>Mayor Kibbey asked Mr. Kabeiseman if there was any problem with the word “amending.”</p>
+<p>Mr. Kabeiseman replied that the proposed ordinance is repealing and amending one section – Section 5.100. This is clearly stated in the “Ordaining clause” in the ordinance that begins with “Now therefore the City of Rivergrove… “</p>
+<p>Mayor Kibbey noted that the ordinance had been sent to DLCD in July 2018 and updated drafts were also provided to DLCD, even though it was not required.</p>
+<p>Councilor Tuttle asked if there is there a statute of limitation to appeal the ordinance if it were approved.</p>
+<p>Mr. Kabeiseman replied that an appellant would need to provide testimony when the public record is open and would have twenty-one (21) days to appeal to the Land Use Board of Appeal (LUBA) after the City provides the final draft.</p>
+<p>Mayor Kibbey asked if all drafts and subsequent changes to the ordinance need to go back to the Planning Commission after the Tree Ordinance Committee or City Council have revised and updated the ordinance.</p>
+<p>Mr. Kabeiseman explained that Rivergrove has adopted State Goal 1 for citizen involvement, which designates the Planning Commission as the citizen involvement committee. In <a href="../resolutions/1976-Res-22-PC.html">Resolution 22</a>, the City adopted a further citizen involvement program. There is no conflict. There is a broad policy in the comprehensive plan that is then implemented in resolutions and ordinances. Mr. Kabeiseman noted that <a href="../resolutions/1976-Res-22-PC.html">Resolution 22</a> is legally sufficient as a citizen involvement program.</p>
+<p>He explained that ordinances begin as proposals and the Planning Commission makes a recommendation to Council. In this instance the Planning Commission’s recommendation was to reject the tree ordinance. Based on citizen and Commissioner feedback, the Tree Ordinance Committee brought a revised draft to Council along with the Planning Commission’s recommendation. If Council makes changes, the ordinance does not have to go back to the Planning Commission for consideration. City Council could choose to send the ordinance back, but it is not required.</p>
+<p>Mayor Kibbey noted that the current Planning Commission is so new, they do not understand how the ordinance originated. She explained that the revised tree cutting permit process was requested by the Planning Commission because they were having such a difficult time handling tree removal requests within development permit applications. The tree issues in the flood plain and the WQRA also impacted the ease of processing applications. That is how the revised tree ordinance originated. Mayor Kibbey explained that by the time the tree ordinance arrived to the Planning Commission in fall 2018, the Planning Commission was comprised of almost entirely new members.</p>
+<p>Councilor Ruble explained that she attended a Planning Commission meeting three years ago where the Commissioners were concerned about the lack of guidance for the Planning Commission in handling tree removal requests and mitigation. She noted that Council does not bring forward legislation unless there is a request.</p>
+<p>Councilor Bahrman noted that every time Council revises legislation, there are residents that oppose it. Councilor Bahrman reminded the Council that Mr. Pierce incorporated all comments that were aligned with the Comprehensive Plan. The Tree Ordinance Committee has worked hard for a long time on the ordinance.</p>
+<p>Councilor Ruble expressed that she was concerned that the Planning Commission was not on board with the proposed ordinance because they are the city volunteers that will need to implement the tree ordinance.</p>
+<p>Councilor Bahrman noted that the City does not have a consistent planning commission and changes in the Planning Commission could lead to a never-ending series of ordinance drafts. Councilor Bahrman explained that at some point, the City needs to move forward.</p>
+<p>Addressing Ms. Mann, Mayor Kibbey explained that the $5000 fee was implemented because the developer of Beacons Riversedge Woods removed all the trees that were meant to be retained. Rivergrove only had a $1000 fee in its ordinance at that time, and the developer was happy to just pay the fee and remove the trees. The Planning Commission did not even receive the fee, but received some mitigation trees.</p>
+<p>Mayor Kibbey provided another example: A resident removed a tree and made a mistake and the owner came in to the Planning Commission to apologize. The Planning Commission did not exercise a fee. The proposed ordinance also has that latitude.</p>
+<p>Mr. Kabeiseman explained that the more latitude that a City gives, the more possibility of the unfairness of discretion. For example, criminal sentencing guidelines limit the ability to have discretion or latitude to be fairer. Mayor Kibbey asked if that were the case would LUBA step in? Mr. Kabeiseman explained that if someone believes their rights were violated some complaints go to LUBA and some go to circuit court.</p>
+<p>Councilor Tuttle asked if Council should try and pass something or amend something and try to send it back to the Planning Commission. Councilor Ruble expressed that she would like to see the proposed ordinance go back to the Planning Commission.</p>
+<p>Mayor Kibbey and Carolyn Bahrman noted that they would not like the ordinance to go back to the Planning Commission. Mayor Kibbey commented that the ordinance has been back to the Planning Commission for three years with no progress. She explained that the long process has been costing the City a lot of money. Councilor Nyberg agreed. He stated that he thinks the current iteration of the ordinance is clean, effective, thorough, and “holds water.”</p>
+<p>Councilor Ruble asked about the comments that had been sent to the Councilors earlier that day from former Tree Ordinance Committee member and Vice Chair of the Planning Commission, Jonathan Sweet. Councilor Tuttle explained that he commented on Mr. Sweet’s notes.</p>
+<p>Mr. Kabeiseman suggested that in the most recent iteration of the ordinance, dated December 6, 2018, the Councilors go through each comment from Mr. Sweet and Mr. Tuttle together to see if they can come to accordance.</p>
+<p>Council read through several sections of the proposed ordinance and made several changes to the word-choice, syntax, and grammar of the ordinance. They also made clarifying edits. Most notably the sections titled “Severability” and “Liability” were stricken in their entirety.</p>
+<p><strong>Motion:</strong> Councilor Nyberg <strong>moved</strong> that <a href="../ordinances/2018-Ord-89-2018-Tree-Cutting-Amendment.html">Ordinance #89-2018</a> [City file 2018-01] be adopted and read for the first reading in title only. The motion was <strong>seconded</strong> by Councilor Tuttle.</p>
+<p>Mayor Kibbey read the ordinance by title only.</p>
+<p><strong>Motion:</strong> Councilor Nyberg <strong>moved</strong> that <a href="../ordinances/2018-Ord-89-2018-Tree-Cutting-Amendment.html">Ordinance #89-2018</a> be a read for the second reading, title only. The motion was <strong>seconded</strong> by Councilor Tuttle.</p>
+<p>Mayor Kibbey read the ordinance by title only for the second time.</p>
+<p><strong>Motion:</strong> Councilor Nyberg <strong>moved</strong> that <a href="../ordinances/2018-Ord-89-2018-Tree-Cutting-Amendment.html">Ordinance #89-2018</a> be a read for the third reading, title only. The motion was <strong>seconded</strong> by Councilor Tuttle.</p>
+<p>Mayor Kibbey read the ordinance by title only for the third time.</p>
+<p><strong>Motion:</strong> Councilor Nyberg <strong>moved</strong> to adopt <a href="../ordinances/2017-Ord-88-2017-Docks.html">Ordinance 88-2018</a> with the changes Council discussed. <strong>Seconded</strong> by Councilor Tuttle. The <strong>motion passed 5-0</strong>.</p>
+<h3 id="3-resolution-259-2018-fee-schedule-and-agreement-to-meet-costs-of-development-tree-cutting-and-appeal"><a class="header" href="#3-resolution-259-2018-fee-schedule-and-agreement-to-meet-costs-of-development-tree-cutting-and-appeal">3. Resolution 259-2018: Fee Schedule and Agreement to Meet Costs of Development, Tree Cutting, and Appeal</a></h3>
+<p>City Attorney Bill Kabeiseman explained that <a href="../resolutions/2018-Res-259-Planning-Development-Fees.html">Resolution 259-2018</a> is a revision of the fee schedule to include the tree cutting costs of the new ordinance. Mr. Kabeiseman noted that the City should consider striking the arbitration section of the payment agreement at a later date.</p>
+<p><strong>Motion:</strong> Councilor Nyberg <strong>moved</strong> to adopt <a href="../resolutions/2018-Res-259-Planning-Development-Fees.html">Resolution 259-2018</a>. <strong>Seconded</strong> by Councilor Ruble. The <strong>motion passed 5-0</strong>.</p>
+<h2 id="new-business"><a class="header" href="#new-business">New Business</a></h2>
+<p>None.</p>
+<h2 id="public-comment-on-non-agenda-items"><a class="header" href="#public-comment-on-non-agenda-items">Public Comment on Non-Agenda Items</a></h2>
+<p>None.</p>
+<h2 id="consent-agenda"><a class="header" href="#consent-agenda">Consent Agenda</a></h2>
+<h3 id="1-minutes-from-the-november-14-2018-city-council-meeting"><a class="header" href="#1-minutes-from-the-november-14-2018-city-council-meeting">1. Minutes from the November 14, 2018 City Council Meeting</a></h3>
+<p><strong>Motion:</strong> Councilor Nyberg moved to accept the November 14, 2018 minutes with the following amendment. Councilor Tuttle <strong>seconded</strong> the motion. It <strong>passed 4-0</strong>. Councilor Ruble abstained.</p>
+<ol>
+<li>Note that there was an inconsistency in the duplex plans presented to Council.</li>
+</ol>
+<h3 id="2-financials--november-2018"><a class="header" href="#2-financials--november-2018">2. Financials – November 2018</a></h3>
+<p><strong>Motion:</strong> Mayor Kibbey moved to accept the November 2018 financials as presented. Councilor Nyberg. <strong>seconded</strong> the motion. <strong>It passed 5-0</strong>.</p>
+<h2 id="planning-commission-report"><a class="header" href="#planning-commission-report">Planning Commission Report</a></h2>
+<p>None.</p>
+<h2 id="committee-reports"><a class="header" href="#committee-reports">Committee Reports</a></h2>
+<h3 id="1-transportation"><a class="header" href="#1-transportation">1. Transportation</a></h3>
+<p>Councilor Bahrman clarified that she will no longer continue to be the transportation chair after her term is over. She is happy to provide guidance to her successor.</p>
+<h3 id="2-parks"><a class="header" href="#2-parks">2. Parks</a></h3>
+<p>Mr. Nyberg noted that the water was shut off in all the City parks. The water at Lloyd Minor Park may be turned back on briefly due to construction on his property across from the park.</p>
+<p>Mr. Nyberg shared that he recently planed a two-inch caliper willow oak that was donated by the Grey to Green group in Portland at no cost to City. He said it was a very nice 16’ tree. He dedicated it to his new granddaughter Coco.</p>
+<h3 id="3-giving"><a class="header" href="#3-giving">3. Giving</a></h3>
+<p>None.</p>
+<h2 id="councilors-reports"><a class="header" href="#councilors-reports">Councilors’ Reports</a></h2>
+<p>Mayor Kibbey thanked Council for all work and commended the current Council for all of the wonderful things they have done for the community. She noted that Council has been frugal and able to save money to improve road safety. Council also bought a new four-acre park on the Tualatin River for only $7,000. Overall, the current Council had a successful and productive run.</p>
+<h2 id="adjournment"><a class="header" href="#adjournment">Adjournment</a></h2>
+<p><strong>Motion:</strong> Councilor Nyberg moved to adjourn the meeting. <strong>Seconded</strong> by Councilor Bahrman.</p>
+<p>The <strong>motion passed 5-0</strong>.</p>
+<p>The meeting was adjourned at 9:36 p.m.</p>
+<p>Respectfully submitted,<br />
+Leanne Moll<br />
+City Manager/City Recorder</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../minutes/2018-08-13-Minutes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../transcripts/2024-02-12-Transcript.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../minutes/2018-08-13-Minutes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../transcripts/2024-02-12-Transcript.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../navigation-standalone.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

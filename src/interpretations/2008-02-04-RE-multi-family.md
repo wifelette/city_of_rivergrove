@@ -1,4 +1,4 @@
-# Interpretation of [Ordinance 68-2000](../ordinances/2000-Ord-68-2000-Metro-Compliance.md) (2008-02-04)
+# Interpretation of Ordinance 68-2000 (2008-02-04)
 
 **Whereas** the City of Rivergrove adopted [Ordinance 68-2000](../ordinances/2000-Ord-68-2000-Metro-Compliance.md) on October 16, 2000, adding Section 5.075 to the Land Development Ordinance (RLDO) to establish minimum and maximum residential densities in areas outside the Flood Hazard District; and
 

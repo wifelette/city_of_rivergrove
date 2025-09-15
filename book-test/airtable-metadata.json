@@ -2,9 +2,9 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-09-15T08:59:52.232003",
-    "last_updated": "2025-09-15T14:23:12.964128",
+    "last_updated": "2025-09-15T12:49:45.885275",
     "total_records": 43,
-    "last_partial_update": "2025-09-15T14:23:12.964081",
+    "last_partial_update": "2025-09-15T12:49:45.885224",
     "incremental_updates": [
       {
         "filename": "1974-Ord-#16-Parks.md",
@@ -21,10 +21,6 @@
       {
         "filename": "1987-Ord-#52-Flood.md",
         "updated_at": "2025-09-15T12:49:45.885226"
-      },
-      {
-        "filename": "1987-Ord-#52-Flood.md",
-        "updated_at": "2025-09-15T14:23:12.964082"
       }
     ]
   },
