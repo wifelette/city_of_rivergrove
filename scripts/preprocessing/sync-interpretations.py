@@ -15,23 +15,29 @@ from pathlib import Path
 def process_form_fields(content):
     """
     Convert form field syntax to inline HTML during sync.
-    
+
     Converts:
     - {{filled:}} -> <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
     - {{filled:text}} -> <span class="form-field-filled" data-tooltip="Field filled in on source doc">text</span>
+    - {{signature}} -> <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>
     """
     # Handle empty fields first
-    content = re.sub(r'\{\{filled:\s*\}\}', 
-                    '<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>', 
+    content = re.sub(r'\{\{filled:\s*\}\}',
+                    '<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>',
                     content)
-    
+
     # Handle filled fields
     def replace_filled(match):
         text = match.group(1).strip()
         return f'<span class="form-field-filled" data-tooltip="Field filled in on source doc">{text}</span>'
-    
+
     content = re.sub(r'\{\{filled:([^}]+)\}\}', replace_filled, content)
-    
+
+    # Convert {{signature}} to styled signature mark with line break
+    content = re.sub(r'\{\{signature\}\}',
+                     '<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>',
+                     content)
+
     return content
 
 def sync_interpretations():
