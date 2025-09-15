@@ -178,8 +178,8 @@ When base flood elevation data has not been provided in accordance with Section 
 
 (1) Where base flood elevation data is provided through the Flood Insurance Study or required as in Section 4.3-2, obtain and record the actual elevation (in relation to mean sea level) of the lowest floor (including basement) of all new or substantially improved structures, and whether or not the structure contains a basement.
 (2) For all new or substantially improved floodproofed structures:
-(i) verify and record the actual elevation (in relation to mean sea level), and
-(ii) maintain the floodproofing certifications required in Section 4.1(3).
+   (i) verify and record the actual elevation (in relation to mean sea level), and
+   (ii) maintain the floodproofing certifications required in Section 4.1(3).
 (3) Maintain for public inspection all records pertaining to the provisions of this ordinance.
 
 #### 4.3-4 Alteration of Watercourses
@@ -196,9 +196,9 @@ Make interpretations where needed, as to exact location of the boundaries of the
 #### 4.4-1 Appeal Board
 
 (1) The {{filled:City Council}} as established by {{filled:Rivergrove}} shall hear and decide appeals and requests for variances from the requirements of this ordinance.
-(2) The {{filled:City Counci}} shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
+(2) The {{filled:City Council}} shall hear and decide appeals when it is alleged there is an error in any requirement, decision, or determination made by the Planning Commission in the enforcement or administration of this ordinance.
 (3) Those aggrieved by the decision of the {{filled:City Council}} or any taxpayer, may appeal such decision to the {{filled:Land Use Board of Appeals}}, as provided in State law.
-(4) In passing upon such applications, the {{filled:City Counci}} shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
+(4) In passing upon such applications, the {{filled:City Council}} shall consider all technical evaluations, all relevant factors, standards specified in other sections of this ordinance, and:
 (i) the danger that materials may be swept onto other lands to the injury of others;
 (ii) the danger to life and property due to flooding or erosion damage;
 (iii) the susceptibility of the proposed facility and its contents to flood damage and the effect of such damage on the individual owner;
@@ -274,9 +274,9 @@ In all areas of special flood hazards where base flood elevation data has been p
 
 (1) New construction and substantial improvement of any residential structure shall have the lowest floor, including basement, elevated to or above base flood elevation.
 (2) Fully enclosed areas below the lowest floor that are subject to flooding are prohibited, or shall be designed to automatically equalize hydrostatic flood forces on exterior walls by allowing for the entry and exit of floodwaters. Designs for meeting this requirement must either be certified by a registered professional engineer or architect or must meet or exceed the following minimum criteria:
-(i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
-(ii) The bottom of all openings shall be no higher than one foot above grade.
-(iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
+   (i) A minimum of two openings having a total net area of not less than one square inch for every square foot of enclosed area subject to flooding shall be provided.
+   (ii) The bottom of all openings shall be no higher than one foot above grade.
+   (iii) Openings may be equipped with screens, louvers, or other coverings or devices provided that they permit the automatic entry and exit of floodwaters.
 
 #### 5.2-2 Nonresidential Construction
 

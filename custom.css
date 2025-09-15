@@ -1175,20 +1175,23 @@ ol li::marker {
 .list-marker-numeric,
 .list-marker-roman {
     color: var(--color-primary, #0969da);
-    font-weight: bold;
-    margin-right: 0.5em;
+    margin-right: 0.25em;
     display: inline-block;
-    min-width: 2em;
 }
 
-/* Alpha markers might need slightly different spacing */
+/* Numeric markers */
+.list-marker-numeric {
+    min-width: 1.5em;
+}
+
+/* Alpha markers */
 .list-marker-alpha {
-    min-width: 2.5em;
+    min-width: 1.5em;
 }
 
-/* Roman numerals can be wider */
+/* Roman numerals - most are narrow except for larger numbers */
 .list-marker-roman {
-    min-width: 3em;
+    min-width: 1.75em;
 }
 
 /* ========================================
