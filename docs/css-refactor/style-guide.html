@@ -1582,10 +1582,16 @@ Attest:
                         // But exclude document references like "Ordinance #301"
                         const text = node.nodeValue;
                         if (/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/.test(text)) {
-                            // Check if it's preceded by Ordinance, Resolution, or Interpretation
-                            if (!/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)\s+#[0-9a-fA-F]{3}\b/.test(text)) {
-                                return NodeFilter.FILTER_ACCEPT;
+                            // Check parent element's full text for document references
+                            let contextText = text;
+                            if (node.parentElement && node.parentElement.parentElement) {
+                                contextText = node.parentElement.parentElement.textContent;
                             }
+                            // Skip if this appears to be a document reference
+                            if (/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)[\s\S]{0,50}#[0-9a-fA-F]{3}\b/.test(contextText)) {
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                            return NodeFilter.FILTER_ACCEPT;
                         }
                         return NodeFilter.FILTER_REJECT;
                     }
@@ -1601,8 +1607,12 @@ Attest:
             // Replace color codes with enhanced versions
             nodesToReplace.forEach(textNode => {
                 const text = textNode.nodeValue;
-                // Skip if this is a document reference
-                if (/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)\s+#[0-9a-fA-F]{3}\b/.test(text)) {
+                // Skip if this is a document reference - check broader context
+                let contextText = text;
+                if (textNode.parentElement && textNode.parentElement.parentElement) {
+                    contextText = textNode.parentElement.parentElement.textContent;
+                }
+                if (/(?:Ordinance|Resolution|Interpretation|Ord|Res|Int)[\s\S]{0,50}#[0-9a-fA-F]{3}\b/.test(contextText)) {
                     return;
                 }
 
