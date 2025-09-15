@@ -767,7 +767,7 @@ class StandaloneNavigation {
                 // For resolutions, prefer short_title if available, otherwise just the number
                 if (airtableData.short_title) {
                     // Use doc number + short title for a clean display
-                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> - <span class="doc-title">${airtableData.short_title}</span>`;
+                    displayText = `<span class="doc-number">#${airtableData.doc_number}</span> <span class="doc-title">${airtableData.short_title}</span>`;
                 } else if (airtableData.doc_number) {
                     // Fall back to just the number
                     displayText = `<span class="doc-number">#${airtableData.doc_number}</span>`;
