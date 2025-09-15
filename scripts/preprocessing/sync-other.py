@@ -16,7 +16,7 @@ def process_form_fields(content):
     Converts:
     - {{filled:}} -> <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
     - {{filled:text}} -> <span class="form-field-filled" data-tooltip="Field filled in on source doc">text</span>
-    - {{signature}} -> <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>
+    - {{signature}} -> <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>
     """
     # Handle empty fields first
     content = re.sub(r'\{\{filled:\s*\}\}',
@@ -30,9 +30,9 @@ def process_form_fields(content):
 
     content = re.sub(r'\{\{filled:([^}]+)\}\}', replace_filled, content)
 
-    # Convert {{signature}} to styled signature mark with line break
+    # Convert {{signature}} to styled signature mark
     content = re.sub(r'\{\{signature\}\}',
-                     '<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br/>',
+                     '<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span>',
                      content)
 
     return content
