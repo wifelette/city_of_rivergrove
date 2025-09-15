@@ -541,7 +541,7 @@ class AirtableSync:
             remaining = name[num_end_idx:].lstrip('-')
             topic = remaining.replace('-', ' ').title() if remaining else "Unknown"
             
-            return f"{doc_type} #{num} - {topic} ({year})"
+            return f"{doc_type} #{num} {topic} ({year})"
         
         # Fallback to cleaned filename
         return name.replace('-', ' ').replace('#', '').title()

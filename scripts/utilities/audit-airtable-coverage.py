@@ -95,7 +95,7 @@ def extract_document_name(filename, doc_type):
             year, number, topic = match.groups()
             # Clean up topic
             topic = topic.replace("-", " ").title()
-            return f"{doc_type} #{number} - {topic} ({year})"
+            return f"{doc_type} #{number} {topic} ({year})"
     
     return name.replace("-", " ").title()
 
