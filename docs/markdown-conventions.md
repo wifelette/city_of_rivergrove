@@ -57,9 +57,9 @@ Or for general notes:
 
 ### Automatic Linking
 
-The `add-cross-references.py` script automatically converts references to other documents into clickable links during the build process.
+The `add-cross-references.py` script automatically converts references to other documents into clickable links during the build process, so there's nothing needed for that when Claude Desktop is digitizing.
 
-**Important:** Never add manual markdown links in source documents. Keep references as plain text and let the build process handle linking.
+**Important:** Never add manual markdown links (or any other HTML) in our new .md source files. Keep references as plain text and let the build process handle linking.
 
 ### Patterns Detected (case-insensitive)
 
@@ -117,12 +117,15 @@ Simply create a section with the header `## Document Notes`:
 ## Document Notes
 
 ### Handwritten text {{page:1}}
+
 I certify this to be a true copy. Rosalie Morrison, City Recorder
 
 ### Stamp {{page:3}}
+
 COPY
 
 ### Digitization note
+
 The source document for this Ordinance is in ALL CAPITAL LETTERS...
 ```
 

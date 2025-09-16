@@ -6,8 +6,9 @@ Searchable, centralized repository of City of Rivergrove ordinances, resolutions
 
 Main build commands:
 ```bash
-./scripts/build/update-mdbook.sh              # Full rebuild
-./scripts/build/update-single.sh [file]       # Single file update  
+./build-all.sh                                # Full rebuild
+./build-one.sh [file]                         # Single file update
+./dev-server.sh                               # Development server
 ```
 
 ## Repository Structure
@@ -50,6 +51,7 @@ city_of_rivergrove/
 ## Documentation
 
 ### Main Guides
+- [Build Quick Start](docs/build-quickstart.md) - Quick start guide for building the site
 - [Project Overview](docs/digitization-guide.md) - Project overview and workflow guides
 - [Claude Desktop Guide](docs/claude-desktop-guide.md) - Document processing & Airtable
 - [Claude Code Guide](docs/claude-code-guide.md) - Repository management
@@ -66,10 +68,10 @@ city_of_rivergrove/
 - [Inline Images](docs/styles/inline-images.md) - Image handling
 
 ### Technical Documentation
-- [Scripts Guide](scripts/SCRIPTS-GUIDE.md) - Complete script documentation
+- [Scripts Guide](docs/scripts/SCRIPTS-GUIDE.md) - Complete script documentation
 - [Startup Prompts](docs/startup-prompts.md) - Quick start prompts for Claude
 
 ## Live Site
 
 - **Production**: https://wifelette.github.io/city_of_rivergrove/
-- **Local Development**: http://localhost:3000 (after running `mdbook serve`)
+- **Local Development**: http://localhost:3000 (after running `./dev-server.sh`)

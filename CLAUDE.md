@@ -20,7 +20,7 @@ Please read these files for context on this project and how to work with Leah:
 
 3. **Technical documentation**:
 
-   - `scripts/SCRIPTS-GUIDE.md` - All script documentation
+   - `docs/scripts/SCRIPTS-GUIDE.md` - All script documentation
    - `docs/airtable-integration.md` - Airtable sync and metadata
    - `docs/metadata-architecture.md` - Metadata system overview
 
