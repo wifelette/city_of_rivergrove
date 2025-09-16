@@ -2,228 +2,146 @@
 
 ## Overview
 
-This guide covers the Claude Desktop workflow for processing City of Rivergrove documents, including OCR, transcription, and Airtable updates.
+This guide covers the Claude Desktop (CD) workflow for processing City of Rivergrove documents, including OCR, transcription, and Airtable updates.
 
 - **Repository**: [GitHub](https://github.com/wifelette/city_of_rivergrove)
-- **Related Guides**:
-  - [Claude Code Guide](claude-code-guide.md) - Repository management
-  - [mdBook Guide](mdbook-guide.md) - Site generation and technical details
-  - [Airtable Integration](airtable-integration.md) - Technical integration details
 
 ## Document Types and Workflows
 
-The digitization process now handles two distinct document types with separate workflows:
+The digitization process handles two distinct document types with completely separate workflows:
 
-### Governing Documents Workflow
+1. **Governing Documents** (Ordinances, Resolutions, Interpretations, Other)
+2. **Meeting Documents** (Agendas, Minutes, Transcripts)
 
-- **Document Types**: Ordinances, Resolutions, Interpretations
-- **Tables Used**: Documents, Governing, Governing_Metadata
-- **Process**: OCR/transcription → Create 3 Airtable records → Upload to GitHub → Update URLs
-
-### Meeting Records Workflow
-
-- **Document Types**: Meeting Agendas, Meeting Minutes
-- **Tables Used**: Meetings, Meeting Records, Documents, Meetings_Metadata
-- **Process**: Create Meeting record → Create 4 Airtable records → Upload to GitHub → Update URLs
+Each has its own complete workflow section below. Follow the appropriate section based on your document type.
 
 ---
 
 ## Governing Documents Processing
 
-### 1. OCR and Transcription
+### Step 1: Review and Transcribe the PDF
 
-- Leah uses Adobe Acrobat for OCR (export as **plain text**, not .docx) and shares with Claude OR has Claude do it directly
-- If done via Adobe, Leah uploads source PDF and OCR text output to Claude for final comparison
-- Claude creates clean markdown version fixing OCR errors
-- Claude reviews for legal terms, dates, and signatures, but doesn't make any changes without explicit approval by Leah, not even fixing typos. We're strictly digitizing as is.
-- **Claude searches existing Airtable entries first** before creating new ones
-- Claude creates or updates three entries in the Airtable MCP base:
-  - 1. **Documents** record for file storage
-  - 2. **Governing** record for the ordinance/resolution/interpretation
-  - 3. **Governing_Metadata** record for website publication (with Publication Status: Draft)
-- Leah saves artifact with established naming conventions
-- Leah uploads to GitHub and provides URLs to Claude for Airtable updates
-- Once GitHub URLs are added:
-  - Mark as Digitized in Governing table
-  - Change Publication Status from "Draft" to "Published" in Governing_Metadata table
+**First, check page order:**
 
-### 2. PDF Page Order Verification
+- Scan through all PDF pages before starting transcription
+- Identify if pages are in logical order (title → sections → signatures)
+- If scrambled, mentally reorganize - transcribe in correct logical order, not PDF page order
+- Common issue: signature pages in middle, sections out of sequence
 
-**Critical Step:** Always verify PDF pages are in logical order before transcribing.
+**Then transcribe:**
 
-**Issue:** Some PDFs have scrambled page order (e.g., signature page in middle, sections out of sequence).
+- Leah provides either:
+  - Adobe Acrobat OCR output (plain text export) + original PDF for comparison
+  - OR just the PDF for Claude to OCR directly
+- Create clean markdown version fixing OCR errors
+- Review for legal terms, dates, signatures
+- **Don't change anything without explicit approval** - not even typos (strict digitization as-is)
+- Provide suggested filename when confirming digitization (for Leah's save dialog)
 
-**Process:**
+### Step 2: Search Existing Airtable Records
 
-1. Scan through all pages first
-2. Identify the proper document flow (title → sections 1,2,3... → signatures)
-3. If pages are out of order, mentally reorganize before transcribing
-4. Create artifact with correct logical structure, not PDF page order
+**Before creating any new records, always search thoroughly:**
 
-### 3. Governing Documents Airtable Updates
-
-When processing a governing document:
-
-- **Always search existing entries first** using multiple search terms
 - **Search with multiple ID format variations**: When searching for existing entries, try multiple formats of the same ID:
   - `Ordinance #28`, `Ordinance 28`, `#28`, `28`
   - `Resolution #72`, `Resolution 72`, `#72`, `72`
+  - **For year-suffixed documents**: `Ordinance 52-2001`, `52-2001`, `Ordinance 52-01`
+    - Some documents use formats like `#XX-YYYY` where the year is part of the official number
+    - Try searching with and without the year suffix
+    - Also search just the base number (e.g., `52`) to catch variations
   - Also try key topic words from the title/subject
-- **Discover field names before creating/updating**: Use list functions with small limits (3-5 records) to see actual field names and avoid validation errors from incorrect field naming.
+- **List existing records first** to see actual field names:
   - `daily-tasks:council_documents_list (limit: 3)`
   - `daily-tasks:council_governing_list (limit: 3)`
-  - etc.
+  - This helps avoid field validation errors
 
-**Create/update Documents entry:**
+### Step 3: Create/Update Airtable Records
+
+**Create three linked records in this order:**
+
+**1. `Documents` entry (for file storage):**
 
 - `documentType`: "Governing Doc"
 - `tags`: "Ordinance/Resolution/Interpretation" (pass as string, not array!)
-- documentDate
-- documentTitle
-- fileURL (PDF files on GitHub)
-- mdURL (Markdown files on GitHub)
-- rawURL (auto-populates from mdURL - don't touch)
-- description
+- `documentDate`
+- `documentTitle` (you set this - different from `docName` which auto-generates)
+- `description`
 
-**Update Governing entry:**
+**2. `Governing` entry (the main record):**
 
-- Link to Documents record
-- Summary (dry, objective, searchable)
-- Topics (use existing valid options)
-- Mark as Digitized when GitHub upload complete
+- Link to `Documents` record
+- `Summary` (dry, objective, searchable)
+- `Topics` (use existing valid options)
+- Mark as `Digitized` when GitHub upload complete and those two URLs have been added
 
-**Create Governing_Metadata entry:**
+**3. `Governing_Metadata` entry (for website publication):**
 
-- Link to Governing record via `governing_docs` field
-- Publication Status: "Draft" (initially, then "Published" after GitHub upload)
+- Link to `Governing` record via `governing_docs` field
+- `status`: "Draft" (initially, then "Published" after GitHub upload)
+- `fileURL` (leave blank initially - will be filled after GitHub upload)
+- `mdURL` (leave blank initially - will be filled after GitHub upload)
+- `rawURL` (auto-populates from `mdURL` - don't set this field)
+- Leave `special_state` blank for now (this is typically set on OTHER documents - see Step 5)
 - Any other relevant metadata fields
 
----
+### Step 4: GitHub Upload and Final Updates
 
-## Meeting Records Processing
+**After Leah uploads to GitHub via Claude Code:**
 
-### 1. Meeting Records Digitization Workflow
+1. Leah will provide two URLs:
 
-When digitizing meeting agendas or minutes:
+   - PDF GitHub URL
+   - Markdown GitHub URL
 
-1. **Check for existing Meeting record** - Search by date
-2. **Create Meeting record** (if doesn't exist):
-   - Set date
-   - Set appropriate inventory boolean: `Agenda?: true` for agendas, `Minutes?: true` for minutes
-   - Note: Both can be checked if digitizing both document types for the same meeting
-3. **Create Meeting Records record**:
-   - Link to Meeting record
-   - Set Document Type: "Agenda", "Minutes" or "Transcript"
-   - Add notes about content/context
-4. **Create Documents record**:
-   - Use correct `documentType`: "Agendas" for agendas, "Minutes" for minutes, etc.
-5. **Create Meetings_Metadata record**:
-   - For website publication
-   - Status: "Draft" initially
-6. **Link all records together**
-7. **Create markdown artifact**
-8. **Upload to GitHub and update URLs**
+2. Update the `Governing_Metadata` record with both URLs:
 
-### 2. Meeting Records Airtable Updates
+   - `fileURL` (PDF URL)
+   - `mdURL` (Markdown URL)
+   - `rawURL` will auto-populate from `mdURL`
 
-**Meetings record:**
+3. Update status fields:
+   - Mark `Governing` entry as **Digitized**
+   - Change `Governing_Metadata` `status` from "Draft" to **"Published"**
 
-- Date (required - see Meeting Time Entry below for proper format)
-- Set `Meeting Type` to `Regular` as default, unless I say otherwise; ask if it ought be changed if the contents make you think it wasn't a regular meeting
-- Set inventory booleans: `Agenda?: true` for agendas, `Minutes?: true` for minutes, etc.
-- Links to Meeting Records record(s)
+### Step 5: Check for Impacts on Other Documents
 
-**Meeting Time Entry:**
-- **Default time**: All Rivergrove meetings are scheduled for 7:00 PM unless explicitly stated otherwise
-- **Format**: Use `YYYY-MM-DDTHH:MM:00` in Pacific Time (24-hour format)
-- **Standard entry**: For a typical meeting on June 12, 2017: `2017-06-12T19:00:00`
-- **Important distinction**: 
-  - Use 7:00 PM (19:00) as the scheduled meeting time, even if minutes show a different call-to-order time
-  - Example: Minutes may say "called to order at 7:03 p.m." but still use `2017-06-12T19:00:00`
-  - Only use a different time if the meeting was explicitly scheduled for a different time (e.g., "special meeting at 5:00 PM")
-- **Why this matters**: If time is omitted, Airtable may default to noon/midnight depending on timezone settings, causing sorting issues
+**If this document mentions it affects other documents:**
 
-**Meeting Records record:**
+If the document contains language like:
 
-- Link to Meetings record (auto-populates Meeting Date)
-- Document Type: "Agenda", "Minutes", etc.
-- Notes about content/significance
-- Source URL (if from website)
-- Set `Digitized` boolean to `Digitized?: true` assuming you've indeed processed the markdown file
+- "This ordinance repeals Ordinance #48"
+- "This amends Ordinance #52"
+- "This supersedes Resolution #22"
 
-**Documents record:**
+Then:
 
-- `documentType`: "Agendas" for agendas, "Minutes" for minutes, etc.
-- `tags`: "Meeting Documentation"
-- documentDate (meeting date)
-- documentTitle following naming convention
-- Link to Meeting Records record
+1. Search for the affected document in Airtable
+2. **Ask Leah**: "Should I update the `special_state` field in the `Governing_Metadata` record for [Document #XX] to [Repealed/Amended/Superseded]?"
+3. Only update if Leah confirms
 
-**Meetings_Metadata record:**
+**Common phrases to watch for:**
 
-- Link to Meeting Records record via `meeting_docs` field
-- Status: "Draft" initially, "Published" after GitHub upload
-- Short title for navigation
-- Tags for meeting content (only if substantive topics evident—things like a regular Planning Commission update don't need to be noted since they happen most meetings)
+Active voice (this document does something):
 
----
+- "hereby repeals"
+- "amends and restates"
+- "supersedes and replaces"
+- "modifies"
+- "rescinds"
 
-## Content Standards
+Passive voice (something is done to another document):
 
-- **No editorializing**: Keep summaries factual and objective
-- **Preserve all metadata**: Stamps, signatures, dates, handwritten notes
-- **Focus on rote work over content analysis** - Leah doesn't need detailed summaries unless requested
-- **Markdown formatting**: Use headers, lists, and clear structure
-- **Cross-references**: Keep document references as plain text (e.g., "Ordinance #52", "Resolution #22")
-  - NEVER add manual markdown links for cross-references
-  - The build system automatically converts these to clickable links
-  - See `docs/markdown-conventions.md` for patterns that are detected
+- "Ordinance #XX is hereby amended"
+- "Ordinance #XX is hereby repealed"
+- "Resolution #XX is superseded"
+- "Ordinance #XX is rescinded"
+- "is modified as follows"
 
-### Signature Section Formatting
+### Document Title Standards - Governing
 
-See **[styles/signature-formatting.md](styles/signature-formatting.md)** for complete signature block formatting standards.
+**Different title fields and their purposes:**
 
-**Key Points:**
-
-- Use `[Signature], Name, Title` format (all on one line)
-- Add double spaces at end of lines for proper breaks
-- Use `{{filled:}}` for handwritten dates
-- Preserve exact date formats from source
-
-### Page Break Handling
-
-- **Ignore page breaks**: Transcribe documents continuously without page markers
-- **No page numbers needed**: Don't add "Page 1", "---", or similar markers
-- **Single flowing document**: Present the entire ordinance as one continuous markdown file
-- **Exception**: Only note page breaks if they are for some reason meaningful (like when legal documents say "Continue on next page" or "this section intentionally left blank")
-
-### Handwritten Content and Form Fields
-
-See **[styles/form-fields.md](styles/form-fields.md)** for complete guide on handling blank and filled fields.
-
-**Key Points**:
-
-- Use `{{filled:}}` for blank fields in source documents
-- Use `{{filled:text}}` for handwritten/filled content
-- Always use `{{filled:}}` for handwritten dates in signature blocks
-- Underlined text: Convert to bold (we don't use underlines except for form fields)
-
-### Images and Diagrams
-
-See **[styles/inline-images.md](styles/inline-images.md)** for handling images, diagrams, and visual content.
-
-**Key Points**:
-
-- Use `{{image:filename.png|caption=Description|alt=Alt text}}` syntax
-- Images should be stored in `images/[document-type]/` at the repository root (not in `src/` which is gitignored)
-- Screenshots and diagrams should be saved as PNG files
-- If an image or complex table is found and would be useful to include, point it out to Leah so she can extract it (or do it for her) and save it where it needs to go
-
-## Document Title Standards
-
-All documentTitle fields in Airtable follow standardized formats:
-
-**Governing Documents:**
+**`documentTitle` in `Documents` table** (you set this manually):
 
 - **Interpretations**: "PC Interpretation - [Topic]"
   - Example: "PC Interpretation - Section 5.080 Setbacks"
@@ -233,40 +151,500 @@ All documentTitle fields in Airtable follow standardized formats:
 - **Resolutions**: "Resolution #XX - [Topic]"
   - Example: "Resolution #22 - Planning Commission CCI"
 
-**Meeting Documents:**
+**Note**: The `docName` field in `Documents` will auto-generate - don't set it
 
-- **Agendas**: "[Month DD, YYYY] Council Meeting Agenda"
-  - Example: "May 14, 2018 Council Meeting Agenda"
-- **Minutes**: "[Month DD, YYYY] Council Meeting Minutes"
-  - Example: "May 14, 2018 Council Meeting Minutes"
+**Other title fields**:
 
-When processing documents, always check existing titles and update them to match these standards if needed.
+- `Governing_Metadata` table has a `short_title` for display in the navigation bar - create a succinct version (e.g., "Park Council" instead of "Establishing a Park Advisory Council")
 
-## Quality Control & Best Practices
+### Quality Control Checklist - Governing
 
-### Post-Digitization Verification
+Before marking complete, verify:
 
-**For Governing Documents:**
-
-- [ ] Documents entry has both fileURL and mdURL
-- [ ] rawURL auto-populated correctly
-- [ ] Governing entry marked as Digitized
-- [ ] Governing_Metadata status changed to Published
+- [ ] `Governing_Metadata` has both `fileURL` and `mdURL` (after GitHub upload)
+- [ ] `rawURL` auto-populated correctly in `Governing_Metadata`
+- [ ] `Governing` entry marked as `Digitized`
+- [ ] `Governing_Metadata` status changed to `Published`
 - [ ] Bidirectional linking verified
 - [ ] Amendment relationships preserved
 - [ ] Document title follows naming convention
 - [ ] Passed date matches signatures/adoption date
 
-**For Meeting Documents:**
+### MCP Functions - Governing
 
-- [ ] Meeting record has appropriate inventory boolean checked
-- [ ] Meeting Records record properly linked
-- [ ] Documents entry has correct documentType ("Agendas" or "Minutes")
-- [ ] Meetings_Metadata record linked and published
+- `daily-tasks:council_governing_search/list/create/update`
+- `daily-tasks:council_governing_metadata_search/list/create/update`
+- `daily-tasks:council_documents_search/list/create/update`
+
+---
+
+## Meeting Documents Processing
+
+### Step 1: Transcribe the Meeting Document
+
+- Review the agenda, transcript or minutes PDF
+- Create clean markdown version
+- Follow same transcription rules as Governing docs (preserve as-is, no corrections)
+- Provide suggested filename (according to conventions) when confirming digitization
+
+### Step 2: Search/Create Meeting Record
+
+**Search for existing `Meetings` record by date first**
+
+If none exists, create one with:
+
+- `Date` (see Meeting Time Entry format below)
+- `Meeting Type`: "Regular" (default) or "Special"/"Work Session" if specified
+- Set inventory boolean:
+  - `Agenda?: true` for agendas
+  - `Minutes?: true` for minutes
+  - `Transcript?: true` for transcripts
+  - Note: Any or all can be true simultaneously for any docs; this is a log of what's already been processed for this meeting
+
+### Step 3: Create Three Linked Airtable Records
+
+**1. `Documents` record:**
+
+- `documentType`: "Agendas" for agendas, "Minutes" for minutes, "Transcripts" for transcripts
+- `tags`: "Meeting Documentation" (as string, not array)
+- `documentDate` (meeting date)
+- `documentTitle` (you set this - see naming convention below)
+- `description` (if relevant)
+
+**2. Update `Meetings` record:**
+
+- Link to `Documents` record
+- Mark as `Digitized` once complete
+- Verify the appropriate inventory boolean is checked
+
+**3. `Meetings_Metadata` record:**
+
+- Link to `Meetings` record (via `Meetings` field)
+- Link to `Documents` record (via `Documents` field)
+- `Status`: "Draft" initially
+- `fileURL` (leave blank initially - will be filled after GitHub upload)
+- `mdURL` (leave blank initially - will be filled after GitHub upload)
+- `rawURL` (auto-populates from `mdURL` - don't set this field)
+- `short_title` for navigation (e.g., "May 14 Council Meeting" - shorter than full `documentTitle`)
+- `Tags` for meeting content (only if substantive topics - not routine items)
+
+**Meeting Time Entry Format:**
+
+- **Default time**: All Rivergrove meetings are scheduled for 7:00 PM unless explicitly stated otherwise
+- **Format**: Use `YYYY-MM-DDTHH:MM:00` in Pacific Time (24-hour format)
+- **Standard entry**: For a typical meeting on June 12, 2017: `2017-06-12T19:00:00`
+- **Important distinction**:
+  - Use 7:00 PM (19:00) as the scheduled meeting time, even if minutes show a different call-to-order time
+  - Example: Minutes may say "called to order at 7:03 p.m." but still use `2017-06-12T19:00:00`
+  - Only use a different time if the meeting was explicitly scheduled for a different time (e.g., "special meeting at 5:00 PM")
+- **Why this matters**: If time is omitted, Airtable may default to noon/midnight depending on timezone settings, causing sorting issues
+
+### Step 4: GitHub Upload and Final Updates
+
+**After Leah uploads to GitHub via Claude Code:**
+
+1. Leah will provide two URLs (PDF and Markdown)
+2. Update the `Meetings_Metadata` record with both URLs:
+   - `fileURL` (PDF URL)
+   - `mdURL` (Markdown URL)
+   - `rawURL` will auto-populate
+3. Update status fields:
+   - Change `Meetings_Metadata` `status` from "Draft" to **"Published"**
+
+### Document Title Standards - Meetings
+
+**Different title fields and their purposes:**
+
+**`documentTitle` in `Documents` table** (you set this manually):
+
+- **Agendas**: "[Month DD, YYYY] Council Meeting Agenda"
+  - Example: "May 14, 2018 Council Meeting Agenda"
+- **Minutes**: "[Month DD, YYYY] Council Meeting Minutes"
+  - Example: "May 14, 2018 Council Meeting Minutes"
+- **Transcripts**: "[Month DD, YYYY] Council Meeting Transcript"
+  - Example: "May 14, 2018 Council Meeting Transcript"
+
+**Note**: The `docName` field in `Documents` will auto-generate - don't set it
+
+**Other title fields** (if present):
+
+- `Meetings_Metadata` table has `short_title` for navigation - use abbreviated version like "May 14 CC Agenda" (for City Council) or "May 20 PC Minutes" (for Planning Commission)
+
+### Quality Control Checklist - Meetings
+
+Before marking complete, verify:
+
+- [ ] `Meetings` record has appropriate inventory boolean checked
+- [ ] `Documents` record properly linked to `Meetings`
+- [ ] `Documents` entry has correct `documentType` ("Agendas" or "Minutes")
+- [ ] `Meetings_Metadata` record linked and published
 - [ ] All bidirectional linking verified
-- [ ] GitHub URLs updated in appropriate records
+- [ ] GitHub URLs (`fileURL` and `mdURL`) updated in `Meetings_Metadata`
 
-### MCP Tool Notes
+### MCP Functions - Meetings
+
+- `daily-tasks:council_meetings_list/create` (limited update capabilities)
+- `daily-tasks:council_meeting_records_search/list/create/update`
+- `daily-tasks:council_meetings_metadata_search/list/create/update`
+- `daily-tasks:council_documents_search/list/create/update`
+
+### Key Reminders - Meetings
+
+- **For Meeting Documents**: Set appropriate inventory boolean in Meeting records
+- **Tagging**: Only tag meeting documents if substantive topics were discussed, not for routine items
+
+---
+
+## Content Standards
+
+- **No editorializing**: Keep summaries factual and objective
+- **Preserve all metadata**: Stamps, signatures, dates, handwritten notes
+- **Focus on rote work over content analysis** - Leah doesn't need summaries unless requested
+- **Preserve original content exactly**: Don't fix typos or grammar unless explicitly asked
+
+## Markdown Notation Standards
+
+This section provides comprehensive markdown formatting instructions for digitizing City of Rivergrove documents. Follow these conventions exactly to ensure documents process correctly through the build system.
+
+### Quick Reference
+
+| Element             | Format                            | Example                          |
+| ------------------- | --------------------------------- | -------------------------------- |
+| Parenthetical lists | `(a)` Text at line start          | `(a)` First item                 |
+| Blank fields        | `{{filled:}}`                     | `Date: {{filled:}}`              |
+| Filled fields       | `{{filled:text}}`                 | `{{filled:March 15, 2024}}`      |
+| Signatures          | `{{signature}}, Name, Title`        | `{{signature}}, John Smith, Mayor` |
+| Cross-references    | Plain text only                   | `Ordinance #52` (no links)       |
+| Table footnotes     | Superscript after table           | `¹ **Note.** Text`               |
+| Document notes      | `## Document Notes` + H3 subtypes | `### Stamp {{page:1}}`           |
+
+### Headers Hierarchy
+
+- **Main title (H1)**: `# ORDINANCE NO. XX-YYYY` or `# An Interpretation of the Planning Commission`
+- **Subtitle/description (H2)**: `## AN ORDINANCE...` or `## (May 7, 2001)`
+- **Section headers (H3)**: `### Section 1. Title` or `### INTERPRETATION`
+- **Subsection headers (H4)**: `#### Subsection A` or `#### (a) Definitions`
+
+### Lists - Critical Formatting
+
+**Parenthetical Lists (Most Common in Legal Documents)**
+
+These lists use (a), (b), (c) or (1), (2), (3) format and require special formatting:
+
+```markdown
+(a) First item text here
+(b) Second item text here
+(c) Third item text here
+```
+
+**Important**:
+
+- Start each item at the beginning of the line (no indentation)
+- NO bullet markers or dashes before parenthetical items
+- The build system will automatically style these with blue markers and no bullets
+
+**Nested Lists**
+
+```markdown
+(a) Parent item
+(1) Nested numeric item
+(2) Second nested numeric item
+(i) Double nested roman numeral
+(ii) Another double nested roman
+(b) Second parent item
+```
+
+Use 4-space indentation for each level of nesting.
+
+**Standard Numbered Lists**
+
+```markdown
+1. First numbered item
+2. Second numbered item
+3. Third numbered item
+```
+
+**Lists with Continuation Text**
+
+```markdown
+(a) First item with a simple sentence.
+
+This is a continuation paragraph under item (a) with more detailed explanation.
+Use 3-space indentation to prevent markdown from treating it as a code block.
+
+(b) Second item continues here.
+```
+
+**Lists with Introductory Text**
+
+Preserve introductory text before lists:
+
+```markdown
+The term does not, however, include either:
+(1) any project for improvement of a structure
+(2) any alteration of a structure listed on the National Register
+```
+
+**Common introductory phrases to preserve:**
+
+- "The following items are included:"
+- "This does not include:"
+- "Requirements consist of:"
+- "The term means:"
+- "as follows:"
+
+**Lists in Blockquotes (for quoted sections):**
+
+```markdown
+> **Section 1. Definitions**
+>
+> (a) "Building" means any structure
+> (b) "Structure" means anything constructed
+> (c) "Use" means the purpose for which land is occupied
+```
+
+### Cross-References
+
+**NEVER add manual markdown links**. Keep all references as plain text:
+
+- ✅ Correct: `Ordinance #52`, `Resolution #22`, `Ordinance 70-2001`
+- ❌ Wrong: `[Ordinance #52](../ordinances/...)`
+
+The build system automatically converts these patterns to links.
+
+**Patterns that will be auto-linked:**
+
+- Ordinances: `Ordinance #52`, `Ordinance 52`, `Ord. #52`, `Ord. 52`, `Ordinance No. 52`
+- With years: `Ordinance #54-89`, `Ordinance 70-2001`
+- With letters: `Ordinance #54-89C`
+- Resolutions: `Resolution #22`, `Resolution 22`, `Res. #22`, `Res #22`
+- Interpretations: References will be linked when they match existing documents
+
+### Signature Blocks
+
+**Standard Format:**
+
+```markdown
+{{signature}}, John Smith, Mayor
+**Date**: {{filled:10-12-98}}
+
+{{signature}}, Jane Doe, City Recorder
+**Date**: {{filled:10/12/98}}
+```
+
+(Note: The two spaces at line ends are shown above)
+
+**Key Rules:**
+
+- Names and titles are NOT bolded (just plain text)
+- Add TWO SPACES at end of each line (creates proper line break in markdown)
+- Use `{{filled:date}}` for handwritten dates
+- Preserve exact date format from source (8-12-02 vs 8/12/02 vs August 12, 2002)
+- Pre-printed dates: just transcribe normally without `{{filled:}}`
+
+**ATTEST Format:**
+
+```markdown
+{{signature}}
+John Nelson, Mayor
+
+**ATTEST:**
+
+{{signature}}
+Rosalie Morrison, City Recorder
+```
+
+**Adoption Statements:**
+
+```markdown
+**ADOPTED** by the Rivergrove City Council this {{filled:12}} day of {{filled:June, 1978}}
+```
+
+**Reading Dates:**
+
+```markdown
+**FIRST READING** {{filled:May 5, 1978}}
+**SECOND READING** {{filled:June 12, 1978}}
+```
+
+### Form Fields
+
+**Blank fields in source:**
+
+```markdown
+Planning File No.: {{filled:}}
+Date: {{filled:}}
+Applicant: {{filled:}}
+```
+
+These render as underlined blank spaces with a tooltip "Blank in source document".
+
+**Handwritten/filled content:**
+
+```markdown
+This ordinance was adopted on {{filled:March 15, 2024}}
+The fee shall be {{filled:$250.00}}
+Signed by {{filled:John Smith}}, Mayor
+```
+
+These render with blue highlighting to indicate hand-filled content.
+
+**Common patterns:**
+
+- Blank signature date: `**Date**: {{filled:}}`
+- Filled date: `**Date**: {{filled:8-12-02}}`
+- Inline blank: `by the City and {{filled:}} (Applicant)`
+- Inline filled: `on the {{filled:12th}} day of {{filled:June}}`
+
+**Important:** Always use `{{filled:}}` syntax - never just underscores (`___`) or brackets
+
+### Table Footnotes
+
+**For footnotes below tables:**
+
+```markdown
+| Column | Value |
+| ------ | ----- |
+| Item   | Cost¹ |
+
+¹ **Brief title.** Full explanation text.
+² **Second footnote.** Additional explanation.
+```
+
+**How to type superscript numbers:**
+
+- Copy/paste these: ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁰
+- Or on Mac: Use Character Viewer (Edit → Emoji & Symbols)
+- Or use Unicode: U+00B9 for ¹, U+00B2 for ², U+00B3 for ³
+
+**Format:** Always use pattern `¹ **Bold title.** Regular explanation text.`
+
+Write footnotes immediately after the table. The build system will automatically style them with a gray background and border.
+
+### Document Notes
+
+**For stamps, handwritten text, or digitization notes:**
+
+```markdown
+## Document Notes
+
+### Handwritten text {{page:1}}
+
+I certify this to be a true copy. Rosalie Morrison, City Recorder
+
+### Stamp {{page:3}}
+
+COPY
+
+### Digitization note
+
+The source document was in ALL CAPITAL LETTERS. It has been converted to standard capitalization for readability.
+```
+
+**Common note types to use as H3 headers:**
+
+- `### Stamp {{page:X}}` - for official stamps
+- `### Handwritten text {{page:X}}` - for handwritten additions
+- `### Handwritten notation {{page:X}}` - for marginal notes
+- `### Digitization note` - for notes about the digitization process
+- `### Source document note` - for peculiarities in the original
+
+Always use H3 headers for different note types. The `{{page:X}}` notation is optional but helpful.
+
+### Special Text Formatting
+
+- **Underlined text**: Convert to bold (markdown doesn't support underlines)
+- **Strikethrough**: Preserve using `~~text~~` when it appears in legal documents
+- **ALL CAPS**: Convert to normal capitalization unless legally significant
+- **Handwritten additions**: Use `{{filled:text}}` for handwritten content, not just bold
+- **Blank lines/spaces**: Use `{{filled:}}` for blank form fields
+- **Checkboxes**: Use `☐` for empty boxes, `☑` for checked boxes
+- **Line breaks in signatures**: Add two spaces at the end of lines
+
+### Page Breaks
+
+- Generally ignore page breaks - transcribe continuously
+- Don't add page markers like "Page 1", "---", or page numbers
+- Only note if legally meaningful (e.g., "Continue on next page")
+
+### Tables in Documents
+
+```markdown
+| **Column Header** | **Column Header** |
+| ----------------- | ----------------- |
+| Content           | Content           |
+```
+
+- Bold column headers
+- Use pipes for alignment
+- For complex tables with merged cells, preserve structure as much as possible
+- Use `{{br}}` for line breaks within cells if needed
+
+### Images and Diagrams
+
+If you encounter images, diagrams, or complex visual content:
+
+- Note their location and description
+- Use placeholder: `{{image:filename.png|caption=Description|alt=Alt text}}`
+- Alert Leah that an image needs to be extracted
+
+### Complete Example
+
+Here's how a typical ordinance section should be formatted:
+
+```markdown
+# ORDINANCE NO. 52
+
+## AN ORDINANCE ADOPTING FLOOD DAMAGE PREVENTION REGULATIONS
+
+### Section 1. Purpose
+
+The purpose of this ordinance is to promote public health, safety, and general welfare.
+
+### Section 2. Definitions
+
+(a) **Flood** or **flooding** means a general and temporary condition of partial or complete inundation
+
+(b) **Structure** means a walled and roofed building that is principally above ground
+
+### Section 3. Requirements
+
+The following requirements shall apply:
+(1) All new construction shall be anchored
+(2) All new construction shall be constructed with materials resistant to flood damage
+
+{{signature}}, Mark Johnson, Mayor
+**Date**: {{filled:3-12-98}}
+
+{{signature}}, Rosalie Morrison, City Recorder
+**Date**: {{filled:3/12/98}}
+
+## Document Notes
+
+### Stamp {{page:1}}
+
+COPY
+
+### Handwritten text {{page:2}}
+
+Planning File No.: {{filled:CD-98-12}}
+```
+
+_Note: The example above shows `## Document Notes` used within the document_
+
+### Key Reminders for Digitization
+
+1. **Never add HTML or manual markdown links** - the build system handles all linking
+2. **Preserve exact formatting** from source documents (dates, capitalization, etc.)
+3. **Use parenthetical list format** exactly as shown - no bullets or dashes
+4. **Apply {{filled:}} syntax** consistently for all blank and handwritten fields
+5. **Follow the header hierarchy** strictly for proper document structure
+6. **Include two spaces at line ends** for signatures and other line breaks
+7. **Document all stamps and handwritten notes** in the Document Notes section
+
+---
+
+## Common MCP Tool Notes
 
 - **Always search existing entries** before creating new ones
 - Use multiple search terms (ID, year, topic keywords)
@@ -277,31 +655,13 @@ When processing documents, always check existing titles and update them to match
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
 
-### MCP Function Reference
-
-**Governing Documents:**
-
-- `daily-tasks:council_governing_search/list/create/update`
-- `daily-tasks:council_governing_metadata_search/list/create/update`
-- `daily-tasks:council_documents_search/list/create/update`
-
-**Meeting Documents:**
-
-- `daily-tasks:council_meetings_list/create` (limited update capabilities)
-- `daily-tasks:council_meeting_records_search/list/create/update`
-- `daily-tasks:council_meetings_metadata_search/list/create/update`
-- `daily-tasks:council_documents_search/list/create/update`
-
-### Key Reminders
+### General Workflow Reminders
 
 - Search existing Airtable entries thoroughly before creating new ones
 - **Alert Leah immediately to any field validation failures**
 - Use established naming conventions consistently
 - Focus on accurate transcription over content analysis
 - Preserve all original formatting, dates, and signatures
-- Claude should ask for GitHub URLs with correct filenames ready for immediate save
-- **For Meeting Documents**: Set appropriate inventory boolean in Meeting records
-- **For Agendas**: Use documentType "Agendas", not "Minutes"
-- **Tagging**: Only tag meeting documents if substantive topics were discussed, not for routine items
-- **Digitization Guide updates**: When Leah asks for text to add to the Digitization Guide, always provide it as inline copyable markdown in code blocks rather than artifacts - this allows single-button copying without downloads.
-- **Batch URL Updates**: When updating multiple documents with GitHub URLs, use the systematic approach: list all records first to see field structure, then update fileURL and mdURL fields (rawURL will auto-populate)
+- Provide correct filename when confirming digitization (for Leah's save dialog)
+- **Digitization Guide updates**: When Leah asks for text to add to the Digitization Guide, always provide it as inline copyable markdown in code blocks rather than artifacts
+- **Batch URL Updates**: When updating multiple documents with GitHub URLs, use the systematic approach: list all records first to see field structure, then update `fileURL` and `mdURL` fields in the metadata tables (`rawURL` will auto-populate)
