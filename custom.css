@@ -1088,6 +1088,14 @@ table + .table-footnotes {
     line-height: 1.5;
 }
 
+/* Make footnote numbers blue in both table cells and footnote key */
+.formatted-table sup,
+table sup,
+.table-footnotes sup {
+    color: #0969da;
+    font-weight: 600;
+}
+
 /* ========== COMPONENTS/LISTS.CSS ========== */
 /* 
  * List Styles
