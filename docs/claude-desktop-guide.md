@@ -555,7 +555,7 @@ Always use H3 headers for different note types. The `{{page:X}}` notation is opt
 
 - **Underlined text**: Convert to bold (markdown doesn't support underlines)
 - **Strikethrough**: Preserve using `~~text~~` when it appears in legal documents
-- **ALL CAPS**: Convert to normal capitalization unless legally significant
+- **ALL CAPS**: Ask Leah before converting - she'll decide case-by-case. If converted, add a Digitization note
 - **Handwritten additions**: Use `{{filled:text}}` for handwritten content, not just bold
 - **Blank lines/spaces**: Use `{{filled:}}` for blank form fields
 - **Checkboxes**: Use `☐` for empty boxes, `☑` for checked boxes
