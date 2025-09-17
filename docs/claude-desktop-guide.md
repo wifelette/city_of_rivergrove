@@ -316,7 +316,7 @@ This section provides comprehensive markdown formatting instructions for digitiz
 | Signatures          | `{{signature}}, Name, Title`      | `{{signature}}, John Smith, Mayor` |
 | Cross-references    | Plain text (no manual links)      | `Ordinance #52` NOT `[Ord #52](...)`|
 | Table footnotes     | `¹ **Bold.** Text` after table    | `¹ **Note.** See definition...`  |
-| Document notes      | `## Document Notes` then H3s      | `### Stamp {{page:1}}`           |
+| Document notes      | `## Document Notes`<br>`### Type {{page:X}}` | `## Document Notes`<br>`### Stamp {{page:1}}`<br>`COPY` |
 
 ### Headers Hierarchy
 
