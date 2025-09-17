@@ -308,15 +308,15 @@ This section provides comprehensive markdown formatting instructions for digitiz
 
 ### Quick Reference
 
-| Element             | Format                            | Example                          |
+| Element             | Markdown Syntax                   | Example Usage                    |
 | ------------------- | --------------------------------- | -------------------------------- |
-| Parenthetical lists | `(a)` Text at line start          | `(a)` First item                 |
+| Parenthetical lists | `(a)` at line start (no bullet)   | `(a) First item text here`       |
 | Blank fields        | `{{filled:}}`                     | `Date: {{filled:}}`              |
-| Filled fields       | `{{filled:text}}`                 | `{{filled:March 15, 2024}}`      |
-| Signatures          | `{{signature}}, Name, Title`        | `{{signature}}, John Smith, Mayor` |
-| Cross-references    | Plain text only                   | `Ordinance #52` (no links)       |
-| Table footnotes     | Superscript after table           | `¹ **Note.** Text`               |
-| Document notes      | `## Document Notes` + H3 subtypes | `### Stamp {{page:1}}`           |
+| Filled fields       | `{{filled:text}}`                 | `Date: {{filled:March 15, 2024}}` |
+| Signatures          | `{{signature}}, Name, Title`      | `{{signature}}, John Smith, Mayor` |
+| Cross-references    | Plain text (no manual links)      | `Ordinance #52` NOT `[Ord #52](...)`|
+| Table footnotes     | `¹ **Bold.** Text` after table    | `¹ **Note.** See definition...`  |
+| Document notes      | `## Document Notes` then H3s      | `### Stamp {{page:1}}`           |
 
 ### Headers Hierarchy
 
