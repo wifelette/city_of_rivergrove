@@ -672,7 +672,6 @@ The MCP server automatically detects array-type fields and wraps string values a
 ### General Workflow Reminders
 
 - Search existing Airtable entries thoroughly before creating new ones
-- **Alert Leah immediately to any field validation failures**
 - Use established naming conventions consistently
 - Focus on accurate transcription over content analysis
 - Preserve all original formatting, dates, and signatures
