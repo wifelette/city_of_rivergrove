@@ -22,14 +22,16 @@
     }
 
     function addCopyButtons() {
-        // Find all code blocks
-        const codeBlocks = document.querySelectorAll('pre > code');
+        // Find all code blocks - both traditional pre>code and div-based code snippets
+        const codeBlocks = document.querySelectorAll('pre > code, .code-snippet, .markdown-example');
 
         codeBlocks.forEach((codeBlock) => {
-            const pre = codeBlock.parentElement;
+            // Handle both pre>code structure and div-based snippets
+            const isDiv = codeBlock.classList.contains('code-snippet') || codeBlock.classList.contains('markdown-example');
+            const targetElement = isDiv ? codeBlock : codeBlock.parentElement;
 
             // Skip if button already exists
-            if (pre.querySelector('.copy-code-button')) {
+            if (targetElement.querySelector('.copy-code-button')) {
                 return;
             }
 
@@ -38,9 +40,9 @@
             wrapper.className = 'code-block-wrapper';
             wrapper.style.position = 'relative';
 
-            // Wrap the pre element
-            pre.parentNode.insertBefore(wrapper, pre);
-            wrapper.appendChild(pre);
+            // Wrap the target element
+            targetElement.parentNode.insertBefore(wrapper, targetElement);
+            wrapper.appendChild(targetElement);
 
             // Create copy button
             const button = document.createElement('button');
@@ -183,7 +185,9 @@ if (!document.getElementById('copy-code-styles')) {
             position: relative;
         }
 
-        .code-block-wrapper pre {
+        .code-block-wrapper pre,
+        .code-block-wrapper .code-snippet,
+        .code-block-wrapper .markdown-example {
             padding-right: 60px !important; /* Make room for button */
         }
 
