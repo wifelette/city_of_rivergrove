@@ -308,14 +308,14 @@ This section provides comprehensive markdown formatting instructions for digitiz
 
 ### Quick Reference
 
-| Element             | Markdown Syntax                   | Example Usage                    |
-| ------------------- | --------------------------------- | -------------------------------- |
-| Parenthetical lists | `(a)` at line start (no bullet)   | `(a) First item text here`       |
-| Blank fields        | `{{filled:}}`                     | `Date: {{filled:}}`              |
-| Filled fields       | `{{filled:text}}`                 | `Date: {{filled:March 15, 2024}}` |
-| Signatures          | `{{signature}}, Name, Title`      | `{{signature}}, John Smith, Mayor` |
-| Cross-references    | Plain text (no manual links)      | `Ordinance #52` NOT `[Ord #52](...)`|
-| Table footnotes     | `¹ **Bold.** Text` after table    | `¹ **Note.** See definition...`  |
+| Element             | Markdown Syntax                              | Example Usage                                           |
+| ------------------- | -------------------------------------------- | ------------------------------------------------------- |
+| Parenthetical lists | `(a)` at line start (no bullet)              | `(a) First item text here`                              |
+| Blank fields        | `{{filled:}}`                                | `Date: {{filled:}}`                                     |
+| Filled fields       | `{{filled:text}}`                            | `Date: {{filled:March 15, 2024}}`                       |
+| Signatures          | `{{signature}}, Name, Title`                 | `{{signature}}, John Smith, Mayor`                      |
+| Cross-references    | Plain text (no manual links)                 | `Ordinance #52` NOT `[Ord #52](...)`                    |
+| Table footnotes     | `¹ **Bold.** Text` after table               | `¹ **Note.** See definition...`                         |
 | Document notes      | `## Document Notes`<br>`### Type {{page:X}}` | `## Document Notes`<br>`### Stamp {{page:1}}`<br>`COPY` |
 
 ### Headers Hierarchy
@@ -556,7 +556,7 @@ Always use H3 headers for different note types. The `{{page:X}}` notation is opt
 - **Underlined text**: Convert to bold (markdown doesn't support underlines)
 - **Strikethrough**: Preserve using `~~text~~` when it appears in legal documents
 - **ALL CAPS**: Ask Leah before converting - she'll decide case-by-case. If converted, add a Digitization note
-- **Handwritten additions**: Use `{{filled:text}}` for handwritten content, not just bold
+- **Handwritten additions**: Use `{{filled:text}}` for handwritten content
 - **Blank lines/spaces**: Use `{{filled:}}` for blank form fields
 - **Checkboxes**: Use `☐` for empty boxes, `☑` for checked boxes
 - **Line breaks in signatures**: Add two spaces at the end of lines
@@ -586,7 +586,7 @@ If you encounter images, diagrams, or complex visual content:
 
 - Note their location and description
 - Use placeholder: `{{image:filename.png|caption=Description|alt=Alt text}}`
-- Alert Leah that an image needs to be extracted
+- Alert Leah that an image needs to be extracted, or that you've extracted it for her if capable
 
 ### Complete Example
 
@@ -648,12 +648,26 @@ _Note: The example above shows `## Document Notes` used within the document_
 
 - **Always search existing entries** before creating new ones
 - Use multiple search terms (ID, year, topic keywords)
-- **Array fields (tags, linked records)**: Always pass as strings, not arrays - MCP auto-wraps them
-  - See `/Users/leahsilber/Github/daily-claude/mcp-server/MCP_USAGE_GUIDE.md` for full details
 - **Inform Leah immediately of any field validation failures** for her decision on resolution
 - Link documents to governing/meeting records appropriately
 - Handle field validation errors gracefully (especially for Topics and tags)
 - Include topics for searchability using valid options only
+
+### Critical: Array Field Handling
+
+**For array-type fields (tags, linked records, multi-select), always pass as strings - MCP auto-wraps them:**
+
+✅ **Correct**:
+- Single value: `tags: "Ordinance"`
+- Multiple values: `tags: "Budget,Planning,Public Safety"`
+- With slashes: `tags: "Ordinance/Resolution/Interpretation"`
+- Linked record: `governing_docs: "recXYZ123"`
+
+❌ **Wrong**:
+- Pre-wrapped array: `tags: ["Ordinance"]` (will be double-wrapped!)
+- Stringified array: `tags: '["Budget", "Planning"]'` (treated as literal string!)
+
+The MCP server automatically detects array-type fields and wraps string values appropriately
 
 ### General Workflow Reminders
 
