@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Rivergrove - Enhanced Tables Style Guide</title>
+    <link rel="stylesheet" href="../../theme/css/main.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .style-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .style-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .style-section h2 {
+            color: #0969da;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .style-section h3 {
+            color: #0969da;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Example Containers */
+        .example-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Code Snippets */
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .markdown-example {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            margin: 10px 0;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #0969da;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main container with sidebar */
+        .main-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sticky sidebar */
+        .toc-container {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .toc-container h3 {
+            color: #0969da;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 4px 0;
+            border-left: 2px solid transparent;
+            padding-left: 10px;
+            transition: all 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: #0969da;
+            border-left-color: #0969da;
+            background: #f0f9ff;
+        }
+
+        .toc-list ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        /* Content area */
+        .content-container {
+            min-width: 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .toc-container {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: #f0f9ff;
+            border: 1px solid #e1f0ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            color: #0969da;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            margin-top: 0;
+            color: #dc2626;
+        }
+
+        /* Special Table Styles for Documentation */
+        .hover-demo tbody tr:hover {
+            background: #e1f0ff !important;
+            transition: background 0.2s;
+        }
+
+        .alternating-demo tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Copy button for code blocks */
+        .copy-button {
+            float: right;
+            background: #0969da;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            cursor: pointer;
+            margin: -5px -5px 5px 5px;
+        }
+
+        .copy-button:hover {
+            background: #0756b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="style-guide.html">← Back to Style Guide</a> / Tables Style Guide
+    </div>
+
+    <div class="style-header">
+        <h1>Tables Style Guide</h1>
+        <p>Comprehensive documentation for creating and formatting tables in City of Rivergrove documents</p>
+    </div>
+
+    <div class="main-container">
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-container">
+            <h3>📚 Contents</h3>
+            <ul class="toc-list">
+                <li><a href="#basic-tables">Basic Tables</a></li>
+                <li><a href="#fee-schedules">Fee Schedule Tables</a>
+                    <ul>
+                        <li><a href="#fee-footnotes">With Footnotes</a></li>
+                        <li><a href="#deposit-schedules">Deposit Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="#attendance">Meeting Attendance</a></li>
+                <li><a href="#budget">Budget & Financial</a></li>
+                <li><a href="#comparison">Comparison Tables</a></li>
+                <li><a href="#special-formatting">Special Formatting</a>
+                    <ul>
+                        <li><a href="#blockquotes">In Blockquotes</a></li>
+                        <li><a href="#multi-header">Multi-Row Headers</a></li>
+                    </ul>
+                </li>
+                <li><a href="#css-effects">CSS Effects</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+                <li style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
+                    <a href="lists-style-guide.html">→ Lists Guide</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Content Container -->
+        <div class="content-container">
+
+            <!-- Basic Tables Section -->
+            <div class="style-section" id="basic-tables">
+        <h2>Basic Tables</h2>
+        <p>All tables in City documents follow a consistent format with bold headers and proper alignment.</p>
+
+        <div class="example-container">
+            <div class="example-title">Standard Table Structure</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column Header 1</th>
+                        <th>Column Header 2</th>
+                        <th>Column Header 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1, Cell 1</td>
+                        <td>Row 1, Cell 2</td>
+                        <td>Row 1, Cell 3</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2, Cell 1</td>
+                        <td>Row 2, Cell 2</td>
+                        <td>Row 2, Cell 3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="markdown-example">| **Column Header 1** | **Column Header 2** | **Column Header 3** |
+|---------------------|---------------------|---------------------|
+| Row 1, Cell 1       | Row 1, Cell 2       | Row 1, Cell 3       |
+| Row 2, Cell 1       | Row 2, Cell 2       | Row 2, Cell 3       |</div>
+        </div>
+
+        <div class="info-box">
+            <h4>Key Requirements</h4>
+            <ul>
+                <li>Always use <strong>bold</strong> for column headers: <code>**Header Text**</code></li>
+                <li>Use at least 3 dashes for separator row</li>
+                <li>Align columns with pipes for readability</li>
+                <li>Maintain consistent column widths</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fee Schedule Tables -->
+    <div class="style-section" id="fee-schedules">
+        <h2>Fee Schedule Tables</h2>
+        <p>Fee schedules are one of the most common and important table types in City documents.</p>
+
+        <div class="example-container">
+            <div class="example-title">Basic Fee Schedule</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>PERMIT/APPLICATION TYPE</th>
+                        <th>FEE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Building Permit (City Fee)</strong></td>
+                        <td>$25.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Variance/Hardship Relief</strong></td>
+                        <td>Actual Costs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type I Review</strong></td>
+                        <td>Actual Costs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type II Review</strong></td>
+                        <td>Actual Costs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tree Cutting Permit Within WQRA</strong></td>
+                        <td>$30 per tree + Actual Costs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example-container" id="fee-footnotes">
+            <div class="example-title">Fee Schedule with Footnotes</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>PERMIT/APPLICATION TYPE</th>
+                        <th>FEE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Building Permit (City Fee)</strong></td>
+                        <td>$25.00<sup>1</sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tree Cutting Permit Within WQRA</strong></td>
+                        <td>$30 per tree + Actual Costs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Appeal of Type II Decision</strong></td>
+                        <td>Actual Costs<sup>2</sup></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-footnotes">
+                <p><sup>1</sup> <strong>Basic building permit.</strong> Plus the actual cost of hearings officer, notification and specialized services.</p>
+                <p><sup>2</sup> <strong>Based on ORS 227.175 (10) (iii)(b).</strong> Actual costs include City's land use planners, engineers and attorneys.</p>
+            </div>
+
+            <div class="markdown-example">| **PERMIT/APPLICATION TYPE** | **FEE** |
+|-----------------------------|---------|
+| **Building Permit (City Fee)** | $25.00\*¹ |
+| **Tree Cutting Permit Within WQRA** | $30 per tree + Actual Costs |
+| **Appeal of Type II Decision** | Actual Costs² |
+
+¹ **Basic building permit.** Plus the actual cost of hearings officer, notification and specialized services.
+
+² **Based on ORS 227.175 (10) (iii)(b).** Actual costs include City's land use planners, engineers and attorneys.</div>
+
+            <div class="warning-box">
+                <h4>⚠️ Important</h4>
+                <p>Escape asterisks in markdown tables: use <code>$25.00\*¹</code> not <code>$25.00*¹</code></p>
+            </div>
+        </div>
+
+        <div class="example-container" id="deposit-schedules">
+            <div class="example-title">Deposit Schedule with Header Span</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="background: #0969da; color: white; text-align: center;">Deposit Amounts</th>
+                    </tr>
+                    <tr>
+                        <th>Review Type</th>
+                        <th>Deposit Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Type I Review</strong></td>
+                        <td>$400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type II Review</strong></td>
+                        <td>$500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type III Review</strong></td>
+                        <td>$1,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type III Review for dock</strong></td>
+                        <td>$300</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partition</strong></td>
+                        <td>$2,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Subdivision</strong></td>
+                        <td>$5,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Meeting Attendance Tables -->
+    <div class="style-section" id="attendance">
+        <h2>Meeting Attendance Tables</h2>
+        <p>Used in meeting minutes to clearly show council member attendance.</p>
+
+        <div class="example-container">
+            <div class="example-title">Council Meeting Attendance</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Council Member</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Excused</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mayor Kibbey</strong></td>
+                        <td style="text-align: center; color: #22c55e; font-size: 18px;">✓</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Councilor Smith</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: center; color: #0969da; font-size: 18px;">✓</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Councilor Johnson</strong></td>
+                        <td style="text-align: center; color: #22c55e; font-size: 18px;">✓</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Councilor Williams</strong></td>
+                        <td></td>
+                        <td style="text-align: center; color: #ef4444; font-size: 18px;">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Councilor Davis</strong></td>
+                        <td style="text-align: center; color: #22c55e; font-size: 18px;">✓</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="markdown-example">| **Council Member** | **Present** | **Absent** | **Excused** |
+|-------------------|-------------|------------|-------------|
+| **Mayor Kibbey** | ✓ | | |
+| **Councilor Smith** | | | ✓ |
+| **Councilor Johnson** | ✓ | | |
+| **Councilor Williams** | | ✓ | |
+| **Councilor Davis** | ✓ | | |</div>
+        </div>
+    </div>
+
+    <!-- Budget Tables -->
+    <div class="style-section" id="budget">
+        <h2>Budget & Financial Tables</h2>
+        <p>Financial tables require special attention to totals, percentages, and change indicators.</p>
+
+        <div class="example-container">
+            <div class="example-title">Budget Summary with Totals</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>FY 2023-24</th>
+                        <th>FY 2024-25</th>
+                        <th>Change</th>
+                        <th>% Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Administration</strong></td>
+                        <td>$250,000</td>
+                        <td>$275,000</td>
+                        <td style="color: #22c55e;">$25,000</td>
+                        <td style="color: #22c55e;">+10.0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Public Works</strong></td>
+                        <td>$450,000</td>
+                        <td>$480,000</td>
+                        <td style="color: #22c55e;">$30,000</td>
+                        <td style="color: #22c55e;">+6.7%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parks & Recreation</strong></td>
+                        <td>$125,000</td>
+                        <td>$130,000</td>
+                        <td style="color: #22c55e;">$5,000</td>
+                        <td style="color: #22c55e;">+4.0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Public Safety</strong></td>
+                        <td>$180,000</td>
+                        <td>$175,000</td>
+                        <td style="color: #ef4444;">-$5,000</td>
+                        <td style="color: #ef4444;">-2.8%</td>
+                    </tr>
+                    <tr style="border-top: 3px double #333; font-weight: bold; background: #f9fafb;">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>$1,005,000</strong></td>
+                        <td><strong>$1,060,000</strong></td>
+                        <td style="color: #22c55e;"><strong>$55,000</strong></td>
+                        <td style="color: #22c55e;"><strong>+5.5%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <h4>Best Practices for Financial Tables</h4>
+                <ul>
+                    <li>Use green color (#22c55e) for positive changes</li>
+                    <li>Use red color (#ef4444) for negative changes</li>
+                    <li>Bold the totals row</li>
+                    <li>Add a double or thick border above totals</li>
+                    <li>Consider subtle background for totals row</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Tables -->
+    <div class="style-section" id="comparison">
+        <h2>Comparison Tables</h2>
+        <p>Used to compare ordinances, resolutions, or other documents side-by-side.</p>
+
+        <div class="example-container">
+            <div class="example-title">Ordinance Comparison</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Ordinance</th>
+                        <th>Topic</th>
+                        <th>Adopted</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ord #52</strong></td>
+                        <td>Water Quality</td>
+                        <td>1989-05-08</td>
+                        <td><span style="background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 3px; font-weight: 600;">Active</span></td>
+                        <td>Amended 2001</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ord #70-2001</strong></td>
+                        <td>WQRA Updates</td>
+                        <td>2001-11-12</td>
+                        <td><span style="background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 3px; font-weight: 600;">Active</span></td>
+                        <td>Supersedes portions of #52</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ord #54-89C</strong></td>
+                        <td>Land Development</td>
+                        <td>1989-12-11</td>
+                        <td><span style="background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 3px; font-weight: 600;">Repealed</span></td>
+                        <td>Replaced by #82-2011</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ord #82-2011</strong></td>
+                        <td>Development Code</td>
+                        <td>2011-07-11</td>
+                        <td><span style="background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 3px; font-weight: 600;">Active</span></td>
+                        <td>Current development code</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Special Formatting -->
+    <div class="style-section" id="special-formatting">
+        <h2>Special Formatting</h2>
+
+        <div class="example-container" id="blockquotes">
+            <div class="example-title">Table in Blockquote</div>
+            <blockquote style="background: #f9fafb; border-left: 4px solid #0969da; padding: 15px; margin: 0;">
+                <p style="margin-top: 0;">As referenced in the comprehensive plan:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Zone</th>
+                            <th>Min Lot Size</th>
+                            <th>Max Height</th>
+                            <th>Setback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R-1</td>
+                            <td>7,500 sq ft</td>
+                            <td>35 ft</td>
+                            <td>20 ft</td>
+                        </tr>
+                        <tr>
+                            <td>R-2</td>
+                            <td>5,000 sq ft</td>
+                            <td>35 ft</td>
+                            <td>15 ft</td>
+                        </tr>
+                        <tr>
+                            <td>C-1</td>
+                            <td>No minimum</td>
+                            <td>45 ft</td>
+                            <td>0 ft</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </blockquote>
+            <p style="margin-top: 15px; color: #666;">Tables in blockquotes receive enhanced contrast styling for better readability.</p>
+        </div>
+
+        <div class="example-container" id="multi-header">
+            <div class="example-title">Multi-line Cell Content</div>
+            <table class="formatted-table">
+                <thead>
+                    <tr>
+                        <th>Permit Type</th>
+                        <th>Fee</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Appeal of Type I Decision</strong><br>
+                            <em style="font-size: 0.9em; color: #666;">(FEE TO BE PAID UPON FILING APPEAL)</em>
+                        </td>
+                        <td>$250.00</td>
+                        <td>Non-refundable</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Appeal of Type II, III, and IV Decisions</strong><br>
+                            <em style="font-size: 0.9em; color: #666;">(DEPOSIT TO BE PAID UPON FILING APPEAL)</em>
+                        </td>
+                        <td>Actual Costs</td>
+                        <td>Refundable if appeal successful</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="markdown-example">| **PERMIT TYPE** | **FEE** | **Notes** |
+|-----------------|---------|-----------|
+| **Appeal of Type I Decision**{{br}}(FEE TO BE PAID UPON FILING APPEAL) | $250.00 | Non-refundable |
+| **Appeal of Type II, III, and IV Decisions**{{br}}(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs | Refundable if appeal successful |</div>
+        </div>
+    </div>
+
+    <!-- CSS Effects Section -->
+    <div class="style-section" id="css-effects">
+        <h2>CSS Effects & Styling</h2>
+
+        <div class="example-container">
+            <div class="example-title">Hover Effects Demonstration</div>
+            <p style="margin-bottom: 15px; color: #666;">Hover over the rows to see the highlight effect:</p>
+            <table class="formatted-table hover-demo">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Description</th>
+                        <th>CSS Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row Hover</td>
+                        <td>Highlights row on mouse over</td>
+                        <td><code>tbody tr:hover</code></td>
+                    </tr>
+                    <tr>
+                        <td>Alternating Rows</td>
+                        <td>Even rows have subtle background</td>
+                        <td><code>tbody tr:nth-child(even)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Header Style</td>
+                        <td>Bold with gray background</td>
+                        <td><code>thead</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Key CSS Classes</div>
+            <div class="code-snippet">/* Main table styling */
+.formatted-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+/* Header styling */
+.formatted-table thead {
+    background: var(--color-bg-gray);
+    border-bottom: 2px solid var(--color-border-gray);
+}
+
+.formatted-table th {
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Row effects */
+.formatted-table tbody tr:nth-child(even) {
+    background: var(--color-bg-subtle);
+}
+
+.formatted-table tbody tr:hover {
+    background: var(--color-bg-hover);
+    transition: background 0.2s;
+}
+
+/* Footnotes */
+.table-footnotes {
+    margin-top: 1em;
+    padding: 0.75em;
+    background: #f8f9fa;
+    border-left: 3px solid #dee2e6;
+    font-size: 0.9em;
+}
+
+/* Tables in blockquotes */
+blockquote table {
+    background: white;
+    border: 1px solid var(--color-border-gray);
+}
+
+blockquote table thead {
+    background: var(--color-bg-gray);
+}</div>
+        </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="style-section" id="best-practices">
+        <h2>Best Practices</h2>
+
+        <div class="info-box">
+            <h4>✅ Do's</h4>
+            <ul>
+                <li>Always bold column headers using <code>**Header Text**</code></li>
+                <li>Use consistent column alignment throughout the table</li>
+                <li>Escape special characters in markdown tables (<code>\*</code>, <code>\|</code>)</li>
+                <li>Include units in headers when applicable (e.g., "Fee (USD)")</li>
+                <li>Use footnotes for explanatory text rather than cramming into cells</li>
+                <li>Bold totals rows for emphasis</li>
+                <li>Use color coding consistently (green for positive, red for negative)</li>
+                <li>Test tables at different screen sizes for responsive behavior</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>❌ Don'ts</h4>
+            <ul>
+                <li>Don't use HTML tables unless absolutely necessary</li>
+                <li>Don't include lengthy explanations in cells (use footnotes instead)</li>
+                <li>Don't mix alignment styles within a table</li>
+                <li>Don't forget to escape asterisks when using footnote markers</li>
+                <li>Don't use inline styles unless necessary for special formatting</li>
+                <li>Don't create tables wider than the content area</li>
+            </ul>
+        </div>
+
+        <div class="example-container">
+            <div class="example-title">Accessibility Checklist</div>
+            <ul style="list-style: none; padding: 0;">
+                <li>☑️ Tables use proper semantic HTML (<code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>)</li>
+                <li>☑️ Header cells use <code>&lt;th&gt;</code> elements</li>
+                <li>☑️ Color is not the only indicator of meaning</li>
+                <li>☑️ Contrast ratios meet WCAG AA standards</li>
+                <li>☑️ Tables are keyboard navigable</li>
+                <li>☑️ Complex tables include scope attributes where needed</li>
+                <li>☑️ Footnotes are properly linked to their references</li>
+            </ul>
+        </div>
+    </div>
+
+            <!-- Footer -->
+            <div class="style-section" style="text-align: center; background: #f0f9ff;">
+                <p style="margin: 0; color: #666;">
+                    <strong>City of Rivergrove Tables Style Guide</strong><br>
+                    Last Updated: January 2025<br>
+                    <a href="style-guide.html" style="color: #0969da;">Return to Main Style Guide</a>
+                </p>
+            </div>
+        </div> <!-- End content-container -->
+    </div> <!-- End main-container -->
+</body>
+</html>

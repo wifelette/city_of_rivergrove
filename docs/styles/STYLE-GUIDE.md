@@ -86,17 +86,27 @@ See **[Lists Style Guide](lists.md)** for comprehensive documentation of all lis
 
 ## Tables
 
-### Basic Format
+See **[Enhanced Tables Style Guide](tables.md)** for comprehensive documentation including:
+- Basic table structure and formatting
+- Fee schedule tables with proper styling
+- Tables with footnotes and explanatory notes
+- Meeting attendance and budget tables
+- Complex multi-column tables
+- Hover effects and alternating row colors
+- Accessibility considerations
+
+### Quick Reference
 ```markdown
 | **Column Header** | **Column Header** |
 |-------------------|-------------------|
 | Content | Content |
 ```
 
-### Rules
+### Key Rules
 - Bold column headers
 - Use dashes for separator row (minimum 3 per column)
 - Align columns with pipes for readability
+- See full guide for advanced patterns
 
 ## Special Formatting
 
