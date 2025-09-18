@@ -68,10 +68,24 @@ def convert_paragraph_lists(soup):
                     if clean:
                         lines.append(clean)
             else:
-                # Split by newlines
+                # Split by newlines first
                 text_only = p.get_text()
                 potential_lines = text_only.split('\n')
                 lines = [line.strip() for line in potential_lines if line.strip()]
+
+                # If we didn't get multiple lines, try splitting by list markers
+                if len(lines) <= 1 and text_only:
+                    # Try to split by consecutive list markers
+                    # Pattern: split before (i), (ii), (a), (b), (1), (2), etc.
+                    import re
+                    # Split at list markers, keeping the marker with the following text
+                    pattern = r'(?=\([a-z]+\))|(?=\([0-9]+\))|(?=\([ivxlcdm]+\))'
+                    parts = re.split(pattern, text_only)
+                    lines = []
+                    for part in parts:
+                        part = part.strip()
+                        if part and (part.startswith('(') or lines):  # Include intro text before first marker
+                            lines.append(part)
             
             # Check if we have list items
             if lines and len(lines) >= 2:
