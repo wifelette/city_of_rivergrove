@@ -19,28 +19,64 @@ import sys
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
 
-def detect_list_type(text):
+def detect_list_type(text, prev_type=None, prev_char=None):
     """
     Detect the type of list based on the marker pattern.
-    Returns: ('alpha'|'numeric'|'roman'|None, marker_text)
+    Returns: ('alpha'|'numeric'|'roman'|None, marker_text, marker_char)
+
+    Args:
+        text: The text to check for list markers
+        prev_type: The type of the previous marker ('alpha', 'roman', 'numeric')
+        prev_char: The character of the previous marker (e.g., 'h' for '(h)')
     """
     # Pattern to match list markers
     pattern = re.compile(r'^\s*\(([a-z]+|[0-9]+|[ivxlcdm]+)\)\s+', re.IGNORECASE)
     match = pattern.match(text)
-    
+
     if match:
         marker = match.group(1).lower()
         full_marker = f"({marker})"
-        
+
         # Check type
-        if marker.isalpha() and marker not in ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii']:
-            return 'alpha', full_marker
-        elif marker.isdigit():
-            return 'numeric', full_marker
-        elif marker in ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii', 'xviii', 'xix', 'xx']:
-            return 'roman', full_marker
-    
-    return None, None
+        if marker.isdigit():
+            return 'numeric', full_marker, marker
+        elif marker.isalpha():
+            # Ambiguous markers that could be either alpha or roman
+            ambiguous = ['i', 'v', 'x', 'l', 'c', 'd', 'm']
+            # Definitely roman numerals (multi-character)
+            definite_roman = ['ii', 'iii', 'iv', 'vi', 'vii', 'viii', 'ix',
+                              'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii',
+                              'xviii', 'xix', 'xx']
+
+            if marker in definite_roman:
+                return 'roman', full_marker, marker
+            elif marker in ambiguous:
+                # Use context to determine type
+                # If we're in an alphabetic sequence, stay alphabetic
+                if prev_type == 'alpha':
+                    # Check if this is sequential
+                    if prev_char and len(marker) == 1 and len(prev_char) == 1:
+                        # Check if it's the next letter (h -> i)
+                        if ord(marker) == ord(prev_char) + 1:
+                            return 'alpha', full_marker, marker
+                    # Even if not perfectly sequential, stay in alpha mode
+                    return 'alpha', full_marker, marker
+
+                # Special case: 'i' after 'h' is almost certainly alphabetic
+                if marker == 'i' and prev_char == 'h':
+                    return 'alpha', full_marker, marker
+
+                # Default 'i' to alpha in most cases (common in alphabetic lists)
+                if marker == 'i':
+                    return 'alpha', full_marker, marker
+
+                # Other ambiguous markers default to roman if no context
+                return 'roman', full_marker, marker
+            else:
+                # Definitely alphabetic (like 'a', 'b', 'h', 'j', etc.)
+                return 'alpha', full_marker, marker
+
+    return None, None, None
 
 def convert_paragraph_lists(soup):
     """
@@ -92,13 +128,17 @@ def convert_paragraph_lists(soup):
                 list_items = []
                 list_type = None
                 intro_lines = []  # Lines before the first list item
+                prev_type = None
+                prev_char = None
 
                 for line in lines:
-                    item_type, marker = detect_list_type(line)
+                    item_type, marker, char = detect_list_type(line, prev_type, prev_char)
                     if item_type:
                         list_items.append((line, item_type, marker))
                         if not list_type:
                             list_type = item_type
+                        prev_type = item_type
+                        prev_char = char
                     elif not list_items:
                         # This is text before any list items
                         intro_lines.append(line)
@@ -160,11 +200,13 @@ def process_nested_lists_in_li(soup):
         if len(lines) > 1:
             main_text = []
             nested_items = []
-            
+            prev_type = None
+            prev_char = None
+
             for line in lines:
                 line = line.strip()
                 if line:
-                    item_type, marker = detect_list_type(line)
+                    item_type, marker, char = detect_list_type(line, prev_type, prev_char)
                     if item_type and not main_text:
                         # This is the main list item
                         main_text.append(line)
@@ -224,7 +266,7 @@ def process_existing_lists(soup):
         first_li = ul.find('li')
         if first_li:
             text = first_li.get_text()
-            list_type, marker = detect_list_type(text)
+            list_type, marker, _ = detect_list_type(text, None, None)
             
             if list_type:
                 # Add class to ul
@@ -245,12 +287,16 @@ def process_li_markers(li, soup):
     
     # Find all lines that start with list markers
     list_items = []
+    prev_type = None
+    prev_char = None
     for line in lines:
         line = line.strip()
         if line:
-            item_type, marker = detect_list_type(line)
+            item_type, marker, char = detect_list_type(line, prev_type, prev_char)
             if item_type:
                 list_items.append((line, item_type, marker))
+                prev_type = item_type
+                prev_char = char
     
     # If we have multiple list items in one li, we need to split them
     if len(list_items) > 1:
@@ -367,23 +413,27 @@ def convert_consecutive_paragraph_lists(soup):
         
         # Check if this paragraph starts with a list marker
         text = p.get_text().strip()
-        item_type, marker = detect_list_type(text)
-        
+        item_type, marker, char = detect_list_type(text, None, None)
+
         if item_type:
             # Found a list item - collect consecutive list items
             list_items = []
             list_type = item_type
             j = i
-            
+            prev_type = list_type
+            prev_char = char
+
             # Look ahead to find all items of the same type
             # Skip non-list paragraphs between list items
             while j < len(paragraphs):
                 p_text = paragraphs[j].get_text().strip()
-                p_type, p_marker = detect_list_type(p_text)
+                p_type, p_marker, p_char = detect_list_type(p_text, prev_type, prev_char)
                 
                 if p_type and p_type == list_type:
                     # Same type of list item
                     list_items.append((p_text, p_type, p_marker, paragraphs[j]))
+                    prev_type = p_type
+                    prev_char = p_char
                     j += 1
                 elif not p_type:
                     # Non-list paragraph - look ahead to see if more list items follow
@@ -391,7 +441,7 @@ def convert_consecutive_paragraph_lists(soup):
                     found_more = False
                     while lookahead < min(j + 5, len(paragraphs)):  # Look up to 5 paragraphs ahead
                         ahead_text = paragraphs[lookahead].get_text().strip()
-                        ahead_type, _ = detect_list_type(ahead_text)
+                        ahead_type, _, _ = detect_list_type(ahead_text, None, None)
                         if ahead_type == list_type:
                             found_more = True
                             break
