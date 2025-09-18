@@ -183,7 +183,7 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 
 (h) "Land Division" means a lot or parcel of land created through the process of dividing land.
 
-(i) "Lot" means a unit of land created by a subdivision of land or other means.
+(i) "Lot" means a unit of land created by a subdivision of land or other means:
     (1) "Corner Lot" means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.
     (2) "Reversed Corner Lot" means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.
     (3) "Through Lot" means a lot having frontage on two parallel or approximately parallel streets other than alleys.
@@ -214,7 +214,7 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 
 (v) "Sidewalk" means a pedestrian walkway with permanent surfacing to City standards.
 
-(w) "Street" means a public or private way that is created to provide ingress or egress for persons to one or more lots, parcels, areas, or tracts of land, and the placement of utilities and including the terms "road," "highway," "lane," "avenue," "way," "place," "court," "boulevard," "circle," "drive," "alley," or other similar designation.
+(w) "Street" means a public or private way that is created to provide ingress or egress for persons to one or more lots, parcels, areas, or tracts of land, and the placement of utilities and including the terms "road," "highway," "lane," "avenue," "way," "place," "court," "boulevard," "circle," "drive," "alley," or other similar designation:
     (1) "Alley" means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.
     (2) "Arterial" means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.
     (3) "Collector" means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.
