@@ -85,7 +85,7 @@
 /* Note content area */
 .note-content {
     margin-top: var(--space-margin-xs);
-    padding-left: var(--space-padding-md);
+    padding-left: 0;
 }
 
 .note-content p {

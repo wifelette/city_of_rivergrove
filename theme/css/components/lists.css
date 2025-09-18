@@ -176,7 +176,8 @@ blockquote .roman-list {
 
 .document-notes ul,
 .document-notes ol {
-    margin-left: 1em;
+    margin-left: 0;
+    padding-left: 1.5em;
 }
 
 .document-notes .alpha-list,
