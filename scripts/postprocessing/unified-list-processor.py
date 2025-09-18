@@ -29,14 +29,21 @@ def detect_list_type(text, prev_type=None, prev_char=None):
         prev_type: The type of the previous marker ('alpha', 'roman', 'numeric')
         prev_char: The character of the previous marker (e.g., 'h' for '(h)')
     """
-    # Pattern to match list markers
-    pattern = re.compile(r'^\s*\(([a-z]+|[0-9]+|[ivxlcdm]+)\)\s+', re.IGNORECASE)
-    match = pattern.match(text)
+    # Pattern to match list markers - both (1) and 1. formats
+    paren_pattern = re.compile(r'^\s*\(([a-z]+|[0-9]+|[ivxlcdm]+)\)\s+', re.IGNORECASE)
+    period_pattern = re.compile(r'^\s*([0-9]+|[a-z])\.\s+', re.IGNORECASE)
 
+    match = paren_pattern.match(text)
     if match:
         marker = match.group(1).lower()
         full_marker = f"({marker})"
+    else:
+        match = period_pattern.match(text)
+        if match:
+            marker = match.group(1).lower()
+            full_marker = match.group(0).strip()
 
+    if match:
         # Check type
         if marker.isdigit():
             return 'numeric', full_marker, marker
