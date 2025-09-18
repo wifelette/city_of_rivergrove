@@ -171,10 +171,13 @@ if [ $BUILD_EXIT_CODE -ne 0 ]; then
     if echo "$BUILD_OUTPUT" | grep -q "Summary parsing failed\|failed to parse SUMMARY.md"; then
         echo -e "${YELLOW}⚠️  Build has SUMMARY.md warnings (non-critical), continuing...${NC}"
         echo "   (Run './build-all.sh' to see full output)"
-    elif echo "$BUILD_OUTPUT" | grep -q "Direct /src modifications detected"; then
-        echo -e "${RED}❌ Build failed: Direct /src modifications detected${NC}"
+    elif echo "$BUILD_OUTPUT" | grep -q "❌ Manual /src modifications detected"; then
+        echo -e "${RED}❌ Build failed: Manual /src modifications detected${NC}"
         echo "   Run 'git checkout -- src/' then try again"
         exit 1
+    elif echo "$BUILD_OUTPUT" | grep -q "⚠️  Auto-generated changes detected"; then
+        echo -e "${YELLOW}⚠️  Build has auto-generated src/ changes (normal), continuing...${NC}"
+        echo "   (Review with 'git diff src/' if needed)"
     else
         echo -e "${RED}❌ Build failed with errors:${NC}"
         echo "$BUILD_OUTPUT" | tail -20
