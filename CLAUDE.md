@@ -197,6 +197,22 @@ See `docs/styles/form-fields.md` for complete syntax guide and validation detail
 - Manual links will be removed if found
 - See `docs/markdown-conventions.md` for patterns that are detected
 
+## Dev Server Management
+
+**IMPORTANT**: When committing changes, the dev server will temporarily stop!
+
+This is expected behavior because:
+- Git pre-commit hooks prevent commits while `mdbook serve` is running
+- I need to kill the server to make commits
+- This is a safety feature to prevent conflicts
+
+**What I'll do**:
+- Always tell you when the server stops for commits: "Note: The dev server stopped to allow the commit (this is expected)"
+- Offer to restart it immediately: "Would you like me to restart the dev server?"
+- If you don't respond, I'll restart it automatically and confirm it's running
+
+**You can always check server status** by visiting http://localhost:3000
+
 ## Key Reminders
 
 - No Claude attribution in commit messages
