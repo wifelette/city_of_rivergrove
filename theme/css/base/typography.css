@@ -49,6 +49,62 @@ table {
 }
 
 /* ========================================
+ * CONTEXT-AWARE TYPOGRAPHY
+ * Style guide pages need different sizes than mdBook
+ * ======================================== */
+
+.style-guide-context {
+    font-size: 16px; /* Reset base size for style guide */
+}
+
+.style-guide-context h1 {
+    font-size: 2.4rem; /* 24px - documentation title */
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.style-guide-context h2 {
+    font-size: 1.8rem; /* 18px - section headers */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.style-guide-context h3 {
+    font-size: 1.5rem; /* 15px - subsections */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.style-guide-context h4 {
+    font-size: 1.3rem; /* 13px - detail headers */
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.style-guide-context h5 {
+    font-size: 1.1rem; /* 11px - minor headers */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Style guide example containers need proper sizing */
+.style-guide-context .example-container h1,
+.style-guide-context .example-container h2,
+.style-guide-context .example-container h3,
+.style-guide-context .example-container h4,
+.style-guide-context .example-container h5 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Style section headers in style guide */
+.style-guide-context .style-section h2 {
+    color: #0969da;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+/* ========================================
  * SPECIAL FORMATTING
  * ======================================== */
 

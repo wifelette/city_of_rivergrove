@@ -209,7 +209,7 @@
 
         /* Special Table Styles for Documentation */
         .hover-demo tbody tr:hover {
-            background: #e1f0ff !important;
+            background: #e1f0ff;
             transition: background 0.2s;
         }
 
@@ -236,7 +236,7 @@
     </style>
     <script src="../../theme/copy-code.js"></script>
 </head>
-<body>
+<body class="style-guide-context">
     <div class="breadcrumb">
         <a href="style-guide.html">← Back to Style Guide</a> / Tables Style Guide
     </div>
@@ -775,23 +775,7 @@
     transition: background 0.2s;
 }
 
-/* Footnotes - now handled by compiled CSS */
-
-/* Override compiled CSS for style guide display */
-.style-section h1,
-.example-container h1 {
-    font-size: 2rem !important;
-}
-
-.style-section h2,
-.example-container h2 {
-    font-size: 1.5rem !important;
-}
-
-.style-section h3,
-.example-container h3 {
-    font-size: 1.25rem !important;
-}
+/* Footnotes and typography - now handled by compiled CSS with context awareness */
 
 /* Tables in blockquotes */
 blockquote table {

@@ -330,42 +330,11 @@
             }
         }
 
-        /* Table footnotes - now handled by compiled CSS */
-
-        /* Override compiled CSS for style guide display */
-        .style-section h1 {
-            font-size: 2rem !important;
-        }
-
-        .style-section h2 {
-            font-size: 1.5rem !important;
-        }
-
-        .style-section h3 {
-            font-size: 1.25rem !important;
-        }
-
-        .style-section h4 {
-            font-size: 1.1rem !important;
-        }
-
-        .style-section h5 {
-            font-size: 1rem !important;
-        }
-
-        /* Prevent mdBook's default large sizes in examples */
-        .example-container h1,
-        .example-container h2,
-        .example-container h3,
-        .example-container h4,
-        .example-container h5 {
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-        }
+        /* Table footnotes and typography - now handled by compiled CSS with context awareness */
     </style>
     <script src="../../theme/copy-code.js"></script>
 </head>
-<body>
+<body class="style-guide-context">
     <div class="style-header">
         <h1>City of Rivergrove CSS Style Guide</h1>
         <p>Interactive guide to the modular CSS architecture and design system</p>
