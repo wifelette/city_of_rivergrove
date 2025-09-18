@@ -260,6 +260,20 @@ else
 fi
 echo ""
 
+# STEP 16: Validate list formatting
+if [ -f "scripts/validation/validate-list-formatting.py" ]; then
+    echo "📋 Step 16: Checking list formatting..."
+    if python3 scripts/validation/validate-list-formatting.py > /dev/null 2>&1; then
+        echo "  ✅ List formatting looks good"
+    else
+        echo "  ⚠️  List formatting issues detected - may include false positives"
+        echo "     Run 'python3 scripts/validation/validate-list-formatting.py' for details"
+    fi
+else
+    echo "⏭️  Step 16: List formatting check not available"
+fi
+echo ""
+
 # Done!
 echo "======================================"
 echo "✅ Build complete!"

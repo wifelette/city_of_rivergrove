@@ -196,6 +196,18 @@ fi
 echo -e "  ${GREEN}✓ Formatted${NC}"
 echo ""
 
+# Step 7: Quick validation
+echo "🔍 Step 7: Running quick validation..."
+if [ -f "scripts/validation/validate-list-formatting.py" ]; then
+    if python3 scripts/validation/validate-list-formatting.py >/dev/null 2>&1; then
+        echo -e "  ${GREEN}✓ List formatting validated${NC}"
+    else
+        echo -e "  ${YELLOW}⚠️  List formatting issues detected${NC}"
+        echo "     Run 'python3 scripts/validation/validate-list-formatting.py' for details"
+    fi
+fi
+echo ""
+
 # Done!
 echo "====================="
 echo -e "${GREEN}✅ Update complete!${NC}"

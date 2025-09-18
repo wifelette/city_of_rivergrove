@@ -108,6 +108,12 @@ python3 scripts/preprocessing/standardize-single.py source-documents/Resolutions
 python3 scripts/validation/validate-form-fields.py  # Check all files
 python3 scripts/validation/validate-form-fields.py source-documents/Ordinances/example.md  # Check one file
 python3 scripts/validation/validate-form-fields.py --fix  # Auto-fix simple issues
+
+# Validate list formatting in HTML output
+python3 scripts/validation/validate-list-formatting.py  # Check for list formatting issues
+
+# Run all validation checks
+./scripts/validation/run-all-checks.sh  # Comprehensive validation suite
 ```
 
 ## Meeting Documents Structure

@@ -248,6 +248,7 @@ python3 scripts/mdbook/mdbook-postprocess-watcher.py
 
 ## Testing Changes
 
+### Manual Testing
 After modifying the build pipeline:
 
 1. Test with a single file: `./build-one.sh [test-file]`
@@ -255,10 +256,29 @@ After modifying the build pipeline:
    - Form fields show blue highlighting
    - Cross-references are clickable
    - Tables have proper formatting
-   - Special lists render correctly
+   - Special lists render correctly (roman numerals, nested lists)
 3. Run full build: `./build-all.sh`
 4. Test hot-reload: `./dev-server.sh` and edit a source file
 5. Verify no regressions in other documents
+
+### Automated Validation
+The build system includes automated validation that runs during builds:
+
+1. **Form Field Validation** (`validate-form-fields.py`)
+   - Checks for properly formatted `{{filled:}}` tags
+   - Runs automatically, blocks on errors
+
+2. **List Formatting Validation** (`validate-list-formatting.py`)
+   - Detects issues with roman numerals and list structure
+   - Runs in build-all.sh (Step 16) and build-one.sh (Step 7)
+   - Also runs on git pre-commit (warns only)
+
+3. **CSS Health Check** (`check-styles-health.py`)
+   - Verifies CSS compilation and structure
+   - Runs in build-all.sh (Step 15)
+
+4. **Run All Validations**
+   - `./scripts/validation/run-all-checks.sh`
 
 ## Performance Considerations
 
@@ -272,4 +292,4 @@ After modifying the build pipeline:
 - [ ] Incremental post-processing (only process changed HTML files)
 - [ ] Parallel processing for independent steps
 - [ ] Better error handling and rollback on failures
-- [ ] Automated testing of processing pipeline
+- [x] Automated testing of processing pipeline (partially implemented)

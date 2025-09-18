@@ -54,6 +54,19 @@ else
     # Don't fail for tooltip issues
 fi
 
+# 5. List Formatting Check (HTML output)
+echo -e "${BLUE}5. Checking list formatting in HTML...${NC}"
+if [ -d "book" ]; then
+    if python3 scripts/validation/validate-list-formatting.py 2>/dev/null; then
+        echo -e "${GREEN}  ✓ List formatting correct${NC}\n"
+    else
+        echo -e "${YELLOW}  ⚠ List formatting issues detected${NC}\n"
+        # Don't fail for list formatting issues as many may be false positives
+    fi
+else
+    echo -e "${YELLOW}  ⚠ book/ directory not found - skipping HTML validation${NC}\n"
+fi
+
 # Summary
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 if [ "$ALL_PASSED" = true ]; then
