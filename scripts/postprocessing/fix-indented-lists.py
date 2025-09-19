@@ -127,7 +127,8 @@ def convert_alpha_paragraphs_to_list(soup):
             # Pattern: (1) ... (2) ... (3) ... or (i) ... (ii) ... (iii) ...
             if re.search(r'\n?\(([1-9]|[ivx]+)\)', content):
                 # Split content into main text and sub-items
-                parts = re.split(r'\n(?=\(([1-9]|[ivx]+)\))', content)
+                # Use non-capturing group to avoid extra parts in split
+                parts = re.split(r'\n(?=\((?:[1-9]|[ivx]+)\))', content)
                 main_text = parts[0].strip()
 
                 # Create the alpha list item
@@ -246,7 +247,10 @@ def fix_embedded_setback_lists(soup):
                     text_content += child.get_text()
 
             # Check if this contains setback lines (Front Setback, Side Setback, etc.)
-            if 'Front Setback' in text_content or 'Side Setback' in text_content or 'Rear Setback' in text_content:
+            # Only apply this fix to items that actually have setback patterns
+            if ('Front Setback - ' in text_content or
+                'Side Setback - ' in text_content or
+                'Rear Setback - ' in text_content):
                 # Extract the marker span first
                 marker_span = li.find('span', class_='list-marker-alpha')
                 if not marker_span:

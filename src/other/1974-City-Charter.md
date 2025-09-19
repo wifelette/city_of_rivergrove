@@ -208,15 +208,15 @@ Vacant elective offices in the city shall be filled by appointment by the mayor.
 The enacting clause of all ordinances hereafter enacted shall be, "The city of Rivergrove ordains as follows:"
 
 **Section 35. Mode of Enactment.**  
-1. Except as the second and third paragraphs of this section provide to the contrary, every ordinance of the council shall, before being put upon its final passage, be read fully and distinctly in open council meeting on two different days.
+(1) Except as the second and third paragraphs of this section provide to the contrary, every ordinance of the council shall, before being put upon its final passage, be read fully and distinctly in open council meeting on two different days.
 
-2. Except as the third paragraph of this section provides to the contrary, an ordinance may be enacted at a single meeting of the council by unanimous vote of all council members present, upon being read first in full and then by title.
+(2) Except as the third paragraph of this section provides to the contrary, an ordinance may be enacted at a single meeting of the council by unanimous vote of all council members present, upon being read first in full and then by title.
 
-3. Any of the readings may be by title only if no council member present at the meeting requests to have the ordinance read in full or if a copy of the ordinance is provided for each council member and three copies are provided for public inspection in the office of the city recorder not later than one week before the first reading of the ordinance and if notice of their availability is given forthwith upon the filing, by written notice posted at the city hall and two other public places in the city or by advertisement in a newspaper of general circulation in the city. An ordinance enacted after being read by title alone may have no legal effect if it differs substantially from its terms as it was thus filed prior to such reading, unless each section incorporating such difference is read fully and distinctly in open council meeting as finally amended prior to being approved by the council.
+(3) Any of the readings may be by title only if no council member present at the meeting requests to have the ordinance read in full or if a copy of the ordinance is provided for each council member and three copies are provided for public inspection in the office of the city recorder not later than one week before the first reading of the ordinance and if notice of their availability is given forthwith upon the filing, by written notice posted at the city hall and two other public places in the city or by advertisement in a newspaper of general circulation in the city. An ordinance enacted after being read by title alone may have no legal effect if it differs substantially from its terms as it was thus filed prior to such reading, unless each section incorporating such difference is read fully and distinctly in open council meeting as finally amended prior to being approved by the council.
 
-4. Upon the final vote on an ordinance, the ayes and nays of the members shall be taken and entered in the record of proceedings.
+(4) Upon the final vote on an ordinance, the ayes and nays of the members shall be taken and entered in the record of proceedings.
 
-5. Upon the enactment of an ordinance the recorder shall sign it with the date of its passage and his name and title of office, and within three days thereafter the mayor shall sign it with the date of his signature, his name and the title of his office.
+(5) Upon the enactment of an ordinance the recorder shall sign it with the date of its passage and his name and title of office, and within three days thereafter the mayor shall sign it with the date of his signature, his name and the title of his office.
 
 **Section 36. When Ordinances Take Effect.**  
 An ordinance enacted by the council shall take effect on the thirtieth day after its enactment. When the council deems it advisable, however, an ordinance may provide a later time for it to take effect, and in case of an emergency, it may take effect immediately.
@@ -249,11 +249,11 @@ All ordinances of the city consistent with this charter and in force when it tak
 All charter provisions of the city enacted prior to the time that this charter takes effect are hereby repealed.
 
 **Section 45. Amendment.**  
-1. This charter may be amended by the voters at a regular or special election.
+(1) This charter may be amended by the voters at a regular or special election.
 
-2. An ordinance to refer an amendment to the voters shall be adopted at least 60 calendar days before the election at which the measure is to be voted upon and shall be effective upon the signature of the presiding officer of the council.
+(2) An ordinance to refer an amendment to the voters shall be adopted at least 60 calendar days before the election at which the measure is to be voted upon and shall be effective upon the signature of the presiding officer of the council.
 
-3. An initiative petition proposing a charter amendment shall be filed with the officer in charge of elections at least 90 calendar days before the election at which the measure is to come before the voters. If a petition is filed and the council calls a special election on the measure, the election may not be held sooner than 90 calendar days after the call.
+(3) An initiative petition proposing a charter amendment shall be filed with the officer in charge of elections at least 90 calendar days before the election at which the measure is to come before the voters. If a petition is filed and the council calls a special election on the measure, the election may not be held sooner than 90 calendar days after the call.
 
 **Section 46. Time of Effect of Charter.**  
 This charter shall take effect 30 days after approval by the voters.
