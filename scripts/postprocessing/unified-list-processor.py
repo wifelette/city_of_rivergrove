@@ -561,39 +561,233 @@ def process_lists_in_tables(soup):
             else:
                 td.append(content.extract() if hasattr(content, 'extract') else content)
 
+def merge_separated_lists(soup):
+    """
+    Merge consecutive <ul> lists that should be a single continuous list.
+    This handles cases where mdBook splits a list due to indented content.
+    """
+    # Find all ul elements
+    uls = soup.find_all('ul')
+
+    i = 0
+    while i < len(uls) - 1:
+        current_ul = uls[i]
+        next_ul = uls[i + 1]
+
+        # Check if these are adjacent siblings or close enough to merge
+        # Get all siblings between current and next
+        current_parent = current_ul.parent
+        next_parent = next_ul.parent
+
+        # Only merge if they have the same parent
+        if current_parent == next_parent:
+            # Check what's between them
+            between = []
+            sibling = current_ul.next_sibling
+            while sibling and sibling != next_ul:
+                # Skip whitespace-only text nodes
+                if isinstance(sibling, NavigableString):
+                    if sibling.strip():
+                        between.append(sibling)
+                else:
+                    between.append(sibling)
+                sibling = sibling.next_sibling
+
+            # If nothing substantial between them, consider merging
+            if not between:
+                # Get the items to check continuity
+                current_items = current_ul.find_all('li', recursive=False)
+                next_items = next_ul.find_all('li', recursive=False)
+
+                if current_items and next_items:
+                    # Get the last item of current list
+                    last_text = current_items[-1].get_text()
+                    last_type, last_marker, last_char = detect_list_type(last_text, None, None)
+
+                    # Get the first item of next list
+                    # Check if it's item (i) with nested numeric items
+                    first_li = next_items[0]
+                    first_text = first_li.get_text()
+
+                    # Extract just the first line to detect the main marker
+                    first_line = first_text.split('\n')[0] if '\n' in first_text else first_text
+                    first_type, first_marker, first_char = detect_list_type(first_line, last_type, last_char)
+
+                    # Check if we should merge - look for missing (i) after (h)
+                    # The first list might have items beyond (h), so we need to find where (i) should go
+                    if first_type == 'alpha' and first_char == 'i':
+                        # Check if the first list has (h) somewhere
+                        insert_position = None
+                        for j, item in enumerate(current_items):
+                            item_text = item.get_text()
+                            item_type, _, item_char = detect_list_type(item_text, None, None)
+                            if item_type == 'alpha' and item_char == 'h':
+                                # Found (h) - (i) should go after it
+                                insert_position = j + 1
+                                break
+
+                        if insert_position is not None:
+                            # We found where to insert item (i)
+                            # First, we need to restructure item (i) if it has nested items
+                            if first_li.find('ul'):
+                                # Item (i) already has proper nested structure
+                                pass
+                            else:
+                                # Check if item (i) has inline numeric items that need nesting
+                                lines = first_text.split('\n')
+                                if len(lines) > 1:
+                                    # Rebuild item (i) with proper nesting
+                                    first_li.clear()
+
+                                    # Add the main (i) marker and text
+                                    marker_span = soup.new_tag('span')
+                                    marker_span['class'] = ['list-marker-alpha']
+                                    marker_span.string = first_marker
+                                    first_li.append(marker_span)
+
+                                    # Get main text (after marker, before nested items)
+                                    main_text = first_line[len(first_marker):].strip()
+                                    first_li.append(' ' + main_text + '\n')
+
+                                    # Create nested list for numeric items
+                                    nested_ul = soup.new_tag('ul')
+                                    nested_ul['class'] = ['numeric-list']
+
+                                    for line in lines[1:]:
+                                        line = line.strip()
+                                        if line:
+                                            nested_type, nested_marker, _ = detect_list_type(line, None, None)
+                                            if nested_type:
+                                                nested_li = soup.new_tag('li')
+                                                nested_span = soup.new_tag('span')
+                                                nested_span['class'] = [f'list-marker-{nested_type}']
+                                                nested_span.string = nested_marker
+                                                nested_li.append(nested_span)
+                                                nested_li.append(' ' + line[len(nested_marker):].strip())
+                                                nested_ul.append(nested_li)
+
+                                    if nested_ul.find_all('li'):
+                                        first_li.append(nested_ul)
+
+                            # Extract items from the second list
+                            items_to_insert = []
+                            for li in next_items:
+                                items_to_insert.append(li.extract())
+
+                            # Insert items at the correct position
+                            # First, get all current items as a list we can manipulate
+                            all_items = list(current_ul.find_all('li', recursive=False))
+
+                            # Insert the new items at the correct position
+                            for idx, new_item in enumerate(items_to_insert):
+                                if insert_position + idx < len(all_items):
+                                    # Insert before the item at this position
+                                    all_items[insert_position + idx].insert_before(new_item)
+                                else:
+                                    # Append at the end
+                                    current_ul.append(new_item)
+
+                            # Update the class if needed to ensure it stays as alpha-list
+                            if 'alpha-list' not in current_ul.get('class', []):
+                                current_ul['class'] = ['alpha-list']
+
+                            # Remove the now-empty next_ul
+                            next_ul.decompose()
+
+                            # Update the uls list
+                            uls = soup.find_all('ul')
+                            continue
+
+        i += 1
+
+def fix_misplaced_nested_items(soup):
+    """
+    Fix cases where numeric items that should be nested under (i) are siblings.
+    Specifically handles the case where (1), (2), (3) define types of "Lot".
+    """
+    # Find all alpha-list ul elements
+    for ul in soup.find_all('ul', class_='alpha-list'):
+        items = ul.find_all('li', recursive=False)
+
+        i = 0
+        while i < len(items):
+            item = items[i]
+            item_text = item.get_text()
+
+            # Check if this is item (i) about "Lot"
+            if '(i)' in item_text[:10] and '"Lot"' in item_text:
+                # Look for numeric items that should be nested
+                numeric_items_to_nest = []
+
+                # Scan forward to find numeric items about lots
+                # They might not be immediately after (i)
+                for j in range(i + 1, min(i + 10, len(items))):
+                    next_item = items[j]
+                    next_text = next_item.get_text()
+
+                    # Check if it's a numeric item about lots
+                    if (('(1)' in next_text[:10] and 'Lot' in next_text) or
+                        ('(2)' in next_text[:10] and 'Lot' in next_text) or
+                        ('(3)' in next_text[:10] and 'Lot' in next_text)):
+                        numeric_items_to_nest.append(next_item)
+
+                # If we found numeric items to nest, create the nested structure
+                if numeric_items_to_nest:
+                    # Create nested ul
+                    nested_ul = soup.new_tag('ul')
+                    nested_ul['class'] = ['numeric-list']
+
+                    # Move numeric items to nested ul
+                    for numeric_item in numeric_items_to_nest:
+                        nested_ul.append(numeric_item.extract())
+
+                    # Add nested ul to item (i)
+                    item.append(nested_ul)
+
+                    # Reset items list since we modified the structure
+                    items = ul.find_all('li', recursive=False)
+
+            i += 1
+
 def process_file(filepath):
     """Process a single HTML file"""
     print(f"  Processing lists in {filepath.name}...")
-    
+
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     soup = BeautifulSoup(content, 'html.parser')
-    
+
     # Process in order:
     # 1. Convert paragraph lists to proper lists (multi-line in same <p>)
     convert_paragraph_lists(soup)
-    
+
     # 2. Convert consecutive paragraph lists (each item in separate <p>)
     convert_consecutive_paragraph_lists(soup)
-    
+
     # 3. Process nested lists in existing li elements
     process_nested_lists_in_li(soup)
-    
+
     # 4. Process existing lists (add classes and wrap markers)
     process_existing_lists(soup)
-    
-    # 5. Process lists in table cells
+
+    # 5. Merge separated lists that should be continuous
+    merge_separated_lists(soup)
+
+    # 6. Fix misplaced numeric items that should be nested
+    fix_misplaced_nested_items(soup)
+
+    # 7. Process lists in table cells
     process_lists_in_tables(soup)
-    
-    # 6. Process Document Notes
+
+    # 8. Process Document Notes
     process_document_notes(soup)
-    
+
     # Write back
     content = str(soup)
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
-    
+
     return True
 
 def main():
