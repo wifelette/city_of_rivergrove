@@ -206,6 +206,15 @@ MDBOOK_PID=$!
 # Wait for server to actually start
 if wait_for_server_start 3000 10; then
     echo ""
+
+    # Run postprocessors after mdbook serve rebuilds
+    echo "🎨 Applying styles and processors..."
+    python3 scripts/build/compile-css.py >/dev/null 2>&1 || true
+    python3 scripts/postprocessing/custom-list-processor.py book >/dev/null 2>&1 || true
+    python3 scripts/postprocessing/enhanced-list-processor.py >/dev/null 2>&1 || true
+    python3 scripts/postprocessing/fix-indented-lists.py book/ordinances/*.html >/dev/null 2>&1 || true
+    echo "✅ Styles applied"
+    echo ""
     echo "=========================================="
     echo -e "${GREEN}✅ Server running at http://localhost:3000${NC}"
     echo "=========================================="
