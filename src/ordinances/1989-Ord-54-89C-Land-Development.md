@@ -7,7 +7,7 @@ Adopted March, 1989
 City of Rivergrove  
 P.O. Box 1104  
 Lake Oswego, OR 97035  
-(503) 639-6919
+503. 639-6919
 
 ---
 
@@ -184,9 +184,9 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 (h) "Land Division" means a lot or parcel of land created through the process of dividing land.
 
 (i) "Lot" means a unit of land created by a subdivision of land or other means:
-    (1) "Corner Lot" means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.
-    (2) "Reversed Corner Lot" means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.
-    (3) "Through Lot" means a lot having frontage on two parallel or approximately parallel streets other than alleys.
+    1. "Corner Lot" means a lot at least two adjacent sides of which abut streets other than alleys, provided the angle of the intersection of the adjacent streets does not exceed 135 degrees.
+    2. "Reversed Corner Lot" means a corner lot, the side street line of which is substantially a continuation of the front line of the first lot to its rear.
+    3. "Through Lot" means a lot having frontage on two parallel or approximately parallel streets other than alleys.
 
 (j) "Major Partition" means the dividing of land into two or three parcels within one calendar year and including the creation of a road or street, either public or private and including easements.
 
@@ -215,10 +215,10 @@ As used in this ordinance the masculine includes the feminine and the neuter and
 (v) "Sidewalk" means a pedestrian walkway with permanent surfacing to City standards.
 
 (w) "Street" means a public or private way that is created to provide ingress or egress for persons to one or more lots, parcels, areas, or tracts of land, and the placement of utilities and including the terms "road," "highway," "lane," "avenue," "way," "place," "court," "boulevard," "circle," "drive," "alley," or other similar designation:
-    (1) "Alley" means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.
-    (2) "Arterial" means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.
-    (3) "Collector" means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.
-    (4) "Cul-de-sac" means a short street having one end open to traffic and terminated by a vehicle turnaround; also called a dead end street.
+    1. "Alley" means a narrow street through a block primarily for vehicular service access to the back or side of property otherwise abutting on another street.
+    2. "Arterial" means street of considerable continuity which is primarily a traffic artery for inter-communication among large areas.
+    3. "Collector" means a street supplementary to the arterial street system and a means of intercommunication between this system and smaller areas; also used to some extent for access to abutting properties and may be used to a limited extent for through traffic.
+    4. "Cul-de-sac" means a short street having one end open to traffic and terminated by a vehicle turnaround; also called a dead end street.
 
 (x) "Subdivide Land" means to divide an area or tract of land into four or more lots within a calendar year when such area or tract of land exists as a unit or contiguous units of land under a single ownership at the beginning of such year.
 
@@ -271,11 +271,11 @@ Except as provided in Section 2.080, a nonconforming development or use may cont
 
 (b) With the approval of the City Council, under the procedure set out in Section 6.060 and Section 6.070, a nonconforming development or use may be changed provided, however, that the maximum special relief shall be as follows:
 
-    (1) the floor area of a building shall not be increased by more than twenty (20) percent;
+    1. the floor area of a building shall not be increased by more than twenty (20) percent;
 
-    (2) the land area covered by structures shall not be increased by more than twenty (20) percent; or
+    2. the land area covered by structures shall not be increased by more than twenty (20) percent; or
 
-    (3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
+    3. the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
 
 (c) The entire contiguous ownership of land shall be considered as a single parcel for determination of noncompliance as a consideration for approval of any further development. A record of separate lot or parcel boundaries shall be disregarded.
 
@@ -462,20 +462,18 @@ New development shall be approved only where necessary and adequate services are
 ### Section 5.080 General Building Setbacks in All Zones and Districts.
 
 (a) All new detached residential structures built with any zone or district in the City of Rivergrove shall maintain the following setbacks from the property lines of the lot on which they are constructed or erected.
-
-Front Setback - 25 feet  
-Side Setback - 10 feet  
-Side Setback on a Corner Lot - 15 feet (to insure better visibility).  
-Rear Setback - 25 feet (from the rear lot line or the ordinary high water mark- whichever is greater).
+    Front Setback - 25 feet
+    Side Setback - 10 feet
+    Side Setback on a Corner Lot - 15 feet (to insure better visibility).
+    Rear Setback - 25 feet (from the rear lot line or the ordinary high water mark- whichever is greater).
 
 (b) All new attached residential shall maintain the same set backs as detached residential around the perimeter of the structure.
 
 (c) All new detached accessory buildings (permanently placed on a site) shall maintain the following setbacks from the property line of the lot on which they are constructed or erected.
-
-Front Setback - 30 feet  
-Side Setback - 3 feet  
-Side Setback (corner lot) - 10 feet.  
-Rear Setback - 3 feet.
+    Front Setback - 30 feet
+    Side Setback - 3 feet
+    Side Setback (corner lot) - 10 feet.
+    Rear Setback - 3 feet.
 
 (d) Site specific variances from these setbacks may be granted to allow the location of building that use solar energy as a heating source. As requested for variance for solar access purposes shall be submitted with a detail site plan showing the location of all structures to be constructed, and other appropriate information as deemed necessary - such as solar easements obtained over adjoining properties.
 
@@ -629,13 +627,13 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 
 (b) Consideration shall be given also to the following:
 
-(1) harmony in scale, bulk, coverage and density;
+1. harmony in scale, bulk, coverage and density;
 
-(2) the availability of public facilities and utilities; and
+2. the availability of public facilities and utilities; and
 
-(3) the generation of traffic and the capacity of surrounding streets.
+3. the generation of traffic and the capacity of surrounding streets.
 
-(4) other relevant impacts of the development
+4. other relevant impacts of the development
 
 ## Hardship Relief
 
@@ -645,21 +643,21 @@ Notice of a Type II or III hearing on an area accessory development shall be mai
 
 (b) The criteria are:
 
-(1) The hardship is not the result of any act or omission of the applicant;
+1. The hardship is not the result of any act or omission of the applicant;
 
-(2) The grant of relief will not result in a land use not otherwise permissible;
+2. The grant of relief will not result in a land use not otherwise permissible;
 
-(3) Grant of the relief will not violate the Plan;
+3. Grant of the relief will not violate the Plan;
 
-(4) The relief sought will not be materially detrimental to the public welfare;
+4. The relief sought will not be materially detrimental to the public welfare;
 
-(5) The development will be on a parcel of land that in conjunction with adjacent land in the same ownership is not otherwise reasonably capable of economic use;
+5. The development will be on a parcel of land that in conjunction with adjacent land in the same ownership is not otherwise reasonably capable of economic use;
 
-(6) Or materially injurious to the property in the vicinity;
+6. Or materially injurious to the property in the vicinity;
 
-(7) The development will be the same as development permitted under this ordinance and City standards to the greatest extent possible while permitting some economic use of the land;
+7. The development will be the same as development permitted under this ordinance and City standards to the greatest extent possible while permitting some economic use of the land;
 
-(8) Special circumstances or conditions exist that do not apply to other property in the vicinity.
+8. Special circumstances or conditions exist that do not apply to other property in the vicinity.
 
 ### Section 6.070. Authority to Grant Hardship Relief Under Type I Procedure. 
 The Council may grant hardship relief under a Type I procedure if the request involves only the expansion or reduction by no more than 20 percent of one or more quantifiable provisions of yard or area standards of the Development Standards Document or comparable deviation from such additional standards set by the Commission. The decision shall be based on the criteria in Section 6.060.
@@ -824,9 +822,9 @@ In making its recommendation, the Commission shall:
 
 (b) After confirming, amending or denying the recommendations of the Commission, the Council may:
 
-(1) Enact or defeat an ordinance on all or part of the proposal;
+1. Enact or defeat an ordinance on all or part of the proposal;
 
-(2) Refer some or all of the proposal back to the Commission for further consideration.
+2. Refer some or all of the proposal back to the Commission for further consideration.
 
 If such referral is later returned, no further hearing is required provided the proposal is processed under the City's procedure for the enactment of ordinances.
 
@@ -865,9 +863,9 @@ The Planning Commission may require changes in a proposed project to ensure that
 ### Section 6.235. Annexation Criteria. 
 A proposal to annex territory to the city shall be conducted under the Type IV procedure with supplements or modifications required to comply with state law. When an annexation proposal has been initiated and the (planning director) has determined the territory is eligible for annexation it shall be referred to the planning commission. The commission shall base its recommendation on whether the following criteria have been met:
 
-(1) The proposal conforms to the comprehensive plan or substantial changes in conditions have occurred which render the comprehensive plan inapplicable to the annexation.
+1. The proposal conforms to the comprehensive plan or substantial changes in conditions have occurred which render the comprehensive plan inapplicable to the annexation.
 
-(2) The inclusion of the territory within the city would be consistent with the purpose served by the city.
+2. The inclusion of the territory within the city would be consistent with the purpose served by the city.
 
 Although the city council shall make affirmative findings on the two criteria if it proceeds with the annexation, proceedings may be terminated by the council at any time.
 
@@ -1025,13 +1023,13 @@ Unless otherwise required by this ordinance, review of a decision on appeal shal
 
 (a) The reviewing body may hear the matter de novo; or it may admit additional testimony or evidence not previously admitted if such evidence or testimony could not reasonably have been presented at the earlier hearing. In deciding whether to admit such testimony or evidence the reviewing body shall consider all of the following:
 
-(1) Prejudice to a party;
+1. Prejudice to a party;
 
-(2) Convenience or availability of the evidence at the time of the initial hearing;
+2. Convenience or availability of the evidence at the time of the initial hearing;
 
-(3) Surprise to other parties;
+3. Surprise to other parties;
 
-(4) The nature and relevancy of the testimony or evidence.
+4. The nature and relevancy of the testimony or evidence.
 
 (b) "De novo hearing" shall mean a hearing by the review body as if the action had not been previously heard and as if no decision had been rendered, except that all testimony, evidence and other material from the prior hearing shall be included in the record of the review.
 
