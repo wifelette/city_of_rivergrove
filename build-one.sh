@@ -112,6 +112,11 @@ echo "🔧 Step 3: Processing file..."
 
 # Only run if file exists in destination
 if [ -f "$DEST_FILE" ]; then
+    # Fix mixed list formats
+    echo -n "  • Mixed list formats... "
+    python3 scripts/preprocessing/fix-mixed-list-format.py "$DEST_FILE" 2>/dev/null || true
+    echo -e "${GREEN}✓${NC}"
+
     # Footnotes
     echo -n "  • Footnotes... "
     python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
@@ -191,7 +196,10 @@ echo ""
 echo "🎨 Step 6: Applying custom formatting..."
 python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 # Fix specific list issues in Ord 54
-python3 scripts/postprocessing/fix-ord54-lists.py >/dev/null 2>&1
+# Apply complex list fixes to all documents that need them
+python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+# Fix empty list items (mdBook bug with certain list formats)
+python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
 fi

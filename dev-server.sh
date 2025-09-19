@@ -95,7 +95,10 @@ process_file_change() {
     if [ -n "$dest_file" ] && [ -f "$dest_file" ]; then
         echo "  Standardizing list formats..."
         python3 scripts/preprocessing/standardize-list-format.py >/dev/null 2>&1 || true
-        
+
+        echo "  Fixing mixed list formats..."
+        python3 scripts/preprocessing/fix-mixed-list-format.py "$dest_file" >/dev/null 2>&1 || true
+
         echo "  Processing footnotes..."
         python3 scripts/preprocessing/footnote-preprocessor.py "$dest_file" >/dev/null 2>&1 || true
         
@@ -142,9 +145,14 @@ process_file_change() {
     fi
     
     # Apply postprocessors after mdBook rebuilds
-    echo "  Applying unified list processing..."
-    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
-    
+    # NOTE: unified-list-processor.py is DISABLED as it breaks Section 1.050
+    # echo "  Applying unified list processing..."
+    # python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+
+    # Fix indented lists that mdBook interprets as code blocks
+    echo "  Fixing indented lists..."
+    python3 scripts/postprocessing/fix-indented-lists.py book/ordinances/*.html >/dev/null 2>&1
+
     # Apply enhanced processor for tables, WHEREAS, etc (NO list processing)
     echo "  Applying enhanced styling..."
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1

@@ -271,11 +271,11 @@ Except as provided in Section 2.080, a nonconforming development or use may cont
 
 (b) With the approval of the City Council, under the procedure set out in Section 6.060 and Section 6.070, a nonconforming development or use may be changed provided, however, that the maximum special relief shall be as follows:
 
-- (1) the floor area of a building shall not be increased by more than twenty (20) percent;
+    (1) the floor area of a building shall not be increased by more than twenty (20) percent;
 
-- (2) the land area covered by structures shall not be increased by more than twenty (20) percent; or
+    (2) the land area covered by structures shall not be increased by more than twenty (20) percent; or
 
-- (3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
+    (3) the standard requirement for land area or width or length of a lot or parcel shall not be reduced by more than twenty (20) percent.
 
 (c) The entire contiguous ownership of land shall be considered as a single parcel for determination of noncompliance as a consideration for approval of any further development. A record of separate lot or parcel boundaries shall be disregarded.
 

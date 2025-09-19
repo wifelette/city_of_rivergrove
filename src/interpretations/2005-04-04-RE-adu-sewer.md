@@ -7,10 +7,10 @@
 **"Section 6.050. Criteria for Decisions on Area Accessory Development.**
 (a) A development permit shall be issued for an area accessory development if, in addition to complying with the plan and applicable standards, the location, size, design and operating characteristics of the proposal are appropriate to the needs of the area and will be reasonably compatible with and have minimal impact on the livability and development of abutting property and the surrounding area.
 (b) Consideration shall be given also to the following:
-1. harmony in scale, bulk, coverage and density;
-2. the availability of public facilities and utilities;
-3. the generation of traffic and the capacity of surrounding streets; and
-4. other relevant impacts of the development."
+(1) harmony in scale, bulk, coverage and density;
+(2) the availability of public facilities and utilities;
+(3) the generation of traffic and the capacity of surrounding streets; and
+(4) other relevant impacts of the development."
 
 2. Since an Area Accessory Development Permit Application that is _solely_ for an individual sewer service line / connection will almost certainly be consistent with the approval criteria at Section 6.050, a simplified and expedited permit application and processing procedure is desired.
 
