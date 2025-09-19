@@ -709,45 +709,56 @@ def fix_misplaced_nested_items(soup):
     for ul in soup.find_all('ul', class_='alpha-list'):
         items = ul.find_all('li', recursive=False)
 
-        i = 0
-        while i < len(items):
-            item = items[i]
+        # Find item (i) about "Lot"
+        item_i_index = None
+        for idx, item in enumerate(items):
             item_text = item.get_text()
-
-            # Check if this is item (i) about "Lot"
             if '(i)' in item_text[:10] and '"Lot"' in item_text:
-                # Look for numeric items that should be nested
-                numeric_items_to_nest = []
+                item_i_index = idx
+                break
 
-                # Scan forward to find numeric items about lots
-                # They might not be immediately after (i)
-                for j in range(i + 1, min(i + 10, len(items))):
-                    next_item = items[j]
-                    next_text = next_item.get_text()
+        if item_i_index is not None:
+            # Collect all numeric items that define lot types
+            numeric_items_to_remove = []
 
-                    # Check if it's a numeric item about lots
-                    if (('(1)' in next_text[:10] and 'Lot' in next_text) or
-                        ('(2)' in next_text[:10] and 'Lot' in next_text) or
-                        ('(3)' in next_text[:10] and 'Lot' in next_text)):
-                        numeric_items_to_nest.append(next_item)
+            # Look through ALL items to find the numeric lot definitions
+            for idx, item in enumerate(items):
+                if idx == item_i_index:
+                    continue
 
-                # If we found numeric items to nest, create the nested structure
-                if numeric_items_to_nest:
-                    # Create nested ul
-                    nested_ul = soup.new_tag('ul')
-                    nested_ul['class'] = ['numeric-list']
+                item_text = item.get_text()
+                # These are the three lot type definitions that should be nested
+                # Note: The quotes may or may not be present in the text
+                if (('(1)' in item_text[:10] and 'Corner Lot' in item_text) or
+                    ('(2)' in item_text[:10] and 'Reversed Corner Lot' in item_text) or
+                    ('(3)' in item_text[:10] and 'Through Lot' in item_text)):
+                    numeric_items_to_remove.append(item)
 
-                    # Move numeric items to nested ul
-                    for numeric_item in numeric_items_to_nest:
-                        nested_ul.append(numeric_item.extract())
+            # If we found numeric items to nest, create the nested structure
+            if numeric_items_to_remove:
+                # Create nested ul
+                nested_ul = soup.new_tag('ul')
+                nested_ul['class'] = ['numeric-list']
 
-                    # Add nested ul to item (i)
-                    item.append(nested_ul)
+                # Sort the items by their number to ensure correct order
+                def get_number(item):
+                    text = item.get_text()
+                    if '(1)' in text[:10]:
+                        return 1
+                    elif '(2)' in text[:10]:
+                        return 2
+                    elif '(3)' in text[:10]:
+                        return 3
+                    return 0
 
-                    # Reset items list since we modified the structure
-                    items = ul.find_all('li', recursive=False)
+                numeric_items_to_remove.sort(key=get_number)
 
-            i += 1
+                # Move numeric items to nested ul
+                for numeric_item in numeric_items_to_remove:
+                    nested_ul.append(numeric_item.extract())
+
+                # Add nested ul to item (i)
+                items[item_i_index].append(nested_ul)
 
 def process_file(filepath):
     """Process a single HTML file"""
