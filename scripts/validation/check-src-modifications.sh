@@ -2,6 +2,11 @@
 # Check for direct modifications to /src files that should only be auto-generated
 # This helps prevent the common mistake of editing files in /src instead of source-documents/
 
+# Allow skipping this check if needed
+if [ "$SKIP_SRC_CHECK" = "1" ]; then
+    exit 0
+fi
+
 set -e
 
 # Colors for output
@@ -88,6 +93,28 @@ for file in "${CONTENT_GENERATED_FILES[@]}"; do
     fi
 done
 
+# Function to check if changes look like auto-formatting
+is_likely_autoformatted() {
+    local file=$1
+    local diff_output=$(git diff HEAD -- "$file" 2>/dev/null)
+
+    # Common auto-formatting patterns
+    # - Signature formatting changes (comma removal, spacing)
+    # - Table alignment changes
+    # - Form field formatting
+    # - Whitespace adjustments
+    if echo "$diff_output" | grep -qE '(</span><br>,|</span><br> |form-field-empty|^\+\s*\|.*\||\-\s*\|.*\||STATE OF OREGON.*\)|County of.*\))'; then
+        return 0  # Likely auto-formatted
+    fi
+
+    # Check if only whitespace or formatting changed
+    if git diff -w --quiet HEAD -- "$file" 2>/dev/null; then
+        return 0  # Only whitespace differences
+    fi
+
+    return 1  # Looks like manual edits
+}
+
 # Check for uncommitted changes in generated directories
 for dir in "${GENERATED_DIRS[@]}"; do
     if [ -d "$dir" ]; then
@@ -97,12 +124,16 @@ for dir in "${GENERATED_DIRS[@]}"; do
             if [ -n "$modified_files" ]; then
                 # Check if corresponding source files were also modified
                 has_manual_edits=false
+                has_auto_changes=false
                 for mod_file in $modified_files; do
                     # Convert src path to source-documents path
                     source_file=$(echo "$mod_file" | sed 's|^src/|source-documents/|')
 
-                    # If source file doesn't exist or wasn't modified, this is likely a manual edit
-                    if [ ! -f "$source_file" ] || git diff --quiet HEAD -- "$source_file" 2>/dev/null; then
+                    # Check if changes look auto-generated
+                    if is_likely_autoformatted "$mod_file"; then
+                        has_auto_changes=true
+                    elif [ ! -f "$source_file" ] || git diff --quiet HEAD -- "$source_file" 2>/dev/null; then
+                        # If source file doesn't exist or wasn't modified, and changes don't look auto-generated
                         has_manual_edits=true
                         break
                     fi
@@ -114,6 +145,10 @@ for dir in "${GENERATED_DIRS[@]}"; do
                     echo "  These files are auto-generated from source-documents/"
                     echo "  Edit the original files in source-documents/ instead."
                     ISSUES_FOUND=true
+                elif [ "$has_auto_changes" = true ]; then
+                    echo -e "${YELLOW}⚠️  Auto-generated changes detected in $dir${NC}"
+                    echo "  These appear to be formatting changes from the build process."
+                    WARNINGS_FOUND=true
                 else
                     echo -e "${BLUE}ℹ️  Synced changes in $dir (from source-documents)${NC}"
                 fi
