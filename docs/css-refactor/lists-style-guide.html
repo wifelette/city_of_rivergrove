@@ -740,6 +740,20 @@
             <li>The notation appears mid-sentence as a reference</li>
             <li>The context clearly indicates it's not a list item</li>
         </ul>
+
+        <h3>Inline Numeric References</h3>
+        <p>Numeric references that appear inline with text (like "twenty (20) percent") are automatically protected from list processing:</p>
+
+        <div class="example-container">
+            <div class="example-title">Examples</div>
+            <ul>
+                <li>"the floor area shall not be reduced by more than twenty (20) percent"</li>
+                <li>"within forty-eight (48) hours"</li>
+                <li>"section fifteen (15) provisions"</li>
+            </ul>
+        </div>
+
+        <p>The processor detects these patterns (word followed by parenthetical number) and preserves them as inline text rather than converting them to list items.</p>
         
         <h3>Long Markers</h3>
         <p>The system handles extended markers:</p>

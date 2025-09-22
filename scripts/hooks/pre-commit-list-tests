@@ -1,0 +1,31 @@
+#!/bin/bash
+# Git pre-commit hook for list formatting tests
+#
+# To install this hook:
+#   ln -sf ../../scripts/hooks/pre-commit-list-tests .git/hooks/pre-commit
+#
+# Or add to existing pre-commit hook:
+#   source scripts/hooks/pre-commit-list-tests
+
+# Only run if list-related files are being committed
+LIST_FILES=$(git diff --cached --name-only | grep -E "(list|List|postprocessing.*\.py)" || true)
+
+if [ -n "$LIST_FILES" ]; then
+    echo "🔍 Running list formatting tests..."
+
+    # Check if test script exists
+    if [ -f "scripts/validation/test-list-changes.sh" ]; then
+        # Run tests on staged files
+        if ! ./scripts/validation/test-list-changes.sh; then
+            echo ""
+            echo "❌ List formatting tests failed!"
+            echo "Please fix the issues before committing."
+            echo ""
+            echo "To bypass this check (not recommended):"
+            echo "  git commit --no-verify"
+            exit 1
+        fi
+    fi
+fi
+
+exit 0

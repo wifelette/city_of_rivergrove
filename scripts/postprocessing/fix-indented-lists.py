@@ -292,6 +292,169 @@ def fix_embedded_setback_lists(soup):
 
     return changes_made
 
+def fix_misplaced_numeric_items(soup):
+    """Fix numeric items that should be nested under the previous alpha item.
+
+    This handles cases where mdBook creates separate list items with numeric markers
+    that should actually be nested under the previous alpha item.
+    Example: Item (i) "Lot" followed by a separate item with "1. Corner Lot..."
+    """
+    changes_made = False
+
+    # Find all alpha lists
+    for ul in soup.find_all('ul', class_='alpha-list'):
+        items = ul.find_all('li', recursive=False)
+
+        i = 0
+        while i < len(items):
+            li = items[i]
+
+            # Check if this is an alpha item that should have nested items
+            alpha_marker = li.find('span', class_='list-marker-alpha')
+            if alpha_marker:
+                text = li.get_text()
+
+                # Check if the next item is a numeric item that should be nested
+                if i + 1 < len(items):
+                    next_li = items[i + 1]
+                    next_marker = next_li.find('span', class_='list-marker-numeric')
+
+                    if next_marker:
+                        # This numeric item should be nested under the alpha item
+                        # Extract all the content from the numeric item
+                        next_text = next_li.get_text()
+
+                        # Check if it contains multiple numbered items concatenated
+                        # Pattern: "1. ... 2. ... 3. ..."
+                        import re
+                        parts = re.split(r'(?=\d+\.\s+")', next_text)
+
+                        if len(parts) > 1 or '2.' in next_text or '3.' in next_text:
+                            # Create a nested list
+                            nested_ul = soup.new_tag('ul', **{'class': 'numeric-list'})
+
+                            # Split the text into individual numbered items
+                            # Handle both "1." and "(1)" patterns
+                            pattern = r'(\d+\.)\s*(".*?"[^"]*?)(?=\d+\.|$)'
+                            matches = re.findall(pattern, next_text, re.DOTALL)
+
+                            if matches:
+                                for num, content in matches:
+                                    new_li = soup.new_tag('li')
+
+                                    # Convert "1." to "(1)"
+                                    marker = f"({num[:-1]})"
+                                    marker_span = soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                                    marker_span.string = marker
+                                    new_li.append(marker_span)
+                                    new_li.append(' ')
+                                    new_li.append(content.strip())
+
+                                    nested_ul.append(new_li)
+                            else:
+                                # Fallback: try to split by line breaks if quotes pattern doesn't work
+                                lines = next_text.split('.')
+                                item_num = 1
+                                for line in lines:
+                                    line = line.strip()
+                                    if line and line[0].isdigit():
+                                        # This is a numbered item
+                                        # Remove the number from the beginning
+                                        content = re.sub(r'^\d+\s*', '', line)
+                                        if content:
+                                            new_li = soup.new_tag('li')
+                                            marker = f"({item_num})"
+                                            marker_span = soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                                            marker_span.string = marker
+                                            new_li.append(marker_span)
+                                            new_li.append(' ')
+                                            new_li.append(content.strip())
+                                            nested_ul.append(new_li)
+                                            item_num += 1
+
+                            # Add the nested list to the alpha item
+                            li.append(nested_ul)
+
+                            # Remove the misplaced numeric item
+                            next_li.extract()
+                            changes_made = True
+                            print(f"  Fixed misplaced numeric items under {alpha_marker.get_text()} ({len(nested_ul.find_all('li'))} items)")
+
+                            # Update items list since we removed one
+                            items = ul.find_all('li', recursive=False)
+                            continue
+
+            i += 1
+
+    return changes_made
+
+def fix_orphaned_numbered_lists(soup):
+    """Fix numbered lists that should be nested under alpha items but aren't.
+
+    This handles cases like Section 5.100 where:
+    (a) DEFINITIONS:
+    1) "Tree": ...
+    2) "Cutting": ...
+
+    The numbered list appears after an alpha item that ends with a colon.
+    """
+    changes_made = False
+
+    # Find all alpha-list items
+    for ul in soup.find_all('ul', class_='alpha-list'):
+        # Look at each list item
+        for li in ul.find_all('li', recursive=False):
+            # Check if this item's text ends with a colon (indicates it should have sub-items)
+            text_content = li.get_text().strip()
+            if text_content.endswith(':'):
+                # Look for an <ol> that immediately follows this ul
+                next_sibling = ul.find_next_sibling()
+
+                # Check if the next sibling is an <ol> (ordered list)
+                if next_sibling and next_sibling.name == 'ol':
+                    # This ol should be nested inside the li
+                    # Convert the ol to use our custom classes
+                    new_ul = soup.new_tag('ul', **{'class': 'numeric-list'})
+
+                    # Process each li in the ol
+                    for idx, ol_li in enumerate(next_sibling.find_all('li'), 1):
+                        # Create new list item
+                        new_li = soup.new_tag('li')
+
+                        # Add marker - mdBook already stripped the numbers, so we add them back
+                        marker = f"({idx})"
+                        marker_span = soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                        marker_span.string = marker
+                        new_li.append(marker_span)
+                        new_li.append(' ')
+
+                        # Add all content from the original li
+                        for child in ol_li.children:
+                            if child.name == 'p':
+                                # Preserve the text from p tags
+                                new_li.append(child.get_text().strip())
+                            elif isinstance(child, str) and child.strip():
+                                new_li.append(child.strip())
+                            else:
+                                # For other elements, try to get their text
+                                if hasattr(child, 'get_text'):
+                                    text = child.get_text().strip()
+                                    if text:
+                                        new_li.append(text)
+
+                        new_ul.append(new_li)
+
+                    # Add the new ul to the li
+                    li.append(new_ul)
+
+                    # Remove the original ol
+                    next_sibling.extract()
+
+                    changes_made = True
+                    print(f"  Fixed orphaned numbered list after item ending with ':' ({len(new_ul.find_all('li'))} items)")
+
+    return changes_made
+
 def process_html_file(file_path):
     """Process a single HTML file to fix code block lists."""
     path = Path(file_path)
@@ -308,8 +471,10 @@ def process_html_file(file_path):
     code_block_fixed = fix_code_block_lists(soup)
     alpha_fixed = convert_alpha_paragraphs_to_list(soup)
     setback_fixed = fix_embedded_setback_lists(soup)
+    misplaced_fixed = fix_misplaced_numeric_items(soup)
+    orphaned_fixed = fix_orphaned_numbered_lists(soup)
 
-    if code_block_fixed or alpha_fixed or setback_fixed:
+    if code_block_fixed or alpha_fixed or setback_fixed or misplaced_fixed or orphaned_fixed:
         with open(path, 'w', encoding='utf-8') as f:
             f.write(str(soup))
         print(f"✓ Fixed lists in {path.name}")

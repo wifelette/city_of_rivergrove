@@ -1284,11 +1284,13 @@ ul ul, ul ol, ol ul, ol ol {
     margin-bottom: 0.5em;
 }
 
-/* Nested manual notation lists */
+/* Nested manual notation lists - ensure proper indentation */
 .alpha-list .numeric-list,
 .alpha-list .roman-list,
-.numeric-list .roman-list {
+.numeric-list .roman-list,
+.alpha-list .setback-list {
     padding-left: 2em;
+    margin-left: 0; /* Reset any inherited margin */
 }
 
 /* Visual indentation for complex nesting patterns */

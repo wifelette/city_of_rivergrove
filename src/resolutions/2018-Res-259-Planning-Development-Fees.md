@@ -34,15 +34,15 @@
 
 Approved and adopted at a regular meeting of the City Council held on the 10th day of December, 2018.
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, HEATHER KIBBEY, Mayor  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br> HEATHER KIBBEY, Mayor
 
 Attested on this 10th day of December 2018:
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Leanne Moll, City Manager/City Recorder  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br> Leanne Moll, City Manager/City Recorder
 
 **Approved as to legal sufficiency:**
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, City Attorney
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br> City Attorney
 
 ---
 
@@ -50,20 +50,20 @@ Attested on this 10th day of December 2018:
 
 ### FEE SCHEDULE
 
-| **PERMIT/APPLICATION TYPE**                                                             | **FEE**                                                        |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Building Permit (City Fee)**                                                          | $25.00\*¹                                                      |
-| **Variance/Hardship Relief**                                                            | Actual Costs                                                   |
-| **Type I Review**                                                                       | Actual Costs                                                   |
-| **Type II Review**                                                                      | Actual Costs                                                   |
-| **Type III Review**                                                                     | Actual Costs                                                   |
-| **Type IV Review**                                                                      | Actual Costs                                                   |
-| **Tree Cutting Permit Outside Of WQRA**                                                 | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Within WQRA**                                                     | $30 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Dead, Dying, Dangerous**                                          | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Emergency Removal**                                               | No Fee                                                         |
-| **Area Accessory Development Permit**                                                   | $65.00                                                         |
-| **System Development Charge**                                                           | $500.00 per residential unit for parks under Ordinance 82-2011 |
+| **PERMIT/APPLICATION TYPE**                                                               | **FEE**                                                        |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Building Permit (City Fee)**                                                            | $25.00\*¹                                                      |
+| **Variance/Hardship Relief**                                                              | Actual Costs                                                   |
+| **Type I Review**                                                                         | Actual Costs                                                   |
+| **Type II Review**                                                                        | Actual Costs                                                   |
+| **Type III Review**                                                                       | Actual Costs                                                   |
+| **Type IV Review**                                                                        | Actual Costs                                                   |
+| **Tree Cutting Permit Outside Of WQRA**                                                   | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Within WQRA**                                                       | $30 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Dead, Dying, Dangerous**                                            | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Emergency Removal**                                                 | No Fee                                                         |
+| **Area Accessory Development Permit**                                                     | $65.00                                                         |
+| **System Development Charge**                                                             | $500.00 per residential unit for parks under Ordinance 82-2011 |
 | **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
 | **Appeal of Type II, III, and IV Decisions**<br>(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
@@ -228,8 +228,8 @@ By:<span class="form-field-empty form-field-medium" data-tooltip="Field left bla
 Date:<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>
 Title:
 
-**STATE OF OREGON** )  
-) ss.  
+**STATE OF OREGON** <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>)  
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>) ss.  
 **County of** <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>)
 
 This instrument was acknowledged before me on this <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> day of <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>, 20<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> by <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>, the <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span> of <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>, a <span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>\*, for and on behalf thereof.

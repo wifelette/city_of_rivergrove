@@ -34,15 +34,15 @@
 
 Approved and adopted at a regular meeting of the City Council held on the 10th day of December, 2018.
 
-{{signature}}, HEATHER KIBBEY, Mayor  
+{{signature}} HEATHER KIBBEY, Mayor
 
 Attested on this 10th day of December 2018:
 
-{{signature}}, Leanne Moll, City Manager/City Recorder  
+{{signature}} Leanne Moll, City Manager/City Recorder
 
 **Approved as to legal sufficiency:**
 
-{{signature}}, City Attorney
+{{signature}} City Attorney
 
 ---
 
@@ -50,20 +50,20 @@ Attested on this 10th day of December 2018:
 
 ### FEE SCHEDULE
 
-| **PERMIT/APPLICATION TYPE**                                                             | **FEE**                                                        |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Building Permit (City Fee)**                                                          | $25.00\*¹                                                      |
-| **Variance/Hardship Relief**                                                            | Actual Costs                                                   |
-| **Type I Review**                                                                       | Actual Costs                                                   |
-| **Type II Review**                                                                      | Actual Costs                                                   |
-| **Type III Review**                                                                     | Actual Costs                                                   |
-| **Type IV Review**                                                                      | Actual Costs                                                   |
-| **Tree Cutting Permit Outside Of WQRA**                                                 | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Within WQRA**                                                     | $30 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Dead, Dying, Dangerous**                                          | $20 per tree + Actual Costs                                    |
-| **Tree Cutting Permit Emergency Removal**                                               | No Fee                                                         |
-| **Area Accessory Development Permit**                                                   | $65.00                                                         |
-| **System Development Charge**                                                           | $500.00 per residential unit for parks under Ordinance 82-2011 |
+| **PERMIT/APPLICATION TYPE**                                                               | **FEE**                                                        |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Building Permit (City Fee)**                                                            | $25.00\*¹                                                      |
+| **Variance/Hardship Relief**                                                              | Actual Costs                                                   |
+| **Type I Review**                                                                         | Actual Costs                                                   |
+| **Type II Review**                                                                        | Actual Costs                                                   |
+| **Type III Review**                                                                       | Actual Costs                                                   |
+| **Type IV Review**                                                                        | Actual Costs                                                   |
+| **Tree Cutting Permit Outside Of WQRA**                                                   | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Within WQRA**                                                       | $30 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Dead, Dying, Dangerous**                                            | $20 per tree + Actual Costs                                    |
+| **Tree Cutting Permit Emergency Removal**                                                 | No Fee                                                         |
+| **Area Accessory Development Permit**                                                     | $65.00                                                         |
+| **System Development Charge**                                                             | $500.00 per residential unit for parks under Ordinance 82-2011 |
 | **Appeal of Type I Decision**{{br}}(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
 | **Appeal of Type II, III, and IV Decisions**{{br}}(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
@@ -222,8 +222,8 @@ By:{{filled:}}
 Date:{{filled:}}
 Title:
 
-**STATE OF OREGON** )  
-) ss.  
+**STATE OF OREGON** {{filled:}})  
+{{filled:}}) ss.  
 **County of** {{filled:}})
 
 This instrument was acknowledged before me on this {{filled:}} day of {{filled:}}, 20{{filled:}} by {{filled:}}, the {{filled:}} of {{filled:}}, a {{filled:}}\*, for and on behalf thereof.

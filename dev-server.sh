@@ -145,18 +145,22 @@ process_file_change() {
     fi
     
     # Apply postprocessors after mdBook rebuilds
-    # NOTE: unified-list-processor.py is DISABLED as it breaks Section 1.050
-    # echo "  Applying unified list processing..."
-    # python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
-
-    # Fix indented lists that mdBook interprets as code blocks
-    echo "  Fixing indented lists..."
-    python3 scripts/postprocessing/fix-indented-lists.py book/ordinances/*.html >/dev/null 2>&1
-
-    # Apply enhanced processor for tables, WHEREAS, etc (NO list processing)
+    # Apply enhanced processor for tables, WHEREAS, etc FIRST (NO list processing)
     echo "  Applying enhanced styling..."
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
-    
+
+    # Use the NEW unified list processor v2 - single source of truth for ALL list processing
+    echo "  Processing all lists..."
+    python3 scripts/postprocessing/unified-list-processor-v2.py >/dev/null 2>&1
+
+    # Run list formatting tests on critical files (suppress output unless there's an error)
+    if [ -f "scripts/tests/test-list-formatting.py" ]; then
+        echo "  Running list formatting tests..."
+        if ! python3 scripts/tests/test-list-formatting.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1; then
+            echo -e "${YELLOW}    ⚠️  Some list formatting tests failed - run ./scripts/validation/test-list-changes.sh for details${NC}"
+        fi
+    fi
+
     # Quick style health check (show specific issues if found)
     if ! python3 scripts/validation/check-styles-health.py --verbose 2>&1; then
         # Error messages already shown by the script with specific details
@@ -210,9 +214,10 @@ if wait_for_server_start 3000 10; then
     # Run postprocessors after mdbook serve rebuilds
     echo "🎨 Applying styles and processors..."
     python3 scripts/build/compile-css.py >/dev/null 2>&1 || true
-    python3 scripts/postprocessing/custom-list-processor.py book >/dev/null 2>&1 || true
-    python3 scripts/postprocessing/enhanced-list-processor.py >/dev/null 2>&1 || true
-    python3 scripts/postprocessing/fix-indented-lists.py book/ordinances/*.html >/dev/null 2>&1 || true
+    # Run enhanced-custom-processor first for tables, WHEREAS, etc (NO list processing)
+    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1 || true
+    # Use unified list processor v2 for ALL list processing
+    python3 scripts/postprocessing/unified-list-processor-v2.py >/dev/null 2>&1 || true
     echo "✅ Styles applied"
     echo ""
     echo "=========================================="
