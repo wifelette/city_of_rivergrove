@@ -120,7 +120,6 @@ def convert_paragraph_lists(soup):
                 if len(lines) <= 1 and text_only:
                     # Try to split by consecutive list markers
                     # Pattern: split before (i), (ii), (a), (b), (1), (2), etc.
-                    import re
                     # Split at list markers, keeping the marker with the following text
                     pattern = r'(?=\([a-z]+\))|(?=\([0-9]+\))|(?=\([ivxlcdm]+\))'
                     parts = re.split(pattern, text_only)
@@ -406,7 +405,115 @@ def convert_consecutive_paragraph_lists(soup):
     Convert consecutive <p> tags that start with list markers into lists.
     This handles cases where each list item is a separate paragraph.
     """
-    # Find all paragraphs
+    # Special handling for Section 1.050 Definitions
+    # Find the section heading
+    for h in soup.find_all(['h3']):
+        h_text = h.get_text()
+        if 'Section 1.050' in h_text and 'Definition' in h_text:  # Changed to match either Definitions or Definition
+            # Convert ALL definition paragraphs after this heading into a single list
+            definition_paragraphs = []
+            current = h.find_next_sibling()
+
+            # Skip intro paragraphs
+            while current and current.name == 'p':
+                text = current.get_text().strip()
+                if text.startswith('(') and ')' in text[:4]:  # This is a definition
+                    break
+                # Skip intro paragraph
+                current = current.find_next_sibling()
+
+            # Now collect all definition paragraphs AND lists until we hit Article 2
+            while current:
+                if current.name == 'p':
+                    text = current.get_text().strip()
+                    if text.startswith('(') and ')' in text[:6]:  # Allow up to 6 chars for marker (e.g., "(w)")
+                        # Make sure this is a letter definition (a-z), not from Article 2
+                        paren_pos = text.index(')')
+                        marker = text[1:paren_pos] if paren_pos > 0 else ''
+
+                        # Check if it's an alphabetic definition
+                        if marker.isalpha() and len(marker) <= 2:  # Single or double letter (a-z, aa, etc)
+                            definition_paragraphs.append(current)
+                            current = current.find_next_sibling()
+                        else:
+                            # Hit a non-alphabetic marker, stop
+                            break
+                    else:
+                        # Not a definition paragraph, skip it
+                        current = current.find_next_sibling()
+                elif current.name in ['h2', 'h3', 'hr']:
+                    # Hit next section
+                    break
+                elif current.name == 'ul':
+                    # Found a list - check if it's a definition list (starts with alphabetic marker)
+                    text = current.get_text().strip()
+                    if text.startswith('(') and ')' in text[:6]:
+                        paren_pos = text.index(')')
+                        marker = text[1:paren_pos] if paren_pos > 0 else ''
+                        if marker.isalpha() and len(marker) <= 2:
+                            # This is a definition that's already been converted to a list
+                            # (likely has nested items, like (i) Lot or (w) Street)
+                            definition_paragraphs.append(current)
+                            current = current.find_next_sibling()
+                        else:
+                            current = current.find_next_sibling()
+                    else:
+                        current = current.find_next_sibling()
+                else:
+                    current = current.find_next_sibling()
+
+            # Convert all collected definition paragraphs/lists to a single list
+            if len(definition_paragraphs) >= 2:
+                # Create single ul for all definitions
+                new_ul = soup.new_tag('ul')
+                new_ul['class'] = ['alpha-list']
+
+                for element in definition_paragraphs:
+                    if element.name == 'p':
+                        # Convert paragraph to list item
+                        text = element.get_text().strip()
+                        item_type, marker, _ = detect_list_type(text, 'alpha', None)
+
+                        if item_type:
+                            li = soup.new_tag('li')
+
+                            # Create marker span
+                            marker_span = soup.new_tag('span')
+                            marker_span['class'] = [f'list-marker-{item_type}']
+                            marker_span.string = marker
+
+                            # Get text after marker
+                            remaining = text[len(marker):].strip()
+
+                            li.append(marker_span)
+                            li.append(' ' + remaining)
+                            new_ul.append(li)
+
+                    elif element.name == 'ul':
+                        # This is already a list (like (i) or (w) with nested items)
+                        # Extract the list items and add them to our new list
+                        for existing_li in element.find_all('li', recursive=False):
+                            # Clone the existing list item
+                            new_li = soup.new_tag('li')
+                            # Copy all children of the existing li
+                            for child in list(existing_li.children):
+                                if isinstance(child, str):
+                                    new_li.append(child)
+                                else:
+                                    new_li.append(child.extract())
+                            new_ul.append(new_li)
+
+                # Insert the list after the first element
+                definition_paragraphs[0].insert_before(new_ul)
+
+                # Remove the original paragraphs/lists
+                for element in definition_paragraphs:
+                    element.decompose()
+
+                # Don't process these paragraphs again
+                paragraphs = soup.find_all('p')
+
+    # Find all paragraphs (refresh after special handling)
     paragraphs = soup.find_all('p')
     
     i = 0
@@ -517,7 +624,6 @@ def process_lists_in_tables(soup):
             if isinstance(element, NavigableString):
                 text = str(element)
                 # Check for list patterns and wrap them
-                import re
                 # Pattern for (a), (1), (i) etc.
                 pattern = r'(\([a-z]+\)|\([0-9]+\)|\([ivxlcdm]+\))'
                 
@@ -702,63 +808,394 @@ def merge_separated_lists(soup):
 
 def fix_misplaced_nested_items(soup):
     """
-    Fix cases where numeric items that should be nested under (i) are siblings.
-    Specifically handles the case where (1), (2), (3) define types of "Lot".
+    Fix specific known cases where numeric items are misplaced as siblings instead of nested.
+    Focus on the Section 1.050 definitions where Lot and Street definitions have displaced sub-items.
     """
+    print("  DEBUG: fix_misplaced_nested_items called")
     # Find all alpha-list ul elements
+    for ul in soup.find_all('ul', class_='alpha-list'):
+        print(f"    DEBUG: Found alpha-list with {len(ul.find_all('li', recursive=False))} items")
+        items = ul.find_all('li', recursive=False)
+
+        # Look for specific known problematic patterns
+        for i, current_item in enumerate(items):
+            current_marker = current_item.find('span', class_='list-marker-alpha')
+            if not current_marker:
+                continue
+
+            current_text = current_item.get_text()
+            marker_text = current_marker.get_text()
+
+            # Debug all (i) items to see what we're getting
+            if marker_text == '(i)':
+                has_quoted_lot = '"Lot"' in current_text
+                print(f"  DEBUG: Found item (i): {current_text[:100]}...")
+                print(f"    Contains 'Lot': {'Lot' in current_text}")
+                print(f"    Contains quoted Lot: {has_quoted_lot}")
+                print(f"    Ends with ':': {current_text.strip().endswith(':')}")
+
+            # Specific fix for (i) "Lot" definition
+            # Note: HTML may have converted quotes to entities, so check for both
+            if marker_text == '(i)' and ('Lot' in current_text) and current_text.strip().endswith(':'):
+                print(f"  DEBUG: Processing item (i) with Lot definition ending with colon")
+                # Look for the three lot type definitions that should be nested here
+                lot_items_to_move = []
+
+                # NEW: Look for sibling items with numeric markers that are lot definitions
+                for j, other_item in enumerate(items):
+                    if j == i:  # Skip the current item
+                        continue
+
+                    other_marker = other_item.find('span', class_='list-marker-numeric')
+                    if other_marker:
+                        # This is a numeric item that might belong under (i)
+                        other_text = other_item.get_text()
+                        # Check if it's one of the lot type definitions
+                        if any(lot_type in other_text for lot_type in [
+                            'Corner Lot', 'Reversed Corner Lot', 'Through Lot'
+                        ]):
+                            print(f"    Found misplaced lot definition: {other_marker.get_text()}")
+                            # Extract the entire item to move it
+                            lot_items_to_move.append(other_item.extract())
+                    else:
+                        # Also check if this item has a nested numeric list with lot definitions
+                        nested_list = other_item.find('ul', class_='numeric-list')
+                        if nested_list:
+                            nested_items = nested_list.find_all('li', recursive=False)
+                            for nested_item in nested_items:
+                                nested_text = nested_item.get_text()
+                                # Check for lot type definitions
+                                if any(lot_type in nested_text for lot_type in [
+                                    'Corner Lot', 'Reversed Corner Lot', 'Through Lot'
+                                ]):
+                                    lot_items_to_move.append(nested_item.extract())
+
+                            # If we emptied the nested list, remove it
+                            if not nested_list.find_all('li'):
+                                nested_list.extract()
+
+                # If we found lot definitions, create nested structure under (i)
+                if lot_items_to_move:
+                    # Create nested ul for the lot definitions
+                    nested_ul = soup.new_tag('ul')
+                    nested_ul['class'] = ['numeric-list']
+
+                    # Sort by number
+                    def get_lot_number(item):
+                        marker = item.find('span', class_='list-marker-numeric')
+                        if marker:
+                            marker_text = marker.get_text()
+                            if '(1)' in marker_text:
+                                return 1
+                            elif '(2)' in marker_text:
+                                return 2
+                            elif '(3)' in marker_text:
+                                return 3
+                        return 999
+
+                    lot_items_to_move.sort(key=get_lot_number)
+
+                    # Add items to nested list
+                    for item in lot_items_to_move:
+                        nested_ul.append(item)
+
+                    current_item.append(nested_ul)
+                    print(f"  Fixed misplaced lot definitions under item (i) - moved {len(lot_items_to_move)} items")
+
+            # Specific fix for (w) "Street" definition
+            elif marker_text == '(w)' and ('Street' in current_text) and current_text.strip().endswith(':'):
+                print(f"  DEBUG: Processing item (w) with Street definition ending with colon")
+                # Look for the four street type definitions that should be nested here
+                street_items_to_move = []
+
+                # Look for sibling items with numeric markers that are street definitions
+                for j, other_item in enumerate(items):
+                    if j == i:  # Skip the current item
+                        continue
+
+                    other_marker = other_item.find('span', class_='list-marker-numeric')
+                    if other_marker:
+                        # This is a numeric item that might belong under (w)
+                        other_text = other_item.get_text()
+                        # Check if it's one of the street type definitions
+                        if any(street_type in other_text for street_type in [
+                            'Alley', 'Arterial', 'Collector', 'Cul-de-sac'
+                        ]):
+                            print(f"    Found misplaced street definition: {other_marker.get_text()}")
+                            # Extract the entire item to move it
+                            street_items_to_move.append(other_item.extract())
+
+                # If we found street definitions, create nested structure under (w)
+                if street_items_to_move:
+                    # Create nested ul for the street definitions
+                    nested_ul = soup.new_tag('ul')
+                    nested_ul['class'] = ['numeric-list']
+
+                    # Add items to nested list in order
+                    for item in street_items_to_move:
+                        nested_ul.append(item)
+
+                    current_item.append(nested_ul)
+                    print(f"  Fixed misplaced street definitions under item (w) - moved {len(street_items_to_move)} items")
+
+
+def fix_concatenated_numeric_items(soup):
+    """Fix list items that have multiple numeric items concatenated together."""
+    changes_made = False
+
+    for li in soup.find_all('li'):
+        # Get just the content (excluding nested lists)
+        content_parts = []
+        marker = li.find('span', class_=['list-marker-alpha', 'list-marker-numeric', 'list-marker-roman'])
+
+        for child in li.children:
+            if isinstance(child, str):
+                content_parts.append(str(child))
+            elif hasattr(child, 'name') and child.name != 'ul' and child != marker:
+                content_parts.append(str(child))
+
+        full_content = ''.join(content_parts).strip()
+
+        # Look for patterns like (1) something (2) something
+        if re.search(r'\(\d+\)[^()]+\(\d+\)', full_content):
+            if not marker:
+                continue
+
+            marker_text = marker.get_text()
+
+            # First, protect inline references like "twenty (20)" or "percent (20)"
+            inline_pattern = r'(\w+\s*\(\d+\))'
+            protected_content = re.sub(inline_pattern, lambda m: m.group(1).replace('(', '<<LP>>').replace(')', '<<RP>>'), full_content)
+
+            # Now find actual list items
+            pattern = r'\((\d+)\)\s*([^()]+?)(?=\(\d+\)|$)'
+            matches = re.findall(pattern, protected_content, re.DOTALL)
+
+            if len(matches) > 0:
+                # Clear the li's direct content (but keep marker and any existing nested lists)
+                for child in list(li.children):
+                    if child != marker and (not hasattr(child, 'name') or child.name != 'ul'):
+                        if hasattr(child, 'extract'):
+                            child.extract()
+                        else:
+                            li.contents.remove(child)
+
+                # Add the intro text before the first numeric item (if any)
+                intro_match = re.match(r'^(.*?)\s*\(\d+\)', full_content)
+                if intro_match and intro_match.group(1).strip():
+                    li.append(' ' + intro_match.group(1).strip())
+
+                # Create a nested numeric list
+                new_ul = soup.new_tag('ul')
+                new_ul['class'] = ['numeric-list']
+
+                for num, content in matches:
+                    new_li = soup.new_tag('li')
+                    marker_span = soup.new_tag('span')
+                    marker_span['class'] = ['list-marker-numeric']
+                    marker_span.string = f"({num})"
+                    new_li.append(marker_span)
+                    new_li.append(' ' + content.strip())
+                    new_ul.append(new_li)
+
+                li.append(new_ul)
+                changes_made = True
+                print(f"  Fixed concatenated items in {marker_text} - split into {len(matches)} items")
+
+        # Also check nested numeric lists for concatenation
+        nested_list = li.find('ul', class_='numeric-list')
+        if nested_list:
+            for nested_li in list(nested_list.find_all('li', recursive=False)):
+                text_content = nested_li.get_text()
+
+                # Check if we have multiple numeric markers (2. 3. 4.)
+                if re.findall(r'\b[2-9][\.\)]\s', text_content):
+                    # Split on numeric patterns
+                    parts = re.split(r'(\b[1-9]\.)(?:\s+)', text_content)
+
+                    # Rebuild into numeric items
+                    numeric_items = []
+                    for i in range(len(parts)):
+                        if re.match(r'\b[1-9]\.', parts[i]):
+                            num = parts[i].rstrip('.')
+                            if i + 1 < len(parts):
+                                content = parts[i + 1]
+                                content = re.sub(r'\s*\b[2-9]\.$', '', content)
+                                numeric_items.append((num, content.strip()))
+
+                    if len(numeric_items) > 1:
+                        # Clear nested_li content but keep the marker
+                        marker = nested_li.find('span', class_='list-marker-numeric')
+                        for child in list(nested_li.children):
+                            if child != marker:
+                                if hasattr(child, 'extract'):
+                                    child.extract()
+                                else:
+                                    child.replace_with('')
+
+                        # Add back just the first item's content
+                        nested_li.append(' ' + numeric_items[0][1])
+
+                        # Create new list items for the rest
+                        for num, content in numeric_items[1:]:
+                            new_li = soup.new_tag('li')
+                            marker_span = soup.new_tag('span')
+                            marker_span['class'] = ['list-marker-numeric']
+                            marker_span.string = f"({num})"
+                            new_li.append(marker_span)
+                            new_li.append(' ' + content)
+                            nested_li.insert_after(new_li)
+                            nested_li = new_li
+
+                        changes_made = True
+                        print(f"  Split concatenated numeric items in nested list")
+
+def fix_orphaned_paragraphs(soup):
+    """Fix paragraphs that should be nested inside list items."""
+    changes_made = False
+
     for ul in soup.find_all('ul', class_='alpha-list'):
         items = ul.find_all('li', recursive=False)
 
-        # Find item (i) about "Lot"
-        item_i_index = None
-        for idx, item in enumerate(items):
-            item_text = item.get_text()
-            if '(i)' in item_text[:10] and '"Lot"' in item_text:
-                item_i_index = idx
-                break
+        # Handle single-item lists
+        if len(items) == 1:
+            li = items[0]
+            content_to_nest = []
+            next_elem = ul.find_next_sibling()
 
-        if item_i_index is not None:
-            # Collect all numeric items that define lot types
-            numeric_items_to_remove = []
+            while next_elem:
+                # Stop if we hit another alpha list or a heading
+                if (next_elem.name == 'ul' and 'alpha-list' in next_elem.get('class', [])) or \
+                   next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                    break
 
-            # Look through ALL items to find the numeric lot definitions
-            for idx, item in enumerate(items):
-                if idx == item_i_index:
-                    continue
+                # Collect paragraphs
+                if next_elem.name == 'p':
+                    content_to_nest.append(next_elem)
+                    temp = next_elem.find_next_sibling()
+                    next_elem = temp
+                # Also collect ordered lists
+                elif next_elem.name == 'ol':
+                    content_to_nest.append(next_elem)
+                    temp = next_elem.find_next_sibling()
+                    next_elem = temp
+                else:
+                    break
 
-                item_text = item.get_text()
-                # These are the three lot type definitions that should be nested
-                # Note: The quotes may or may not be present in the text
-                if (('(1)' in item_text[:10] and 'Corner Lot' in item_text) or
-                    ('(2)' in item_text[:10] and 'Reversed Corner Lot' in item_text) or
-                    ('(3)' in item_text[:10] and 'Through Lot' in item_text)):
-                    numeric_items_to_remove.append(item)
+            # Now nest all collected content
+            if content_to_nest:
+                for elem in content_to_nest:
+                    if elem.name == 'p':
+                        # Add paragraph content to the list item
+                        li.append(' ')
+                        li.append(elem.get_text().strip())
+                        elem.extract()
+                    elif elem.name == 'ol':
+                        # Convert ol to proper nested list
+                        nest_ordered_list_in_li(li, elem, soup)
 
-            # If we found numeric items to nest, create the nested structure
-            if numeric_items_to_remove:
-                # Create nested ul
-                nested_ul = soup.new_tag('ul')
-                nested_ul['class'] = ['numeric-list']
+                changes_made = True
+                marker = li.find('span', class_='list-marker-alpha')
+                if marker:
+                    print(f"  Fixed orphaned content after {marker.get_text()}")
 
-                # Sort the items by their number to ensure correct order
-                def get_number(item):
-                    text = item.get_text()
-                    if '(1)' in text[:10]:
-                        return 1
-                    elif '(2)' in text[:10]:
-                        return 2
-                    elif '(3)' in text[:10]:
-                        return 3
-                    return 0
+        # Handle multi-item lists where last item should have content nested
+        elif len(items) > 1:
+            last_li = items[-1]
+            text = last_li.get_text().strip()
 
-                numeric_items_to_remove.sort(key=get_number)
+            # Check if the last item indicates it should have nested content
+            if (text.endswith(':') or
+                'following' in text.lower() or
+                'criteria' in text.lower() or
+                'shall be given' in text.lower() or
+                'consideration' in text.lower()):
 
-                # Move numeric items to nested ul
-                for numeric_item in numeric_items_to_remove:
-                    nested_ul.append(numeric_item.extract())
+                content_to_nest = []
+                next_elem = ul.find_next_sibling()
 
-                # Add nested ul to item (i)
-                items[item_i_index].append(nested_ul)
+                while next_elem:
+                    # Stop at headings or other alpha lists
+                    if next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                        break
+                    if next_elem.name == 'ul' and 'alpha-list' in next_elem.get('class', []):
+                        break
+
+                    # Collect numeric paragraphs (starting with (1), (2), etc.)
+                    if next_elem.name == 'p':
+                        p_text = next_elem.get_text().strip()
+                        if re.match(r'^\(\d+\)', p_text):
+                            content_to_nest.append(next_elem)
+                            temp = next_elem.find_next_sibling()
+                            next_elem = temp
+                        else:
+                            break
+                    else:
+                        break
+
+                # Convert paragraphs to nested list
+                if content_to_nest:
+                    new_ul = soup.new_tag('ul')
+                    new_ul['class'] = ['numeric-list']
+
+                    for p in content_to_nest:
+                        text = p.get_text().strip()
+                        match = re.match(r'^\((\d+)\)\s*(.*)$', text, re.DOTALL)
+                        if match:
+                            num = match.group(1)
+                            content = match.group(2)
+
+                            new_li = soup.new_tag('li')
+                            marker_span = soup.new_tag('span')
+                            marker_span['class'] = ['list-marker-numeric']
+                            marker_span.string = f"({num})"
+                            new_li.append(marker_span)
+                            new_li.append(' ' + content)
+                            new_ul.append(new_li)
+
+                        p.extract()
+
+                    last_li.append(new_ul)
+                    changes_made = True
+                    marker = last_li.find('span', class_='list-marker-alpha')
+                    if marker:
+                        print(f"  Fixed {len(content_to_nest)} orphaned numeric paragraphs after {marker.get_text()}")
+
+def nest_ordered_list_in_li(li, ol, soup):
+    """Helper function to convert an ordered list to nested format in a list item."""
+    # Create a new unordered list for consistency
+    new_ul = soup.new_tag('ul')
+    new_ul['class'] = ['numeric-list']
+
+    # Convert ol items to ul items with numeric markers
+    for i, ol_li in enumerate(ol.find_all('li', recursive=False), 1):
+        new_li = soup.new_tag('li')
+        marker_span = soup.new_tag('span')
+        marker_span['class'] = ['list-marker-numeric']
+        marker_span.string = f"({i})"
+        new_li.append(marker_span)
+        new_li.append(' ' + ol_li.get_text())
+        new_ul.append(new_li)
+
+    li.append(new_ul)
+    ol.extract()
+
+def fix_orphaned_ordered_lists(soup):
+    """Fix ordered lists that should be nested under alpha list items."""
+    changes_made = False
+
+    for ol in soup.find_all('ol'):
+        parent = ol.parent
+        if parent.name in ['body', 'article', 'section', 'div', 'main']:
+            prev = ol.find_previous_sibling()
+            if prev and prev.name == 'ul' and 'alpha-list' in prev.get('class', []):
+                # Find the last item in the alpha list
+                last_li = prev.find_all('li', recursive=False)[-1] if prev.find_all('li', recursive=False) else None
+                if last_li:
+                    # Convert ol to nested format
+                    nest_ordered_list_in_li(last_li, ol, soup)
+                    changes_made = True
+                    print(f"  Fixed orphaned ordered list with {len(ol.find_all('li'))} items")
 
 def process_file(filepath):
     """Process a single HTML file"""
@@ -793,6 +1230,15 @@ def process_file(filepath):
 
     # 8. Process Document Notes
     process_document_notes(soup)
+
+    # 9. Fix concatenated numeric items (from V2)
+    fix_concatenated_numeric_items(soup)
+
+    # 10. Fix orphaned paragraphs after lists (from V2)
+    fix_orphaned_paragraphs(soup)
+
+    # 11. Fix orphaned ordered lists (from V2)
+    fix_orphaned_ordered_lists(soup)
 
     # Write back
     content = str(soup)
