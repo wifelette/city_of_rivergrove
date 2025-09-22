@@ -53,6 +53,34 @@ Or for general notes:
 - Use proper indentation (3 spaces per level)
 - Numbered items at deeper levels need 5 spaces for proper nesting
 
+## Inline Numeric References
+
+### When Numbers in Parentheses Should NOT Be Lists
+
+Sometimes legal documents include numeric values in parentheses that are NOT list items, but rather clarifications or references. These should be preserved as inline text.
+
+### Common Patterns
+
+- **Numeric clarifications**: "twenty (20) percent", "thirty (30) days"
+- **Cross-references**: "see section (4) above"
+- **Legal citations**: "pursuant to subsection (b)(3)"
+- **Definitions**: "the term 'structure' means (1) any building..."
+
+### How It Works
+
+The list processor automatically protects these patterns from being converted to list items by detecting:
+- Numbers preceded by words (e.g., "twenty (20)")
+- Numbers followed by units or percentages
+- Numbers within running text rather than at line beginnings
+
+### Example
+
+```markdown
+The applicant must submit twenty (20) copies of the plans within thirty (30) days.
+```
+
+This will remain as inline text, not be converted to a list.
+
 ## Cross-References
 
 ### Automatic Linking
