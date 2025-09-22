@@ -544,8 +544,17 @@ class UnifiedListProcessor:
 
             # Find all numeric items in the content
             # Pattern to match (1) content (2) content etc.
+            # But skip inline numeric references like "twenty (20)"
+            # List items should be at start or after punctuation/newline
+            # Not after a word character
+
+            # First, protect inline references like "twenty (20)" or "percent (20)"
+            inline_pattern = r'(\w+\s*\(\d+\))'
+            protected_content = re.sub(inline_pattern, lambda m: m.group(1).replace('(', '<<LP>>').replace(')', '<<RP>>'), full_content)
+
+            # Now find actual list items
             pattern = r'\((\d+)\)\s*([^()]+?)(?=\(\d+\)|$)'
-            matches = re.findall(pattern, full_content, re.DOTALL)
+            matches = re.findall(pattern, protected_content, re.DOTALL)
 
             if len(matches) > 0:
                 # Clear the li's direct content (but keep marker and any existing nested lists)
