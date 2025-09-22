@@ -197,11 +197,17 @@ class UnifiedListProcessor:
         # Fix code blocks that should be lists
         self._fix_code_block_lists()
 
+        # Fix orphaned paragraphs after single-item lists
+        self._fix_orphaned_paragraphs()
+
         # Fix orphaned ordered lists
         self._fix_orphaned_ordered_lists()
 
         # Fix misplaced list items
         self._fix_misplaced_items()
+
+        # Fix concatenated numeric items in list items
+        self._fix_all_concatenated_items()
 
     def _fix_code_block_lists(self):
         """Convert code blocks that are actually lists back to proper format."""
@@ -300,16 +306,160 @@ class UnifiedListProcessor:
         parent_ul.append(li)
         prev_p.extract()
 
+    def _fix_orphaned_paragraphs(self):
+        """Fix paragraphs that should be nested inside list items."""
+        # Find all alpha lists that might have orphaned content after them
+        for ul in self.soup.find_all('ul', class_='alpha-list'):
+            items = ul.find_all('li', recursive=False)
+
+            # First handle single-item lists
+            if len(items) == 1:
+                li = items[0]
+
+                # Collect all content that should be nested under this item
+                content_to_nest = []
+                next_elem = ul.find_next_sibling()
+
+                while next_elem:
+                    # Stop if we hit another alpha list or a heading
+                    if (next_elem.name == 'ul' and 'alpha-list' in next_elem.get('class', [])) or \
+                       next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                        break
+
+                    # Collect paragraphs
+                    if next_elem.name == 'p':
+                        content_to_nest.append(next_elem)
+                        temp = next_elem.find_next_sibling()
+                        next_elem = temp
+                    # Also collect ordered lists
+                    elif next_elem.name == 'ol':
+                        content_to_nest.append(next_elem)
+                        temp = next_elem.find_next_sibling()
+                        next_elem = temp
+                    else:
+                        break
+
+                # Now nest all collected content
+                if content_to_nest:
+                    for elem in content_to_nest:
+                        if elem.name == 'p':
+                            # Add paragraph content to the list item
+                            li.append(' ')
+                            li.append(elem.get_text().strip())
+                            elem.extract()
+                        elif elem.name == 'ol':
+                            # Convert ol to proper nested list
+                            self._nest_ordered_list(li, elem)
+
+                    self.changes_made = True
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker:
+                        print(f"  Fixed orphaned content after {marker.get_text()}")
+
+            # Also handle multi-item lists where last item should have content nested
+            elif len(items) > 1:
+                last_li = items[-1]
+                text = last_li.get_text().strip()
+
+                # Check if the last item indicates it should have nested content
+                if (text.endswith(':') or
+                    'following' in text.lower() or
+                    'criteria' in text.lower() or
+                    'shall be given' in text.lower() or
+                    'consideration' in text.lower()):
+
+                    # Collect orphaned numeric paragraphs
+                    content_to_nest = []
+                    next_elem = ul.find_next_sibling()
+
+                    while next_elem:
+                        # Stop at headings or other alpha lists
+                        if next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                            break
+                        if next_elem.name == 'ul' and 'alpha-list' in next_elem.get('class', []):
+                            break
+
+                        # Collect numeric paragraphs (starting with (1), (2), etc.)
+                        if next_elem.name == 'p':
+                            p_text = next_elem.get_text().strip()
+                            if re.match(r'^\(\d+\)', p_text):
+                                content_to_nest.append(next_elem)
+                                temp = next_elem.find_next_sibling()
+                                next_elem = temp
+                            else:
+                                break
+                        else:
+                            break
+
+                    # Convert collected paragraphs to nested list
+                    if content_to_nest:
+                        new_ul = self.soup.new_tag('ul', **{'class': 'numeric-list'})
+
+                        for p in content_to_nest:
+                            p_text = p.get_text().strip()
+                            # Extract number and content
+                            match = re.match(r'^\((\d+)\)\s*(.+)$', p_text, re.DOTALL)
+                            if match:
+                                num = match.group(1)
+                                content = match.group(2)
+
+                                new_li = self.soup.new_tag('li')
+                                marker_span = self.soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                                marker_span.string = f"({num})"
+                                new_li.append(marker_span)
+                                new_li.append(' ' + content)
+                                new_ul.append(new_li)
+
+                            p.extract()
+
+                        last_li.append(new_ul)
+                        self.changes_made = True
+
+                        marker = last_li.find('span', class_='list-marker-alpha')
+                        if marker:
+                            print(f"  Fixed {len(content_to_nest)} orphaned numeric paragraphs after {marker.get_text()}")
+
     def _fix_orphaned_ordered_lists(self):
         """Fix <ol> elements that should be nested under alpha items."""
-        for ul in self.soup.find_all('ul', class_='alpha-list'):
-            for li in ul.find_all('li', recursive=False):
-                text = li.get_text().strip()
-                if text.endswith(':'):
-                    # Check for an orphaned <ol> after the parent ul
-                    next_sibling = ul.find_next_sibling()
-                    if next_sibling and next_sibling.name == 'ol':
-                        self._nest_ordered_list(li, next_sibling)
+        # Look for all ordered lists that might be orphaned
+        for ol in self.soup.find_all('ol'):
+            # Check if this ol is immediately after an alpha list
+            prev = ol.find_previous_sibling()
+
+            # Handle case 1: ol directly after alpha list
+            if prev and prev.name == 'ul' and 'alpha-list' in prev.get('class', []):
+                # Get the last li in the alpha list
+                last_li = prev.find_all('li', recursive=False)[-1] if prev.find_all('li', recursive=False) else None
+                if last_li:
+                    # Check if this li should have the ol nested under it
+                    text = last_li.get_text().strip()
+                    # Check various patterns that indicate this item should have nested content
+                    if (text.endswith(':') or
+                        'DEFINITION' in text or
+                        'PURPOSE' in text or
+                        'INTENT' in text or
+                        text.endswith(')')):  # Just ends with a parenthesis like "(a) DEFINITION"
+                        self._nest_ordered_list(last_li, ol)
+
+            # Handle case 2: ol after a paragraph, which is after an alpha list
+            elif prev and prev.name == 'p':
+                # Check if there's an alpha list before the paragraph
+                prev_prev = prev.find_previous_sibling()
+                if prev_prev and prev_prev.name == 'ul' and 'alpha-list' in prev_prev.get('class', []):
+                    # Get the last li in the alpha list
+                    last_li = prev_prev.find_all('li', recursive=False)[-1] if prev_prev.find_all('li', recursive=False) else None
+                    if last_li:
+                        text = last_li.get_text().strip()
+                        # Check if this item is likely the parent
+                        if ('PURPOSE' in text or 'INTENT' in text or
+                            'DEFINITION' in text or text.endswith(':')):
+                            # Append the paragraph content first, then the list
+                            p_text = prev.get_text().strip()
+                            if p_text:
+                                last_li.append(' ')
+                                last_li.append(p_text)
+                            self._nest_ordered_list(last_li, ol)
+                            prev.extract()  # Remove the paragraph since we moved its content
 
     def _nest_ordered_list(self, li, ol):
         """Nest an ordered list inside a list item."""
@@ -337,6 +487,15 @@ class UnifiedListProcessor:
         self.changes_made = True
         print(f"  Fixed orphaned ordered list with {len(new_ul.find_all('li'))} items")
 
+    def _fix_all_concatenated_items(self):
+        """Find and fix all list items with concatenated numeric content."""
+        for li in self.soup.find_all('li'):
+            # Check if this item has concatenated content
+            text = li.get_text()
+            if re.search(r'\(\d+\)[^()]+\(\d+\)', text):
+                # This item has multiple numeric items concatenated
+                self._fix_concatenated_numeric_items(li)
+
     def _fix_misplaced_items(self):
         """Fix list items that are in the wrong place."""
         for ul in self.soup.find_all('ul', class_='alpha-list'):
@@ -361,7 +520,64 @@ class UnifiedListProcessor:
 
     def _fix_concatenated_numeric_items(self, li):
         """Fix list items that have multiple numeric items concatenated together."""
-        # Check if this li has a nested numeric list
+        # First check if the li itself has concatenated content in its text
+        text = ''.join(str(c) for c in li.children if isinstance(c, str) or (hasattr(c, 'name') and c.name != 'ul'))
+
+        # Look for patterns like (1) something (2) something
+        if re.search(r'\(\d+\)[^()]+\(\d+\)', text):
+            # Extract the marker from the li
+            marker = li.find('span', class_=['list-marker-alpha', 'list-marker-numeric', 'list-marker-roman'])
+            if not marker:
+                return
+
+            marker_text = marker.get_text()
+
+            # Get just the content (excluding nested lists)
+            content_parts = []
+            for child in li.children:
+                if isinstance(child, str):
+                    content_parts.append(str(child))
+                elif hasattr(child, 'name') and child.name != 'ul' and child != marker:
+                    content_parts.append(str(child))
+
+            full_content = ''.join(content_parts).strip()
+
+            # Find all numeric items in the content
+            # Pattern to match (1) content (2) content etc.
+            pattern = r'\((\d+)\)\s*([^()]+?)(?=\(\d+\)|$)'
+            matches = re.findall(pattern, full_content, re.DOTALL)
+
+            if len(matches) > 0:
+                # Clear the li's direct content (but keep marker and any existing nested lists)
+                for child in list(li.children):
+                    if child != marker and (not hasattr(child, 'name') or child.name != 'ul'):
+                        if hasattr(child, 'extract'):
+                            child.extract()
+                        else:
+                            li.contents.remove(child)
+
+                # Add the intro text before the first numeric item (if any)
+                intro_match = re.match(r'^(.*?)\s*\(\d+\)', full_content)
+                if intro_match and intro_match.group(1).strip():
+                    li.append(' ' + intro_match.group(1).strip())
+
+                # Create a nested numeric list
+                new_ul = self.soup.new_tag('ul', **{'class': 'numeric-list'})
+
+                for num, content in matches:
+                    new_li = self.soup.new_tag('li')
+                    marker_span = self.soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                    marker_span.string = f"({num})"
+                    new_li.append(marker_span)
+                    new_li.append(' ' + content.strip())
+                    new_ul.append(new_li)
+
+                li.append(new_ul)
+                self.changes_made = True
+                print(f"  Fixed concatenated items in {marker_text} - split into {len(matches)} items")
+                return
+
+        # Also check if this li has a nested numeric list that needs fixing
         nested_list = li.find('ul', class_='numeric-list')
         if not nested_list:
             return
@@ -371,54 +587,53 @@ class UnifiedListProcessor:
             text_content = nested_li.get_text()
 
             # Check if we have multiple numeric markers (2. 3. 4.)
-            if re.findall(r'\b[2-9]\.\s*"', text_content):
-                # Split on numeric patterns
-                parts = re.split(r'(\b[1-9]\.)\s*(".*?"[^"]*?)(?=\b[1-9]\.|$)', text_content)
+            # Match patterns like "2. " or "2) "
+            if re.findall(r'\b[2-9][\.\)]\s', text_content):
+                # Split on numeric patterns - updated to not require quotes
+                # This will match "1. Corner Lot means..." or "2. \"Reversed Corner Lot\" means..."
+                parts = re.split(r'(\b[1-9]\.)(?:\s+)', text_content)
 
-                if len(parts) > 3:  # We have multiple items
-                    # Get all numeric items
-                    numeric_items = []
-                    i = 0
-                    while i < len(parts) - 1:
-                        if re.match(r'\b[1-9]\.', parts[i]):
-                            num = parts[i].rstrip('.')
-                            content = parts[i + 1] if i + 1 < len(parts) else ""
+                # Rebuild into numeric items
+                numeric_items = []
+                for i in range(len(parts)):
+                    if re.match(r'\b[1-9]\.', parts[i]):
+                        num = parts[i].rstrip('.')
+                        # Get content until next number or end
+                        if i + 1 < len(parts):
+                            # Find where next item starts
+                            content = parts[i + 1]
+                            # Remove trailing part that belongs to next item
+                            content = re.sub(r'\s*\b[2-9]\.$', '', content)
                             numeric_items.append((num, content.strip()))
-                            i += 2
-                        else:
-                            i += 1
 
-                    if numeric_items:
-                        # Replace the first item with its proper content
-                        first_item = numeric_items[0]
+                if len(numeric_items) > 1:  # We have multiple items
+                    # Clear nested_li content but keep the marker
+                    marker = nested_li.find('span', class_='list-marker-numeric')
+                    for child in list(nested_li.children):
+                        if child != marker:
+                            if hasattr(child, 'extract'):
+                                child.extract()
+                            else:
+                                child.replace_with('')
 
-                        # Clear nested_li content but keep the marker
-                        marker = nested_li.find('span', class_='list-marker-numeric')
-                        for child in list(nested_li.children):
-                            if child != marker:
-                                if hasattr(child, 'extract'):
-                                    child.extract()
-                                else:
-                                    child.replace_with('')
+                    # Add back just the first item's content
+                    nested_li.append(' ' + numeric_items[0][1])
 
-                        # Add back just the first item's content
-                        nested_li.append(' ' + first_item[1])
+                    # Create new list items for the rest
+                    for num, content in numeric_items[1:]:
+                        new_li = self.soup.new_tag('li')
+                        marker_span = self.soup.new_tag('span', **{'class': 'list-marker-numeric'})
+                        marker_span.string = f"({num})"
+                        new_li.append(marker_span)
+                        new_li.append(' ' + content)
+                        # Insert after the current item
+                        nested_li.insert_after(new_li)
+                        nested_li = new_li  # Update reference for next insertion
 
-                        # Create new list items for the rest
-                        for num, content in numeric_items[1:]:
-                            new_li = self.soup.new_tag('li')
-                            marker_span = self.soup.new_tag('span', **{'class': 'list-marker-numeric'})
-                            marker_span.string = f"({num})"
-                            new_li.append(marker_span)
-                            new_li.append(' ' + content)
-                            # Insert after the current item
-                            nested_li.insert_after(new_li)
-                            nested_li = new_li  # Update reference for next insertion
-
-                        self.changes_made = True
-                        alpha_marker = li.find('span', class_='list-marker-alpha')
-                        if alpha_marker:
-                            print(f"  Split concatenated numeric items under {alpha_marker.get_text()}")
+                    self.changes_made = True
+                    alpha_marker = li.find('span', class_='list-marker-alpha')
+                    if alpha_marker:
+                        print(f"  Split concatenated numeric items under {alpha_marker.get_text()}")
 
     def _should_be_nested(self, parent_li, next_li):
         """Determine if next_li should be nested under parent_li."""
@@ -519,6 +734,23 @@ class UnifiedListProcessor:
 
     def _apply_list_styling(self):
         """Phase 4: Ensure all lists have proper CSS classes."""
+        # First, add setback-list class to lists in Section 5.080
+        for h3 in self.soup.find_all(['h3', 'h4']):
+            if 'Section 5.080' in h3.get_text():
+                # Find all lists after this section until next heading
+                elem = h3.find_next_sibling()
+                while elem:
+                    if elem.name in ['h2', 'h3', 'h4']:
+                        break
+                    if elem.name == 'ul':
+                        current_classes = elem.get('class', [])
+                        if 'setback-list' not in current_classes:
+                            current_classes.append('setback-list')
+                            elem['class'] = current_classes
+                            self.changes_made = True
+                            print("  Added 'setback-list' CSS class to Section 5.080 list")
+                    elem = elem.find_next_sibling()
+
         # Ensure all manual lists have proper classes
         for ul in self.soup.find_all('ul'):
             if not ul.get('class'):
