@@ -540,12 +540,30 @@ def convert_consecutive_paragraph_lists(soup):
             # Look ahead to find all items of the same type
             # Skip non-list paragraphs between list items
             while j < len(paragraphs):
-                p_text = paragraphs[j].get_text().strip()
+                current_p = paragraphs[j]
+
+                # Check if we've hit a section boundary (heading between paragraphs)
+                # Look for any heading elements between the previous and current paragraph
+                if j > i:
+                    prev_p = paragraphs[j-1]
+                    next_elem = prev_p.find_next_sibling()
+                    while next_elem and next_elem != current_p:
+                        if next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr']:
+                            # Hit a section boundary - stop collecting
+                            break
+                        next_elem = next_elem.find_next_sibling()
+                    else:
+                        # Continue checking this paragraph
+                        pass
+                    if next_elem and next_elem.name in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr']:
+                        break
+
+                p_text = current_p.get_text().strip()
                 p_type, p_marker, p_char = detect_list_type(p_text, prev_type, prev_char)
-                
+
                 if p_type and p_type == list_type:
                     # Same type of list item
-                    list_items.append((p_text, p_type, p_marker, paragraphs[j]))
+                    list_items.append((p_text, p_type, p_marker, current_p))
                     prev_type = p_type
                     prev_char = p_char
                     j += 1
@@ -563,7 +581,7 @@ def convert_consecutive_paragraph_lists(soup):
                             # Different type of list starts
                             break
                         lookahead += 1
-                    
+
                     if found_more:
                         # Skip the non-list paragraphs
                         j += 1
