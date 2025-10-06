@@ -1,0 +1,112 @@
+name: Visual Regression Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'theme/css/**'
+      - 'custom.css'
+      - 'book.toml'
+      - 'scripts/build/compile-css.py'
+      - 'scripts/postprocessing/**'
+      - 'tests/visual/**'
+  workflow_dispatch:
+
+jobs:
+  visual-tests:
+    runs-on: macos-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: |
+          pip install beautifulsoup4 python-dotenv requests pyairtable watchdog
+
+      - name: Install Playwright browsers
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium webkit
+
+      - name: Build site
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: appnsWognX10X9TDL
+        run: |
+          chmod +x build-all.sh
+          ./build-all.sh --quick
+
+      - name: Start development server
+        run: |
+          chmod +x dev-server.sh
+          ./dev-server.sh > /dev/null 2>&1 &
+          echo "Waiting for server to start..."
+          sleep 5
+          curl -s http://localhost:3000 > /dev/null && echo "Server is ready!" || echo "Server failed to start"
+
+      - name: Run visual regression tests
+        run: npm run test:visual
+        continue-on-error: true
+        id: visual-tests
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-test-results
+          path: |
+            tests/visual/test-results/
+            tests/visual/test-report/
+          retention-days: 30
+
+      - name: Comment on PR with results
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const testsPassed = '${{ steps.visual-tests.outcome }}' === 'success';
+
+            let body = testsPassed
+              ? '✅ **Visual regression tests passed!**\n\nNo visual changes detected.'
+              : '⚠️ **Visual regression tests found differences**\n\n' +
+                'Visual changes were detected. This may be intentional or a regression.\n\n' +
+                '**To review:**\n' +
+                '1. Download the test results artifact from this workflow run\n' +
+                '2. Or run tests locally: `npm run test:visual:ui`\n\n' +
+                '**If changes are intentional:**\n' +
+                '```bash\n' +
+                'npm run test:visual:update\n' +
+                'git add tests/visual/specs/**-snapshots/\n' +
+                'git commit -m "Update visual test baselines"\n' +
+                '```';
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Fail if tests failed
+        if: steps.visual-tests.outcome != 'success'
+        run: |
+          echo "Visual regression tests failed. Review the differences and update baselines if changes are intentional."
+          exit 1

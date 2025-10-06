@@ -123,6 +123,40 @@ This runs CSS compilation and postprocessors automatically.
 2. **CSS compiles automatically** when using dev-server.sh
 3. **Manual compilation** if needed: `python3 scripts/build/compile-css.py`
 
+### IMPORTANT: Visual Regression Testing for CSS Changes
+
+**⚠️ ALWAYS run visual tests when making CSS changes!**
+
+CSS changes in one area can break layout in completely different sections. Visual tests catch these regressions.
+
+**Workflow for CSS changes:**
+
+```bash
+# BEFORE making CSS changes
+npm run test:visual
+
+# Make your CSS changes in theme/css/
+# Compile and rebuild
+
+# AFTER making CSS changes
+npm run test:visual
+
+# If tests fail, review differences interactively
+npm run test:visual:ui
+
+# If changes are intentional, update baselines
+npm run test:visual:update
+```
+
+**Or use the --test flag:**
+
+```bash
+# Build and run visual tests in one command
+./build-all.sh --test
+```
+
+See `docs/visual-testing-guide.md` for complete workflow.
+
 ### Testing for issues:
 
 ```bash

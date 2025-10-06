@@ -4,16 +4,22 @@
 # Usage: ./build-all.sh [options]
 # Options:
 #   --quick    Skip Airtable sync (faster for local testing)
+#   --test     Run visual regression tests after build
 #   --help     Show this help message
 
 set -e  # Exit on any error
 
 # Parse command line arguments
 SKIP_AIRTABLE=false
+RUN_VISUAL_TESTS=false
 for arg in "$@"; do
     case $arg in
         --quick)
             SKIP_AIRTABLE=true
+            shift
+            ;;
+        --test)
+            RUN_VISUAL_TESTS=true
             shift
             ;;
         --help)
@@ -23,6 +29,7 @@ for arg in "$@"; do
             echo ""
             echo "Options:"
             echo "  --quick    Skip Airtable sync (faster for local testing)"
+            echo "  --test     Run visual regression tests after build"
             echo "  --help     Show this help message"
             echo ""
             echo "This script performs a complete rebuild of the mdBook site with all"
@@ -327,4 +334,44 @@ if [ -n "$(git status --porcelain src/ 2>/dev/null | grep -v 'SUMMARY.md' | grep
     echo "⚠️  Warning: Detected changes in /src directory"
     echo "   Remember: Never edit files in /src directly!"
     echo "   Always edit source-documents/ files instead."
+fi
+
+# Run visual regression tests if requested
+if [ "$RUN_VISUAL_TESTS" = true ]; then
+    echo ""
+    echo "======================================"
+    echo "🧪 Running Visual Regression Tests"
+    echo "======================================"
+    echo ""
+
+    # Check if server is running, start if not
+    if ! curl -s http://localhost:3000 > /dev/null 2>&1; then
+        echo "📡 Starting dev server for tests..."
+        ./dev-server.sh > /dev/null 2>&1 &
+        sleep 3
+
+        if ! wait_for_server_start 3000 10; then
+            echo "❌ Failed to start dev server for tests"
+            echo "   Run './dev-server.sh' manually and try 'npm run test:visual'"
+            exit 1
+        fi
+    fi
+
+    # Run the tests
+    if npm run test:visual; then
+        echo ""
+        echo "✅ All visual tests passed!"
+        echo ""
+    else
+        echo ""
+        echo "❌ Visual tests failed or found differences"
+        echo ""
+        echo "To review differences interactively:"
+        echo "  npm run test:visual:ui"
+        echo ""
+        echo "If changes are intentional, update baselines:"
+        echo "  npm run test:visual:update"
+        echo ""
+        exit 1
+    fi
 fi
