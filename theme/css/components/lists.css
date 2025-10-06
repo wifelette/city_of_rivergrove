@@ -30,14 +30,30 @@ ol li::marker {
     padding-left: 2em;
 }
 
-/* Ensure list items have proper spacing and no bullets */
-.alpha-list li,
-.numeric-list li,
-.roman-list li {
+/* Ensure list items have proper spacing, no bullets, and hanging indent */
+.alpha-list > li,
+.numeric-list > li,
+.roman-list > li {
     list-style: none;
     list-style-type: none;
     margin: 0.5em 0;
     position: relative;
+    padding-left: 2em;      /* Space for the marker */
+    text-indent: -2em;      /* Pull first line back to align marker */
+}
+
+/* Nested lists should NOT have hanging indent - they're already indented */
+.alpha-list li .alpha-list > li,
+.alpha-list li .numeric-list > li,
+.alpha-list li .roman-list > li,
+.numeric-list li .alpha-list > li,
+.numeric-list li .numeric-list > li,
+.numeric-list li .roman-list > li,
+.roman-list li .alpha-list > li,
+.roman-list li .numeric-list > li,
+.roman-list li .roman-list > li {
+    padding-left: 0;
+    text-indent: 0;
 }
 
 /* Extra specificity to override any mdBook defaults */
@@ -274,9 +290,9 @@ table td {
 
 .setback-specifications {
     margin-top: 0.75em;
-    margin-left: 2em;
-    padding-left: 1em;
-    border-left: 2px solid #e0e0e0;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
 }
 
 .setback-spec {
