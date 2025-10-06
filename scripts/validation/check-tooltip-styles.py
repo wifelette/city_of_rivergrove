@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Validates that tooltip styles are correctly configured.
 Checks for common issues that break tooltip display.

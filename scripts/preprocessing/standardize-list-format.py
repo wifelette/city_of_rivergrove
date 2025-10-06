@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Standardize list format in markdown files to prepare them for proper HTML processing.
 This runs BEFORE mdBook converts markdown to HTML.

@@ -1,23 +1,25 @@
 {
-  "tests_run": 58,
-  "tests_passed": 45,
+  "tests_run": 22,
+  "tests_passed": 17,
   "failures": [
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "no_concatenated_numeric_items",
-      "issue": "Found 4 list items with concatenated numeric sub-items",
+      "test": "no_orphaned_alpha_paragraphs",
+      "issue": "Found 9 alpha items as paragraphs instead of list items",
       "examples": [
-        "(2) The grant of relief will not result in a land use not otherwise permissible;",
-        "(2) Refer some or all of the proposal back to the Commission for further consideration.",
-        "(2) The inclusion of the territory within the city would be consistent with the purpose served by th..."
+        "(a) DEFINITION",
+        "(b) PURPOSE AND INTENT",
+        "(c) MINOR HOME OCCUPATIONS"
       ]
     },
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "no_list_code_blocks",
-      "issue": "Found 1 lists appearing as code blocks",
+      "test": "no_concatenated_numeric_items",
+      "issue": "Found 6 list items with concatenated numeric sub-items",
       "examples": [
-        "(1) the floor area of a building shall not be increased by more than twenty (20) percent;\n\n(2) the l..."
+        "(c) Deliveries and Large Vehicles Storage: The home occupation shall not involve the use, parking, s...",
+        "(2) \nLodging: Business offering transient lodging shall be allowed only with an approved permit from...",
+        "(2) The grant of relief will not result in a land use not otherwise permissible;"
       ]
     },
     {
@@ -33,26 +35,9 @@
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
       "test": "proper_list_nesting",
-      "issue": "Found 2 nesting issues",
+      "issue": "Found 1 nesting issues",
       "examples": [
-        "Orphaned <ol> found after alpha list - should be nested under the last alpha item",
-        "Item (i) missing nested list"
-      ]
-    },
-    {
-      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "section_2060_formatting",
-      "issue": "Section 2.060(b) items appearing as code block",
-      "examples": [
-        "(1) the floor area of a building shall not be increased by more than twenty (20) percent;\n\n(2) the l"
-      ]
-    },
-    {
-      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "section_5080_formatting",
-      "issue": "Section 5.080 formatting issues",
-      "examples": [
-        "No setback lists found in Section 5.080"
+        "Orphaned <ol> found after alpha paragraph - both should be properly formatted"
       ]
     },
     {
@@ -62,60 +47,7 @@
       "examples": [
         "Orphaned ordered list found - should be nested under parent item",
         "Orphaned ordered list found - should be nested under parent item",
-        "Orphaned ordered list found - should be nested under parent item",
-        "Orphaned ordered list found after alpha list - should be nested"
-      ]
-    },
-    {
-      "file": "book/ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.html",
-      "test": "no_concatenated_numeric_items",
-      "issue": "Found 8 list items with concatenated numeric sub-items",
-      "examples": [
-        "\n\n(1) Relationship of the site to adjoining properties, streets, alleys, structures, public utilitie...",
-        "(2) Lot line dimensions;",
-        "\n\n(1) Heights of structure;\n(2) Entrances and exits of proposed structures;\n(3) Architectural drawin..."
-      ]
-    },
-    {
-      "file": "book/ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.html",
-      "test": "no_orphaned_paragraphs_after_lists",
-      "issue": "Found 1 orphaned paragraphs that should be nested",
-      "examples": [
-        "Orphaned paragraph after (i) - should be nested inside the list item"
-      ]
-    },
-    {
-      "file": "book/ordinances/1993-Ord-57-93-Manufactured-Homes.html",
-      "test": "no_concatenated_numeric_items",
-      "issue": "Found 1 list items with concatenated numeric sub-items",
-      "examples": [
-        "2. Deed Covenants or Restrictions: Nothing in these provisions shall be interpreted as superseding d..."
-      ]
-    },
-    {
-      "file": "book/resolutions/1976-Res-22-PC.html",
-      "test": "no_list_code_blocks",
-      "issue": "Found 1 lists appearing as code blocks",
-      "examples": [
-        "a. Financial support? \u2610 Yes \u2610 No\nb. A publicity program? \u2610 Yes \u2610 No\nc. Technical information availab..."
-      ]
-    },
-    {
-      "file": "book/interpretations/1998-06-01-RE-5.080-setback-orientation.html",
-      "test": "no_orphaned_paragraphs_after_lists",
-      "issue": "Found 3 orphaned paragraphs that should be nested",
-      "examples": [
-        "Orphaned paragraph after (b) - should be nested inside the list item",
-        "Orphaned paragraph after (b) - should be nested inside the list item",
-        "Orphaned paragraph after (b) - should be nested inside the list item"
-      ]
-    },
-    {
-      "file": "book/interpretations/2002-09-05-RE-duplicate.html",
-      "test": "no_orphaned_paragraphs_after_lists",
-      "issue": "Found 1 orphaned paragraphs that should be nested",
-      "examples": [
-        "Orphaned paragraph after b. - should be nested inside the list item"
+        "Orphaned ordered list found - should be nested under parent item"
       ]
     }
   ]

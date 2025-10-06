@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Check List Nesting Validation Script
 Ensures proper indentation for nested list items in markdown files.

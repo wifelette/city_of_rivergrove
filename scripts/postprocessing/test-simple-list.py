@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Simple test to verify list processing works correctly."""
 
 from bs4 import BeautifulSoup

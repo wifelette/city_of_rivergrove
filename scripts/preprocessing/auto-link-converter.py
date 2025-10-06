@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Auto-link converter that automatically converts URLs and email addresses
 to clickable markdown links in all documents.

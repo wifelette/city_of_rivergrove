@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Generate SUMMARY.md for mdBook from documents in src/ directory with Airtable metadata integration.
 This enhanced version uses Airtable metadata for better titles and information.

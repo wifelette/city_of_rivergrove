@@ -241,16 +241,10 @@ if [ -f "scripts/build/add-readonly-warnings.sh" ]; then
     ./scripts/build/add-readonly-warnings.sh >/dev/null 2>&1
 fi
 
-# STEP 13: Apply unified list processing (MUST be after mdBook build)
-# TEMPORARILY DISABLED - This is breaking Section 1.050
-# echo "🎨 Step 13: Applying unified list processing..."
-# python3 scripts/postprocessing/unified-list-processor.py
-# echo "  ✅ List processing and Document Notes formatting applied"
-echo "⏭️  Step 13: Unified list processing temporarily disabled"
-
-# Fix indented lists that mdBook interprets as code blocks
-echo "🔧 Fixing indented lists..."
-python3 scripts/postprocessing/fix-indented-lists.py book/ordinances/*.html >/dev/null 2>&1
+# STEP 13: Apply enhanced unified list processing (MUST be after mdBook build)
+echo "🎨 Step 13: Applying enhanced unified list processing..."
+python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+echo "  ✅ Enhanced list processing and Document Notes formatting applied"
 echo ""
 
 # STEP 14: Apply enhanced formatting (if available)

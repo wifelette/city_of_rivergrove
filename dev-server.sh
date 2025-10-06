@@ -151,7 +151,7 @@ process_file_change() {
 
     # Use the NEW unified list processor v2 - single source of truth for ALL list processing
     echo "  Processing all lists..."
-    python3 scripts/postprocessing/unified-list-processor-v2.py >/dev/null 2>&1
+    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 
     # Run list formatting tests on critical files (suppress output unless there's an error)
     if [ -f "scripts/tests/test-list-formatting.py" ]; then
@@ -217,7 +217,7 @@ if wait_for_server_start 3000 10; then
     # Run enhanced-custom-processor first for tables, WHEREAS, etc (NO list processing)
     python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1 || true
     # Use unified list processor v2 for ALL list processing
-    python3 scripts/postprocessing/unified-list-processor-v2.py >/dev/null 2>&1 || true
+    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1 || true
     echo "✅ Styles applied"
     echo ""
     echo "=========================================="

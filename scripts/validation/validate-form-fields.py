@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Validate form field syntax in markdown documents.
 Detects unclosed {{filled:}} tags and other form field issues.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Sync other documents from the main Other directory to src/other for mdBook
 """

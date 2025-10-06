@@ -75,6 +75,43 @@ ol li::marker {
 }
 
 /* ========================================
+ * NESTED STANDARD LISTS
+ * Restore bullets/numbers for standard ol/ul inside manual lists
+ * ======================================== */
+
+/* Restore numbered list markers for ordered lists nested in manual notation lists */
+.alpha-list ol,
+.numeric-list ol,
+.roman-list ol {
+    list-style: decimal;
+    list-style-type: decimal;
+    padding-left: 2em;
+}
+
+.alpha-list ol li,
+.numeric-list ol li,
+.roman-list ol li {
+    list-style: decimal;
+    list-style-type: decimal;
+}
+
+/* Restore bullet markers for unordered lists nested in manual notation lists */
+.alpha-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list),
+.numeric-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list),
+.roman-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list) {
+    list-style: disc;
+    list-style-type: disc;
+    padding-left: 2em;
+}
+
+.alpha-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list) li,
+.numeric-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list) li,
+.roman-list ul:not(.alpha-list):not(.numeric-list):not(.roman-list) li {
+    list-style: disc;
+    list-style-type: disc;
+}
+
+/* ========================================
  * LIST MARKERS
  * Styled spans for (a), (1), (i) markers
  * ======================================== */
@@ -228,6 +265,34 @@ blockquote .roman-list {
 table td {
     /* This would need JavaScript to properly wrap the markers */
     /* For now, we'll note this as a limitation */
+}
+
+/* ========================================
+ * SETBACK SPECIFICATIONS
+ * Special formatting for Section 5.080 setbacks
+ * ======================================== */
+
+.setback-specifications {
+    margin-top: 0.75em;
+    margin-left: 2em;
+    padding-left: 1em;
+    border-left: 2px solid #e0e0e0;
+}
+
+.setback-spec {
+    margin: 0.5em 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+    color: #333;
+    line-height: 1.4;
+}
+
+.setback-spec:first-child {
+    margin-top: 0;
+}
+
+.setback-spec:last-child {
+    margin-bottom: 0;
 }
 
 /* ========================================

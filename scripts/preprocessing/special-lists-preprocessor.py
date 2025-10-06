@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Special list preprocessor for handling unusual list formats in specific documents.
 This handles edge cases like lists that start at non-standard numbers (e.g., 1.4 instead of 1.1)

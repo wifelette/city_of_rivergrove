@@ -29,6 +29,16 @@ Today I'd like to start with a holistic review of our docs. That means making su
 4. any other suggestions you might have.
 ```
 
+### Closing Cleanup Prompt
+
+```
+Before we finish up, let's do a final review of the repository to ensure everything is in order:
+1. Check for any uncommitted changes. If there are changes, please commit and push them.
+2. Review the /docs directory for any new documentation that needs to be added or existing documentation that needs updating based on our work this session.
+3. Summarize any changes made during this session and note any areas that may need further attention in future sessions. Propose issues for any problems we've left unresolved.
+4. Have we cleaned up anything that we don't need anymore from our work? Files we replaced, or things that were temporary? We want to make sure we leave the repo tidy.
+```
+
 ## Claude Desktop Startup
 
 ```

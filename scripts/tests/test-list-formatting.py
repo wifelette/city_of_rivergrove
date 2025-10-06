@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Regression tests for list formatting in City of Rivergrove documents.
 
@@ -47,11 +47,25 @@ class ListFormattingTester:
         all_passed &= self.test_proper_list_nesting(soup, file_path)
         all_passed &= self.test_css_classes(soup, file_path)
 
+        # Additional comprehensive tests to catch visual regressions
+        all_passed &= self.test_inline_numeric_references(soup, file_path)
+        all_passed &= self.test_paragraph_references(soup, file_path)
+        all_passed &= self.test_section_2060_nested_list(soup, file_path)
+        all_passed &= self.test_section_2080_single_item(soup, file_path)
+        all_passed &= self.test_section_4120_complete_list(soup, file_path)
+        all_passed &= self.test_no_empty_list_items(soup, file_path)
+        all_passed &= self.test_proper_marker_spacing(soup, file_path)
+        all_passed &= self.test_no_duplicate_list_items(soup, file_path)
+        all_passed &= self.test_no_broken_nested_structure(soup, file_path)
+        all_passed &= self.test_consistent_marker_styles(soup, file_path)
+        all_passed &= self.test_proper_definition_nesting(soup, file_path)
+
         # Special tests for known problem areas
         if '1989-Ord-54' in file_path:
             all_passed &= self.test_section_1050_formatting(soup, file_path)
             all_passed &= self.test_section_2060_formatting(soup, file_path)
             all_passed &= self.test_section_5080_formatting(soup, file_path)
+            all_passed &= self.test_section_5110_formatting(soup, file_path)
             all_passed &= self.test_section_5120_formatting(soup, file_path)
 
         return all_passed
@@ -341,13 +355,13 @@ class ListFormattingTester:
         return True
 
     def test_section_5080_formatting(self, soup, file_path):
-        """Specific test for Section 5.080 setback formatting."""
+        """Specific test for Section 5.080 setback formatting with special div structure."""
         self.tests_run += 1
 
         # Find Section 5.080
         section = None
         for h3 in soup.find_all('h3'):
-            if 'Section 5.080' in h3.get_text():
+            if 'Section 5.080' in h3.get_text() and 'Building Setbacks' in h3.get_text():
                 section = h3
                 break
 
@@ -355,37 +369,125 @@ class ListFormattingTester:
             print(f"  ⚠️  Section 5.080 not found")
             return True
 
-        # Check for setback lists
         issues = []
+
+        # Look for the alpha list after Section 5.080
         current = section.find_next_sibling()
-        found_setback_list = False
+        found_setback_divs = 0
 
         while current and current.name != 'h3':
-            if current.name == 'ul':
-                for li in current.find_all('li'):
-                    if 'Front Setback' in li.get_text():
-                        found_setback_list = True
-                        # Check if it's properly formatted
-                        parent_ul = li.find_parent('ul')
-                        if 'setback-list' not in parent_ul.get('class', []):
-                            issues.append("Setback list missing 'setback-list' CSS class")
+            if current.name == 'ul' and 'alpha-list' in current.get('class', []):
+                # Check items (a) and (c) for setback specifications
+                for li in current.find_all('li', recursive=False):
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker and marker.get_text() in ['(a)', '(c)']:
+                        # These should have setback-specifications divs
+                        setback_div = li.find('div', class_='setback-specifications')
+                        if not setback_div:
+                            issues.append(f"Item {marker.get_text()} missing setback-specifications div")
+                        else:
+                            found_setback_divs += 1
+                            # Check that we have separate p elements for each setback
+                            setback_ps = setback_div.find_all('p', class_='setback-spec')
+                            if marker.get_text() == '(a)':
+                                if len(setback_ps) != 4:
+                                    issues.append(f"Item (a) has {len(setback_ps)} setback specs, expected 4")
+                                else:
+                                    # Check that each spec is on its own line
+                                    for p in setback_ps:
+                                        text = p.get_text()
+                                        # Each spec should be just one line (Front/Side/Rear Setback - X feet)
+                                        if text.count('Setback') > 1:
+                                            issues.append(f"Setback specs not properly separated: {text[:50]}...")
+                            elif marker.get_text() == '(c)':
+                                if len(setback_ps) != 4:
+                                    issues.append(f"Item (c) has {len(setback_ps)} setback specs, expected 4")
             current = current.find_next_sibling()
 
-        if not found_setback_list:
-            issues.append("No setback lists found in Section 5.080")
+        if found_setback_divs == 0:
+            issues.append("No setback-specifications divs found in Section 5.080")
+        elif found_setback_divs != 2:
+            issues.append(f"Found {found_setback_divs} setback-specifications divs, expected 2")
 
         if issues:
             self.failures.append({
                 'file': file_path,
                 'test': 'section_5080_formatting',
-                'issue': 'Section 5.080 formatting issues',
+                'issue': 'Section 5.080 special formatting issues',
                 'examples': issues
             })
             print(f"  ❌ Section 5.080 has {len(issues)} issues")
             return False
         else:
             self.tests_passed += 1
-            print(f"  ✅ Section 5.080 properly formatted")
+            print(f"  ✅ Section 5.080 properly formatted with special setback divs")
+            return True
+
+    def test_section_5110_formatting(self, soup, file_path):
+        """Test that Section 5.110 items (a) through (e) are combined into a single alpha list."""
+        self.tests_run += 1
+
+        # Find Section 5.110
+        section = None
+        for h3 in soup.find_all('h3'):
+            if 'Section 5.110' in h3.get_text() and 'Houses Moved' in h3.get_text():
+                section = h3
+                break
+
+        if not section:
+            print(f"  ⚠️  Section 5.110 not found")
+            return True
+
+        issues = []
+
+        # Look for the alpha list after Section 5.110
+        current = section.find_next_sibling()
+        found_list = False
+        orphaned_items = []
+
+        while current and current.name not in ['h2', 'h3', 'hr']:
+            if current.name == 'ul' and 'alpha-list' in current.get('class', []):
+                found_list = True
+                items = current.find_all('li', recursive=False)
+                markers = []
+                for li in items:
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker:
+                        markers.append(marker.get_text())
+
+                # Check that we have all 5 items in ONE list
+                expected = ['(a)', '(b)', '(c)', '(d)', '(e)']
+                if markers != expected:
+                    issues.append(f"Section 5.110 has items {markers}, expected {expected}")
+                    missing = set(expected) - set(markers)
+                    if missing:
+                        issues.append(f"Missing items: {', '.join(sorted(missing))}")
+                break
+            elif current.name == 'p':
+                # Check for orphaned items that should be in the list
+                text = current.get_text().strip()
+                if text.startswith('(a)') or text.startswith('(b)') or text.startswith('(e)'):
+                    orphaned_items.append(text[:50] + '...' if len(text) > 50 else text)
+            current = current.find_next_sibling()
+
+        if orphaned_items:
+            issues.append(f"Found {len(orphaned_items)} orphaned items as paragraphs")
+
+        if not found_list:
+            issues.append("Section 5.110 alpha list not found")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'section_5110_formatting',
+                'issue': 'Section 5.110 list not properly combined',
+                'examples': issues
+            })
+            print(f"  ❌ Section 5.110 has {len(issues)} issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Section 5.110 properly formatted with all 5 items in single list")
             return True
 
     def test_section_5120_formatting(self, soup, file_path):
@@ -448,6 +550,246 @@ class ListFormattingTester:
             print(f"  ✅ Section 5.120 properly formatted")
             return True
 
+    def test_no_empty_list_items(self, soup, file_path):
+        """Check for empty or nearly empty list items."""
+        self.tests_run += 1
+
+        empty_items = []
+        for li in soup.find_all('li'):
+            text = li.get_text().strip()
+            # Remove marker text to check actual content
+            marker = li.find('span', class_=['list-marker-alpha', 'list-marker-numeric', 'list-marker-roman'])
+            if marker:
+                marker_text = marker.get_text()
+                content = text.replace(marker_text, '').strip()
+                if not content or len(content) < 3:
+                    empty_items.append(f"Item {marker_text} is empty or too short: '{content}'")
+
+        if empty_items:
+            self.failures.append({
+                'file': file_path,
+                'test': 'no_empty_list_items',
+                'issue': f'Found {len(empty_items)} empty or nearly empty list items',
+                'examples': empty_items[:3]
+            })
+            print(f"  ❌ Found {len(empty_items)} empty list items")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ No empty list items")
+            return True
+
+    def test_proper_marker_spacing(self, soup, file_path):
+        """Check that list markers have proper spacing."""
+        self.tests_run += 1
+
+        spacing_issues = []
+        for li in soup.find_all('li'):
+            marker = li.find('span', class_=['list-marker-alpha', 'list-marker-numeric', 'list-marker-roman'])
+            if marker:
+                # Check if there's proper spacing after marker
+                next_sibling = marker.next_sibling
+                if next_sibling and isinstance(next_sibling, str):
+                    if not next_sibling.startswith(' '):
+                        spacing_issues.append(f"No space after marker {marker.get_text()}")
+                elif not next_sibling or (hasattr(next_sibling, 'name') and next_sibling.name):
+                    # Marker followed directly by a tag or nothing
+                    spacing_issues.append(f"Missing space after marker {marker.get_text()}")
+
+        if spacing_issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'proper_marker_spacing',
+                'issue': f'Found {len(spacing_issues)} marker spacing issues',
+                'examples': spacing_issues[:3]
+            })
+            print(f"  ❌ Found {len(spacing_issues)} spacing issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Proper marker spacing")
+            return True
+
+    def test_no_duplicate_list_items(self, soup, file_path):
+        """Check for duplicate list items that might indicate processing errors."""
+        self.tests_run += 1
+
+        duplicates = []
+        seen_items = {}
+
+        for ul in soup.find_all('ul'):
+            ul_class = ul.get('class', [])
+            if any(cls in ul_class for cls in ['alpha-list', 'numeric-list', 'roman-list']):
+                for li in ul.find_all('li', recursive=False):
+                    marker = li.find('span', class_=['list-marker-alpha', 'list-marker-numeric', 'list-marker-roman'])
+                    if marker:
+                        marker_text = marker.get_text()
+                        text_content = li.get_text()[:100]  # First 100 chars for comparison
+
+                        key = (str(ul_class), marker_text, text_content)
+                        if key in seen_items:
+                            duplicates.append(f"Duplicate item {marker_text} in {ul_class}")
+                        else:
+                            seen_items[key] = True
+
+        if duplicates:
+            self.failures.append({
+                'file': file_path,
+                'test': 'no_duplicate_list_items',
+                'issue': f'Found {len(duplicates)} duplicate list items',
+                'examples': duplicates[:3]
+            })
+            print(f"  ❌ Found {len(duplicates)} duplicate items")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ No duplicate list items")
+            return True
+
+    def test_no_broken_nested_structure(self, soup, file_path):
+        """Check for broken nested list structures."""
+        self.tests_run += 1
+
+        broken_structures = []
+
+        for ul in soup.find_all('ul', class_='alpha-list'):
+            for li in ul.find_all('li', recursive=False):
+                marker = li.find('span', class_='list-marker-alpha')
+                if marker:
+                    marker_text = marker.get_text()
+
+                    # Check for nested lists
+                    nested_lists = li.find_all('ul', recursive=False)
+                    for nested in nested_lists:
+                        # Check if nested list has proper items
+                        nested_items = nested.find_all('li', recursive=False)
+                        if not nested_items:
+                            broken_structures.append(f"Item {marker_text} has empty nested list")
+                        else:
+                            # Check if nested items have proper markers
+                            for nested_li in nested_items:
+                                nested_marker = nested_li.find('span')
+                                if not nested_marker:
+                                    broken_structures.append(f"Item {marker_text} has nested item without marker")
+
+        if broken_structures:
+            self.failures.append({
+                'file': file_path,
+                'test': 'no_broken_nested_structure',
+                'issue': f'Found {len(broken_structures)} broken nested structures',
+                'examples': broken_structures[:3]
+            })
+            print(f"  ❌ Found {len(broken_structures)} broken structures")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ No broken nested structures")
+            return True
+
+    def test_consistent_marker_styles(self, soup, file_path):
+        """Check that marker styles are consistent within list types."""
+        self.tests_run += 1
+
+        inconsistencies = []
+
+        # Check alpha lists
+        for ul in soup.find_all('ul', class_='alpha-list'):
+            markers = []
+            for li in ul.find_all('li', recursive=False):
+                marker = li.find('span', class_='list-marker-alpha')
+                if marker:
+                    markers.append(marker.get_text())
+
+            # Check for consistent format - should all be (a), (b), (c) format
+            for marker in markers:
+                if not re.match(r'^\([a-z]\)$', marker):
+                    inconsistencies.append(f"Alpha marker '{marker}' not in (x) format")
+
+        # Check numeric lists
+        for ul in soup.find_all('ul', class_='numeric-list'):
+            markers = []
+            for li in ul.find_all('li', recursive=False):
+                marker = li.find('span', class_='list-marker-numeric')
+                if marker:
+                    markers.append(marker.get_text())
+
+            # Check for consistent format - should all be (1), (2), (3) format
+            for marker in markers:
+                if not re.match(r'^\(\d+\)$', marker):
+                    inconsistencies.append(f"Numeric marker '{marker}' not in (x) format")
+
+        if inconsistencies:
+            self.failures.append({
+                'file': file_path,
+                'test': 'consistent_marker_styles',
+                'issue': f'Found {len(inconsistencies)} marker style inconsistencies',
+                'examples': inconsistencies[:3]
+            })
+            print(f"  ❌ Found {len(inconsistencies)} style inconsistencies")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Consistent marker styles")
+            return True
+
+    def test_proper_definition_nesting(self, soup, file_path):
+        """Check that definition items have proper nested sub-definitions."""
+        self.tests_run += 1
+
+        definition_issues = []
+
+        # Look for definition patterns that should have nested items
+        for ul in soup.find_all('ul', class_='alpha-list'):
+            for li in ul.find_all('li', recursive=False):
+                marker = li.find('span', class_='list-marker-alpha')
+                if marker:
+                    marker_text = marker.get_text()
+                    li_text = li.get_text()
+
+                    # Known patterns that should have nested definitions
+                    should_have_nested = False
+                    expected_nested = []
+
+                    if '"Lot"' in li_text and 'means' in li_text:
+                        should_have_nested = True
+                        expected_nested = ['Corner Lot', 'Reversed Corner Lot', 'Through Lot']
+
+                    elif '"Street"' in li_text and 'including' in li_text:
+                        should_have_nested = True
+                        expected_nested = ['Alley', 'Arterial', 'Collector', 'Cul-de-sac']
+
+                    if should_have_nested:
+                        nested_list = li.find('ul', class_='numeric-list')
+                        if not nested_list:
+                            definition_issues.append(f"Item {marker_text} should have nested definitions but has none")
+                        else:
+                            # Check if expected definitions are present
+                            nested_items = nested_list.find_all('li', recursive=False)
+                            found_definitions = []
+                            for nested_li in nested_items:
+                                nested_text = nested_li.get_text()
+                                for expected in expected_nested:
+                                    if expected in nested_text:
+                                        found_definitions.append(expected)
+
+                            missing = set(expected_nested) - set(found_definitions)
+                            if missing:
+                                definition_issues.append(f"Item {marker_text} missing nested definitions: {', '.join(missing)}")
+
+        if definition_issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'proper_definition_nesting',
+                'issue': f'Found {len(definition_issues)} definition nesting issues',
+                'examples': definition_issues[:3]
+            })
+            print(f"  ❌ Found {len(definition_issues)} definition nesting issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Proper definition nesting")
+            return True
+
     def print_summary(self):
         """Print test summary and save results."""
         print("\n" + "="*60)
@@ -485,6 +827,238 @@ class ListFormattingTester:
         print(f"\n💾 Results saved to {results_file}")
 
         return len(self.failures) == 0
+
+    def test_inline_numeric_references(self, soup, file_path):
+        """Test that inline numeric references like (10) days are not converted to lists."""
+        self.tests_run += 1
+
+        issues = []
+
+        # Check for improperly converted inline references
+        for ul in soup.find_all('ul'):
+            for li in ul.find_all('li', recursive=False):
+                marker = li.find('span', class_='list-marker-numeric')
+                if marker:
+                    marker_text = marker.get_text()
+                    li_text = li.get_text()
+                    # Check for common inline reference patterns
+                    if marker_text == '(10)' and 'days' in li_text[:20]:
+                        issues.append(f"Inline reference '{marker_text} days' incorrectly converted to list item")
+                    elif marker_text == '(20)' and 'percent' in li_text[:30]:
+                        issues.append(f"Inline reference '{marker_text} percent' incorrectly converted to list item")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'inline_numeric_references',
+                'issue': 'Inline numeric references incorrectly converted to list items',
+                'examples': issues[:3]
+            })
+            print(f"  ❌ Found {len(issues)} inline reference issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Inline numeric references preserved correctly")
+            return True
+
+    def test_paragraph_references(self, soup, file_path):
+        """Test that paragraph references like '(a) which' are not converted to lists."""
+        self.tests_run += 1
+
+        issues = []
+
+        # Check for improperly converted paragraph references
+        for ul in soup.find_all('ul'):
+            for li in ul.find_all('li', recursive=False):
+                li_text = li.get_text().strip()
+                # Check for patterns that indicate a paragraph reference
+                if li_text.startswith('which') or li_text.startswith('that') or li_text.startswith('as '):
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker:
+                        issues.append(f"Paragraph reference '{marker.get_text()} {li_text[:30]}...' incorrectly as list")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'paragraph_references',
+                'issue': 'Paragraph references incorrectly converted to list items',
+                'examples': issues[:3]
+            })
+            print(f"  ❌ Found {len(issues)} paragraph reference issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Paragraph references preserved correctly")
+            return True
+
+    def test_section_2060_nested_list(self, soup, file_path):
+        """Test that Section 2.060(b) has properly nested numeric list."""
+        self.tests_run += 1
+
+        # Find Section 2.060
+        section = None
+        for h3 in soup.find_all('h3'):
+            if 'Section 2.060' in h3.get_text() and 'Nonconforming' in h3.get_text():
+                section = h3
+                break
+
+        if not section:
+            # Not all files have this section
+            return True
+
+        issues = []
+
+        # Look for the list after Section 2.060
+        current = section.find_next_sibling()
+        found_nested = False
+
+        while current and current.name not in ['h2', 'h3', 'hr']:
+            if current.name == 'ul' and 'alpha-list' in current.get('class', []):
+                # Find item (b)
+                for li in current.find_all('li', recursive=False):
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker and marker.get_text() == '(b)':
+                        # Check for nested numeric list
+                        nested = li.find('ul', class_='numeric-list')
+                        if nested:
+                            found_nested = True
+                            nested_items = nested.find_all('li', recursive=False)
+                            if len(nested_items) != 3:
+                                issues.append(f"Section 2.060(b) has {len(nested_items)} nested items, expected 3")
+                        else:
+                            issues.append("Section 2.060(b) missing nested numeric list")
+                        break
+            # Also check for orphaned code blocks
+            elif current.name == 'pre':
+                code = current.find('code')
+                if code and '(1)' in code.get_text() and '(2)' in code.get_text():
+                    issues.append("Section 2.060 nested list appearing as code block")
+            current = current.find_next_sibling()
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'section_2060_nested_list',
+                'issue': 'Section 2.060 nested list formatting issues',
+                'examples': issues
+            })
+            print(f"  ❌ Section 2.060 has {len(issues)} issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Section 2.060 nested list formatted correctly")
+            return True
+
+    def test_section_2080_single_item(self, soup, file_path):
+        """Test that Section 2.080 single-item list is preserved."""
+        self.tests_run += 1
+
+        # Find Section 2.080
+        section = None
+        for h3 in soup.find_all('h3'):
+            if 'Section 2.080' in h3.get_text() and 'Termination' in h3.get_text():
+                section = h3
+                break
+
+        if not section:
+            # Not all files have this section
+            return True
+
+        issues = []
+
+        # Look for the single-item list
+        current = section.find_next_sibling()
+        found_list = False
+
+        while current and current.name not in ['h2', 'h3', 'hr']:
+            if current.name == 'ul' and 'alpha-list' in current.get('class', []):
+                found_list = True
+                items = current.find_all('li', recursive=False)
+                if len(items) != 1:
+                    issues.append(f"Section 2.080 has {len(items)} list items, expected 1")
+                else:
+                    marker = items[0].find('span', class_='list-marker-alpha')
+                    if not marker or marker.get_text() != '(a)':
+                        issues.append("Section 2.080 single item not marked as (a)")
+                break
+            elif current.name == 'p' and current.get_text().strip().startswith('(a)'):
+                issues.append("Section 2.080 item (a) not converted to list")
+            current = current.find_next_sibling()
+
+        if not found_list and not issues:
+            issues.append("Section 2.080 list not found")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'section_2080_single_item',
+                'issue': 'Section 2.080 single-item list issues',
+                'examples': issues
+            })
+            print(f"  ❌ Section 2.080 has {len(issues)} issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Section 2.080 single-item list correct")
+            return True
+
+    def test_section_4120_complete_list(self, soup, file_path):
+        """Test that Section 4.120 has all four items (a), (b), (c), (d) in the list."""
+        self.tests_run += 1
+
+        # Find Section 4.120
+        section = None
+        for h3 in soup.find_all('h3'):
+            if 'Section 4.120' in h3.get_text() and 'Type IV' in h3.get_text():
+                section = h3
+                break
+
+        if not section:
+            # Not all files have this section
+            return True
+
+        issues = []
+
+        # Look for the list after Section 4.120
+        current = section.find_next_sibling()
+        found_list = False
+        found_items = []
+
+        while current and current.name not in ['h2', 'hr']:
+            if current.name == 'ul' and 'alpha-list' in current.get('class', []):
+                found_list = True
+                for li in current.find_all('li', recursive=False):
+                    marker = li.find('span', class_='list-marker-alpha')
+                    if marker:
+                        found_items.append(marker.get_text())
+                break
+            # Check for orphaned (d) item
+            elif current.name == 'p':
+                text = current.get_text().strip()
+                if text.startswith('(d)') and 'To the extent that a policy' in text:
+                    issues.append("Section 4.120 item (d) not included in list")
+            current = current.find_next_sibling()
+
+        if found_list:
+            expected = ['(a)', '(b)', '(c)', '(d)']
+            if found_items != expected:
+                issues.append(f"Section 4.120 has items {found_items}, expected {expected}")
+        else:
+            issues.append("Section 4.120 list not found")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'section_4120_complete_list',
+                'issue': 'Section 4.120 list completeness issues',
+                'examples': issues
+            })
+            print(f"  ❌ Section 4.120 has {len(issues)} issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Section 4.120 list complete with all 4 items")
+            return True
 
 def main():
     """Run list formatting tests."""

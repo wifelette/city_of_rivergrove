@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Check that CSS styles are properly loaded and HTML has correct structure.
 This catches the "disappearing styles" issue early.

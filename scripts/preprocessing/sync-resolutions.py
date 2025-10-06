@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Sync resolutions from the main Resolutions directory to src/resolutions for mdBook
 

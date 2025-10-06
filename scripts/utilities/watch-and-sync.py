@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Watch for changes in Ordinances/ directory and automatically sync to src/ordinances/
 """

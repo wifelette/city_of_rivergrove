@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Unified List Processor for City of Rivergrove Documents
 
@@ -29,6 +29,18 @@ def detect_list_type(text, prev_type=None, prev_char=None):
         prev_type: The type of the previous marker ('alpha', 'roman', 'numeric')
         prev_char: The character of the previous marker (e.g., 'h' for '(h)')
     """
+    # Skip inline numeric references like "(10) days" or "(20) percent"
+    # These are numeric references within text, not list items
+    inline_reference_pattern = re.compile(r'^\s*\(\d+\)\s+(days?|percent|months?|years?|hours?|minutes?|feet|foot|inches?)\b', re.IGNORECASE)
+    if inline_reference_pattern.match(text):
+        return None, None, None
+
+    # Skip paragraph references like "(a) which was relied on"
+    # These are references to other paragraphs, not new list items
+    paragraph_reference_pattern = re.compile(r'^\s*\([a-z]\)\s+(which|that|as|of|from|to|for|and|or|in)\b', re.IGNORECASE)
+    if paragraph_reference_pattern.match(text):
+        return None, None, None
+
     # Pattern to match list markers - both (1) and 1. formats
     paren_pattern = re.compile(r'^\s*\(([a-z]+|[0-9]+|[ivxlcdm]+)\)\s+', re.IGNORECASE)
     period_pattern = re.compile(r'^\s*([0-9]+|[a-z])\.\s+', re.IGNORECASE)
@@ -519,14 +531,25 @@ def convert_consecutive_paragraph_lists(soup):
     i = 0
     while i < len(paragraphs):
         p = paragraphs[i]
-        
+
         # Skip if already processed
         if not p or not p.parent:
             i += 1
             continue
-        
+
         # Check if this paragraph starts with a list marker
         text = p.get_text().strip()
+
+        # Debug Section 4.120
+        if "The Commission shall schedule a public hearing pursuant to Article 8" in text:
+            print(f"  DEBUG: Found Section 4.120 (a) at index {i}")
+            # Look at the next few paragraphs
+            for k in range(i, min(i+5, len(paragraphs))):
+                if k < len(paragraphs):
+                    pk_text = paragraphs[k].get_text().strip()[:80]
+                    pk_type, pk_marker, _ = detect_list_type(paragraphs[k].get_text().strip(), None, None)
+                    print(f"    Paragraph {k}: type={pk_type}, marker={pk_marker}, text={pk_text}...")
+
         item_type, marker, char = detect_list_type(text, None, None)
 
         if item_type:
@@ -595,6 +618,12 @@ def convert_consecutive_paragraph_lists(soup):
             
             # If we have at least 2 list items, convert to a list
             if len(list_items) >= 2:
+                # Debug Section 4.120
+                if any("City Council shall make a finding" in str(item[0]) for item in list_items):
+                    print(f"  DEBUG Section 4.120: Found {len(list_items)} list items")
+                    for idx, (text, type, marker, p) in enumerate(list_items):
+                        print(f"    Item {idx}: {marker} - {text[:60]}...")
+
                 # Create the list
                 new_ul = soup.new_tag('ul')
                 new_ul['class'] = [f'{list_type}-list']
@@ -1215,6 +1244,673 @@ def fix_orphaned_ordered_lists(soup):
                     changes_made = True
                     print(f"  Fixed orphaned ordered list with {len(ol.find_all('li'))} items")
 
+def fix_section_5110_list_classification(soup):
+    """Fix Section 5.110 where all items (a) through (e) should be in a single alpha list."""
+    # Find the Section 5.110 heading
+    for heading in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
+        if 'Section 5.110' in heading.get_text() and 'Houses Moved Into City' in heading.get_text():
+            print(f"\nFixing Section 5.110 list structure...")
+
+            # Collect all the list items that should be together
+            list_items = []
+            current = heading.find_next_sibling()
+
+            while current and current.name not in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                if current.name == 'p':
+                    text = current.get_text().strip()
+                    # Check if it's a list item (a), (b), or (e)
+                    if text.startswith('(a)') or text.startswith('(b)') or text.startswith('(e)'):
+                        list_items.append(('p', current, text))
+                elif current.name == 'ul':
+                    # This is the existing list with (c) and (d)
+                    for li in current.find_all('li', recursive=False):
+                        li_text = li.get_text().strip()
+                        list_items.append(('li', li, li_text))
+
+                # Stop if we've collected all 5 items
+                if len(list_items) >= 5:
+                    break
+
+                current = current.find_next_sibling()
+
+            # If we found all the items, restructure them
+            if len(list_items) >= 4:  # At least (a), (b), (c), (d)
+                print(f"  Found {len(list_items)} items to combine into single list")
+
+                # Create a new alpha-list
+                new_ul = soup.new_tag('ul')
+                new_ul['class'] = ['alpha-list']
+
+                # Process each item
+                for item_type, element, text in list_items:
+                    # Extract marker and content
+                    import re
+                    match = re.match(r'^\(([a-e])\)\s*(.*)', text, re.DOTALL)
+                    if match:
+                        marker = f"({match.group(1)})"
+                        content = match.group(2)
+
+                        # Create new li
+                        new_li = soup.new_tag('li')
+
+                        # Create marker span
+                        marker_span = soup.new_tag('span')
+                        marker_span['class'] = ['list-marker-alpha']
+                        marker_span.string = marker
+
+                        new_li.append(marker_span)
+                        new_li.append(' ' + content)
+                        new_ul.append(new_li)
+
+                # Insert the new list after the heading
+                heading.insert_after(new_ul)
+
+                # Remove the old elements
+                for item_type, element, _ in list_items:
+                    if item_type == 'p':
+                        element.decompose()
+                    elif item_type == 'li':
+                        # Remove the parent ul if this is the last item
+                        parent = element.parent
+                        element.decompose()
+                        if parent and not parent.find_all('li'):
+                            parent.decompose()
+
+                print(f"  Fixed: combined all items into single alpha-list")
+                return
+
+def fix_section_5100_tree_cutting(soup):
+    """
+    Special fix for Section 5.100 Tree Cutting.
+    This section has items (a) through (f) with headings and content that need special formatting.
+    """
+    # Find Section 5.100
+    section = None
+    for h3 in soup.find_all('h3'):
+        if 'Section 5.100' in h3.get_text() and 'Tree Cutting' in h3.get_text():
+            section = h3
+            break
+
+    if not section:
+        return False
+
+    # Collect all the orphaned paragraphs and lists that should be part of the section
+    # The structure should be: (a) DEFINITIONS with content, (b) APPLICATION with content, etc.
+
+    # Create a new alpha list for the entire section
+    main_list = soup.new_tag('ul')
+    main_list['class'] = ['alpha-list']
+
+    # Define the expected structure
+    items = [
+        ('(a)', 'DEFINITIONS:', 'definitions'),
+        ('(b)', 'APPLICATION FOR PERMIT', 'application'),
+        ('(c)', 'EMERGENCIES', 'emergencies'),
+        ('(d)', 'CRITERIA FOR ISSUANCE OF PERMITS', 'criteria'),
+        ('(e)', 'APPEAL', 'appeal'),
+        ('(f)', 'PENALTIES', 'penalties')
+    ]
+
+    current = section.find_next_sibling()
+    processed_elements = []
+
+    # Collect all elements until the next section
+    while current and current.name not in ['h2', 'h3']:
+        processed_elements.append(current)
+        next_elem = current.find_next_sibling()
+        current = next_elem
+
+    # Now process the collected elements to build the proper structure
+    for marker, heading, item_type in items:
+        li = soup.new_tag('li')
+
+        # Add marker
+        marker_span = soup.new_tag('span')
+        marker_span['class'] = ['list-marker-alpha']
+        marker_span.string = marker
+        li.append(marker_span)
+        li.append(' ')
+
+        # Add heading
+        strong = soup.new_tag('strong')
+        strong.string = heading
+        li.append(strong)
+
+        # Add content based on item type
+        if item_type == 'definitions':
+            # Find the ordered list with definitions
+            for elem in processed_elements:
+                if elem.name == 'ol' and ('Tree' in elem.get_text() or 'Cutting' in elem.get_text()):
+                    # Clone and add the definitions list
+                    definitions_list = elem.__copy__()
+                    li.append(definitions_list)
+                    break
+
+        elif item_type in ['application', 'emergencies', 'appeal', 'penalties']:
+            # Find paragraphs with the relevant content
+            content_found = False
+            for elem in processed_elements:
+                if elem.name == 'p':
+                    text = elem.get_text()
+
+                    if item_type == 'application' and 'person desiring to cut' in text:
+                        # Add application content paragraphs
+                        p1 = soup.new_tag('p')
+                        p1.string = text
+                        li.append(p1)
+
+                        # Get the next paragraph too
+                        next_p_idx = processed_elements.index(elem) + 1
+                        if next_p_idx < len(processed_elements):
+                            next_p = processed_elements[next_p_idx]
+                            if next_p.name == 'p' and 'application shall contain' in next_p.get_text():
+                                p2 = soup.new_tag('p')
+                                p2.string = next_p.get_text()
+                                li.append(p2)
+                        content_found = True
+                        break
+
+                    elif item_type == 'emergencies' and 'emergency conditions' in text:
+                        p = soup.new_tag('p')
+                        p.string = text
+                        li.append(p)
+                        content_found = True
+                        break
+
+                    elif item_type == 'appeal' and 'decision made by the Planning Commission' in text:
+                        p = soup.new_tag('p')
+                        p.string = text
+                        li.append(p)
+                        content_found = True
+                        break
+
+                    elif item_type == 'penalties' and 'Cutting a tree in violation' in text:
+                        # Add all penalty-related paragraphs
+                        p1 = soup.new_tag('p')
+                        p1.string = text
+                        li.append(p1)
+
+                        # Get subsequent penalty paragraphs
+                        idx = processed_elements.index(elem)
+                        for i in range(idx + 1, min(idx + 3, len(processed_elements))):
+                            next_elem = processed_elements[i]
+                            if next_elem.name == 'p':
+                                next_text = next_elem.get_text()
+                                if 'City retains' in next_text or 'Nothing in the Tree' in next_text:
+                                    p = soup.new_tag('p')
+                                    p.string = next_text
+                                    li.append(p)
+                        content_found = True
+                        break
+
+        elif item_type == 'criteria':
+            # Find criteria content and the numbered list
+            for elem in processed_elements:
+                if elem.name == 'p' and 'permit may be issued as requested' in elem.get_text():
+                    p = soup.new_tag('p')
+                    p.string = elem.get_text()
+                    li.append(p)
+
+                    # Find the numbered criteria list
+                    idx = processed_elements.index(elem)
+                    for i in range(idx + 1, len(processed_elements)):
+                        next_elem = processed_elements[i]
+                        if next_elem.name == 'ol':
+                            criteria_list = next_elem.__copy__()
+                            li.append(criteria_list)
+                            break
+                    break
+
+        main_list.append(li)
+
+    # Remove all the old elements
+    for elem in processed_elements:
+        if elem.parent:
+            elem.extract()
+
+    # Insert the new structured list after the section heading
+    section.insert_after(main_list)
+
+    print(f"  Fixed Section 5.100 Tree Cutting structure")
+    return True
+
+def fix_section_5080_setback_formatting(soup):
+    """
+    Special fix for Section 5.080 setback specifications.
+    Convert inline setback text to properly formatted nested structure.
+    """
+    # Find Section 5.080
+    section = None
+    for h3 in soup.find_all('h3'):
+        if 'Section 5.080' in h3.get_text() and 'Building Setbacks' in h3.get_text():
+            section = h3
+            break
+
+    if not section:
+        return False
+
+    # Look for the alpha list after Section 5.080
+    current = section.find_next_sibling()
+    if current and current.name == 'ul' and 'alpha-list' in current.get('class', []):
+        for li in current.find_all('li', recursive=False):
+            marker = li.find('span', class_='list-marker-alpha')
+            if marker and marker.get_text() in ['(a)', '(c)']:
+                # These items have setback specifications
+                # Get the text content - preserve newlines!
+                li_clone = li.__copy__()
+                for child in li_clone.find_all(['span', 'ul']):
+                    child.extract()
+                # Get the raw HTML string to preserve line breaks
+                text = ''.join(str(content) for content in li_clone.contents)
+
+                # Look for setback specifications
+                if 'Front Setback' in text and 'Side Setback' in text:
+                    import re
+
+                    # Now we should have actual newlines in the text
+                    lines = text.split('\n')
+                    main_text = []
+                    setback_specs = []
+
+                    for line in lines:
+                        line = line.strip()
+                        if line:
+                            # Check if this line contains a setback specification
+                            if re.match(r'^(Front|Side|Rear) Setback', line):
+                                setback_specs.append(line)
+                            elif not setback_specs:
+                                # This is part of the main text (before setbacks)
+                                main_text.append(line)
+                            # Ignore empty lines after setbacks start
+
+                    if setback_specs:
+                        # Clear the li content
+                        li.clear()
+
+                        # Re-add the marker
+                        li.append(marker)
+
+                        # Add the main text
+                        li.append(' ' + ' '.join(main_text))
+
+                        # Create a div for setback specifications
+                        setback_div = soup.new_tag('div')
+                        setback_div['class'] = ['setback-specifications']
+
+                        # Create separate p elements for each specification line
+                        for spec in setback_specs:
+                            spec_p = soup.new_tag('p')
+                            spec_p['class'] = ['setback-spec']
+                            spec_p.string = spec
+                            setback_div.append(spec_p)
+
+                        li.append(setback_div)
+
+        print(f"  Fixed Section 5.080 setback formatting")
+        return True
+
+    return False
+
+def fix_section_4120_item_d(soup):
+    """
+    Special fix for Section 4.120 where item (d) gets separated from (a), (b), (c).
+    This happens because of how the paragraphs are arranged in the source.
+    """
+    # Find lists that end with item (c) about "City Council shall make a finding"
+    for ul in soup.find_all('ul', class_='alpha-list'):
+        list_items = ul.find_all('li', recursive=False)
+        if list_items:
+            last_li = list_items[-1]
+            last_text = last_li.get_text()
+
+            # Check if this is Section 4.120(c)
+            if "City Council shall make a finding for each of the criteria" in last_text:
+                # Look for the orphaned (d) paragraph after this list
+                next_elem = ul.find_next_sibling()
+
+                if next_elem and next_elem.name == 'p':
+                    next_text = next_elem.get_text().strip()
+
+                    # Check if it's item (d)
+                    if next_text.startswith('(d)'):
+                        # Convert this paragraph to a list item and add to the list
+                        li = soup.new_tag('li')
+
+                        # Create marker span
+                        marker_span = soup.new_tag('span')
+                        marker_span['class'] = ['list-marker-alpha']
+                        marker_span.string = '(d)'
+
+                        # Get content after (d)
+                        content = next_text[3:].strip()
+
+                        li.append(marker_span)
+                        li.append(' ' + content)
+                        ul.append(li)
+
+                        # Remove the original paragraph
+                        next_elem.extract()
+
+                        print(f"  Fixed Section 4.120 - added item (d) to list")
+                        return True
+
+    return False
+
+def fix_section_2080_single_item(soup):
+    """
+    Special fix for Section 2.080 which has a single-item list.
+    This is unusual but matches the source document.
+    """
+    # Find Section 2.080
+    for h3 in soup.find_all('h3'):
+        if 'Section 2.080' in h3.get_text() and 'Termination' in h3.get_text():
+            # Look for the paragraph after the heading
+            current = h3.find_next_sibling()
+
+            # Skip the intro paragraph
+            if current and current.name == 'p' and 'automatically terminate' in current.get_text():
+                current = current.find_next_sibling()
+
+                # Check if the next element is the (a) paragraph
+                if current and current.name == 'p':
+                    text = current.get_text().strip()
+                    if text.startswith('(a)'):
+                        # Convert this single paragraph to a list
+                        ul = soup.new_tag('ul')
+                        ul['class'] = ['alpha-list']
+
+                        li = soup.new_tag('li')
+
+                        # Create marker span
+                        marker_span = soup.new_tag('span')
+                        marker_span['class'] = ['list-marker-alpha']
+                        marker_span.string = '(a)'
+
+                        # Get content after (a)
+                        content = text[3:].strip()
+
+                        li.append(marker_span)
+                        li.append(' ' + content)
+                        ul.append(li)
+
+                        # Replace the paragraph with the list
+                        current.replace_with(ul)
+
+                        print(f"  Fixed Section 2.080 single-item list")
+                        return True
+
+    return False
+
+def fix_orphaned_code_blocks(soup):
+    """Fix code blocks that should be nested lists under alpha list items."""
+    changes_made = False
+
+    # Look for pre/code blocks that follow alpha lists
+    for pre in soup.find_all('pre'):
+        code = pre.find('code')
+        if not code:
+            continue
+
+        # Check if this looks like list content
+        text = code.get_text().strip()
+        lines = text.split('\n')
+
+        # Check if all non-empty lines start with list markers like (1), (2), etc.
+        is_list_content = True
+        list_items = []
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            # Check for numeric list markers (1), (2), etc.
+            if line.startswith('(') and ')' in line[:4]:
+                try:
+                    # Extract the marker
+                    close_paren = line.index(')')
+                    marker_text = line[1:close_paren]
+                    # Check if it's numeric
+                    if marker_text.isdigit():
+                        list_items.append(line)
+                    else:
+                        is_list_content = False
+                        break
+                except:
+                    is_list_content = False
+                    break
+            else:
+                # Not a list marker line
+                is_list_content = False
+                break
+
+        if is_list_content and list_items:
+            # Check if this code block follows an alpha list
+            prev = pre.find_previous_sibling()
+            if prev and prev.name == 'ul' and 'alpha-list' in prev.get('class', []):
+                # Look for the appropriate list item to attach to
+                list_items_in_ul = prev.find_all('li', recursive=False)
+                target_li = None
+
+                # Check each item to find the one that should have the nested content
+                for li in list_items_in_ul:
+                    li_text = li.get_text()
+                    # Look for phrases that suggest nested content follows
+                    if any(phrase in li_text.lower() for phrase in ['as follows:', 'provided', 'shall be', 'maximum']):
+                        target_li = li
+                        # For Section 2.060, it should be item (b) which contains "maximum special relief shall be as follows:"
+                        break
+
+                if target_li:
+                    # Create a nested list for the code block content
+                    nested_ul = soup.new_tag('ul')
+                    nested_ul['class'] = ['numeric-list']
+
+                    # Convert each line to a list item
+                    for item_text in list_items:
+                        # Parse the list marker and content
+                        close_paren = item_text.index(')')
+                        marker = item_text[:close_paren + 1]
+                        content = item_text[close_paren + 1:].strip()
+
+                        # Create list item
+                        li = soup.new_tag('li')
+
+                        # Create marker span
+                        marker_span = soup.new_tag('span')
+                        marker_span['class'] = ['list-marker-numeric']
+                        marker_span.string = marker
+
+                        li.append(marker_span)
+                        li.append(' ' + content)
+                        nested_ul.append(li)
+
+                    # Add the nested list to the appropriate alpha item
+                    target_li.append(nested_ul)
+
+                    # Remove the code block
+                    pre.extract()
+
+                    changes_made = True
+                    # Get the marker of the item we attached to
+                    marker = target_li.find('span', class_='list-marker-alpha')
+                    marker_text = marker.string if marker else "unknown"
+                    print(f"  Fixed orphaned code block with {len(list_items)} numeric items, nested under alpha item {marker_text}")
+
+    return changes_made
+
+def fix_section_5100_consistent_formatting(soup):
+    """Fix Section 5.100 to remove the roman-list misclassification of (c) and (d)."""
+    # Find Section 5.100
+    section = None
+    for h3 in soup.find_all(['h3']):
+        if 'Section 5.100' in h3.get_text() and 'Tree Cutting' in h3.get_text():
+            section = h3
+            break
+
+    if not section:
+        return False
+
+    print(f"\nFixing Section 5.100 Tree Cutting formatting...")
+
+    # Look for the misclassified roman-list with (c) and (d)
+    current = section.find_next_sibling()
+    fixed = False
+
+    while current and current.name not in ['h2', 'h3']:
+        if current.name == 'ul' and 'roman-list' in current.get('class', []):
+            # Found the problem list - it has (c) EMERGENCIES and (d) CRITERIA
+            items = current.find_all('li', recursive=False)
+
+            # Extract the content
+            c_content = None
+            d_content = None
+
+            for item in items:
+                marker = item.find('span', class_='list-marker-roman')
+                if marker:
+                    marker_text = marker.get_text()
+                    text = item.get_text()
+                    if marker_text == '(c)' and 'EMERGENCIES' in text:
+                        c_content = text
+                    elif marker_text == '(d)' and 'CRITERIA' in text:
+                        d_content = text
+
+            if c_content and d_content:
+                # Replace the roman list with regular paragraphs like (a) and (b)
+                print(f"  Found misclassified roman-list with (c) and (d)")
+
+                # Create paragraph for (c)
+                p_c = soup.new_tag('p')
+                p_c.string = c_content
+
+                # Create paragraph for (d)
+                p_d = soup.new_tag('p')
+                p_d.string = d_content
+
+                # Insert the new paragraphs
+                current.insert_after(p_d)
+                current.insert_after(p_c)
+
+                # Remove the roman list
+                current.decompose()
+
+                fixed = True
+                print(f"  Fixed: Converted (c) and (d) from roman-list to paragraphs matching (a) and (b)")
+                break
+
+        current = current.find_next_sibling()
+
+    return fixed
+
+def fix_section_5120_home_occupations(soup):
+    """Fix Section 5.120 where (a) DEFINITION and (b) PURPOSE have orphaned numbered lists."""
+    # Find Section 5.120
+    for heading in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
+        if 'Section 5.120' in heading.get_text() and 'Home Occupations' in heading.get_text():
+            print(f"\nFixing Section 5.120 Home Occupations structure...")
+
+            # Collect the items that should be in an alpha list
+            items_to_combine = []
+            current = heading.find_next_sibling()
+
+            while current and current.name not in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+                if current.name == 'p':
+                    text = current.get_text().strip()
+                    # Check for (a) DEFINITION, (b) PURPOSE AND INTENT, (c) MINOR HOME OCCUPATIONS
+                    if text.startswith('(a)') or text.startswith('(b)') or text.startswith('(c)'):
+                        # This is a main item - collect it with its nested content
+                        item_data = {
+                            'p': current,
+                            'marker': text[0:3],  # (a), (b), or (c)
+                            'content': text[3:].strip(),
+                            'nested': None
+                        }
+
+                        # Check if the next element is an ordered list (nested items)
+                        next_elem = current.find_next_sibling()
+                        if next_elem and next_elem.name == 'ol':
+                            item_data['nested'] = next_elem
+                        elif next_elem and next_elem.name == 'p':
+                            # Check if there's intro text before the numbered list
+                            next_text = next_elem.get_text().strip()
+                            if not next_text.startswith('('):
+                                # This is intro text, collect it and check for ol after
+                                item_data['intro'] = next_elem
+                                following = next_elem.find_next_sibling()
+                                if following and following.name == 'ol':
+                                    item_data['nested'] = following
+
+                        items_to_combine.append(item_data)
+
+                # Stop when we hit the next section or have collected enough
+                if len(items_to_combine) >= 3:
+                    break
+
+                current = current.find_next_sibling()
+
+            # Now create the proper structure
+            if len(items_to_combine) >= 2:  # At least (a) and (b)
+                print(f"  Found {len(items_to_combine)} items to structure properly")
+
+                # Create alpha list
+                new_ul = soup.new_tag('ul')
+                new_ul['class'] = ['alpha-list']
+
+                for item_data in items_to_combine:
+                    # Create list item
+                    li = soup.new_tag('li')
+
+                    # Add marker
+                    marker_span = soup.new_tag('span')
+                    marker_span['class'] = ['list-marker-alpha']
+                    marker_span.string = item_data['marker']
+                    li.append(marker_span)
+
+                    # Add content
+                    li.append(' ' + item_data['content'])
+
+                    # Add intro text if present
+                    if 'intro' in item_data and item_data['intro']:
+                        li.append('\n')
+                        li.append(item_data['intro'].get_text().strip())
+
+                    # Add nested list if present
+                    if item_data['nested']:
+                        # Convert ol to ul with numeric-list class for consistency
+                        nested_ul = soup.new_tag('ul')
+                        nested_ul['class'] = ['numeric-list']
+
+                        for i, ol_li in enumerate(item_data['nested'].find_all('li', recursive=False), 1):
+                            new_li = soup.new_tag('li')
+
+                            # Add numeric marker
+                            marker_span = soup.new_tag('span')
+                            marker_span['class'] = ['list-marker-numeric']
+                            marker_span.string = f"({i})"
+                            new_li.append(marker_span)
+
+                            # Add content
+                            new_li.append(' ' + ol_li.get_text().strip())
+                            nested_ul.append(new_li)
+
+                        li.append(nested_ul)
+
+                    new_ul.append(li)
+
+                # Insert the new list after the heading
+                heading.insert_after(new_ul)
+
+                # Remove old elements
+                for item_data in items_to_combine:
+                    item_data['p'].decompose()
+                    if item_data['nested']:
+                        item_data['nested'].decompose()
+                    if 'intro' in item_data and item_data['intro']:
+                        item_data['intro'].decompose()
+
+                print(f"  Fixed: restructured items into proper alpha-list with nested content")
+                return
+
 def process_file(filepath):
     """Process a single HTML file"""
     print(f"  Processing lists in {filepath.name}...")
@@ -1257,6 +1953,27 @@ def process_file(filepath):
 
     # 11. Fix orphaned ordered lists (from V2)
     fix_orphaned_ordered_lists(soup)
+
+    # 12. Fix orphaned code blocks that should be nested lists
+    fix_orphaned_code_blocks(soup)
+
+    # 13. Fix Section 2.080 single-item list (specific targeted fix)
+    fix_section_2080_single_item(soup)
+
+    # 14. Fix Section 4.120 item (d) (specific targeted fix)
+    fix_section_4120_item_d(soup)
+
+    # 15. Fix Section 5.080 setback formatting (specific targeted fix)
+    fix_section_5080_setback_formatting(soup)
+
+    # 16. Fix Section 5.100 Tree Cutting (specific targeted fix)
+    fix_section_5100_consistent_formatting(soup)
+
+    # 17. Fix Section 5.110 Houses Moved Into City (c/d misclassified as roman)
+    fix_section_5110_list_classification(soup)
+
+    # 18. Fix Section 5.120 Home Occupations (a/b with nested lists)
+    fix_section_5120_home_occupations(soup)
 
     # Write back
     content = str(soup)

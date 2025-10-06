@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Regression tests for list formatting in Ordinance 54.
 Ensures that complex nested lists are properly structured after processing.

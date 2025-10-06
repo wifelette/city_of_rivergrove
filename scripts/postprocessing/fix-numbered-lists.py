@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Fix numbered lists that use (1), (2) format to proper markdown 1., 2. format
 Also fixes indented lists with (i), (ii), etc.

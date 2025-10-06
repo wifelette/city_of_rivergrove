@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Fix indented list items that mdBook interprets as code blocks.
 Specifically handles cases where items like (1), (2), (3) are indented

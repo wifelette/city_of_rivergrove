@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Fix complex list issues in documents with nested lists and multiple sections.
 This is a generalized version of fix-ord54-lists.py that works on any document.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Form fields processor that converts blank field patterns (underscores)
 to a special markdown notation that will be processed during HTML generation.

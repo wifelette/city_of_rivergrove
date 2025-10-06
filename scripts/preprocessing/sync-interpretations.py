@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Sync interpretations from the main Interpretations directory to src/interpretations for mdBook
 

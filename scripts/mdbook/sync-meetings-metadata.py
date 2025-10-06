@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Sync meetings metadata from Airtable for the mdBook navigation.
 Separate from governing documents to handle different table structure.

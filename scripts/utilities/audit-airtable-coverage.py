@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Audit script to identify documents missing from Airtable Public Metadata table
 """

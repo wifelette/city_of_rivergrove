@@ -14,10 +14,10 @@ if ! python3 scripts/build/compile-css.py; then
 fi
 
 # 3. Run postprocessors to restore HTML structure
-echo "  Running custom list processor..."
-python3 scripts/postprocessing/custom-list-processor.py >/dev/null
+echo "  Running enhanced unified list processor..."
+python3 scripts/postprocessing/unified-list-processor.py >/dev/null
 
-echo "  Running enhanced processor..."
+echo "  Running enhanced custom processor..."
 python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null
 
 echo "✅ Styles fixed! Refresh your browser."

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Test script for the simplified list processor.
 Tests on a few complex examples before rolling out everywhere.

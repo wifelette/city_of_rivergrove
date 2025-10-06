@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Remove manual markdown cross-reference links from source documents.
 These should be plain text that gets converted to links during the build process.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 mdBook preprocessor to automatically add cross-reference links between documents.
 Converts references like "Ordinance #16" or "Resolution #72" into clickable links.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Custom list processor that converts special list formats to proper HTML
 while preserving the exact legal enumeration style.

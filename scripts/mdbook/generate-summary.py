@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Generate SUMMARY.md for mdBook from the documents in src/ directory.
 This script automatically creates the table of contents based on existing files.

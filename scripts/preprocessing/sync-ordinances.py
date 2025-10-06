@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Sync ordinances from the main Ordinances directory to src/ordinances for mdBook
 

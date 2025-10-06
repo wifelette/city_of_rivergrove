@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Script to add cross-reference links between documents in the src directory.
 Run this before building with mdBook.
