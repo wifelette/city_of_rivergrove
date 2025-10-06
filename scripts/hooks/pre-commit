@@ -91,4 +91,26 @@ if [ -f "scripts/validation/check-src-modifications.sh" ]; then
     }
 fi
 
+# Check if CSS files were modified and remind about visual tests
+CSS_FILES_MODIFIED=$(git diff --cached --name-only | grep -E "theme/css/.*\.css$|^custom\.css$" || true)
+
+if [ -n "$CSS_FILES_MODIFIED" ]; then
+    echo ""
+    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "${YELLOW}⚠️  CSS files modified - Visual regression tests recommended${NC}"
+    echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo ""
+    echo "Modified CSS files:"
+    echo "$CSS_FILES_MODIFIED" | sed 's/^/  - /'
+    echo ""
+    echo -e "${GREEN}To check for visual regressions:${NC}"
+    echo "  npm run test:visual"
+    echo ""
+    echo -e "${GREEN}Or build and test in one command:${NC}"
+    echo "  ./build-all.sh --test"
+    echo ""
+    echo "See docs/visual-testing-guide.md for full workflow"
+    echo ""
+fi
+
 exit 0
