@@ -257,6 +257,18 @@ else
 fi
 echo ""
 
+# STEP 14.5: Apply document-specific fixes for Ord #54
+echo "🔧 Step 14.5: Applying Ord #54-specific fixes..."
+# Existing processors that handle Ord #54
+/usr/bin/python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+/usr/bin/python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+# Additional fixes
+if [ -f "scripts/postprocessing/fix-ord54-specific.py" ]; then
+    /usr/bin/python3 scripts/postprocessing/fix-ord54-specific.py >/dev/null 2>&1
+fi
+echo "  ✅ Ord #54 formatting applied"
+echo ""
+
 # STEP 15: Validate CSS health
 if [ -f "scripts/validation/check-styles-health.py" ]; then
     echo "🔍 Step 15: Checking CSS and HTML health..."

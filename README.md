@@ -69,6 +69,7 @@ city_of_rivergrove/
 
 ### Technical Documentation
 - [Scripts Guide](docs/scripts/SCRIPTS-GUIDE.md) - Complete script documentation
+- [Visual Testing Guide](docs/visual-testing-guide.md) - Automated visual regression testing
 - [Startup Prompts](docs/startup-prompts.md) - Quick start prompts for Claude
 
 ## Live Site

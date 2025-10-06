@@ -163,8 +163,30 @@ When this system was implemented (September 2025), we:
 - Updated all build scripts to use compilation instead of copying
 - The old `@import url('./theme/css/main.css')` approach is no longer used
 
+## Testing CSS Changes
+
+After making CSS changes, use visual regression testing to catch unintended layout changes:
+
+```bash
+# Before making CSS changes
+npm run test:visual
+
+# Make changes, compile, rebuild
+python3 scripts/build/compile-css.py
+./build-all.sh
+
+# Check for visual regressions
+npm run test:visual
+
+# Review differences
+npm run test:visual:ui
+```
+
+See [Visual Testing Guide](../visual-testing-guide.md) for complete workflow.
+
 ## Related Documentation
 
 - [CSS Architecture Overview](./README.md)
 - [Build System Documentation](../build-architecture.md)
 - [Development Server Guide](../mdbook-guide.md#development-server)
+- [Visual Testing Guide](../visual-testing-guide.md)

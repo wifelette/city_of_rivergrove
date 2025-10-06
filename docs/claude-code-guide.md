@@ -119,6 +119,32 @@ After pushing, always provide the GitHub web URLs for Airtable:
 - Manual links will be removed if found
 - See `docs/markdown-conventions.md` for patterns that are detected
 
+## Visual Regression Testing
+
+When making CSS changes, use visual regression testing to catch unintended layout changes:
+
+```bash
+# Run visual tests before making CSS changes
+npm run test:visual
+
+# Make your CSS changes in theme/css/
+# Edit source files, compile CSS, rebuild
+
+# Run visual tests again to see what changed
+npm run test:visual
+
+# Review differences interactively
+npm run test:visual:ui
+
+# If changes are intentional, update baselines
+npm run test:visual:update
+```
+
+**Key Points**:
+- Visual tests catch CSS regressions in sections you didn't directly edit
+- Full-page screenshots ensure changes don't break distant sections
+- See [Visual Testing Guide](visual-testing-guide.md) for complete workflow
+
 ## Key Reminders
 
 - No Claude attribution in commit messages

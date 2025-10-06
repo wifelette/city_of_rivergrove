@@ -45,27 +45,27 @@ echo "🔄 Step 1: Syncing file to /src..."
 
 if [[ "$SOURCE_FILE" == source-documents/Ordinances/* ]]; then
     echo "  Type: Ordinance"
-    python3 scripts/preprocessing/sync-ordinances.py
+    /usr/bin/python3 scripts/preprocessing/sync-ordinances.py
     DEST_DIR="src/ordinances"
     
 elif [[ "$SOURCE_FILE" == source-documents/Resolutions/* ]]; then
     echo "  Type: Resolution"
-    python3 scripts/preprocessing/sync-resolutions.py
+    /usr/bin/python3 scripts/preprocessing/sync-resolutions.py
     DEST_DIR="src/resolutions"
     
 elif [[ "$SOURCE_FILE" == source-documents/Interpretations/* ]]; then
     echo "  Type: Interpretation"
-    python3 scripts/preprocessing/sync-interpretations.py
+    /usr/bin/python3 scripts/preprocessing/sync-interpretations.py
     DEST_DIR="src/interpretations"
     
 elif [[ "$SOURCE_FILE" == source-documents/Other/* ]]; then
     echo "  Type: Other Document"
-    python3 scripts/preprocessing/sync-other.py
+    /usr/bin/python3 scripts/preprocessing/sync-other.py
     DEST_DIR="src/other"
     
 elif [[ "$SOURCE_FILE" == source-documents/Meetings/* ]]; then
     echo "  Type: Meeting Document"
-    python3 scripts/preprocessing/sync-meetings.py
+    /usr/bin/python3 scripts/preprocessing/sync-meetings.py
     
     # Determine specific type for destination
     if [[ "$FILENAME" == *Agenda* ]]; then
@@ -94,13 +94,13 @@ echo ""
 
 # Validate form field syntax
 echo "🔍 Step 2: Validating form fields..."
-if python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE" --quiet 2>/dev/null; then
+if /usr/bin/python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE" --quiet 2>/dev/null; then
     echo -e "  ${GREEN}✓ Form fields valid${NC}"
 else
     echo -e "  ${RED}✗ Form field errors found!${NC}"
     echo ""
     # Show detailed errors
-    python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE"
+    /usr/bin/python3 scripts/validation/validate-form-fields.py "$SOURCE_FILE"
     echo ""
     echo -e "${YELLOW}Fix the errors above and try again${NC}"
     exit 1
@@ -114,23 +114,23 @@ echo "🔧 Step 3: Processing file..."
 if [ -f "$DEST_FILE" ]; then
     # Fix mixed list formats
     echo -n "  • Mixed list formats... "
-    python3 scripts/preprocessing/fix-mixed-list-format.py "$DEST_FILE" 2>/dev/null || true
+    /usr/bin/python3 scripts/preprocessing/fix-mixed-list-format.py "$DEST_FILE" 2>/dev/null || true
     echo -e "${GREEN}✓${NC}"
 
     # Footnotes
     echo -n "  • Footnotes... "
-    python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
+    /usr/bin/python3 scripts/preprocessing/footnote-preprocessor.py "$DEST_FILE" 2>/dev/null || true
     echo -e "${GREEN}✓${NC}"
     
     # Auto-links
     echo -n "  • URL/Email links... "
-    python3 scripts/preprocessing/auto-link-converter.py "$DEST_FILE" 2>/dev/null || true
+    /usr/bin/python3 scripts/preprocessing/auto-link-converter.py "$DEST_FILE" 2>/dev/null || true
     echo -e "${GREEN}✓${NC}"
 fi
 
 # Cross-references (needs to scan all files)
 echo -n "  • Cross-references... "
-python3 scripts/mdbook/add-cross-references.py >/dev/null 2>&1
+/usr/bin/python3 scripts/mdbook/add-cross-references.py >/dev/null 2>&1
 echo -e "${GREEN}✓${NC}"
 
 echo ""
@@ -139,11 +139,11 @@ echo ""
 echo "📋 Step 4: Updating indexes..."
 
 echo -n "  • Table of contents... "
-python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
+/usr/bin/python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
 echo -e "${GREEN}✓${NC}"
 
 echo -n "  • Relationships... "
-python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
+/usr/bin/python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
 # Copy to book directory for navigation to use
 cp src/relationships.json book/relationships.json 2>/dev/null || true
 echo -e "${GREEN}✓${NC}"
@@ -152,7 +152,7 @@ echo -e "${GREEN}✓${NC}"
 if [[ "$SOURCE_FILE" == source-documents/Meetings/* ]]; then
     if [ -f "scripts/mdbook/sync-meetings-metadata.py" ]; then
         echo -n "  • Meeting metadata... "
-        python3 scripts/mdbook/sync-meetings-metadata.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/mdbook/sync-meetings-metadata.py >/dev/null 2>&1
         if [ -f "book/meetings-metadata.json" ]; then
             cp book/meetings-metadata.json src/ 2>/dev/null
         fi
@@ -162,7 +162,7 @@ else
     # Update just this file in Airtable metadata (if available)
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         echo -n "  • Airtable metadata... "
-        if python3 scripts/mdbook/sync-airtable-metadata.py --mode=single --file="$FILENAME" --create-if-missing >/dev/null 2>&1; then
+        if /usr/bin/python3 scripts/mdbook/sync-airtable-metadata.py --mode=single --file="$FILENAME" --create-if-missing >/dev/null 2>&1; then
             if [ -f "book/airtable-metadata.json" ]; then
                 cp book/airtable-metadata.json src/ 2>/dev/null
             fi
@@ -194,14 +194,16 @@ echo ""
 
 # Apply postprocessing
 echo "🎨 Step 6: Applying custom formatting..."
-python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
-# Fix specific list issues in Ord 54
-# Apply complex list fixes to all documents that need them
-python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
-# Fix empty list items (mdBook bug with certain list formats)
-python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+/usr/bin/python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+# Fix specific list issues in Ord 54 (existing processors)
+/usr/bin/python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+/usr/bin/python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
-    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
+fi
+# Apply additional document-specific fixes (new processor)
+if [ -f "scripts/postprocessing/fix-ord54-specific.py" ]; then
+    /usr/bin/python3 scripts/postprocessing/fix-ord54-specific.py >/dev/null 2>&1
 fi
 echo -e "  ${GREEN}✓ Formatted${NC}"
 echo ""
@@ -209,7 +211,7 @@ echo ""
 # Step 7: Quick validation
 echo "🔍 Step 7: Running quick validation..."
 if [ -f "scripts/validation/validate-list-formatting.py" ]; then
-    if python3 scripts/validation/validate-list-formatting.py >/dev/null 2>&1; then
+    if /usr/bin/python3 scripts/validation/validate-list-formatting.py >/dev/null 2>&1; then
         echo -e "  ${GREEN}✓ List formatting validated${NC}"
     else
         echo -e "  ${YELLOW}⚠️  List formatting issues detected${NC}"
