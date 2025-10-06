@@ -1,56 +1,32 @@
 #!/bin/bash
-# Check the status of mdbook server
-# Usage: ./scripts/utils/check-server.sh
+# Quick script to verify the dev server is actually running
 
-# Source server management utilities
-source scripts/utils/server-management.sh
+echo "🔍 Checking server status..."
 
-echo -e "${BLUE}🔍 Checking mdbook server status...${NC}"
-echo "=================================="
-echo ""
-
-# Check if any mdbook processes are running
-if pgrep -f "mdbook serve" > /dev/null; then
-    PID=$(get_mdbook_server_pid)
-    echo -e "${GREEN}✅ mdbook server is running${NC}"
-    echo "   PID: $PID"
+# Check if mdbook is listening on port 3000
+if lsof -i :3000 | grep -q mdbook; then
+    echo "✅ mdbook is running on port 3000"
     
-    # Check which port it's on
-    if is_server_running_on_port 3000; then
-        echo "   Port: 3000"
-        echo "   URL: http://localhost:3000"
-    else
-        echo "   Port: Unknown (not 3000)"
-    fi
-    
-    # Show process details
-    echo ""
-    echo "Process details:"
-    ps -p $PID -o pid,ppid,user,start,time,command | head -2
-else
-    echo -e "${YELLOW}⚠️  No mdbook server is running${NC}"
-    echo ""
-    echo "To start the server, run:"
-    echo "   ./dev-server.sh"
-fi
-
-echo ""
-
-# Check if anything else is using port 3000
-if is_server_running_on_port 3000; then
-    if ! pgrep -f "mdbook serve" > /dev/null; then
-        echo -e "${YELLOW}⚠️  Warning: Port 3000 is in use by another process${NC}"
-        echo "   This may prevent mdbook from starting"
+    # Test if it's responding
+    if curl -s http://localhost:3000/ | head -1 | grep -q "DOCTYPE"; then
+        echo "✅ Server is responding correctly"
         echo ""
-        echo "Process using port 3000:"
-        lsof -i :3000 | grep LISTEN
+        echo "🌐 Server URL: http://localhost:3000"
+        exit 0
+    else
+        echo "⚠️  mdbook is listening but not responding correctly"
+        exit 1
     fi
+else
+    echo "❌ No mdbook process found on port 3000"
+    
+    # Check if anything else is using the port
+    if lsof -i :3000 | grep -q LISTEN; then
+        echo "⚠️  Something else is using port 3000:"
+        lsof -i :3000 | head -3
+    fi
+    
+    echo ""
+    echo "💡 To start the server, run: ./dev-server.sh"
+    exit 1
 fi
-
-echo "=================================="
-echo ""
-echo "Server management commands:"
-echo "  • Start server:    ./dev-server.sh"
-echo "  • Stop server:     pkill -f 'mdbook serve'"
-echo "  • Restart server:  ./dev-server.sh (auto-stops existing)"
-echo "  • Check health:    ./scripts/utils/check-server.sh"

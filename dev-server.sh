@@ -36,9 +36,9 @@ process_file_change() {
     
     # First validate form field syntax
     echo "  Validating form fields..."
-    if ! python3 scripts/validation/validate-form-fields.py "$file" --quiet 2>/dev/null; then
+    if ! /usr/bin/python3 scripts/validation/validate-form-fields.py "$file" --quiet 2>/dev/null; then
         echo -e "${RED}  ✗ Form field errors detected!${NC}"
-        python3 scripts/validation/validate-form-fields.py "$file" 2>&1
+        /usr/bin/python3 scripts/validation/validate-form-fields.py "$file" 2>&1
         echo -e "${YELLOW}  Fix the errors above and save again${NC}"
         PROCESSING=false
         return
@@ -47,16 +47,16 @@ process_file_change() {
     # Determine document type and run appropriate sync
     if [[ "$file" == *source-documents/Ordinances/* ]]; then
         echo "  Syncing ordinances..."
-        python3 scripts/preprocessing/sync-ordinances.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/preprocessing/sync-ordinances.py >/dev/null 2>&1
     elif [[ "$file" == *source-documents/Resolutions/* ]]; then
         echo "  Syncing resolutions..."
-        python3 scripts/preprocessing/sync-resolutions.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/preprocessing/sync-resolutions.py >/dev/null 2>&1
     elif [[ "$file" == *source-documents/Interpretations/* ]]; then
         echo "  Syncing interpretations..."
-        python3 scripts/preprocessing/sync-interpretations.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/preprocessing/sync-interpretations.py >/dev/null 2>&1
     elif [[ "$file" == *source-documents/Other/* ]]; then
         echo "  Syncing other documents..."
-        python3 scripts/preprocessing/sync-other.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/preprocessing/sync-other.py >/dev/null 2>&1
     elif [[ "$file" == *source-documents/Meetings/* ]]; then
         echo "  Syncing meeting documents..."
         # Just copy meeting files
@@ -94,26 +94,26 @@ process_file_change() {
     # Run processing pipeline on the synced file
     if [ -n "$dest_file" ] && [ -f "$dest_file" ]; then
         echo "  Standardizing list formats..."
-        python3 scripts/preprocessing/standardize-list-format.py >/dev/null 2>&1 || true
+        /usr/bin/python3 scripts/preprocessing/standardize-list-format.py >/dev/null 2>&1 || true
 
         echo "  Fixing mixed list formats..."
-        python3 scripts/preprocessing/fix-mixed-list-format.py "$dest_file" >/dev/null 2>&1 || true
+        /usr/bin/python3 scripts/preprocessing/fix-mixed-list-format.py "$dest_file" >/dev/null 2>&1 || true
 
         echo "  Processing footnotes..."
-        python3 scripts/preprocessing/footnote-preprocessor.py "$dest_file" >/dev/null 2>&1 || true
+        /usr/bin/python3 scripts/preprocessing/footnote-preprocessor.py "$dest_file" >/dev/null 2>&1 || true
         
         echo "  Converting links..."
-        python3 scripts/preprocessing/auto-link-converter.py "$dest_file" >/dev/null 2>&1 || true
+        /usr/bin/python3 scripts/preprocessing/auto-link-converter.py "$dest_file" >/dev/null 2>&1 || true
     fi
     
     # Always update cross-references (they scan all files)
     echo "  Updating cross-references..."
-    python3 scripts/mdbook/add-cross-references.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/mdbook/add-cross-references.py >/dev/null 2>&1
     
     # Regenerate SUMMARY.md and relationships
     echo "  Updating indexes..."
-    python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
-    python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/mdbook/generate-relationships.py >/dev/null 2>&1
     # Copy relationships to book directory for navigation to use
     cp src/relationships.json book/relationships.json 2>/dev/null || true
     
@@ -130,7 +130,7 @@ process_file_change() {
     # Recompile CSS if CSS was updated
     if [[ "$file" == *.css ]] || [[ "$file" == theme/* ]]; then
         echo "  Recompiling CSS..."
-        python3 scripts/build/compile-css.py >/dev/null 2>&1
+        /usr/bin/python3 scripts/build/compile-css.py >/dev/null 2>&1
     fi
     
     # Ensure mdBook has finished rebuilding before postprocessing
@@ -147,22 +147,22 @@ process_file_change() {
     # Apply postprocessors after mdBook rebuilds
     # Apply enhanced processor for tables, WHEREAS, etc FIRST (NO list processing)
     echo "  Applying enhanced styling..."
-    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
 
     # Use the NEW unified list processor v2 - single source of truth for ALL list processing
     echo "  Processing all lists..."
-    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+    /usr/bin/python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 
     # Run list formatting tests on critical files (suppress output unless there's an error)
     if [ -f "scripts/tests/test-list-formatting.py" ]; then
         echo "  Running list formatting tests..."
-        if ! python3 scripts/tests/test-list-formatting.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1; then
+        if ! /usr/bin/python3 scripts/tests/test-list-formatting.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1; then
             echo -e "${YELLOW}    ⚠️  Some list formatting tests failed - run ./scripts/validation/test-list-changes.sh for details${NC}"
         fi
     fi
 
     # Quick style health check (show specific issues if found)
-    if ! python3 scripts/validation/check-styles-health.py --verbose 2>&1; then
+    if ! /usr/bin/python3 scripts/validation/check-styles-health.py --verbose 2>&1; then
         # Error messages already shown by the script with specific details
         :
     fi
@@ -213,11 +213,11 @@ if wait_for_server_start 3000 10; then
 
     # Run postprocessors after mdbook serve rebuilds
     echo "🎨 Applying styles and processors..."
-    python3 scripts/build/compile-css.py >/dev/null 2>&1 || true
+    /usr/bin/python3 scripts/build/compile-css.py >/dev/null 2>&1 || true
     # Run enhanced-custom-processor first for tables, WHEREAS, etc (NO list processing)
-    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1 || true
+    /usr/bin/python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1 || true
     # Use unified list processor v2 for ALL list processing
-    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1 || true
+    /usr/bin/python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1 || true
     echo "✅ Styles applied"
     echo ""
     echo "=========================================="

@@ -1,96 +1,9 @@
 {
   "metadata": {
     "cache_version": "1.1",
-    "last_full_sync": "2025-09-18T06:55:36.077262",
-    "last_updated": "2025-09-22T14:03:56.423514",
-    "total_records": 43,
-    "last_partial_update": "2025-09-22T14:03:56.423471",
-    "incremental_updates": [
-      {
-        "filename": "1987-Ord-#52-Flood.md",
-        "updated_at": "2025-09-18T11:02:46.401433"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T13:29:38.655326"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T13:39:55.192238"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T14:02:45.330117"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T14:39:16.140450"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T15:12:37.927232"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T15:41:16.085303"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T15:56:27.261913"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T19:08:58.638332"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T19:11:58.685305"
-      },
-      {
-        "filename": "1989-Ord-#54-89C-Land-Development.md",
-        "updated_at": "2025-09-18T19:26:31.386881"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T12:15:12.522243"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T12:16:04.729043"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T12:16:34.694886"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T12:17:46.622222"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T12:19:00.322883"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T13:20:18.521235"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T13:42:35.874742"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T13:43:23.635025"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T13:46:50.625720"
-      },
-      {
-        "filename": "1989-Ord-54-89C-Land-Development.md",
-        "updated_at": "2025-09-22T14:03:56.423473"
-      }
-    ]
+    "last_full_sync": "2025-10-06T10:55:06.570480",
+    "last_updated": "2025-10-06T10:55:06.571917",
+    "total_records": 41
   },
   "documents": {
     "2004-10-11-RE-5.080-setbacks": {
@@ -756,38 +669,6 @@
       "digitized": true,
       "passed_date": "2000-10-16",
       "last_updated": "2025-08-30T04:44:14.000Z"
-    },
-    "1987-Ord-#52-Flood": {
-      "airtable_id": "recjCPcL4npLqUFWo",
-      "display_name": "Ordinance #52",
-      "short_title": "Flood Prevention",
-      "type": "ordinance",
-      "year": 1987,
-      "doc_number": "52",
-      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.md",
-      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1987-Ord-%2352-Flood.pdf",
-      "filename": "1987-Ord-%2352-Flood.md",
-      "status": "Published",
-      "special_state": null,
-      "digitized": true,
-      "passed_date": "1987-09-21",
-      "last_updated": "2025-08-30T19:38:49.000Z"
-    },
-    "1989-Ord-#54-89C-Land-Development": {
-      "airtable_id": "recUgs1t2xomIgDuF",
-      "display_name": "Ordinance #54-89C",
-      "short_title": "Land Development",
-      "type": "ordinance",
-      "year": 1989,
-      "doc_number": "54-89C",
-      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1989-Ord-%2354-89-C-Land-Development.md",
-      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1989-Ord-%2354-89-C-Land-Development.pdf",
-      "filename": "1989-Ord-%2354-89-C-Land-Development.md",
-      "status": "Published",
-      "special_state": null,
-      "digitized": true,
-      "passed_date": "1989-03-01",
-      "last_updated": "2025-08-30T19:38:46.000Z"
     }
   }
 }
