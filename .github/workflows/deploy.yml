@@ -34,8 +34,9 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          pip install beautifulsoup4 python-dotenv requests pyairtable watchdog
-          pip list | grep -E "beautifulsoup4|dotenv|requests|pyairtable|watchdog"
+          pip install -r requirements.txt
+          pip install python-dotenv requests pyairtable watchdog
+          pip list | grep -E "beautifulsoup4|lxml|dotenv|requests|pyairtable|watchdog"
       
       - name: Build mdBook with processing
         env:

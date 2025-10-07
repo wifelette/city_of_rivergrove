@@ -1,0 +1,8 @@
+# Python dependencies for City of Rivergrove build scripts
+# Install with: pip3 install --break-system-packages -r requirements.txt
+
+# HTML parsing and processing (used by list processors and validators)
+beautifulsoup4==4.14.2
+lxml==6.0.2
+
+# Note: soupsieve is installed automatically as a dependency of beautifulsoup4
