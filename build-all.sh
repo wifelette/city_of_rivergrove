@@ -62,7 +62,7 @@ echo ""
 
 # Compile CSS from modular files
 echo "🎨 Compiling CSS from modular components..."
-if /usr/bin/python3 scripts/build/compile-css.py; then
+if python3 scripts/build/compile-css.py; then
     echo "  ✅ CSS compiled successfully"
 else
     echo "  ❌ ERROR: CSS compilation failed!"
@@ -84,23 +84,23 @@ fi
 # STEP 1: Sync all documents from source to /src
 echo "📁 Step 1: Syncing documents to /src..."
 echo "  • Ordinances..."
-/usr/bin/python3 scripts/preprocessing/sync-ordinances.py
+python3 scripts/preprocessing/sync-ordinances.py
 echo "  • Resolutions..."
-/usr/bin/python3 scripts/preprocessing/sync-resolutions.py
+python3 scripts/preprocessing/sync-resolutions.py
 echo "  • Interpretations..."
-/usr/bin/python3 scripts/preprocessing/sync-interpretations.py
+python3 scripts/preprocessing/sync-interpretations.py
 echo "  • Meeting documents..."
-/usr/bin/python3 scripts/preprocessing/sync-meetings.py
+python3 scripts/preprocessing/sync-meetings.py
 echo "  • Other documents..."
-/usr/bin/python3 scripts/preprocessing/sync-other.py
+python3 scripts/preprocessing/sync-other.py
 echo "  ✅ All documents synced"
 echo ""
 
 # STEP 2: Validate no HTML in source files
 echo "🚫 Step 2: Checking for HTML in markdown files..."
-/usr/bin/python3 scripts/validation/validate-no-html.py source-documents --quiet || {
+python3 scripts/validation/validate-no-html.py source-documents --quiet || {
     echo "  ❌ HTML found in source files!"
-    echo "  Run '/usr/bin/python3 scripts/validation/validate-no-html.py' for details"
+    echo "  Run 'python3 scripts/validation/validate-no-html.py' for details"
     exit 1
 }
 echo "  ✅ No HTML in source files"
@@ -108,9 +108,9 @@ echo ""
 
 # STEP 3: Validate form field syntax
 echo "🔍 Step 3: Validating form field syntax..."
-/usr/bin/python3 scripts/validation/validate-form-fields.py --quiet || {
+python3 scripts/validation/validate-form-fields.py --quiet || {
     echo "  ❌ Form field validation failed!"
-    echo "  Run '/usr/bin/python3 scripts/validation/validate-form-fields.py' for details"
+    echo "  Run 'python3 scripts/validation/validate-form-fields.py' for details"
     exit 1
 }
 echo "  ✅ Form fields validated"
@@ -134,26 +134,26 @@ echo ""
 
 # STEP 4: Process footnotes
 echo "📝 Step 4: Processing footnotes..."
-/usr/bin/python3 scripts/preprocessing/footnote-preprocessor.py
+python3 scripts/preprocessing/footnote-preprocessor.py
 echo "  ✅ Footnotes processed"
 echo ""
 
 # STEP 5: Convert URLs and emails (MUST be before cross-references)
 echo "🔗 Step 5: Converting URLs and emails to links..."
-/usr/bin/python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
+python3 scripts/preprocessing/auto-link-converter.py src/ordinances/*.md src/resolutions/*.md src/interpretations/*.md src/other/*.md 2>/dev/null || true
 echo "  ✅ Links converted"
 echo ""
 
 # STEP 6: Add cross-references (MUST be after auto-link)
 echo "🔗 Step 6: Adding cross-references between documents..."
-/usr/bin/python3 scripts/mdbook/add-cross-references.py
+python3 scripts/mdbook/add-cross-references.py
 echo "  ✅ Cross-references added"
 echo ""
 
 # STEP 7: Update document counts
 echo "📊 Step 7: Updating document counts..."
 if [ -f "scripts/preprocessing/update-document-counts.py" ]; then
-    /usr/bin/python3 scripts/preprocessing/update-document-counts.py
+    python3 scripts/preprocessing/update-document-counts.py
     echo "  ✅ Document counts updated"
 else
     echo "  ⏭️  Skipped (script not found)"
@@ -162,7 +162,7 @@ echo ""
 
 # STEP 8: Generate relationships (MUST be first for Airtable sync to work)
 echo "🔗 Step 8: Generating document relationships..."
-/usr/bin/python3 scripts/mdbook/generate-relationships.py
+python3 scripts/mdbook/generate-relationships.py
 # Copy to book directory for Airtable sync (which looks for book/relationships.json)
 mkdir -p book
 cp src/relationships.json book/relationships.json 2>/dev/null || true
@@ -191,7 +191,7 @@ if [ "$SKIP_AIRTABLE" = false ]; then
     # Also sync meetings metadata
     echo "☁️  Syncing meetings metadata..."
     if [ -f "scripts/mdbook/sync-meetings-metadata.py" ]; then
-        /usr/bin/python3 scripts/mdbook/sync-meetings-metadata.py
+        python3 scripts/mdbook/sync-meetings-metadata.py
         echo "  ✅ Meetings metadata synced"
     else
         echo "  ⏭️  Meetings metadata sync skipped (script not found)"
@@ -204,9 +204,9 @@ echo ""
 # STEP 10: Generate SUMMARY.md (AFTER relationships AND Airtable sync)
 echo "📋 Step 10: Generating table of contents..."
 if [ -f "scripts/mdbook/generate-summary-with-airtable.py" ] && [ "$SKIP_AIRTABLE" = false ]; then
-    /usr/bin/python3 scripts/mdbook/generate-summary-with-airtable.py
+    python3 scripts/mdbook/generate-summary-with-airtable.py
 else
-    /usr/bin/python3 scripts/mdbook/generate-summary.py
+    python3 scripts/mdbook/generate-summary.py
 fi
 echo "  ✅ Table of contents updated"
 echo ""
@@ -250,14 +250,14 @@ fi
 
 # STEP 13: Apply enhanced unified list processing (MUST be after mdBook build)
 echo "🎨 Step 13: Applying enhanced unified list processing..."
-/usr/bin/python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 echo "  ✅ Enhanced list processing and Document Notes formatting applied"
 echo ""
 
 # STEP 14: Apply enhanced formatting (if available)
 if [ -f "scripts/postprocessing/enhanced-custom-processor.py" ]; then
     echo "✨ Step 14: Applying enhanced document formatting..."
-    /usr/bin/python3 scripts/postprocessing/enhanced-custom-processor.py
+    python3 scripts/postprocessing/enhanced-custom-processor.py
     echo "  ✅ Enhanced formatting applied"
 else
     echo "⏭️  Step 14: Enhanced formatting not available"
@@ -267,11 +267,11 @@ echo ""
 # STEP 14.5: Apply document-specific fixes for Ord #54
 echo "🔧 Step 14.5: Applying Ord #54-specific fixes..."
 # Existing processors that handle Ord #54
-/usr/bin/python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
-/usr/bin/python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+python3 scripts/postprocessing/fix-complex-lists.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
+python3 scripts/postprocessing/fix-empty-list-items.py book/ordinances/1989-Ord-54-89C-Land-Development.html >/dev/null 2>&1
 # Additional fixes
 if [ -f "scripts/postprocessing/fix-ord54-specific.py" ]; then
-    /usr/bin/python3 scripts/postprocessing/fix-ord54-specific.py >/dev/null 2>&1
+    python3 scripts/postprocessing/fix-ord54-specific.py >/dev/null 2>&1
 fi
 echo "  ✅ Ord #54 formatting applied"
 echo ""
@@ -279,7 +279,7 @@ echo ""
 # STEP 15: Validate CSS health
 if [ -f "scripts/validation/check-styles-health.py" ]; then
     echo "🔍 Step 15: Checking CSS and HTML health..."
-    if /usr/bin/python3 scripts/validation/check-styles-health.py > /dev/null 2>&1; then
+    if python3 scripts/validation/check-styles-health.py > /dev/null 2>&1; then
         echo "  ✅ Style checks passed"
     else
         echo "  ⚠️  Style issues detected - run './scripts/fix-styles.sh' if needed"
@@ -292,11 +292,11 @@ echo ""
 # STEP 16: Validate list formatting
 if [ -f "scripts/validation/validate-list-formatting.py" ]; then
     echo "📋 Step 16: Checking list formatting..."
-    if /usr/bin/python3 scripts/validation/validate-list-formatting.py > /dev/null 2>&1; then
+    if python3 scripts/validation/validate-list-formatting.py > /dev/null 2>&1; then
         echo "  ✅ List formatting looks good"
     else
         echo "  ⚠️  List formatting issues detected - may include false positives"
-        echo "     Run '/usr/bin/python3 scripts/validation/validate-list-formatting.py' for details"
+        echo "     Run 'python3 scripts/validation/validate-list-formatting.py' for details"
     fi
 else
     echo "⏭️  Step 16: List formatting check not available"
