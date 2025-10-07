@@ -30,7 +30,7 @@ class DocumentProcessor:
     def identify_document_type(self, filepath):
         """Identify document type from filename"""
         filename = filepath.name.lower()
-        
+
         if 'sign' in filename or '81-2011' in filename:
             return 'sign'
         elif 'fee' in filename or '259' in filename or '300' in filename:
@@ -39,6 +39,8 @@ class DocumentProcessor:
             return 'wqra'
         elif 'land-development' in filename or '54-89' in filename or '59-97' in filename:
             return 'land-development'
+        elif '65-99' in filename or 'sewer-services' in filename:
+            return 'ord-65-99'
         else:
             return 'standard'
     
@@ -110,14 +112,39 @@ class DocumentProcessor:
     
     def process_nested_quotes(self, soup):
         """Process nested quoted sections (like in Land Development ordinances)"""
-        
+
         # Look for blockquotes containing section references
         for blockquote in soup.find_all('blockquote'):
             # Check if it contains section formatting
             text = blockquote.get_text()
             if 'Section' in text:
                 blockquote['class'] = blockquote.get('class', []) + ['section-quote']
-        
+
+        return soup
+
+    def fix_ord_65_list_break(self, soup):
+        """
+        Fix Ord 65-99 specific issue where **C. The parties agree:** renders as
+        list continuation of nested a/b list.
+
+        The structure is: <li>...<ul>a...b...</ul><p><strong>C...</strong></p></li></ol>
+        We need to extract the C paragraph from inside the li and place it after the ol.
+        """
+        # Find the paragraph containing C. The parties agree
+        for p in soup.find_all('p'):
+            strong = p.find('strong')
+            if strong and 'C. The parties agree:' in strong.get_text():
+                # Check if this p is inside an li
+                parent_li = p.find_parent('li')
+                if parent_li:
+                    # Find the outermost ol that contains this li
+                    parent_ol = parent_li.find_parent('ol')
+                    if parent_ol:
+                        # Extract the paragraph and insert it after the ol
+                        p.extract()
+                        parent_ol.insert_after(p)
+                        break
+
         return soup
     
     def process_document_notes(self, soup):
@@ -712,17 +739,21 @@ class DocumentProcessor:
         # Apply document-specific processing
         if doc_type in self.document_rules:
             rules = self.document_rules[doc_type]
-            
+
             if 'whereas' in rules:
                 soup = self.process_whereas_clauses(soup)
-            
+
             # DEFINITION LISTS REMOVED - handled by unified-list-processor.py
-            
+
             if 'tables' in rules or 'fee_schedule' in rules:
                 soup = self.enhance_tables(soup)
-            
+
             if 'nested_quotes' in rules:
                 soup = self.process_nested_quotes(soup)
+
+        # Document-specific one-off fixes (see docs/one-off-fixes-inventory.md)
+        if doc_type == 'ord-65-99':
+            soup = self.fix_ord_65_list_break(soup)
         
         # Always enhance tables if present
         if soup.find_all('table'):

@@ -59,6 +59,35 @@
 
 ---
 
+### 2. Ordinance #65-99 Sewer Services (`fix_ord_65_list_break` in enhanced-custom-processor.py)
+
+**Created:** October 2025
+**Reason:** Markdown list continuation quirk with nested alpha lists
+
+**Unique Characteristics:**
+- Section 2 has three subsections: A, B, C (treated as paragraph headers)
+- Section B.3 contains nested lowercase alpha items (a, b)
+- Markdown interprets **C.** as list continuation after nested `a.` and `b.`
+- Only appears in this specific structural pattern
+
+**Specific Issue Fixed:**
+Bold paragraph **C. The parties agree:** was rendering as list item "c" continuing from nested "a, b" list
+
+**Solution:**
+- Post-process HTML to extract `<p><strong>C. The parties agree:</strong></p>` from any parent list
+- Insert it immediately after the list as standalone paragraph
+
+**Alternative Considered:** Add HTML `<div></div>` as list breaker in markdown
+**Why Rejected:** Project policy prohibits HTML in markdown source files
+
+**Testing:** View Ord 65-99 Section 2 and verify C appears as paragraph header, not list continuation
+
+**Maintenance Notes:**
+- If similar A/B/C subsection pattern appears with nested a/b lists, may need to generalize
+- Currently document-specific to avoid false positives
+
+---
+
 ## Deprecated One-Offs
 
 *None yet*
