@@ -1,24 +1,24 @@
 #!/bin/bash
-# Test that Python scripts use system Python and have required dependencies
+# Test that Python scripts use env Python (which respects PATH) and have required dependencies
 
 echo "Testing Python configuration..."
 echo "=============================="
 
-# Check that scripts use system Python
+# Check that scripts use env Python (not hardcoded paths)
 echo "1. Checking script shebangs..."
-bad_scripts=$(find scripts -name "*.py" -type f | xargs grep -l "^#!/usr/bin/env python3")
+bad_scripts=$(find scripts -name "*.py" -type f | xargs grep -l "^#!/usr/bin/python3")
 if [ -z "$bad_scripts" ]; then
-    echo "   ✓ All scripts use system Python"
+    echo "   ✓ All scripts use #!/usr/bin/env python3"
 else
-    echo "   ✗ These scripts still use env Python:"
+    echo "   ✗ These scripts still use hardcoded /usr/bin/python3:"
     echo "$bad_scripts" | sed 's/^/     /'
     exit 1
 fi
 
-# Check that system Python has required modules
+# Check that Python (from PATH) has required modules
 echo ""
-echo "2. Checking system Python dependencies..."
-/usr/bin/python3 -c "import bs4" 2>/dev/null
+echo "2. Checking Python dependencies (using PATH)..."
+python3 -c "import bs4" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo "   ✓ BeautifulSoup4 is installed"
 else
@@ -26,7 +26,7 @@ else
     exit 1
 fi
 
-/usr/bin/python3 -c "import dotenv" 2>/dev/null
+python3 -c "import dotenv" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo "   ✓ python-dotenv is installed"
 else

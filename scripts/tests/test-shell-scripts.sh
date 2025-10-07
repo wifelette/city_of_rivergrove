@@ -1,25 +1,25 @@
 #!/bin/bash
-# Test that shell scripts use correct Python paths
+# Test that shell scripts call Python scripts directly (not via python3 interpreter)
 
 echo "Testing shell script configurations..."
 echo "======================================"
 
 EXIT_CODE=0
 
-# Check that shell scripts use /usr/bin/python3 not just python3
-echo "1. Checking shell scripts for Python calls..."
+# Check that shell scripts call scripts directly (./scripts/...) not via python3
+echo "1. Checking shell scripts for direct script calls..."
 SHELL_SCRIPTS="build-all.sh dev-server.sh scripts/fix-styles.sh"
 
 for script in $SHELL_SCRIPTS; do
     if [ -f "$script" ]; then
-        # Look for python3 calls that don't use full path
-        bad_calls=$(grep -n "python3 " "$script" | grep -v "/usr/bin/python3" | grep -v "^#" | head -5)
+        # Look for old-style python3 calls (should be ./scripts/... instead)
+        bad_calls=$(grep -n "python3 scripts/" "$script" | grep -v "^#" | head -5)
         if [ -n "$bad_calls" ]; then
-            echo "   ✗ $script has unqualified python3 calls:"
+            echo "   ✗ $script has old python3 calls (should use ./scripts/ directly):"
             echo "$bad_calls" | sed 's/^/       Line /'
             EXIT_CODE=1
         else
-            echo "   ✓ $script uses /usr/bin/python3 correctly"
+            echo "   ✓ $script calls scripts directly"
         fi
     else
         echo "   ⚠ $script not found"
