@@ -220,10 +220,10 @@ def build_relationships():
             # Store relationships
             if any(refs.values()):
                 relationships[doc_key] = {
-                    'references': list(refs.get('ordinances', [])),
-                    'resolutions': list(refs.get('resolutions', [])),
-                    'interpretations': list(refs.get('interpretations', [])),
-                    'amends': refs.get('amends', [])
+                    'references': sorted(list(refs.get('ordinances', []))),
+                    'resolutions': sorted(list(refs.get('resolutions', []))),
+                    'interpretations': sorted(list(refs.get('interpretations', []))),
+                    'amends': sorted(refs.get('amends', [])) if refs.get('amends') else []
                 }
     
     # Build reverse relationships (referenced_by)
@@ -236,7 +236,7 @@ def build_relationships():
                 if 'referenced_by' not in relationships[ref_key]:
                     relationships[ref_key]['referenced_by'] = []
                 relationships[ref_key]['referenced_by'].append(doc_key)
-        
+
         # Add amended_by for documents that are amended
         for ord_id in doc_refs.get('amends', []):
             ref_key = f"ordinance-{ord_id}"
@@ -245,6 +245,13 @@ def build_relationships():
             if 'amended_by' not in relationships[ref_key]:
                 relationships[ref_key]['amended_by'] = []
             relationships[ref_key]['amended_by'].append(doc_key)
+
+    # Sort all reverse relationship lists for deterministic output
+    for doc_key in relationships:
+        if 'referenced_by' in relationships[doc_key]:
+            relationships[doc_key]['referenced_by'] = sorted(relationships[doc_key]['referenced_by'])
+        if 'amended_by' in relationships[doc_key]:
+            relationships[doc_key]['amended_by'] = sorted(relationships[doc_key]['amended_by'])
     
     # Identify related documents (same topic/theme)
     topics = {}
@@ -281,7 +288,7 @@ def build_relationships():
                 # Add other documents in same topic as related
                 related = [dk for dk in doc_keys if dk != doc_key]
                 if related:
-                    relationships[doc_key]['related'] = related
+                    relationships[doc_key]['related'] = sorted(related)
     
     # Create final output structure
     output = {
@@ -308,7 +315,7 @@ def main():
     output_path.parent.mkdir(exist_ok=True)
     
     with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(relationships, f, indent=2, ensure_ascii=False)
+        json.dump(relationships, f, indent=2, ensure_ascii=False, sort_keys=True)
     
     print(f"✅ Generated relationships.json with {relationships['metadata']['total_documents']} documents")
     print(f"   Found {relationships['metadata']['total_relationships']} documents with relationships")
