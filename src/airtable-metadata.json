@@ -2,8 +2,15 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-10-06T10:55:06.570480",
-    "last_updated": "2025-10-06T10:55:06.571917",
-    "total_records": 41
+    "last_updated": "2025-10-06T12:06:44.796704",
+    "total_records": 42,
+    "last_partial_update": "2025-10-06T12:06:44.796661",
+    "incremental_updates": [
+      {
+        "filename": "1989-Ord-#54-89C-Land-Development.md",
+        "updated_at": "2025-10-06T12:06:44.796663"
+      }
+    ]
   },
   "documents": {
     "2004-10-11-RE-5.080-setbacks": {
@@ -669,6 +676,22 @@
       "digitized": true,
       "passed_date": "2000-10-16",
       "last_updated": "2025-08-30T04:44:14.000Z"
+    },
+    "1989-Ord-#54-89C-Land-Development": {
+      "airtable_id": "recUgs1t2xomIgDuF",
+      "display_name": "Ordinance #54-89C",
+      "short_title": "Land Development",
+      "type": "ordinance",
+      "year": 1989,
+      "doc_number": "54-89C",
+      "md_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1989-Ord-%2354-89-C-Land-Development.md",
+      "file_url": "https://github.com/wifelette/city_of_rivergrove/blob/main/source-documents/Ordinances/1989-Ord-%2354-89-C-Land-Development.pdf",
+      "filename": "1989-Ord-%2354-89-C-Land-Development.md",
+      "status": "Published",
+      "special_state": null,
+      "digitized": true,
+      "passed_date": "1989-03-01",
+      "last_updated": "2025-08-30T19:38:46.000Z"
     }
   }
 }

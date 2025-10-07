@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Standardize markdown headers and signatures for a single file.
 Usage: python3 standardize-single.py <file_path>

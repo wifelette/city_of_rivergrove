@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Unified List Processor v2 - Single source of truth for all list processing.
 Handles all list transformations in one pass to avoid order-of-operations issues.

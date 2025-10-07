@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 DEPRECATED: Image processing is now handled directly by the sync scripts
 (sync-ordinances.py, sync-resolutions.py, etc.)

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Script to identify which Ordinances and Resolutions records 
 are missing from the Public Metadata table

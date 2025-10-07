@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Unified title resolution utility for the City of Rivergrove documentation system.
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix mixed list format in markdown files where some items are plain text
 and others are markdown list items.

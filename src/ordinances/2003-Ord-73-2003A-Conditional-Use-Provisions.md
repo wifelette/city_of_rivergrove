@@ -1,6 +1,6 @@
 # ORDINANCE NO. 73-2003A
 
-**AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY [ORDINANCE NO. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)**
+**AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY ORDINANCE NO. 59-97A**
 
 _[Handwritten notation: "Conditional Use"]_
 
@@ -20,7 +20,7 @@ Adopted by the Rivergrove City Council on <span class="form-field-filled" data-t
 
 # ORDINANCE NO. 73-2003A
 
-**AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY [ORDINANCE NO. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)**
+**AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY ORDINANCE NO. 59-97A**
 
 ### BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
 
@@ -32,15 +32,15 @@ Adopted by the Rivergrove City Council on <span class="form-field-filled" data-t
 
 **WHEREAS**, the annexation of Rivers Edge Athletic Club, which is operating under a Clackamas County conditional use permit, establishes a need for the City of Rivergrove to enact its own conditional use provisions;
 
-**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to [Ordinance #54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) as amended by [Ordinance No. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)) is hereby amended as follows:
+**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to Ordinance #54-89 as amended by Ordinance No. 59-97A) is hereby amended as follows:
 
 ## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 
-1. The following Section is hereby amended: Amend **Section 5.050 (g)**, as amended by [Ordinance No. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md), to read as follows:
+1. The following Section is hereby amended: Amend **Section 5.050 (g)**, as amended by Ordinance No. 59-97A, to read as follows:
 
 > **(g)** Conditional uses, such as parks, playgrounds or community centers, churches, schools, golf courses, day or child care facilities, recreation uses, public and private clubs and use of similar nature as approved by the Commission and subject to Sections 6.300 through 6.340.
 
-2. The following Sections are hereby added to and made part of **ARTICLE 6 (PERMIT AND ISSUE DETERMINATIONS)** of Attachment C to [Ordinance No. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), The City of Rivergrove's Land Development Ordinance (RLDO):
+2. The following Sections are hereby added to and made part of **ARTICLE 6 (PERMIT AND ISSUE DETERMINATIONS)** of Attachment C to Ordinance No. 54-89, The City of Rivergrove's Land Development Ordinance (RLDO):
 
 ### Add after Section 6.236 the following:
 

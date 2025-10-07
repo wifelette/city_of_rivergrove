@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Sync Airtable Public Metadata with local document repository.
 Handles both full sync and incremental updates with smart caching.

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix nested lists under definition items in ordinances.
 Converts indented (1), (2), etc. under letter definitions to proper markdown nested lists.

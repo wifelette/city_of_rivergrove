@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Clean up table formatting in markdown files:
 1. Convert ALL CAPS text in tables to Title Case

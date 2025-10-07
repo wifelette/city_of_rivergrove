@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 mdBook preprocessor that ensures SUMMARY.md is always regenerated with Airtable metadata.
 This runs BEFORE mdBook processes the book, ensuring sidebar always has correct titles and tags.

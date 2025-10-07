@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Enhanced custom processor for City of Rivergrove documents.
 Handles special formatting (NOT lists - see unified-list-processor.py):

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Regression tests for list formatting in City of Rivergrove documents.
 

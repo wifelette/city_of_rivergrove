@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix empty list items that mdBook created when it failed to parse list content.
 This specifically fixes Section 2.060 and similar cases where mdBook creates

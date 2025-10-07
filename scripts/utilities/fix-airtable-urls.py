@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix Airtable URLs after repository reorganization.
 Updates mdURL and fileURL fields to reflect the new source-documents/ structure.

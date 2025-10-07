@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Quick diagnostic tool for Section 1.050 list fragmentation issue.
 Run this to see the current state of the problem.

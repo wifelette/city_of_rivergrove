@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Validate that markdown source files don't contain HTML tags.
 

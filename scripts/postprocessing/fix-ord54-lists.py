@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix specific list issues in Ordinance 54.
 Handles:

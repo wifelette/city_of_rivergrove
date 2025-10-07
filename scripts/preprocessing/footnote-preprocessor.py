@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Preprocessor to automatically wrap footnotes in styling divs.
 Detects footnote patterns and adds appropriate HTML wrapping.

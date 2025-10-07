@@ -1,43 +1,147 @@
 {
-  "tests_run": 22,
-  "tests_passed": 18,
+  "tests_run": 158,
+  "tests_passed": 118,
   "failures": [
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
       "test": "no_orphaned_alpha_paragraphs",
-      "issue": "Found 8 alpha items as paragraphs instead of list items",
+      "issue": "Found 204 alpha items as paragraphs instead of list items",
       "examples": [
-        "(a) DEFINITIONS:",
-        "(b) APPLICATION FOR PERMIT",
-        "(c) EMERGENCIES"
+        "(a) \u201cBuilding line\u201d means a line on a plat or map ...",
+        "(b) \u201cCity\u201d means the city of Rivergrove, Oregon.",
+        "(c) \u201cCity Council\u201d means the governing body of the..."
       ]
     },
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "no_concatenated_numeric_items",
-      "issue": "Found 12 list items with concatenated numeric sub-items",
+      "test": "no_list_code_blocks",
+      "issue": "Found 1 lists appearing as code blocks",
       "examples": [
-        "(a) DEFINITION(1) \u201cHome Occupation\u201d is an occupation or business activity which results in a product...",
-        "(2) Home occupations do not include garage sales, yard sales, Christmas bazaars, or home parties whi...",
-        "(b) PURPOSE AND INTENT\nThe conduct of business in residences may be permitted under the provisions o..."
-      ]
-    },
-    {
-      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
-      "test": "no_orphaned_paragraphs_after_lists",
-      "issue": "Found 4 orphaned paragraphs that should be nested",
-      "examples": [
-        "Orphaned paragraph after (b) - should be nested inside the list item",
-        "Orphaned paragraph after (f) - should be nested inside the list item",
-        "Orphaned paragraph after (b) - should be nested inside the list item"
+        "(1) the floor area of a building shall not be increased by more than twenty (20) percent;\n\n(2) the l..."
       ]
     },
     {
       "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
       "test": "proper_list_nesting",
-      "issue": "Found 1 nesting issues",
+      "issue": "Found 2 nesting issues",
       "examples": [
+        "Orphaned <ol> found after alpha paragraph - both should be properly formatted",
         "Orphaned <ol> found after alpha paragraph - both should be properly formatted"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_2060_nested_list",
+      "issue": "Section 2.060 nested list formatting issues",
+      "examples": [
+        "Section 2.060 nested list appearing as code block"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_2080_single_item",
+      "issue": "Section 2.080 single-item list issues",
+      "examples": [
+        "Section 2.080 item (a) not converted to list"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_4120_complete_list",
+      "issue": "Section 4.120 list completeness issues",
+      "examples": [
+        "Section 4.120 item (d) not included in list",
+        "Section 4.120 list not found"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_1050_formatting",
+      "issue": "Section 1.050 formatting issues",
+      "examples": [
+        "Missing list items: (h), (i), (j), (k), (l)"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_2060_formatting",
+      "issue": "Section 2.060(b) items appearing as code block",
+      "examples": [
+        "(1) the floor area of a building shall not be increased by more than twenty (20) percent;\n\n(2) the l"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_5080_formatting",
+      "issue": "Section 5.080 special formatting issues",
+      "examples": [
+        "No setback-specifications divs found in Section 5.080"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_5110_formatting",
+      "issue": "Section 5.110 list not properly combined",
+      "examples": [
+        "Found 3 orphaned items as paragraphs",
+        "Section 5.110 alpha list not found"
+      ]
+    },
+    {
+      "file": "book/ordinances/1989-Ord-54-89C-Land-Development.html",
+      "test": "section_5120_formatting",
+      "issue": "Section 5.120 formatting issues - numbered items not properly nested",
+      "examples": [
+        "Orphaned ordered list found - should be nested under parent item",
+        "Orphaned ordered list found - should be nested under parent item",
+        "Orphaned ordered list found - should be nested under parent item"
+      ]
+    },
+    {
+      "file": "book/ordinances/1998-Ord-59-97A-Land-Development-Amendment.html",
+      "test": "no_orphaned_alpha_paragraphs",
+      "issue": "Found 8 alpha items as paragraphs instead of list items",
+      "examples": [
+        "(a) One single-family detached dwelling, including...",
+        "(b) Secondary Dwelling Unit (defined as a resident...",
+        "(c) Area Accessory Development, subject to Section..."
+      ]
+    },
+    {
+      "file": "book/ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.html",
+      "test": "no_orphaned_alpha_paragraphs",
+      "issue": "Found 19 alpha items as paragraphs instead of list items",
+      "examples": [
+        "(g) Conditional uses, such as parks, playgrounds o...",
+        "(a) A description of the land (address, lot, block...",
+        "(b) A list of the addresses of property within 200..."
+      ]
+    },
+    {
+      "file": "book/ordinances/2003-Ord-73-2003A-Conditional-Use-Provisions.html",
+      "test": "no_concatenated_numeric_items",
+      "issue": "Found 8 list items with concatenated numeric sub-items",
+      "examples": [
+        "\n(d) Site plan drawn to scale and where relevant, illustrating existing and proposed:\n\n(1) Relations...",
+        "(2) Lot line dimensions;",
+        "\n(f) If relevant, plans and elevations of structure(s) to scale indicating:\n\n(1) Heights of structur..."
+      ]
+    },
+    {
+      "file": "book/resolutions/1976-Res-22-PC.html",
+      "test": "no_list_code_blocks",
+      "issue": "Found 1 lists appearing as code blocks",
+      "examples": [
+        "a. Financial support? \u2610 Yes \u2610 No\nb. A publicity program? \u2610 Yes \u2610 No\nc. Technical information availab..."
+      ]
+    },
+    {
+      "file": "book/interpretations/1998-06-01-RE-5.080-setback-orientation.html",
+      "test": "no_orphaned_alpha_paragraphs",
+      "issue": "Found 2 alpha items as paragraphs instead of list items",
+      "examples": [
+        "(a) All new detached residential structures built ...",
+        "(b) All new attached residential shall maintain th..."
       ]
     }
   ]

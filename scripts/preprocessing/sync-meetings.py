@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Sync meeting documents from source-documents/Meetings/ to src/ directories.
 Handles transcripts, agendas, and minutes, organizing them by type.

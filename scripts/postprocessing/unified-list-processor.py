@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Unified List Processor for City of Rivergrove Documents
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Standardize markdown header levels in ordinance files while preserving content.
 This only changes the markdown formatting (# levels), not the actual text or structure.

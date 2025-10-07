@@ -38,7 +38,7 @@ The legislature of the State of Oregon has delegated the responsibility of local
 
 #### 1.3 Statement of Purpose
 
-The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, [ORD #69-2000](../ordinances/2000-Ord-69-2000-Title-3-Compliance.md), will be enacted to comply with Title 3.
+The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Urban Growth Management Functional Plan. A separate ordinance, ORD #69-2000, will be enacted to comply with Title 3.
 
 ### Section 2.0
 
@@ -46,7 +46,7 @@ The purpose of this ordinance is to comply with Titles 1-2 and 4-8 of Metro's Ur
 
 #### 2.1 Map of 2040 Growth Concept Design Types
 
-Rivergrove hereby amends its Comprehensive Plan to include a map identifying boundaries of each of the 2040 Growth Concept "design types" according to Title 1, Sec. 3 of the Functional Plan. These boundaries should be consistent with the general locations found on the 2040 Growth Concept Map. Due to its small size, Rivergrove contains only one of the design types—"inner neighborhood." The Growth Concept defines this as a primarily single family residential neighborhood. Rivergrove hereby adopts Metro's map showing the 2040 inner neighborhood designation as an appendix to the Rivergrove Comprehensive Plan, **Appendix F to Attachment E to [Ordinance No. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md)**.
+Rivergrove hereby amends its Comprehensive Plan to include a map identifying boundaries of each of the 2040 Growth Concept "design types" according to Title 1, Sec. 3 of the Functional Plan. These boundaries should be consistent with the general locations found on the 2040 Growth Concept Map. Due to its small size, Rivergrove contains only one of the design types—"inner neighborhood." The Growth Concept defines this as a primarily single family residential neighborhood. Rivergrove hereby adopts Metro's map showing the 2040 inner neighborhood designation as an appendix to the Rivergrove Comprehensive Plan, **Appendix F to Attachment E to Ordinance No. 54-89**.
 
 #### 2.2 Amendments to LDO to comply with Title 1 density requirements
 

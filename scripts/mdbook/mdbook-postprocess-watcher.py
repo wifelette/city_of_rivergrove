@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Smart watcher for mdBook rebuilds that automatically runs post-processors.
 

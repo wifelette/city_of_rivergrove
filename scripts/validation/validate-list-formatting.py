@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Validates that list formatting is properly applied in HTML output.
 Checks for:

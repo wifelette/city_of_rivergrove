@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 CSS Compilation Script
 Compiles modular CSS files into a single custom.css that mdBook can handle natively.

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Fix signature formatting in markdown files to ensure proper line breaks.
 Adds double spaces at the end of signature lines for proper Markdown line breaks.

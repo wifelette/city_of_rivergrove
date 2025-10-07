@@ -1,6 +1,6 @@
 # ORDINANCE NO. 59-97A
 
-**AN ORDINANCE AMENDING [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S COMPREHENSIVE PLAN AND LAND DEVELOPMENT ORDINANCE**
+**AN ORDINANCE AMENDING ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S COMPREHENSIVE PLAN AND LAND DEVELOPMENT ORDINANCE**
 
 Submitted to the Rivergrove City Council on <span class="form-field-filled" data-tooltip="Field filled in on source doc">October 12, 1998</span>
 

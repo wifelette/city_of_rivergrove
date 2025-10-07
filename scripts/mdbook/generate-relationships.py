@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Generate relationships.json file by analyzing document cross-references.
 This creates a comprehensive mapping of document relationships including:
