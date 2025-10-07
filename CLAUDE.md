@@ -167,6 +167,26 @@ See `docs/visual-testing-guide.md` for complete workflow.
 python3 scripts/validation/check-styles-health.py
 ```
 
+## Python Scripts
+
+**IMPORTANT: All Python scripts use shebangs and are executable**
+
+Python scripts in this repository follow Unix best practices:
+- All scripts have `#!/usr/bin/env python3` shebang (NOT `/usr/bin/python3`)
+- All scripts are executable (`chmod +x`)
+- Scripts are called directly: `./scripts/build/compile-css.py` (NOT `python3 scripts/...`)
+
+**Why this matters:**
+- `#!/usr/bin/env python3` finds Python from PATH, working in all environments
+- Works locally with system Python AND in GitHub Actions with setup-python
+- Avoids hardcoded interpreter paths that break in CI/CD
+
+**When creating new Python scripts:**
+1. Add `#!/usr/bin/env python3` as first line
+2. Make executable: `chmod +x scripts/path/to/script.py`
+3. Call directly in shell scripts: `./scripts/path/to/script.py`
+4. NEVER use `python3 scripts/...` or `/usr/bin/python3 scripts/...`
+
 ### Step 8: Update Issue #3
 
 - **Always update the issue body**:
