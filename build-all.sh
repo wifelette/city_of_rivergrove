@@ -175,9 +175,9 @@ if [ "$SKIP_AIRTABLE" = false ]; then
     if [ -f "scripts/mdbook/sync-airtable-metadata.py" ]; then
         # Force sync in CI environment (GitHub Actions)
         if [ -n "$CI" ]; then
-            /usr/bin/python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --force
+            python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --force
         else
-            /usr/bin/python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
+            python3 scripts/mdbook/sync-airtable-metadata.py --mode=full --if-stale
         fi
         # Copy metadata to src directory
         if [ -f "book/airtable-metadata.json" ]; then
