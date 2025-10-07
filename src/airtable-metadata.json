@@ -2,13 +2,17 @@
   "metadata": {
     "cache_version": "1.1",
     "last_full_sync": "2025-10-06T10:55:06.570480",
-    "last_updated": "2025-10-06T12:06:44.796704",
+    "last_updated": "2025-10-07T09:51:56.402832",
     "total_records": 42,
-    "last_partial_update": "2025-10-06T12:06:44.796661",
+    "last_partial_update": "2025-10-07T09:51:56.402770",
     "incremental_updates": [
       {
         "filename": "1989-Ord-#54-89C-Land-Development.md",
         "updated_at": "2025-10-06T12:06:44.796663"
+      },
+      {
+        "filename": "1989-Ord-#54-89C-Land-Development.md",
+        "updated_at": "2025-10-07T09:51:56.402774"
       }
     ]
   },

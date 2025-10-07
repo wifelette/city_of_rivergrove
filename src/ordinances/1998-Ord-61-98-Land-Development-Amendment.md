@@ -1,6 +1,6 @@
 # ORDINANCE NO. 61-98
 
-**AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
+**AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
 Adopted by the Planning Commission of the City of Rivergrove on <span class="form-field-filled" data-tooltip="Field filled in on source doc">April 6, 1998</span>
 

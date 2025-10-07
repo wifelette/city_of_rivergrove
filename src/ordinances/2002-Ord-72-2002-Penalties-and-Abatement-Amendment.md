@@ -1,6 +1,6 @@
 ORDINANCE NO. 72-2002
 
-**AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
+**AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE**
 
 Approved by the Planning Commission of the City of Rivergrove on <span class="form-field-filled" data-tooltip="Field filled in on source doc">10/7/02</span>
 
@@ -18,7 +18,7 @@ Adopted by the Rivergrove City Council on <span class="form-field-filled" data-t
 
 # ORDINANCE NO. 72-2002
 
-**AN ORDINANCE AMENDING ATTACHMENT C TO ORDINANCE NO. 54-89, THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY ORDINANCE NO. 59-97A ~~AND DECLARING AN EMERGENCY (strikethrough initialed by LB)~~**
+**AN ORDINANCE AMENDING ATTACHMENT C TO [ORDINANCE NO. 54-89](../ordinances/1989-Ord-54-89C-Land-Development.md), THE CITY OF RIVERGROVE'S LAND DEVELOPMENT ORDINANCE AS AMENDED BY [ORDINANCE NO. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md) ~~AND DECLARING AN EMERGENCY (strikethrough initialed by LB)~~**
 
 ### BEFORE THE CITY COUNCIL OF THE CITY OF RIVERGROVE, OREGON
 
@@ -30,7 +30,7 @@ Adopted by the Rivergrove City Council on <span class="form-field-filled" data-t
 
 **WHEREAS**, the City of Rivergrove wishes to provide an appropriate regulatory incentive for the abatement and correction of long standing conditions constituting the continuing use of land in violation of the City's Land Development Ordinances;
 
-**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to Ordinance #54-89 as amended by Ordinance No. 59-97A) is hereby amended as follows:
+**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS**: The Rivergrove Land Development Ordinance (Attachment C to [Ordinance #54-89](../ordinances/1989-Ord-54-89C-Land-Development.md) as amended by [Ordinance No. 59-97A](../ordinances/1998-Ord-59-97A-Land-Development-Amendment.md)) is hereby amended as follows:
 
 ## AMENDMENTS TO THE LAND DEVELOPMENT ORDINANCE
 

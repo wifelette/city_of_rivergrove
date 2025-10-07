@@ -22,9 +22,9 @@ Are
 
 **WHEREAS**, The risk of flooding, including the risk to human life and property, and the maintenance of the functions and values and flood plains by allowing for the storage and conveyance of stream flows through their natural systems are vitally important to the public health, safety and general welfare, and
 
-**WHEREAS**, The City has adopted a Flood Damage Prevention Ordinance, Ordinance No. 52, with amendments as set in Ordinance No. 62-98, and
+**WHEREAS**, The City has adopted a Flood Damage Prevention Ordinance, [Ordinance No. 52](../ordinances/1987-Ord-52-Flood.md), with amendments as set in [Ordinance No. 62-98](../ordinances/1998-Ord-62-98-Flood-and-Land-Development-Amendment.md), and
 
-**WHEREAS**, The City has adopted Ordinance No. 70-2001 to comply with the requirements of Title 3 of Metro's Urban Growth Management Functional Plan, and
+**WHEREAS**, The City has adopted [Ordinance No. 70-2001](../ordinances/2001-Ord-70-2001-WQRA.md) to comply with the requirements of Title 3 of Metro's Urban Growth Management Functional Plan, and
 
 **WHEREAS**, the Federal Emergency Management Agency ("FEMA") has recently updated the Flood Insurance Study (FIS) and Flood Insurance Rate Map ("FIRM") for the areas including the City that changes the floodplain and floodway to more accurately depict those areas and to account for changes, and
 
@@ -44,7 +44,7 @@ Are
 
 > ### Section 5.020 Flood Hazard District.
 >
-> All land development within the 100 year flood boundary as identified in the Flood Insurance Rate Map (FIRM) Panel 0013D Map Number 41005C0013D effective date June 17, 2008 shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. The FIRM shall be available to public inspection by contacting the City Recorder at 503 624-8498 during regular business hours. All development within the 100 year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove (Ord. #52 and Ord. #70-2001) in addition to the provisions of this ordinance.
+> All land development within the 100 year flood boundary as identified in the Flood Insurance Rate Map (FIRM) Panel 0013D Map Number 41005C0013D effective date June 17, 2008 shall be within the Flood Hazard District (FHD) and shall be subject to special requirements in addition to the criteria and standards of this ordinance. Land subject to flood hazard is generally indicated on the floodplain map found in the Flood Insurance Study and consists of those areas of the City where hydrological studies have been prepared by the Federal Emergency Management Agency. The FIRM shall be available to public inspection by contacting the City Recorder at 503 624-8498 during regular business hours. All development within the 100 year flood boundary shall follow the provisions of the Flood Damage Prevention Ordinance of the City of Rivergrove ([Ord. #52](../ordinances/1987-Ord-52-Flood.md) and [Ord. #70-2001](../ordinances/2001-Ord-70-2001-WQRA.md)) in addition to the provisions of this ordinance.
 
 ### Section 3: Section XIV of Ordinance No. 70-2001 is amended as follows:
 

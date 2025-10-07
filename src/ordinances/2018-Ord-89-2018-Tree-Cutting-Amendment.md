@@ -36,9 +36,9 @@
 
 **WHEREAS**, Policy 12 of Goal # 5 - Natural Resources, Scenic, & Historic Areas, Open Spaces, of the Comprehensive Plan specifically states the City shall revise its tree cutting ordinance to include stronger language to preserve Rivergrove native trees:
 
-**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS:** The Rivergrove Land Development Ordinance (Attachment D to Ordinance #74-2004, as previously amended) is hereby amended as follows:
+**NOW THEREFORE, THE CITY COUNCIL OF THE CITY OF RIVERGROVE ORDAINS AS FOLLOWS:** The Rivergrove Land Development Ordinance (Attachment D to [Ordinance #74-2004](../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.md), as previously amended) is hereby amended as follows:
 
-**Section 1.** Section 5.100 of the Rivergrove Land Development Ordinance (Attachment D to Ordinance #74-2004), entitled "Tree Cutting") is hereby repealed and replaced with a new Section 5.100 entitled "Tree Cutting" that provides as follows:
+**Section 1.** Section 5.100 of the Rivergrove Land Development Ordinance (Attachment D to [Ordinance #74-2004](../ordinances/2004-Ord-74-2004-Tree-Cutting-Amendment.md)), entitled "Tree Cutting") is hereby repealed and replaced with a new Section 5.100 entitled "Tree Cutting" that provides as follows:
 
 ### Section 5.100. Tree Cutting
 
