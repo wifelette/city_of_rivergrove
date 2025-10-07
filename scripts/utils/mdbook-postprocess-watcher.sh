@@ -23,10 +23,10 @@ run_postprocessors() {
     echo "🎨 Applying postprocessors..."
     
     # Run enhanced unified list processor
-    python3 scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
+    ./scripts/postprocessing/unified-list-processor.py >/dev/null 2>&1
 
     # Run enhanced custom processor for non-list formatting
-    python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
+    ./scripts/postprocessing/enhanced-custom-processor.py >/dev/null 2>&1
     
     LAST_POSTPROCESS_TIME=$current_time
     

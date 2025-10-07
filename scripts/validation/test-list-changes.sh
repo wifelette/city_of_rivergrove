@@ -76,9 +76,9 @@ echo "Running test suite..."
 echo "--------------------"
 
 if [ -n "$TEST_FILES" ]; then
-    python3 scripts/tests/test-list-formatting.py $TEST_FILES
+    ./scripts/tests/test-list-formatting.py $TEST_FILES
 else
-    python3 scripts/tests/test-list-formatting.py
+    ./scripts/tests/test-list-formatting.py
 fi
 
 TEST_RESULT=$?
@@ -97,7 +97,7 @@ else
     echo "To fix:"
     echo "1. Review the failures above"
     echo "2. Check scripts/tests/list-test-results.json for details"
-    echo "3. Run the list processor: python3 scripts/postprocessing/unified-list-processor-v2.py [file]"
+    echo "3. Run the list processor: ./scripts/postprocessing/unified-list-processor-v2.py [file]"
     echo "4. Re-run tests: $0"
     echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     exit 1

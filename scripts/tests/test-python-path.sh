@@ -39,7 +39,7 @@ echo ""
 echo "3. Testing main list processor..."
 test_file="book/ordinances/1989-Ord-54-89C-Land-Development.html"
 if [ -f "$test_file" ]; then
-    /usr/bin/python3 scripts/postprocessing/unified-list-processor.py "$test_file" >/dev/null 2>&1
+    ./scripts/postprocessing/unified-list-processor.py "$test_file" >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "   ✓ List processor runs successfully"
     else

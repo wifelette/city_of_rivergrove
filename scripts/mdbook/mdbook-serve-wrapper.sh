@@ -19,7 +19,7 @@ ROOT_DIR="$( cd "$SCRIPT_DIR/../.." && pwd )"
 cd "$ROOT_DIR"
 
 echo -e "${GREEN}🔄 Regenerating SUMMARY.md with Airtable metadata...${NC}"
-python3 scripts/mdbook/generate-summary-with-airtable.py
+./scripts/mdbook/generate-summary-with-airtable.py
 
 # Function to regenerate SUMMARY.md before each rebuild
 regenerate_summary() {
@@ -31,7 +31,7 @@ regenerate_summary() {
         # Check if any src files have been modified recently
         if find src -name "*.md" -mmin -0.1 2>/dev/null | grep -q .; then
             echo -e "${YELLOW}📝 Detected changes, regenerating SUMMARY.md...${NC}"
-            python3 scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
+            ./scripts/mdbook/generate-summary-with-airtable.py >/dev/null 2>&1
         fi
     done
 }

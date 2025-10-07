@@ -137,8 +137,8 @@ run_test "enhanced-custom-processor exists" "[ -f scripts/postprocessing/enhance
 # Ensure theme is in place before running postprocessors
 cp -r theme book/ 2>/dev/null || true
 
-run_test "custom-list-processor runs" "python3 scripts/postprocessing/custom-list-processor.py"
-run_test "enhanced-custom-processor runs" "python3 scripts/postprocessing/enhanced-custom-processor.py"
+run_test "custom-list-processor runs" "./scripts/postprocessing/custom-list-processor.py"
+run_test "enhanced-custom-processor runs" "./scripts/postprocessing/enhanced-custom-processor.py"
 echo ""
 
 # Summary

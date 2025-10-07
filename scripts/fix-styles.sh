@@ -8,17 +8,17 @@ echo "🔧 Fixing CSS styles..."
 
 # 1. Compile CSS from modular files
 echo "  Compiling CSS..."
-if ! /usr/bin/python3 scripts/build/compile-css.py; then
+if ! ./scripts/build/compile-css.py; then
     echo "  ❌ ERROR: CSS compilation failed"
     exit 1
 fi
 
 # 3. Run postprocessors to restore HTML structure
 echo "  Running enhanced unified list processor..."
-/usr/bin/python3 scripts/postprocessing/unified-list-processor.py >/dev/null
+./scripts/postprocessing/unified-list-processor.py >/dev/null
 
 echo "  Running enhanced custom processor..."
-/usr/bin/python3 scripts/postprocessing/enhanced-custom-processor.py >/dev/null
+./scripts/postprocessing/enhanced-custom-processor.py >/dev/null
 
 echo "✅ Styles fixed! Refresh your browser."
 echo ""

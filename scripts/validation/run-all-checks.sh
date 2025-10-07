@@ -20,7 +20,7 @@ ALL_PASSED=true
 
 # 1. Form Field Validation
 echo -e "${BLUE}1. Checking form fields...${NC}"
-if python3 scripts/validation/validate-form-fields.py src/; then
+if ./scripts/validation/validate-form-fields.py src/; then
     echo -e "${GREEN}  ✓ Form fields valid${NC}\n"
 else
     echo -e "${RED}  ✗ Form field issues found${NC}\n"
@@ -29,7 +29,7 @@ fi
 
 # 2. List Nesting Validation
 echo -e "${BLUE}2. Checking list nesting...${NC}"
-if python3 scripts/validation/check-list-nesting.py src/; then
+if ./scripts/validation/check-list-nesting.py src/; then
     echo -e "${GREEN}  ✓ List nesting correct${NC}\n"
 else
     echo -e "${RED}  ✗ List nesting issues found${NC}\n"
@@ -38,7 +38,7 @@ fi
 
 # 3. Style Health Check
 echo -e "${BLUE}3. Checking CSS health...${NC}"
-if python3 scripts/validation/check-styles-health.py; then
+if ./scripts/validation/check-styles-health.py; then
     echo -e "${GREEN}  ✓ Styles healthy${NC}\n"
 else
     echo -e "${YELLOW}  ⚠ Style issues detected${NC}\n"
@@ -47,7 +47,7 @@ fi
 
 # 4. Tooltip Style Check (if signature marks exist)
 echo -e "${BLUE}4. Checking tooltip styles...${NC}"
-if python3 scripts/validation/check-tooltip-styles.py 2>/dev/null; then
+if ./scripts/validation/check-tooltip-styles.py 2>/dev/null; then
     echo -e "${GREEN}  ✓ Tooltip styles correct${NC}\n"
 else
     echo -e "${YELLOW}  ⚠ Tooltip style issues${NC}\n"
@@ -57,7 +57,7 @@ fi
 # 5. List Formatting Check (HTML output)
 echo -e "${BLUE}5. Checking list formatting in HTML...${NC}"
 if [ -d "book" ]; then
-    if python3 scripts/validation/validate-list-formatting.py 2>/dev/null; then
+    if ./scripts/validation/validate-list-formatting.py 2>/dev/null; then
         echo -e "${GREEN}  ✓ List formatting correct${NC}\n"
     else
         echo -e "${YELLOW}  ⚠ List formatting issues detected${NC}\n"

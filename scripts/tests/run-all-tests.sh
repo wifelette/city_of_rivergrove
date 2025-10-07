@@ -31,7 +31,7 @@ fi
 echo "📐 Test Suite 3: List Formatting"
 echo "--------------------------------"
 if [ -f "book/ordinances/1989-Ord-54-89C-Land-Development.html" ]; then
-    if /usr/bin/python3 scripts/tests/test-list-formatting.py book/ordinances/1989-Ord-54-89C-Land-Development.html 2>&1; then
+    if ./scripts/tests/test-list-formatting.py book/ordinances/1989-Ord-54-89C-Land-Development.html 2>&1; then
         echo "✓ List formatting tests passed"
     else
         echo "⚠ Some list formatting tests failed (may include false positives)"
@@ -45,11 +45,11 @@ echo ""
 # Test 4: Form field validation
 echo "📐 Test Suite 4: Form Field Validation"
 echo "--------------------------------------"
-if /usr/bin/python3 scripts/validation/validate-form-fields.py --quiet; then
+if ./scripts/validation/validate-form-fields.py --quiet; then
     echo "✓ All form fields valid"
 else
     echo "✗ Form field errors found"
-    echo "  Run '/usr/bin/python3 scripts/validation/validate-form-fields.py' for details"
+    echo "  Run './scripts/validation/validate-form-fields.py' for details"
     ((TOTAL_FAILURES++))
 fi
 echo ""
@@ -57,11 +57,11 @@ echo ""
 # Test 5: Check for HTML in source files
 echo "📐 Test Suite 5: Source File Validation"
 echo "---------------------------------------"
-if /usr/bin/python3 scripts/validation/validate-no-html.py source-documents --quiet; then
+if ./scripts/validation/validate-no-html.py source-documents --quiet; then
     echo "✓ No HTML in source files"
 else
     echo "✗ HTML found in source files"
-    echo "  Run '/usr/bin/python3 scripts/validation/validate-no-html.py' for details"
+    echo "  Run './scripts/validation/validate-no-html.py' for details"
     ((TOTAL_FAILURES++))
 fi
 echo ""
