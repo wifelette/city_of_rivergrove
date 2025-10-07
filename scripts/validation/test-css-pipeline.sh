@@ -2,7 +2,8 @@
 # Comprehensive test suite for CSS build pipeline
 # Tests that CSS files are correctly copied and accessible after builds
 
-set -e
+# Note: NOT using 'set -e' because we want to collect all test failures
+# and report them at the end, not exit on first failure
 
 # Colors for output
 RED='\033[0;31m'
