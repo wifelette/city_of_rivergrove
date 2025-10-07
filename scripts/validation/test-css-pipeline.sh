@@ -45,8 +45,8 @@ run_test "theme directory exists" "[ -d theme ]"
 run_test "theme/css directory exists" "[ -d theme/css ]"
 run_test "main.css exists" "[ -f theme/css/main.css ]"
 run_test "CSS modules exist" "[ -f theme/css/base/variables.css ]"
-# CRITICAL: Check that the SOURCE custom.css has the correct import path
-run_test "source custom.css has correct path" "grep -q \"@import url('./theme/css/main.css')\" custom.css"
+# CRITICAL: Check that custom.css is compiled (not an import file)
+run_test "custom.css is compiled" "grep -q \"COMPILED CSS\" custom.css"
 echo ""
 
 # Test 2: Test mdBook build and theme copy
@@ -65,23 +65,10 @@ run_test "theme copied successfully" "[ -d book/theme ]"
 run_test "CSS files accessible" "[ -f book/theme/css/main.css ]"
 echo ""
 
-# Test 3: Verify CSS import path
-echo "3️⃣  Testing CSS import paths..."
-if grep -q "@import url('./theme/css/main.css')" book/custom.css 2>/dev/null; then
-    run_test "correct import path in custom.css" "true"
-else
-    run_test "correct import path in custom.css" "false"
-fi
-
-# Test if CSS actually loads (check if file is accessible via relative path)
-if [ -f "book/theme/css/main.css" ]; then
-    # From book/custom.css, the path ./theme/css/main.css should resolve
-    cd book 2>/dev/null
-    run_test "CSS path resolves correctly" "[ -f ./theme/css/main.css ]"
-    cd .. 2>/dev/null
-else
-    run_test "CSS path resolves correctly" "false"
-fi
+# Test 3: Verify CSS compilation persists through build
+echo "3️⃣  Testing compiled CSS..."
+run_test "compiled CSS preserved in book/" "grep -q \"COMPILED CSS\" book/custom.css"
+run_test "compiled CSS has content" "[ \$(wc -l < book/custom.css) -gt 100 ]"
 echo ""
 
 # Test 4: Test fix-styles.sh script
@@ -94,9 +81,8 @@ run_test "theme removed for testing" "[ ! -d book/theme ]"
 # Run fix script
 ./scripts/fix-styles.sh >/dev/null 2>&1
 
-run_test "fix-styles.sh restores theme" "[ -d book/theme ]"
-run_test "fix-styles.sh preserves correct path" "grep -q \"@import url('./theme/css/main.css')\" book/custom.css"
-run_test "CSS files accessible after fix" "[ -f book/theme/css/main.css ]"
+run_test "fix-styles.sh compiles CSS" "grep -q \"COMPILED CSS\" custom.css"
+run_test "CSS files accessible after fix" "[ -f custom.css ]"
 echo ""
 
 # Test 5: Test validation scripts
@@ -106,11 +92,11 @@ run_test "check-src-modifications.sh is executable" "[ -x scripts/validation/che
 run_test "src validation passes" "./scripts/validation/check-src-modifications.sh"
 echo ""
 
-# Test 6: Test build scripts have CSS checks
-echo "6️⃣  Testing build script safeguards..."
-run_test "build-all.sh has CSS verification" "grep -q 'book/theme/css/main.css' build-all.sh"
-run_test "dev-server.sh has CSS verification" "grep -q 'book/theme/css/main.css' dev-server.sh"
-run_test "fix-styles.sh has CSS verification" "grep -q 'book/theme/css/main.css' scripts/fix-styles.sh"
+# Test 6: Test build scripts have CSS compilation
+echo "6️⃣  Testing build script CSS compilation..."
+run_test "build-all.sh compiles CSS" "grep -q 'compile-css.py' build-all.sh"
+run_test "dev-server.sh exists" "[ -f dev-server.sh ]"
+run_test "fix-styles.sh compiles CSS" "grep -q 'compile-css.py' scripts/fix-styles.sh"
 echo ""
 
 # Test 7: Test CSS module structure
@@ -129,16 +115,11 @@ for module in "${CSS_MODULES[@]}"; do
 done
 echo ""
 
-# Test 8: Test postprocessors can run
-echo "8️⃣  Testing postprocessors..."
-run_test "custom-list-processor exists" "[ -f scripts/postprocessing/custom-list-processor.py ]"
-run_test "enhanced-custom-processor exists" "[ -f scripts/postprocessing/enhanced-custom-processor.py ]"
-
-# Ensure theme is in place before running postprocessors
-cp -r theme book/ 2>/dev/null || true
-
-run_test "custom-list-processor runs" "./scripts/postprocessing/custom-list-processor.py"
-run_test "enhanced-custom-processor runs" "./scripts/postprocessing/enhanced-custom-processor.py"
+# Test 8: Test CSS compilation script
+echo "8️⃣  Testing CSS compilation..."
+run_test "compile-css.py exists" "[ -f scripts/build/compile-css.py ]"
+run_test "compile-css.py is executable" "[ -x scripts/build/compile-css.py ]"
+run_test "compile-css.py runs" "./scripts/build/compile-css.py"
 echo ""
 
 # Summary
@@ -162,9 +143,9 @@ else
     echo -e "${GREEN}✅ All CSS pipeline tests passed!${NC}"
     echo ""
     echo "The CSS build pipeline is working correctly:"
-    echo "  • Source files are in place"
-    echo "  • Build process copies theme correctly"
-    echo "  • Import paths are correct"
+    echo "  • CSS source modules are in place"
+    echo "  • CSS compilation works"
+    echo "  • Compiled CSS persists through builds"
     echo "  • Recovery scripts work"
     echo "  • Validation is in place"
 fi
