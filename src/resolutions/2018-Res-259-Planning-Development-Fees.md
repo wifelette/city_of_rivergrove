@@ -67,9 +67,15 @@ Attested on this 10th day of December 2018:
 | **Appeal of Type I Decision**<br>(FEE TO BE PAID UPON FILING APPEAL)                    | $250.00                                                        |
 | **Appeal of Type II, III, and IV Decisions**<br>(DEPOSIT TO BE PAID UPON FILING APPEAL) | Actual Costs²                                                  |
 
+
+<div class="footnotes">
+
 ¹ **Basic building permit.** Plus the actual cost of hearings officer, notification and specialized services the city may require. Other building permits, like subdivision building permits may be more expensive based on actual costs.
 
 ² **Based on ORS 227.175 (10) (iii)(b).**
+
+</div>
+
 
 The actual costs are those costs incurred by the City in reviewing the aforesaid application for compliance with the applicable approval criteria, development and design standards. Such costs shall include the actual costs of City's land use planners, engineers and attorneys incurred in reviewing that application, including any appeal to any City authority, whether filed by applicant or others.
 
