@@ -1,15 +1,16 @@
 const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
-  testDir: './specs',
-  outputDir: './test-results',
-  
+  testDir: './tests/visual/specs',
+  testMatch: '**/*.spec.js',
+  outputDir: './tests/visual/test-results',
+
   // Maximum time for each test
   timeout: 30000,
-  
+
   // Test reporter
   reporter: [
-    ['html', { outputFolder: './test-report', open: 'never' }],
+    ['html', { outputFolder: './tests/visual/test-report', open: 'never' }],
     ['list']
   ],
   

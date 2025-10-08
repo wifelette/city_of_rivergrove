@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "City of Rivergrove Document Management System",
   "scripts": {
-    "test:visual": "playwright test --config=tests/visual/playwright.config.js",
-    "test:visual:update": "playwright test --config=tests/visual/playwright.config.js --update-snapshots",
-    "test:visual:ui": "playwright test --config=tests/visual/playwright.config.js --ui",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:visual:ui": "playwright test --ui",
     "lint:css": "stylelint '**/*.css' --ignore-path .gitignore",
     "lint:css:fix": "stylelint '**/*.css' --ignore-path .gitignore --fix",
     "metrics:css": "node scripts/testing/css-metrics.js",
