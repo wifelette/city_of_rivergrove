@@ -94,6 +94,54 @@ Baselines are stored in `tests/visual/specs/[test-file]-snapshots/`:
 - Naming: `[snapshot-name]-[browser]-[platform].png`
 - Example: `ord-54-full-page-Desktop-Chrome-darwin.png`
 
+### Snapshot Naming Conventions
+
+Visual test snapshots follow a standardized naming pattern that aligns with our document naming conventions:
+
+**Format:** `{year}-{type}-{number}-{test-focus}.png`
+
+**Document Type Prefixes:**
+- `ord` - Ordinances
+- `res` - Resolutions
+- `int` - Interpretations
+- `agenda` - Meeting Agendas
+- `minutes` - Meeting Minutes
+- `transcript` - Meeting Transcripts
+- `other` - Other documents
+
+**Test Focus Categories:**
+- `full-page` - Complete document rendering
+- `signatures` - Signature blocks
+- `lists` - List formatting (nested, manual notation)
+- `document-notes` - Document notes section
+- `tables` - Table formatting
+- `form-fields` - Form field rendering
+- `headers` - Title/header formatting
+- `note-type-label` - Note badge styling
+- `page-reference` - Page reference badges
+- `note-content` - Note content area
+- `notes-mobile` / `notes-tablet` / `notes-desktop` - Responsive tests
+
+**Examples:**
+```
+1999-ord-65-document-notes.png
+1978-ord-28-signatures.png
+2024-res-300-full-page.png
+1998-int-5080-setback-specs.png
+2024-12-09-minutes-full-page.png
+```
+
+**Implementation:**
+
+Snapshot names are generated automatically using the `getSnapshotName()` helper function in test specs:
+
+```javascript
+// Usage in tests
+await expect(element).toHaveScreenshot(getSnapshotName(path, 'document-notes'));
+```
+
+The function extracts year, document type, and number from the HTML path and combines them with the test focus to create a consistent, descriptive name.
+
 ### Browser & Device Coverage
 
 Tests run on:
