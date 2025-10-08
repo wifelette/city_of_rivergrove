@@ -127,23 +127,151 @@ class DocumentProcessor:
         Fix Ord 65-99 specific issue where **C. The parties agree:** renders as
         list continuation of nested a/b list.
 
-        The structure is: <li>...<ul>a...b...</ul><p><strong>C...</strong></p></li></ol>
-        We need to extract the C paragraph from inside the li and place it after the ol.
+        After list processing, it can appear as either:
+        1. A paragraph inside a list item:
+           <ul class="alpha-list">
+             <li>a...</li>
+             <li>b...</li>
+           </ul>
+           <p><strong>C. The parties agree:</strong></p>  <!-- Inside parent <ol> -->
+
+        2. A list item itself:
+           <ul class="alpha-list">
+             <li>a...</li>
+             <li>b...</li>
+             <li><span class="list-marker-alpha">C.</span> The parties agree:</li>
+           </ul>
+
+        We need to extract "C. The parties agree:" and convert it to a paragraph
+        at the same level as "B. Lake Oswego agrees to:".
         """
-        # Find the paragraph containing C. The parties agree
+        # Find the element containing "C. The parties agree:"
+        target_element = None
+
+        # Check for it as a paragraph
         for p in soup.find_all('p'):
             strong = p.find('strong')
             if strong and 'C. The parties agree:' in strong.get_text():
-                # Check if this p is inside an li
-                parent_li = p.find_parent('li')
-                if parent_li:
-                    # Find the outermost ol that contains this li
-                    parent_ol = parent_li.find_parent('ol')
-                    if parent_ol:
-                        # Extract the paragraph and insert it after the ol
-                        p.extract()
-                        parent_ol.insert_after(p)
-                        break
+                target_element = p
+                break
+
+        # If not found as paragraph, check for it as a list item
+        if not target_element:
+            for li in soup.find_all('li'):
+                if 'The parties agree:' in li.get_text():
+                    target_element = li
+                    break
+
+        if target_element:
+            # Find the parent ol that contains this element (B's list)
+            parent_ol = target_element.find_parent('ol')
+            if parent_ol:
+                # If it's a list item, convert to paragraph and extract
+                if target_element.name == 'li':
+                    new_p = soup.new_tag('p')
+                    new_strong = soup.new_tag('strong')
+                    new_strong.string = 'C. The parties agree:'
+                    new_p.append(new_strong)
+                    target_element.extract()  # Remove from list
+                    target_element = new_p
+                else:
+                    # Extract the paragraph
+                    target_element.extract()
+
+                # Insert it after the ol
+                parent_ol.insert_after(target_element)
+
+        return soup
+
+    def fix_ord_65_dual_city_signatures(self, soup):
+        """
+        Fix Ord 65-99 dual-city signature section to display in two columns.
+
+        This is a unique intergovernmental agreement with signatures from both
+        Lake Oswego and Rivergrove side-by-side. We wrap them in a responsive
+        two-column layout that stacks on mobile.
+
+        Uses {{override:dual-city-signatures}}...{{/override:dual-city-signatures}} markers
+        in the markdown to identify the section to process.
+        """
+        # Find the opening marker
+        start_marker = None
+        for p in soup.find_all('p'):
+            if '{{override:dual-city-signatures}}' in p.get_text():
+                start_marker = p
+                break
+
+        if not start_marker:
+            return soup
+
+        # Find the closing marker
+        end_marker = None
+        current = start_marker.find_next_sibling()
+        while current:
+            if current.name == 'p' and '{{/override:dual-city-signatures}}' in current.get_text():
+                end_marker = current
+                break
+            current = current.find_next_sibling()
+
+        if not end_marker:
+            return soup
+
+        # Find "CITY OF LAKE OSWEGO" and "CITY OF RIVERGROVE" between markers
+        lo_start = None
+        rg_start = None
+        current = start_marker.find_next_sibling()
+        while current and current != end_marker:
+            if current.name == 'p':
+                strong = current.find('strong')
+                if strong:
+                    text = strong.get_text().strip()
+                    if text == 'CITY OF LAKE OSWEGO' and not lo_start:
+                        lo_start = current
+                    elif text == 'CITY OF RIVERGROVE' and not rg_start:
+                        rg_start = current
+            current = current.find_next_sibling()
+
+        if not lo_start or not rg_start:
+            return soup
+
+        # Collect Lake Oswego paragraphs (from CITY OF LAKE OSWEGO until CITY OF RIVERGROVE)
+        lo_elements = []
+        current = lo_start
+        while current and current != rg_start:
+            next_elem = current.find_next_sibling()
+            if current.name == 'p':
+                lo_elements.append(current.extract())
+            current = next_elem
+
+        # Collect Rivergrove paragraphs (from CITY OF RIVERGROVE until end marker)
+        rg_elements = []
+        current = rg_start
+        while current and current != end_marker:
+            next_elem = current.find_next_sibling()
+            if current.name == 'p':
+                rg_elements.append(current.extract())
+            current = next_elem
+
+        # Create the dual-column structure
+        dual_sig_div = soup.new_tag('div', **{'class': 'signature-block-dual-city'})
+
+        # Lake Oswego column
+        lo_column = soup.new_tag('div', **{'class': 'signature-column'})
+        for elem in lo_elements:
+            lo_column.append(elem)
+        dual_sig_div.append(lo_column)
+
+        # Rivergrove column
+        rg_column = soup.new_tag('div', **{'class': 'signature-column'})
+        for elem in rg_elements:
+            rg_column.append(elem)
+        dual_sig_div.append(rg_column)
+
+        # Replace the start marker with the dual-column structure
+        start_marker.replace_with(dual_sig_div)
+
+        # Remove the end marker
+        end_marker.decompose()
 
         return soup
     
@@ -754,6 +882,7 @@ class DocumentProcessor:
         # Document-specific one-off fixes (see docs/one-off-fixes-inventory.md)
         if doc_type == 'ord-65-99':
             soup = self.fix_ord_65_list_break(soup)
+            soup = self.fix_ord_65_dual_city_signatures(soup)
         
         # Always enhance tables if present
         if soup.find_all('table'):
