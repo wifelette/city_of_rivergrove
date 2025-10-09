@@ -5,6 +5,11 @@
   "scripts": {
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
+    "test:visual:update:file": "playwright test --update-snapshots",
+    "test:visual:update:grep": "playwright test --update-snapshots --grep",
+    "test:visual:review": "node scripts/testing/review-visual-updates.js",
+    "vr": "node scripts/testing/review-visual-updates.js",
+    "vr:ui": "node scripts/testing/review-visual-updates.js --ui",
     "test:visual:ui": "playwright test --ui",
     "lint:css": "stylelint '**/*.css' --ignore-path .gitignore",
     "lint:css:fix": "stylelint '**/*.css' --ignore-path .gitignore --fix",
