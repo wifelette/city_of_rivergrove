@@ -1,6 +1,6 @@
 # City of Rivergrove Documents
 
-Welcome to the official digital repository of City of Rivergrove municipal documents.
+Welcome to the digital repository of City of Rivergrove municipal documents.
 
 ## Browse Documents by Type
 
