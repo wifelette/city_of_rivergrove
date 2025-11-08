@@ -42,7 +42,8 @@ ol li::marker {
     text-indent: -2em;      /* Pull first line back to align marker */
 }
 
-/* Nested lists should NOT have hanging indent - they're already indented */
+/* Nested lists should NOT have hanging indent - they're already indented
+   But they still need padding for multi-line content alignment */
 .alpha-list li .alpha-list > li,
 .alpha-list li .numeric-list > li,
 .alpha-list li .roman-list > li,
@@ -52,8 +53,8 @@ ol li::marker {
 .roman-list li .alpha-list > li,
 .roman-list li .numeric-list > li,
 .roman-list li .roman-list > li {
-    padding-left: 0;
-    text-indent: 0;
+    padding-left: 2em;      /* Space for multi-line content alignment */
+    text-indent: 0;         /* No negative indent for nested items */
 }
 
 /* Extra specificity to override any mdBook defaults */
@@ -179,15 +180,17 @@ ul ul, ul ol, ol ul, ol ol {
 
 /* Visual indentation for complex nesting patterns */
 /* When numeric items appear in an alpha list (indicates nesting) */
-.alpha-list li .list-marker-numeric {
+/* Removed margin-left as the li already has padding-left for proper alignment */
+/*.alpha-list li .list-marker-numeric {
     margin-left: 2em;
-}
+}*/
 
 /* When roman items appear in an alpha/numeric list (double nesting) */
-.alpha-list li .list-marker-roman,
+/* Removed margin-left as the li already has padding-left for proper alignment */
+/*.alpha-list li .list-marker-roman,
 .numeric-list li .list-marker-roman {
     margin-left: 4em;
-}
+}*/
 
 /* ========================================
  * SPECIAL CASES
