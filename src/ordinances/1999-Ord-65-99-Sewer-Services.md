@@ -16,42 +16,41 @@
 
 The following words and phrases that are used in this ordinance shall have the following meaning:
 
-**A.** City Council means the Rivergrove City Council.
+A. City Council means the Rivergrove City Council.
 
-**B.** Local improvement district or LID has the meaning given that phrase in Chapter 40 of the Lake Oswego City Code.
+B. Local improvement district or LID has the meaning given that phrase in Chapter 40 of the Lake Oswego City Code.
 
-**C.** Person means an individual or any legal entity, including the City of Lake Oswego.
+C. Person means an individual or any legal entity, including the City of Lake Oswego.
 
-**D.** Resolution application means the information that must be submitted to the City of Rivergrove to obtain the City Council's recommendation on a proposed ZOB or LID.
+D. Resolution application means the information that must be submitted to the City of Rivergrove to obtain the City Council's recommendation on a proposed ZOB or LID.
 
-**E.** Zone of Benefit or ZOB has the meaning given that term in Chapter 40 of the Lake Oswego City Code.
+E. Zone of Benefit or ZOB has the meaning given that term in Chapter 40 of the Lake Oswego City Code.
 
 ### Section 2.
 
 The City of Rivergrove hereby adopts by reference those portions of Chapters 38, 39 and 40 of the Lake Oswego City Code ("LOC"), and Chapter 14 of the Lake Oswego Utility Design Standards, that exist on the date of the adoption of this ordinance and are related to sanitary sewer services, in the City of Rivergrove, subject to the following:
 
-**A.** Before the City of Lake Oswego may accept and take action on an application to create a local improvement district ("LID") or zone of benefit ("ZOB"), the City of Lake Oswego shall receive a resolution from the City Council that includes a recommendation in support of the proposed LID or ZOB.
+A. Before the City of Lake Oswego may accept and take action on an application to create a local improvement district ("LID") or zone of benefit ("ZOB"), the City of Lake Oswego shall receive a resolution from the City Council that includes a recommendation in support of the proposed LID or ZOB.
 
-**B.** Any person applying to the City of Lake Oswego to form a LID or ZOB shall submit a resolution application to the City of Rivergrove requesting the City Council adopt a resolution with a recommendation in support of the proposed LID or ZOB. The resolution application shall be submitted on a form provided by the City of Rivergrove and shall include the following:
+B. Any person applying to the City of Lake Oswego to form a LID or ZOB shall submit a resolution application to the City of Rivergrove requesting the City Council adopt a resolution with a recommendation in support of the proposed LID or ZOB. The resolution application shall be submitted on a form provided by the City of Rivergrove and shall include the following:
 
 1.  A copy of the LID or ZOB application that will be submitted to the City of Lake Oswego; and
 
 2.  An application fee equal to the amount of money the City of Rivergrove anticipates it will cost to review the proposed LID or ZOB and adopt a resolution.
 
-**C.** Upon receipt of a complete resolution application, the Rivergrove Planning Commission may review it at its next regularly scheduled meeting as a discussion item on its agenda. The Planning Commission may submit to the City Council its recommendation concerning the resolution application. However, with or without the Planning Commission review and/or recommendation, the City of Rivergrove shall schedule a public hearing before the City Council at which the City Council will accept public testimony (either written or oral) from any interested party and decide whether or not to adopt a recommendation in support of the proposed LID or ZOB. Notice of such a public hearing shall be published in the monthly edition of the Rivergrove Report published immediately preceding the public hearing and posted in at least three conspicuous places within the City and at City Hall, and mailed to each resident of Rivergrove that is an owner of property to be included in the proposed LID or ZOB at least 30 days prior to the public hearing before the City Council. If the City Council finds the proposed LID or ZOB is in the collective best interests of the citizens of the City of Rivergrove, the City Council may adopt a resolution in support of the proposed LID or ZOB. In making its public interest decision, the City Council may consider, among other matters, the potential hardship / undue financial burden that could befall one or more citizens as a result of the proposed LID or ZOB. If a resolution in support of the proposed LID or ZOB is adopted, the City Council may include as specific conditions of its expressed support any detailed parameters of the proposed LID or ZOB that the Council deems appropriate.
+C. Upon receipt of a complete resolution application, the Rivergrove Planning Commission may review it at its next regularly scheduled meeting as a discussion item on its agenda. The Planning Commission may submit to the City Council its recommendation concerning the resolution application. However, with or without the Planning Commission review and/or recommendation, the City of Rivergrove shall schedule a public hearing before the City Council at which the City Council will accept public testimony (either written or oral) from any interested party and decide whether or not to adopt a recommendation in support of the proposed LID or ZOB. Notice of such a public hearing shall be published in the monthly edition of the Rivergrove Report published immediately preceding the public hearing and posted in at least three conspicuous places within the City and at City Hall, and mailed to each resident of Rivergrove that is an owner of property to be included in the proposed LID or ZOB at least 30 days prior to the public hearing before the City Council. If the City Council finds the proposed LID or ZOB is in the collective best interests of the citizens of the City of Rivergrove, the City Council may adopt a resolution in support of the proposed LID or ZOB. In making its public interest decision, the City Council may consider, among other matters, the potential hardship / undue financial burden that could befall one or more citizens as a result of the proposed LID or ZOB. If a resolution in support of the proposed LID or ZOB is adopted, the City Council may include as specific conditions of its expressed support any detailed parameters of the proposed LID or ZOB that the Council deems appropriate.
 
-**D.** After the City Council adopts a resolution in support of the proposed LID or ZOB, or decides not to adopt such a resolution, or an applicant files a written request withdrawing the application for a resolution, the City of Rivergrove will refund any portion of the application fee that exceeds the costs that Rivergrove incurred in processing the application for the resolution. If, at any time, the costs incurred by the City of Rivergrove in processing the resolution application exceed the amount of the application fee, the City of Rivergrove may postpone action on the application until the applicant deposits supplemental application fee(s) to cover the additional incurred and estimated costs. If, at the completion of the processing of the application, the actual costs incurred exceeded the estimated costs upon which the initial application fee was based, the applicant shall be responsible for paying to the City of Rivergrove an amount to cover the additional incurred costs.
+D. After the City Council adopts a resolution in support of the proposed LID or ZOB, or decides not to adopt such a resolution, or an applicant files a written request withdrawing the application for a resolution, the City of Rivergrove will refund any portion of the application fee that exceeds the costs that Rivergrove incurred in processing the application for the resolution. If, at any time, the costs incurred by the City of Rivergrove in processing the resolution application exceed the amount of the application fee, the City of Rivergrove may postpone action on the application until the applicant deposits supplemental application fee(s) to cover the additional incurred and estimated costs. If, at the completion of the processing of the application, the actual costs incurred exceeded the estimated costs upon which the initial application fee was based, the applicant shall be responsible for paying to the City of Rivergrove an amount to cover the additional incurred costs.
+E. After forwarding a resolution supporting the LID or ZOB, the City of Lake Oswego shall have exclusive jurisdiction to deal with these matters in a manner strictly consistent with the terms of the resolution of support to include any conditions contained therein, insofar as they relate to the delivery of sanitary sewer services.
 
-**E.** After forwarding a resolution supporting the LID or ZOB, the City of Lake Oswego shall have exclusive jurisdiction to deal with these matters in a manner strictly consistent with the terms of the resolution of support to include any conditions contained therein, insofar as they relate to the delivery of sanitary sewer services.
+**YEAS:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">5</span>  
+**NAYS:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>  
+**ABSTAINED:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
 
-YEAS <span class="form-field-filled" data-tooltip="Field filled in on source doc">5</span>
-NAYS <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
-ABSTAINED <span class="form-field-filled" data-tooltip="Field filled in on source doc">0</span>
-
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, Mayor, Larry Barrett  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br> Mayor, Larry Barrett  
 **Date:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12-13-99</span>
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>, City Recorder, Mike Collmeyer  
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br> City Recorder, Mike Collmeyer  
 **Adopted:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">12/13/99</span>
 
 ---
@@ -86,37 +85,37 @@ NOW, THEREFORE, it is agreed as follows:
 
 Unless the context indicates otherwise:
 
-**A.** "Council" means either the City Council of Rivergrove and/or Lake Oswego.
+A. "Council" means either the City Council of Rivergrove and/or Lake Oswego.
 
-**B.** "Dwelling Unit" (DU) means a separate living unit with kitchen facilities including those in multiple dwellings, apartments, mobile homes and trailers. For nonresidential properties, a DU or Equivalent Dwelling Unit (EDU) shall be determined by Lake Oswego Ordinance, and Lake Oswego resolutions adopted thereunder.
+B. "Dwelling Unit" (DU) means a separate living unit with kitchen facilities including those in multiple dwellings, apartments, mobile homes and trailers. For nonresidential properties, a DU or Equivalent Dwelling Unit (EDU) shall be determined by Lake Oswego Ordinance, and Lake Oswego resolutions adopted thereunder.
 
-**C.** "Industrial Waste" means any liquid, gaseous, radioactive or solid waste substance or a combination thereof resulting from any process of industrial or manufacturing business, or from the development or recovery of natural resources. For the purposes of this agreement, Industrial Waste shall also include any substance regulated under 33 USC Sec 1317, together with regulations adopted thereunder.
+C. "Industrial Waste" means any liquid, gaseous, radioactive or solid waste substance or a combination thereof resulting from any process of industrial or manufacturing business, or from the development or recovery of natural resources. For the purposes of this agreement, Industrial Waste shall also include any substance regulated under 33 USC Sec 1317, together with regulations adopted thereunder.
 
-**D.** "LOC" means the Lake Oswego City Code.
+D. "LOC" means the Lake Oswego City Code.
 
-**E.** "Operation and Maintenance" means the regular performance of work required to assure continued functioning of the sanitary sewerage system and corrective measures taken to repair facilities to keep them in operating condition.
+E. "Operation and Maintenance" means the regular performance of work required to assure continued functioning of the sanitary sewerage system and corrective measures taken to repair facilities to keep them in operating condition.
 
-**F.** "Order" means Resolutions, Orders and Directives of Lake Oswego prescribing standards and conditions for construction or use of the sanitary sewerage facilities, and rates and charges therefor.
+F. "Order" means Resolutions, Orders and Directives of Lake Oswego prescribing standards and conditions for construction or use of the sanitary sewerage facilities, and rates and charges therefor.
 
-**G.** "Permit Application and Inspection Fee" means fees charged an applicant for permits and related inspections for connections to the sanitary sewerage system.
+G. "Permit Application and Inspection Fee" means fees charged an applicant for permits and related inspections for connections to the sanitary sewerage system.
 
-**H.** "Person" means the state of Oregon, any individual, public or private corporation, political subdivision, governmental Lake Oswego, municipality, industry, copartnership, association, firm, trust, estate or any other legal entity whatsoever.
+H. "Person" means the state of Oregon, any individual, public or private corporation, political subdivision, governmental Lake Oswego, municipality, industry, copartnership, association, firm, trust, estate or any other legal entity whatsoever.
 
-**I.** "Sanitary Sewerage System" means any combination of sewer treatment plant, pumping, or lift facilities, sewer pipe, force mains, laterals, manholes, side sewers, laboratory facilities and equipment, and any other facilities for the collection, conveyance, treatment and disposal of sanitary sewage comprising the total publicly-owned sanitary sewerage system within the jurisdiction of Lake Oswego, or, where Lake Oswego has entered into an intergovernmental agreement for use thereof, within the jurisdiction of the Unified Sewerage Agency of Washington County, the City of Portland or other governmental unit.
+I. "Sanitary Sewerage System" means any combination of sewer treatment plant, pumping, or lift facilities, sewer pipe, force mains, laterals, manholes, side sewers, laboratory facilities and equipment, and any other facilities for the collection, conveyance, treatment and disposal of sanitary sewage comprising the total publicly-owned sanitary sewerage system within the jurisdiction of Lake Oswego, or, where Lake Oswego has entered into an intergovernmental agreement for use thereof, within the jurisdiction of the Unified Sewerage Agency of Washington County, the City of Portland or other governmental unit.
 
-**J.** "Sanitary Sewer Service Charge" means a regular charge to a property owner or occupant of designated premises for the use of the sanitary sewerage system.
+J. "Sanitary Sewer Service Charge" means a regular charge to a property owner or occupant of designated premises for the use of the sanitary sewerage system.
 
-**K.** "Sewage Treatment Facility" means any facility designed for the purpose of the appropriate treating, holding, disposal, and discharge or reuse of sanitary sewage, including byproducts of such treatment processes.
+K. "Sewage Treatment Facility" means any facility designed for the purpose of the appropriate treating, holding, disposal, and discharge or reuse of sanitary sewage, including byproducts of such treatment processes.
 
-**L.** "Sewage Collection System" means any system of pipes, and pumping facilities designed for the collection of sanitary sewage for the purpose of transporting such material to a sewage treatment facility.
+L. "Sewage Collection System" means any system of pipes, and pumping facilities designed for the collection of sanitary sewage for the purpose of transporting such material to a sewage treatment facility.
 
-**M.** "Standards" means the standards and conditions of use of the sanitary sewer system as specified and adopted by Lake Oswego. Standards also shall mean applicable statutes and rules of the United States of America and the State of Oregon.
+M. "Standards" means the standards and conditions of use of the sanitary sewer system as specified and adopted by Lake Oswego. Standards also shall mean applicable statutes and rules of the United States of America and the State of Oregon.
 
-**N.** "System Development Charge" means the amount charged for connection to the sanitary sewer system pursuant to LOC Chapter 39.
+N. "System Development Charge" means the amount charged for connection to the sanitary sewer system pursuant to LOC Chapter 39.
 
 ### Section 2. Operating Procedures and Relationships.
 
-### A. Rivergrove agrees to:
+**A. Rivergrove agrees to:**
 
 1. Comply with the ordinances, resolutions, orders or other rules promulgated by Lake Oswego governing operation and use of the sanitary sewerage system, and to notify Lake Oswego of apparent violations which may require Lake Oswego legal action.
 
@@ -132,7 +131,7 @@ Unless the context indicates otherwise:
 
 7. If the Rivergrove City Council approves formation of a Local Improvement District (LID) or Zone of Benefit (ZOB) pursuant to Section 2(B)(3)(b) below, and the LID or ZOB is subsequently formed by the Lake Oswego City Council, Rivergrove irrevocably consents to construction of the project and assessment of the costs against the benefited property or establishment of the Zone Connection Charge pursuant to LOC Chapter 40, subject to the right of individual property owners to remonstrate, testify or pursue other remedies under LOC Chapter 40 and/or state law.
 
-### B. Lake Oswego agrees to:
+**B. Lake Oswego agrees to:**
 
 1. Operate and maintain the sanitary sewer system within Rivergrove and assure that the operation and maintenance of the sanitary sewer system within Rivergrove complies with the provisions of the Wholesale Sewage Treatment and Disposal Agreement between Lake Oswego and Portland.
 
@@ -144,7 +143,7 @@ Unless the context indicates otherwise:
 
    b. Lake Oswego shall not form or accept a petition for formation of a local improvement district (LID) or a zone of benefit (ZOB) pursuant to LOC Chapter 40 within Rivergrove unless and until the Rivergrove City Council has reviewed the petition or proposed formation and has adopted a resolution in support of the petition or proposed formation and has forwarded a certified copy of such resolution to Lake Oswego.
 
-### C. The parties agree:
+**C. The parties agree:**
 
 1. All public sanitary sewer system facilities within Rivergrove will be designed, constructed, operated, and maintained in accordance with Lake Oswego Ordinances, Resolutions, standards, policies and procedures.
 
@@ -172,36 +171,45 @@ In the event a court of competent jurisdiction shall deem any portion or part of
 
 IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority of lawful actions by the Lake Oswego City Council and Rivergrove City Council.
 
+{{override:dual-city-signatures}}
+
 **CITY OF LAKE OSWEGO**
 
-By: <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
-**Alice L. Schlenker, Mayor**  
-As per City Council Resolution No. <span class="form-field-filled" data-tooltip="Field filled in on source doc">96-62</span>, <span class="form-field-filled" data-tooltip="Field filled in on source doc">December 17, 1996</span>
+**By:** <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+**Alice L. Schlenker, Mayor**
+
+As per City Council Resolution No. <span class="form-field-filled" data-tooltip="Field filled in on source doc">96-62</span>, <span class="form-field-filled" data-tooltip="Field filled in on source doc">December 17, 1996</span>  
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">Dec 18, 1996</span>
 
-**ATTEST:**  
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
-**Kristi Hitchcock, City Recorder**
+**ATTEST:**
+
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+Kristi Hitchcock, City Recorder
 
 **APPROVED AS TO FORM:**
 
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
-**Jeffrey G. Condit, City Attorney**
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+Jeffrey G. Condit, City Attorney
 
 **CITY OF RIVERGROVE**
 
-By: <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
-**Sue Salch, Mayor**  
-As per City Council vote at its meeting of: <span class="form-field-filled" data-tooltip="Field filled in on source doc">November 18, 1996</span>
+**By:** <span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+**Sue Salch, Mayor**
+
+As per City Council vote at its meeting of: <span class="form-field-filled" data-tooltip="Field filled in on source doc">November 18, 1996</span>  
 **Dated:** <span class="form-field-filled" data-tooltip="Field filled in on source doc">11/25/96</span>
 
-**ATTEST:**  
-<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>  
-**Jami K Morrison, City Recorder**
+**ATTEST:**
 
-**APPROVED AS TO FORM:**  
-<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span>  
-**City of Rivergrove Legal Counsel**
+<span class="signature-mark" aria-label="Signature" data-tooltip="Signature present in original document">Signature</span><br>
+Jami K Morrison, City Recorder
+
+**APPROVED AS TO FORM:**
+
+<span class="form-field-empty form-field-medium" data-tooltip="Field left blank in source doc"></span><br>
+City of Rivergrove Legal Counsel
+
+{{/override:dual-city-signatures}}
 
 ## Document Notes
 

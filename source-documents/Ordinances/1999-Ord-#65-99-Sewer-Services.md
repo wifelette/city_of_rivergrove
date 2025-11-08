@@ -171,6 +171,8 @@ In the event a court of competent jurisdiction shall deem any portion or part of
 
 IN WITNESS WHEREOF, this instrument has been executed in duplicate by authority of lawful actions by the Lake Oswego City Council and Rivergrove City Council.
 
+{{override:dual-city-signatures}}
+
 **CITY OF LAKE OSWEGO**
 
 **By:** {{signature}}
@@ -181,13 +183,13 @@ As per City Council Resolution No. {{filled:96-62}}, {{filled:December 17, 1996}
 
 **ATTEST:**
 
-{{signature}}  
-**Kristi Hitchcock, City Recorder**
+{{signature}}
+Kristi Hitchcock, City Recorder
 
 **APPROVED AS TO FORM:**
 
-{{signature}}  
-**Jeffrey G. Condit, City Attorney**
+{{signature}}
+Jeffrey G. Condit, City Attorney
 
 **CITY OF RIVERGROVE**
 
@@ -199,12 +201,15 @@ As per City Council vote at its meeting of: {{filled:November 18, 1996}}
 
 **ATTEST:**
 
-{{signature}}  
-**Jami K Morrison, City Recorder**
+{{signature}}
+Jami K Morrison, City Recorder
 
-**APPROVED AS TO FORM:**  
-{{filled:}}  
-**City of Rivergrove Legal Counsel**
+**APPROVED AS TO FORM:**
+
+{{filled:}}<br>
+City of Rivergrove Legal Counsel
+
+{{/override:dual-city-signatures}}
 
 ## Document Notes
 

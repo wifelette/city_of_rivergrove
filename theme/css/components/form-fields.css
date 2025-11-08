@@ -257,8 +257,67 @@ h3 .form-field-empty {
         color: #333 !important;
         opacity: 1 !important;
     }
-    
+
     .signature-mark::after {
         display: none;
+    }
+}
+
+/* Dual-city signature block (for intergovernmental agreements) */
+.signature-block-dual-city {
+    display: flex;
+    gap: 3rem;
+    margin: 2rem 0;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.signature-block-dual-city .signature-column {
+    flex: 1;
+    min-width: 0; /* Prevent flex item overflow */
+    padding: 1rem 1.5rem;
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+}
+
+/* First paragraph in each column (city name) */
+.signature-block-dual-city .signature-column > p:first-child {
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Standard spacing for paragraphs */
+.signature-block-dual-city .signature-column p {
+    margin: 0.75rem 0;
+}
+
+/* Extra spacing before ATTEST and APPROVED AS TO FORM sections */
+.signature-block-dual-city .signature-column p strong:first-child {
+    display: inline-block;
+}
+
+.signature-block-dual-city .signature-column p:has(strong:only-child) {
+    margin-top: 2rem;
+}
+
+/* Stack on smaller screens */
+@media (max-width: 768px) {
+    .signature-block-dual-city {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
+
+/* Print styles for dual-city signatures */
+@media print {
+    .signature-block-dual-city {
+        gap: 1.5rem;
+    }
+
+    .signature-block-dual-city .signature-column {
+        page-break-inside: avoid;
     }
 }
