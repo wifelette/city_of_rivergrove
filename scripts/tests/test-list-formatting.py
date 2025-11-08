@@ -68,6 +68,9 @@ class ListFormattingTester:
             all_passed &= self.test_section_5110_formatting(soup, file_path)
             all_passed &= self.test_section_5120_formatting(soup, file_path)
 
+        if '1999-Ord-65' in file_path or 'Sewer-Services' in file_path:
+            all_passed &= self.test_ord_65_section_2_formatting(soup, file_path)
+
         return all_passed
 
     def test_no_orphaned_alpha_paragraphs(self, soup, file_path):
@@ -1058,6 +1061,87 @@ class ListFormattingTester:
         else:
             self.tests_passed += 1
             print(f"  ✅ Section 4.120 list complete with all 4 items")
+            return True
+
+    def test_ord_65_section_2_formatting(self, soup, file_path):
+        """
+        Specific test for Ordinance 65-99 Section 2 to ensure "C. The parties agree:"
+        is properly extracted from nested list structure.
+
+        This tests the one-off fix for the edge case where a bold paragraph header
+        appeared after nested alpha sub-items (a, b) and was being treated as
+        list continuation instead of a section header.
+        """
+        self.tests_run += 1
+
+        issues = []
+
+        # Find Section 2 heading
+        section = None
+        for h3 in soup.find_all('h3'):
+            if 'Section 2' in h3.get_text() and 'Operating Procedures' in h3.get_text():
+                section = h3
+                break
+
+        if not section:
+            # This section only exists in Ord 65-99
+            print(f"  ⚠️  Section 2 Operating Procedures not found")
+            return True
+
+        # Find the paragraph containing "C. The parties agree:"
+        c_paragraph = None
+        for p in soup.find_all('p'):
+            strong = p.find('strong')
+            if strong and 'C. The parties agree:' in strong.get_text():
+                c_paragraph = p
+                break
+
+        if not c_paragraph:
+            issues.append("'C. The parties agree:' paragraph not found")
+        else:
+            # Check that C is NOT inside a list item
+            parent_li = c_paragraph.find_parent('li')
+            if parent_li:
+                issues.append("'C. The parties agree:' is still inside a <li> - should be extracted")
+
+            # Check that C is NOT inside an ordered list
+            parent_ol = c_paragraph.find_parent('ol')
+            if parent_ol:
+                issues.append("'C. The parties agree:' is still inside an <ol> - should be outside")
+
+            # Check that C is at the same level as "B. Lake Oswego agrees to:"
+            # Find B header
+            b_paragraph = None
+            for p in soup.find_all('p'):
+                strong = p.find('strong')
+                if strong and 'B. Lake Oswego agrees to:' in strong.get_text():
+                    b_paragraph = p
+                    break
+
+            if b_paragraph and c_paragraph:
+                # They should have the same parent
+                if b_paragraph.parent != c_paragraph.parent:
+                    # Check if C is between two ols (which is correct)
+                    prev_elem = c_paragraph.find_previous_sibling()
+                    next_elem = c_paragraph.find_next_sibling()
+                    if prev_elem and prev_elem.name == 'ol' and next_elem and next_elem.name == 'ol':
+                        # This is correct - C is between B's list and C's list
+                        pass
+                    else:
+                        issues.append("'C. The parties agree:' not at same structural level as 'B. Lake Oswego agrees to:'")
+
+        if issues:
+            self.failures.append({
+                'file': file_path,
+                'test': 'ord_65_section_2_formatting',
+                'issue': 'Ordinance 65-99 Section 2 "C. The parties agree:" formatting issues',
+                'examples': issues
+            })
+            print(f"  ❌ Ord 65-99 Section 2 has {len(issues)} issues")
+            return False
+        else:
+            self.tests_passed += 1
+            print(f"  ✅ Ord 65-99 Section 2 'C. The parties agree:' correctly positioned")
             return True
 
 def main():

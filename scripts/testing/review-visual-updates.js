@@ -261,8 +261,9 @@ class VisualTestReviewer {
 
     this.log(`\n📋 Found ${this.failedTests.length} failed visual test(s) (${passedTests} passed):\n`, 'yellow');
 
-    // Group tests by file
+    // Group tests by file and create display order mapping
     const testsByFile = {};
+    const displayOrderMap = {}; // Maps display number to actual test
     this.failedTests.forEach((test, index) => {
       const fileName = path.basename(test.file);
       if (!testsByFile[fileName]) {
@@ -271,17 +272,21 @@ class VisualTestReviewer {
       testsByFile[fileName].push({ ...test, index });
     });
 
-    // Display grouped tests with aliases
-    let currentIndex = 1;
+    // Display grouped tests with aliases and build display order map
+    let displayNumber = 1;
     for (const [fileName, tests] of Object.entries(testsByFile)) {
       this.log(`  ${fileName}`, 'cyan');
       for (const test of tests) {
-        const alias = this.generateAlias(test, currentIndex - 1);
-        this.log(`    ${currentIndex}. ${test.fullTitle} [${alias}]`, 'reset');
-        currentIndex++;
+        const alias = this.generateAlias(test, test.index);
+        this.log(`    ${displayNumber}. ${test.fullTitle} [${alias}]`, 'reset');
+        displayOrderMap[displayNumber] = test; // Map display number to actual test
+        displayNumber++;
       }
       console.log('');
     }
+
+    // Store the display order map for use in selection
+    this.displayOrderMap = displayOrderMap;
 
     this.log('Options:', 'bold');
     this.log('  • Enter a test number (e.g., "5") or alias (e.g., "dn-1999")');
@@ -316,15 +321,11 @@ class VisualTestReviewer {
           this.log('\n⚠️  Playwright UI is already running', 'yellow');
         } else {
           this.log('\n🎭 Opening Playwright UI mode...', 'cyan');
-          this.log('   Filtering to show only failed tests', 'cyan');
-          this.log('   This will take a moment to re-run those tests\n', 'cyan');
-
-          // Build a grep pattern from failed test names to filter the UI
-          const testPatterns = this.failedTests.map(t => t.fullTitle).join('|');
-          const grepPattern = testPatterns.length > 0 ? testPatterns : '.*';
+          this.log('   Opening all tests - failed tests will show with red X', 'cyan');
+          this.log('   (Click a failed test to see the diff)\n', 'cyan');
 
           const { spawn } = require('child_process');
-          uiProcess = spawn('npx', ['playwright', 'test', '--ui', '--grep', grepPattern], {
+          uiProcess = spawn('npx', ['playwright', 'test', '--ui'], {
             cwd: process.cwd(),
             stdio: 'ignore',
             detached: true
@@ -366,8 +367,12 @@ class VisualTestReviewer {
 
       // Check if it's a number
       const testNum = parseInt(input);
-      if (!isNaN(testNum) && testNum >= 1 && testNum <= this.failedTests.length) {
-        const test = this.failedTests[testNum - 1];
+      if (!isNaN(testNum) && testNum >= 1 && testNum <= Object.keys(this.displayOrderMap).length) {
+        const test = this.displayOrderMap[testNum];
+        if (process.env.DEBUG) {
+          console.log(`DEBUG: User entered ${testNum}, accessing displayOrderMap[${testNum}]`);
+          console.log(`DEBUG: Test is: ${test.fullTitle}`);
+        }
         await this.handleTestSelection(test, selectedTests);
         continue;
       }
@@ -574,7 +579,7 @@ class VisualTestReviewer {
 
   async runUpdate(file) {
     return new Promise((resolve, reject) => {
-      const updateProcess = spawn('npx', ['playwright', 'test', '--update-snapshots', file], {
+      const updateProcess = spawn('npx', ['playwright', 'test', file, '--update-snapshots'], {
         cwd: process.cwd(),
         stdio: 'inherit'
       });
